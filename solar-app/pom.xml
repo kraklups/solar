@@ -18,9 +18,9 @@
     -->
     <properties>
         <!--  Data source properties -->
-        <dataSource.user>pojo</dataSource.user>
-        <dataSource.password>pojo</dataSource.password>
-        <dataSource.jndiName>jdbc/pojo-examples-ds</dataSource.jndiName>
+        <dataSource.user>solar</dataSource.user>
+        <dataSource.password>solar</dataSource.password>
+        <dataSource.jndiName>jdbc/solar-examples-ds</dataSource.jndiName>
         <testDataSource.user>${dataSource.user}</testDataSource.user>
         <testDataSource.password>${dataSource.password}</testDataSource.password>
 
@@ -33,22 +33,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- Package versions (except those defined in "profiles" section) -->
-        <slf4j.version>1.6.6</slf4j.version>
-        <javassist.version>3.15.0-GA</javassist.version>
-        <cglib.version>2.2</cglib.version>
-        <hibernate.version>4.1.5.SP1</hibernate.version>
-        <junit.version>4.10</junit.version>
-        <spring.version>3.1.2.RELEASE</spring.version>
-        <servletApi.version>2.5</servletApi.version>
-        <tapestry.version>5.3.4</tapestry.version>
+        <slf4j.version>1.7.2</slf4j.version>
+        <javassist.version>3.17.1-GA</javassist.version>
+        <cglib.version>2.2.2</cglib.version>
+        <hibernate.version>4.1.9.Final</hibernate.version>
+        <junit.version>4.11</junit.version>
+        <spring.version>3.2.0.RELEASE</spring.version>
+        <servletApi.version>3.0-alpha-1</servletApi.version>
+        <tapestry.version>5.3.6</tapestry.version>
 
         <!-- Plugin versions -->
-        <mavenCompilerPlugin.version>2.3.2</mavenCompilerPlugin.version>
-        <mavenResourcesPlugin.version>2.5</mavenResourcesPlugin.version>
-        <sqlMavenPlugin.version>1.4</sqlMavenPlugin.version>
-        <mavenAssemblyPlugin.version>2.2.1</mavenAssemblyPlugin.version>
-        <jettyMavenPlugin>8.1.5.v20120716</jettyMavenPlugin>
-        <pojo-modelutil.version>2.0.0</pojo-modelutil.version>
+        <mavenCompilerPlugin.version>3.0</mavenCompilerPlugin.version>
+        <mavenResourcesPlugin.version>2.6</mavenResourcesPlugin.version>
+        <sqlMavenPlugin.version>1.5</sqlMavenPlugin.version>
+        <mavenAssemblyPlugin.version>2.4</mavenAssemblyPlugin.version>
+        <jettyMavenPlugin>8.1.8.v20121106</jettyMavenPlugin>
     </properties>
 
     <!-- ========================================================== -->
@@ -56,9 +55,6 @@
     <profiles>
         <profile>
             <id>mysql</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <!-- JDBC driver properties -->
                 <jdbcDriver.groupId>mysql</jdbcDriver.groupId>
@@ -74,6 +70,28 @@
 
                 <!-- Hibernate properties -->
                 <hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
+            </properties>
+        </profile>
+        <profile>
+            <id>postgresql</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- JDBC driver properties -->
+                <jdbcDriver.groupId>postgresql</jdbcDriver.groupId>
+                <jdbcDriver.artifactId>postgresql</jdbcDriver.artifactId>
+                <jdbcDriver.version>9.1-901-1.jdbc4</jdbcDriver.version>
+                <jdbcDriver.className>org.postgresql.Driver</jdbcDriver.className>
+
+                <!--  Data source properties -->
+                <dataSource.url>jdbc:postgresql://192.168.1.13/testdb</dataSource.url>
+                <testDataSource.url>${dataSource.url}test</testDataSource.url>
+                <dataSource.createTablesScript>1-PostgreSQLCreateTables.sql</dataSource.createTablesScript>
+                <dataSource.createDataScript>2-PostgreSQLCreateData.sql</dataSource.createDataScript>
+
+                <!-- Hibernate properties -->
+                <hibernate.dialect>org.hibernate.dialect.PostgreSQLDialect</hibernate.dialect>
             </properties>
         </profile>
     </profiles>
@@ -159,11 +177,10 @@
                 <artifactId>tapestry-spring</artifactId>
                 <version>${tapestry.version}</version>
             </dependency>
-            <!-- POJO-Examples Model Util -->
             <dependency>
-                <groupId>es.udc.pojo</groupId>
-                <artifactId>pojo-modelutil</artifactId>
-                <version>${pojo-modelutil.version}</version>
+                <groupId>org.apache.tapestry</groupId>
+                <artifactId>tapestry-spring</artifactId>
+                <version>${tapestry.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -220,11 +237,6 @@
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-spring</artifactId>
-        </dependency>
-        <!-- POJO-Examples Model Util -->
-        <dependency>
-            <groupId>es.udc.pojo</groupId>
-            <artifactId>pojo-modelutil</artifactId>
         </dependency>
     </dependencies>
 
