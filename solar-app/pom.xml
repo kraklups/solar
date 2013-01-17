@@ -66,7 +66,7 @@
                 <jdbcDriver.className>org.postgresql.Driver</jdbcDriver.className>
 
                 <!--  Data source properties -->
-                <dataSource.url>jdbc:postgresql://192.168.1.107/testdb</dataSource.url>
+                <dataSource.url>jdbc:postgresql://192.168.1.107/solardb</dataSource.url>
                 <testDataSource.url>${dataSource.url}test</testDataSource.url>
                 <dataSource.createTablesScript>1-PostgreSQLCreateTables.sql</dataSource.createTablesScript>
                 <dataSource.createDataScript>2-PostgreSQLCreateData.sql</dataSource.createDataScript>
