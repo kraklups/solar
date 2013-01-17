@@ -7,8 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userprofile.UserProfileDao;
 import net.kraklups.solarapp.model.userservice.util.PasswordEncrypter;
-import es.udc.pojo.modelutil.exceptions.DuplicateInstanceException;
-import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
+import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 @Service("userService")
 @Transactional

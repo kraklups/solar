@@ -1,7 +1,7 @@
 package net.kraklups.solarapp.model.userprofile;
 
-import es.udc.pojo.modelutil.dao.GenericDao;
-import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.modelutil.dao.GenericDao;
+import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 public interface UserProfileDao extends GenericDao<UserProfile, Long>{
 

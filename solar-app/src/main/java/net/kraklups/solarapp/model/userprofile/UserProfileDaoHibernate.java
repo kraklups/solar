@@ -2,8 +2,8 @@ package net.kraklups.solarapp.model.userprofile;
 
 import org.springframework.stereotype.Repository;
 
-import es.udc.pojo.modelutil.dao.GenericDaoHibernate;
-import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.modelutil.dao.GenericDaoHibernate;
+import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 @Repository("userProfileDao")
 public class UserProfileDaoHibernate extends

@@ -14,7 +14,7 @@ import net.kraklups.solarapp.model.userservice.IncorrectPasswordException;
 import net.kraklups.solarapp.model.userservice.UserService;
 import net.kraklups.solarapp.web.util.CookiesManager;
 import net.kraklups.solarapp.web.util.UserSession;
-import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 public class SessionFilter implements RequestFilter {
 

@@ -11,7 +11,7 @@ import net.kraklups.solarapp.web.pages.Index;
 import net.kraklups.solarapp.web.services.AuthenticationPolicy;
 import net.kraklups.solarapp.web.services.AuthenticationPolicyType;
 import net.kraklups.solarapp.web.util.UserSession;
-import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 @AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
 public class UpdateProfile {

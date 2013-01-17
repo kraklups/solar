@@ -1,8 +1,8 @@
 package net.kraklups.solarapp.model.userservice;
 
 import net.kraklups.solarapp.model.userprofile.UserProfile;
-import es.udc.pojo.modelutil.exceptions.DuplicateInstanceException;
-import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
+import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 public interface UserService {
 

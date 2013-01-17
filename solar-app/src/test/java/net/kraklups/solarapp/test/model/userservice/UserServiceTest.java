@@ -15,8 +15,8 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userservice.IncorrectPasswordException;
 import net.kraklups.solarapp.model.userservice.UserProfileDetails;
 import net.kraklups.solarapp.model.userservice.UserService;
-import es.udc.pojo.modelutil.exceptions.DuplicateInstanceException;
-import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
+import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { SPRING_CONFIG_FILE, SPRING_CONFIG_TEST_FILE })
