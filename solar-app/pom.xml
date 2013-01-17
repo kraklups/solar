@@ -18,8 +18,8 @@
     -->
     <properties>
         <!--  Data source properties -->
-        <dataSource.user>solar</dataSource.user>
-        <dataSource.password>solar</dataSource.password>
+        <dataSource.user>solarapp</dataSource.user>
+        <dataSource.password>solarpasswd</dataSource.password>
         <dataSource.jndiName>jdbc/solar-examples-ds</dataSource.jndiName>
         <testDataSource.user>${dataSource.user}</testDataSource.user>
         <testDataSource.password>${dataSource.password}</testDataSource.password>
@@ -54,25 +54,6 @@
     <!-- Profiles -->
     <profiles>
         <profile>
-            <id>mysql</id>
-            <properties>
-                <!-- JDBC driver properties -->
-                <jdbcDriver.groupId>mysql</jdbcDriver.groupId>
-                <jdbcDriver.artifactId>mysql-connector-java</jdbcDriver.artifactId>
-                <jdbcDriver.version>5.1.21</jdbcDriver.version>
-                <jdbcDriver.className>com.mysql.jdbc.Driver</jdbcDriver.className>
-
-                <!--  Data source properties -->
-                <dataSource.url>jdbc:mysql://localhost/pojo</dataSource.url>
-                <testDataSource.url>${dataSource.url}test</testDataSource.url>
-                <dataSource.createTablesScript>1-MySQLCreateTables.sql</dataSource.createTablesScript>
-                <dataSource.createDataScript>2-MySQLCreateData.sql</dataSource.createDataScript>
-
-                <!-- Hibernate properties -->
-                <hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
-            </properties>
-        </profile>
-        <profile>
             <id>postgresql</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -85,7 +66,7 @@
                 <jdbcDriver.className>org.postgresql.Driver</jdbcDriver.className>
 
                 <!--  Data source properties -->
-                <dataSource.url>jdbc:postgresql://192.168.1.13/testdb</dataSource.url>
+                <dataSource.url>jdbc:postgresql://192.168.1.107/testdb</dataSource.url>
                 <testDataSource.url>${dataSource.url}test</testDataSource.url>
                 <dataSource.createTablesScript>1-PostgreSQLCreateTables.sql</dataSource.createTablesScript>
                 <dataSource.createDataScript>2-PostgreSQLCreateData.sql</dataSource.createDataScript>
@@ -170,11 +151,6 @@
             <dependency>
                 <groupId>org.apache.tapestry</groupId>
                 <artifactId>tapestry-core</artifactId>
-                <version>${tapestry.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.tapestry</groupId>
-                <artifactId>tapestry-spring</artifactId>
                 <version>${tapestry.version}</version>
             </dependency>
             <dependency>
