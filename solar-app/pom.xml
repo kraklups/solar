@@ -43,7 +43,7 @@
         <tapestry.version>5.3.6</tapestry.version>
 
         <!-- Plugin versions -->
-        <mavenCompilerPlugin.version>3.0</mavenCompilerPlugin.version>
+        <mavenCompilerPlugin.version>2.5.1</mavenCompilerPlugin.version>
         <mavenResourcesPlugin.version>2.6</mavenResourcesPlugin.version>
         <sqlMavenPlugin.version>1.5</sqlMavenPlugin.version>
         <mavenAssemblyPlugin.version>2.4</mavenAssemblyPlugin.version>
