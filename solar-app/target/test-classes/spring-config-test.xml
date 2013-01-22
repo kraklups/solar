@@ -15,7 +15,7 @@
     <bean id="dataSource"
         class="org.springframework.jdbc.datasource.SingleConnectionDataSource"
         p:driverClassName="org.postgresql.Driver"
-        p:url="jdbc:postgresql://192.168.1.107/testdbtest" p:username="solarapp"
+        p:url="jdbc:postgresql://192.168.1.107/solardbtest" p:username="solarapp"
         p:password="solarpasswd"  
         p:suppressClose="true" />
 

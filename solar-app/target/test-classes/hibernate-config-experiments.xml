@@ -8,7 +8,7 @@
     
         <!-- Database connection settings -->
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://192.168.1.107/testdbtest</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://192.168.1.107/solardbtest</property>
         <property name="hibernate.connection.username">solarapp</property>
         <property name="hibernate.connection.password">solarpasswd</property>
         <!-- JDBC connection pool (use the built-in) -->
