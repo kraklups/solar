@@ -72,8 +72,8 @@ CREATE TABLE UserProfile (usrId BIGINT NOT NULL,
 
 DROP TABLE RoleModuleAccess;
 CREATE TABLE RoleModuleAccess (roleId BIGINT NOT NULL, moduleId BIGINT NOT NULL, 
-    accessFlag SMALLINT NOT NULL, 
-    CONSTRAINT validAccessFlag CHECK ( accessFlag >= 0 AND accessFlag <=3 ),
+    accessFlags SMALLINT NOT NULL, 
+    CONSTRAINT validType CHECK ( type >= 0 AND type <=3 ),
     CONSTRAINT RoleIdFK FOREIGN KEY(roleId)
         REFERENCES Role(roleId) ON DELETE CASCADE,
     CONSTRAINT ModuleIdFK FOREIGN KEY(moduleId)
