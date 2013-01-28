@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Version;
 
 @Entity
 public class Company {
@@ -16,6 +15,51 @@ public class Company {
 	private Long companyId;
 	private String companyName;
 	private Calendar date;
+	
+	public Company() {
+	}
+	
+	public Company(String companyName, Calendar date){
+		
+		/**
+		 * NOTE: "companyId" *must* be left as "null" since its value is
+		 * automatically generated.
+		 */		
+		
+		this.companyName = companyName;
+		this.date = date;
+	}
+	
+	@Column(name="companyId")
+	@SequenceGenerator(                                    // It only takes effect
+			name="CompanyIdGenerator",                     // for databases providing
+	        sequenceName="CompanySeq", allocationSize=1)   // identifier generators.
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO,
+		generator="CompanyIdGenerator")
+    public Long getCompanyId() {
+		return companyId;
+	}
+	
+	public void setCompanyId(Long companyId){
+		this.companyId = companyId;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+	
+	public void setCompanyName(String companyName){
+		this.companyName = companyName;
+	}
+	
+    public Calendar getDate() {
+		return date;
+	}
+	
+	public void setDate(Calendar date){
+		this.date = date;
+	}
 	
 	
 	

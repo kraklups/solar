@@ -55,7 +55,7 @@ CREATE SEQUENCE UserSeq;
 DROP TABLE UserProfile CASCADE;
 CREATE TABLE UserProfile (usrId BIGINT NOT NULL,
     loginName VARCHAR(30) NOT NULL, enPassword VARCHAR(13) NOT NULL, 
-    firstName VARCHAR(30) NOT NULL, surname1 VARCHAR(40) NOT NULL, surname2 VARCHAR(40) NOT NULL, 
+    firstName VARCHAR(30) NOT NULL, surname1 VARCHAR(40) NOT NULL, surname2 VARCHAR(40) DEFAULT NULL, 
     email VARCHAR(60) NOT NULL, date TIMESTAMP NOT NULL, 
     bloqued BOOLEAN NOT NULL DEFAULT FALSE, erased BOOLEAN NOT NULL DEFAULT FALSE,  
     version BIGINT DEFAULT 0,
@@ -72,8 +72,8 @@ CREATE TABLE UserProfile (usrId BIGINT NOT NULL,
 
 DROP TABLE RoleModuleAccess;
 CREATE TABLE RoleModuleAccess (roleId BIGINT NOT NULL, moduleId BIGINT NOT NULL, 
-    accessFlags SMALLINT NOT NULL, 
-    CONSTRAINT validType CHECK ( type >= 0 AND type <=3 ),
+    accessFlag SMALLINT NOT NULL, 
+    CONSTRAINT validAccessFlag CHECK ( accessFlag >= 0 AND accessFlag <=3 ),
     CONSTRAINT RoleIdFK FOREIGN KEY(roleId)
         REFERENCES Role(roleId) ON DELETE CASCADE,
     CONSTRAINT ModuleIdFK FOREIGN KEY(moduleId)

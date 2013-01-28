@@ -49,13 +49,13 @@ CREATE INDEX RoleIndexByLoginName ON Role (roleId, loginName);
 -- ------------------------------ UserProfile ----------------------------------
 -- "version" column is declared with "DEFAULT O" 
 
-DROP SEQUENCE UserSeq;
-CREATE SEQUENCE UserSeq;
+DROP SEQUENCE UserProfileSeq;
+CREATE SEQUENCE UserProfileSeq;
 
 DROP TABLE UserProfile CASCADE;
 CREATE TABLE UserProfile (usrId BIGINT NOT NULL,
     loginName VARCHAR(30) NOT NULL, enPassword VARCHAR(13) NOT NULL, 
-    firstName VARCHAR(30) NOT NULL, surname1 VARCHAR(40) NOT NULL, surname2 VARCHAR(40) NOT NULL, 
+    firstName VARCHAR(30) NOT NULL, surname1 VARCHAR(40) NOT NULL, surname2 VARCHAR(40) DEFAULT NULL, 
     email VARCHAR(60) NOT NULL, date TIMESTAMP NOT NULL, 
     bloqued BOOLEAN NOT NULL DEFAULT FALSE, erased BOOLEAN NOT NULL DEFAULT FALSE,  
     version BIGINT DEFAULT 0,
