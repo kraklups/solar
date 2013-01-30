@@ -11,12 +11,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
-
-import org.hibernate.annotations.NaturalId;
+import javax.persistence.UniqueConstraint;
 
 
 @Entity
-@Table(name="Role")
+@Table(name="Role", uniqueConstraints = {
+		@UniqueConstraint(columnNames = "roleName") })
 public class Role {
 
 	private Long roleId;
@@ -41,13 +41,13 @@ public class Role {
 		this.weight = weight;
 	}
 	
-	@Column(name="roleId")
 	@SequenceGenerator(                                    // It only takes effect
 			name="RoleIdGenerator",                     // for databases providing
 	        sequenceName="RoleSeq", allocationSize=1)   // identifier generators.
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,
 		generator="RoleIdGenerator")
+	@Column(name="roleId", unique= true, nullable = false)	
     public Long getRoleId() {
 		return roleId;
 	}	
@@ -56,7 +56,6 @@ public class Role {
 		this.roleId = roleId;
 	}
 	
-	@NaturalId
 	public String getRoleName() {
 		return roleName;
 	}

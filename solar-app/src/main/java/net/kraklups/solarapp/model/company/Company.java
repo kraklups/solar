@@ -13,12 +13,13 @@ import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
 
 import org.hibernate.annotations.Immutable;
-import org.hibernate.annotations.NaturalId;
+import javax.persistence.UniqueConstraint;
 
 
 @Entity
 @Immutable
-@Table(name="Company")
+@Table(name="Company", uniqueConstraints = {
+	@UniqueConstraint(columnNames = "companyName") })
 public class Company {
 
 	private Long companyId;
@@ -39,13 +40,13 @@ public class Company {
 		this.date = date;
 	}
 	
-	@Column(name="companyId")
 	@SequenceGenerator(                                    // It only takes effect
 			name="CompanyIdGenerator",                     // for databases providing
 	        sequenceName="CompanySeq", allocationSize=1)   // identifier generators.
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,
 		generator="CompanyIdGenerator")
+	@Column(name="companyId", unique= true, nullable = false)
     public Long getCompanyId() {
 		return companyId;
 	}
@@ -54,7 +55,6 @@ public class Company {
 		this.companyId = companyId;
 	}
 
-	@NaturalId
 	public String getCompanyName() {
 		return companyName;
 	}

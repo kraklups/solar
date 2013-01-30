@@ -4,17 +4,25 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
-import org.hibernate.annotations.NaturalId;
+import net.kraklups.solarapp.model.company.Company;
+import net.kraklups.solarapp.model.role.Role;
 
 @Entity
+@Table(name="UserProfile", uniqueConstraints = {
+		@UniqueConstraint(columnNames = "loginName") })
 public class UserProfile {
 
 	private Long userProfileId;
@@ -27,19 +35,16 @@ public class UserProfile {
 	private Calendar date;
 	private Boolean blocked;
 	private Boolean erased;
+	private Company company;
+	private Role role;
 	private long version;
 
 	public UserProfile() {
 	}
-
+	
 	public UserProfile(String loginName, String encryptedPassword,
 			String firstName, String surname1, String surname2, String email, 
-			Calendar date, Boolean blocked, Boolean erased) {
-
-		/**
-		 * NOTE: "userProfileId" *must* be left as "null" since its value is
-		 * automatically generated. esto es una prueba.
-		 */
+			Calendar date, Boolean blocked, Boolean erased, Company company, Role role) {
 
 		this.loginName = loginName;
 		this.encryptedPassword = encryptedPassword;
@@ -50,15 +55,16 @@ public class UserProfile {
 		this.date = date;
 		this.blocked = blocked;
 		this.erased = erased;
+		this.company = company;
+		this.role = role;
 	}
 
-	@Column(name = "usrId")
-	@SequenceGenerator( // It only takes effect for
-	name = "UserProfileIdGenerator", // databases providing identifier
-	sequenceName = "UserProfileSeq", allocationSize=1)
-	// generators.
+	@SequenceGenerator(                                      // It only takes effect for
+	name = "UserProfileIdGenerator",                         // databases providing identifier
+	sequenceName = "UserProfileSeq", allocationSize=1)       // generators.
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "UserProfileIdGenerator")
+	@Column(name="usrId", unique= true, nullable = false)	
 	public Long getUserProfileId() {
 		return userProfileId;
 	}
@@ -67,7 +73,6 @@ public class UserProfile {
 		this.userProfileId = userProfileId;
 	}
 
-	@NaturalId
 	public String getLoginName() {
 		return loginName;
 	}
@@ -140,6 +145,26 @@ public class UserProfile {
 	
 	public void setErased(Boolean erased) {
 		this.erased = erased;
+	}	
+	
+	@ManyToOne(optional=false, fetch=FetchType.LAZY)
+	@JoinColumn(name="companyId")
+	public Company getCompany() {
+		return company;
+	}
+	
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+	
+	@ManyToOne(optional=false, fetch=FetchType.LAZY)
+	@JoinColumn(name="roleId")
+	public Role getRole() {
+		return role;
+	}
+	
+	public void setRole(Role role) {
+		this.role = role;
 	}	
 	
 	@Version

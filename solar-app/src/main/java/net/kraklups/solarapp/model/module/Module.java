@@ -11,13 +11,14 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Immutable;
-import org.hibernate.annotations.NaturalId;
 
 @Entity
 @Immutable
-@Table(name="Module")
+@Table(name="Module", uniqueConstraints = {
+		@UniqueConstraint(columnNames = "moduleName") })
 public class Module {
 
 	private Long moduleId;
@@ -38,13 +39,13 @@ public class Module {
 		this.date = date;
 	}
 
-	@Column(name="moduleId")
 	@SequenceGenerator(                                    // It only takes effect
 			name="ModuleIdGenerator",                     // for databases providing
 	        sequenceName="ModuleSeq", allocationSize=1)   // identifier generators.
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,
 		generator="ModuleIdGenerator")
+	@Column(name="moduleId", unique= true, nullable = false)	
     public Long getModuleId() {
 		return moduleId;
 	}
@@ -53,7 +54,6 @@ public class Module {
 		this.moduleId = companyId;
 	}
 
-	@NaturalId
 	public String getModuleName() {
 		return moduleName;
 	}
