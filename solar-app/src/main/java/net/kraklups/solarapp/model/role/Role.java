@@ -1,18 +1,23 @@
 package net.kraklups.solarapp.model.role;
 
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.OneToMany;
 import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
 
+import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
 
 @Entity
 @Table(name="Role", uniqueConstraints = {
@@ -24,22 +29,27 @@ public class Role {
 	private Calendar date;
 	private String loginName;
 	private Long weight;
+	private Set<RoleModuleAccess> roleModuleAccess = new HashSet<RoleModuleAccess>(0);
 	
 	public Role() {
 	}
 	
 	public Role(String roleName, Calendar date, String loginName, Long weight) {
-
-		/**
-		 * NOTE: "roleId" *must* be left as "null" since its value is
-		 * automatically generated.
-		 */		
 		
 		this.roleName = roleName;
 		this.date = date;
 		this.loginName = loginName;
 		this.weight = weight;
 	}
+
+	public Role(String roleName, Calendar date, String loginName, Long weight, Set<RoleModuleAccess> roleModuleAccess) {		
+
+		this.roleName = roleName;
+		this.date = date;
+		this.loginName = loginName;
+		this.weight = weight;
+		this.roleModuleAccess = roleModuleAccess;
+	}	
 	
 	@SequenceGenerator(                                    // It only takes effect
 			name="RoleIdGenerator",                     // for databases providing
@@ -71,9 +81,7 @@ public class Role {
 	
 	public void setDate(Calendar date){
 		this.date = date;
-	}
-	
-	
+	}	
 	
 	public String getLoginName() {
 		return loginName;
@@ -89,6 +97,15 @@ public class Role {
 	
 	public void setWeight(Long weight) {
 		this.weight = weight;
-	}	
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.role")
+	public Set<RoleModuleAccess> getRoleModuleAccess() {
+		return this.roleModuleAccess;
+	}
+	
+	public void setRoleModuleAccess(Set<RoleModuleAccess> roleModuleAccess) {
+		this.roleModuleAccess = roleModuleAccess;
+	}
 	
 }

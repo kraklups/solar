@@ -1,43 +1,48 @@
 package net.kraklups.solarapp.model.module;
 
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
 
-import org.hibernate.annotations.Immutable;
+import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
 
 @Entity
-@Immutable
 @Table(name="Module", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "moduleName") })
 public class Module {
 
 	private Long moduleId;
 	private String moduleName;
-	private Calendar date;	
+	private Calendar date;
+	private Set<RoleModuleAccess> roleModuleAccess = new HashSet <RoleModuleAccess>(0);
 	
 	public Module() {
 	}
 	
-	public Module(String moduleName, Calendar date) {
-
-		/**
-		 * NOTE: "moduleId" *must* be left as "null" since its value is
-		 * automatically generated.
-		 */
-		
+	public Module(String moduleName, Calendar date) {		
 		this.moduleName = moduleName;
 		this.date = date;
 	}
+	
+	public Module(String moduleName, Calendar date, Set<RoleModuleAccess> roleModuleAccess) {		
+		this.moduleName = moduleName;
+		this.date = date;
+		this.roleModuleAccess = roleModuleAccess;
+	}	
 
 	@SequenceGenerator(                                    // It only takes effect
 			name="ModuleIdGenerator",                     // for databases providing
@@ -54,6 +59,7 @@ public class Module {
 		this.moduleId = companyId;
 	}
 
+	@Column(name="moduleName", unique= true, nullable = false)
 	public String getModuleName() {
 		return moduleName;
 	}
@@ -71,5 +77,12 @@ public class Module {
 		this.date = date;
 	}
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.module", cascade=CascadeType.ALL)
+	public Set<RoleModuleAccess> getRoleModuleAccess() {
+		return this.roleModuleAccess;
+	}
 	
+	public void setRoleModuleAccess(Set<RoleModuleAccess> roleModuleAccess) {
+		this.roleModuleAccess = roleModuleAccess;
+	}
 }

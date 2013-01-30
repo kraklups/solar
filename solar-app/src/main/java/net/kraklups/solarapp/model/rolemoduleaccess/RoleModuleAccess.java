@@ -2,65 +2,85 @@ package net.kraklups.solarapp.model.rolemoduleaccess;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.TemporalType;
-import javax.persistence.Temporal;
-import javax.persistence.UniqueConstraint;
 import javax.persistence.AssociationOverride;
 import javax.persistence.AssociationOverrides;
 import javax.persistence.JoinColumn;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Transient;
 
+import net.kraklups.solarapp.model.module.Module;
+import net.kraklups.solarapp.model.role.Role;
+
 @Entity
 @Table(name="RoleModuleAccess")
 @AssociationOverrides({
-	@AssociationOverride(name = "", joincolumns = @JoinColumn(name = ""))
-	@AssociationOverride(name = "", joincolumns = @JoinColumn(name = ""))
+	@AssociationOverride(name = "pk_role", joinColumns = @JoinColumn(name = "roleId")),
+	@AssociationOverride(name = "pk_module", joinColumns = @JoinColumn(name = "moduleId"))
 })
 public class RoleModuleAccess {
 
-	private enum Type {R, W, X, NULL};
+	private RoleModuleAccessId pk = new RoleModuleAccessId(); 
 	
-	private Long roleId;
-	private Long moduleId;
+	private enum Type {R, W, X, NULL};
 	private Type type;
 	
 	public RoleModuleAccess() {	
 	}
 
-	public RoleModuleAccess(Long roleId, Long moduleId, Type type) {
-		this.roleId = roleId;
-		this.moduleId = moduleId;
-		this.type = type;
+	@EmbeddedId
+	public RoleModuleAccessId getPk() {
+		return pk;
 	}
 	
-	public Long getRoleId() {
-		return roleId;
+	public void setPk(RoleModuleAccessId pk){
+		this.pk = pk;
+	}
+		
+	@Transient
+	public Role getRole() {
+		return getPk().getRole();
 	}
 	
-	public void setRoleId(Long roleId){
-		this.roleId = roleId;
+	public void setRole(Role role) {
+		getPk().setRole(role);
 	}
 	
-	public Long getModuleId() {
-		return moduleId;
+	@Transient
+	public Module getModule() {
+		return getPk().getModule();
 	}
 	
-	public void setModuleId(Long moduleId) {
-		this.moduleId = moduleId;
+	public void setModule(Module module) {
+		getPk().setModule(module);
 	}
 	
+	@Column(name = "accessFlag", nullable = false)
 	public Type getType() {
-		return type;
+		return this.type;
 	}
 	
-	public void setType(Type type) {
+	public void setType (Type type) {
 		this.type = type;
+	}
+	
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+
+		RoleModuleAccess that = (RoleModuleAccess) o;
+
+		if (getPk() != null ? !getPk().equals(that.getPk())
+				: that.getPk() != null)
+			return false;
+
+		return true;		
+	}
+	
+	public int hashCode() {
+		return (getPk() != null ? getPk().hashCode() : 0);
 	}
 	
 }

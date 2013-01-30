@@ -7,7 +7,7 @@ import net.kraklups.solarapp.model.module.Module;
 import net.kraklups.solarapp.model.role.Role;
 
 @Embeddable
-public class RoleModuleAccessId implements java.io.Serializable {
+public class RoleModuleAccessId {
 
 	private Role role;
 	private Module module;
