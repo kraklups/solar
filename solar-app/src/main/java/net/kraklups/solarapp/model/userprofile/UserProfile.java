@@ -38,7 +38,7 @@ public class UserProfile {
 
 		/**
 		 * NOTE: "userProfileId" *must* be left as "null" since its value is
-		 * automatically generated.
+		 * automatically generated. esto es una prueba.
 		 */
 
 		this.loginName = loginName;
