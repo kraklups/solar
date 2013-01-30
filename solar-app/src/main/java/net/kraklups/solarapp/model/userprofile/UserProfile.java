@@ -8,7 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Version;
+
+import org.hibernate.annotations.NaturalId;
 
 @Entity
 public class UserProfile {
@@ -63,6 +67,7 @@ public class UserProfile {
 		this.userProfileId = userProfileId;
 	}
 
+	@NaturalId
 	public String getLoginName() {
 		return loginName;
 	}
@@ -112,6 +117,7 @@ public class UserProfile {
 		this.email = email;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
 	public Calendar getDate() {
 		return date;
 	}

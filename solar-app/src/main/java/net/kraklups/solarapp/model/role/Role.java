@@ -8,8 +8,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.TemporalType;
+import javax.persistence.Temporal;
+
+import org.hibernate.annotations.NaturalId;
+
 
 @Entity
+@Table(name="Role")
 public class Role {
 
 	private Long roleId;
@@ -33,6 +40,7 @@ public class Role {
 		this.loginName = loginName;
 		this.weight = weight;
 	}
+	
 	@Column(name="roleId")
 	@SequenceGenerator(                                    // It only takes effect
 			name="RoleIdGenerator",                     // for databases providing
@@ -48,6 +56,7 @@ public class Role {
 		this.roleId = roleId;
 	}
 	
+	@NaturalId
 	public String getRoleName() {
 		return roleName;
 	}
@@ -56,6 +65,7 @@ public class Role {
 		this.roleName = roleName;
 	}
 	
+	@Temporal(TemporalType.TIMESTAMP)
     public Calendar getDate() {
 		return date;
 	}
@@ -63,6 +73,8 @@ public class Role {
 	public void setDate(Calendar date){
 		this.date = date;
 	}
+	
+	
 	
 	public String getLoginName() {
 		return loginName;

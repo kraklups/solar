@@ -8,8 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.TemporalType;
+import javax.persistence.Temporal;
+
+import org.hibernate.annotations.Immutable;
+import org.hibernate.annotations.NaturalId;
 
 @Entity
+@Immutable
+@Table(name="Module")
 public class Module {
 
 	private Long moduleId;
@@ -45,6 +53,7 @@ public class Module {
 		this.moduleId = companyId;
 	}
 
+	@NaturalId
 	public String getModuleName() {
 		return moduleName;
 	}
@@ -53,6 +62,7 @@ public class Module {
 		this.moduleName = moduleName;
 	}
 	
+	@Temporal(TemporalType.TIMESTAMP)
     public Calendar getDate() {
 		return date;
 	}
