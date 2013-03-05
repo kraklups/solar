@@ -1,5 +1,7 @@
 package net.kraklups.solarapp.web.pages.user;
 
+import java.util.Calendar;
+
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -20,10 +22,16 @@ public class UpdateProfile {
     private String firstName;
 
     @Property
-    private String lastName;
+    private String surname1;
 
     @Property
+    private String surname2;    
+    
+    @Property
     private String email;
+    
+    @Property
+    private Calendar date;
 
     @SessionState(create=false)
     private UserSession userSession;
@@ -38,8 +46,10 @@ public class UpdateProfile {
         userProfile = userService.findUserProfile(userSession
                 .getUserProfileId());
         firstName = userProfile.getFirstName();
-        lastName = userProfile.getLastName();
+        surname1 = userProfile.getSurname1();
+        surname2 = userProfile.getSurname2();        
         email = userProfile.getEmail();
+        date = userProfile.getDate();
 
     }
 
@@ -47,7 +57,7 @@ public class UpdateProfile {
 
         userService.updateUserProfileDetails(
                 userSession.getUserProfileId(), new UserProfileDetails(
-                        firstName, lastName, email));
+                        firstName, surname1, surname2, email, date));
         userSession.setFirstName(firstName);
         return Index.class;
 

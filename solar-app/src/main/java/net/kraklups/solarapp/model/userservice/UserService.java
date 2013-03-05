@@ -11,8 +11,8 @@ public interface UserService {
             throws DuplicateInstanceException;
 
     public UserProfile login(String loginName, String password,
-            boolean passwordIsEncrypted) throws InstanceNotFoundException,
-            IncorrectPasswordException;
+            boolean passwordIsEncrypted) 
+            throws InstanceNotFoundException, IncorrectPasswordException;
 
     public UserProfile findUserProfile(Long userProfileId)
             throws InstanceNotFoundException;
@@ -22,7 +22,18 @@ public interface UserService {
             throws InstanceNotFoundException;
 
     public void changePassword(Long userProfileId, String oldClearPassword,
-            String newClearPassword) throws IncorrectPasswordException,
-            InstanceNotFoundException;
+            String newClearPassword) 
+            throws IncorrectPasswordException, InstanceNotFoundException;
+    
+    public void removeUser(Long userProfileId) 
+            throws InstanceNotFoundException;
 
+    public void blockUser(Long userProfileId)
+    		throws InstanceNotFoundException;
+    
+    public Long findUserProfileByLogin(String loginName)
+    		throws InstanceNotFoundException;
+    
+    
+    
 }

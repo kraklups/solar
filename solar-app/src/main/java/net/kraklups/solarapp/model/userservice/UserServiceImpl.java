@@ -30,8 +30,9 @@ public class UserServiceImpl implements UserService {
 
             UserProfile userProfile = new UserProfile(loginName,
                     encryptedPassword, userProfileDetails.getFirstName(),
-                    userProfileDetails.getLastName(), userProfileDetails
-                        .getEmail());
+                    userProfileDetails.getSurname1(), userProfileDetails.getSurname2(), userProfileDetails
+                        .getEmail(), userProfileDetails.getDate(), userProfileDetails.getBlocked(), 
+                        userProfileDetails.getErased(), userProfileDetails.getCompany(), userProfileDetails.getRole());
 
             userProfileDao.save(userProfile);
             return userProfile;
@@ -74,7 +75,8 @@ public class UserServiceImpl implements UserService {
 
         UserProfile userProfile = userProfileDao.find(userProfileId);
         userProfile.setFirstName(userProfileDetails.getFirstName());
-        userProfile.setLastName(userProfileDetails.getLastName());
+        userProfile.setSurname1(userProfileDetails.getSurname1());
+        userProfile.setSurname2(userProfileDetails.getSurname2());        
         userProfile.setEmail(userProfileDetails.getEmail());
 
     }

@@ -1,5 +1,7 @@
 package net.kraklups.solarapp.web.pages.user;
 
+import java.util.Calendar;
+
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
@@ -34,8 +36,14 @@ public class Register {
     private String firstName;
 
     @Property
-    private String lastName;
+    private String surname1;
 
+    @Property
+    private String surname2;    
+    
+    @Property
+    private Calendar date;    
+    
     @Property
     private String email;
 
@@ -72,7 +80,7 @@ public class Register {
 
             try {
                 UserProfile userProfile = userService.registerUser(loginName, password,
-                    new UserProfileDetails(firstName, lastName, email));
+                    new UserProfileDetails(firstName, surname1, surname2, email, date));
                 userProfileId = userProfile.getUserProfileId();
             } catch (DuplicateInstanceException e) {
                 registrationForm.recordError(loginNameField, messages
