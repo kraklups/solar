@@ -18,6 +18,6 @@ public interface CompanyService {
 	public Company findCompany(Long companyId) 
 			throws InstanceNotFoundException;
 	
-	public List<UserProfile> getEmployeesByCompanyId(Long companyId, int startIndex, int count) 
+	public List<UserProfile> getEmployeeByCompanyId(Long companyId, int startIndex, int count) 
 			throws InstanceNotFoundException; 
 }
