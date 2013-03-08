@@ -1,9 +1,13 @@
 package net.kraklups.solarapp.model.userservice;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import net.kraklups.solarapp.model.company.Company;
+import net.kraklups.solarapp.model.role.Role;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userprofile.UserProfileDao;
 import net.kraklups.solarapp.model.userservice.util.PasswordEncrypter;
@@ -99,5 +103,76 @@ public class UserServiceImpl implements UserService {
                 .crypt(newClearPassword));
 
     }
+
+	@Override
+	public void removeUser(Long userProfileId, boolean erased)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void blockUser(Long userProfileId, boolean blocked)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Long findUserProfileByLogin(String loginName)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void assignCompanyUserProfile(UserProfile userProfile,
+			Company company) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignRoleUserProfile(UserProfile userProfile, Role role)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<UserProfile> getEmployeeByFirstName(String firstName,
+			int startIndex, int count) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UserProfile> getEmployeeByLogin(String loginName,
+			int startIndex, int count) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UserProfile> getEmployeeBySurname(String surname1,
+			String surname2, int startIndex, int count)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UserProfile> getEmployeeByRole(Role role, int startIndex,
+			int count) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UserProfile> getEmployeeByCompany(Company company,
+			int startIndex, int count) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
