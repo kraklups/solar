@@ -17,6 +17,10 @@ public class UserProfileDetails {
 	private Company company;
 	private Role role;
 
+	public UserProfileDetails() {
+		
+	}
+	
 	public UserProfileDetails(String firstName, String surname1, String surname2, 
 			String email, Calendar date, Boolean blocked, Boolean erased, Company company, Role role) {
 		this.firstName = firstName;

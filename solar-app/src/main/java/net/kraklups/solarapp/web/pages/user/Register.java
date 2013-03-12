@@ -80,7 +80,7 @@ public class Register {
 
             try {
                 UserProfile userProfile = userService.registerUser(loginName, password,
-                    new UserProfileDetails(firstName, surname1, surname2, email, date));
+                    new UserProfileDetails());
                 userProfileId = userProfile.getUserProfileId();
             } catch (DuplicateInstanceException e) {
                 registrationForm.recordError(loginNameField, messages

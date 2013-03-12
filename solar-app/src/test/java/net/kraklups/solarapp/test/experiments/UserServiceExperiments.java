@@ -25,8 +25,7 @@ public class UserServiceExperiments {
 		try {
 			// Register user.
 			UserProfile userProfile = userService.registerUser("serviceUser",
-					"userPassword", new UserProfileDetails("name", "lastName",
-							"user@udc.es"));
+					"userPassword", new UserProfileDetails()); 
 			System.out.println("User with userId '"
 					+ userProfile.getUserProfileId() + "' has been created");
 			System.out.println(userProfile);

@@ -35,7 +35,7 @@ public class UserServiceTest {
         /* Register user and find profile. */
         UserProfile userProfile = userService.registerUser(
             "user", "userPassword",
-            new UserProfileDetails("name", "lastName", "user@udc.es"));
+            new UserProfileDetails());
 
         UserProfile userProfile2 = userService.findUserProfile(
             userProfile.getUserProfileId());
@@ -51,8 +51,7 @@ public class UserServiceTest {
 
         String loginName = "user";
         String clearPassword = "userPassword";
-        UserProfileDetails userProfileDetails = new UserProfileDetails(
-            "name", "lastName", "user@udc.es");
+        UserProfileDetails userProfileDetails = new UserProfileDetails();
 
         userService.registerUser(loginName, clearPassword,
             userProfileDetails);
@@ -125,9 +124,7 @@ public class UserServiceTest {
         String clearPassword = "userPassword";
         UserProfile userProfile = registerUser("user", clearPassword);
 
-        UserProfileDetails newUserProfileDetails = new UserProfileDetails(
-            'X' + userProfile.getFirstName(), 'X' + userProfile.getLastName(),
-            'X' + userProfile.getEmail());
+        UserProfileDetails newUserProfileDetails = new UserProfileDetails();
 
         userService.updateUserProfileDetails(userProfile.getUserProfileId(),
             newUserProfileDetails);
@@ -139,8 +136,8 @@ public class UserServiceTest {
 
         assertEquals(newUserProfileDetails.getFirstName(),
             userProfile2.getFirstName());
-        assertEquals(newUserProfileDetails.getLastName(),
-            userProfile2.getLastName());
+        assertEquals(newUserProfileDetails.getSurname1(),
+            userProfile2.getSurname1());
         assertEquals(newUserProfileDetails.getEmail(),
             userProfile2.getEmail());
 
@@ -151,7 +148,7 @@ public class UserServiceTest {
             throws InstanceNotFoundException {
 
         userService.updateUserProfileDetails(NON_EXISTENT_USER_PROFILE_ID,
-            new UserProfileDetails("name", "lastName", "user@udc.es"));
+            new UserProfileDetails());
 
     }
 
@@ -195,8 +192,7 @@ public class UserServiceTest {
 
     private UserProfile registerUser(String loginName, String clearPassword) {
 
-        UserProfileDetails userProfileDetails = new UserProfileDetails(
-            "name", "lastName", "user@udc.es");
+        UserProfileDetails userProfileDetails = new UserProfileDetails();
 
         try {
 
