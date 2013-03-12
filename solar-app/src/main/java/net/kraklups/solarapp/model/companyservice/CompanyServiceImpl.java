@@ -35,7 +35,7 @@ public class CompanyServiceImpl implements CompanyService{
 	}
 
 	@Override
-	public List<UserProfile> getEmployeeByCompanyId(Long companyId,
+	public List<UserProfile> getEmployeesByCompanyId(Long companyId,
 			int startIndex, int count) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		return null;

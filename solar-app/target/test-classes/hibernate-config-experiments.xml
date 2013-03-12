@@ -11,8 +11,10 @@
         <property name="hibernate.connection.url">jdbc:postgresql://192.168.1.107/solardbtest</property>
         <property name="hibernate.connection.username">solarapp</property>
         <property name="hibernate.connection.password">solarpasswd</property>
+        
         <!-- JDBC connection pool (use the built-in) -->
         <property name="hibernate.connection.pool_size">1</property>
+        
         <!-- SQL dialect -->
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
@@ -26,5 +28,9 @@
         
         <!--  List of persistent classes -->
         <mapping class="net.kraklups.solarapp.model.userprofile.UserProfile" />
+        <mapping class="net.kraklups.solarapp.model.company.Company" />
+        <mapping class="net.kraklups.solarapp.model.role.Role" />
+        <mapping class="net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess" />
+        <mapping class="net.kraklups.solarapp.model.module.Module" />
     </session-factory>
 </hibernate-configuration>

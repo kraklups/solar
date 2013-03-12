@@ -15,7 +15,6 @@ import javax.persistence.Temporal;
 import org.hibernate.annotations.Immutable;
 import javax.persistence.UniqueConstraint;
 
-
 @Entity
 @Immutable
 @Table(name="Company", uniqueConstraints = {

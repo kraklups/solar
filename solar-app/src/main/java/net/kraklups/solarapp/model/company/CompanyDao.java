@@ -1,8 +1,12 @@
 package net.kraklups.solarapp.model.company;
 
-import net.kraklups.modelutil.dao.GenericDao;
-import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+import java.util.List;
 
-public interface CompanyDao extends GenericDao<Company, Long>{
+import net.kraklups.modelutil.dao.GenericDao;
+import net.kraklups.solarapp.model.userprofile.UserProfile;
+
+public interface CompanyDao extends GenericDao<Company, Long>{	
+	
+	public List<UserProfile> getEmployees(Long companyId, int startIndex, int count);
 
 }
