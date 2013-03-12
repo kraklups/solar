@@ -2,16 +2,16 @@
 
 -- ---------- Table for validation queries from the connection pool. ----------
 
-DROP TABLE PingTable;
+DROP TABLE IF EXISTS PingTable;
 CREATE TABLE PingTable (foo CHAR(1));
 
 -- ------------------------------ Company --------------------------------------
 -- table company
 
-DROP SEQUENCE CompanySeq;
+DROP SEQUENCE IF EXISTS CompanySeq;
 CREATE SEQUENCE CompanySeq;
 
-DROP TABLE Company;
+DROP TABLE IF EXISTS Company CASCADE;
 CREATE TABLE Company (companyId BIGINT NOT NULL, 
     companyName VARCHAR(50) NOT NULL, date TIMESTAMP NOT NULL, 
     CONSTRAINT CompanyNameU UNIQUE(companyName),
@@ -20,10 +20,10 @@ CREATE TABLE Company (companyId BIGINT NOT NULL,
 -- ------------------------------ Module ---------------------------------------
 -- table module
 
-DROP SEQUENCE ModuleSeq;
+DROP SEQUENCE IF EXISTS ModuleSeq;
 CREATE SEQUENCE ModuleSeq;
 
-DROP TABLE Module;
+DROP TABLE IF EXISTS Module CASCADE;
 CREATE TABLE Module (moduleId BIGINT NOT NULL, 
     moduleName VARCHAR(50) NOT NULL, date TIMESTAMP NOT NULL, 
     CONSTRAINT ModuleNameU UNIQUE(moduleName),
@@ -32,16 +32,14 @@ CREATE TABLE Module (moduleId BIGINT NOT NULL,
 -- ------------------------------ Role -----------------------------------------
 -- table role
 
-DROP SEQUENCE RoleSeq;
+DROP SEQUENCE IF EXISTS RoleSeq;
 CREATE SEQUENCE RoleSeq;
 
-DROP TABLE Role;
+DROP TABLE IF EXISTS Role CASCADE;
 CREATE TABLE Role (roleId BIGINT NOT NULL, 
     roleName VARCHAR(30) NOT NULL, date TIMESTAMP NOT NULL, 
     loginName VARCHAR(30) NOT NULL, weight SMALLINT NOT NULL,
     CONSTRAINT RoleNameU UNIQUE(roleName),
-    CONSTRAINT LoginNameFK FOREIGN KEY(loginName)
-        REFERENCES UserProfile(loginName) ON DELETE CASCADE,
     CONSTRAINT RoleIdPK PRIMARY KEY(roleId));
 
 CREATE INDEX RoleIndexByLoginName ON Role (roleId, loginName);
@@ -49,10 +47,10 @@ CREATE INDEX RoleIndexByLoginName ON Role (roleId, loginName);
 -- ------------------------------ UserProfile ----------------------------------
 -- "version" column is declared with "DEFAULT O" 
 
-DROP SEQUENCE UserProfileSeq;
+DROP SEQUENCE IF EXISTS UserProfileSeq;
 CREATE SEQUENCE UserProfileSeq;
 
-DROP TABLE UserProfile CASCADE;
+DROP TABLE IF EXISTS UserProfile CASCADE;
 CREATE TABLE UserProfile (usrId BIGINT NOT NULL,
     loginName VARCHAR(30) NOT NULL, enPassword VARCHAR(13) NOT NULL, 
     firstName VARCHAR(30) NOT NULL, surname1 VARCHAR(40) NOT NULL, surname2 VARCHAR(40) DEFAULT NULL, 
@@ -67,10 +65,16 @@ CREATE TABLE UserProfile (usrId BIGINT NOT NULL,
         REFERENCES Company (companyId) ON DELETE CASCADE,
     CONSTRAINT UserProfilePK PRIMARY KEY (usrId));
 
+-- Added for cyclic dependency loop with both FK
+
+ALTER TABLE ONLY Role
+    ADD CONSTRAINT LoginNameFK FOREIGN KEY(loginName)
+        REFERENCES UserProfile(loginName) ON DELETE CASCADE;
+
 -- ------------------------------ RoleModuleAccess -----------------------------
 -- table rolemoduleaccess
 
-DROP TABLE RoleModuleAccess;
+DROP TABLE IF EXISTS RoleModuleAccess CASCADE;
 CREATE TABLE RoleModuleAccess (roleId BIGINT NOT NULL, moduleId BIGINT NOT NULL, 
     accessFlag SMALLINT NOT NULL, 
     CONSTRAINT validAccessFlag CHECK ( accessFlag >= 0 AND accessFlag <=3 ),
