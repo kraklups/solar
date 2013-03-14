@@ -36,9 +36,9 @@
         <slf4j.version>1.7.2</slf4j.version>
         <javassist.version>3.17.1-GA</javassist.version>
         <cglib.version>2.2.2</cglib.version>
-        <hibernate.version>4.1.9.Final</hibernate.version>
+        <hibernate.version>4.1.10.Final</hibernate.version>
         <junit.version>4.11</junit.version>
-        <spring.version>3.2.0.RELEASE</spring.version>
+        <spring.version>3.2.2.RELEASE</spring.version>
         <servletApi.version>3.0-alpha-1</servletApi.version>
         <tapestry.version>5.3.6</tapestry.version>
 
@@ -47,7 +47,7 @@
         <mavenResourcesPlugin.version>2.6</mavenResourcesPlugin.version>
         <sqlMavenPlugin.version>1.5</sqlMavenPlugin.version>
         <mavenAssemblyPlugin.version>2.4</mavenAssemblyPlugin.version>
-        <jettyMavenPlugin>8.1.8.v20121106</jettyMavenPlugin>
+        <jettyMavenPlugin>8.1.10.v20130312</jettyMavenPlugin>
     </properties>
 
     <!-- ========================================================== -->
@@ -128,6 +128,11 @@
                 <artifactId>spring-orm</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+			<dependency>
+    			<groupId>org.springframework</groupId>
+    			<artifactId>spring-context</artifactId>
+    			<version>${spring.version}</version>
+			</dependency>            
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
@@ -139,7 +144,7 @@
                 <artifactId>spring-web</artifactId>
                 <version>${spring.version}</version>
                 <scope>runtime</scope>
-            </dependency>
+            </dependency>            
             <!-- Servlet API -->
             <dependency>
                 <groupId>javax.servlet</groupId>
