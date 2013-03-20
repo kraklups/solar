@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import net.kraklups.modelutil.dao.GenericDaoHibernate;
+import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Repository("companyDao")
@@ -20,6 +21,21 @@ public class CompanyDaoHibernate extends
 	         	setParameter("companyId", companyId).
 	           	setFirstResult(startIndex).
 	           	setMaxResults(count).list();
+	}
+
+	@Override
+	public Company findByName(String companyName) throws InstanceNotFoundException {
+
+		Company company = (Company) getSession().createQuery(
+				"SELECT u FROM Company u WHERE u.companyName = :companyName")
+    			.setParameter("companyName", companyName)
+    			.uniqueResult();
+		
+		if (company == null) {
+			throw new InstanceNotFoundException(companyName,Company.class.getName());
+		} else {
+			return company;
+		}
 	}
 
 }

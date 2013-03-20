@@ -1,4 +1,4 @@
-package net.kraklups.solarapp.test.model.company;
+package net.kraklups.solarapp.test.experiments;
 
 import java.util.Calendar;
 
@@ -8,7 +8,6 @@ import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.company.CompanyDao;
 import net.kraklups.solarapp.model.company.CompanyDaoHibernate;
 
-import net.kraklups.solarapp.test.experiments.HibernateUtil;
 
 public class CompanyDaoExperiments {
 	

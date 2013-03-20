@@ -1,4 +1,4 @@
-package net.kraklups.solarapp.test.model.role;
+package net.kraklups.solarapp.test.experiments;
 
 import java.util.Calendar;
 
@@ -7,7 +7,6 @@ import org.hibernate.Transaction;
 import net.kraklups.solarapp.model.role.Role;
 import net.kraklups.solarapp.model.role.RoleDao;
 import net.kraklups.solarapp.model.role.RoleDaoHibernate;
-import net.kraklups.solarapp.test.experiments.HibernateUtil;
 
 public class RoleDaoExperiments {
 	

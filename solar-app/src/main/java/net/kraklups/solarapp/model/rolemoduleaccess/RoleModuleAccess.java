@@ -1,5 +1,7 @@
 package net.kraklups.solarapp.model.rolemoduleaccess;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -18,7 +20,7 @@ import net.kraklups.solarapp.model.role.Role;
 	@AssociationOverride(name = "pk_role", joinColumns = @JoinColumn(name = "roleId")),
 	@AssociationOverride(name = "pk_module", joinColumns = @JoinColumn(name = "moduleId"))
 })
-public class RoleModuleAccess {
+public class RoleModuleAccess implements Serializable {
 
 	private RoleModuleAccessId pk = new RoleModuleAccessId(); 
 	
@@ -64,6 +66,7 @@ public class RoleModuleAccess {
 		this.type = type;
 	}
 	
+	@Override
 	public boolean equals(Object o) {
 		if (this == o)
 			return true;
@@ -79,6 +82,7 @@ public class RoleModuleAccess {
 		return true;		
 	}
 	
+	@Override
 	public int hashCode() {
 		return (getPk() != null ? getPk().hashCode() : 0);
 	}

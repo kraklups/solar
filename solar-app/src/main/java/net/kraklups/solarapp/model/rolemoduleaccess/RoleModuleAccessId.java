@@ -1,5 +1,7 @@
 package net.kraklups.solarapp.model.rolemoduleaccess;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 
@@ -7,7 +9,7 @@ import net.kraklups.solarapp.model.module.Module;
 import net.kraklups.solarapp.model.role.Role;
 
 @Embeddable
-public class RoleModuleAccessId {
+public class RoleModuleAccessId implements Serializable {
 
 	private Role role;
 	private Module module;
@@ -30,6 +32,7 @@ public class RoleModuleAccessId {
 		this.module = module;
 	}
 	
+	@Override
 	public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -43,6 +46,7 @@ public class RoleModuleAccessId {
         return true;
     }	
     
+	@Override
 	public int hashCode() {
         int result;
         result = (role != null ? role.hashCode() : 0);

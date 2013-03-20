@@ -9,13 +9,16 @@ import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 public interface CompanyService {
 
-	public Company createCompany(Company company) 
+	public Company createCompany(String companyName) 
 			throws DuplicateInstanceException;
 	
 	public void removeCompany(Long companyId) 
 			throws InstanceNotFoundException;
 	
 	public Company findCompany(Long companyId) 
+			throws InstanceNotFoundException;
+	
+	public Company findCompanyByName(String companyName)
 			throws InstanceNotFoundException;
 	
 	public List<UserProfile> getEmployeesByCompanyId(Long companyId, int startIndex, int count) 

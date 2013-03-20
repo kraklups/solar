@@ -1,11 +1,10 @@
-package net.kraklups.solarapp.test.model.userprofile;
+package net.kraklups.solarapp.test.experiments;
 
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userprofile.UserProfileDao;
 import net.kraklups.solarapp.model.userprofile.UserProfileDaoHibernate;
 import net.kraklups.solarapp.model.userservice.util.PasswordEncrypter;
-import net.kraklups.solarapp.test.experiments.HibernateUtil;
 
 import org.hibernate.Transaction;
 

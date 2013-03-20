@@ -1,11 +1,10 @@
-package net.kraklups.solarapp.test.model.rolemoduleaccess;
+package net.kraklups.solarapp.test.experiments;
 
 import org.hibernate.Transaction;
 
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccessDao;
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccessDaoHibernate;
-import net.kraklups.solarapp.test.experiments.HibernateUtil;
 
 public class RoleModuleAccessDaoExperiments {
 	
@@ -24,6 +23,7 @@ public class RoleModuleAccessDaoExperiments {
 			RoleModuleAccess roleModuleAccess = new RoleModuleAccess();
 			roleModuleAccessDao.save(roleModuleAccess);
 			System.out.println(roleModuleAccess);
+						
 			
 			// ... no more cases/entities/methods
 						
