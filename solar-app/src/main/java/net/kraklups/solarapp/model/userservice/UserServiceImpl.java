@@ -119,10 +119,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Long findUserProfileByLogin(String loginName)
+	public UserProfile findUserProfileByLogin(String loginName)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		return userProfileDao.findByLoginName(loginName);
+		
 	}
 
 	@Override

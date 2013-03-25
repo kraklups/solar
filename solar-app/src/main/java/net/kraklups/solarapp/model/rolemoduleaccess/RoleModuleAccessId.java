@@ -11,6 +11,8 @@ import net.kraklups.solarapp.model.role.Role;
 @Embeddable
 public class RoleModuleAccessId implements Serializable {
 
+	private static final long serialVersionUID = -8016268336157047004L;
+	
 	private Role role;
 	private Module module;
 	

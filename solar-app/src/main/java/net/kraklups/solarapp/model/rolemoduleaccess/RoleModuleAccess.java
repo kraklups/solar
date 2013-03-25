@@ -22,10 +22,13 @@ import net.kraklups.solarapp.model.role.Role;
 })
 public class RoleModuleAccess implements Serializable {
 
-	private RoleModuleAccessId pk = new RoleModuleAccessId(); 
+	public enum Type {R, W, X, NULL};
 	
-	private enum Type {R, W, X, NULL};
+	private static final long serialVersionUID = 4874801210749013740L;
+	
 	private Type type;
+	
+	private RoleModuleAccessId pk = new RoleModuleAccessId(); 
 	
 	public RoleModuleAccess() {	
 	}

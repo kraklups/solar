@@ -9,25 +9,45 @@ import org.springframework.transaction.annotation.Transactional;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
-import net.kraklups.solarapp.model.companyservice.CompanyService;
 import net.kraklups.solarapp.model.module.Module;
+import net.kraklups.solarapp.model.module.ModuleDao;
 import net.kraklups.solarapp.model.role.Role;
+import net.kraklups.solarapp.model.role.RoleDao;
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
+import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess.Type;
+import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccessDao;
 
 @Service("authorizationService")
 @Transactional
 public class AuthorizationServiceImpl implements AuthorizationService {
 
+	@Autowired
+	private RoleDao roleDao;
+	
+	@Autowired
+	private ModuleDao moduleDao;
+	
+	@Autowired 
+	private RoleModuleAccessDao roleModuleAccessDao;
+		
 	@Override
-	public Role registerRole(Role role) throws DuplicateInstanceException {
-		// TODO Auto-generated method stub
-		return null;
+	public Role registerRole(String roleName, String loginName, Long weight) throws DuplicateInstanceException {
+		
+		try {
+			roleDao.findByName(roleName);
+			throw new DuplicateInstanceException(roleName, Role.class.getName()); 
+		} catch (InstanceNotFoundException e) { 
+			Calendar cal = Calendar.getInstance();
+			Role role = new Role(roleName, cal, loginName, weight);
+			roleDao.save(role);
+			return role;
+		}
 	}
 
 	@Override
+	@Transactional(readOnly = true)	
 	public Role findRole(Long roleId) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		return roleDao.find(roleId);
 	}
 
 	@Override
@@ -44,15 +64,23 @@ public class AuthorizationServiceImpl implements AuthorizationService {
 	}
 
 	@Override
-	public Role registerModule(Module module) throws DuplicateInstanceException {
-		// TODO Auto-generated method stub
-		return null;
+	public Module registerModule(String moduleName) throws DuplicateInstanceException {
+
+		try {
+			moduleDao.findByName(moduleName);
+			throw new DuplicateInstanceException(moduleName, Module.class.getName()); 
+		} catch (InstanceNotFoundException e) { 
+			Calendar cal = Calendar.getInstance();
+			Module module = new Module(moduleName, cal);
+			moduleDao.save(module);
+			return module;
+		}
 	}
 
 	@Override
-	public Role findModule(Long moduleId) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional(readOnly = true)		
+	public Module findModule(Long moduleId) throws InstanceNotFoundException {
+		return moduleDao.find(moduleId);
 	}
 
 	@Override
@@ -62,17 +90,26 @@ public class AuthorizationServiceImpl implements AuthorizationService {
 	}
 
 	@Override
-	public Role updateModule(Long moduleId, String Name, Calendar date)
+	public Module updateModule(Long moduleId, String Name, Calendar date)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public RoleModuleAccess registerRoleModuleAccess()
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public RoleModuleAccess registerRoleModuleAccess(Role role, Module module, Type type) throws DuplicateInstanceException {
+
+		try {
+			roleModuleAccessDao.findByName(role.getRoleName(),module.getModuleName());
+			throw new DuplicateInstanceException(role.getRoleName()+module.getModuleName(), RoleModuleAccess.class.getName()); 
+		} catch (InstanceNotFoundException e) { 
+			RoleModuleAccess roleModuleAccess = new RoleModuleAccess();
+			roleModuleAccess.setModule(module);
+			roleModuleAccess.setRole(role);
+			roleModuleAccess.setType(type);
+			roleModuleAccessDao.save(roleModuleAccess);
+			return roleModuleAccess;
+		}		
 	}
 
 	@Override
@@ -82,17 +119,29 @@ public class AuthorizationServiceImpl implements AuthorizationService {
 	}
 
 	@Override
-	public RoleModuleAccess removeRoleModuleAccess()
-			throws InstanceNotFoundException {
+	public RoleModuleAccess removeRoleModuleAccess() throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public RoleModuleAccess checkRoleModuleAccess()
-			throws InstanceNotFoundException {
+	public RoleModuleAccess checkRoleModuleAccess()	throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Role findRoleByName(String roleName) throws InstanceNotFoundException {
+		
+		return roleDao.findByName(roleName);
+		
+	}
+
+	@Override
+	public Module findModuleByName(String moduleName) throws InstanceNotFoundException {
+
+		return moduleDao.findByName(moduleName);
+	
 	}
 
 }

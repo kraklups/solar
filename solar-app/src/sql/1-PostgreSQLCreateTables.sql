@@ -60,7 +60,7 @@ CREATE TABLE UserProfile (usrId BIGINT NOT NULL,
     roleId BIGINT NOT NULL, companyId BIGINT NOT NULL,
     CONSTRAINT loginNameU UNIQUE(loginName),
     CONSTRAINT RoleIdFK FOREIGN KEY(roleId)
-        REFERENCES Role (roleId) ON DELETE CASCADE, 
+        REFERENCES Role (roleId) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED, 
     CONSTRAINT CompanyIdFK FOREIGN KEY(companyId)
         REFERENCES Company (companyId) ON DELETE CASCADE,
     CONSTRAINT UserProfilePK PRIMARY KEY (usrId));
@@ -69,7 +69,8 @@ CREATE TABLE UserProfile (usrId BIGINT NOT NULL,
 
 ALTER TABLE ONLY Role
     ADD CONSTRAINT LoginNameFK FOREIGN KEY(loginName)
-        REFERENCES UserProfile(loginName) ON DELETE CASCADE;
+        REFERENCES UserProfile(loginName) ON DELETE CASCADE 
+        DEFERRABLE INITIALLY DEFERRED;
 
 -- ------------------------------ RoleModuleAccess -----------------------------
 -- table rolemoduleaccess
@@ -83,7 +84,4 @@ CREATE TABLE RoleModuleAccess (roleId BIGINT NOT NULL, moduleId BIGINT NOT NULL,
     CONSTRAINT ModuleIdFK FOREIGN KEY(moduleId)
         REFERENCES Module(moduleId) ON DELETE CASCADE,
     CONSTRAINT RoleModuleAccessPK PRIMARY KEY(roleId, moduleId));
-
-
-
 

@@ -40,7 +40,7 @@ public class CompanyServiceTest {
 		Company company = companyService.createCompany("Kraklups");
 		
 		Company company2 = companyService.findCompany(company.getCompanyId());
-		assertEquals(company, company);		
+		assertEquals(company, company2);		
 	}
 	
     @Test(expected = InstanceNotFoundException.class)
@@ -48,5 +48,18 @@ public class CompanyServiceTest {
 	
     	companyService.findCompany(NON_EXISTENT_COMPANY_ID);
     	
-    }	
+    }
+    
+    @Test(expected = DuplicateInstanceException.class)
+    public void testRegisterDuplicatedCompany() throws DuplicateInstanceException,
+        InstanceNotFoundException {
+    	
+    	String companyName = "Kraklups";
+    	
+    	companyService.createCompany(companyName);
+    	
+    	companyService.createCompany(companyName);
+    }
+
+    
 }

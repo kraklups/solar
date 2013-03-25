@@ -400,6 +400,7 @@
                                 <basedir>${basedir}</basedir>
                                 <includes>
                                     <include>src/sql/${dataSource.createTablesScript}</include>
+                                    <include>src/sql/${dataSource.createDataScript}</include>
                                 </includes>
                             </fileset>
                         </configuration>

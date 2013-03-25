@@ -35,7 +35,7 @@ public interface UserService {
     public void blockUser(Long userProfileId, boolean blocked)
     		throws InstanceNotFoundException;
     
-    public Long findUserProfileByLogin(String loginName)
+    public UserProfile findUserProfileByLogin(String loginName)
     		throws InstanceNotFoundException;
     
     public void assignCompanyUserProfile(UserProfile userProfile, Company company)
