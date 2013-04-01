@@ -19,13 +19,22 @@
 	   </div>
 	   
 	   <div class="field">        
-	        <t:label for="lastName"/>
+	        <t:label for="surname1"/>
 	        <span class="entry">    
-	            <input t:id="lastName" t:type="TextField"
+	            <input t:id="surname1" t:type="TextField"
 				       t:validate="required" 
 				       size="16" maxlength="30" />
 	        </span>
 	   </div>
+	   
+	   <div class="field">        
+	        <t:label for="surname2"/>
+	        <span class="entry">    
+	            <input t:id="surname2" t:type="TextField"
+				       t:validate="required" 
+				       size="16" maxlength="30" />
+	        </span>
+	   </div>	   
 	   
 	   <div class="field">        
 	        <t:label for="email"/>

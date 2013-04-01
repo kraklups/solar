@@ -11,6 +11,10 @@ import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
+import net.kraklups.solarapp.model.authorizationservice.AuthorizationService;
+import net.kraklups.solarapp.model.company.Company;
+import net.kraklups.solarapp.model.companyservice.CompanyService;
+import net.kraklups.solarapp.model.role.Role;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userservice.UserProfileDetails;
 import net.kraklups.solarapp.model.userservice.UserService;
@@ -19,10 +23,11 @@ import net.kraklups.solarapp.web.services.AuthenticationPolicy;
 import net.kraklups.solarapp.web.services.AuthenticationPolicyType;
 import net.kraklups.solarapp.web.util.UserSession;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
+import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 @AuthenticationPolicy(AuthenticationPolicyType.NON_AUTHENTICATED_USERS)
 public class Register {
-
+	 	
     @Property
     private String loginName;
 
@@ -40,19 +45,28 @@ public class Register {
 
     @Property
     private String surname2;    
-    
-    @Property
-    private Calendar date;    
-    
-    @Property
-    private String email;
 
+    @Property
+    private String email;    
+       
+    @Property
+    private String companyName;
+    
+    @Property
+    private String roleName;
+    
     @SessionState(create=false)
     private UserSession userSession;
 
     @Inject
     private UserService userService;
 
+    @Inject
+    private CompanyService companyService;
+    
+	@Inject
+	private AuthorizationService authorizationService;    
+    
     @Component
     private Form registrationForm;
 
@@ -66,6 +80,10 @@ public class Register {
     private Messages messages;
 
     private Long userProfileId;
+    
+    private Role role;
+    
+    private Company company;
 
     void onValidateFromRegistrationForm() {
 
@@ -79,9 +97,26 @@ public class Register {
         } else {
 
             try {
-                UserProfile userProfile = userService.registerUser(loginName, password,
-                    new UserProfileDetails());
+            	
+            	Long value = new Long("1");
+            	
+            	try {
+            		company = companyService.findCompany(value);
+            	} catch (InstanceNotFoundException e) {
+            		
+            	}
+            	
+            	try {
+            		role = authorizationService.findRole(value);
+            	} catch (InstanceNotFoundException e) {
+            		
+            	}
+        
+            	
+                UserProfile userProfile = userService.registerUser(loginName, password, 
+                		new UserProfileDetails(firstName, surname1, surname2, email, Calendar.getInstance(), false, false, company, role));
                 userProfileId = userProfile.getUserProfileId();
+                
             } catch (DuplicateInstanceException e) {
                 registrationForm.recordError(loginNameField, messages
                         .get("error-loginNameAlreadyExists"));

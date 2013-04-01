@@ -28,10 +28,13 @@ public class UpdateProfile {
     private String surname2;    
     
     @Property
-    private String email;
+    private String email;    
+       
+    @Property
+    private String companyName;
     
     @Property
-    private Calendar date;
+    private String roleName;
 
     @SessionState(create=false)
     private UserSession userSession;
@@ -49,14 +52,13 @@ public class UpdateProfile {
         surname1 = userProfile.getSurname1();
         surname2 = userProfile.getSurname2();        
         email = userProfile.getEmail();
-        date = userProfile.getDate();
 
     }
 
     Object onSuccess() throws InstanceNotFoundException {
 
         userService.updateUserProfileDetails(
-                userSession.getUserProfileId(), new UserProfileDetails());
+                userSession.getUserProfileId(), new UserProfileDetails(firstName, surname1, surname2, email, Calendar.getInstance(), false, false, null, null));
         userSession.setFirstName(firstName);
         return Index.class;
 

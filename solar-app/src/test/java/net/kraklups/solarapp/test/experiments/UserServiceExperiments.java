@@ -3,9 +3,14 @@ package net.kraklups.solarapp.test.experiments;
 import static net.kraklups.solarapp.model.util.GlobalNames.SPRING_CONFIG_FILE;
 import static net.kraklups.solarapp.test.util.GlobalNames.SPRING_CONFIG_TEST_FILE;
 
+import java.util.Calendar;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import net.kraklups.solarapp.model.authorizationservice.AuthorizationService;
+import net.kraklups.solarapp.model.companyservice.CompanyService;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userservice.IncorrectPasswordException;
 import net.kraklups.solarapp.model.userservice.UserProfileDetails;
@@ -16,7 +21,7 @@ import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 public class UserServiceExperiments {
 
 	public static void main(String[] args) {
-
+		
 		/* Get service object. */
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(
 				new String[] { SPRING_CONFIG_FILE, SPRING_CONFIG_TEST_FILE });
@@ -24,8 +29,11 @@ public class UserServiceExperiments {
 
 		try {
 			// Register user.
+			Calendar cal = Calendar.getInstance();
+	    	Long value = new Long("1");	    		
 			UserProfile userProfile = userService.registerUser("serviceUser",
-					"userPassword", new UserProfileDetails()); 
+					"userPassword", new UserProfileDetails("adminName","adminSurname1",
+			    			"adminSurname2","admin@kraklups.net",cal,false,false,null,null)); 
 			System.out.println("User with userId '"
 					+ userProfile.getUserProfileId() + "' has been created");
 			System.out.println(userProfile);
