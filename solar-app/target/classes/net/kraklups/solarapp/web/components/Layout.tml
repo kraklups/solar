@@ -19,7 +19,7 @@
     <!-- Page title. -->
     <div id="headerWrap">
       <div id="logo">
-        <img src="css/images/logo.jpg" width="105px" height="105px" />
+        <img src="${context:/css/images/logo.jpg}" width="105px" height="105px" />
       </div>
       <div id="slogan">
         <h1>${message:header}</h1>
@@ -27,37 +27,37 @@
     </div>
 
     <!-- Menu. -->
-    <div id="menuWrap">
-<t:if test="menuExplanation">
-	 	<span id="menuExplanation">
- 			${menuExplanation}
- 		</span>
-<p:else> 
-      <t:if test="userSession">
-        <ul>
-	    <li><a href="#" >menu-Parques</a></li>
-	    <li><a href="#" >menu-Usuarios</a></li>
-    	<li><a href="#" >menu-Calendario</a></li>
-		<li><a href="#" >menu-Planificador</a></li>
-		<li><a href="#" >menu-Alarmas</a></li>
-		<li><a href="#" >menu-Datos</a></li>
-		<li><a href="#" >menu-Profile</a>
-      	  <ul>
-			<li><a href="#" >menu-userProfile</a></li>
-			<li><a href="#" >menu-userMessages</a></li>
-			<li><a href="#" >menu-userAlertas</a></li>
-			<a href="#" t:type="ActionLink" t:id="logout">${message:menu-logout}</a>
-	  	  </ul>
-    	  </li>
-        </ul>
-      <p:else>
-        <ul>
-	      <li><a href="#" t:type="PageLink" t:page="user/Login">${message:menu-authenticate}</a></li>
-	    </ul>
+	<div id="menuWrap">
+	  <t:if test="menuExplanation">
+	 		<span id="menuExplanation">
+ 				${menuExplanation}
+ 			</span>
+	  <p:else> 
+        <t:if test="userSession">
+          <ul>
+		    <li><a href="#" >menu-Parques</a></li>
+	    	<li><a href="#" >menu-Usuarios</a></li>
+    	  	<li><a href="#" >menu-Calendario</a></li>
+		  	<li><a href="#" >menu-Planificador</a></li>
+			<li><a href="#" >menu-Alarmas</a></li>
+			<li><a href="#" >menu-Datos</a></li>
+			<li><a href="#" >menu-Profile</a>
+      	      <ul>
+		        <li><a href="#" >menu-userProfile</a></li>
+			    <li><a href="#" >menu-userMessages</a></li>
+			    <li><a href="#" >menu-userAlertas</a></li>
+			    <a href="#" t:type="ActionLink" t:id="logout">${message:menu-logout}</a>
+	  	      </ul>
+    	    </li>
+          </ul>
+        <p:else>
+          <ul>
+	        <li><a href="#" t:type="PageLink" t:page="user/Login">${message:menu-authenticate}</a></li>
+	      </ul>
+        </p:else>
+        </t:if>    
       </p:else>
-      </t:if>    
-</p:else>
-</t:if>
+      </t:if>
 	</div>
 	
 <!--    
