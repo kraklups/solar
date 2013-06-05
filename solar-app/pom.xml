@@ -33,21 +33,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- Package versions (except those defined in "profiles" section) -->
-        <slf4j.version>1.7.2</slf4j.version>
+        <slf4j.version>1.7.5</slf4j.version>
         <javassist.version>3.17.1-GA</javassist.version>
-        <cglib.version>2.2.2</cglib.version>
-        <hibernate.version>4.1.10.Final</hibernate.version>
+        <cglib.version>3.0</cglib.version>
+        <hibernate.version>4.2.2.Final</hibernate.version>
         <junit.version>4.11</junit.version>
-        <spring.version>3.2.2.RELEASE</spring.version>
-        <servletApi.version>3.0-alpha-1</servletApi.version>
-        <tapestry.version>5.3.6</tapestry.version>
+        <spring.version>3.2.3.RELEASE</spring.version>
+        <servletApi.version>3.1-b09</servletApi.version>
+        <tapestry.version>5.3.7</tapestry.version>
 
         <!-- Plugin versions -->
         <mavenCompilerPlugin.version>2.5.1</mavenCompilerPlugin.version>
         <mavenResourcesPlugin.version>2.6</mavenResourcesPlugin.version>
         <sqlMavenPlugin.version>1.5</sqlMavenPlugin.version>
         <mavenAssemblyPlugin.version>2.4</mavenAssemblyPlugin.version>
-        <jettyMavenPlugin>8.1.10.v20130312</jettyMavenPlugin>
+        <jettyMavenPlugin>8.1.11.v20130520</jettyMavenPlugin>
     </properties>
 
     <!-- ========================================================== -->
@@ -60,9 +60,9 @@
             </activation>
             <properties>
                 <!-- JDBC driver properties -->
-                <jdbcDriver.groupId>postgresql</jdbcDriver.groupId>
+                <jdbcDriver.groupId>org.postgresql</jdbcDriver.groupId>
                 <jdbcDriver.artifactId>postgresql</jdbcDriver.artifactId>
-                <jdbcDriver.version>9.1-901-1.jdbc4</jdbcDriver.version>
+                <jdbcDriver.version>9.2-1003-jdbc4</jdbcDriver.version>
                 <jdbcDriver.className>org.postgresql.Driver</jdbcDriver.className>
 
                 <!--  Data source properties -->
