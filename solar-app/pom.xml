@@ -60,9 +60,9 @@
             </activation>
             <properties>
                 <!-- JDBC driver properties -->
-                <jdbcDriver.groupId>org.postgresql</jdbcDriver.groupId>
+                <jdbcDriver.groupId>postgresql</jdbcDriver.groupId>
                 <jdbcDriver.artifactId>postgresql</jdbcDriver.artifactId>
-                <jdbcDriver.version>9.2-1003-jdbc4</jdbcDriver.version>
+                <jdbcDriver.version>9.1-901-1.jdbc4</jdbcDriver.version>
                 <jdbcDriver.className>org.postgresql.Driver</jdbcDriver.className>
 
                 <!--  Data source properties -->

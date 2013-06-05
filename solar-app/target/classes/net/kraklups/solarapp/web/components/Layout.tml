@@ -13,20 +13,54 @@
 
 <body>
 
-<!-- Window. -->
+  <!-- Window. -->
+  <div id="window">
 
-<div id="window">
+    <!-- Page title. -->
+    <div id="headerWrap">
+      <div id="logo">
+        <img src="css/images/logo.jpg" width="105px" height="105px" />
+      </div>
+      <div id="slogan">
+        <h1>${message:header}</h1>
+      </div> 
+    </div>
 
-<!-- Page title. -->
-
-<div id="pageTitle">
-	<div align="center">
-       ${message:header}
+    <!-- Menu. -->
+    <div id="menuWrap">
+<t:if test="menuExplanation">
+	 	<span id="menuExplanation">
+ 			${menuExplanation}
+ 		</span>
+<p:else> 
+      <t:if test="userSession">
+        <ul>
+	    <li><a href="#" >menu-Parques</a></li>
+	    <li><a href="#" >menu-Usuarios</a></li>
+    	<li><a href="#" >menu-Calendario</a></li>
+		<li><a href="#" >menu-Planificador</a></li>
+		<li><a href="#" >menu-Alarmas</a></li>
+		<li><a href="#" >menu-Datos</a></li>
+		<li><a href="#" >menu-Profile</a>
+      	  <ul>
+			<li><a href="#" >menu-userProfile</a></li>
+			<li><a href="#" >menu-userMessages</a></li>
+			<li><a href="#" >menu-userAlertas</a></li>
+			<a href="#" t:type="ActionLink" t:id="logout">${message:menu-logout}</a>
+	  	  </ul>
+    	  </li>
+        </ul>
+      <p:else>
+        <ul>
+	      <li><a href="#" t:type="PageLink" t:page="user/Login">${message:menu-authenticate}</a></li>
+	    </ul>
+      </p:else>
+      </t:if>    
+</p:else>
+</t:if>
 	</div>
-</div>
-
-<!-- Menu. -->
-
+	
+<!--    
 <div id="menu">
 	<span id="menuWelcome">
   		<t:if test="userSession">
@@ -54,28 +88,41 @@
         </p:else>
  	</t:if>
 </div>
-
-<!-- Content. -->
-
-<div id="content">
-  	<t:body/>
 </div>
+ -->
 
-
-<!-- Body footer. -->
-
-<div id="footer">
-    <div align="center">
-       ${message:footer}
+    <!-- Main. -->
+	<div id="main">
+    
+	  <!-- LeftSideBar. -->
+	  <div id="leftSidebarWrap">
+	    <div id="leftSidebar">
+      	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>            
+    	</div>
+  	  </div>
+        
+  	  <!-- Content. -->
+	  <div id="contentWrap">
+    	<div id="content"> 
+      	  <t:body/>
+        </div>
+      </div>
     </div>
-</div>
 
-<!-- End of "window" id. -->
-
-</div>
+    <!-- Footer. -->
+	<div id="footerWrap">
+	  <t:if test="userSession">
+		${message:menu-hello} ${userSession.firstName}
+      <p:else>
+        ${message:footer}
+      </p:else>
+		</t:if>    
+	</div>
+    
+  <!-- End of "window" id. -->
+  </div>
 
 <!-- End of HTML body. -->
-
 </body>
 
 </html>

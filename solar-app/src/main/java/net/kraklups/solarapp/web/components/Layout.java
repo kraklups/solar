@@ -13,6 +13,7 @@ import net.kraklups.solarapp.web.util.CookiesManager;
 import net.kraklups.solarapp.web.util.UserSession;
 
 public class Layout {
+		
     @Property
     @Parameter(required = false, defaultPrefix = "message")
     private String menuExplanation;
