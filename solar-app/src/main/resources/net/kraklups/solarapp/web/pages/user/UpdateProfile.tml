@@ -1,6 +1,5 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	t:type="Layout" t:pageTitle="title" 
-	t:menuExplanation="menuExplanation">
+	t:type="Layout" t:pageTitle="title"> 
 	
 	<p>
 		<a href="#" t:type="PageLink" t:page="user/ChangePassword">${message:changePassword}</a>		       

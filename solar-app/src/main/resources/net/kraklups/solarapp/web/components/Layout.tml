@@ -32,7 +32,7 @@
 	 		<span id="menuExplanation">
  				${menuExplanation}
  			</span>
-	  <p:else> 
+	  <p:else>
         <t:if test="userSession">
           <ul>
 		    <li><a href="#" >menu-Parques</a></li>
@@ -43,10 +43,10 @@
 			<li><a href="#" >menu-Datos</a></li>
 			<li><a href="#" >menu-Profile</a>
       	      <ul>
-		        <li><a href="#" >menu-userProfile</a></li>
+		        <li><a href="#" t:type="PageLink" t:page="user/UpdateProfile">${message:menu-updateProfile}</a></li>
 			    <li><a href="#" >menu-userMessages</a></li>
 			    <li><a href="#" >menu-userAlertas</a></li>
-			    <a href="#" t:type="ActionLink" t:id="logout">${message:menu-logout}</a>
+			    <li><a href="#" t:type="ActionLink" t:id="logout">${message:menu-logout}</a></li>
 	  	      </ul>
     	    </li>
           </ul>
