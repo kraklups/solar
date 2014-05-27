@@ -3,6 +3,7 @@ package net.kraklups.solarapp.model.park;
 import java.util.Calendar;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Column;
@@ -12,6 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+
+import net.kraklups.solarapp.model.company.Company;
 
 import org.hibernate.annotations.Type;
 import com.vividsolutions.jts.geom.MultiPolygon;
@@ -26,6 +31,7 @@ public class Park {
 	private Calendar startupDate;
 	private Calendar productionDate;
 	private String loginName;
+	private Company company;	
 	
 	@Type(type="org.hibernate.spatial.GeometryType")	
 	private MultiPolygon mapPark;
@@ -33,12 +39,13 @@ public class Park {
 	public Park() {		
 	}
 	
-	public Park(String parkName, Calendar startupDate, Calendar productionDate, String loginName) {
+	public Park(String parkName, Calendar startupDate, Calendar productionDate, String loginName, Company company) {
 	
 		this.parkName = parkName;
 		this.startupDate = startupDate;
 		this.productionDate = productionDate;		
 		this.loginName = loginName;
+		this.company = company;
 	}
 	
 	@SequenceGenerator(                                 // It only takes effect
@@ -82,7 +89,9 @@ public class Park {
 	public void setProductionDate(Calendar productionDate){
 		this.productionDate = productionDate;
 	}	
-	
+
+	@ManyToOne(optional=false, fetch=FetchType.LAZY)
+	@JoinColumn(name="userProfileId")		
 	@Column(name="loginName", unique= true, nullable = false)
 	public String getLoginName() {
 		return loginName;
@@ -100,10 +109,21 @@ public class Park {
 		this.mapPark = mapPark;
 	}
 
+	@ManyToOne(optional=false, fetch=FetchType.LAZY)
+	@JoinColumn(name="companyId")	
+	public Company getCompany(){
+		return company;
+	}
+	
+	public void setCompany(Company company){
+		this.company = company;
+	}
+	
 	@Override
 	public String toString() {
 		return "Park [parkId=" + parkId + ", nombre=" + parkName + ", startupDate=" + startupDate +
-                       ", productionDate=" + productionDate + ", user_author=" + loginName + 
+                       ", productionDate=" + productionDate + ", company=" + company.getCompanyName() + 
+                       ", user_author=" + loginName + 
                        "mapPark=" + mapPark.toText() + "]";
 	}	
 	
