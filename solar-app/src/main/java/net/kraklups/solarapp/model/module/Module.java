@@ -44,7 +44,7 @@ public class Module {
 		this.roleModuleAccess = roleModuleAccess;
 	}	
 
-	@SequenceGenerator(                                    // It only takes effect
+	@SequenceGenerator(                                   // It only takes effect
 			name="ModuleIdGenerator",                     // for databases providing
 	        sequenceName="ModuleSeq", allocationSize=1)   // identifier generators.
 	@Id
@@ -55,8 +55,8 @@ public class Module {
 		return moduleId;
 	}
 	
-	public void setModuleId(Long companyId){
-		this.moduleId = companyId;
+	public void setModuleId(Long moduleId){
+		this.moduleId = moduleId;
 	}
 
 	@Column(name="moduleName", unique= true, nullable = false)

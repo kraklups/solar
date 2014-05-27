@@ -9,8 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import net.kraklups.solarapp.model.authorizationservice.AuthorizationService;
-import net.kraklups.solarapp.model.companyservice.CompanyService;
+import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userservice.IncorrectPasswordException;
 import net.kraklups.solarapp.model.userservice.UserProfileDetails;
@@ -45,6 +44,19 @@ public class UserServiceExperiments {
 					+ userProfile.getUserProfileId() + "' has been retrieved");
 			System.out.println(userProfile);
 
+			Company company = userService.createCompany("testingcompany");
+			System.out.println("company with companyId '"
+					+ company.getCompanyId() + "' has been created");
+			// Find company.
+			company = userService.findCompanyByName("testingcompany");
+			System.out.println("company with companyId '"
+					+ company.getCompanyId() + "' has been finded");
+			System.out.println(company);
+			
+			// ... proceed in the same way for other entities / methods / use
+			// cases
+			
+			
 			// ... proceed in the same way for other entities / methods / use
 			// cases
 

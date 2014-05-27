@@ -33,21 +33,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- Package versions (except those defined in "profiles" section) -->
-        <slf4j.version>1.7.5</slf4j.version>
-        <javassist.version>3.17.1-GA</javassist.version>
-        <cglib.version>3.0</cglib.version>
-        <hibernate.version>4.2.2.Final</hibernate.version>
+        <slf4j.version>1.7.7</slf4j.version>
+        <javassist.version>3.18.1-GA</javassist.version>
+        <cglib.version>3.1</cglib.version>
+        <hibernate.version>4.3.5.Final</hibernate.version>
         <junit.version>4.11</junit.version>
-        <spring.version>3.2.3.RELEASE</spring.version>
-        <servletApi.version>3.1-b09</servletApi.version>
-        <tapestry.version>5.3.7</tapestry.version>
+        <spring.version>4.0.4.RELEASE</spring.version>
+        <servletApi.version>3.1.0</servletApi.version>
+        <tapestry.version>5.4-beta-3</tapestry.version>
 
         <!-- Plugin versions -->
         <mavenCompilerPlugin.version>2.5.1</mavenCompilerPlugin.version>
         <mavenResourcesPlugin.version>2.6</mavenResourcesPlugin.version>
         <sqlMavenPlugin.version>1.5</sqlMavenPlugin.version>
         <mavenAssemblyPlugin.version>2.4</mavenAssemblyPlugin.version>
-        <jettyMavenPlugin>8.1.11.v20130520</jettyMavenPlugin>
+        <jettyMavenPlugin>8.1.15.v20140411</jettyMavenPlugin>
     </properties>
 
     <!-- ========================================================== -->
@@ -60,9 +60,9 @@
             </activation>
             <properties>
                 <!-- JDBC driver properties -->
-                <jdbcDriver.groupId>postgresql</jdbcDriver.groupId>
+                <jdbcDriver.groupId>org.postgresql</jdbcDriver.groupId>
                 <jdbcDriver.artifactId>postgresql</jdbcDriver.artifactId>
-                <jdbcDriver.version>9.1-901-1.jdbc4</jdbcDriver.version>
+                <jdbcDriver.version>9.3-1101-jdbc41</jdbcDriver.version>
                 <jdbcDriver.className>org.postgresql.Driver</jdbcDriver.className>
 
                 <!--  Data source properties -->
@@ -72,7 +72,7 @@
                 <dataSource.createDataScript>2-PostgreSQLCreateData.sql</dataSource.createDataScript>
 
                 <!-- Hibernate properties -->
-                <hibernate.dialect>org.hibernate.dialect.PostgreSQLDialect</hibernate.dialect>
+                <property name="hibernate.dialect">org.hibernate.spatial.dialect.postgis.PostgisDialect</property>
             </properties>
         </profile>
     </profiles>
@@ -148,7 +148,7 @@
             <!-- Servlet API -->
             <dependency>
                 <groupId>javax.servlet</groupId>
-                <artifactId>servlet-api</artifactId>
+                <artifactId>javax.servlet-api</artifactId>
                 <version>${servletApi.version}</version>
                 <scope>provided</scope>
             </dependency>
@@ -219,6 +219,11 @@
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-spring</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-spatial</artifactId>
+            <version>4.3-SNAPSHOT</version>
+        </dependency>                
     </dependencies>
 
     <build>

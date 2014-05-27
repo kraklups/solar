@@ -1,9 +1,10 @@
 package net.kraklups.solarapp.test.experiments;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+
 
 public class HibernateUtil {
 	private static final SessionFactory sessionFactory;
@@ -12,11 +13,12 @@ public class HibernateUtil {
 		try {
 			// Create the SessionFactory from
 			// hibernate-config-experiments.xml
-			Configuration configuration = new Configuration()
-			        .configure("hibernate-config-experiments.xml");
-			ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
-			        .applySettings(configuration.getProperties())
-			        .buildServiceRegistry();
+			Configuration configuration = new Configuration().configure("hibernate-config-experiments.xml");
+			
+			StandardServiceRegistryBuilder standardServiceRegistry = new StandardServiceRegistryBuilder();
+			standardServiceRegistry.applySettings(configuration.getProperties());
+			StandardServiceRegistry serviceRegistry = standardServiceRegistry.build();
+			
 		    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
 		} catch (Throwable ex) {

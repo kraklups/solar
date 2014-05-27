@@ -11,9 +11,7 @@ import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import net.kraklups.solarapp.model.authorizationservice.AuthorizationService;
 import net.kraklups.solarapp.model.company.Company;
-import net.kraklups.solarapp.model.companyservice.CompanyService;
 import net.kraklups.solarapp.model.role.Role;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userservice.UserProfileDetails;
@@ -60,12 +58,6 @@ public class Register {
 
     @Inject
     private UserService userService;
-
-    @Inject
-    private CompanyService companyService;
-    
-	@Inject
-	private AuthorizationService authorizationService;    
     
     @Component
     private Form registrationForm;
@@ -101,13 +93,13 @@ public class Register {
             	Long value = new Long("1");
             	
             	try {
-            		company = companyService.findCompany(value);
+            		company = userService.findCompany(value);
             	} catch (InstanceNotFoundException e) {
             		
             	}
             	
             	try {
-            		role = authorizationService.findRole(value);
+            		role = userService.findRole(value);
             	} catch (InstanceNotFoundException e) {
             		
             	}
