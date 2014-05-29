@@ -7,8 +7,11 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.solarapp.model.alarm.Alarm;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
+import net.kraklups.solarapp.model.message.Message;
 import net.kraklups.solarapp.model.park.Park;
+import net.kraklups.solarapp.model.taskprk.TaskPrk;
 import net.kraklups.solarapp.model.timetable.Timetable;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
@@ -80,7 +83,7 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public void updateTimetable(Timetable timetableId, String tag,
+	public void updateTimetable(Long timetableId, String tag,
 			UserProfile userProfile, Calendar tvi, Park park)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
@@ -127,6 +130,106 @@ public class ParkServiceImpl implements ParkService {
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public EventTsk createEventTsk(String tagET, String definitionET,
+			Calendar tvi, Calendar tvf, TaskPrk taskPrk, Message message,
+			Alarm alarm) throws DuplicateInstanceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateTimetable(Long eventTaskId, String tagET,
+			String definitionET, Calendar tvi, Calendar tvf, TaskPrk taskPrk,
+			Message message, Alarm alarm) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignTviEventTsk(Calendar tvi, EventTsk eventTsk)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignTvfEventTsk(Calendar tvf, EventTsk eventTsk)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Message getMessageByEventTsk(EventTsk eventTsk)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Alarm getAlarmByEventTsk(EventTsk eventTsk)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TaskPrk getTaskPrkByEventTsk(EventTsk eventTsk)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void assignTaskPrkEventTsk(TaskPrk taskPrk, EventTsk eventTsk)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignMessageEventTsk(Message message, EventTsk eventTsk)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignAlarmEventTsk(Alarm alarm, EventTsk eventTsk)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Message createMessage(String messageTxt, Calendar tvi)
+			throws DuplicateInstanceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateMessage(Long messageId, String messageTxt, Calendar tvi)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignTviMessage(Calendar tvi, Message message)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignMessageTextMessage(Message messageText, Message message)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
 	}
 
 

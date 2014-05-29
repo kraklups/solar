@@ -7,8 +7,11 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.solarapp.model.alarm.Alarm;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
+import net.kraklups.solarapp.model.message.Message;
 import net.kraklups.solarapp.model.park.Park;
+import net.kraklups.solarapp.model.taskprk.TaskPrk;
 import net.kraklups.solarapp.model.timetable.Timetable;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
@@ -41,7 +44,7 @@ public interface ParkService {
     public Timetable createTimetable(String tag, UserProfile userProfile, Calendar tvi, Park park)
     		throws DuplicateInstanceException;
     
-    public void updateTimetable(Timetable timetableId, String tag, UserProfile userProfile, Calendar tvi, Park park) 
+    public void updateTimetable(Long timetableId, String tag, UserProfile userProfile, Calendar tvi, Park park) 
     		throws InstanceNotFoundException; 
     
     public void assignParkTimetable(Park park, Timetable timetable)
@@ -62,4 +65,47 @@ public interface ParkService {
     public Park getParkByTimetable(Timetable timetable)
     		throws InstanceNotFoundException;  
     
+    public EventTsk createEventTsk(String tagET, String definitionET, Calendar tvi, Calendar tvf, 
+            TaskPrk taskPrk, Message message, Alarm alarm)
+            throws DuplicateInstanceException;
+
+    public void updateTimetable(Long eventTaskId, String tagET, String definitionET, Calendar tvi, Calendar tvf, 
+            TaskPrk taskPrk, Message message, Alarm alarm) 
+            throws InstanceNotFoundException; 
+    
+    public void assignTviEventTsk(Calendar tvi, EventTsk eventTsk)
+    		throws InstanceNotFoundException;
+
+    public void assignTvfEventTsk(Calendar tvf, EventTsk eventTsk)
+    		throws InstanceNotFoundException;
+
+    public Message getMessageByEventTsk(EventTsk eventTsk)
+			throws InstanceNotFoundException;  
+    
+    public Alarm getAlarmByEventTsk(EventTsk eventTsk)
+			throws InstanceNotFoundException;
+    
+    public TaskPrk getTaskPrkByEventTsk(EventTsk eventTsk)
+			throws InstanceNotFoundException;    
+
+	public void assignTaskPrkEventTsk(TaskPrk taskPrk, EventTsk eventTsk)
+			throws InstanceNotFoundException;
+
+	public void assignMessageEventTsk(Message message, EventTsk eventTsk)
+			throws InstanceNotFoundException;
+
+	public void assignAlarmEventTsk(Alarm alarm, EventTsk eventTsk)
+			throws InstanceNotFoundException;
+    
+    public Message createMessage(String messageTxt, Calendar tvi)
+    		throws DuplicateInstanceException;
+    
+    public void updateMessage(Long messageId, String messageTxt, Calendar tvi)
+    		throws InstanceNotFoundException;
+    
+    public void assignTviMessage(Calendar tvi, Message message)
+    		throws InstanceNotFoundException;
+    
+    public void assignMessageTextMessage(Message messageText, Message message)
+    		throws InstanceNotFoundException;    
 }
