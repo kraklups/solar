@@ -34,7 +34,7 @@ public class Message {
 		this.messageText = messageText;
 	}
 
-	@SequenceGenerator(                                     // It only takes effect
+	@SequenceGenerator(                                    // It only takes effect
 			name="MessageIdGenerator",                     // for databases providing
 	        sequenceName="MessageSeq", allocationSize=1)   // identifier generators.
 	@Id
