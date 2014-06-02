@@ -6,12 +6,17 @@
 	  xmlns:p="tapestry:parameter">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>${pageTitle}</title>
-	<link rel="StyleSheet" href="${context:/css/styles.css}"
-		  type="text/css" media="all"/>
+    <link rel="StyleSheet" href ="${context:/css/bootstrap.min.css}" type="text/css" media="all"/>
+    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />
+    <script src = "js/bootstrap.js" />
 </head>
 
 <body>
+
+<div class = "navbar navbar-inverse navbar-static-top">
+<div class = "container">
 
   <!-- Window. -->
   <div id="window">
@@ -22,74 +27,53 @@
         <img src="${context:/css/images/logo.jpg}" width="105px" height="105px" />
       </div>
       <div id="slogan">
-        <h1>${message:header}</h1>
+	<a href = "#" class = "navbar-brand">${message:header}</a>
+        <button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
+          <span class = "icon-bar"></span>
+          <span class = "icon-bar"></span>
+          <span class = "icon-bar"></span>
+        </button>        
       </div> 
     </div>
 
     <!-- Menu. -->
-	<div id="menuWrap">
-	  <t:if test="menuExplanation">
-	 		<span id="menuExplanation">
- 				${menuExplanation}
- 			</span>
-	  <p:else>
-        <t:if test="userSession">
-          <ul>
-		    <li><a href="#" >menu-Parques</a></li>
-	    	<li><a href="#" >menu-Usuarios</a></li>
-    	  	<li><a href="#" >menu-Calendario</a></li>
-		  	<li><a href="#" >menu-Planificador</a></li>
-			<li><a href="#" >menu-Alarmas</a></li>
-			<li><a href="#" >menu-Datos</a></li>
-			<li><a href="#" >menu-Profile</a>
-      	      <ul>
-		        <li><a href="#" t:type="PageLink" t:page="user/UpdateProfile">${message:menu-updateProfile}</a></li>
-			    <li><a href="#" >menu-userMessages</a></li>
-			    <li><a href="#" >menu-userAlertas</a></li>
-			    <li><a href="#" t:type="ActionLink" t:id="logout">${message:menu-logout}</a></li>
-	  	      </ul>
-    	    </li>
-          </ul>
-        <p:else>
-          <ul>
-	        <li><a href="#" t:type="PageLink" t:page="user/Login">${message:menu-authenticate}</a></li>
-	      </ul>
+    <div id="menuWrap">
+	<t:if test="menuExplanation">
+	  <span id="menuExplanation">
+ 	    ${menuExplanation}
+ 	  </span>
+	<p:else>
+          <t:if test="userSession">
+
+            <div class = "collapse navbar-collapse navHeaderCollapse">
+        	<ul class = "nav navbar-nav navbar-right">                               
+        	  <li class = "active"><a href="#" >menu-Parques</a></li>
+                  <li><a href="#" >menu-Usuarios</a></li>
+                  <li><a href = "#">menu-Calendario</a></li>
+                  <li><a href = "#">menu-Planificador</a></li>
+                  <li><a href = "#">menu-Alarmas</a></li>
+                  <li><a href = "#">menu-Datos</a></li>
+                  <li class = "dropdown">
+                    <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">menu-Profile <b class = "caret"></b></a>
+                    <ul class = "dropdown-menu">
+		      <li><a href="#" t:type="PageLink" t:page="user/UpdateProfile">${message:menu-updateProfile}</a></li>
+  		      <li><a href="#" >menu-userMessages</a></li>
+		      <li><a href="#" >menu-userAlertas</a></li>
+		      <li><a href="#" t:type="ActionLink" t:id="logout">${message:menu-logout}</a></li>
+                   </ul>
+                  </li>
+              </ul>
+            </div>                               
+        	
+          <p:else>
+            <ul>
+	      <li><a href="#" t:type="PageLink" t:page="user/Login">${message:menu-authenticate}</a></li>
+	    </ul>
+          </p:else>
+          </t:if>    
         </p:else>
-        </t:if>    
-      </p:else>
-      </t:if>
-	</div>
-	
-<!--    
-<div id="menu">
-	<span id="menuWelcome">
-  		<t:if test="userSession">
- 			${message:menu-hello} ${userSession.firstName}
-            <p:else>
-            	${message:menu-welcome}
-            </p:else>
-		</t:if>
-    </span>
-    -
-    <t:if test="menuExplanation">
-	 	<span id="menuExplanation">
- 			${menuExplanation}
- 		</span>
-        <p:else>
-		    <span id="menuLinks">
-				<t:if test="userSession">
-				    <a href="#" t:type="PageLink" t:page="user/UpdateProfile">${message:menu-updateProfile}</a> -
-				    <a href="#" t:type="ActionLink" t:id="logout">${message:menu-logout}</a>
-			        <p:else>
-				    	<a href="#" t:type="PageLink" t:page="user/Login">${message:menu-authenticate}</a>
-			        </p:else>
-				</t:if>
-			</span>
-        </p:else>
- 	</t:if>
-</div>
-</div>
- -->
+        </t:if>
+    </div>
 
     <!-- Main. -->
 	<div id="main">
@@ -121,6 +105,8 @@
     
   <!-- End of "window" id. -->
   </div>
+</div>
+</div>
 
 <!-- End of HTML body. -->
 </body>
