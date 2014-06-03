@@ -6,38 +6,27 @@
 	  xmlns:p="tapestry:parameter">
 
 <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>${pageTitle}</title>
-    <link rel="StyleSheet" href ="${context:/css/bootstrap.min.css}" type="text/css" media="all"/>
-    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />
-    <script src = "js/bootstrap.js" />
+    	
+    <title>${pageTitle}</title>
+    
+    <!-- Core CSS - Include with every page -->
+    <link href="${context:/css/bootstrap.min.css}" rel="stylesheet" />
+    <link href="${context:/font-awesome/css/font-awesome.css}" rel="stylesheet" />
+
+    <!-- Page-Level Plugin CSS - Dashboard -->
+    <link href="${context:/css/plugins/morris/morris-0.4.3.min.css}" rel="stylesheet" />
+    <link href="${context:/css/plugins/timeline/timeline.css}" rel="stylesheet" />
+
+    <!-- SB Admin CSS - Include with every page -->
+    <link href="${context:/css/sb-admin.css}" rel="stylesheet" />
 </head>
 
 <body>
 
-<div class = "navbar navbar-inverse navbar-static-top">
-<div class = "container">
+    <div id="wrapper">
 
-  <!-- Window. -->
-  <div id="window">
-
-    <!-- Page title. -->
-    <div id="headerWrap">
-      <div id="logo">
-        <img src="${context:/css/images/logo.jpg}" width="105px" height="105px" />
-      </div>
-      <div id="slogan">
-	<a href = "#" class = "navbar-brand">${message:header}</a>
-        <button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
-          <span class = "icon-bar"></span>
-          <span class = "icon-bar"></span>
-          <span class = "icon-bar"></span>
-        </button>        
-      </div> 
-    </div>
-
-    <!-- Menu. -->
-    <div id="menuWrap">
 	<t:if test="menuExplanation">
 	  <span id="menuExplanation">
  	    ${menuExplanation}
@@ -45,27 +34,172 @@
 	<p:else>
           <t:if test="userSession">
 
-            <div class = "collapse navbar-collapse navHeaderCollapse">
-        	<ul class = "nav navbar-nav navbar-right">                               
-        	  <li class = "active"><a href="#" >menu-Parques</a></li>
-                  <li><a href="#" >menu-Usuarios</a></li>
-                  <li><a href = "#">menu-Calendario</a></li>
-                  <li><a href = "#">menu-Planificador</a></li>
-                  <li><a href = "#">menu-Alarmas</a></li>
-                  <li><a href = "#">menu-Datos</a></li>
-                  <li class = "dropdown">
-                    <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">menu-Profile <b class = "caret"></b></a>
-                    <ul class = "dropdown-menu">
-		      <li><a href="#" t:type="PageLink" t:page="user/UpdateProfile">${message:menu-updateProfile}</a></li>
-  		      <li><a href="#" >menu-userMessages</a></li>
-		      <li><a href="#" >menu-userAlertas</a></li>
-		      <li><a href="#" t:type="ActionLink" t:id="logout">${message:menu-logout}</a></li>
-                   </ul>
-                  </li>
-              </ul>
-            </div>                               
-        	
-          <p:else>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">${message:header}</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>                                                
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>Read All Messages</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-messages -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 1</strong>
+                                        <span class="pull-right text-muted">40% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Tasks</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#" t:type="PageLink" t:page="user/UpdateProfile"><i class="fa fa-user fa-fw"></i> ${message:menu-updateProfile}</a>
+                        </li>                        
+                        <li class="divider" />
+                        <li><a href="#" t:type="ActionLink" t:id="logout"><i class="fa fa-sign-out fa-fw"></i> ${message:menu-logout}</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default navbar-static-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> menu-Parques</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#" >menu-Parques</a>
+                                </li>
+                                <li>
+                                    <a href="#" >menu-Usuarios</a>                                    
+                                </li>
+                                <li>
+                                    <a href="#" >menu-Calendario</a>                                    
+                                </li>
+                                <li>
+                                    <a href="#" >menu-Alarmas</a>                                    
+                                </li>
+                                <li>
+                                    <a href="#" >menu-Datos</a>                                    
+                                </li>                                
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>                        
+                    </ul>
+                    <!-- /#side-menu -->
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Dashboard</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-8">                                       
+                    
+                </div>
+                
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+         <p:else>
             <ul>
 	      <li><a href="#" t:type="PageLink" t:page="user/Login">${message:menu-authenticate}</a></li>
 	    </ul>
@@ -73,40 +207,25 @@
           </t:if>    
         </p:else>
         </t:if>
-    </div>
 
-    <!-- Main. -->
-	<div id="main">
-    
-	  <!-- LeftSideBar. -->
-	  <div id="leftSidebarWrap">
-	    <div id="leftSidebar">
-      	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>            
-    	</div>
-  	  </div>
-        
-  	  <!-- Content. -->
-	  <div id="contentWrap">
-    	<div id="content"> 
-      	  <t:body/>
-        </div>
-      </div>
     </div>
+    <!-- /#wrapper -->
 
-    <!-- Footer. -->
-	<div id="footerWrap">
-	  <t:if test="userSession">
-		${message:menu-hello} ${userSession.firstName}
-      <p:else>
-        ${message:footer}
-      </p:else>
-		</t:if>    
-	</div>
-    
-  <!-- End of "window" id. -->
-  </div>
-</div>
-</div>
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- Page-Level Plugin Scripts - Dashboard -->
+    <script src="js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="js/plugins/morris/morris.js"></script>
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="js/sb-admin.js"></script>
+
+    <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+    <script src="js/demo/dashboard-demo.js"></script>
 
 <!-- End of HTML body. -->
 </body>
