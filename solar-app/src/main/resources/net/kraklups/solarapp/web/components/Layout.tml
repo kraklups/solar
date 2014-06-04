@@ -27,23 +27,19 @@
 
     <div id="wrapper">
 
-	<t:if test="menuExplanation">
-	  <span id="menuExplanation">
- 	    ${menuExplanation}
- 	  </span>
-	<p:else>
-          <t:if test="userSession">
 
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">${message:header}</a>
-            </div>
+    	<t:if test="userSession">
+
+        	<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            	<div class="navbar-header">
+                	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    	<span class="sr-only">Toggle navigation</span>
+                    	<span class="icon-bar"></span>
+                    	<span class="icon-bar"></span>
+                    	<span class="icon-bar"></span>
+                	</button>
+                	<a class="navbar-brand" href="#">${message:header}</a>
+            	</div>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
@@ -152,27 +148,6 @@
                         <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> menu-Parques</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#" >menu-Parques</a>
-                                </li>
-                                <li>
-                                    <a href="#" >menu-Usuarios</a>                                    
-                                </li>
-                                <li>
-                                    <a href="#" >menu-Calendario</a>                                    
-                                </li>
-                                <li>
-                                    <a href="#" >menu-Alarmas</a>                                    
-                                </li>
-                                <li>
-                                    <a href="#" >menu-Datos</a>                                    
-                                </li>                                
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>                        
                     </ul>
                     <!-- /#side-menu -->
                 </div>
@@ -201,31 +176,34 @@
 
          <p:else>
             <ul>
-	      <li><a href="#" t:type="PageLink" t:page="user/Login">${message:menu-authenticate}</a></li>
-	    </ul>
+	          <li><a href="#" t:type="PageLink" t:page="user/Login">${message:menu-authenticate}</a></li>
+	        </ul>
           </p:else>
           </t:if>    
-        </p:else>
-        </t:if>
+
 
     </div>
     <!-- /#wrapper -->
 
+<!-- Content. -->
+
+  	<t:body/>
 
     <!-- Core Scripts - Include with every page -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="${context:/js/jquery-1.10.2.js}" />
+    <script src="${context:/js/bootstrap.min.js}" />
+    <script src="${context:/js/plugins/metisMenu/jquery.metisMenu.js}" />
 
     <!-- Page-Level Plugin Scripts - Dashboard -->
-    <script src="js/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="js/plugins/morris/morris.js"></script>
+    <script src="${context:/js/plugins/morris/raphael-2.1.0.min.js}" />
+    <script src="${context:/js/plugins/morris/morris.js}" />
 
     <!-- SB Admin Scripts - Include with every page -->
-    <script src="js/sb-admin.js"></script>
+    <script src="${context:/js/sb-admin.js}" />
 
     <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
-    <script src="js/demo/dashboard-demo.js"></script>
+    <script src="${context:/js/demo/dashboard-demo.js}" />
+
 
 <!-- End of HTML body. -->
 </body>

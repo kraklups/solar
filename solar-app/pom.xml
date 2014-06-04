@@ -40,7 +40,7 @@
         <junit.version>4.11</junit.version>
         <spring.version>4.0.4.RELEASE</spring.version>
         <servletApi.version>3.1.0</servletApi.version>
-        <tapestry.version>5.4-beta-3</tapestry.version>
+        <tapestry.version>5.4-beta-6</tapestry.version>
 
         <!-- Plugin versions -->
         <mavenCompilerPlugin.version>2.5.1</mavenCompilerPlugin.version>
