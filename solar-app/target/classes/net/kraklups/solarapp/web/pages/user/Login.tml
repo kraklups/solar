@@ -45,12 +45,4 @@
         </div>
     </div>
 
-    <!-- Core Scripts - Include with every page -->
-    <script src="${context:/js/jquery-1.10.2.js}" />
-    <script src="${context:/js/bootstrap.min.js}" />
-    <script src="${context:/js/plugins/metisMenu/jquery.metisMenu.js}" />
-
-    <!-- SB Admin Scripts - Include with every page -->
-    <script src="${context:/js/sb-admin.js}" />
-
 </html>

@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
@@ -12,15 +11,18 @@
     <title>${pageTitle}</title>
     
     <!-- Core CSS - Include with every page -->
-    <link rel="StyleSheet" href="${context:/css/bootstrap.min.css}" />
-    <link rel="StyleSheet" href="${context:/font-awesome/css/font-awesome.css}" />
-
-    <!-- Page-Level Plugin CSS - Dashboard -->
-    <link rel="StyleSheet" href="${context:/css/plugins/morris/morris-0.4.3.min.css}" />
-    <link rel="StyleSheet" href="${context:/css/plugins/timeline/timeline.css}" />
+    <link rel="stylesheet" href="${context:/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="${context:/font-awesome/css/font-awesome.css}" />
 
     <!-- SB Admin CSS - Include with every page -->
-    <link rel="StyleSheet" href="${context:/css/sb-admin.css}" />
+    <link rel="stylesheet" href="${context:/css/sb-admin.css}" />
+    
+    <!-- Core Scripts - Include with every page -->
+    <script src="${context:/js/jquery-1.10.2.js}" />
+    <script src="${context:/js/bootstrap.min.js}" />
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="${context:/js/sb-admin.js}" />    
 </head>
 
 <body>
@@ -37,16 +39,67 @@
                     		<span class="icon-bar"></span>
                 		</button>
                 		<a class="navbar-brand" href="#">${message:header}</a>
-            		</div>
-            		
+            		</div>            		
 
-    					<ul class="navbar-top-links navbar-right">    					
+    					<ul class="navbar-top-links navbar-right">
+
+                			<li class="dropdown">
+                    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        			<i class="fa fa-location-arrow fa-fw"></i>  
+                        			<i class="fa fa-caret-down"></i>
+                    			</a>
+                    			<ul class="dropdown-menu dropdown-user">
+                        			<li>                        				
+                        				<i class="fa fa-location-arrow fa-fw"></i>                        				
+                        			</li>                                                			
+                    			</ul>
+                			</li>    					
+
+                			<li class="dropdown">
+                    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        			<i class="fa fa-users fa-fw"></i>  
+                        			<i class="fa fa-caret-down"></i>
+                    			</a>
+                    			<ul class="dropdown-menu dropdown-user">
+                        			<li>                        				
+                        				<i class="fa fa-user fa-fw"></i>                        				
+                        			</li>                                                			
+                    			</ul>
+                			</li>    					
+
+    					
+                			<li class="dropdown">
+                    			<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                        			<i class="fa fa-calendar fa-fw"></i>  
+                        			<i class="fa fa-caret-down"></i>
+                    			</a>
+                    			<ul class="dropdown-menu dropdown-messages" data-role="dropdown" data-effect='fade'>
+                        			<li>
+                            			<a href="#">
+                                			<div>
+                                    			<strong>Timetable</strong>
+                                    			<span class="pull-right text-muted">
+                                        			<em>Yesterday</em>
+                                    			</span>
+                                			</div>                                			
+                            			</a>
+                        			</li>
+                        			<li class="divider"></li>                                                
+                        			<li>
+                            			<a class="text-center" href="#">
+                                			<strong>View All Calendars</strong>
+                                			<i class="fa fa-angle-right"></i>
+                            			</a>
+                        			</li>
+                    			</ul>
+                    	    </li>            		    					
+    					    					
                 			<li class="dropdown">
                     			<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
                         			<i class="fa fa-envelope fa-fw"></i>  
                         			<i class="fa fa-caret-down"></i>
                     			</a>
-                    			<ul class="dropdown-menu dropdown-messages">
+                    			<ul class="dropdown-menu dropdown-messages" data-role="dropdown" data-effect='fade'>
                         			<li>
                             			<a href="#">
                                 			<div>
@@ -73,7 +126,7 @@
                         			<i class="fa fa-bell fa-fw"></i>  
                         			<i class="fa fa-caret-down"></i>
                     			</a>
-                    			<ul class="dropdown-menu dropdown-alerts">
+                    			<ul class="dropdown-menu dropdown-alerts" data-role="dropdown" data-effect='fade'>
                         			<li>
                             			<a href="#">
                                 			<div>
@@ -143,36 +196,6 @@
                     			</ul>
                 			</li>    					
 						</ul>
-										
-            		<div class="navbar-default navbar-static-side" role="navigation">
-                		<div class="sidebar-collapse">
-                    		<ul class="nav" id="side-menu">
-                        		<li>
-                            		<a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        		</li>
-                        		<li>
-                            		<a href="#"><i class="fa fa-files-o fa-fw"></i> Settings<span class="fa arrow"></span></a>
-                            		<ul class="nav nav-second-level">
-                                		<li>
-                                    		<a href="#" >menu-Parques</a>
-                                		</li>
-                                		<li>
-                                    		<a href="#" >menu-Usuarios</a>                                    
-                                		</li>
-                                		<li>
-                                    		<a href="#" >menu-Calendario</a>                                    
-                                		</li>
-                                		<li>
-                                    		<a href="#" >menu-Alarmas</a>                                    
-                                		</li>
-                                		<li>
-                                    		<a href="#" >menu-Datos</a>                                    
-                                		</li>                                
-                            		</ul>                            
-                        		</li>                            
-                    		</ul>
-                		</div>
-            		</div>										
            		</nav>
         	</div>
 
@@ -189,17 +212,7 @@
 
   	<t:body/>
 
-    <!-- Core Scripts - Include with every page -->
-    <script src="${context:/js/jquery-1.10.2.js}" />
-    <script src="${context:/js/bootstrap.min.js}" />
-    <script src="${context:/js/plugins/metisMenu/jquery.metisMenu.js}" />
 
-    <!-- Page-Level Plugin Scripts - Dashboard -->
-    <script src="${context:/js/plugins/morris/raphael-2.1.0.min.js}" />
-    <script src="${context:/js/plugins/morris/morris.js}" />
-
-    <!-- SB Admin Scripts - Include with every page -->
-    <script src="${context:/js/sb-admin.js}" />
 
 <!-- End of HTML body. -->
 </body>

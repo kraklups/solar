@@ -18,6 +18,7 @@ public class Layout {
     @Parameter(required = false, defaultPrefix = "message")
     private String menuExplanation;
 
+
     @Property
     @Parameter(required = true, defaultPrefix = "message")
     private String pageTitle;
