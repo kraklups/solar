@@ -85,3 +85,16 @@ CREATE TABLE RoleModuleAccess (roleId BIGINT NOT NULL, moduleId BIGINT NOT NULL,
         REFERENCES Module(moduleId) ON DELETE CASCADE,
     CONSTRAINT RoleModuleAccessPK PRIMARY KEY(roleId, moduleId));
 
+-- ------------------------------ Park -----------------------------
+-- table Park
+
+DROP TABLE IF EXISTS Park CASCADE;
+CREATE TABLE Park (parkId BIGINT NOT NULL,
+    startupDate TIMESTAMP NOT NULL, productionDate TIMESTAMP NOT NULL, loginName VARCHAR(30) NOT NULL,
+    mapPark geometry,
+    CONSTRAINT enforce_geotype_mapPark CHECK (geometrytype(mapPark) = 'MULTIPOLYGON'::text OR geom IS NULL),
+  	CONSTRAINT enforce_srid_mapPark CHECK (st_srid(mapPark) = 4326)     
+    CONSTRAINT loginNameU UNIQUE(loginName),
+    CONSTRAINT CompanyIdFK FOREIGN KEY(companyId)
+        REFERENCES Company (companyId) ON DELETE CASCADE,
+    CONSTRAINT parkIdPK PRIMARY KEY (parkId));

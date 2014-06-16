@@ -3,23 +3,29 @@ package net.kraklups.solarapp.model.parkservice;
 import java.util.Calendar;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.vividsolutions.jts.geom.MultiPolygon;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.alarm.Alarm;
+import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
-import net.kraklups.solarapp.model.message.Message;
+import net.kraklups.solarapp.model.messageevent.MessageEvent;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
 import net.kraklups.solarapp.model.timetable.Timetable;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
+@Service("parkService")
+@Transactional
 public class ParkServiceImpl implements ParkService {
 
 	@Override
 	public Park createPark(String parkName, Calendar startupDate,
-			Calendar productionDate, String loginName, String company,
+			Calendar productionDate, String loginName, Company company,
 			MultiPolygon mapPark) throws DuplicateInstanceException {
 		// TODO Auto-generated method stub
 		return null;
@@ -27,7 +33,7 @@ public class ParkServiceImpl implements ParkService {
 
 	@Override
 	public void updatePark(Long parkId, String parkName, Calendar startupDate,
-			Calendar productionDate, String loginName, String company,
+			Calendar productionDate, String loginName, Company company,
 			MultiPolygon mapPark) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
@@ -48,7 +54,7 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public void assignCompanyPark(Park park, String company)
+	public void assignCompanyPark(Park park, Company company)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
@@ -69,7 +75,7 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public List<Park> getParksByCompany(String company, int startIndex,
+	public List<Park> getParksByCompany(Company company, int startIndex,
 			int count) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		return null;
@@ -134,7 +140,7 @@ public class ParkServiceImpl implements ParkService {
 
 	@Override
 	public EventTsk createEventTsk(String tagET, String definitionET,
-			Calendar tvi, Calendar tvf, TaskPrk taskPrk, Message message,
+			Calendar tvi, Calendar tvf, TaskPrk taskPrk, MessageEvent messageEvent,
 			Alarm alarm) throws DuplicateInstanceException {
 		// TODO Auto-generated method stub
 		return null;
@@ -143,7 +149,7 @@ public class ParkServiceImpl implements ParkService {
 	@Override
 	public void updateTimetable(Long eventTaskId, String tagET,
 			String definitionET, Calendar tvi, Calendar tvf, TaskPrk taskPrk,
-			Message message, Alarm alarm) throws InstanceNotFoundException {
+			MessageEvent messageEvent, Alarm alarm) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -163,7 +169,7 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public Message getMessageByEventTsk(EventTsk eventTsk)
+	public MessageEvent getMessageByEventTsk(EventTsk eventTsk)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		return null;
@@ -191,7 +197,7 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public void assignMessageEventTsk(Message message, EventTsk eventTsk)
+	public void assignMessageEventTsk(MessageEvent messageEvent, EventTsk eventTsk)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
@@ -205,7 +211,7 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public Message createMessage(String messageTxt, Calendar tvi)
+	public MessageEvent createMessage(String messageTxt, Calendar tvi)
 			throws DuplicateInstanceException {
 		// TODO Auto-generated method stub
 		return null;
@@ -219,14 +225,14 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public void assignTviMessage(Calendar tvi, Message message)
+	public void assignTviMessage(Calendar tvi, MessageEvent messageEvent)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void assignMessageTextMessage(Message messageText, Message message)
+	public void assignMessageTextMessage(MessageEvent messageText, MessageEvent messageEvent)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		

@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
 import net.kraklups.solarapp.model.company.Company;
+import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 import org.hibernate.annotations.Type;
 import com.vividsolutions.jts.geom.MultiPolygon;
@@ -30,7 +31,7 @@ public class Park {
 	private String parkName;
 	private Calendar startupDate;
 	private Calendar productionDate;
-	private String loginName;
+	private UserProfile userProfile;
 	private Company company;	
 	
 	@Type(type="org.hibernate.spatial.GeometryType")	
@@ -39,12 +40,12 @@ public class Park {
 	public Park() {		
 	}
 	
-	public Park(String parkName, Calendar startupDate, Calendar productionDate, String loginName, Company company) {
+	public Park(String parkName, Calendar startupDate, Calendar productionDate, UserProfile userProfile, Company company) {
 	
 		this.parkName = parkName;
 		this.startupDate = startupDate;
 		this.productionDate = productionDate;		
-		this.loginName = loginName;
+		this.userProfile = userProfile;
 		this.company = company;
 	}
 	
@@ -92,13 +93,12 @@ public class Park {
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="userProfileId")		
-	@Column(name="loginName", unique= true, nullable = false)
-	public String getLoginName() {
-		return loginName;
+	public UserProfile getUserProfile() {
+		return userProfile;
 	}
 	
-	public void setLoginName(String loginName){
-		this.loginName = loginName;
+	public void setUserProfile(UserProfile userProfile){
+		this.userProfile = userProfile;
 	}
 	
 	public MultiPolygon getMapPark() {
@@ -123,7 +123,7 @@ public class Park {
 	public String toString() {
 		return "Park [parkId=" + parkId + ", nombre=" + parkName + ", startupDate=" + startupDate +
                        ", productionDate=" + productionDate + ", company=" + company.getCompanyName() + 
-                       ", user_author=" + loginName + 
+                       ", user_author=" + userProfile.getLoginName() + 
                        "mapPark=" + mapPark.toText() + "]";
 	}	
 	

@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
 
 import net.kraklups.solarapp.model.alarm.Alarm;
-import net.kraklups.solarapp.model.message.Message;
+import net.kraklups.solarapp.model.messageevent.MessageEvent;
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
 
 @Entity
@@ -33,20 +33,20 @@ public class EventTsk {
 	private Calendar tvi;	
 	private Calendar tvf;
 	private TaskPrk taskPrk;
-	private Message message;
+	private MessageEvent messageEvent;
 	private Alarm alarm;
 
 	public EventTsk() {
 	}
 	
-	public EventTsk(Long eventTskId, Calendar tvi, Calendar tvf, String tagET, String definitionET, TaskPrk taskPrk, Message message) {
+	public EventTsk(Long eventTskId, Calendar tvi, Calendar tvf, String tagET, String definitionET, TaskPrk taskPrk, MessageEvent messageEvent) {
 		this.eventTskId = eventTskId;
 		this.tvi = tvi;
 		this.tvf = tvf;
 		this.tagET = tagET;
 		this.definitionET = definitionET;
 		this.taskPrk = taskPrk;
-		this.message = message;
+		this.messageEvent = messageEvent;
 	}
 	
 	@SequenceGenerator(                                     // It only takes effect
@@ -121,12 +121,12 @@ public class EventTsk {
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="messageId")	
-	public Message getMessage(){
-		return message;
+	public MessageEvent getMessageEvent(){
+		return messageEvent;
 	}
 	
-	public void setMessage(Message message){
-		this.message = message;
+	public void setMessageEvent(MessageEvent messageEvent){
+		this.messageEvent = messageEvent;
 	}
 	
 	@Override

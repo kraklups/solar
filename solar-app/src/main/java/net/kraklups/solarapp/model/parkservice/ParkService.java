@@ -8,8 +8,9 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.alarm.Alarm;
+import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
-import net.kraklups.solarapp.model.message.Message;
+import net.kraklups.solarapp.model.messageevent.MessageEvent;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
 import net.kraklups.solarapp.model.timetable.Timetable;
@@ -18,10 +19,10 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 public interface ParkService {
 
     public Park createPark(String parkName, Calendar startupDate, Calendar productionDate, String loginName, 
-    		String company, MultiPolygon mapPark) throws DuplicateInstanceException;
+    		Company company, MultiPolygon mapPark) throws DuplicateInstanceException;
 
     public void updatePark(Long parkId, String parkName, Calendar startupDate, Calendar productionDate, String loginName, 
-    		String company, MultiPolygon mapPark) throws InstanceNotFoundException;
+    		Company company, MultiPolygon mapPark) throws InstanceNotFoundException;
 
     public Park findParkByName(String parkName)
             throws InstanceNotFoundException;
@@ -29,7 +30,7 @@ public interface ParkService {
     public void assignLoginNamePark(Park park, String loginName)
             throws InstanceNotFoundException;
     
-    public void assignCompanyPark(Park park, String company)
+    public void assignCompanyPark(Park park, Company company)
             throws InstanceNotFoundException;    
     
     public void assignGISPark(Park park, MultiPolygon mapPark)
@@ -38,7 +39,7 @@ public interface ParkService {
     public List<Park> getParksByLoginName(String loginName, int startIndex, int count) 
             throws InstanceNotFoundException;    
     
-    public List<Park> getParksByCompany(String company, int startIndex, int count) 
+    public List<Park> getParksByCompany(Company company, int startIndex, int count) 
             throws InstanceNotFoundException; 
     
     public Timetable createTimetable(String tag, UserProfile userProfile, Calendar tvi, Park park)
@@ -66,11 +67,11 @@ public interface ParkService {
     		throws InstanceNotFoundException;  
     
     public EventTsk createEventTsk(String tagET, String definitionET, Calendar tvi, Calendar tvf, 
-            TaskPrk taskPrk, Message message, Alarm alarm)
+            TaskPrk taskPrk, MessageEvent messageEvent, Alarm alarm)
             throws DuplicateInstanceException;
 
     public void updateTimetable(Long eventTaskId, String tagET, String definitionET, Calendar tvi, Calendar tvf, 
-            TaskPrk taskPrk, Message message, Alarm alarm) 
+            TaskPrk taskPrk, MessageEvent messageEvent, Alarm alarm) 
             throws InstanceNotFoundException; 
     
     public void assignTviEventTsk(Calendar tvi, EventTsk eventTsk)
@@ -79,7 +80,7 @@ public interface ParkService {
     public void assignTvfEventTsk(Calendar tvf, EventTsk eventTsk)
     		throws InstanceNotFoundException;
 
-    public Message getMessageByEventTsk(EventTsk eventTsk)
+    public MessageEvent getMessageByEventTsk(EventTsk eventTsk)
 			throws InstanceNotFoundException;  
     
     public Alarm getAlarmByEventTsk(EventTsk eventTsk)
@@ -91,21 +92,21 @@ public interface ParkService {
 	public void assignTaskPrkEventTsk(TaskPrk taskPrk, EventTsk eventTsk)
 			throws InstanceNotFoundException;
 
-	public void assignMessageEventTsk(Message message, EventTsk eventTsk)
+	public void assignMessageEventTsk(MessageEvent messageEvent, EventTsk eventTsk)
 			throws InstanceNotFoundException;
 
 	public void assignAlarmEventTsk(Alarm alarm, EventTsk eventTsk)
 			throws InstanceNotFoundException;
     
-    public Message createMessage(String messageTxt, Calendar tvi)
+    public MessageEvent createMessage(String messageTxt, Calendar tvi)
     		throws DuplicateInstanceException;
     
     public void updateMessage(Long messageId, String messageTxt, Calendar tvi)
     		throws InstanceNotFoundException;
     
-    public void assignTviMessage(Calendar tvi, Message message)
+    public void assignTviMessage(Calendar tvi, MessageEvent messageEvent)
     		throws InstanceNotFoundException;
     
-    public void assignMessageTextMessage(Message messageText, Message message)
+    public void assignMessageTextMessage(MessageEvent messageText, MessageEvent messageEvent)
     		throws InstanceNotFoundException;    
 }

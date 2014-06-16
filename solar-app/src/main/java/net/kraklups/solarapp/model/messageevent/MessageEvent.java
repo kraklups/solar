@@ -1,4 +1,4 @@
-package net.kraklups.solarapp.model.message;
+package net.kraklups.solarapp.model.messageevent;
 
 import java.util.Calendar;
 
@@ -19,16 +19,16 @@ import javax.persistence.Temporal;
 
 @Entity
 @Table(name="Message")
-public class Message {
+public class MessageEvent {
 	
 	private Long messageId;
 	private Calendar tvi;
 	private String messageText;
 	
-	public Message() {
+	public MessageEvent() {
 	}
 	
-	public Message(Long messageId, Calendar tvi, String messageText) {
+	public MessageEvent(Long messageId, Calendar tvi, String messageText) {
 		this.messageId = messageId;
 		this.tvi = tvi;
 		this.messageText = messageText;

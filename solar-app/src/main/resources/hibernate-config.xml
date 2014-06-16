@@ -21,6 +21,13 @@
         <mapping class="net.kraklups.solarapp.model.company.Company" />
         <mapping class="net.kraklups.solarapp.model.role.Role" />
         <mapping class="net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess" />
-        <mapping class="net.kraklups.solarapp.model.module.Module" />        
+        <mapping class="net.kraklups.solarapp.model.module.Module" />
+        
+        <mapping class="net.kraklups.solarapp.model.park.Park" />
+        <mapping class="net.kraklups.solarapp.model.eventtsk.EventTsk" />
+        
+		
+        <mapping class="net.kraklups.solarapp.model.alarm.Alarm" />		
+		
     </session-factory>
 </hibernate-configuration>

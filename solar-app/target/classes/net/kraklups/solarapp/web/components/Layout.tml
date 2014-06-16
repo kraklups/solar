@@ -53,6 +53,20 @@
                         				<i class="fa fa-location-arrow fa-fw"></i>                        				
                         			</li>                                                			
                     			</ul>
+                    			
+                    			<ul class="dropdown-menu dropdown-user">
+                        			<li>
+                        				<a href="#" t:type="PageLink" t:page="park/CreatePark">
+                        					<i class="fa fa-user fa-fw"></i> ${message:menu-createPark}
+                        				</a>
+                        			</li>                        
+                        			<li class="divider" />
+                        			<li>
+                        				<a href="#" t:type="PageLink" t:page="park/CreatePark">
+                        					<i class="fa fa-user fa-fw"></i> ${message:menu-createPark}
+                        				</a>
+                        			</li>
+                    			</ul>                    			                    			
                 			</li>    					
 
                 			<li class="dropdown">

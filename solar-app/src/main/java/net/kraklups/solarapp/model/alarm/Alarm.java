@@ -5,28 +5,87 @@ import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.TemporalType;
+import javax.persistence.Temporal;
+
+import net.kraklups.solarapp.model.taskprk.TaskPrk;
 
 
 @Entity
-@Table(name="Alarm", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "Name") })
+@Table(name="Alarm")
 public class Alarm {
 	
 	private Long alarmId;
-	private String alarmName;
+	private String alarmTag;
 	private Calendar triggerDate;
-	private Calendar transactionTime; 
+	private TaskPrk taskPrk;
 	
 	public Alarm() {		
 	}
 	
-	public Alarm(Long alarmId, String alarmName, Calendar triggerDate, Calendar transactionTime) {
+	public Alarm(Long alarmId, String alarmTag, Calendar triggerDate, TaskPrk taskPrk) {
 		this.alarmId = alarmId;
-		this.alarmName = alarmName;
+		this.alarmTag = alarmTag;
 		this.triggerDate = triggerDate;
-		this.transactionTime = transactionTime;
+		this.taskPrk = taskPrk;
 	}
 
+	@SequenceGenerator(                                     // It only takes effect
+			name="AlarmIdGenerator",                     // for databases providing
+	        sequenceName="AlarmSeq", allocationSize=1)   // identifier generators.
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO,
+		generator="AlarmIdGenerator")
+	@Column(name="alarmId", unique= true, nullable = false)
+	public Long getAlarmId() {
+		return alarmId;
+	}
 	
+	public void setAlarmId(Long alarmId){
+		this.alarmId = alarmId;
+	}	
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setTriggerDate(Calendar triggerDate) {
+		this.triggerDate = triggerDate;
+	}
+
+	public Calendar getTriggerDate(){
+		return triggerDate;
+	}
+
+	public String getAlarmName() {
+		return alarmTag;
+	}
+	
+	public void setAlarmName(String alarmTag) {
+		this.alarmTag = alarmTag;
+	}
+	
+	@ManyToOne(optional=false, fetch=FetchType.LAZY)
+	@JoinColumn(name="taskPrkId")	
+	public TaskPrk getTaskPrk(){
+		return taskPrk;
+	}
+	
+	public void setTaskPrk(TaskPrk taskPrk) {
+		this.taskPrk = taskPrk;
+	}
+
+	@Override
+	public String toString() {
+		return "Alarm [alarmId=" + alarmId + ", alarmTag=" + alarmTag + ", triggerDate=" + triggerDate + "]";
+	}	
 	
 }
