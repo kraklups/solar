@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
 
 @Entity
-@Table(name="Message")
+@Table(name="MessageEvent")
 public class MessageEvent {
 	
 	private Long messageId;
@@ -58,7 +58,7 @@ public class MessageEvent {
 		this.tvi = tvi;
 	}
 	
-	public String getMessateText() {
+	public String getMessageText() {
 		return messageText;
 	}
 	
@@ -68,6 +68,6 @@ public class MessageEvent {
 	
 	@Override
 	public String toString() {
-		return "Message [messageId=" + messageId + ", tvi=" + tvi + ", message text=" + messageText + "]";
+		return "MessageEvent [messageId=" + messageId + ", tvi=" + tvi + ", messageText=" + messageText + "]";
 	}	
 }

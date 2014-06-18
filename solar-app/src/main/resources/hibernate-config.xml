@@ -25,9 +25,12 @@
         
         <mapping class="net.kraklups.solarapp.model.park.Park" />
         <mapping class="net.kraklups.solarapp.model.eventtsk.EventTsk" />
+        <mapping class="net.kraklups.solarapp.model.messageevent.MessageEvent" />
         
 		
         <mapping class="net.kraklups.solarapp.model.alarm.Alarm" />		
+        <mapping class="net.kraklups.solarapp.model.taskprk.TaskPrk" />
+        <mapping class="net.kraklups.solarapp.model.report.Report" />
 		
     </session-factory>
 </hibernate-configuration>
