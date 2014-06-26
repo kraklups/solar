@@ -11,11 +11,15 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
+
+import net.kraklups.solarapp.model.eventtsk.EventTsk;
 
 @Entity
 @Table(name="MessageEvent")
@@ -24,6 +28,7 @@ public class MessageEvent {
 	private Long messageId;
 	private Calendar tvi;
 	private String messageText;
+	private EventTsk eventTsk;
 	
 	public MessageEvent() {
 	}
@@ -65,6 +70,16 @@ public class MessageEvent {
 	public void setMessageText(String messageText) {
 		this.messageText = messageText;
 	}
+	
+	@ManyToOne(optional=false, fetch=FetchType.LAZY)
+	@JoinColumn(name="eventTskId")	
+	public EventTsk getEventTsk(){
+		return eventTsk;
+	}
+	
+	public void setEventTsk(EventTsk eventTsk){
+		this.eventTsk = eventTsk;
+	}	
 	
 	@Override
 	public String toString() {

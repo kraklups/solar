@@ -19,9 +19,8 @@ import javax.persistence.Table;
 import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
 
-import net.kraklups.solarapp.model.alarm.Alarm;
-import net.kraklups.solarapp.model.messageevent.MessageEvent;
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
+import net.kraklups.solarapp.model.timetable.Timetable;
 
 @Entity
 @Table(name="EventTsk")
@@ -33,19 +32,19 @@ public class EventTsk {
 	private Calendar tvi;	
 	private Calendar tvf;
 	private TaskPrk taskPrk;
-	private MessageEvent messageEvent;
+	private Timetable timetable;
 
 	public EventTsk() {
 	}
 	
-	public EventTsk(Long eventTskId, Calendar tvi, Calendar tvf, String tagET, String definitionET, TaskPrk taskPrk, MessageEvent messageEvent) {
+	public EventTsk(Long eventTskId, Calendar tvi, Calendar tvf, String tagET, String definitionET, TaskPrk taskPrk, Timetable timetable) {
 		this.eventTskId = eventTskId;
 		this.tvi = tvi;
 		this.tvf = tvf;
 		this.tagET = tagET;
 		this.definitionET = definitionET;
 		this.taskPrk = taskPrk;
-		this.messageEvent = messageEvent;
+		this.timetable = timetable;
 	}
 	
 	@SequenceGenerator(                                     // It only takes effect
@@ -109,13 +108,13 @@ public class EventTsk {
 	}
 	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
-	@JoinColumn(name="messageId")	
-	public MessageEvent getMessageEvent(){
-		return messageEvent;
+	@JoinColumn(name="timetableId")	
+	public Timetable getTimetable(){
+		return timetable;
 	}
 	
-	public void setMessageEvent(MessageEvent messageEvent){
-		this.messageEvent = messageEvent;
+	public void setTimetable(Timetable timetable){
+		this.timetable = timetable;
 	}
 	
 	@Override

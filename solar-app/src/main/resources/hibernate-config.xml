@@ -26,6 +26,7 @@
         <mapping class="net.kraklups.solarapp.model.park.Park" />
         <mapping class="net.kraklups.solarapp.model.eventtsk.EventTsk" />
         <mapping class="net.kraklups.solarapp.model.messageevent.MessageEvent" />
+        <mapping class="net.kraklups.solarapp.model.timetable.Timetable" />
         
 		
         <mapping class="net.kraklups.solarapp.model.alarm.Alarm" />		
