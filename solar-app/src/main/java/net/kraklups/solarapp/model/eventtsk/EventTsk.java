@@ -34,7 +34,6 @@ public class EventTsk {
 	private Calendar tvf;
 	private TaskPrk taskPrk;
 	private MessageEvent messageEvent;
-	private Alarm alarm;
 
 	public EventTsk() {
 	}
@@ -109,16 +108,6 @@ public class EventTsk {
 		this.taskPrk = taskPrk;
 	}
 	
-	@ManyToOne(optional=false, fetch=FetchType.LAZY)
-	@JoinColumn(name="alarmId")	
-	public Alarm getAlarm(){
-		return alarm;
-	}
-	
-	public void setAlarm(Alarm alarm){
-		this.alarm = alarm;
-	}
-
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="messageId")	
 	public MessageEvent getMessageEvent(){

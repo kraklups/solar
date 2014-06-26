@@ -19,8 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
 
-import net.kraklups.solarapp.model.taskprk.TaskPrk;
-
+import net.kraklups.solarapp.model.eventtsk.EventTsk;
 
 @Entity
 @Table(name="Alarm")
@@ -29,19 +28,19 @@ public class Alarm {
 	private Long alarmId;
 	private String alarmTag;
 	private Calendar triggerDate;
-	private TaskPrk taskPrk;
+	private EventTsk eventTsk;
 	
 	public Alarm() {		
 	}
 	
-	public Alarm(Long alarmId, String alarmTag, Calendar triggerDate, TaskPrk taskPrk) {
+	public Alarm(Long alarmId, String alarmTag, Calendar triggerDate, EventTsk eventTsk) {
 		this.alarmId = alarmId;
 		this.alarmTag = alarmTag;
 		this.triggerDate = triggerDate;
-		this.taskPrk = taskPrk;
+		this.eventTsk = eventTsk;
 	}
 
-	@SequenceGenerator(                                     // It only takes effect
+	@SequenceGenerator(                                  // It only takes effect
 			name="AlarmIdGenerator",                     // for databases providing
 	        sequenceName="AlarmSeq", allocationSize=1)   // identifier generators.
 	@Id
@@ -74,13 +73,13 @@ public class Alarm {
 	}
 	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
-	@JoinColumn(name="taskPrkId")	
-	public TaskPrk getTaskPrk(){
-		return taskPrk;
+	@JoinColumn(name="eventTskId")	
+	public EventTsk getEventTsk(){
+		return eventTsk;
 	}
 	
-	public void setTaskPrk(TaskPrk taskPrk) {
-		this.taskPrk = taskPrk;
+	public void setTaskPrk(EventTsk eventTsk) {
+		this.eventTsk = eventTsk;
 	}
 
 	@Override

@@ -1,5 +1,11 @@
 package net.kraklups.solarapp.model.alarm;
 
-public class AlarmDaoHibernate {
+import net.kraklups.modelutil.dao.GenericDaoHibernate;
+
+import org.springframework.stereotype.Repository;
+
+@Repository("alarmDao")
+public class AlarmDaoHibernate extends 
+		GenericDaoHibernate<Alarm, Long> implements AlarmDao {
 
 }
