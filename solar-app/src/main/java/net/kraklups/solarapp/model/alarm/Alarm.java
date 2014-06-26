@@ -78,7 +78,7 @@ public class Alarm {
 		return eventTsk;
 	}
 	
-	public void setTaskPrk(EventTsk eventTsk) {
+	public void setEventTsk(EventTsk eventTsk) {
 		this.eventTsk = eventTsk;
 	}
 
