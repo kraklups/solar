@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 public class GenericDaoHibernate<E, PK extends Serializable> implements
-GenericDao<E, PK> {
+		GenericDao<E, PK> {
 
 	private SessionFactory sessionFactory;
 

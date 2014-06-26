@@ -25,7 +25,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
 @Table(name="TaskPrk")
-public class TaskPrk {
+public abstract class TaskPrk {
 	
 	private Long taskPrkId;
 	private String taskName;
