@@ -33,11 +33,14 @@ public class EventTsk {
 	private Calendar tvf;
 	private TaskPrk taskPrk;
 	private Timetable timetable;
+	private Boolean triggerAlarm;
+	private Boolean triggerMessage;
 
 	public EventTsk() {
 	}
 	
-	public EventTsk(Long eventTskId, Calendar tvi, Calendar tvf, String tagET, String definitionET, TaskPrk taskPrk, Timetable timetable) {
+	public EventTsk(Long eventTskId, Calendar tvi, Calendar tvf, String tagET, String definitionET, 
+			TaskPrk taskPrk, Timetable timetable, Boolean triggerAlarm, Boolean triggerMessage) {
 		this.eventTskId = eventTskId;
 		this.tvi = tvi;
 		this.tvf = tvf;
@@ -45,6 +48,8 @@ public class EventTsk {
 		this.definitionET = definitionET;
 		this.taskPrk = taskPrk;
 		this.timetable = timetable;
+		this.triggerAlarm = triggerAlarm;
+		this.triggerMessage = triggerMessage;
 	}
 	
 	@SequenceGenerator(                                     // It only takes effect
@@ -117,10 +122,27 @@ public class EventTsk {
 		this.timetable = timetable;
 	}
 	
+	public Boolean getTriggerAlarm() {
+		return triggerAlarm;
+	}
+	
+	public void setTriggerAlarm(Boolean triggerAlarm) {
+		this.triggerAlarm = triggerAlarm;
+	}
+	
+	public Boolean getTriggerMessage() {
+		return triggerMessage;
+	}
+	
+	public void setTriggerMessage(Boolean triggerMessage) {
+		this.triggerMessage = triggerMessage;
+	}	
+	
 	@Override
 	public String toString() {
 		return "EventTsk [eventTskId=" + eventTskId + ", tag=" + tagET +
-			", definition=" + definitionET + ", tvi=" + tvi + ", tvf=" + tvf + "]";
+			", definition=" + definitionET + ", tvi=" + tvi + ", tvf=" + tvf + ", triggerAlarm=" + triggerAlarm + 
+			", triggerMessage=" + triggerMessage + ", timetableId=" + timetable.getTimetableId() + ", taskPrkId=" + taskPrk.getTaskPrkId() + "]";
 	}
 	
 }

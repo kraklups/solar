@@ -97,35 +97,35 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public void assignParkTimetable(Park park, Timetable timetable)
+	public void assignParkTimetable(Timetable timetable, Park park)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void assignEventTskTimetable(EventTsk eventTsk, Timetable timetable)
+	public void assignEventTskTimetable(Timetable timetable, EventTsk eventTsk)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void assignLoginTimetable(String login, Timetable timetable)
+	public void assignLoginTimetable(Timetable timetable, String login)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void assignTviTimetable(Calendar tvi, Timetable timetable)
+	public void assignTviTimetable(Timetable timetable, Calendar tvi)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void assignTvfTimetable(Calendar tvf, Timetable timetable)
+	public void assignTvfTimetable(Timetable timetable, Calendar tvf)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
@@ -155,14 +155,14 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public void assignTviEventTsk(Calendar tvi, EventTsk eventTsk)
+	public void assignTviEventTsk(EventTsk eventTsk, Calendar tvi)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void assignTvfEventTsk(Calendar tvf, EventTsk eventTsk)
+	public void assignTvfEventTsk(EventTsk eventTsk, Calendar tvf)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
@@ -190,54 +190,52 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public void assignTaskPrkEventTsk(TaskPrk taskPrk, EventTsk eventTsk)
+	public void assignTaskPrkEventTsk(EventTsk eventTsk, TaskPrk taskPrk)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void assignMessageEventTsk(MessageEvent messageEvent, EventTsk eventTsk)
+	public void assignMessageEventTsk(EventTsk eventTsk, MessageEvent messageEvent)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void assignAlarmEventTsk(Alarm alarm, EventTsk eventTsk)
+	public void assignAlarmEventTsk(EventTsk eventTsk, Alarm alarm)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public MessageEvent createMessage(String messageTxt, Calendar tvi)
+	public MessageEvent createMessageEvent(String messageTxt, Calendar tvi)
 			throws DuplicateInstanceException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void updateMessage(Long messageId, String messageTxt, Calendar tvi)
+	public void updateMessageEvent(Long messageId, String messageTxt,
+			Calendar tvi) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignTviMessageEvent(MessageEvent messageEvent, Calendar tvi)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void assignTviMessage(Calendar tvi, MessageEvent messageEvent)
-			throws InstanceNotFoundException {
+	public void assignMessageTxtMessageEvent(MessageEvent messageEvent,
+			String messageTxt) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void assignMessageTextMessage(MessageEvent messageText, MessageEvent messageEvent)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 
 }

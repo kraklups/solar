@@ -48,19 +48,19 @@ public interface ParkService {
     public void updateTimetable(Long timetableId, String tag, UserProfile userProfile, Calendar tvi, Park park) 
     		throws InstanceNotFoundException; 
     
-    public void assignParkTimetable(Park park, Timetable timetable)
+    public void assignParkTimetable(Timetable timetable, Park park)
     		throws InstanceNotFoundException;
 
-    public void assignEventTskTimetable(EventTsk eventTsk, Timetable timetable)
+    public void assignEventTskTimetable(Timetable timetable, EventTsk eventTsk)
     		throws InstanceNotFoundException;
     
-    public void assignLoginTimetable(String login, Timetable timetable)
+    public void assignLoginTimetable(Timetable timetable, String login)
     		throws InstanceNotFoundException;  
     
-    public void assignTviTimetable(Calendar tvi, Timetable timetable)
+    public void assignTviTimetable(Timetable timetable, Calendar tvi)
     		throws InstanceNotFoundException;
     
-    public void assignTvfTimetable(Calendar tvf, Timetable timetable)
+    public void assignTvfTimetable(Timetable timetable, Calendar tvf)
     		throws InstanceNotFoundException;
     
     public Park getParkByTimetable(Timetable timetable)
@@ -74,10 +74,10 @@ public interface ParkService {
             TaskPrk taskPrk, MessageEvent messageEvent, Alarm alarm) 
             throws InstanceNotFoundException; 
     
-    public void assignTviEventTsk(Calendar tvi, EventTsk eventTsk)
+    public void assignTviEventTsk(EventTsk eventTsk, Calendar tvi)
     		throws InstanceNotFoundException;
 
-    public void assignTvfEventTsk(Calendar tvf, EventTsk eventTsk)
+    public void assignTvfEventTsk(EventTsk eventTsk, Calendar tvf)
     		throws InstanceNotFoundException;
 
     public MessageEvent getMessageByEventTsk(EventTsk eventTsk)
@@ -89,24 +89,24 @@ public interface ParkService {
     public TaskPrk getTaskPrkByEventTsk(EventTsk eventTsk)
 			throws InstanceNotFoundException;    
 
-	public void assignTaskPrkEventTsk(TaskPrk taskPrk, EventTsk eventTsk)
+	public void assignTaskPrkEventTsk(EventTsk eventTsk, TaskPrk taskPrk)
 			throws InstanceNotFoundException;
 
-	public void assignMessageEventTsk(MessageEvent messageEvent, EventTsk eventTsk)
+	public void assignMessageEventTsk(EventTsk eventTsk, MessageEvent messageEvent)
 			throws InstanceNotFoundException;
 
-	public void assignAlarmEventTsk(Alarm alarm, EventTsk eventTsk)
+	public void assignAlarmEventTsk(EventTsk eventTsk, Alarm alarm)
 			throws InstanceNotFoundException;
     
-    public MessageEvent createMessage(String messageTxt, Calendar tvi)
+    public MessageEvent createMessageEvent(String messageTxt, Calendar tvi)
     		throws DuplicateInstanceException;
     
-    public void updateMessage(Long messageId, String messageTxt, Calendar tvi)
+    public void updateMessageEvent(Long messageId, String messageTxt, Calendar tvi)
     		throws InstanceNotFoundException;
     
-    public void assignTviMessage(Calendar tvi, MessageEvent messageEvent)
+    public void assignTviMessageEvent(MessageEvent messageEvent, Calendar tvi)
     		throws InstanceNotFoundException;
     
-    public void assignMessageTextMessage(MessageEvent messageText, MessageEvent messageEvent)
+    public void assignMessageTxtMessageEvent(MessageEvent messageEvent, String messageTxt)
     		throws InstanceNotFoundException;    
 }

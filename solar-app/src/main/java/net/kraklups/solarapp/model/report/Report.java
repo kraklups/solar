@@ -44,9 +44,9 @@ public class Report {
 		this.urlReport = urlReport;
 	}
 	
-	@SequenceGenerator(                                      // It only takes effect
+	@SequenceGenerator(                                   // It only takes effect
 			name="ReportIdGenerator",                     // for databases providing
-	        sequenceName="ReportIdSeq", allocationSize=1)   // identifier generators.
+	        sequenceName="ReportIdSeq", allocationSize=1) // identifier generators.
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,
 		generator="ReportIdGenerator")
