@@ -20,6 +20,7 @@ import javax.persistence.Temporal;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 import net.kraklups.solarapp.model.statetype.StateType;
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
+import net.kraklups.solarapp.model.taskprk.Upkeep;
 import net.kraklups.solarapp.model.park.Park;
 
 @Entity
@@ -31,7 +32,7 @@ public class State {
 	private Calendar tvf;
 	private Park park;
 	private EventTsk eventTsk;
-	private TaskPrk taskPrk;
+	private Upkeep upkeep;
 	private StateType stateType;
 	
 	public State() {		
@@ -43,7 +44,7 @@ public class State {
 		this.tvf = tvf;
 		this.park = park;
 		this.eventTsk = eventTsk;
-		this.taskPrk = taskPrk;
+		this.upkeep = upkeep;
 		this.stateType = stateType;
 	}
 	
@@ -101,13 +102,13 @@ public class State {
 	}	
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
-	@JoinColumn(name="taskPrkId")	
-	public TaskPrk getTaskPrk(){
-		return taskPrk;
+	@JoinColumn(name="upkeepId")	
+	public Upkeep getUpkeep(){
+		return upkeep;
 	}
 	
-	public void setTaskPrk(TaskPrk taskPrk){
-		this.taskPrk = taskPrk;
+	public void setUpkeep(Upkeep upkeep){
+		this.upkeep = upkeep;
 	}
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
@@ -123,7 +124,7 @@ public class State {
 	@Override
 	public String toString() {
 		return "State [stateId=" + stateId + ", tvi=" + tvi + ", tvf=" + tvf + ", Park=" + park.getParkName() +
-				", EventTsk=" + eventTsk.getEventTskId() + ", TaskPrk=" + taskPrk.getTaskPrkId() + 
+				", EventTsk=" + eventTsk.getEventTskId() + ", TaskPrk=" + upkeep.getTaskPrkId() + 
 				", StateType=" + stateType.getStateTypeId() +  "]";
 	}
 }

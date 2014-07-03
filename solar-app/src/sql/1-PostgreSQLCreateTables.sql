@@ -98,3 +98,5 @@ CREATE TABLE Park (parkId BIGINT NOT NULL,
     CONSTRAINT CompanyIdFK FOREIGN KEY(companyId)
         REFERENCES Company (companyId) ON DELETE CASCADE,
     CONSTRAINT parkIdPK PRIMARY KEY (parkId));
+    
+    
