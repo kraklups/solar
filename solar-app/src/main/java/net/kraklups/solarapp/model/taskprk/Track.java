@@ -21,9 +21,9 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @PrimaryKeyJoinColumn(name = "trackId", referencedColumnName = "taskPrkId")
 public class Track extends TaskPrk {
 
+	private Calendar tvf;	
 	private Report report;
 	private UserProfile userProfile;
-	private Calendar tvf;
 	
 	public Track() {
 		// TODO Auto-generated constructor stub

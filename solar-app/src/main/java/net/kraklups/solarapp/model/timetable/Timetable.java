@@ -27,7 +27,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 public class Timetable {
 	
 	private Long timetableId;
-	private String tag;
+	private String timetableTag;
 	private UserProfile userProfile;
 	private Calendar tvi;
 	private Park park;
@@ -35,9 +35,9 @@ public class Timetable {
 	public Timetable() {
 	}
 	
-	public Timetable(Long timetableId, String tag, UserProfile userProfile, Calendar tvi, Park park){
+	public Timetable(Long timetableId, String timetableTag, UserProfile userProfile, Calendar tvi, Park park){
 		this.timetableId = timetableId;
-		this.tag = tag;
+		this.timetableTag = timetableTag;
 		this.userProfile = userProfile;
 		this.tvi = tvi;
 		this.park = park;
@@ -68,12 +68,12 @@ public class Timetable {
 		this.userProfile = userProfile;
 	}
 	
-	public String getTag() {
-		return tag;
+	public String getTimetableTag() {
+		return timetableTag;
 	}
 	
-	public void setTag(String tag){
-		this.tag = tag;
+	public void setTimetableTag(String timetableTag){
+		this.timetableTag = timetableTag;
 	}
 	
 	public Calendar getTvi(){
@@ -97,7 +97,7 @@ public class Timetable {
 
 	@Override
 	public String toString() {
-		return "Timetable [timetableId=" + timetableId + ", etiqueta=" + tag + ", loginName="
+		return "Timetable [timetableId=" + timetableId + ", etiqueta=" + timetableTag + ", loginName="
 				+ userProfile.getLoginName() + ", tiempo validez inicial=" + tvi + ", Park=" + park.getParkName() + "]";
 	}
 }
