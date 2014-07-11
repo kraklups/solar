@@ -1,6 +1,10 @@
 package net.kraklups.solarapp.web.pages.park;
 
+import java.text.DateFormat;
+import java.text.ParsePosition;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
@@ -34,16 +38,23 @@ public class CreatePark {
 	private String parkName;
 	
 	@Property
-	private Calendar startupDate;
+	private String startupDate;
 	
 	@Property
-	private Calendar productionDate;
+	private String productionDate;
+	
+	private Date startupDateAsDate;
+	private Date productionDateAsDate;
+	
 	
 	@Property
 	private String loginName;
 	
 	@Property
 	private String companyName;	
+	
+	@Property
+    private Company company;	
 	
 	@Property
 	@Type(type="org.hibernate.spatial.GeometryType")	
@@ -56,24 +67,38 @@ public class CreatePark {
     private ParkService parkService;	
 	
     @Component
-    private Form registrationForm;   
+    private Form createParkForm;   
     
     @Component(id = "parkName")
     private TextField parkNameField;    
+
+	@Component(id="startupDate")
+	private TextField startupDateField;
+	
+	@Component(id="productionDate")
+	private TextField productionDateField;    
     
     @Inject
     private Messages messages;
 
-    private Company company;
+	@Inject
+	private Locale locale;    
     
-    
-    void onValidateFromRegistrationForm() {
+    void onValidateFromCreateParkForm() {
     	
         UserService userService = null;
 
-        if (!registrationForm.isValid()) {
+        if (!createParkForm.isValid()) {
             return;
         }
+
+		startupDateAsDate = validateDate(startupDateField, startupDate);
+		productionDateAsDate = validateDate(productionDateField, productionDate);
+		
+		Calendar startupDateAsCalendar = Calendar.getInstance();
+		Calendar productionDateAsCalendar = Calendar.getInstance();
+		startupDateAsCalendar.setTime(startupDateAsDate);
+		productionDateAsCalendar.setTime(productionDateAsDate);
         
         try {
         	       	
@@ -81,12 +106,19 @@ public class CreatePark {
 				company = userService.findCompanyByName(parkName);
         	} catch (InstanceNotFoundException e) {
         		
-        	}        	    
+        	}
         	
-        	Park park = parkService.createPark(parkName, startupDate, productionDate, loginName, company, mapPark);
+      /*  	try {
+        		loginName = userService.
+        	} catch (InstanceNotFoundException e) {
+        		
+        	}
+      */
+        	
+        	Park park = parkService.createPark(parkName, startupDateAsCalendar, productionDateAsCalendar, loginName, company, mapPark);
             
         } catch (DuplicateInstanceException e) {
-            registrationForm.recordError(parkNameField, messages
+        	createParkForm.recordError(parkNameField, messages
                     .get("error-parkNameAlreadyExists"));
         }        
         
@@ -97,5 +129,30 @@ public class CreatePark {
         return Index.class;
 
     }
+    
+	void onActivate() {
+		startupDate = dateToString(Calendar.getInstance().getTime());
+		productionDate = startupDate;
+	}
+	
+	private Date validateDate(TextField textField, String dateAsString) {
+		
+		ParsePosition position = new ParsePosition(0);
+		Date date = DateFormat.getDateInstance(DateFormat.SHORT, locale).
+			parse(dateAsString, position);
+		
+		if (position.getIndex() != dateAsString.length()) {
+			createParkForm.recordError(textField,
+				messages.format("error-incorrectDateFormat", dateAsString));
+		}
+
+		return date;
+		
+	}
+	
+	private String dateToString(Date date) {
+		return DateFormat.getDateInstance(DateFormat.SHORT, locale).
+			format(date);
+	}    
     
 }

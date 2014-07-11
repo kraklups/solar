@@ -9,7 +9,7 @@
                         <h3 class="panel-title">Create Park</h3>
                     </div>
                     <div class="panel-body">
-						<form t:type="Form" t:id="registrationForm">
+						<form t:type="Form" t:id="createParkForm">
                             <fieldset>	   						
 	   							<t:errors/>
 	   							<div class="form-group">        
@@ -35,7 +35,7 @@
 	        						<span class="entry">    
 		            					<input t:id="startupDate" t:type="TextField"
 					       					t:validate="required" 
-					       					size="16" maxlength="30" />
+					       					size="10" maxlength="10" />
 	        						</span>
 	   							</div>	    
 
@@ -44,7 +44,7 @@
 	        						<span class="entry">    
 		            					<input t:id="productionDate" t:type="TextField"
 					       					t:validate="required" 
-					       					size="16" maxlength="30" />
+					       					size="10" maxlength="10" />
 	        						</span>
 	   							</div>	    
 
