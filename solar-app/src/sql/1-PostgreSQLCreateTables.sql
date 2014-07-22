@@ -88,6 +88,9 @@ CREATE TABLE RoleModuleAccess (roleId BIGINT NOT NULL, moduleId BIGINT NOT NULL,
 -- ------------------------------ Park -----------------------------
 -- table Park
 
+DROP SEQUENCE IF EXISTS ParkSeq;
+CREATE SEQUENCE ParkSeq;
+
 DROP TABLE IF EXISTS Park CASCADE;
 CREATE TABLE Park (parkId BIGINT NOT NULL, parkName VARCHAR(30),
     startupDate TIMESTAMP NOT NULL, productionDate TIMESTAMP NOT NULL, loginName VARCHAR(30) NOT NULL,
@@ -100,32 +103,39 @@ CREATE TABLE Park (parkId BIGINT NOT NULL, parkName VARCHAR(30),
         REFERENCES Company (companyId) ON DELETE CASCADE,
     CONSTRAINT ParkIdPK PRIMARY KEY (parkId));
 
--- ------------------------------ Alarm -----------------------------
--- table Alarm
-
-DROP TABLE IF EXISTS Alarm CASCADE;
-CREATE TABLE Alarm (alarmId BIGINT NOT NULL, alarmTag VARCHAR(30),
-    triggerDate TIMESTAMP NOT NULL, eventTskId BIGINT NOT NULL,
-    CONSTRAINT EventTskIdFK FOREIGN KEY(eventTskId)
-        REFERENCES EventTsk (eventTskId) ON DELETE CASCADE,
-    CONSTRAINT AlarmIdPK PRIMARY KEY (alarmId));    
-
 -- ------------------------------ EventTsk -----------------------------
 -- table EventTsk
+
+DROP SEQUENCE IF EXISTS EventTskSeq;
+CREATE SEQUENCE EventTskSeq;
 
 DROP TABLE IF EXISTS EventTsk CASCADE;    
 CREATE TABLE EventTsk (eventTskId BIGINT NOT NULL, tagET VARCHAR(30), 
     definitionET VARCHAR(30), tvi TIMESTAMP NOT NULL, tvf TIMESTAMP NOT NULL,
     taskPrkId BIGINT NOT NULL, timetableId BIGINT NOT NULL,
     triggerAlarm BOOLEAN NOT NULL DEFAULT FALSE, triggerMessage BOOLEAN NOT NULL DEFAULT FALSE,
-    CONSTRAINT TaskPrkIdFK FOREIGN KEY(taskPrkId)
-        REFERENCES TaskPrk (taskPrkId) ON DELETE CASCADE,
     CONSTRAINT TimetableIdFK FOREIGN KEY(timetableId)
         REFERENCES Timetable (timetableId) ON DELETE CASCADE,
     CONSTRAINT EventTskIdPK PRIMARY KEY (eventTskId));    
     
+-- ------------------------------ Alarm -----------------------------
+-- table Alarm
+
+DROP SEQUENCE IF EXISTS AlarmSeq;
+CREATE SEQUENCE AlarmSeq;
+
+DROP TABLE IF EXISTS Alarm CASCADE;
+CREATE TABLE Alarm (alarmId BIGINT NOT NULL, alarmTag VARCHAR(30),
+    triggerDate TIMESTAMP NOT NULL, eventTskId BIGINT NOT NULL,
+    CONSTRAINT EventTskIdFK FOREIGN KEY(eventTskId)
+        REFERENCES EventTsk (eventTskId) ON DELETE CASCADE,
+    CONSTRAINT AlarmIdPK PRIMARY KEY (alarmId));        
+    
 -- ------------------------------ MessageEvent -----------------------------
 -- table MessageEvent
+
+DROP SEQUENCE IF EXISTS MessageSeq;
+CREATE SEQUENCE MessageSeq;
 
 DROP TABLE IF EXISTS MessageEvent CASCADE;
 CREATE TABLE MessageEvent (messageEventId BIGINT NOT NULL,
@@ -138,16 +148,22 @@ CREATE TABLE MessageEvent (messageEventId BIGINT NOT NULL,
 -- ------------------------------ Report -----------------------------
 -- table Report
 
+DROP SEQUENCE IF EXISTS ReportSeq;
+CREATE SEQUENCE ReportSeq;
+
 DROP TABLE IF EXISTS Report CASCADE;
 CREATE TABLE Report (reportId BIGINT NOT NULL,
     reportTitle VARCHAR(50), dateRequest TIMESTAMP NOT NULL, 
-    dateServed TIMESTAMP NOT NULL, eventTskId BIGINT NOT NULL, urlReport VARCHAR(128), 
+    dateServed TIMESTAMP NOT NULL, loginRequest VARCHAR(30), urlReport VARCHAR(128), 
     CONSTRAINT LoginRequestFK FOREIGN KEY(loginRequest)
         REFERENCES UserProfile(loginName) ON DELETE CASCADE,
-    CONSTRAINT ReportIdPK PRIMARY KEY (reportId)));
+    CONSTRAINT ReportIdPK PRIMARY KEY (reportId));
 
 -- ------------------------------ State -----------------------------
 -- table State
+
+DROP SEQUENCE IF EXISTS StateSeq;
+CREATE SEQUENCE StateSeq;
 
 DROP TABLE IF EXISTS State CASCADE;
 CREATE TABLE State (stateId BIGINT NOT NULL,
@@ -162,10 +178,13 @@ CREATE TABLE State (stateId BIGINT NOT NULL,
         REFERENCES Upkeep (upkeepId) ON DELETE CASCADE,
     CONSTRAINT StateTypeIdFK FOREIGN KEY(stateTypeId)
         REFERENCES StateType (stateTypeId) ON DELETE CASCADE,
-    CONSTRAINT StateIdPK PRIMARY KEY (stateId)));
+    CONSTRAINT StateIdPK PRIMARY KEY (stateId));
 
 -- ------------------------------ StateType -----------------------------
 -- table StateType
+
+DROP SEQUENCE IF EXISTS StateTypeSeq;
+CREATE SEQUENCE StateTypeSeq;
 
 DROP TABLE IF EXISTS StateType CASCADE;
 CREATE TABLE StateType (stateTypeId BIGINT NOT NULL,
@@ -174,6 +193,9 @@ CREATE TABLE StateType (stateTypeId BIGINT NOT NULL,
 
 -- ------------------------------ TaskPrk -----------------------------
 -- table TaskPrk
+
+DROP SEQUENCE IF EXISTS TaskPrkSeq;
+CREATE SEQUENCE TaskPrkSeq;
 
 DROP TABLE IF EXISTS TaskPrk CASCADE;
 CREATE TABLE TaskPrk (taskPrkId BIGINT NOT NULL,
@@ -185,28 +207,38 @@ CREATE TABLE TaskPrk (taskPrkId BIGINT NOT NULL,
     CONSTRAINT RoleIdFK FOREIGN KEY(roleId)
         REFERENCES Role (roleId) ON DELETE CASCADE,
     CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
-        REFERENCES UserProfile (userProfileId) ON DELETE CASCADE,
-    CONSTRAINT TaskPrkIdPK PRIMARY KEY (taskPrkId)));
+        REFERENCES UserProfile (usrId) ON DELETE CASCADE,
+    CONSTRAINT TaskPrkIdPK PRIMARY KEY (taskPrkId));
+
+-- Added for cyclic dependency loop with both FK
+
+ALTER TABLE ONLY EventTsk
+    ADD CONSTRAINT TaskPrkIdFK FOREIGN KEY(taskPrkId)
+        REFERENCES TaskPrk (taskPrkId) ON DELETE CASCADE 
+        DEFERRABLE INITIALLY DEFERRED;
 
 -- ------------------------------ Timetable -----------------------------
 -- table Timetable
+
+DROP SEQUENCE IF EXISTS TimetableSeq;
+CREATE SEQUENCE TimetableSeq;
 
 DROP TABLE IF EXISTS Timetable CASCADE;
 CREATE TABLE Timetable (timetableId BIGINT NOT NULL,
     timetableTag VARCHAR(30), tvi TIMESTAMP NOT NULL, 
     userProfileId BIGINT NOT NULL, parkId BIGINT NOT NULL, 
     CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
-        REFERENCES UserProfile (userProfileId) ON DELETE CASCADE,
+        REFERENCES UserProfile (usrId) ON DELETE CASCADE,
     CONSTRAINT ParkIdFK FOREIGN KEY(parkId)
         REFERENCES Park (parkId) ON DELETE CASCADE,
-    CONSTRAINT TimetableIdPK PRIMARY KEY (timetableId)));
+    CONSTRAINT TimetableIdPK PRIMARY KEY (timetableId));
 
 -- ------------------------------ Upkeep -----------------------------
 -- table Upkeep
 
 DROP TABLE IF EXISTS Upkeep CASCADE;
 CREATE TABLE Upkeep(upkeepId BIGINT NOT NULL,
-    CONSTRAINT UpkeepIdPK PRIMARY KEY (upkeepId)));
+    CONSTRAINT UpkeepIdPK PRIMARY KEY (upkeepId));
 
 
 -- ------------------------------ Track -----------------------------
@@ -219,15 +251,15 @@ CREATE TABLE Track (trackId BIGINT NOT NULL,
     CONSTRAINT ReportIdFK FOREIGN KEY(reportId)
         REFERENCES Report (reportId) ON DELETE CASCADE,
     CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
-        REFERENCES UserProfile (userProfileId) ON DELETE CASCADE,
-    CONSTRAINT TrackIdPK PRIMARY KEY (trackId)));
+        REFERENCES UserProfile (usrId) ON DELETE CASCADE,
+    CONSTRAINT TrackIdPK PRIMARY KEY (trackId));
 
 -- ------------------------------ Monitor -----------------------------
 -- table Monitor
 
 DROP TABLE IF EXISTS Monitor CASCADE;
-CREATE TABLE Upkeep(monitorId BIGINT NOT NULL,
-    CONSTRAINT MonitorIdPK PRIMARY KEY (monitorId)));
+CREATE TABLE Monitor(monitorId BIGINT NOT NULL,
+    CONSTRAINT MonitorIdPK PRIMARY KEY (monitorId));
 
 -- ------------------------------ Synchronize -----------------------------
 -- table Synchronize

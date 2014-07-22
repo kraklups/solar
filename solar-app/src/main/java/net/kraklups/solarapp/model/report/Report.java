@@ -29,18 +29,18 @@ public class Report {
 	private String reportTitle;
 	private Calendar dateRequest;
 	private Calendar dateServed;
-	private UserProfile loginRequest;
+	private UserProfile userProfile;
 	private String urlReport;
 	
 	public Report() {		
 	}
 	
-	public Report(Long reportId, String reportTitle, Calendar dateRequest, Calendar dateServed, UserProfile loginRequest, String urlReport) {
+	public Report(Long reportId, String reportTitle, Calendar dateRequest, Calendar dateServed, UserProfile userProfile, String urlReport) {
 		this.reportId = reportId;
 		this.reportTitle = reportTitle;
 		this.dateRequest = dateRequest;
 		this.dateServed = dateServed;
-		this.loginRequest = loginRequest;
+		this.userProfile = userProfile;
 		this.urlReport = urlReport;
 	}
 	
@@ -85,12 +85,12 @@ public class Report {
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="userProfileId")		
-	public UserProfile getLoginRequest() {
-		return loginRequest;
+	public UserProfile getUserProfile() {
+		return userProfile;
 	}
 
-	public void setLoginRequest(UserProfile loginRequest) {
-		this.loginRequest = loginRequest;
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile;
 	}
 
 	public String getUrlReport() {
@@ -104,7 +104,7 @@ public class Report {
 	@Override
 	public String toString() {
 		return "Report [reportId=" + reportId + ", reportTitle=" + reportTitle +
-			", dateRequest=" + dateRequest + ", dateServed=" + dateServed + ", loginRequest=" + loginRequest.getLoginName() +
+			", dateRequest=" + dateRequest + ", dateServed=" + dateServed + ", loginRequest=" + userProfile.getLoginName() +
 			", urlReport=" + urlReport + "]";
 	}		
 	

@@ -352,13 +352,13 @@
             <!-- ========================================================== -->
             <!-- Setting SQL Plugin -->
             <!--
-                 - Configuartion specifies onError="continue" since SQL scripts
+                 - Configuration specifies onError="continue" since SQL scripts
                    try to drop tables before creating them (which causes errors
                    if such tables do not exist yet).
 
-                 - Configuartion specifies autocommit="true" since some drivers
+                 - Configuration specifies autocommit="true" since some drivers
                    (e.g the PostgreSQL JDBC 2 driver) do not commit changes if
-                   some error ocurrs.
+                   some error occurs.
             -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
