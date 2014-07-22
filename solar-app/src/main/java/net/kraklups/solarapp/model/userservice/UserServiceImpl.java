@@ -147,6 +147,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public String findUserLoginByProfileId(Long userProfileId)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}		
+	
+	@Override
 	public void assignCompanyUserProfile(UserProfile userProfile,
 			Company company) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
@@ -225,7 +232,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Company findCompanyByName(String companyName) throws InstanceNotFoundException {
+	public Company findCompanyByName(String companyName) 
+			throws InstanceNotFoundException {
 		
 		return companyDao.findByName(companyName);		
 	}
@@ -350,5 +358,4 @@ public class UserServiceImpl implements UserService {
 		return moduleDao.findByName(moduleName);
 	
 	}	
-	
 }

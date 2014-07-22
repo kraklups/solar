@@ -12,4 +12,6 @@ public interface UserProfileDao extends GenericDao<UserProfile, Long>{
      * @return the UserProfile
      */
     public UserProfile findByLoginName(String loginName) throws InstanceNotFoundException;
+    
+    public String getUserLoginByProfileId(Long userProfileId) throws InstanceNotFoundException;
 }

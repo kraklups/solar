@@ -46,7 +46,7 @@ public class Report {
 	
 	@SequenceGenerator(                                   // It only takes effect
 			name="ReportIdGenerator",                     // for databases providing
-	        sequenceName="ReportIdSeq", allocationSize=1) // identifier generators.
+	        sequenceName="ReportSeq", allocationSize=1) // identifier generators.
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,
 		generator="ReportIdGenerator")

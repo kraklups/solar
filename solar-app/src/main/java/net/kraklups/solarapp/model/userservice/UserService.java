@@ -41,6 +41,9 @@ public interface UserService {
     
     public UserProfile findUserProfileByLogin(String loginName)
     		throws InstanceNotFoundException;
+
+    public String findUserLoginByProfileId(Long userProfileId)
+    		throws InstanceNotFoundException;    
     
     public void assignCompanyUserProfile(UserProfile userProfile, Company company)
     		throws InstanceNotFoundException;

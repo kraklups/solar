@@ -9,7 +9,8 @@ import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 public class UserProfileDaoHibernate extends
 		GenericDaoHibernate<UserProfile, Long> implements UserProfileDao {
 
-	public UserProfile findByLoginName(String loginName) throws InstanceNotFoundException {
+	public UserProfile findByLoginName(String loginName) 
+			throws InstanceNotFoundException {
 
     	UserProfile userProfile = (UserProfile) getSession().createQuery(
     			"SELECT u FROM UserProfile u WHERE u.loginName = :loginName")
@@ -21,6 +22,21 @@ public class UserProfileDaoHibernate extends
     		return userProfile;
     	}
 
+	}
+
+	@Override
+	public String getUserLoginByProfileId(Long userProfileId)
+			throws InstanceNotFoundException {
+		
+    	String loginName = (String) getSession().createQuery(
+    			"SELECT loginName FROM UserProfile u WHERE u.userProfileId = :userProfileId")
+    			.setParameter("userProfileId", userProfileId)
+    			.uniqueResult();
+    	if (loginName == null) {
+   			throw new InstanceNotFoundException(loginName, UserProfile.class.getName());
+    	} else {
+    		return loginName;
+    	}
 	}
 
 }

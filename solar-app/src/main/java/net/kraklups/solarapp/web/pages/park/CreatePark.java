@@ -62,6 +62,9 @@ public class CreatePark {
 
     @SessionState(create=false)
     private UserSession userSession;
+    
+    @Inject
+    private UserService userService;    
 
     @Inject
     private ParkService parkService;	
@@ -86,7 +89,6 @@ public class CreatePark {
     
     void onValidateFromCreateParkForm() {
     	
-        UserService userService = null;
 
         if (!createParkForm.isValid()) {
             return;
@@ -108,14 +110,14 @@ public class CreatePark {
         		
         	}
         	
-      /*  	try {
-        		loginName = userService.
+        	try {
+        		loginName = userService.findUserLoginByProfileId(userSession.getUserProfileId());
         	} catch (InstanceNotFoundException e) {
         		
-        	}
-      */
+        	}     
         	
         	Park park = parkService.createPark(parkName, startupDateAsCalendar, productionDateAsCalendar, loginName, company, mapPark);
+        	parkId = park.getParkId();
             
         } catch (DuplicateInstanceException e) {
         	createParkForm.recordError(parkNameField, messages

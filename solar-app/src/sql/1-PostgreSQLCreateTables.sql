@@ -92,9 +92,10 @@ DROP TABLE IF EXISTS Park CASCADE;
 CREATE TABLE Park (parkId BIGINT NOT NULL, parkName VARCHAR(30),
     startupDate TIMESTAMP NOT NULL, productionDate TIMESTAMP NOT NULL, loginName VARCHAR(30) NOT NULL,
     companyId BIGINT NOT NULL, mapPark geometry, 
-    CONSTRAINT enforce_geotype_mapPark CHECK (geometrytype(mapPark) = 'MULTIPOLYGON'::text OR geom IS NULL),
-  	CONSTRAINT enforce_srid_mapPark CHECK (st_srid(mapPark) = 4326)     
-    CONSTRAINT loginNameU UNIQUE(loginName),
+    CONSTRAINT enforce_geotype_mapPark CHECK (geometrytype(mapPark) = 'MULTIPOLYGON'::text OR mapPark IS NULL),
+  	CONSTRAINT enforce_srid_mapPark CHECK (st_srid(mapPark) = 4326),     
+    CONSTRAINT loginNameU FOREIGN KEY (loginName)
+        REFERENCES UserProfile (loginName) ON DELETE CASCADE,
     CONSTRAINT CompanyIdFK FOREIGN KEY(companyId)
         REFERENCES Company (companyId) ON DELETE CASCADE,
     CONSTRAINT ParkIdPK PRIMARY KEY (parkId));

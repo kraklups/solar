@@ -16,7 +16,7 @@
         <property name="hibernate.connection.pool_size">2</property>
         
         <!-- SQL dialect -->
-        <property name="hibernate.dialect">${hibernate.dialect}</property>
+        <property name="hibernate.dialect">org.hibernate.spatial.dialect.postgis.PostgisDialect</property>
 
         <!-- Show and print nice SQL on stdout -->
         <property name="hibernate.show_sql">true</property>
@@ -32,5 +32,21 @@
         <mapping class="net.kraklups.solarapp.model.role.Role" />
         <mapping class="net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess" />
         <mapping class="net.kraklups.solarapp.model.module.Module" />
+
+        <mapping class="net.kraklups.solarapp.model.park.Park" />
+        <mapping class="net.kraklups.solarapp.model.eventtsk.EventTsk" />
+        <mapping class="net.kraklups.solarapp.model.messageevent.MessageEvent" />
+        <mapping class="net.kraklups.solarapp.model.timetable.Timetable" />
+        <mapping class="net.kraklups.solarapp.model.state.State" />
+        <mapping class="net.kraklups.solarapp.model.statetype.StateType" />
+        
+		
+        <mapping class="net.kraklups.solarapp.model.alarm.Alarm" />		
+        <mapping class="net.kraklups.solarapp.model.report.Report" />
+        <mapping class="net.kraklups.solarapp.model.taskprk.TaskPrk" />
+        <mapping class="net.kraklups.solarapp.model.taskprk.Upkeep" />
+        <mapping class="net.kraklups.solarapp.model.taskprk.Monitor" />
+        <mapping class="net.kraklups.solarapp.model.taskprk.Track" />
+        <mapping class="net.kraklups.solarapp.model.taskprk.Synchronize" />               
     </session-factory>
 </hibernate-configuration>
