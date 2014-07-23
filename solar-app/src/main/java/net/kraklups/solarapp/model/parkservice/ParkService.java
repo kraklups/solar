@@ -18,7 +18,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 public interface ParkService {
 
-    public Park createPark(String parkName, Calendar startupDate, Calendar productionDate, String loginName, 
+    public Park createPark(String parkName, Calendar startupDate, Calendar productionDate, UserProfile userProfile, 
     		Company company, MultiPolygon mapPark) throws DuplicateInstanceException;
 
     public void updatePark(Long parkId, String parkName, Calendar startupDate, Calendar productionDate, String loginName, 

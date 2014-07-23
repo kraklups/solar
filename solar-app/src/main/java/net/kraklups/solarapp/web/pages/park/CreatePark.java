@@ -22,6 +22,7 @@ import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.parkservice.ParkService;
+import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userservice.UserService;
 import net.kraklups.solarapp.web.pages.Index;
 import net.kraklups.solarapp.web.services.AuthenticationPolicy;
@@ -45,10 +46,9 @@ public class CreatePark {
 	
 	private Date startupDateAsDate;
 	private Date productionDateAsDate;
-	
-	
+		
 	@Property
-	private String loginName;
+	private UserProfile userProfile;
 	
 	@Property
 	private String companyName;	
@@ -75,6 +75,9 @@ public class CreatePark {
     @Component(id = "parkName")
     private TextField parkNameField;    
 
+    @Component(id = "companyName")
+    private TextField companyNameField;    
+        
 	@Component(id="startupDate")
 	private TextField startupDateField;
 	
@@ -101,23 +104,30 @@ public class CreatePark {
 		Calendar productionDateAsCalendar = Calendar.getInstance();
 		startupDateAsCalendar.setTime(startupDateAsDate);
 		productionDateAsCalendar.setTime(productionDateAsDate);
+		
+		MultiPolygon mapPark = new MultiPolygon(null, null);
         
         try {
-        	       	
+        	       	       	        	
         	try {
-				company = userService.findCompanyByName(parkName);
+        		
+				company = userService.findCompanyByName(companyName);    
+        		
+        	} catch (InstanceNotFoundException e) {
+        		createParkForm.recordError(companyNameField, messages.format(
+    					"error-companyNotFound", companyName));        		
+        	}
+        	
+        	try {
+        		
+        		userProfile = userService.findUserProfile(userSession.getUserProfileId());
+        		
         	} catch (InstanceNotFoundException e) {
         		
         	}
         	
-        	try {
-        		loginName = userService.findUserLoginByProfileId(userSession.getUserProfileId());
-        	} catch (InstanceNotFoundException e) {
-        		
-        	}     
-        	
-        	Park park = parkService.createPark(parkName, startupDateAsCalendar, productionDateAsCalendar, loginName, company, mapPark);
-        	parkId = park.getParkId();
+        	Park park = parkService.createPark(parkName, startupDateAsCalendar, productionDateAsCalendar, userProfile, company, mapPark);
+        //	parkId = park.getParkId();
             
         } catch (DuplicateInstanceException e) {
         	createParkForm.recordError(parkNameField, messages

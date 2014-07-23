@@ -3,6 +3,7 @@ package net.kraklups.solarapp.model.parkservice;
 import java.util.Calendar;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,17 +19,32 @@ import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
 import net.kraklups.solarapp.model.timetable.Timetable;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
+import net.kraklups.solarapp.model.park.ParkDao;
 
 @Service("parkService")
 @Transactional
 public class ParkServiceImpl implements ParkService {
 
+    @Autowired
+    private ParkDao parkDao;
+      	
 	@Override
 	public Park createPark(String parkName, Calendar startupDate,
-			Calendar productionDate, String loginName, Company company,
+			Calendar productionDate, UserProfile userProfile, Company company,
 			MultiPolygon mapPark) throws DuplicateInstanceException {
-		// TODO Auto-generated method stub
-		return null;
+		
+        try {
+            parkDao.findByParkName(parkName);
+            throw new DuplicateInstanceException(parkName,
+                    Park.class.getName());
+        } catch (InstanceNotFoundException e) {
+        	
+            Park park = new Park(parkName, startupDate, productionDate, userProfile, company, mapPark);
+
+            parkDao.save(park);
+         
+            return park;
+        }
 	}
 
 	@Override

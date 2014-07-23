@@ -40,13 +40,14 @@ public class Park {
 	public Park() {		
 	}
 	
-	public Park(String parkName, Calendar startupDate, Calendar productionDate, UserProfile userProfile, Company company) {
+	public Park(String parkName, Calendar startupDate, Calendar productionDate, UserProfile userProfile, Company company, MultiPolygon mapPark) {
 	
 		this.parkName = parkName;
 		this.startupDate = startupDate;
 		this.productionDate = productionDate;		
 		this.userProfile = userProfile;
 		this.company = company;
+		this.mapPark = mapPark;
 	}
 	
 	@SequenceGenerator(                                 // It only takes effect

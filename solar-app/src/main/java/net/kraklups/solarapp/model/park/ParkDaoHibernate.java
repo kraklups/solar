@@ -12,7 +12,7 @@ public class ParkDaoHibernate extends
 		GenericDaoHibernate<Park, Long> implements ParkDao {
 
 	@Override
-	public Park findByName(String parkName) throws InstanceNotFoundException {
+	public Park findByParkName(String parkName) throws InstanceNotFoundException {
 		
 		Park park = (Park) getSession().createQuery(
 			"SELECT u FROM Park u WHERE u.parkName = :parkName")

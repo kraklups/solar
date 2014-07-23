@@ -10,5 +10,5 @@ public interface ParkDao extends GenericDao<Park, Long>{
      * @param parkName not the module identifier
      * @return the Park
      */			
-	public Park findByName(String parkName) throws InstanceNotFoundException;
+	public Park findByParkName(String parkName) throws InstanceNotFoundException;
 }
