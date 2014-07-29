@@ -246,7 +246,6 @@ CREATE TABLE Upkeep(upkeepId BIGINT NOT NULL,
 -- table Track
 
 DROP TABLE IF EXISTS Track CASCADE;
-
 CREATE TABLE Track (trackId BIGINT NOT NULL,
     tvf TIMESTAMP NOT NULL,
     userProfileId BIGINT NOT NULL, reportId BIGINT NOT NULL,
@@ -277,13 +276,12 @@ DROP SEQUENCE IF EXISTS DataLoggerSeq;
 CREATE SEQUENCE DataLoggerSeq;
 
 DROP TABLE IF EXISTS DataLogger CASCADE;
-
 CREATE TABLE DataLogger (dataLoggerId BIGINT NOT NULL,
+    dataLoggerTag VARCHAR(30), dataLoggerType VARCHAR(30),
     dataLoggerFK BIGINT NOT NULL, 
     CONSTRAINT DataLoggerIdFK FOREIGN KEY(dataLoggerFK)
         REFERENCES DataLogger (dataLoggerId) ON DELETE CASCADE,    
     CONSTRAINT dataLoggerIdPK PRIMARY KEY (dataLoggerId));
-
 
 -- ------------------------------ Element -----------------------------
 -- table Element
@@ -292,7 +290,6 @@ DROP SEQUENCE IF EXISTS ElementSeq;
 CREATE SEQUENCE ElementSeq;
 
 DROP TABLE IF EXISTS Element CASCADE;
-
 CREATE TABLE Element (elementId BIGINT NOT NULL,
     elementName VARCHAR(30), elementTag VARCHAR(30), 
     tvi TIMESTAMP NOT NULL, lastAccess TIMESTAMP NOT NULL, 
@@ -306,4 +303,19 @@ CREATE TABLE Element (elementId BIGINT NOT NULL,
         REFERENCES Park (parkId) ON DELETE CASCADE,
     CONSTRAINT ElementIdPK PRIMARY KEY (elementId));
     
+-- ------------------------------ Sensor -----------------------------
+-- table Sensor
+
+DROP SEQUENCE IF EXISTS SensorSeq;
+CREATE SEQUENCE SensorSeq;
+
+DROP TABLE IF EXISTS Sensor CASCADE;
+CREATE TABLE Sensor (sensorId BIGINT NOT NULL,
+    sensorTag VARCHAR(30), sensorType VARCHAR(30),
+    elementId BIGINT NOT NULL, 
+    CONSTRAINT ElementIdFK FOREIGN KEY(elementId)
+        REFERENCES Element (elementId) ON DELETE CASCADE,    
+    CONSTRAINT sensorIdPK PRIMARY KEY (sensorId));
+
+
     

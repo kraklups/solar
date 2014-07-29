@@ -34,5 +34,59 @@ public class Sensor {
 	public Sensor() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Sensor(String sensorTag, String sensorType, Element element) {
+	
+		this.sensorTag = sensorTag;
+		this.sensorType = sensorType;
+		this.element = element;		
+	}
+	
+	@SequenceGenerator(                                 // It only takes effect
+			name="SensorIdGenerator",                     // for databases providing
+	        sequenceName="SensorSeq", allocationSize=1)   // identifier generators.
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO,
+		generator="SensorIdGenerator")
+	@Column(name="sensorId", unique= true, nullable = false)	
+    public Long getSensorId() {
+		return sensorId;
+	}
+	
+	public void setSensorId(Long sensorId){
+		this.sensorId = sensorId;
+	}
+	
+	public String getSensorTag() {
+		return sensorTag;
+	}
+	
+	public void setSensorTag(String sensorTag){
+		this.sensorTag = sensorTag;
+	}
 
+	public String getSensorType() {
+		return sensorType;
+	}
+	
+	public void setSensorType(String sensorType){
+		this.sensorType = sensorType;
+	}	
+
+	@ManyToOne(optional=false, fetch=FetchType.LAZY)
+	@JoinColumn(name="elementId")	
+	public Element getElement(){
+		return element;
+	}
+	
+	public void setElement(Element element){
+		this.element = element;
+	}		
+	
+	@Override
+	public String toString() {
+		return "Park [sensorId=" + sensorId + ", sensorTag=" + sensorTag + ", sensorType=" + sensorType +  
+                       ", DataLoggerSupervise=" + element.getElementId() + "]";
+	}			
+	
 }

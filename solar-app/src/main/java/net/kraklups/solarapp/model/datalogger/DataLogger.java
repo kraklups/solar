@@ -25,14 +25,18 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 public class DataLogger {
 
 	private Long dataLoggerId;
+	private String dataLoggerTag;
+	private String dataLoggerType;
 	private DataLogger dataLogger; 
 	
 	public DataLogger() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public DataLogger(Long dataLoggerId, DataLogger dataLogger) {
-		this.dataLoggerId = dataLoggerId;
+	public DataLogger(String dataLoggerTag, String dataLoggerType, DataLogger dataLogger) {
+		
+		this.dataLoggerTag = dataLoggerTag;
+		this.dataLoggerType = dataLoggerType;
 		this.dataLogger = dataLogger;
 	}
 
@@ -50,7 +54,23 @@ public class DataLogger {
 	public void setDataLoggerId(Long dataLoggerId){
 		this.dataLoggerId = dataLoggerId;
 	}	
+		
+	public String getDataLoggerTag() {
+		return dataLoggerTag;
+	}
 	
+	public void setDataLoggerTag(String dataLoggerTag){
+		this.dataLoggerTag = dataLoggerTag;
+	}
+
+	public String getDataLoggerType() {
+		return dataLoggerType;
+	}
+	
+	public void setDataLoggerType(String dataLoggerType){
+		this.dataLoggerType = dataLoggerType;
+	}	
+
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="dataLoggerId")	
 	public DataLogger getDataLogger(){
@@ -59,11 +79,11 @@ public class DataLogger {
 	
 	public void setDataLogger(DataLogger dataLogger){
 		this.dataLogger = dataLogger;
-	}	
+	}		
 	
 	@Override
 	public String toString() {
-		return "Park [dataLoggerId=" + dataLoggerId + 
+		return "Park [dataLoggerId=" + dataLoggerId + ", dataLoggerTag=" + dataLoggerTag + ", dataLoggerType=" + dataLoggerType +  
                        ", DataLoggerSupervise=" + dataLogger.getDataLoggerId() + "]";
 	}		
 	
