@@ -294,7 +294,9 @@ CREATE TABLE Element (elementId BIGINT NOT NULL,
     elementName VARCHAR(30), elementTag VARCHAR(30), 
     tvi TIMESTAMP NOT NULL, lastAccess TIMESTAMP NOT NULL, 
     userProfileId BIGINT NOT NULL, dataLoggerId BIGINT NOT NULL, 
-    parkId BIGINT NOT NULL,
+    parkId BIGINT NOT NULL, mapElement geometry, 
+    CONSTRAINT enforce_geotype_mapElement CHECK (geometrytype(mapElement) = 'POINT'::text OR mapElement IS NULL),
+  	CONSTRAINT enforce_srid_mapElement CHECK (st_srid(mapElement) = 4326),        
     CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
         REFERENCES UserProfile (usrId) ON DELETE CASCADE,
     CONSTRAINT dataLoggerIdFK FOREIGN KEY(dataLoggerId)
