@@ -6,13 +6,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.Component;
+import org.apache.tapestry5.annotations.Environmental;
+import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 import org.hibernate.annotations.Type;
 
 import com.vividsolutions.jts.geom.MultiPolygon;
@@ -30,6 +34,9 @@ import net.kraklups.solarapp.web.services.AuthenticationPolicyType;
 import net.kraklups.solarapp.web.util.UserSession;
 
 @AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
+@Import(stylesheet="context:css/solar_gis.css",library={"context:js/OpenLayers.js", 
+        "context:js/solar_gis.js",
+        "context:js/firebug.js"})
 public class CreatePark {
 
 	@Property
@@ -59,6 +66,9 @@ public class CreatePark {
 	@Property
 	@Type(type="org.hibernate.spatial.GeometryType")	
 	private MultiPolygon mapPark;
+	
+	@Property
+	private String solarPark;		
 
     @SessionState(create=false)
     private UserSession userSession;
@@ -88,7 +98,10 @@ public class CreatePark {
     private Messages messages;
 
 	@Inject
-	private Locale locale;    
+	private Locale locale;  
+	
+    @Environmental
+    private JavaScriptSupport javaScriptSupport;	
     
     void onValidateFromCreateParkForm() {
     	
@@ -105,7 +118,7 @@ public class CreatePark {
 		startupDateAsCalendar.setTime(startupDateAsDate);
 		productionDateAsCalendar.setTime(productionDateAsDate);
 		
-		MultiPolygon mapPark = new MultiPolygon(null, null);
+//		MultiPolygon mapPark = new MultiPolygon(null, null);
         
         try {
         	       	       	        	
@@ -132,7 +145,7 @@ public class CreatePark {
         } catch (DuplicateInstanceException e) {
         	createParkForm.recordError(parkNameField, messages
                     .get("error-parkNameAlreadyExists"));
-        }        
+        }       
         
     }
     
@@ -165,6 +178,12 @@ public class CreatePark {
 	private String dateToString(Date date) {
 		return DateFormat.getDateInstance(DateFormat.SHORT, locale).
 			format(date);
-	}    
+	}  
+	
+    @AfterRender
+    public void initJavaScript() {
+    	javaScriptSupport.require("solar_gis");
+    }
+    
     
 }

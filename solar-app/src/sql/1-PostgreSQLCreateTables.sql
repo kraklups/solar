@@ -237,6 +237,7 @@ CREATE TABLE Timetable (timetableId BIGINT NOT NULL,
 -- table Upkeep
 
 DROP TABLE IF EXISTS Upkeep CASCADE;
+
 CREATE TABLE Upkeep(upkeepId BIGINT NOT NULL,
     CONSTRAINT UpkeepIdPK PRIMARY KEY (upkeepId));
 
@@ -245,6 +246,7 @@ CREATE TABLE Upkeep(upkeepId BIGINT NOT NULL,
 -- table Track
 
 DROP TABLE IF EXISTS Track CASCADE;
+
 CREATE TABLE Track (trackId BIGINT NOT NULL,
     tvf TIMESTAMP NOT NULL,
     userProfileId BIGINT NOT NULL, reportId BIGINT NOT NULL,
@@ -267,7 +269,41 @@ CREATE TABLE Monitor(monitorId BIGINT NOT NULL,
 DROP TABLE IF EXISTS Synchronize CASCADE;
 
 
+
+-- ------------------------------ DataLogger -----------------------------
+-- table DataLogger
+
+DROP SEQUENCE IF EXISTS DataLoggerSeq;
+CREATE SEQUENCE DataLoggerSeq;
+
+DROP TABLE IF EXISTS DataLogger CASCADE;
+
+CREATE TABLE DataLogger (dataLoggerId BIGINT NOT NULL,
+    dataLoggerFK BIGINT NOT NULL, 
+    CONSTRAINT DataLoggerIdFK FOREIGN KEY(dataLoggerFK)
+        REFERENCES DataLogger (dataLoggerId) ON DELETE CASCADE,    
+    CONSTRAINT dataLoggerIdPK PRIMARY KEY (dataLoggerId));
+
+
 -- ------------------------------ Element -----------------------------
 -- table Element
 
+DROP SEQUENCE IF EXISTS ElementSeq;
+CREATE SEQUENCE ElementSeq;
+
 DROP TABLE IF EXISTS Element CASCADE;
+
+CREATE TABLE Element (elementId BIGINT NOT NULL,
+    elementName VARCHAR(30), elementTag VARCHAR(30), 
+    tvi TIMESTAMP NOT NULL, lastAccess TIMESTAMP NOT NULL, 
+    userProfileId BIGINT NOT NULL, dataLoggerId BIGINT NOT NULL, 
+    parkId BIGINT NOT NULL,
+    CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
+        REFERENCES UserProfile (usrId) ON DELETE CASCADE,
+    CONSTRAINT dataLoggerIdFK FOREIGN KEY(dataLoggerId)
+        REFERENCES DataLogger (dataLoggerId) ON DELETE CASCADE,
+    CONSTRAINT ParkIdFK FOREIGN KEY(parkId)
+        REFERENCES Park (parkId) ON DELETE CASCADE,
+    CONSTRAINT ElementIdPK PRIMARY KEY (elementId));
+    
+    

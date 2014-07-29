@@ -1,0 +1,5 @@
+#surefire
+#Sun Jul 27 14:27:14 CEST 2014
+user.dir=/home/nexus7/workspace/solar/solar-app
+localRepository=/home/nexus7/.m2/repository
+basedir=/home/nexus7/workspace/solar/solar-app

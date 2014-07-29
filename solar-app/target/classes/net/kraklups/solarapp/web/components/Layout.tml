@@ -5,8 +5,9 @@
 	  xmlns:p="tapestry:parameter">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     	
     <title>${pageTitle}</title>
     
@@ -16,13 +17,14 @@
 
     <!-- SB Admin CSS - Include with every page -->
     <link rel="stylesheet" href="${context:/css/sb-admin.css}" />
-    
+            
     <!-- Core Scripts - Include with every page -->
     <script src="${context:/js/jquery-1.10.2.js}" />
     <script src="${context:/js/bootstrap.min.js}" />
 
     <!-- SB Admin Scripts - Include with every page -->
-    <script src="${context:/js/sb-admin.js}" />    
+    <script src="${context:/js/sb-admin.js}" />
+    
 </head>
 
 <body>
