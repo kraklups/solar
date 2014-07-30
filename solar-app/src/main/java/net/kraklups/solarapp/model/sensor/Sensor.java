@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
 import net.kraklups.solarapp.model.datalogger.DataLogger;
-import net.kraklups.solarapp.model.element.Element;
+import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
@@ -29,17 +29,17 @@ public class Sensor {
 	private Long sensorId;
 	private String sensorTag;
 	private String sensorType;
-	private Element element;
+	private ElementPrk elementPrk;
 
 	public Sensor() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Sensor(String sensorTag, String sensorType, Element element) {
+	public Sensor(String sensorTag, String sensorType, ElementPrk elementPrk) {
 	
 		this.sensorTag = sensorTag;
 		this.sensorType = sensorType;
-		this.element = element;		
+		this.elementPrk = elementPrk;		
 	}
 	
 	@SequenceGenerator(                                 // It only takes effect
@@ -75,18 +75,18 @@ public class Sensor {
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="elementId")	
-	public Element getElement(){
-		return element;
+	public ElementPrk getElement(){
+		return elementPrk;
 	}
 	
-	public void setElement(Element element){
-		this.element = element;
+	public void setElement(ElementPrk elementPrk){
+		this.elementPrk = elementPrk;
 	}		
 	
 	@Override
 	public String toString() {
 		return "Park [sensorId=" + sensorId + ", sensorTag=" + sensorTag + ", sensorType=" + sensorType +  
-                       ", DataLoggerSupervise=" + element.getElementId() + "]";
+                       ", DataLoggerSupervise=" + elementPrk.getElementPrkId() + "]";
 	}			
 	
 }

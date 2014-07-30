@@ -1,4 +1,4 @@
-package net.kraklups.solarapp.model.element;
+package net.kraklups.solarapp.model.elementprk;
 
 import java.util.Calendar;
 
@@ -24,12 +24,12 @@ import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
-@Table(name="Element")
-public class Element {
+@Table(name="ElementPrk")
+public class ElementPrk {
 	
-	private Long elementId;
-	private String elementName;
-	private String elementTag;
+	private Long elementPrkId;
+	private String elementPrkName;
+	private String elementPrkTag;
 	private Calendar tvi;
 	private Calendar lastAccess;
 	private UserProfile userProfile;
@@ -39,15 +39,15 @@ public class Element {
 	@Type(type="org.hibernate.spatial.GeometryType")	
 	private Point mapElement;	
 
-	public Element() {
+	public ElementPrk() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Element(String elementName, String elementTag, Calendar tvi, Calendar lastAccess, 
+	public ElementPrk(String elementPrkName, String elementPrkTag, Calendar tvi, Calendar lastAccess, 
 			UserProfile userProfile, DataLogger dataLogger, Park park) {
 		
-		this.elementName = elementName;
-		this.elementTag = elementTag;
+		this.elementPrkName = elementPrkName;
+		this.elementPrkTag = elementPrkTag;
 		this.tvi = tvi;
 		this.lastAccess = lastAccess;
 		this.userProfile = userProfile;
@@ -61,33 +61,33 @@ public class Element {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,
 		generator="ElementIdGenerator")
-	@Column(name="elementId", unique= true, nullable = false)	
-    public Long getElementId() {
-		return elementId;
+	@Column(name="elementPrkId", unique= true, nullable = false)	
+    public Long getElementPrkId() {
+		return elementPrkId;
 	}
 	
-	public void setElementId(Long elementId){
-		this.elementId = elementId;
+	public void setElementPrkId(Long elementPrkId){
+		this.elementPrkId = elementPrkId;
 	}
 	
-	public String getElementName() {
-		return elementName;
+	public String getElementPrkName() {
+		return elementPrkName;
 	}
 	
-	public void setElementName(String elementName){
-		this.elementName = elementName;
+	public void setElementPrkName(String elementPrkName){
+		this.elementPrkName = elementPrkName;
 	}
 	
-	public String getElementTag() {
-		return elementTag;
+	public String getElementPrkTag() {
+		return elementPrkTag;
 	}
 	
-	public void setElementTag(String elementTag){
-		this.elementTag = elementTag;
+	public void setElementPrkTag(String elementPrkTag){
+		this.elementPrkTag = elementPrkTag;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-        public Calendar getTvi() {
+    public Calendar getTvi() {
 		return tvi;
 	}
 	
@@ -144,12 +144,12 @@ public class Element {
 
 	@Override
 	public String toString() {
-		return "Element [elementId=" + elementId + ", nombre=" + elementName + ", tag=" + elementTag +
+		return "ElementPrk [elementPrkId=" + elementPrkId + ", nombre=" + elementPrkName + ", tag=" + elementPrkTag +
                        ", tvi=" + tvi + ", lastAccess=" + lastAccess + 
                        ", user_author =" + userProfile.getLoginName() + 
                        ", dataLoggerTag =" + dataLogger.getDataLoggerTag() +
                        ", parkName =" + park.getParkName() +
-                       "mapElement =" + mapElement.toText() + "]";
+                       ", mapElement =" + mapElement.toText() + "]";
 	}
 	
 }

@@ -283,15 +283,15 @@ CREATE TABLE DataLogger (dataLoggerId BIGINT NOT NULL,
         REFERENCES DataLogger (dataLoggerId) ON DELETE CASCADE,    
     CONSTRAINT dataLoggerIdPK PRIMARY KEY (dataLoggerId));
 
--- ------------------------------ Element -----------------------------
--- table Element
+-- ------------------------------ ElementPrk -----------------------------
+-- table ElementPrk
 
-DROP SEQUENCE IF EXISTS ElementSeq;
-CREATE SEQUENCE ElementSeq;
+DROP SEQUENCE IF EXISTS ElementPrkSeq;
+CREATE SEQUENCE ElementPrkSeq;
 
 DROP TABLE IF EXISTS Element CASCADE;
-CREATE TABLE Element (elementId BIGINT NOT NULL,
-    elementName VARCHAR(30), elementTag VARCHAR(30), 
+CREATE TABLE ElementPrk (elementPrkId BIGINT NOT NULL,
+    elementPrkName VARCHAR(30), elementPrkTag VARCHAR(30), 
     tvi TIMESTAMP NOT NULL, lastAccess TIMESTAMP NOT NULL, 
     userProfileId BIGINT NOT NULL, dataLoggerId BIGINT NOT NULL, 
     parkId BIGINT NOT NULL, mapElement geometry, 
@@ -303,7 +303,7 @@ CREATE TABLE Element (elementId BIGINT NOT NULL,
         REFERENCES DataLogger (dataLoggerId) ON DELETE CASCADE,
     CONSTRAINT ParkIdFK FOREIGN KEY(parkId)
         REFERENCES Park (parkId) ON DELETE CASCADE,
-    CONSTRAINT ElementIdPK PRIMARY KEY (elementId));
+    CONSTRAINT ElementPrkIdPK PRIMARY KEY (elementPrkId));
     
 -- ------------------------------ Sensor -----------------------------
 -- table Sensor
@@ -314,9 +314,9 @@ CREATE SEQUENCE SensorSeq;
 DROP TABLE IF EXISTS Sensor CASCADE;
 CREATE TABLE Sensor (sensorId BIGINT NOT NULL,
     sensorTag VARCHAR(30), sensorType VARCHAR(30),
-    elementId BIGINT NOT NULL, 
-    CONSTRAINT ElementIdFK FOREIGN KEY(elementId)
-        REFERENCES Element (elementId) ON DELETE CASCADE,    
+    elementPrkId BIGINT NOT NULL, 
+    CONSTRAINT ElementIdFK FOREIGN KEY(elementPrkId)
+        REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,    
     CONSTRAINT sensorIdPK PRIMARY KEY (sensorId));
 
 

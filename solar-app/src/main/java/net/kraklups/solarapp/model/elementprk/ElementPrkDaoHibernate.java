@@ -1,4 +1,4 @@
-package net.kraklups.solarapp.model.element;
+package net.kraklups.solarapp.model.elementprk;
 
 import java.util.List;
 
@@ -8,11 +8,11 @@ import net.kraklups.modelutil.dao.GenericDaoHibernate;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 @Repository("elementDao")
-public class ElementDaoHibernate extends 
-	GenericDaoHibernate<Element, Long> implements ElementDao {
+public class ElementPrkDaoHibernate extends 
+	GenericDaoHibernate<ElementPrk, Long> implements ElementPrkDao {
 
 	@Override
-	public List<Element> getElementsByElementTag(String elementTag,
+	public List<ElementPrk> getElementsByElementTag(String elementTag,
 			int startIndex, int count) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		return null;
