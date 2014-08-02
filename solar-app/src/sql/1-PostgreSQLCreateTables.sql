@@ -263,7 +263,7 @@ CREATE TABLE Monitor(monitorId BIGINT NOT NULL,
     CONSTRAINT MonitorIdPK PRIMARY KEY (monitorId));
 
 -- ------------------------------ Synchronize -----------------------------
--- table Synchronize
+-- table Synchronize belongs to MongoDB NoSQL
 
 DROP TABLE IF EXISTS Synchronize CASCADE;
 
@@ -289,7 +289,7 @@ CREATE TABLE DataLogger (dataLoggerId BIGINT NOT NULL,
 DROP SEQUENCE IF EXISTS ElementPrkSeq;
 CREATE SEQUENCE ElementPrkSeq;
 
-DROP TABLE IF EXISTS Element CASCADE;
+DROP TABLE IF EXISTS ElementPrk CASCADE;
 CREATE TABLE ElementPrk (elementPrkId BIGINT NOT NULL,
     elementPrkName VARCHAR(30), elementPrkTag VARCHAR(30), 
     tvi TIMESTAMP NOT NULL, lastAccess TIMESTAMP NOT NULL, 
@@ -299,11 +299,12 @@ CREATE TABLE ElementPrk (elementPrkId BIGINT NOT NULL,
   	CONSTRAINT enforce_srid_mapElement CHECK (st_srid(mapElement) = 4326),        
     CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
         REFERENCES UserProfile (usrId) ON DELETE CASCADE,
-    CONSTRAINT dataLoggerIdFK FOREIGN KEY(dataLoggerId)
+    CONSTRAINT DataLoggerIdFK FOREIGN KEY(dataLoggerId)
         REFERENCES DataLogger (dataLoggerId) ON DELETE CASCADE,
     CONSTRAINT ParkIdFK FOREIGN KEY(parkId)
         REFERENCES Park (parkId) ON DELETE CASCADE,
     CONSTRAINT ElementPrkIdPK PRIMARY KEY (elementPrkId));
+
     
 -- ------------------------------ Sensor -----------------------------
 -- table Sensor
@@ -320,4 +321,122 @@ CREATE TABLE Sensor (sensorId BIGINT NOT NULL,
     CONSTRAINT sensorIdPK PRIMARY KEY (sensorId));
 
 
+-- ------------------------------ ArrayBox -----------------------------
+-- table ArrayBox
+
+DROP TABLE IF EXISTS ArrayBox CASCADE;
+CREATE TABLE ArrayBox(arrayBoxId BIGINT NOT NULL,
+    CONSTRAINT ArrayBoxIdPK PRIMARY KEY (arrayBoxId));
+    
+    
+-- ------------------------------ ArrayPanel -----------------------------
+-- table ArrayPanel
+
+DROP TABLE IF EXISTS ArrayPanel CASCADE;
+CREATE TABLE ArrayPanel(arrayPanelId BIGINT NOT NULL,
+    CONSTRAINT ArrayPanelIdPK PRIMARY KEY (arrayPanelId));
+
+
+-- ------------------------------ StringLine -----------------------------
+-- table StringLine
+
+DROP TABLE IF EXISTS StringLine CASCADE;
+CREATE TABLE StringLine(stringLineId BIGINT NOT NULL,
+    arrayBoxId BIGINT NOT NULL, 
+    CONSTRAINT ArrayBoxIdFK FOREIGN KEY(arrayBoxId)
+        REFERENCES ArrayBox (arrayBoxId) ON DELETE CASCADE,
+    CONSTRAINT StringLineIdPK PRIMARY KEY (stringLineId));
+    
+        
+-- ------------------------------ Cell -----------------------------
+-- table Cell
+
+DROP TABLE IF EXISTS Cell CASCADE;
+CREATE TABLE Cell(cellId BIGINT NOT NULL,
+    arrayPanelId BIGINT NOT NULL, stringLineId BIGINT NOT NULL,
+    CONSTRAINT ArrayPanelIdFK FOREIGN KEY(arrayPanelId)
+        REFERENCES ArrayPanel (arrayPanelId) ON DELETE CASCADE,
+    CONSTRAINT StringLineIdFK FOREIGN KEY(stringLineId)
+        REFERENCES StringLine (stringLineId) ON DELETE CASCADE,
+    CONSTRAINT CellIdPK PRIMARY KEY (cellId));    
+    
+    
+-- ------------------------------ Counter -----------------------------
+-- table Counter
+
+DROP TABLE IF EXISTS Counter CASCADE;
+CREATE TABLE Counter(counterId BIGINT NOT NULL,
+    CONSTRAINT CounterIdPK PRIMARY KEY (counterId));
+    
+    
+-- ------------------------------ ElectricalSubstation -----------------------------
+-- table ElectricalSubstation
+
+DROP TABLE IF EXISTS ElectricalSubstation CASCADE;
+CREATE TABLE ElectricalSubstation(electricalSubstationId BIGINT NOT NULL,
+    mediumVoltageId BIGINT NOT NULL, 
+    CONSTRAINT MediumVoltageIdFK FOREIGN KEY(mediumVoltageId)
+        REFERENCES MediumVoltage (mediumVoltageId) ON DELETE CASCADE,
+    CONSTRAINT ElectricalSubstationIdPK PRIMARY KEY (electricalSubstationId));
+
+    
+-- ------------------------------ ExtractionPoint -----------------------------
+-- table ExtractionPoint
+
+DROP TABLE IF EXISTS ExtractionPoint CASCADE;
+CREATE TABLE ExtractionPoint(extractionPointId BIGINT NOT NULL,
+    CONSTRAINT ExtractionPointIdPK PRIMARY KEY (extractionPointId));
+    
+    
+-- ------------------------------ Gps -----------------------------
+-- table Gps
+
+DROP TABLE IF EXISTS Gps CASCADE;
+CREATE TABLE Gps(gpsId BIGINT NOT NULL,
+    CONSTRAINT GpsIdPK PRIMARY KEY (gpsId));
+    
+
+-- ------------------------------ Inverter -----------------------------
+-- table Inverter
+
+DROP TABLE IF EXISTS Inverter CASCADE;
+CREATE TABLE Inverter(inverterId BIGINT NOT NULL,
+    counterId BIGINT NOT NULL, arrayBoxId BIGINT NOT NULL,
+    electricalSubstationId BIGINT NOT NULL,
+    CONSTRAINT CounterIdFK FOREIGN KEY(counterId)
+        REFERENCES Counter (counterId) ON DELETE CASCADE,
+    CONSTRAINT ArrayBoxIdFK FOREIGN KEY(arrayBoxId)
+        REFERENCES ArrayBox (arrayBoxId) ON DELETE CASCADE,
+    CONSTRAINT ElectricalSubstationIdFK FOREIGN KEY(electricalSubstationId)
+        REFERENCES ElectricalSubstation (electricalSubstationId) ON DELETE CASCADE,
+    CONSTRAINT InverterIdPK PRIMARY KEY (inverterId));
+    
+
+-- ------------------------------ MediumVoltage -----------------------------
+-- table MediumVoltage
+
+DROP TABLE IF EXISTS MediumVoltage CASCADE;
+CREATE TABLE MediumVoltage(mediumVoltageId BIGINT NOT NULL,
+    extractionPointId BIGINT NOT NULL, 
+    CONSTRAINT ExtractionPointIdFK FOREIGN KEY(extractionPointId)
+        REFERENCES ExtractionPoint (extractionPointId) ON DELETE CASCADE,
+    CONSTRAINT MediumVoltageIdPK PRIMARY KEY (mediumVoltageId));
+    
+
+    
+-- ------------------------------ WeatherStation -----------------------------
+-- table WeatherStation
+
+DROP TABLE IF EXISTS WeatherStation CASCADE;
+CREATE TABLE WeatherStation(weatherStationId BIGINT NOT NULL,
+    CONSTRAINT weatherStationIdPK PRIMARY KEY (weatherStationId));
+    
+    
+-- ------------------------------ SolarTracker -----------------------------
+-- table SolarTracker
+
+DROP TABLE IF EXISTS SolarTracker CASCADE;
+CREATE TABLE SolarTracker(solarTrackerId BIGINT NOT NULL,
+    CONSTRAINT solarTrackerIdPK PRIMARY KEY (solarTrackerId));
+    
     
