@@ -77,7 +77,7 @@
                 <!-- Hibernate properties -->
                 <property name="hibernate.dialect">org.hibernate.spatial.dialect.postgis.PostgisDialect</property>
             </properties>
-        </profile>
+        </profile> 
     </profiles>
 
     <!-- ========================================================== -->
@@ -246,7 +246,7 @@
         	<artifactId>mongo-java-driver</artifactId>
         	<version>${mongo.version}</version>
         	<scope>provided</scope>
-        </dependency>
+        </dependency>        
     	<dependency>
         	<groupId>org.hibernate.javax.persistence</groupId>
         	<artifactId>hibernate-jpa-2.0-api</artifactId>
