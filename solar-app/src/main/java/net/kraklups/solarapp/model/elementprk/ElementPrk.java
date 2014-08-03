@@ -138,7 +138,7 @@ public class ElementPrk {
 		return mapElement;
 	}
 	
-	public void setMapPark(Point mapElement) {
+	public void setMapElement(Point mapElement) {
 		this.mapElement = mapElement;
 	}
 

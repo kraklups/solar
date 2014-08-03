@@ -118,6 +118,12 @@
                 <artifactId>hibernate-core</artifactId>
                 <version>${hibernate.version}</version>
             </dependency>
+            <!-- Hibernate OGM Core-->
+        	<dependency>
+            	<groupId>org.hibernate.ogm</groupId>
+            	<artifactId>hibernate-ogm-core</artifactId>
+            	<version>${hibernate-ogm-mongodb.version}</version>
+        	</dependency>            
             <!-- Hibernate OGM MongoDB-->
             <dependency>
                 <groupId>org.hibernate.ogm</groupId>

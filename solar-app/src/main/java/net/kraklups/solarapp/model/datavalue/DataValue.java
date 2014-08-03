@@ -17,12 +17,22 @@ import javax.persistence.Temporal;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
+import org.bson.types.ObjectId;
+
 import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name="DataValue")
 public class DataValue implements Serializable {
 
+	@Id
+	private Long dataValueId;
+	private String dataType;
+	private String dataVal;
+	private Calendar tvi;
+	private Calendar tvf;
+	
+	
 	public DataValue() {
 		// TODO Auto-generated constructor stub
 	}

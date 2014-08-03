@@ -23,7 +23,6 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
 @Table(name="Sensor")
-
 public class Sensor {
 	
 	private Long sensorId;
@@ -74,12 +73,12 @@ public class Sensor {
 	}	
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
-	@JoinColumn(name="elementId")	
-	public ElementPrk getElement(){
+	@JoinColumn(name="elementPrkId")	
+	public ElementPrk getElementPrk(){
 		return elementPrk;
 	}
 	
-	public void setElement(ElementPrk elementPrk){
+	public void setElementPrk(ElementPrk elementPrk){
 		this.elementPrk = elementPrk;
 	}		
 	

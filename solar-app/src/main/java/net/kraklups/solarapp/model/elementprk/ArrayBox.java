@@ -35,7 +35,7 @@ public class ArrayBox extends ElementPrk {
 	}
 	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
-	@JoinColumn(name="elementPrkId")	
+	@JoinColumn(name="stringLineId")	
 	public StringLine getStringLine() {
 		return stringLine;
 	}

@@ -5,6 +5,11 @@ import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.PrimaryKeyJoinColumn;
+import java.io.Serializable;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.bson.types.ObjectId;
 
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.role.Role;

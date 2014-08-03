@@ -72,7 +72,7 @@ public class DataLogger {
 	}	
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
-	@JoinColumn(name="dataLoggerId")	
+	@JoinColumn(name="dataLoggerId", insertable=false, updatable=false)	
 	public DataLogger getDataLogger(){
 		return dataLogger;
 	}
