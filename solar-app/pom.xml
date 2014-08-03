@@ -44,6 +44,7 @@
         <servletApi.version>3.1.0</servletApi.version>
         <tapestry.version>5.4-beta-6</tapestry.version>
         <mongo.version>2.12.3</mongo.version>
+        <spring-data-mongodb.version>1.5.2.RELEASE</spring-data-mongodb.version>
 
         <!-- Plugin versions -->
         <mavenCompilerPlugin.version>2.5.1</mavenCompilerPlugin.version>
@@ -225,6 +226,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
         </dependency>
+		<dependency>
+    		<groupId>org.springframework.data</groupId>
+    		<artifactId>spring-data-mongodb</artifactId>
+    		<version>${spring-data-mongodb.version}</version>
+		</dependency>                    
         <!-- Tapestry -->
         <dependency>
             <groupId>org.apache.tapestry</groupId>
