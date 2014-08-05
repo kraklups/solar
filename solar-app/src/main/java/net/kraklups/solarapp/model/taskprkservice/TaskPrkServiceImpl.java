@@ -7,7 +7,13 @@ import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.alarm.Alarm;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
+import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.report.Report;
+import net.kraklups.solarapp.model.role.Role;
+import net.kraklups.solarapp.model.taskprk.Monitor;
+import net.kraklups.solarapp.model.taskprk.Synchronize;
+import net.kraklups.solarapp.model.taskprk.Track;
+import net.kraklups.solarapp.model.taskprk.Upkeep;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 import org.springframework.stereotype.Service;
@@ -136,6 +142,71 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	@Override
 	public List<Report> getReportByDateRequest(Calendar dateRequest,
 			int startIndex, int count) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Upkeep createUpkeep(String taskName, Calendar creationDate,
+			Park park, Role role, UserProfile userProfile)
+			throws DuplicateInstanceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Upkeep updateUpkeep(Long upkeepId, String taskName,
+			Calendar creationDate, Park park, Role role, UserProfile userProfile)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Track createTrack(String taskName, Calendar creationDate, Park park,
+			Role role, UserProfile userProfile, Calendar tvf, Report report)
+			throws DuplicateInstanceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Track updateTrack(Long trackId, String taskName,
+			Calendar creationDate, Park park, Role role,
+			UserProfile userProfile, Calendar tvf, Report report)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Monitor createMonitor(String taskName, Calendar creationDate,
+			Park park, Role role, UserProfile userProfile)
+			throws DuplicateInstanceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Monitor updateMonitor(Long monitorId, String taskName,
+			Calendar creationDate, Park park, Role role, UserProfile userProfile)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Synchronize createSynchronize(String taskName,
+			Calendar creationDate, Park park, Role role, UserProfile userProfile)
+			throws DuplicateInstanceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Synchronize updateSynchronize(Long synchronizeId, String taskName,
+			Calendar creationDate, Park park, Role role, UserProfile userProfile)
+			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		return null;
 	}

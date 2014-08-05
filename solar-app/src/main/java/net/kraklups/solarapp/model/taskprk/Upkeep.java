@@ -19,9 +19,9 @@ public class Upkeep extends TaskPrk {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Upkeep(Long taskPrkId, String taskName, Calendar creationDate,
+	public Upkeep(String taskName, Calendar creationDate,
 			Park park, Role role, UserProfile userProfile) {
-		super(taskPrkId, taskName, creationDate, park, role, userProfile);
+		super(taskName, creationDate, park, role, userProfile);
 		// TODO Auto-generated constructor stub
 	}
 		

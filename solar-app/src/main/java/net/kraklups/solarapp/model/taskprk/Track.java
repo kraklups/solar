@@ -23,16 +23,17 @@ public class Track extends TaskPrk {
 
 	private Calendar tvf;	
 	private Report report;
-	private UserProfile userProfile;
 	
 	public Track() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Track(Long taskPrkId, String taskName, Calendar creationDate,
-			Park park, Role role, UserProfile userProfile) {
-		super(taskPrkId, taskName, creationDate, park, role, userProfile);
-		// TODO Auto-generated constructor stub
+	public Track(String taskName, Calendar creationDate,
+			Park park, Role role, UserProfile userProfile, Calendar tvf, Report report) {
+		super(taskName, creationDate, park, role, userProfile);
+		
+		this.tvf = tvf;
+		this.report = report;
 	}
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
@@ -45,16 +46,6 @@ public class Track extends TaskPrk {
 		this.report = report;
 	}
 	
-	@ManyToOne(optional=false, fetch=FetchType.LAZY)
-	@JoinColumn(name="userProfileId")		
-	public UserProfile getUserProfile() {
-		return userProfile;
-	}
-	
-	public void setUserProfile(UserProfile userProfile) {
-		this.userProfile = userProfile;
-	}	
-
 	public Calendar getTvf(){
 		return tvf;
 	}

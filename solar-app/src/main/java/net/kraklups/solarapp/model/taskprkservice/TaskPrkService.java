@@ -7,10 +7,48 @@ import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.alarm.Alarm;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
+import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.report.Report;
+import net.kraklups.solarapp.model.role.Role;
+import net.kraklups.solarapp.model.taskprk.Monitor;
+import net.kraklups.solarapp.model.taskprk.Synchronize;
+import net.kraklups.solarapp.model.taskprk.Track;
+import net.kraklups.solarapp.model.taskprk.Upkeep;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 public interface TaskPrkService {
+	
+	public Upkeep createUpkeep(String taskName, Calendar creationDate,
+			Park park, Role role, UserProfile userProfile) 
+			throws DuplicateInstanceException;
+
+	public Upkeep updateUpkeep(Long upkeepId, String taskName, Calendar creationDate,
+			Park park, Role role, UserProfile userProfile) 
+			throws InstanceNotFoundException;
+
+	public Track createTrack(String taskName, Calendar creationDate,
+			Park park, Role role, UserProfile userProfile, Calendar tvf, Report report) 
+			throws DuplicateInstanceException;
+
+	public Track updateTrack(Long trackId, String taskName, Calendar creationDate,
+			Park park, Role role, UserProfile userProfile, Calendar tvf, Report report) 
+			throws InstanceNotFoundException;
+
+	public Monitor createMonitor(String taskName, Calendar creationDate,
+			Park park, Role role, UserProfile userProfile) 
+			throws DuplicateInstanceException;
+
+	public Monitor updateMonitor(Long monitorId, String taskName, Calendar creationDate,
+			Park park, Role role, UserProfile userProfile) 
+			throws InstanceNotFoundException;
+
+	public Synchronize createSynchronize(String taskName, Calendar creationDate,
+			Park park, Role role, UserProfile userProfile) 
+			throws DuplicateInstanceException;
+
+	public Synchronize updateSynchronize(Long synchronizeId, String taskName, Calendar creationDate,
+			Park park, Role role, UserProfile userProfile) 
+			throws InstanceNotFoundException;	
 	
 	public Alarm createAlarm(String alarmTag, Calendar triggerDate, EventTsk eventTsk) 
 			throws DuplicateInstanceException;

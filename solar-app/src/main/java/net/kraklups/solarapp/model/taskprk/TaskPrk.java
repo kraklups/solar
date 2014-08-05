@@ -1,4 +1,4 @@
-package net.kraklups.solarapp.model.taskprk;
+ package net.kraklups.solarapp.model.taskprk;
 
 import java.util.Calendar;
 
@@ -39,8 +39,7 @@ public abstract class TaskPrk {
 	public TaskPrk() {		
 	}
 	
-	public TaskPrk(Long taskPrkId, String taskName, Calendar creationDate, Park park, Role role, UserProfile userProfile) {
-		this.taskPrkId = taskPrkId;
+	public TaskPrk(String taskName, Calendar creationDate, Park park, Role role, UserProfile userProfile) {
 		this.taskName = taskName;
 		this.creationDate = creationDate;
 		this.park = park;
@@ -48,7 +47,7 @@ public abstract class TaskPrk {
 		this.userProfile = userProfile;
 	}
 	
-	@SequenceGenerator(                                      // It only takes effect
+	@SequenceGenerator(                                    // It only takes effect
 			name="TaskPrkIdGenerator",                     // for databases providing
 	        sequenceName="TaskPrkSeq", allocationSize=1)   // identifier generators.
 	@Id

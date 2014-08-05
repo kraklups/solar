@@ -25,7 +25,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
 @Table(name="ElementPrk")
-public class ElementPrk {
+public abstract class ElementPrk {
 	
 	private Long elementPrkId;
 	private String elementPrkName;
