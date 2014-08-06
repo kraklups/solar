@@ -28,10 +28,12 @@ public class MediumVoltage extends ElementPrk {
 
 	public MediumVoltage(String elementPrkName, String elementPrkTag,
 			Calendar tvi, Calendar lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park) {
+			DataLogger dataLogger, Park park, ExtractionPoint extractionPoint) {
+		
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,
 				dataLogger, park);
-		// TODO Auto-generated constructor stub
+		
+		this.extractionPoint = extractionPoint;
 	}
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)

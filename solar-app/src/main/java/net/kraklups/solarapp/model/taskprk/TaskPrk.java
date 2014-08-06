@@ -1,4 +1,4 @@
- package net.kraklups.solarapp.model.taskprk;
+package net.kraklups.solarapp.model.taskprk;
 
 import java.util.Calendar;
 

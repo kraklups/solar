@@ -28,10 +28,12 @@ public class StringLine extends ElementPrk {
 
 	public StringLine(String elementPrkName, String elementPrkTag,
 			Calendar tvi, Calendar lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park) {
+			DataLogger dataLogger, Park park, ArrayBox arrayBox) {
+		
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,
 				dataLogger, park);
-		// TODO Auto-generated constructor stub
+
+		this.arrayBox = arrayBox;
 	}
 	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)

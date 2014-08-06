@@ -28,10 +28,12 @@ public class ArrayBox extends ElementPrk {
 
 	public ArrayBox(String elementPrkName, String elementPrkTag, Calendar tvi,
 			Calendar lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park) {
+			DataLogger dataLogger, Park park, StringLine stringLine) {
+		
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,
 				dataLogger, park);
-		// TODO Auto-generated constructor stub
+				
+		this.stringLine = stringLine;
 	}
 	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)

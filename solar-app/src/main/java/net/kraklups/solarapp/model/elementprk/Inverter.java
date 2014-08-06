@@ -30,10 +30,15 @@ public class Inverter extends ElementPrk {
 
 	public Inverter(String elementPrkName, String elementPrkTag, Calendar tvi,
 			Calendar lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park) {
+			DataLogger dataLogger, Park park, Counter counter, ArrayBox arrayBox, 
+			ElectricalSubstation electricalSubstation) {
+		
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,
 				dataLogger, park);
-		// TODO Auto-generated constructor stub
+		
+		this.counter = counter;
+		this.arrayBox = arrayBox;
+		this.electricalSubstation = electricalSubstation;
 	}
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)

@@ -12,6 +12,7 @@ import net.kraklups.solarapp.model.report.Report;
 import net.kraklups.solarapp.model.role.Role;
 import net.kraklups.solarapp.model.taskprk.Monitor;
 import net.kraklups.solarapp.model.taskprk.Synchronize;
+import net.kraklups.solarapp.model.taskprk.TaskPrk;
 import net.kraklups.solarapp.model.taskprk.Track;
 import net.kraklups.solarapp.model.taskprk.Upkeep;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
@@ -206,6 +207,161 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	@Override
 	public Synchronize updateSynchronize(Long synchronizeId, String taskName,
 			Calendar creationDate, Park park, Role role, UserProfile userProfile)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TaskPrk> getTaskPrkByPark(Park park, int startIndex, int count)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TaskPrk> getTaskPrkByLoginRequest(UserProfile loginRequest,
+			int startIndex, int count) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TaskPrk> getTaskPrkByRol(Role role, int startIndex, int count)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Upkeep> getUpkeepByPark(Park park, int startIndex, int count)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Upkeep> getUpkeepByLoginRequest(UserProfile loginRequest,
+			int startIndex, int count) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Upkeep> getUpkeepByRol(Role role, int startIndex, int count)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Monitor> getMonitorByPark(Park park, int startIndex, int count)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Monitor> getMonitorByLoginRequest(UserProfile loginRequest,
+			int startIndex, int count) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Monitor> getMonitorByRol(Role role, int startIndex, int count)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Track> getTrackByPark(Park park, int startIndex, int count)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Track> getTrackByLoginRequest(UserProfile loginRequest,
+			int startIndex, int count) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Track> getTrackByRol(Role role, int startIndex, int count)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Synchronize> getSynchronizeByPark(Park park, int startIndex,
+			int count) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Synchronize> getSynchronizeByLoginRequest(
+			UserProfile loginRequest, int startIndex, int count)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Synchronize> getSynchronizeByRol(Role role, int startIndex,
+			int count) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void assignRoleTaskPrk(TaskPrk taskPrk, Role role)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignParkTaskPrk(TaskPrk taskPrk, Park park)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignUserProfileTaskPrk(TaskPrk taskPrk,
+			UserProfile userProfile) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignTaskNameTaskPrk(TaskPrk taskPrk, String taskName)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignCreationTimeTaskPrk(TaskPrk taskPrk, Calendar creationTime)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public TaskPrk cloneTaskPrk(TaskPrk taskPrk)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Report> getReportByPark(Park park, int startIndex, int count)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		return null;

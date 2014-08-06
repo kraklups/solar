@@ -28,10 +28,12 @@ public class ElectricalSubstation extends ElementPrk {
 
 	public ElectricalSubstation(String elementPrkName, String elementPrkTag,
 			Calendar tvi, Calendar lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park) {
+			DataLogger dataLogger, Park park, MediumVoltage mediumVoltage) {
+		
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,
 				dataLogger, park);
-		// TODO Auto-generated constructor stub
+		
+		this.mediumVoltage = mediumVoltage;
 	}
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)

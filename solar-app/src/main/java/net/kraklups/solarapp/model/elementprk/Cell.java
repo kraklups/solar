@@ -29,10 +29,14 @@ public class Cell extends ElementPrk {
 
 	public Cell(String elementName, String elementTag, Calendar tvi,
 			Calendar lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park) {
+			DataLogger dataLogger, Park park, ArrayPanel arrayPanel, 
+			StringLine stringLine) {
+		
 		super(elementName, elementTag, tvi, lastAccess, userProfile,
 				dataLogger, park);
-		// TODO Auto-generated constructor stub
+		
+		this.stringLine = stringLine;
+		this.arrayPanel = arrayPanel;
 	}
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
