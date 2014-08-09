@@ -8,4 +8,6 @@ import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 public interface DataService {
 
+	
+	
 }

@@ -11,6 +11,7 @@ import net.kraklups.solarapp.model.elementprk.ArrayPanel;
 import net.kraklups.solarapp.model.elementprk.Cell;
 import net.kraklups.solarapp.model.elementprk.Counter;
 import net.kraklups.solarapp.model.elementprk.ElectricalSubstation;
+import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.elementprk.ExtractionPoint;
 import net.kraklups.solarapp.model.elementprk.Gps;
 import net.kraklups.solarapp.model.elementprk.Inverter;
@@ -19,6 +20,7 @@ import net.kraklups.solarapp.model.elementprk.SolarTracker;
 import net.kraklups.solarapp.model.elementprk.StringLine;
 import net.kraklups.solarapp.model.elementprk.WeatherStation;
 import net.kraklups.solarapp.model.park.Park;
+import net.kraklups.solarapp.model.sensor.Sensor;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 public interface ElementService {
@@ -144,6 +146,93 @@ public interface ElementService {
 			Calendar lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park)
 					throws InstanceNotFoundException;	
+	
+	public void assignParkElementPrk(ElementPrk elementPrk, Park park) 
+			throws InstanceNotFoundException;
+
+	public void assignElementPrkNameElementPrk(ElementPrk elementPrk, String elementPrkName) 
+			throws InstanceNotFoundException;
+
+	public void assignElementPrkTagElementPrk(ElementPrk elementPrk, String elementPrkTag) 
+			throws InstanceNotFoundException;
+
+	public void assignTviElementPrk(ElementPrk elementPrk, Calendar tvi) 
+			throws InstanceNotFoundException;
+
+	public void assignLastAccessPrk(ElementPrk elementPrk, Calendar lastAccess) 
+			throws InstanceNotFoundException;
+
+	public void assignDataLoggerElementPrk(ElementPrk elementPrk, DataLogger dataLogger) 
+			throws InstanceNotFoundException;
+
+	public void assignUserProfileElementPrk(ElementPrk elementPrk, UserProfile userProfile) 
+			throws InstanceNotFoundException;
+	
+	public void assignStringLineArrayBox(ArrayBox arrayBox, StringLine stringLine) 
+			throws InstanceNotFoundException;
+
+	public void assignArrayPanelCell(Cell cell, ArrayPanel arrayPanel) 
+			throws InstanceNotFoundException;
+
+	public void assignStringLineCell(Cell cell, StringLine stringLine) 
+			throws InstanceNotFoundException;
+
+	public void assignMediumVoltageElectricalSubstation(ElectricalSubstation electricalSubstation, MediumVoltage mediumVoltage) 
+			throws InstanceNotFoundException;
+
+	public void assignArrayBoxInverter(Inverter inverter, ArrayBox arrayBox) 
+			throws InstanceNotFoundException;
+
+	public void assignCounterInverter(Inverter inverter, Counter counter) 
+			throws InstanceNotFoundException;
+
+	public void assignElectricalSubstationInverter(Inverter inverter, ElectricalSubstation electricalSubstation) 
+			throws InstanceNotFoundException;
+
+	public void assignExtractionPointMediumVoltage(MediumVoltage mediumVoltage, ExtractionPoint extractionPoint) 
+			throws InstanceNotFoundException;
+
+	public void assignArrayBoxStringLine(StringLine stringLine, ArrayBox arrayBox) 
+			throws InstanceNotFoundException;	
+	
+	public Sensor createSensor(String sensorTag, String sensorType, ElementPrk elementPrk)
+			throws DuplicateInstanceException;
+
+	public Sensor updateSensor(Long sensorId, String sensorTag, String sensorType, ElementPrk elementPrk)
+			throws InstanceNotFoundException;	
+	
+	public void assignElementPrkSensor(Sensor sensor, ElementPrk elementPrk) 
+			throws InstanceNotFoundException;	
+
+	public List<Sensor> getSensorByElementPrk(ElementPrk elementPrk, int startIndex, int count)
+			throws InstanceNotFoundException;	
+
+	public List<Cell> getCellByStringLine(StringLine stringLine, int startIndex, int count)
+			throws InstanceNotFoundException;	
+
+	public List<Cell> getCellByArrayPanel(ArrayPanel arrayPanel, int startIndex, int count)
+			throws InstanceNotFoundException;
+
+	public List<ArrayPanel> getArrayPanelByStringLine(StringLine stringLine, int startIndex, int count)
+			throws InstanceNotFoundException;
+
+	public List<Inverter> getInverterByArrayBox(ArrayBox arrayBox, int startIndex, int count)
+			throws InstanceNotFoundException;
+
+	public List<Inverter> getInverterByElectricalSubstation(ElectricalSubstation electricalSubstation, int startIndex, int count)
+			throws InstanceNotFoundException;
+
+	public List<ElectricalSubstation> getElectricalSubstationByMediumVoltage(MediumVoltage mediumVoltage, int startIndex, int count)
+			throws InstanceNotFoundException;
+
+	public List<MediumVoltage> getMediumVoltageByCounter(Counter counter, int startIndex, int count)
+			throws InstanceNotFoundException;	
+
+	public List<Inverter> getInverterByCounter(Counter counter, int startIndex, int count)
+			throws InstanceNotFoundException;
+	
+	public List<MediumVoltage> getMediumVoltageByExtractionPoint(ExtractionPoint extractionPoint, int startIndex, int count)
+			throws InstanceNotFoundException;	
 	
 	
 }

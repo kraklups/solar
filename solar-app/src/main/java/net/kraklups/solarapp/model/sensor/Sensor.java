@@ -41,7 +41,7 @@ public class Sensor {
 		this.elementPrk = elementPrk;		
 	}
 	
-	@SequenceGenerator(                                 // It only takes effect
+	@SequenceGenerator(                                   // It only takes effect
 			name="SensorIdGenerator",                     // for databases providing
 	        sequenceName="SensorSeq", allocationSize=1)   // identifier generators.
 	@Id
