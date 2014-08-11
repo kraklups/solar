@@ -12,6 +12,8 @@
     http://www.springframework.org/schema/data/mongo
     http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd">
 
+
+
     <!-- Enable usage of @Autowired. -->
     <context:annotation-config/>
 
@@ -45,5 +47,16 @@
 	<!-- Enable the configuration of transactional behavior based on
 	     annotations. -->
     <tx:annotation-driven transaction-manager="transactionManager" />
+
+  	<!--  MongoDB/Spring -->
+  	<mongo:mongo id="mongo" />
+  
+  	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+    	<constructor-arg ref="mongo" />
+    	<constructor-arg value="solardb" />
+  	</bean>
+    
+    	<!-- Activate Spring Data MongoDB repository support -->
+	<mongo:repositories base-package="net.kraklups.modelutil.repositories" />
 
 </beans>

@@ -14,7 +14,7 @@ public interface DataLoggerDao extends GenericDao<DataLogger, Long> {
      * @return list of dataloggers
      */			
      
-     public List<DataLogger> getDataLoggersByDataLoggerTag(String dataLoggerTag, int startIndex, int count) 
+     public List<DataLogger> getDataLoggerByDataLoggerTag(String dataLoggerTag, int startIndex, int count) 
             throws InstanceNotFoundException; 
 
 }

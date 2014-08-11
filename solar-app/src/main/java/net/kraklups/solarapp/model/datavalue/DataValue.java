@@ -3,24 +3,28 @@ package net.kraklups.solarapp.model.datavalue;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import org.springframework.data.annotation.Id;
+
+/**
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+**/
 
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.sensor.Sensor;
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
 
-@Entity
-@Table(name = "dataValue")
+//@Entity
+//@Table(name = "dataValue")
 public class DataValue implements Serializable {
 
 	@Id
-	private Long dataValueId;
+	private String dataValueId;
 	private String dataType;
 	private String dataInput;
 	private Calendar tvi;
@@ -47,11 +51,11 @@ public class DataValue implements Serializable {
 		this.sensor = sensor;		
 	}
 
-	public Long getDataValueId() {
+	public String getDataValueId() {
 		return dataValueId;
 	}
 	
-	public void setDataValueId(Long dataValueId) {
+	public void setDataValueId(String dataValueId) {
 		this.dataValueId = dataValueId;
 	}
 

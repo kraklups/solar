@@ -12,7 +12,7 @@ public class DataLoggerDaoHibernate extends
 	GenericDaoHibernate<DataLogger, Long> implements DataLoggerDao {
 
 	@Override
-	public List<DataLogger> getDataLoggersByDataLoggerTag(String dataLoggerTag,
+	public List<DataLogger> getDataLoggerByDataLoggerTag(String dataLoggerTag,
 			int startIndex, int count) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		return null;
