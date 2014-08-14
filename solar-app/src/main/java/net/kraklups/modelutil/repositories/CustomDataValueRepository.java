@@ -6,7 +6,6 @@ import java.util.List;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.datavalue.DataValue;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
 @NoRepositoryBean

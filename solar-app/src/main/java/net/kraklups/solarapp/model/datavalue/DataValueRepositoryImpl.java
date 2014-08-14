@@ -5,7 +5,7 @@ import java.util.List;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.modelutil.repositories.CustomDataValueRepository;
 
-public class DataValueRepositoryImpl  implements CustomDataValueRepository {
+public class DataValueRepositoryImpl implements CustomDataValueRepository<DataValue, Long> {
 
 	@Override
 	public List<DataValue> getDataValueByDataValueId(Long dataValueId,

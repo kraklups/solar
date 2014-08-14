@@ -1,37 +1,69 @@
 package net.kraklups.solarapp.model.datavalue;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Calendar;
 
-import org.springframework.data.annotation.Id;
-
-/**
+import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-**/
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.sensor.Sensor;
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
 
-//@Entity
-//@Table(name = "dataValue")
+@Entity
+@Table(name = "dataValue")
 public class DataValue implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2134365755739425165L;
 
 	@Id
-	private String dataValueId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id", nullable=false, unique=true)
+	private BigInteger dataValueId;
+	
+	@Column(name="dataType", nullable=false)
 	private String dataType;
+	
+	@Column(name="dataInput", nullable=false)	
 	private String dataInput;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+    @Column(name="tvi")
 	private Calendar tvi;
+
+	@Temporal(TemporalType.TIMESTAMP)
+    @Column(name="tvf")
 	private Calendar tvf;
+
+	@ManyToOne(optional=false, fetch=FetchType.LAZY)
+	@JoinColumn(name="taskPrkId")		
 	private TaskPrk taskPrk;
+	
+	@ManyToOne(optional=false, fetch=FetchType.LAZY)
+	@JoinColumn(name="elementPrkId")		
 	private ElementPrk elementPrk;
+	
+	@ManyToOne(optional=false, fetch=FetchType.LAZY)
+	@JoinColumn(name="dataLoggerId")		
 	private DataLogger dataLogger;
+	
+	@ManyToOne(optional=false, fetch=FetchType.LAZY)
+	@JoinColumn(name="sensorId")		
 	private Sensor sensor; 
 	
 	public DataValue() {
@@ -51,11 +83,11 @@ public class DataValue implements Serializable {
 		this.sensor = sensor;		
 	}
 
-	public String getDataValueId() {
+	public BigInteger getDataValueId() {
 		return dataValueId;
 	}
 	
-	public void setDataValueId(String dataValueId) {
+	public void setDataValueId(BigInteger dataValueId) {
 		this.dataValueId = dataValueId;
 	}
 
