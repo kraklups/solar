@@ -12,8 +12,6 @@
     http://www.springframework.org/schema/data/mongo
     http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd">
 
-
-
     <!-- Enable usage of @Autowired. -->
     <context:annotation-config/>
 
@@ -48,7 +46,7 @@
 	     annotations. -->
     <tx:annotation-driven transaction-manager="transactionManager" />
 
-  	<!--  MongoDB/Spring -->
+  	<!--  MongoDB/Spring --> 	
   	<mongo:mongo id="mongo" />
   	
     <mongo:mongo host="192.168.1.107" port="27017">
@@ -63,15 +61,36 @@
                    write-number="1"
                    write-timeout="0"
                    write-fsync="true"/>
-    </mongo:mongo> 	
-  
-	<mongo:db-factory dbname="database" mongo-ref="mongo"/>
-  
+	</mongo:mongo>                   
+	
+	<mongo:db-factory dbname="solardb" mongo-ref="mongo"/>
+
+	<!-- set the mapping converter to be used by the MongoTemplate -->  
+	<bean id="mappingContext"
+    	class="org.springframework.data.mongodb.core.mapping.MongoMappingContext" lazy-init="true"/>
+
+ 	<bean id="defaultMongoTypeMapper"
+    	class="org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper" lazy-init="true">
+    	<constructor-arg name="typeKey"><null/></constructor-arg>
+ 	</bean>	
+
+ 	<bean id="mappingMongoConverter"
+	    class="org.springframework.data.mongodb.core.convert.MappingMongoConverter" lazy-init="true" >
+    	<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+    	<constructor-arg name="mappingContext" ref="mappingContext" />
+    	<property name="typeMapper" ref="defaultMongoTypeMapper" />
+ 	</bean>
+	
   	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+		<constructor-arg name="mongoConverter" ref="mappingMongoConverter"/>
+		<property name="writeResultChecking" value="EXCEPTION"/>
   	</bean>
     
-    	<!-- Activate Spring Data MongoDB repository support -->
+    <bean class="org.springframework.data.mongodb.core.mapping.event.LoggingEventListener"/>
+    
+    <!-- Activate Spring Data MongoDB repository support -->
 	<mongo:repositories base-package="net.kraklups.modelutil.repositories" />
+		
 
 </beans>

@@ -33,7 +33,7 @@ public class DataValue implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id", nullable=false, unique=true)
+	@Column(name="dataValueId", nullable=false, unique=true)
 	private BigInteger dataValueId;
 	
 	@Column(name="dataType", nullable=false)
