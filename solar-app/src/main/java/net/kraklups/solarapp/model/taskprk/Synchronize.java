@@ -19,18 +19,18 @@ import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.role.Role;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
-@Entity
-@Table(name="Synchronize")
-@PrimaryKeyJoinColumn(name = "synchronizeId", referencedColumnName = "taskPrkId")
+//@Entity
+//@Table(name="Synchronize")
+//@PrimaryKeyJoinColumn(name = "synchronizeId", referencedColumnName = "taskPrkId")
 public class Synchronize extends TaskPrk {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="synchronizeId", nullable=false, unique=true)
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Column(name="synchronizeId", nullable=false, unique=true)
 	private BigInteger synchronizeKeyHashId;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-    @Column(name="tvi")	
+//	@Temporal(TemporalType.TIMESTAMP)
+//  @Column(name="tvi")	
 	private Calendar tvi;
 	
 	public Synchronize() {
@@ -52,7 +52,7 @@ public class Synchronize extends TaskPrk {
 		this.synchronizeKeyHashId = synchronizeKeyHashId;
 	}
 	
-	@Temporal(TemporalType.TIMESTAMP)
+//	@Temporal(TemporalType.TIMESTAMP)
     public Calendar getTvi() {
 		return tvi;
 	}

@@ -19,28 +19,16 @@ import net.kraklups.solarapp.model.taskprk.TaskPrk;
 @Transactional
 public class DataServiceImpl implements DataService {
 
-    @Autowired
-    private TaskPrk taskPrk;
-
-    @Autowired
-    private ElementPrk elementPrk;
-    
-    @Autowired
-    private DataLogger dataLogger;
-    
-    @Autowired
-    private Sensor sensor;
-	
 	@Override
 	public DataValue createDataValue(String dataType, String dataInput,
 			Calendar tvi, Calendar tvf, TaskPrk taskPrk, ElementPrk elementPrk,
 			DataLogger dataLogger, Sensor sensor)
 			throws DuplicateInstanceException {
-
-		DataValue dataValue = new DataValue(dataType, dataInput, tvi, tvf, 
-				taskPrk, elementPrk, dataLogger, sensor);
-		
-		return dataValue;
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	
+
 
 }
