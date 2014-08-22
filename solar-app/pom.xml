@@ -38,7 +38,7 @@
         <cglib.version>3.1</cglib.version>
         <hibernate.version>4.3.6.Final</hibernate.version>
 <!--
-        <hibernate-ogm-mongodb.version>4.1.0.Beta5</hibernate-ogm-mongodb.version> 
+        <hibernate-ogm-mongodb.version>4.1.0.Beta6</hibernate-ogm-mongodb.version> 
 -->
         <hibernate-spatial.version>4.3</hibernate-spatial.version>
         <junit.version>4.11</junit.version>

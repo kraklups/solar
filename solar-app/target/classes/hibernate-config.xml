@@ -18,12 +18,12 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- NoSQL MongoDB -->
-    	<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+<!--    <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
     	<property name="hibernate.ogm.datastore.grid_dialect">org.hibernate.ogm.dialect.mongodb.MongoDBDialect</property>
    		<property name="hibernate.ogm.datastore.provider">MongoDB</property>
     	<property name="hibernate.ogm.mongodb.database">solardb</property>
     	<property name="hibernate.ogm.mongodb.host">192.168.1.107</property>
-    	<property name="hibernate.ogm.mongodb.port">27017</property>        
+    	<property name="hibernate.ogm.mongodb.port">27017</property>                       -->
 
         <mapping class="net.kraklups.solarapp.model.userprofile.UserProfile" />
         <mapping class="net.kraklups.solarapp.model.company.Company" />
