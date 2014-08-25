@@ -32,7 +32,7 @@
         <mapping class="net.kraklups.solarapp.model.role.Role" />
         <mapping class="net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess" />
         <mapping class="net.kraklups.solarapp.model.module.Module" />
-
+        
         <mapping class="net.kraklups.solarapp.model.park.Park" />
         <mapping class="net.kraklups.solarapp.model.eventtsk.EventTsk" />
         <mapping class="net.kraklups.solarapp.model.messageevent.MessageEvent" />
@@ -46,7 +46,25 @@
         <mapping class="net.kraklups.solarapp.model.taskprk.TaskPrk" />
         <mapping class="net.kraklups.solarapp.model.taskprk.Upkeep" />
         <mapping class="net.kraklups.solarapp.model.taskprk.Monitor" />
-        <mapping class="net.kraklups.solarapp.model.taskprk.Track" />
-        <mapping class="net.kraklups.solarapp.model.taskprk.Synchronize" />               
+        <mapping class="net.kraklups.solarapp.model.taskprk.Track" />       
+
+		<mapping class="net.kraklups.solarapp.model.datalogger.DataLogger" />
+
+		<mapping class="net.kraklups.solarapp.model.elementprk.ElementPrk" />
+        
+		<mapping class="net.kraklups.solarapp.model.sensor.Sensor" />		
+
+		<mapping class="net.kraklups.solarapp.model.elementprk.ArrayBox" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.StringLine" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.ArrayPanel" />		
+		<mapping class="net.kraklups.solarapp.model.elementprk.Cell" />	
+		<mapping class="net.kraklups.solarapp.model.elementprk.ElectricalSubstation" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.ExtractionPoint" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.Gps" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.Counter" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.Inverter" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.MediumVoltage" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.SolarTracker" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.WeatherStation" />		
     </session-factory>
 </hibernate-configuration>

@@ -263,11 +263,12 @@ CREATE TABLE Monitor(monitorId BIGINT NOT NULL,
     CONSTRAINT MonitorIdPK PRIMARY KEY (monitorId));
 
 -- ------------------------------ Synchronize -----------------------------
--- table Synchronize belongs to MongoDB NoSQL
+-- table Synchronize 
 
 DROP TABLE IF EXISTS Synchronize CASCADE;
 
-
+CREATE TABLE Synchronize(synchronizeId BIGINT NOT NULL,
+    CONSTRAINT SynchronizeIdPK PRIMARY KEY (synchronizeId));
 
 -- ------------------------------ DataLogger -----------------------------
 -- table DataLogger
@@ -438,5 +439,27 @@ CREATE TABLE WeatherStation(weatherStationId BIGINT NOT NULL,
 DROP TABLE IF EXISTS SolarTracker CASCADE;
 CREATE TABLE SolarTracker(solarTrackerId BIGINT NOT NULL,
     CONSTRAINT solarTrackerIdPK PRIMARY KEY (solarTrackerId));
+    
+-- ------------------------------ DataValue -----------------------------
+-- table DataValue
+
+DROP SEQUENCE IF EXISTS DataValueSeq;
+CREATE SEQUENCE DataValueSeq;
+
+DROP TABLE IF EXISTS DataValue CASCADE;
+CREATE TABLE DataValue (dataValueId BIGINT NOT NULL,
+    taskPrkId BIGINT NOT NULL, elementPrkId BIGINT NOT NULL, 
+    dataLoggerId BIGINT NOT NULL, sensorId BIGINT NOT NULL,
+    CONSTRAINT TaskPrkIdFK FOREIGN KEY(taskPrkId)
+        REFERENCES TaskPrk (taskPrkId) ON DELETE CASCADE,    
+    CONSTRAINT ElementIdFK FOREIGN KEY(elementPrkId)
+        REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,    
+    CONSTRAINT DataLoggerIdFK FOREIGN KEY(dataLoggerId)
+        REFERENCES DataLogger (dataLoggerId) ON DELETE CASCADE,    
+    CONSTRAINT SensorIdFK FOREIGN KEY(sensorId)
+        REFERENCES Sensor (sensorId) ON DELETE CASCADE,    
+    CONSTRAINT dataValueIdPK PRIMARY KEY (dataValueId));
+
+    
     
     
