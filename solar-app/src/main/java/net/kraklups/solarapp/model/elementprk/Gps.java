@@ -17,7 +17,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
 @Table(name="Gps")
-@PrimaryKeyJoinColumn(name = "elementPrkId", referencedColumnName = "gpsId")
+@PrimaryKeyJoinColumn(name = "gpsId", referencedColumnName = "elementPrkId")
 public class Gps extends ElementPrk {
 
 	public Gps() {

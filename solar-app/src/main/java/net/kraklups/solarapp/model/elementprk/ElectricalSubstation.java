@@ -17,7 +17,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
 @Table(name="ElectricalSubstation")
-@PrimaryKeyJoinColumn(name = "elementPrkId", referencedColumnName = "electricalSubstationId")
+@PrimaryKeyJoinColumn(name = "electricalSubstationId", referencedColumnName = "elementPrkId")
 public class ElectricalSubstation extends ElementPrk {
 
 	private MediumVoltage mediumVoltage;

@@ -17,7 +17,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
 @Table(name="StringLine")
-@PrimaryKeyJoinColumn(name = "elementPrkId", referencedColumnName = "stringLineId")
+@PrimaryKeyJoinColumn(name = "stringLineId", referencedColumnName = "elementPrkId")
 public class StringLine extends ElementPrk {
 
 	private ArrayBox arrayBox;

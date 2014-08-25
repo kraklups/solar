@@ -17,7 +17,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
 @Table(name="Cell")
-@PrimaryKeyJoinColumn(name = "elementPrkId", referencedColumnName = "cellId")
+@PrimaryKeyJoinColumn(name = "cellId", referencedColumnName = "elementPrkId")
 public class Cell extends ElementPrk {
 
 	private ArrayPanel arrayPanel;

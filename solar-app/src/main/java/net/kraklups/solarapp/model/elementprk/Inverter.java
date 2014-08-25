@@ -17,7 +17,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
 @Table(name="Inverter")
-@PrimaryKeyJoinColumn(name = "elementPrkId", referencedColumnName = "inverterId")
+@PrimaryKeyJoinColumn(name = "inverterId", referencedColumnName = "elementPrkId")
 public class Inverter extends ElementPrk {
 
 	private Counter counter;

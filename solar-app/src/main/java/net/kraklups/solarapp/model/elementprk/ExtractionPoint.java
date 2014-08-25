@@ -17,7 +17,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
 @Table(name="ExtractionPoint")
-@PrimaryKeyJoinColumn(name = "elementPrkId", referencedColumnName = "extractionPointId")
+@PrimaryKeyJoinColumn(name = "extractionPointId", referencedColumnName = "elementPrkId")
 public class ExtractionPoint extends ElementPrk {
 
 	public ExtractionPoint() {

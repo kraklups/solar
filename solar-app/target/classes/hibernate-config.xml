@@ -48,11 +48,10 @@
         <mapping class="net.kraklups.solarapp.model.taskprk.Synchronize" />          
 
 		<mapping class="net.kraklups.solarapp.model.datalogger.DataLogger" />
-
-		<mapping class="net.kraklups.solarapp.model.elementprk.ElementPrk" />
-        
+       
 		<mapping class="net.kraklups.solarapp.model.sensor.Sensor" />		
-
+		
+		<mapping class="net.kraklups.solarapp.model.elementprk.ElementPrk" />
 		<mapping class="net.kraklups.solarapp.model.elementprk.ArrayBox" />
 		<mapping class="net.kraklups.solarapp.model.elementprk.StringLine" />
 		<mapping class="net.kraklups.solarapp.model.elementprk.ArrayPanel" />		

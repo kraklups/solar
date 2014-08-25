@@ -17,7 +17,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
 @Table(name="SolarTracker")
-@PrimaryKeyJoinColumn(name = "elementPrkId", referencedColumnName = "solarTrackerId")
+@PrimaryKeyJoinColumn(name = "solarTrackerId", referencedColumnName = "elementPrkId")
 public class SolarTracker extends ElementPrk {
 
 	public SolarTracker() {

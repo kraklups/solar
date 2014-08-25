@@ -8,8 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.park.Park;
@@ -17,7 +15,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
 @Table(name="ArrayBox")
-@PrimaryKeyJoinColumn(name = "elementPrkId", referencedColumnName = "arrayBoxId")
+@PrimaryKeyJoinColumn(name = "arrayBoxId", referencedColumnName = "elementPrkId")
 public class ArrayBox extends ElementPrk {
 
 	private StringLine stringLine;

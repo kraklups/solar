@@ -17,7 +17,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
 @Table(name="WeatherStation")
-@PrimaryKeyJoinColumn(name = "elementPrkId", referencedColumnName = "weatherStationId")
+@PrimaryKeyJoinColumn(name = "weatherStationId", referencedColumnName = "elementPrkId")
 public class WeatherStation extends ElementPrk {
 
 	public WeatherStation() {
