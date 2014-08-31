@@ -61,7 +61,6 @@ public class UserServiceImpl implements UserService {
             userProfileDao.save(userProfile);
             return userProfile;
         }
-
     }
 
     @Transactional(readOnly = true)
@@ -127,77 +126,94 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void removeUser(Long userProfileId, boolean erased)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		
+
+		UserProfile userProfile = userProfileDao.find(userProfileId);
+		userProfile.setErased(erased);
+			
 	}
 
 	@Override
 	public void blockUser(Long userProfileId, boolean blocked)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		
+
+		UserProfile userProfile = userProfileDao.find(userProfileId);
+		userProfile.setBlocked(blocked);
 	}
 
 	@Override
 	public UserProfile findUserProfileByLogin(String loginName)
 			throws InstanceNotFoundException {
 
-		return userProfileDao.findByLoginName(loginName);
-		
+		return userProfileDao.findByLoginName(loginName);		
 	}
 
 	@Override
 	public String findUserLoginByProfileId(Long userProfileId)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return userProfileDao.find(userProfileId).getLoginName();
 	}		
 	
 	@Override
 	public void assignCompanyUserProfile(UserProfile userProfile,
 			Company company) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		userProfile.setCompany(company);
 	}
 
 	@Override
 	public void assignRoleUserProfile(UserProfile userProfile, Role role)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		userProfile.setRole(role);
 	}
 
-	@Override
-	public List<UserProfile> getEmployeeByFirstName(String firstName,
+	@Override	
+	public UserProfileBlock getEmployeeByFirstName(String firstName,
 			int startIndex, int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<UserProfile> userProfiles = userProfileDao.findByFirstName(firstName, startIndex, count + 1);
+		
+		boolean existMoreUserProfiles = userProfiles.size() == (count + 1);
+		
+		return new UserProfileBlock(userProfiles, existMoreUserProfiles);
 	}
 
 	@Override
-	public List<UserProfile> getEmployeeByLogin(String loginName,
+	public UserProfileBlock getEmployeeBySurname1(String surname1, 
 			int startIndex, int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<UserProfile> userProfiles = userProfileDao.findBySurname1(surname1, startIndex, count + 1);
+		
+		boolean existMoreUserProfiles = userProfiles.size() == (count + 1);
+		
+		return new UserProfileBlock(userProfiles, existMoreUserProfiles);	
 	}
+	
+	@Override
+	public UserProfileBlock getEmployeeBySurname2(String surname2, 
+			int startIndex, int count) throws InstanceNotFoundException {
+
+		List<UserProfile> userProfiles = userProfileDao.findBySurname2(surname2, startIndex, count + 1);
+		
+		boolean existMoreUserProfiles = userProfiles.size() == (count + 1);
+		
+		return new UserProfileBlock(userProfiles, existMoreUserProfiles);	
+	}	
 
 	@Override
-	public List<UserProfile> getEmployeeBySurname(String surname1,
-			String surname2, int startIndex, int count)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<UserProfile> getEmployeeByRole(Role role, int startIndex,
+	public UserProfileBlock getEmployeeByRole(Role role, int startIndex,
 			int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<UserProfile> userProfiles = userProfileDao.findByRole(role.getRoleId(), startIndex, count + 1);
+		
+		boolean existMoreUserProfiles = userProfiles.size() == (count + 1);
+		
+		return new UserProfileBlock(userProfiles, existMoreUserProfiles);	
 	}
 
 	@Override
-	public List<UserProfile> getEmployeeByCompany(Company company,
+	public UserProfileBlock getEmployeeByCompany(Company company,
 			int startIndex, int count) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		return null;
@@ -355,7 +371,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Module findModuleByName(String moduleName) throws InstanceNotFoundException {
 
-		return moduleDao.findByName(moduleName);
-	
+		return moduleDao.findByName(moduleName);	
 	}	
 }

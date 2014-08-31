@@ -51,20 +51,19 @@ public interface UserService {
     public void assignRoleUserProfile(UserProfile userProfile, Role role)
     		throws InstanceNotFoundException;
     
-    public List<UserProfile> getEmployeeByFirstName(String firstName, int startIndex, int count)
+    public UserProfileBlock getEmployeeByFirstName(String firstName, int startIndex, int count)
     		throws InstanceNotFoundException;
-    
-    public List<UserProfile> getEmployeeByLogin(String loginName, int startIndex, int count)
+        
+    public UserProfileBlock getEmployeeBySurname1(String surname1, int startIndex, int count)
     		throws InstanceNotFoundException;    
     
-    public List<UserProfile> getEmployeeBySurname(String surname1, String surname2, 
-    		int startIndex, int count)
+    public UserProfileBlock getEmployeeBySurname2(String surname2, int startIndex, int count)
     		throws InstanceNotFoundException;    
     
-    public List<UserProfile> getEmployeeByRole(Role role, int startIndex, int count)
+    public UserProfileBlock getEmployeeByRole(Role role, int startIndex, int count)
     		throws InstanceNotFoundException;
     
-    public List<UserProfile> getEmployeeByCompany(Company company, int startIndex, int count)
+    public UserProfileBlock getEmployeeByCompany(Company company, int startIndex, int count)
     		throws InstanceNotFoundException;        
         
 	public Company createCompany(String companyName) 
