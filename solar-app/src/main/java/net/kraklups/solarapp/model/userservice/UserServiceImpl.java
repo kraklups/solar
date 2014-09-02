@@ -16,6 +16,7 @@ import net.kraklups.solarapp.model.role.RoleDao;
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccessDao;
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess.Type;
+import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccessId;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userprofile.UserProfileDao;
 import net.kraklups.solarapp.model.userservice.util.PasswordEncrypter;
@@ -202,24 +203,6 @@ public class UserServiceImpl implements UserService {
 	}	
 
 	@Override
-	public UserProfileBlock getEmployeeByRole(Role role, int startIndex,
-			int count) throws InstanceNotFoundException {
-
-		List<UserProfile> userProfiles = userProfileDao.findByRole(role.getRoleId(), startIndex, count + 1);
-		
-		boolean existMoreUserProfiles = userProfiles.size() == (count + 1);
-		
-		return new UserProfileBlock(userProfiles, existMoreUserProfiles);	
-	}
-
-	@Override
-	public UserProfileBlock getEmployeeByCompany(Company company,
-			int startIndex, int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Company createCompany(String companyName)
 			throws DuplicateInstanceException {
 
@@ -234,6 +217,15 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Override
+	public void updateCompany(Long companyId, String companyName, Calendar date) 
+			throws InstanceNotFoundException {
+		
+		Company company = companyDao.find(companyId);
+		company.setCompanyName(companyName);
+		company.setDate(date);
+	}
+	
 	@Override
 	public void removeCompany(Long companyId) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
@@ -255,12 +247,27 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public List<UserProfile> getEmployeesByCompanyId(Long companyId,
+	public UserProfileBlock getEmployeesByCompanyId(Long companyId,
 			int startIndex, int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<UserProfile> userProfiles = userProfileDao.findByCompany(companyId, startIndex, count + 1);
+		
+		boolean existMoreUserProfiles = userProfiles.size() == (count + 1);
+		
+		return new UserProfileBlock(userProfiles, existMoreUserProfiles);			
 	}	
 
+	@Override
+	public UserProfileBlock getEmployeeByRoleId(Long roleId,
+			int startIndex, int count) throws InstanceNotFoundException {
+		
+		List<UserProfile> userProfiles = userProfileDao.findByCompany(roleId, startIndex, count + 1);
+		
+		boolean existMoreUserProfiles = userProfiles.size() == (count + 1);
+		
+		return new UserProfileBlock(userProfiles, existMoreUserProfiles);	
+	}	
+	
 	@Override
 	public Role registerRole(String roleName, String loginName, Long weight) throws DuplicateInstanceException {
 		
@@ -288,10 +295,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Role updateRole(Long roleId, String roleName, Calendar date,
+	public void updateRole(Long roleId, String roleName, Calendar date,
 			String loginName, Long weight) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		Role role = roleDao.find(roleId);
+		role.setLoginName(loginName);
+		role.setDate(date);
+		role.setLoginName(loginName);
+		role.setWeight(weight);
 	}
 
 	@Override
@@ -321,17 +332,19 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Module updateModule(Long moduleId, String Name, Calendar date)
+	public void updateModule(Long moduleId, String moduleName, Calendar date)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		Module module = moduleDao.find(moduleId);
+		module.setModuleName(moduleName);
+		module.setDate(date);
 	}
 
 	@Override
 	public RoleModuleAccess registerRoleModuleAccess(Role role, Module module, Type type) throws DuplicateInstanceException {
 
 		try {
-			roleModuleAccessDao.findByName(role.getRoleName(),module.getModuleName());
+			roleModuleAccessDao.findById(role.getRoleId(),module.getModuleId());
 			throw new DuplicateInstanceException(role.getRoleName()+module.getModuleName(), RoleModuleAccess.class.getName()); 
 		} catch (InstanceNotFoundException e) { 
 			RoleModuleAccess roleModuleAccess = new RoleModuleAccess();
@@ -344,8 +357,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void updateRoleModuleAccess() throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
+	public void updateRoleModuleAccess(RoleModuleAccessId roleModuleAccessId, Type type) throws InstanceNotFoundException {
 		
 	}
 

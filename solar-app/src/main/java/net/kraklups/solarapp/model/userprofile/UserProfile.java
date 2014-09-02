@@ -64,7 +64,7 @@ public class UserProfile {
 	sequenceName = "UserProfileSeq", allocationSize=1)       // generators.
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "UserProfileIdGenerator")
-	@Column(name="usrId", unique= true, nullable = false)	
+	@Column(name="userProfileId", unique= true, nullable = false)	
 	public Long getUserProfileId() {
 		return userProfileId;
 	}

@@ -13,14 +13,21 @@ public class CompanyDaoHibernate extends
 		GenericDaoHibernate<Company, Long> implements CompanyDao {
 	
 	@SuppressWarnings("unchecked")	
-	public List<UserProfile> getEmployees(Long companyId, int startIndex, int count) {
+	public List<UserProfile> getEmployees(Long companyId, int startIndex, int count) 
+		throws InstanceNotFoundException {
 		
-		return getSession().createQuery(
+		List<UserProfile> userProfiles = (List<UserProfile>)  getSession().createQuery(
 	        	"SELECT a FROM UserProfile a WHERE a.companyId = :companyId " +
 	        	"ORDER BY a.UserProfileId").
 	         	setParameter("companyId", companyId).
 	           	setFirstResult(startIndex).
 	           	setMaxResults(count).list();
+		
+		if (userProfiles == null) {
+			throw new InstanceNotFoundException(companyId, Company.class.getName());
+		} else {
+			return userProfiles;
+		}
 	}
 
 	@Override
@@ -32,7 +39,7 @@ public class CompanyDaoHibernate extends
     			.uniqueResult();
 		
 		if (company == null) {
-			throw new InstanceNotFoundException(companyName,Company.class.getName());
+			throw new InstanceNotFoundException(companyName, Company.class.getName());
 		} else {
 			return company;
 		}

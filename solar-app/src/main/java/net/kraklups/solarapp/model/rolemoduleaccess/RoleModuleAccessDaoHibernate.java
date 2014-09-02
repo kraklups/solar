@@ -26,4 +26,21 @@ public class RoleModuleAccessDaoHibernate extends
 		}		
 	}
 
+	@Override
+	public RoleModuleAccess findById(Long roleId, Long moduleId)
+			throws InstanceNotFoundException {
+
+		RoleModuleAccess roleModuleAccess = (RoleModuleAccess) getSession().createQuery(
+				"SELECT u, v FROM RoleModuleAccess u WHERE u.roleId = :roleId AND v.moduleId = :moduleId")
+    			.setParameter("roleId", roleId)
+    			.setParameter("moduleName", moduleId)
+    			.uniqueResult();  
+		
+		if (roleModuleAccess == null) {
+			throw new InstanceNotFoundException(roleId+moduleId, RoleModuleAccess.class.getName());
+		} else {
+			return roleModuleAccess;
+		}		
+	}
+
 }

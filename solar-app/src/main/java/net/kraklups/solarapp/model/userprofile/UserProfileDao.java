@@ -55,5 +55,14 @@ public interface UserProfileDao extends GenericDao<UserProfile, Long>{
      */   
     public List<UserProfile> findByRole(Long roleId, int startIndex, int count);
     
+    /**
+     * Returns a List of UserProfiles using companyId
+     *
+     * @param companyId
+     * @return list of UserProfiles
+     */   
+    public List<UserProfile> findByCompany(Long companyId, int startIndex, int count);
+
+    
     
 }

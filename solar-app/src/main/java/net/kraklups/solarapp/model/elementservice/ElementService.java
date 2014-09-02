@@ -159,7 +159,7 @@ public interface ElementService {
 	public void assignTviElementPrk(ElementPrk elementPrk, Calendar tvi) 
 			throws InstanceNotFoundException;
 
-	public void assignLastAccessPrk(ElementPrk elementPrk, Calendar lastAccess) 
+	public void assignLastAccessElementPrk(ElementPrk elementPrk, Calendar lastAccess) 
 			throws InstanceNotFoundException;
 
 	public void assignDataLoggerElementPrk(ElementPrk elementPrk, DataLogger dataLogger) 

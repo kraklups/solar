@@ -14,7 +14,8 @@ public interface CompanyDao extends GenericDao<Company, Long>{
      * @param companyId and index & count
      * @return List of the Employees
      */	
-	public List<UserProfile> getEmployees(Long companyId, int startIndex, int count);
+	public List<UserProfile> getEmployees(Long companyId, int startIndex, int count) 
+			throws InstanceNotFoundException;
 	
     /**
      * Returns a Company using the company name (not company identifier)
@@ -22,6 +23,7 @@ public interface CompanyDao extends GenericDao<Company, Long>{
      * @param companyName not the company identifier
      * @return the Company
      */	
-	public Company findByName(String companyName) throws InstanceNotFoundException; 
+	public Company findByName(String companyName) 
+			throws InstanceNotFoundException; 
 
 }

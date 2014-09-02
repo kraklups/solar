@@ -1,13 +1,13 @@
 package net.kraklups.solarapp.model.userservice;
 
 import java.util.Calendar;
-import java.util.List;
 
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.module.Module;
 import net.kraklups.solarapp.model.role.Role;
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess.Type;
+import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccessId;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
@@ -59,15 +59,12 @@ public interface UserService {
     
     public UserProfileBlock getEmployeeBySurname2(String surname2, int startIndex, int count)
     		throws InstanceNotFoundException;    
-    
-    public UserProfileBlock getEmployeeByRole(Role role, int startIndex, int count)
-    		throws InstanceNotFoundException;
-    
-    public UserProfileBlock getEmployeeByCompany(Company company, int startIndex, int count)
-    		throws InstanceNotFoundException;        
         
 	public Company createCompany(String companyName) 
 			throws DuplicateInstanceException;
+	
+	public void updateCompany(Long companyId, String companyName, Calendar date) 
+			throws InstanceNotFoundException;
 	
 	public void removeCompany(Long companyId) 
 			throws InstanceNotFoundException;
@@ -78,9 +75,12 @@ public interface UserService {
 	public Company findCompanyByName(String companyName)
 			throws InstanceNotFoundException;
 	
-	public List<UserProfile> getEmployeesByCompanyId(Long companyId, int startIndex, int count) 
+	public UserProfileBlock getEmployeesByCompanyId(Long companyId, int startIndex, int count) 
 			throws InstanceNotFoundException; 
 
+	public UserProfileBlock getEmployeeByRoleId(Long roleId,
+			int startIndex, int count) throws InstanceNotFoundException;	
+	
 	public Role registerRole(String roleName, String loginName, Long weight) 
 			throws DuplicateInstanceException;
 	
@@ -90,7 +90,7 @@ public interface UserService {
 	
 	public void removeRole(Long roleId) throws InstanceNotFoundException;
 	
-	public Role updateRole(Long roleId, String roleName, Calendar date, 
+	public void updateRole(Long roleId, String roleName, Calendar date, 
 			String loginName, Long weight) throws InstanceNotFoundException;
 
 	public Module registerModule(String moduleName) throws DuplicateInstanceException;
@@ -101,13 +101,13 @@ public interface UserService {
 	
 	public void removeModule(Long moduleId) throws InstanceNotFoundException;
 	
-	public Module updateModule(Long moduleId, String Name, Calendar date) 
+	public void updateModule(Long moduleId, String moduleName, Calendar date) 
 			throws InstanceNotFoundException;
 	
 	public RoleModuleAccess registerRoleModuleAccess(Role role, Module module, Type type) 
 			throws DuplicateInstanceException;
 	
-	public void updateRoleModuleAccess() throws InstanceNotFoundException;
+	public void updateRoleModuleAccess(RoleModuleAccessId roleModuleAccessId, Type type) throws InstanceNotFoundException;
 	
 	public RoleModuleAccess removeRoleModuleAccess() throws InstanceNotFoundException;
 	

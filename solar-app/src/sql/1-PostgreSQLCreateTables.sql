@@ -51,7 +51,7 @@ DROP SEQUENCE IF EXISTS UserProfileSeq;
 CREATE SEQUENCE UserProfileSeq;
 
 DROP TABLE IF EXISTS UserProfile CASCADE;
-CREATE TABLE UserProfile (usrId BIGINT NOT NULL,
+CREATE TABLE UserProfile (userProfileId BIGINT NOT NULL,
     loginName VARCHAR(30) NOT NULL, enPassword VARCHAR(13) NOT NULL, 
     firstName VARCHAR(30) NOT NULL, surname1 VARCHAR(40) NOT NULL, surname2 VARCHAR(40) DEFAULT NULL, 
     email VARCHAR(60) NOT NULL, date TIMESTAMP NOT NULL, 
@@ -63,7 +63,7 @@ CREATE TABLE UserProfile (usrId BIGINT NOT NULL,
         REFERENCES Role (roleId) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED, 
     CONSTRAINT CompanyIdFK FOREIGN KEY(companyId)
         REFERENCES Company (companyId) ON DELETE CASCADE,
-    CONSTRAINT UserProfilePK PRIMARY KEY (usrId));
+    CONSTRAINT UserProfilePK PRIMARY KEY (userProfileId));
 
 -- Added for cyclic dependency loop with both FK
 
@@ -207,7 +207,7 @@ CREATE TABLE TaskPrk (taskPrkId BIGINT NOT NULL,
     CONSTRAINT RoleIdFK FOREIGN KEY(roleId)
         REFERENCES Role (roleId) ON DELETE CASCADE,
     CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
-        REFERENCES UserProfile (usrId) ON DELETE CASCADE,
+        REFERENCES UserProfile (userProfileId) ON DELETE CASCADE,
     CONSTRAINT TaskPrkIdPK PRIMARY KEY (taskPrkId));
 
 -- Added for cyclic dependency loop with both FK
@@ -228,7 +228,7 @@ CREATE TABLE Timetable (timetableId BIGINT NOT NULL,
     timetableTag VARCHAR(30), tvi TIMESTAMP NOT NULL, 
     userProfileId BIGINT NOT NULL, parkId BIGINT NOT NULL, 
     CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
-        REFERENCES UserProfile (usrId) ON DELETE CASCADE,
+        REFERENCES UserProfile (userProfileId) ON DELETE CASCADE,
     CONSTRAINT ParkIdFK FOREIGN KEY(parkId)
         REFERENCES Park (parkId) ON DELETE CASCADE,
     CONSTRAINT TimetableIdPK PRIMARY KEY (timetableId));
@@ -252,7 +252,7 @@ CREATE TABLE Track (trackId BIGINT NOT NULL,
     CONSTRAINT ReportIdFK FOREIGN KEY(reportId)
         REFERENCES Report (reportId) ON DELETE CASCADE,
     CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
-        REFERENCES UserProfile (usrId) ON DELETE CASCADE,
+        REFERENCES UserProfile (userProfileId) ON DELETE CASCADE,
     CONSTRAINT TrackIdPK PRIMARY KEY (trackId));
 
 -- ------------------------------ Monitor -----------------------------
@@ -299,7 +299,7 @@ CREATE TABLE ElementPrk (elementPrkId BIGINT NOT NULL,
     CONSTRAINT enforce_geotype_mapElement CHECK (geometrytype(mapElement) = 'POINT'::text OR mapElement IS NULL),
   	CONSTRAINT enforce_srid_mapElement CHECK (st_srid(mapElement) = 4326),        
     CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
-        REFERENCES UserProfile (usrId) ON DELETE CASCADE,
+        REFERENCES UserProfile (userProfileId) ON DELETE CASCADE,
     CONSTRAINT DataLoggerIdFK FOREIGN KEY(dataLoggerId)
         REFERENCES DataLogger (dataLoggerId) ON DELETE CASCADE,
     CONSTRAINT ParkIdFK FOREIGN KEY(parkId)

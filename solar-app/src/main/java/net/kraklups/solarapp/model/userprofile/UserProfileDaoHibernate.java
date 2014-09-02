@@ -48,7 +48,7 @@ public class UserProfileDaoHibernate extends
 		
         return getSession().createQuery(
             	"SELECT a FROM UserProfile a WHERE a. = :firstName " +
-            	"ORDER BY a.usrId").
+            	"ORDER BY a.userProfileId").
              	setParameter("firstName", firstName).
                	setFirstResult(startIndex).
                	setMaxResults(count).list();
@@ -61,7 +61,7 @@ public class UserProfileDaoHibernate extends
 		
         return getSession().createQuery(
             	"SELECT a FROM UserProfile a WHERE a. = :surname1 " +
-            	"ORDER BY a.usrId").
+            	"ORDER BY a.userProfileId").
              	setParameter("surname1", surname1).
                	setFirstResult(startIndex).
                	setMaxResults(count).list();
@@ -74,7 +74,7 @@ public class UserProfileDaoHibernate extends
 		
         return getSession().createQuery(
             	"SELECT a FROM UserProfile a WHERE a. = :surname2 " +
-            	"ORDER BY a.usrId").
+            	"ORDER BY a.userProfileId").
              	setParameter("surname2", surname2).
                	setFirstResult(startIndex).
                	setMaxResults(count).list();
@@ -87,10 +87,23 @@ public class UserProfileDaoHibernate extends
 		
         return getSession().createQuery(
             	"SELECT a FROM UserProfile a WHERE a. = :roleId " +
-            	"ORDER BY a.usrId").
+            	"ORDER BY a.userProfileId").
              	setParameter("roleId", roleId).
                	setFirstResult(startIndex).
                	setMaxResults(count).list();
 	}	
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<UserProfile> findByCompany(Long companyId, int startIndex,
+			int count) {
+		
+        return getSession().createQuery(
+            	"SELECT a FROM UserProfile a WHERE a. = :companyId " +
+            	"ORDER BY a.userProfileId").
+             	setParameter("companyId", companyId).
+               	setFirstResult(startIndex).
+               	setMaxResults(count).list();
+	}		
 	
 }
