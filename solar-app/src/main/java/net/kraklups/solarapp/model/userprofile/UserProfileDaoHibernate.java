@@ -43,67 +43,97 @@ public class UserProfileDaoHibernate extends
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<UserProfile> findByFirstName(String firstName, int startIndex,
-			int count) {
+	public List<UserProfile> findByFirstName(String firstName, int startIndex, int count) 
+			throws InstanceNotFoundException {
 		
-        return getSession().createQuery(
-            	"SELECT a FROM UserProfile a WHERE a. = :firstName " +
+		List <UserProfile> userProfiles = getSession().createQuery(
+            	"SELECT a FROM UserProfile a WHERE a.firstName = :firstName " +
             	"ORDER BY a.userProfileId").
              	setParameter("firstName", firstName).
                	setFirstResult(startIndex).
                	setMaxResults(count).list();
+		
+		if (userProfiles == null) {
+			throw new InstanceNotFoundException(firstName, UserProfile.class.getName());
+		} else {
+			return userProfiles;
+		}	        
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<UserProfile> findBySurname1(String surname1, int startIndex,
-			int count) {
+	public List<UserProfile> findBySurname1(String surname1, int startIndex, int count) 
+			throws InstanceNotFoundException {
 		
-        return getSession().createQuery(
-            	"SELECT a FROM UserProfile a WHERE a. = :surname1 " +
+		List <UserProfile> userProfiles =  getSession().createQuery(
+            	"SELECT a FROM UserProfile a WHERE a.surname1 = :surname1 " +
             	"ORDER BY a.userProfileId").
              	setParameter("surname1", surname1).
                	setFirstResult(startIndex).
                	setMaxResults(count).list();
+		
+		if (userProfiles == null) {
+			throw new InstanceNotFoundException(surname1, UserProfile.class.getName());
+		} else {
+			return userProfiles;
+		}	 		
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<UserProfile> findBySurname2(String surname2, int startIndex,
-			int count) {
+	public List<UserProfile> findBySurname2(String surname2, int startIndex, int count) 
+			throws InstanceNotFoundException {
 		
-        return getSession().createQuery(
-            	"SELECT a FROM UserProfile a WHERE a. = :surname2 " +
+		List <UserProfile> userProfiles = getSession().createQuery(
+            	"SELECT a FROM UserProfile a WHERE a.surname2 = :surname2 " +
             	"ORDER BY a.userProfileId").
              	setParameter("surname2", surname2).
                	setFirstResult(startIndex).
                	setMaxResults(count).list();
+		
+		if (userProfiles == null) {
+			throw new InstanceNotFoundException(surname2, UserProfile.class.getName());
+		} else {
+			return userProfiles;
+		}	 		
 	}
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<UserProfile> findByRole(Long roleId, int startIndex,
-			int count) {
+	public List<UserProfile> findByRole(Long roleId, int startIndex, int count) 
+			throws InstanceNotFoundException {
 		
-        return getSession().createQuery(
-            	"SELECT a FROM UserProfile a WHERE a. = :roleId " +
+		List <UserProfile> userProfiles = getSession().createQuery(
+            	"SELECT a FROM UserProfile a WHERE a.roleId = :roleId " +
             	"ORDER BY a.userProfileId").
              	setParameter("roleId", roleId).
                	setFirstResult(startIndex).
                	setMaxResults(count).list();
+		
+		if (userProfiles == null) {
+			throw new InstanceNotFoundException(roleId, UserProfile.class.getName());
+		} else {
+			return userProfiles;
+		}	 				
 	}	
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<UserProfile> findByCompany(Long companyId, int startIndex,
-			int count) {
+	public List<UserProfile> findByCompany(Long companyId, int startIndex, int count) 
+			throws InstanceNotFoundException {
 		
-        return getSession().createQuery(
-            	"SELECT a FROM UserProfile a WHERE a. = :companyId " +
+		List <UserProfile> userProfiles = getSession().createQuery(
+            	"SELECT a FROM UserProfile a WHERE a.companyId = :companyId " +
             	"ORDER BY a.userProfileId").
              	setParameter("companyId", companyId).
                	setFirstResult(startIndex).
                	setMaxResults(count).list();
+		
+		if (userProfiles == null) {
+			throw new InstanceNotFoundException(companyId, UserProfile.class.getName());
+		} else {
+			return userProfiles;
+		}			
 	}		
 	
 }

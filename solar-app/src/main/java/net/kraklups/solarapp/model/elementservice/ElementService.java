@@ -1,7 +1,6 @@
 package net.kraklups.solarapp.model.elementservice;
 
 import java.util.Calendar;
-import java.util.List;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
@@ -204,34 +203,34 @@ public interface ElementService {
 	public void assignElementPrkSensor(Sensor sensor, ElementPrk elementPrk) 
 			throws InstanceNotFoundException;	
 
-	public List<Sensor> getSensorByElementPrk(ElementPrk elementPrk, int startIndex, int count)
+	public SensorBlock getSensorByElementPrkId(Long elementPrkId, int startIndex, int count)
 			throws InstanceNotFoundException;	
 
-	public List<Cell> getCellByStringLine(StringLine stringLine, int startIndex, int count)
+	public ElementPrkBlock getCellByStringLineId(Long stringLineId, int startIndex, int count)
 			throws InstanceNotFoundException;	
 
-	public List<Cell> getCellByArrayPanel(ArrayPanel arrayPanel, int startIndex, int count)
+	public ElementPrkBlock getCellByArrayPanelId(Long arrayPanelId, int startIndex, int count)
 			throws InstanceNotFoundException;
 
-	public List<ArrayPanel> getArrayPanelByStringLine(StringLine stringLine, int startIndex, int count)
+	public ElementPrkBlock getArrayPanelByStringLineId(Long stringLineId, int startIndex, int count)
 			throws InstanceNotFoundException;
 
-	public List<Inverter> getInverterByArrayBox(ArrayBox arrayBox, int startIndex, int count)
+	public ElementPrkBlock getInverterByArrayBoxId(Long arrayBoxId, int startIndex, int count)
 			throws InstanceNotFoundException;
 
-	public List<Inverter> getInverterByElectricalSubstation(ElectricalSubstation electricalSubstation, int startIndex, int count)
+	public ElementPrkBlock getInverterByElectricalSubstationId(Long electricalSubstationId, int startIndex, int count)
 			throws InstanceNotFoundException;
 
-	public List<ElectricalSubstation> getElectricalSubstationByMediumVoltage(MediumVoltage mediumVoltage, int startIndex, int count)
+	public ElementPrkBlock getElectricalSubstationByMediumVoltageId(Long mediumVoltageId, int startIndex, int count)
 			throws InstanceNotFoundException;
 
-	public List<MediumVoltage> getMediumVoltageByCounter(Counter counter, int startIndex, int count)
+	public ElementPrkBlock getMediumVoltageByCounterId(Long counterId, int startIndex, int count)
 			throws InstanceNotFoundException;	
 
-	public List<Inverter> getInverterByCounter(Counter counter, int startIndex, int count)
+	public ElementPrkBlock getInverterByCounterId(Long counterId, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
-	public List<MediumVoltage> getMediumVoltageByExtractionPoint(ExtractionPoint extractionPoint, int startIndex, int count)
+	public ElementPrkBlock getMediumVoltageByExtractionPointId(Long extractionPointId, int startIndex, int count)
 			throws InstanceNotFoundException;	
 	
 	

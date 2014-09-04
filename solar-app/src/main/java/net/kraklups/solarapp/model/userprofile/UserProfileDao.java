@@ -29,7 +29,7 @@ public interface UserProfileDao extends GenericDao<UserProfile, Long>{
      * @param firstName of the userProfile
      * @return list of UserProfiles
      */   
-    public List<UserProfile> findByFirstName(String firstName, int startIndex, int count);
+    public List<UserProfile> findByFirstName(String firstName, int startIndex, int count) throws InstanceNotFoundException;
     
     /**
      * Returns a List of UserProfiles using firstName
@@ -37,7 +37,7 @@ public interface UserProfileDao extends GenericDao<UserProfile, Long>{
      * @param firstName of the userProfile
      * @return list of UserProfiles
      */   
-    public List<UserProfile> findBySurname1(String surname1, int startIndex, int count);
+    public List<UserProfile> findBySurname1(String surname1, int startIndex, int count) throws InstanceNotFoundException;
 
     /**
      * Returns a List of UserProfiles using firstName
@@ -45,7 +45,7 @@ public interface UserProfileDao extends GenericDao<UserProfile, Long>{
      * @param firstName of the userProfile
      * @return list of UserProfiles
      */   
-    public List<UserProfile> findBySurname2(String surname2, int startIndex, int count);
+    public List<UserProfile> findBySurname2(String surname2, int startIndex, int count) throws InstanceNotFoundException;
 
     /**
      * Returns a List of UserProfiles using roleId
@@ -53,7 +53,7 @@ public interface UserProfileDao extends GenericDao<UserProfile, Long>{
      * @param roleId
      * @return list of UserProfiles
      */   
-    public List<UserProfile> findByRole(Long roleId, int startIndex, int count);
+    public List<UserProfile> findByRole(Long roleId, int startIndex, int count) throws InstanceNotFoundException;
     
     /**
      * Returns a List of UserProfiles using companyId
@@ -61,7 +61,7 @@ public interface UserProfileDao extends GenericDao<UserProfile, Long>{
      * @param companyId
      * @return list of UserProfiles
      */   
-    public List<UserProfile> findByCompany(Long companyId, int startIndex, int count);
+    public List<UserProfile> findByCompany(Long companyId, int startIndex, int count) throws InstanceNotFoundException;
 
     
     

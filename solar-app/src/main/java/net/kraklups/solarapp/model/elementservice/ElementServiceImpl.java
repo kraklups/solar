@@ -26,6 +26,7 @@ import net.kraklups.solarapp.model.elementprk.StringLine;
 import net.kraklups.solarapp.model.elementprk.WeatherStation;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.sensor.Sensor;
+import net.kraklups.solarapp.model.sensor.SensorDao;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Service("elementService")
@@ -34,6 +35,9 @@ public class ElementServiceImpl implements ElementService {
 
     @Autowired
     private ElementPrkDao elementPrkDao;
+    
+    @Autowired
+    private SensorDao sensorDao;
 	
 	@Override
 	public ArrayBox createArrayBox(String elementPrkName, String elementPrkTag,
@@ -498,146 +502,196 @@ public class ElementServiceImpl implements ElementService {
 	public void assignStringLineCell(Cell cell, StringLine stringLine)
 			throws InstanceNotFoundException {
 		
-		
+		cell.setStringLine(stringLine);
 	}
 
 	@Override
 	public void assignMediumVoltageElectricalSubstation(
 			ElectricalSubstation electricalSubstation,
 			MediumVoltage mediumVoltage) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		electricalSubstation.setMediumVoltage(mediumVoltage);
 	}
 
 	@Override
 	public void assignArrayBoxInverter(Inverter inverter, ArrayBox arrayBox)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		inverter.setArrayBox(arrayBox);
 	}
 
 	@Override
 	public void assignCounterInverter(Inverter inverter, Counter counter)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		inverter.setCounter(counter);
 	}
 
 	@Override
 	public void assignElectricalSubstationInverter(Inverter inverter,
 			ElectricalSubstation electricalSubstation)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		inverter.setElectricalSubstation(electricalSubstation);
 	}
 
 	@Override
 	public void assignExtractionPointMediumVoltage(MediumVoltage mediumVoltage,
 			ExtractionPoint extractionPoint) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		mediumVoltage.setExtractionPoint(extractionPoint);
 	}
 
 	@Override
 	public void assignArrayBoxStringLine(StringLine stringLine,
 			ArrayBox arrayBox) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		stringLine.setArrayBox(arrayBox);
 	}
 
 	@Override
 	public Sensor createSensor(String sensorTag, String sensorType,
 			ElementPrk elementPrk) throws DuplicateInstanceException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Sensor sensor = new Sensor(sensorTag, sensorType, elementPrk);
+		sensorDao.save(sensor);
+		
+		return sensor;
 	}
 
 	@Override
 	public Sensor updateSensor(Long sensorId, String sensorTag,
 			String sensorType, ElementPrk elementPrk)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Sensor sensor = (Sensor) sensorDao.find(sensorId);
+		
+		sensor.setSensorTag(sensorTag);
+		sensor.setSensorType(sensorType);
+		sensor.setElementPrk(elementPrk);
+		
+		return sensor;
 	}
 
 	@Override
 	public void assignElementPrkSensor(Sensor sensor, ElementPrk elementPrk)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		sensor.setElementPrk(elementPrk);
 	}
 
 	@Override
-	public List<Sensor> getSensorByElementPrk(ElementPrk elementPrk,
+	public SensorBlock getSensorByElementPrkId(Long elementPrkId,
 			int startIndex, int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<Sensor> sensors = sensorDao.getSensorsByElementPrkId(elementPrkId, startIndex, count + 1);
+		
+		boolean existMoreSensors = sensors.size() == (count + 1);
+		
+		return new SensorBlock(sensors, existMoreSensors);
 	}
 
 	@Override
-	public List<Cell> getCellByStringLine(StringLine stringLine,
+	public ElementPrkBlock getCellByStringLineId(Long stringLineId,
 			int startIndex, int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<ElementPrk> elements = elementPrkDao.getCellsByStringLine(stringLineId, startIndex, count + 1);
+		
+		boolean existMoreElements = elements.size() == (count + 1);
+		
+		return new ElementPrkBlock(elements, existMoreElements);
 	}
 
 	@Override
-	public List<Cell> getCellByArrayPanel(ArrayPanel arrayPanel,
+	public ElementPrkBlock getCellByArrayPanelId(Long arrayPanelId,
 			int startIndex, int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<ElementPrk> elements = elementPrkDao.getCellsByArrayPanel(arrayPanelId, startIndex, count + 1);
+		
+		boolean existMoreElements = elements.size() == (count + 1);
+		
+		return new ElementPrkBlock(elements, existMoreElements);	
 	}
 
 	@Override
-	public List<ArrayPanel> getArrayPanelByStringLine(StringLine stringLine,
+	public ElementPrkBlock getArrayPanelByStringLineId(Long stringLineId,
 			int startIndex, int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<ElementPrk> elements = elementPrkDao.getArrayPanelsByStringLine(stringLineId, startIndex, count + 1);
+		
+		boolean existMoreElements = elements.size() == (count + 1);
+		
+		return new ElementPrkBlock(elements, existMoreElements);		
 	}
 
 	@Override
-	public List<Inverter> getInverterByArrayBox(ArrayBox arrayBox,
+	public ElementPrkBlock getInverterByArrayBoxId(Long arrayBoxId,
 			int startIndex, int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<ElementPrk> elements = elementPrkDao.getInvertersByArrayBox(arrayBoxId, startIndex, count + 1);
+		
+		boolean existMoreElements = elements.size() == (count + 1);
+		
+		return new ElementPrkBlock(elements, existMoreElements);		
 	}
 
 	@Override
-	public List<Inverter> getInverterByElectricalSubstation(
-			ElectricalSubstation electricalSubstation, int startIndex, int count)
+	public ElementPrkBlock getInverterByElectricalSubstationId(
+			Long electricalSubstationId, int startIndex, int count)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<ElementPrk> elements = elementPrkDao.getInvertersByElectricalSubstation(electricalSubstationId, startIndex, count + 1);
+		
+		boolean existMoreElements = elements.size() == (count + 1);
+		
+		return new ElementPrkBlock(elements, existMoreElements);			
 	}
 
 	@Override
-	public List<ElectricalSubstation> getElectricalSubstationByMediumVoltage(
-			MediumVoltage mediumVoltage, int startIndex, int count)
+	public ElementPrkBlock getElectricalSubstationByMediumVoltageId(
+			Long mediumVoltageId, int startIndex, int count)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<ElementPrk> elements = elementPrkDao.getElectricalSubstationsByMediumVoltage(mediumVoltageId, startIndex, count + 1);
+		
+		boolean existMoreElements = elements.size() == (count + 1);
+		
+		return new ElementPrkBlock(elements, existMoreElements);	
 	}
 
 	@Override
-	public List<MediumVoltage> getMediumVoltageByCounter(Counter counter,
+	public ElementPrkBlock getMediumVoltageByCounterId(Long counterId,
 			int startIndex, int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<ElementPrk> elements = elementPrkDao.getMediumVoltagesByCounter(counterId, startIndex, count + 1);
+		
+		boolean existMoreElements = elements.size() == (count + 1);
+		
+		return new ElementPrkBlock(elements, existMoreElements);		
 	}
 
 	@Override
-	public List<Inverter> getInverterByCounter(Counter counter, int startIndex,
+	public ElementPrkBlock getInverterByCounterId(Long counterId, int startIndex,
 			int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<ElementPrk> elements = elementPrkDao.getInvertersByCounter(counterId, startIndex, count + 1);
+		
+		boolean existMoreElements = elements.size() == (count + 1);
+		
+		return new ElementPrkBlock(elements, existMoreElements);
 	}
 
 	@Override
-	public List<MediumVoltage> getMediumVoltageByExtractionPoint(
-			ExtractionPoint extractionPoint, int startIndex, int count)
+	public ElementPrkBlock getMediumVoltageByExtractionPointId(
+			Long extractionPointId, int startIndex, int count)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<ElementPrk> elements = elementPrkDao.getMediumVoltagesByExtractionPoint(extractionPointId, startIndex, count + 1);
+		
+		boolean existMoreElements = elements.size() == (count + 1);
+		
+		return new ElementPrkBlock(elements, existMoreElements);
+	
 	}
 
 }

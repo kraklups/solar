@@ -129,8 +129,7 @@ public class UserServiceImpl implements UserService {
 			throws InstanceNotFoundException {
 
 		UserProfile userProfile = userProfileDao.find(userProfileId);
-		userProfile.setErased(erased);
-			
+		userProfile.setErased(erased);			
 	}
 
 	@Override
