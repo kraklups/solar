@@ -38,10 +38,9 @@ public class DataValue {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public DataValue(String dataValueId, TaskPrk taskPrk, ElementPrk elementPrk, 
+	public DataValue(TaskPrk taskPrk, ElementPrk elementPrk, 
 			DataLogger dataLogger, Sensor sensor) {
 		
-		this.dataValueId = dataValueId;
 		this.taskPrk = taskPrk;
 		this.elementPrk = elementPrk;
 		this.dataLogger = dataLogger;
