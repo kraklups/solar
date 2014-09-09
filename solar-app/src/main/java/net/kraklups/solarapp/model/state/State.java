@@ -4,8 +4,6 @@ import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -38,7 +36,7 @@ public class State {
 	public State() {		
 	}
 	
-	public State(Long stateId, Calendar tvi, Calendar tvf, Park park, EventTsk eventTsk, TaskPrk taskPrk, StateType stateType) {
+	public State(Long stateId, Calendar tvi, Calendar tvf, Park park, EventTsk eventTsk, TaskPrk taskPrk, Upkeep upkeep, StateType stateType) {
 		this.stateId = stateId;
 		this.tvi = tvi;
 		this.tvf = tvf;

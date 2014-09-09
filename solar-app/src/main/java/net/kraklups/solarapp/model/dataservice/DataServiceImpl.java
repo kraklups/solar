@@ -10,7 +10,6 @@ import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.datavalue.DataValue;
-import net.kraklups.solarapp.model.datavalue.DataValueBlock;
 import net.kraklups.solarapp.model.datavalue.DataValueDao;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.sensor.Sensor;

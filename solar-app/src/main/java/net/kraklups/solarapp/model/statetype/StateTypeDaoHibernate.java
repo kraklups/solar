@@ -1,7 +1,7 @@
 package net.kraklups.solarapp.model.statetype;
 
 import net.kraklups.modelutil.dao.GenericDaoHibernate;
-import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+
 import net.kraklups.solarapp.model.statetype.StateType;
 import net.kraklups.solarapp.model.statetype.StateTypeDao;
 

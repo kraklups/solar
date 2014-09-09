@@ -1,7 +1,6 @@
 package net.kraklups.solarapp.model.taskprkservice;
 
 import java.util.Calendar;
-import java.util.List;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
@@ -54,7 +53,7 @@ public interface TaskPrkService {
 	public Alarm createAlarm(String alarmTag, Calendar triggerDate, EventTsk eventTsk) 
 			throws DuplicateInstanceException;
 	
-	public void updateAlarm(Long alarmId, String alarmTag, Calendar triggerDate, EventTsk eventTsk) 
+	public Alarm updateAlarm(Long alarmId, String alarmTag, Calendar triggerDate, EventTsk eventTsk) 
 			throws InstanceNotFoundException;
 
 	public void assignEventTskAlarm(Alarm alarm, EventTsk eventTsk) 
@@ -66,19 +65,19 @@ public interface TaskPrkService {
 	public void assignAlarmTagAlarm(Alarm alarm, String alarmTag) 
 			throws InstanceNotFoundException;
 	
-	public List<Alarm> getAlarmByAlarmTag(String alarmTag, int startIndex, int count) 
+	public AlarmBlock getAlarmByAlarmTag(String alarmTag, int startIndex, int count) 
 			throws InstanceNotFoundException;
 	
-	public List<Alarm> getAlarmByTriggerDate(Calendar triggerDate, int startIndex, int count) 
+	public AlarmBlock getAlarmByTriggerDate(Calendar triggerDate, int startIndex, int count) 
 			throws InstanceNotFoundException;
 	
-	public List<Alarm> getAlarmByEventTsk(EventTsk eventTsk, int startIndex, int count) 
+	public AlarmBlock getAlarmByEventTskId(Long eventTskId, int startIndex, int count) 
 			throws InstanceNotFoundException;
 	
 	public Report createReport(String reportTitle, Calendar dateRequest, Calendar dateServed, 
 			UserProfile loginRequest, String urlReport) throws DuplicateInstanceException;
 	
-	public void updateReport(Long reportId, String reportTitle, Calendar dateRequest, Calendar dateServed, 
+	public Report updateReport(Long reportId, String reportTitle, Calendar dateRequest, Calendar dateServed, 
 			UserProfile loginRequest, String urlReport) throws InstanceNotFoundException;
 	
 	public void assignLoginRequestReport(Report report, UserProfile loginRequest) 
@@ -96,55 +95,55 @@ public interface TaskPrkService {
 	public void assignUrlReportReport(Report report, String urlReport)
 				throws InstanceNotFoundException;
 	
-	public List<Report> getReportByLoginRequest(UserProfile loginRequest, int startIndex, int count) 
+	public ReportBlock getReportByUserProfileId(Long userProfileId, int startIndex, int count) 
 			throws InstanceNotFoundException;
 	
-	public List<Report> getReportByDateRequest(Calendar dateRequest, int startIndex, int count)
+	public ReportBlock getReportByDateRequest(Calendar dateRequest, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
-	public List<TaskPrk> getTaskPrkByPark(Park park, int startIndex, int count)
+	public TaskPrkBlock getTaskPrkByParkId(Long parkId, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
-	public List<TaskPrk> getTaskPrkByLoginRequest(UserProfile loginRequest, int startIndex, int count)
+	public TaskPrkBlock getTaskPrkByUserProfileId(Long userProfileId, int startIndex, int count)
 			throws InstanceNotFoundException;
 
-	public List<TaskPrk> getTaskPrkByRol(Role role, int startIndex, int count)
+	public TaskPrkBlock getTaskPrkByRolId(Long roleId, int startIndex, int count)
 			throws InstanceNotFoundException;	
 	
-	public List<Upkeep> getUpkeepByPark(Park park, int startIndex, int count)
+	public TaskPrkBlock getUpkeepByParkId(Long parkId, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
-	public List<Upkeep> getUpkeepByLoginRequest(UserProfile loginRequest, int startIndex, int count)
+	public TaskPrkBlock getUpkeepByUserProfileId(Long userProfileId, int startIndex, int count)
 			throws InstanceNotFoundException;
 
-	public List<Upkeep> getUpkeepByRol(Role role, int startIndex, int count)
+	public TaskPrkBlock getUpkeepByRolId(Long roleId, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
-	public List<Monitor> getMonitorByPark(Park park, int startIndex, int count)
+	public TaskPrkBlock getMonitorByParkId(Long parkId, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
-	public List<Monitor> getMonitorByLoginRequest(UserProfile loginRequest, int startIndex, int count)
+	public TaskPrkBlock getMonitorByUserProfileId(Long userProfileId, int startIndex, int count)
 			throws InstanceNotFoundException;
 
-	public List<Monitor> getMonitorByRol(Role role, int startIndex, int count)
+	public TaskPrkBlock getMonitorByRolId(Long roleId, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
-	public List<Track> getTrackByPark(Park park, int startIndex, int count)
+	public TaskPrkBlock getTrackByParkId(Long parkId, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
-	public List<Track> getTrackByLoginRequest(UserProfile loginRequest, int startIndex, int count)
+	public TaskPrkBlock getTrackByUserProfileId(Long userProfileId, int startIndex, int count)
 			throws InstanceNotFoundException;
 
-	public List<Track> getTrackByRol(Role role, int startIndex, int count)
+	public TaskPrkBlock getTrackByRolId(Long roleId, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
-	public List<Synchronize> getSynchronizeByPark(Park park, int startIndex, int count)
+	public TaskPrkBlock getSynchronizeByParkId(Long parkId, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
-	public List<Synchronize> getSynchronizeByLoginRequest(UserProfile loginRequest, int startIndex, int count)
+	public TaskPrkBlock getSynchronizeByUserProfileId(Long userProfileId, int startIndex, int count)
 			throws InstanceNotFoundException;
 
-	public List<Synchronize> getSynchronizeByRol(Role role, int startIndex, int count)
+	public TaskPrkBlock getSynchronizeByRolId(Long roleId, int startIndex, int count)
 			throws InstanceNotFoundException;	
 	
 	public void assignRoleTaskPrk(TaskPrk taskPrk, Role role) 
@@ -165,7 +164,7 @@ public interface TaskPrkService {
 	public TaskPrk cloneTaskPrk(TaskPrk taskPrk) 
 			throws InstanceNotFoundException;	
 	
-	public List<Report> getReportByPark(Park park, int startIndex, int count)
+	public ReportBlock getReportByParkId(Long parkId, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
 	

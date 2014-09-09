@@ -9,6 +9,7 @@ public class CookiesManager {
     private static final int REMEMBER_MY_PASSWORD_AGE =
         30 * 24 * 3600; // 30 days in seconds
 
+	@SuppressWarnings("deprecation")
 	public static void leaveCookies(Cookies cookies, String loginName,
 			String encryptedPassword) {
 		cookies.writeCookieValue(LOGIN_NAME_COOKIE, loginName,

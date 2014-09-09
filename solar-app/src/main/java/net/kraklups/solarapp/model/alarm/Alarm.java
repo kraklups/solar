@@ -4,18 +4,14 @@ import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
 
@@ -33,8 +29,7 @@ public class Alarm {
 	public Alarm() {		
 	}
 	
-	public Alarm(Long alarmId, String alarmTag, Calendar triggerDate, EventTsk eventTsk) {
-		this.alarmId = alarmId;
+	public Alarm(String alarmTag, Calendar triggerDate, EventTsk eventTsk) {
 		this.alarmTag = alarmTag;
 		this.triggerDate = triggerDate;
 		this.eventTsk = eventTsk;
@@ -64,11 +59,11 @@ public class Alarm {
 		return triggerDate;
 	}
 
-	public String getAlarmName() {
+	public String getAlarmTag() {
 		return alarmTag;
 	}
 	
-	public void setAlarmName(String alarmTag) {
+	public void setAlarmTag(String alarmTag) {
 		this.alarmTag = alarmTag;
 	}
 	

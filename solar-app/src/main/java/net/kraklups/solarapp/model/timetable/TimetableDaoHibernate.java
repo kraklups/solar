@@ -1,7 +1,7 @@
 package net.kraklups.solarapp.model.timetable;
 
 import net.kraklups.modelutil.dao.GenericDaoHibernate;
-import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+
 import net.kraklups.solarapp.model.timetable.Timetable;
 import net.kraklups.solarapp.model.timetable.TimetableDao;
 

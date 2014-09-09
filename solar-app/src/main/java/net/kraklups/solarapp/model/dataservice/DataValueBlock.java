@@ -1,6 +1,8 @@
-package net.kraklups.solarapp.model.datavalue;
+package net.kraklups.solarapp.model.dataservice;
 
 import java.util.List;
+
+import net.kraklups.solarapp.model.datavalue.DataValue;
 
 public class DataValueBlock {
 

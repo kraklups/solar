@@ -2,6 +2,7 @@ package net.kraklups.solarapp.model.eventtsk;
 
 import net.kraklups.modelutil.dao.GenericDaoHibernate;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 import net.kraklups.solarapp.model.eventtsk.EventTskDao;
 
