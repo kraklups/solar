@@ -38,11 +38,11 @@ CREATE SEQUENCE RoleSeq;
 DROP TABLE IF EXISTS Role CASCADE;
 CREATE TABLE Role (roleId BIGINT NOT NULL, 
     roleName VARCHAR(30) NOT NULL, date TIMESTAMP NOT NULL, 
-    loginName VARCHAR(30) NOT NULL, weight SMALLINT NOT NULL,
+    userProfileId BIGINT NOT NULL, weight SMALLINT NOT NULL,
     CONSTRAINT RoleNameU UNIQUE(roleName),
     CONSTRAINT RoleIdPK PRIMARY KEY(roleId));
 
-CREATE INDEX RoleIndexByLoginName ON Role (roleId, loginName);
+CREATE INDEX RoleIndexByUserProfileId ON Role (roleId, userProfileId);
 
 -- ------------------------------ UserProfile ----------------------------------
 -- "version" column is declared with "DEFAULT O" 
@@ -68,8 +68,8 @@ CREATE TABLE UserProfile (userProfileId BIGINT NOT NULL,
 -- Added for cyclic dependency loop with both FK
 
 ALTER TABLE ONLY Role
-    ADD CONSTRAINT LoginNameFK FOREIGN KEY(loginName)
-        REFERENCES UserProfile(loginName) ON DELETE CASCADE 
+    ADD CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
+        REFERENCES UserProfile (userProfileId) ON DELETE CASCADE 
         DEFERRABLE INITIALLY DEFERRED;
 
 -- ------------------------------ RoleModuleAccess -----------------------------
@@ -93,12 +93,12 @@ CREATE SEQUENCE ParkSeq;
 
 DROP TABLE IF EXISTS Park CASCADE;
 CREATE TABLE Park (parkId BIGINT NOT NULL, parkName VARCHAR(30),
-    startupDate TIMESTAMP NOT NULL, productionDate TIMESTAMP NOT NULL, loginName VARCHAR(30) NOT NULL,
+    startupDate TIMESTAMP NOT NULL, productionDate TIMESTAMP NOT NULL, userProfileId BIGINT NOT NULL,
     companyId BIGINT NOT NULL, mapPark geometry, 
     CONSTRAINT enforce_geotype_mapPark CHECK (geometrytype(mapPark) = 'MULTIPOLYGON'::text OR mapPark IS NULL),
   	CONSTRAINT enforce_srid_mapPark CHECK (st_srid(mapPark) = 4326),     
-    CONSTRAINT loginNameU FOREIGN KEY (loginName)
-        REFERENCES UserProfile (loginName) ON DELETE CASCADE,
+    CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
+        REFERENCES UserProfile (userProfileId) ON DELETE CASCADE,
     CONSTRAINT CompanyIdFK FOREIGN KEY(companyId)
         REFERENCES Company (companyId) ON DELETE CASCADE,
     CONSTRAINT ParkIdPK PRIMARY KEY (parkId));
@@ -154,9 +154,9 @@ CREATE SEQUENCE ReportSeq;
 DROP TABLE IF EXISTS Report CASCADE;
 CREATE TABLE Report (reportId BIGINT NOT NULL,
     reportTitle VARCHAR(50), dateRequest TIMESTAMP NOT NULL, 
-    dateServed TIMESTAMP NOT NULL, loginRequest VARCHAR(30), urlReport VARCHAR(128), 
-    CONSTRAINT LoginRequestFK FOREIGN KEY(loginRequest)
-        REFERENCES UserProfile(loginName) ON DELETE CASCADE,
+    dateServed TIMESTAMP NOT NULL, userProfileId BIGINT NOT NULL, urlReport VARCHAR(128), 
+CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
+        REFERENCES UserProfile (userProfileId) ON DELETE CASCADE,
     CONSTRAINT ReportIdPK PRIMARY KEY (reportId));
 
 -- ------------------------------ State -----------------------------

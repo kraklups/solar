@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.OneToMany;
@@ -18,6 +20,7 @@ import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
 
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
+import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
 @Table(name="Role", uniqueConstraints = {
@@ -27,26 +30,26 @@ public class Role {
 	private Long roleId;
 	private String roleName;
 	private Calendar date;
-	private String loginName;
+	private UserProfile userProfile;
 	private Long weight;
 	private Set<RoleModuleAccess> roleModuleAccess = new HashSet<RoleModuleAccess>(0);
 	
 	public Role() {
 	}
 	
-	public Role(String roleName, Calendar date, String loginName, Long weight) {
+	public Role(String roleName, Calendar date, UserProfile userProfile, Long weight) {
 		
 		this.roleName = roleName;
 		this.date = date;
-		this.loginName = loginName;
+		this.userProfile = userProfile;
 		this.weight = weight;
 	}
 
-	public Role(String roleName, Calendar date, String loginName, Long weight, Set<RoleModuleAccess> roleModuleAccess) {		
+	public Role(String roleName, Calendar date, UserProfile userProfile, Long weight, Set<RoleModuleAccess> roleModuleAccess) {		
 
 		this.roleName = roleName;
 		this.date = date;
-		this.loginName = loginName;
+		this.userProfile = userProfile;
 		this.weight = weight;
 		this.roleModuleAccess = roleModuleAccess;
 	}	
@@ -83,12 +86,14 @@ public class Role {
 		this.date = date;
 	}	
 	
-	public String getLoginName() {
-		return loginName;
+	@ManyToOne(optional=false, fetch=FetchType.LAZY)
+	@JoinColumn(name="userProfileId")		
+	public UserProfile getUserProfile() {
+		return userProfile;
 	}
-	
-	public void setLoginName(String loginName){
-		this.loginName = loginName;
+
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile;
 	}
 	
     public Long getWeight() {

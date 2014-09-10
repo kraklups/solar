@@ -13,9 +13,9 @@ BEGIN;
 
 SET CONSTRAINTS ALL DEFERRED;
 
-INSERT into Role (roleId,roleName,date,loginName,weight) VALUES (nextval('RoleSeq'),'admin',CURRENT_TIMESTAMP,'admin',10);
+INSERT into Role (roleId,roleName,date,userProfileId,weight) VALUES (nextval('RoleSeq'),'admin',CURRENT_TIMESTAMP,1,10);
 
-INSERT into Role (roleId,roleName,date,loginName,weight) VALUES (nextval('RoleSeq'),'default',CURRENT_TIMESTAMP,'admin',10);
+INSERT into Role (roleId,roleName,date,userProfileId,weight) VALUES (nextval('RoleSeq'),'default',CURRENT_TIMESTAMP,1,10);
 
 INSERT into UserProfile (userProfileId,loginName,enpassword,firstName,surname1,surname2,email,date,blocked,erased,version,roleId,companyId) 
             VALUES (nextval('UserProfileSeq'),'admin','DLYsce016be6c','adminName','adminSurname1','adminSurname2','admin@kraklups.net',

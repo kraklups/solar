@@ -73,6 +73,7 @@ public class UserProfile {
 		this.userProfileId = userProfileId;
 	}
 
+	@Column(name="loginName", unique=true)
 	public String getLoginName() {
 		return loginName;
 	}

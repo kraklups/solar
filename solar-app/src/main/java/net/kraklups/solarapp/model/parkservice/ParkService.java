@@ -45,8 +45,6 @@ public interface ParkService {
     
     public void assignParkTimetable(Timetable timetable, Park park)
     		throws InstanceNotFoundException;
-
-
     
     public void assignUserProfileTimetable(Timetable timetable, UserProfile userProfile)
     		throws InstanceNotFoundException;  

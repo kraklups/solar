@@ -81,7 +81,7 @@ public interface UserService {
 	public UserProfileBlock getEmployeeByRoleId(Long roleId,
 			int startIndex, int count) throws InstanceNotFoundException;	
 	
-	public Role registerRole(String roleName, String loginName, Long weight) 
+	public Role registerRole(String roleName, UserProfile userProfile, Long weight) 
 			throws DuplicateInstanceException;
 	
 	public Role findRole(Long roleId) throws InstanceNotFoundException;
@@ -91,7 +91,7 @@ public interface UserService {
 	public void removeRole(Long roleId) throws InstanceNotFoundException;
 	
 	public void updateRole(Long roleId, String roleName, Calendar date, 
-			String loginName, Long weight) throws InstanceNotFoundException;
+			UserProfile userProfile, Long weight) throws InstanceNotFoundException;
 
 	public Module registerModule(String moduleName) throws DuplicateInstanceException;
 	

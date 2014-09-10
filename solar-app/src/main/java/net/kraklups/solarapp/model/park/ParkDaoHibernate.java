@@ -29,13 +29,26 @@ public class ParkDaoHibernate extends
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")	
 	public List<Park> getParksByLoginName(String loginName, int startIndex, int count)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Park> parks = (List<Park>)  getSession().createQuery(
+	        	"SELECT a FROM Park a WHERE a.loginName = :loginName " +
+	        	"ORDER BY a.parkId").
+	         	setParameter("loginName", loginName).
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (parks == null) {
+			throw new InstanceNotFoundException(loginName, Park.class.getName());
+		} else {
+			return parks;
+		}	
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<Park> getParksByCompanyId(Long companyId, int startIndex, int count)
 			throws InstanceNotFoundException {
 		// TODO Auto-generated method stub

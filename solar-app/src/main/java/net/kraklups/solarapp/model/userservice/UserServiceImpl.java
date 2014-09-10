@@ -268,14 +268,14 @@ public class UserServiceImpl implements UserService {
 	}	
 	
 	@Override
-	public Role registerRole(String roleName, String loginName, Long weight) throws DuplicateInstanceException {
+	public Role registerRole(String roleName, UserProfile userProfile, Long weight) throws DuplicateInstanceException {
 		
 		try {
 			roleDao.findByName(roleName);
 			throw new DuplicateInstanceException(roleName, Role.class.getName()); 
 		} catch (InstanceNotFoundException e) { 
 			Calendar cal = Calendar.getInstance();
-			Role role = new Role(roleName, cal, loginName, weight);
+			Role role = new Role(roleName, cal, userProfile, weight);
 			roleDao.save(role);
 			return role;
 		}
@@ -295,12 +295,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void updateRole(Long roleId, String roleName, Calendar date,
-			String loginName, Long weight) throws InstanceNotFoundException {
+			UserProfile userProfile, Long weight) throws InstanceNotFoundException {
 
 		Role role = roleDao.find(roleId);
-		role.setLoginName(loginName);
+		role.setRoleName(roleName);
 		role.setDate(date);
-		role.setLoginName(loginName);
+		role.setUserProfile(userProfile);
 		role.setWeight(weight);
 	}
 

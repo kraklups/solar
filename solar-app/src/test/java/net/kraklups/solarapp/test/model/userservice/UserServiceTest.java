@@ -96,7 +96,10 @@ public class UserServiceTest {
 		/* Register role and find role */
 		
 		Long weight = new Long("1");
-		Role role = userService.registerRole("invitado", "tuxlex", weight);
+		
+		UserProfile userProfile = userService.findUserProfile(weight);	
+		
+		Role role = userService.registerRole("invitado", userProfile, weight);
 		
 		Role role2 = userService.findRole(role.getRoleId());
 		
@@ -107,11 +110,13 @@ public class UserServiceTest {
     public void testRegisterDuplicatedRole() throws DuplicateInstanceException,
         InstanceNotFoundException {
     	
-    	Long weight = new Long("1");    	    
+    	Long weight = new Long("1"); 
     	
-    	userService.registerRole("invitado", "tuxlex", weight);
+    	UserProfile userProfile = userService.findUserProfile(weight);
     	
-    	userService.registerRole("invitado", "tuxlex", weight);
+    	userService.registerRole("invitado", userProfile, weight);
+    	
+    	userService.registerRole("invitado", userProfile, weight);
     }
     
 	@Test
