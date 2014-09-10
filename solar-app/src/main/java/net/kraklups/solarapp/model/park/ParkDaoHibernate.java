@@ -1,5 +1,7 @@
 package net.kraklups.solarapp.model.park;
 
+import java.util.List;
+
 import net.kraklups.modelutil.dao.GenericDaoHibernate;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.park.Park;
@@ -24,5 +26,19 @@ public class ParkDaoHibernate extends
 		} else {
 			return park;
 		}	
+	}
+
+	@Override
+	public List<Park> getParksByLoginName(String loginName, int startIndex, int count)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Park> getParksByCompanyId(Long companyId, int startIndex, int count)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

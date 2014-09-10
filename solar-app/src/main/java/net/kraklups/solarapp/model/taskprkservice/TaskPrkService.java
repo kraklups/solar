@@ -6,7 +6,9 @@ import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.alarm.Alarm;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
+import net.kraklups.solarapp.model.messageevent.MessageEvent;
 import net.kraklups.solarapp.model.park.Park;
+import net.kraklups.solarapp.model.parkservice.MessageEventBlock;
 import net.kraklups.solarapp.model.report.Report;
 import net.kraklups.solarapp.model.role.Role;
 import net.kraklups.solarapp.model.taskprk.Monitor;
@@ -14,6 +16,7 @@ import net.kraklups.solarapp.model.taskprk.Synchronize;
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
 import net.kraklups.solarapp.model.taskprk.Track;
 import net.kraklups.solarapp.model.taskprk.Upkeep;
+import net.kraklups.solarapp.model.timetable.Timetable;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 public interface TaskPrkService {
@@ -167,5 +170,50 @@ public interface TaskPrkService {
 	public ReportBlock getReportByParkId(Long parkId, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
+    public EventTsk createEventTsk(String tagET, String definitionET, Calendar tvi, Calendar tvf, 
+            TaskPrk taskPrk, Timetable timetable, Boolean triggerAlarm, Boolean triggerMessage)
+            throws DuplicateInstanceException;
+
+    public EventTsk updateEventTsk(Long eventTaskId, String tagET, String definitionET, Calendar tvi, Calendar tvf, 
+            TaskPrk taskPrk, Timetable timetable, Boolean triggerAlarm, Boolean triggerMessage) 
+            throws InstanceNotFoundException; 
+    
+    public void assignTviEventTsk(EventTsk eventTsk, Calendar tvi)
+    		throws InstanceNotFoundException;
+
+    public void assignTvfEventTsk(EventTsk eventTsk, Calendar tvf)
+    		throws InstanceNotFoundException;
+
+	public void assignTaskPrkEventTsk(EventTsk eventTsk, TaskPrk taskPrk)
+			throws InstanceNotFoundException;
+
+	public void assignTriggerAlarmEventTsk(EventTsk eventTsk, Boolean triggerAlarm)
+			throws InstanceNotFoundException;
 	
+	public void assignTriggerMessageEventTsk(EventTsk eventTsk, Boolean triggerMessage)
+			throws InstanceNotFoundException;
+
+    public MessageEventBlock getMessageByEventTsk(EventTsk eventTsk)
+			throws InstanceNotFoundException;  
+    
+    public AlarmBlock getAlarmByEventTsk(EventTsk eventTsk)
+			throws InstanceNotFoundException;
+    
+    public TaskPrk getTaskPrkByEventTsk(EventTsk eventTsk)
+			throws InstanceNotFoundException;    	
+	
+    public MessageEvent createMessageEvent(String messageTxt, Calendar tvi)
+    		throws DuplicateInstanceException;
+    
+    public void updateMessageEvent(Long messageId, String messageTxt, Calendar tvi)
+    		throws InstanceNotFoundException;
+    
+    public void assignTviMessageEvent(MessageEvent messageEvent, Calendar tvi)
+    		throws InstanceNotFoundException;
+    
+    public void assignMessageTxtMessageEvent(MessageEvent messageEvent, String messageTxt)
+    		throws InstanceNotFoundException;    
+    
+    public void assignTimetableEventTsk(EventTsk eventTsk, Timetable timetable)
+    		throws InstanceNotFoundException;    
 }

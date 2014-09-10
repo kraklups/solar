@@ -31,8 +31,7 @@ public class Timetable {
 	public Timetable() {
 	}
 	
-	public Timetable(Long timetableId, String timetableTag, UserProfile userProfile, Calendar tvi, Park park){
-		this.timetableId = timetableId;
+	public Timetable(String timetableTag, UserProfile userProfile, Calendar tvi, Park park){
 		this.timetableTag = timetableTag;
 		this.userProfile = userProfile;
 		this.tvi = tvi;

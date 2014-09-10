@@ -11,13 +11,12 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
-import net.kraklups.solarapp.model.alarm.Alarm;
 import net.kraklups.solarapp.model.company.Company;
-import net.kraklups.solarapp.model.eventtsk.EventTsk;
-import net.kraklups.solarapp.model.messageevent.MessageEvent;
 import net.kraklups.solarapp.model.park.Park;
-import net.kraklups.solarapp.model.taskprk.TaskPrk;
+import net.kraklups.solarapp.model.state.StateDao;
+import net.kraklups.solarapp.model.statetype.StateTypeDao;
 import net.kraklups.solarapp.model.timetable.Timetable;
+import net.kraklups.solarapp.model.timetable.TimetableDao;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.park.ParkDao;
 
@@ -27,7 +26,17 @@ public class ParkServiceImpl implements ParkService {
 
     @Autowired
     private ParkDao parkDao;
-      	
+    
+    @Autowired
+    private TimetableDao timetableDao;
+    
+    @Autowired
+    private StateDao stateDao;
+    
+    @Autowired
+    private StateTypeDao stateTypeDao;
+    
+    
 	@Override
 	public Park createPark(String parkName, Calendar startupDate,
 			Calendar productionDate, UserProfile userProfile, Company company,
@@ -48,210 +57,125 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public void updatePark(Long parkId, String parkName, Calendar startupDate,
-			Calendar productionDate, String loginName, Company company,
+	public Park updatePark(Long parkId, String parkName, Calendar startupDate,
+			Calendar productionDate, UserProfile userProfile, Company company,
 			MultiPolygon mapPark) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		Park park = parkDao.find(parkId);
+		
+		park.setParkName(parkName);
+		park.setStartupDate(startupDate);
+		park.setProductionDate(productionDate);
+		park.setUserProfile(userProfile);
+		park.setCompany(company);
+		park.setMapPark(mapPark);
+		
+		return park;
 	}
 
 	@Override
 	public Park findParkByName(String parkName)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return parkDao.findByParkName(parkName);
 	}
 
 	@Override
-	public void assignLoginNamePark(Park park, String loginName)
+	public void assignLoginNamePark(Park park, UserProfile userProfile)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		park.setUserProfile(userProfile);
 	}
 
 	@Override
 	public void assignCompanyPark(Park park, Company company)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		park.setCompany(company);
 	}
 
 	@Override
 	public void assignGISPark(Park park, MultiPolygon mapPark)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		park.setMapPark(mapPark);
 	}
 
 	@Override
-	public List<Park> getParksByLoginName(String loginName, int startIndex,
+	public ParkBlock getParkByLoginName(String loginName, int startIndex,
 			int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Park> parks = parkDao.getParksByLoginName(loginName, startIndex, count +1);
+		
+		boolean existMoreParks = parks.size() == (count +1);
+		
+		return new ParkBlock(parks, existMoreParks);
 	}
 
 	@Override
-	public List<Park> getParksByCompany(Company company, int startIndex,
+	public ParkBlock getParkByCompanyId(Long companyId, int startIndex,
 			int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Park> parks = parkDao.getParksByCompanyId(companyId, startIndex, count +1);
+		
+		boolean existMoreParks = parks.size() == (count +1);
+		
+		return new ParkBlock(parks, existMoreParks);
 	}
 
 	@Override
 	public Timetable createTimetable(String tag, UserProfile userProfile,
 			Calendar tvi, Park park) throws DuplicateInstanceException {
-		// TODO Auto-generated method stub
+		
+		Timetable timetable = new Timetable(tag, userProfile, tvi, park);
+		
+		timetableDao.save(timetable);
+		
 		return null;
 	}
 
 	@Override
-	public void updateTimetable(Long timetableId, String tag,
+	public Timetable updateTimetable(Long timetableId, String timetableTag,
 			UserProfile userProfile, Calendar tvi, Park park)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		Timetable timetable = timetableDao.find(timetableId);
+		
+		timetable.setTimetableTag(timetableTag);
+		timetable.setTvi(tvi);
+		timetable.setUserProfile(userProfile);
+		timetable.setPark(park);
+		
+		return timetable;
 	}
 
 	@Override
 	public void assignParkTimetable(Timetable timetable, Park park)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		timetable.setPark(park);
 	}
 
 	@Override
-	public void assignEventTskTimetable(Timetable timetable, EventTsk eventTsk)
+	public void assignUserProfileTimetable(Timetable timetable, UserProfile userProfile)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void assignLoginTimetable(Timetable timetable, String login)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		
+		timetable.setUserProfile(userProfile);
 	}
 
 	@Override
 	public void assignTviTimetable(Timetable timetable, Calendar tvi)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void assignTvfTimetable(Timetable timetable, Calendar tvf)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		
+		timetable.setTvi(tvi);
 	}
 
 	@Override
 	public Park getParkByTimetable(Timetable timetable)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public EventTsk createEventTsk(String tagET, String definitionET,
-			Calendar tvi, Calendar tvf, TaskPrk taskPrk, MessageEvent messageEvent,
-			Alarm alarm) throws DuplicateInstanceException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void updateTimetable(Long eventTaskId, String tagET,
-			String definitionET, Calendar tvi, Calendar tvf, TaskPrk taskPrk,
-			MessageEvent messageEvent, Alarm alarm) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		return timetable.getPark();
 	}
 
-	@Override
-	public void assignTviEventTsk(EventTsk eventTsk, Calendar tvi)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void assignTvfEventTsk(EventTsk eventTsk, Calendar tvf)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public MessageEvent getMessageByEventTsk(EventTsk eventTsk)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Alarm getAlarmByEventTsk(EventTsk eventTsk)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public TaskPrk getTaskPrkByEventTsk(EventTsk eventTsk)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void assignTaskPrkEventTsk(EventTsk eventTsk, TaskPrk taskPrk)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void assignMessageEventTsk(EventTsk eventTsk, MessageEvent messageEvent)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void assignAlarmEventTsk(EventTsk eventTsk, Alarm alarm)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public MessageEvent createMessageEvent(String messageTxt, Calendar tvi)
-			throws DuplicateInstanceException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void updateMessageEvent(Long messageId, String messageTxt,
-			Calendar tvi) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void assignTviMessageEvent(MessageEvent messageEvent, Calendar tvi)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void assignMessageTxtMessageEvent(MessageEvent messageEvent,
-			String messageTxt) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

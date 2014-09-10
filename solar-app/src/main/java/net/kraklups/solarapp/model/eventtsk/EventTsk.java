@@ -35,9 +35,8 @@ public class EventTsk {
 	public EventTsk() {
 	}
 	
-	public EventTsk(Long eventTskId, Calendar tvi, Calendar tvf, String tagET, String definitionET, 
+	public EventTsk(String tagET, String definitionET, Calendar tvi, Calendar tvf,  
 			TaskPrk taskPrk, Timetable timetable, Boolean triggerAlarm, Boolean triggerMessage) {
-		this.eventTskId = eventTskId;
 		this.tvi = tvi;
 		this.tvf = tvf;
 		this.tagET = tagET;
