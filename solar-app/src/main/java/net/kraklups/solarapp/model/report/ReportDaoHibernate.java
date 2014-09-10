@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import net.kraklups.modelutil.dao.GenericDaoHibernate;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
-import net.kraklups.solarapp.model.taskprk.TaskPrk;
 
 @Repository("reportDao")
 public class ReportDaoHibernate extends 
@@ -15,24 +14,60 @@ public class ReportDaoHibernate extends
 {
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<Report> getReportsByUserProfileId(Long userProfileId,
 			int startIndex, int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Report> reports = (List<Report>)  getSession().createQuery(
+	        	"SELECT a FROM Report a WHERE a.userProfileId = :userProfileId " +
+	        	"ORDER BY a.userProfileId").
+	         	setParameter("userProfileId", userProfileId).
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (reports == null) {
+			throw new InstanceNotFoundException(userProfileId, Report.class.getName());
+		} else {
+			return reports;
+		}	
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<Report> getReportsByDateRequest(Calendar dateRequest,
 			int startIndex, int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<Report> reports = (List<Report>)  getSession().createQuery(
+	        	"SELECT a FROM Report a WHERE a.dateRequest = :dateRequest " +
+	        	"ORDER BY a.dateRequest").
+	         	setParameter("dateRequest", dateRequest).
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (reports == null) {
+			throw new InstanceNotFoundException(dateRequest, Report.class.getName());
+		} else {
+			return reports;
+		}	
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<Report> getReportsByParkId(Long parkId, int startIndex,
 			int count) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Report> reports = (List<Report>)  getSession().createQuery(
+	        	"SELECT a FROM Report a WHERE a.parkId = :parkId " +
+	        	"ORDER BY a.dateRequest").
+	         	setParameter("parkId", parkId).
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (reports == null) {
+			throw new InstanceNotFoundException(parkId, Report.class.getName());
+		} else {
+			return reports;
+		}	
 	}
 
 }

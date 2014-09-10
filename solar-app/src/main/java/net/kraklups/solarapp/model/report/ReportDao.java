@@ -5,7 +5,6 @@ import java.util.List;
 
 import net.kraklups.modelutil.dao.GenericDao;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
-import net.kraklups.solarapp.model.taskprk.TaskPrk;
 
 public interface ReportDao extends GenericDao<Report, Long> {
 
