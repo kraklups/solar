@@ -95,6 +95,15 @@ public interface ElementPrkDao extends GenericDao<ElementPrk, Long> {
       * @return list of elements
       */		     
      public List<ElementPrk> getMediumVoltagesByExtractionPoint(Long extractionPointId, int startIndex, int count) 
-             throws InstanceNotFoundException;          
+             throws InstanceNotFoundException;
+
+     /**
+      * Returns a list MediumVoltages (ElementPrk) using the extractionPointId element identifier
+      *
+      * @param extractionPointId element identifier
+      * @return list of elements
+      */		     
+     public List<ElementPrk> getElementPrksByDataLogger(Long dataLoggerId, int startIndex, int count) 
+             throws InstanceNotFoundException;
      
 }

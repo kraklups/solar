@@ -8,7 +8,6 @@ import net.kraklups.solarapp.model.alarm.Alarm;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 import net.kraklups.solarapp.model.messageevent.MessageEvent;
 import net.kraklups.solarapp.model.park.Park;
-import net.kraklups.solarapp.model.parkservice.MessageEventBlock;
 import net.kraklups.solarapp.model.report.Report;
 import net.kraklups.solarapp.model.role.Role;
 import net.kraklups.solarapp.model.taskprk.Monitor;

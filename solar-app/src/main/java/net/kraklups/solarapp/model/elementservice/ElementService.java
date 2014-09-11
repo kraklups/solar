@@ -233,5 +233,6 @@ public interface ElementService {
 	public ElementPrkBlock getMediumVoltageByExtractionPointId(Long extractionPointId, int startIndex, int count)
 			throws InstanceNotFoundException;	
 	
-	
+	public ElementPrkBlock getElementPrkByDataLoggerId(Long dataLoggerId, int startIndex, int count) 
+			throws InstanceNotFoundException;
 }

@@ -1,4 +1,4 @@
-package net.kraklups.solarapp.model.parkservice;
+package net.kraklups.solarapp.model.taskprkservice;
 
 import java.util.List;
 

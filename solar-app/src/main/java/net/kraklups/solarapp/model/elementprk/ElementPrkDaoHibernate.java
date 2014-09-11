@@ -204,6 +204,25 @@ public class ElementPrkDaoHibernate extends
 		}			
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<ElementPrk> getElementPrksByDataLogger(Long dataLoggerId,
+			int startIndex, int count) throws InstanceNotFoundException {
+		
+		List<ElementPrk> elements = (List<ElementPrk>)  getSession().createQuery(
+	        	"SELECT a FROM ElementPrk a WHERE a.dataLoggerId = :dataLoggerId " +
+	        	"ORDER BY a.elemenPrkId").
+	         	setParameter("dataLoggerId", dataLoggerId).
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (elements == null) {
+			throw new InstanceNotFoundException(dataLoggerId, ElementPrk.class.getName());
+		} else {
+			return elements;
+		}			
+	}
+
 
 
 }

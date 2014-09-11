@@ -694,4 +694,15 @@ public class ElementServiceImpl implements ElementService {
 	
 	}
 
+	@Override
+	public ElementPrkBlock getElementPrkByDataLoggerId(Long dataLoggerId,
+			int startIndex, int count) throws InstanceNotFoundException {
+		
+		List<ElementPrk> elements = elementPrkDao.getElementPrksByDataLogger(dataLoggerId, startIndex, count + 1);
+		
+		boolean existMoreElements = elements.size() == (count + 1);
+		
+		return new ElementPrkBlock(elements, existMoreElements);
+	}
+
 }
