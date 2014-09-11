@@ -192,23 +192,20 @@ public interface TaskPrkService {
 	public void assignTriggerMessageEventTsk(EventTsk eventTsk, Boolean triggerMessage)
 			throws InstanceNotFoundException;
 
-    public MessageEventBlock getMessageByEventTsk(EventTsk eventTsk)
+    public MessageEventBlock getMessageEventByEventTskId(Long eventTskId, int startIndex, int count)
 			throws InstanceNotFoundException;  
-    
-    public AlarmBlock getAlarmByEventTsk(EventTsk eventTsk)
-			throws InstanceNotFoundException;
-    
-    public TaskPrk getTaskPrkByEventTsk(EventTsk eventTsk)
-			throws InstanceNotFoundException;    	
-	
-    public MessageEvent createMessageEvent(String messageTxt, Calendar tvi)
+       
+    public MessageEvent createMessageEvent(String messageTxt, Calendar tvi, EventTsk eventTsk)
     		throws DuplicateInstanceException;
     
-    public void updateMessageEvent(Long messageId, String messageTxt, Calendar tvi)
+    public MessageEvent updateMessageEvent(Long messageId, String messageTxt, Calendar tvi, EventTsk eventTsk)
     		throws InstanceNotFoundException;
     
     public void assignTviMessageEvent(MessageEvent messageEvent, Calendar tvi)
     		throws InstanceNotFoundException;
+    
+    public void assignEventTskMessageEvent(MessageEvent messageEvent, EventTsk eventTsk)
+    		throws InstanceNotFoundException;    
     
     public void assignMessageTxtMessageEvent(MessageEvent messageEvent, String messageTxt)
     		throws InstanceNotFoundException;    

@@ -51,7 +51,18 @@ public class ParkDaoHibernate extends
 	@SuppressWarnings("unchecked")
 	public List<Park> getParksByCompanyId(Long companyId, int startIndex, int count)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Park> parks = (List<Park>)  getSession().createQuery(
+	        	"SELECT a FROM Park a WHERE a.companyId = :companyId " +
+	        	"ORDER BY a.parkId").
+	         	setParameter("companyId", companyId).
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (parks == null) {
+			throw new InstanceNotFoundException(companyId, Park.class.getName());
+		} else {
+			return parks;
+		}			
 	}
 }

@@ -10,6 +10,7 @@ import net.kraklups.solarapp.model.alarm.AlarmDao;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 import net.kraklups.solarapp.model.eventtsk.EventTskDao;
 import net.kraklups.solarapp.model.messageevent.MessageEvent;
+import net.kraklups.solarapp.model.messageevent.MessageEventDao;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.report.Report;
 import net.kraklups.solarapp.model.report.ReportDao;
@@ -41,7 +42,10 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	private AlarmDao alarmDao;
 	
     @Autowired
-    private EventTskDao eventTskDao;	
+    private EventTskDao eventTskDao;
+    
+    @Autowired
+    private MessageEventDao messageEventDao;
 	
 	@Override
 	public Upkeep createUpkeep(String taskName, Calendar creationDate,
@@ -613,53 +617,59 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	}	
 	
 	@Override
-	public MessageEventBlock getMessageByEventTsk(EventTsk eventTsk)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public AlarmBlock getAlarmByEventTsk(EventTsk eventTsk)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public TaskPrk getTaskPrkByEventTsk(EventTsk eventTsk)
-			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}	
-
-	@Override
-	public MessageEvent createMessageEvent(String messageTxt, Calendar tvi)
-			throws DuplicateInstanceException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void updateMessageEvent(Long messageId, String messageTxt,
-			Calendar tvi) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
+	public MessageEventBlock getMessageEventByEventTskId(Long eventTskId, int startIndex, int count)
+			throws InstanceNotFoundException {		
 		
+		List<MessageEvent> messageEvents = messageEventDao.getMessageEventsByEventTskId(eventTskId, startIndex, count + 1); 
+		
+		boolean existMoreMessageEvents = messageEvents.size() == (count +1);
+		
+		return new MessageEventBlock(messageEvents, existMoreMessageEvents);
+	}
+
+	@Override
+	public MessageEvent createMessageEvent(String messageTxt, Calendar tvi, EventTsk eventTsk)
+			throws DuplicateInstanceException {
+		
+		MessageEvent messageEvent = new MessageEvent(tvi, messageTxt, eventTsk);
+		
+		messageEventDao.save(messageEvent);
+		
+		return messageEvent;
+	}
+
+	@Override
+	public MessageEvent updateMessageEvent(Long messageId, String messageTxt,
+			Calendar tvi, EventTsk eventTsk) throws InstanceNotFoundException {
+		
+		MessageEvent messageEvent = messageEventDao.find(messageId);
+		
+		messageEvent.setTvi(tvi);
+		messageEvent.setMessageText(messageTxt);
+		messageEvent.setEventTsk(eventTsk);
+		
+		return messageEvent;
 	}
 
 	@Override
 	public void assignTviMessageEvent(MessageEvent messageEvent, Calendar tvi)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		messageEvent.setTvi(tvi);		
 	}
 
 	@Override
 	public void assignMessageTxtMessageEvent(MessageEvent messageEvent,
 			String messageTxt) throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
 		
+		messageEvent.setMessageText(messageTxt);
+	}
+
+	@Override
+	public void assignEventTskMessageEvent(MessageEvent messageEvent, EventTsk eventTsk)
+			throws InstanceNotFoundException {
+		
+		messageEvent.setEventTsk(eventTsk);
 	}
 	
-
 }

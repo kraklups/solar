@@ -65,7 +65,8 @@ public class DataLogger {
 	}	
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
-	@JoinColumn(name="dataLoggerId", insertable=false, updatable=false)	
+	@JoinColumn(name="dataLoggerId", insertable=false, updatable=false)
+	@Column(name="dataLoggerFk", unique= true, nullable = false)
 	public DataLogger getDataLogger(){
 		return dataLogger;
 	}

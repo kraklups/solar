@@ -29,10 +29,10 @@ public class MessageEvent {
 	public MessageEvent() {
 	}
 	
-	public MessageEvent(Long messageId, Calendar tvi, String messageText) {
-		this.messageId = messageId;
+	public MessageEvent(Calendar tvi, String messageText, EventTsk eventTsk) {
 		this.tvi = tvi;
 		this.messageText = messageText;
+		this.eventTsk = eventTsk;		
 	}
 
 	@SequenceGenerator(                                    // It only takes effect
