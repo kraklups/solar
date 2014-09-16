@@ -1,4 +1,4 @@
-$(document).ready(function($, window, document, SG, undefined ) {
+(function($, window, document, SG, undefined ) {
   SG.lon = 5;
   SG.lat = 40;
   SG.zoom = 4;
@@ -60,5 +60,8 @@ $(document).ready(function($, window, document, SG, undefined ) {
 
   };
 
- }(jQuery, window, window.document, (window.SolarGis = window.SolarGis || {}) ));
+  $(document).ready(function(){   
+    SG.init(); 
+  });
 
+ }(jQuery, window, window.document, (window.SolarGis = window.SolarGis || {}) ));

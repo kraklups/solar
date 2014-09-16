@@ -178,13 +178,6 @@ public class CreatePark {
 		return DateFormat.getDateInstance(DateFormat.SHORT, locale).
 			format(date);
 	}  
-	
-    @SuppressWarnings("deprecation")
-	@AfterRender
-    public void initJavaScript() {
-    	javaScriptSupport.require("gis_tools");
-    	javaScriptSupport.addScript("new SolarGis.init();");    	
-    }
-    
+	    
     
 }
