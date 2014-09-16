@@ -34,9 +34,8 @@ import net.kraklups.solarapp.web.services.AuthenticationPolicyType;
 import net.kraklups.solarapp.web.util.UserSession;
 
 @AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
-@Import(stylesheet="context:css/solar_gis.css",library={"context:js/OpenLayers.js", 
-        "context:js/solar_gis.js",
-        "context:js/firebug.js"})
+@Import(stylesheet={"context:css/solar_gis.css", "context:css/gis.css", "context:css/ie6-style.css"},
+	library={"context:js/OpenLayers.js", "context:js/gis_tools.js", "context:js/Firebug/firebug.js"})
 public class CreatePark {
 
 	@Property
@@ -180,9 +179,11 @@ public class CreatePark {
 			format(date);
 	}  
 	
-    @AfterRender
+    @SuppressWarnings("deprecation")
+	@AfterRender
     public void initJavaScript() {
-    	javaScriptSupport.require("solar_gis");
+    	javaScriptSupport.require("gis_tools");
+    	javaScriptSupport.addScript("new SolarGis.init();");    	
     }
     
     
