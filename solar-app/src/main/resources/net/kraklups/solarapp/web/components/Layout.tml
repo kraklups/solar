@@ -16,14 +16,14 @@
     <link rel="stylesheet" href="${context:/font-awesome/css/font-awesome.css}" />
 
     <!-- SB Admin CSS - Include with every page -->
-    <link rel="stylesheet" href="${context:/css/sb-admin.css}" />
+    <link rel="stylesheet" href="${context:/css/sb-admin-2.css}" />
             
     <!-- Core Scripts - Include with every page -->
-    <script src="${context:/js/jquery-1.10.2.js}" />
+    <script src="${context:/js/jquery-1.11.0.js}" />
     <script src="${context:/js/bootstrap.min.js}" />
 
     <!-- SB Admin Scripts - Include with every page -->
-    <script src="${context:/js/sb-admin.js}" />
+    <script src="${context:/js/sb-admin-2.js}" />
     
 </head>
 
@@ -219,7 +219,9 @@
         <!-- /#wrapper -->
          <p:else>
             <ul>
-	          <li><a href="#" t:type="PageLink" t:page="user/Login">${message:menu-authenticate}</a></li>
+	          <li>
+  	            <a href="#" t:type="PageLink" t:page="user/Login">${message:menu-authenticate}</a>
+	          </li>
 	        </ul>
           </p:else>
           </t:if>    
