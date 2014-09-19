@@ -20,6 +20,7 @@ import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 import org.hibernate.annotations.Type;
+
 import com.vividsolutions.jts.geom.MultiPolygon;
 
 @Entity
@@ -33,8 +34,7 @@ public class Park {
 	private Calendar productionDate;
 	private UserProfile userProfile;
 	private Company company;	
-	
-	@Type(type="org.hibernate.spatial.GeometryType")	
+		
 	private MultiPolygon mapPark;
 	
 	public Park() {		
@@ -102,6 +102,7 @@ public class Park {
 		this.userProfile = userProfile;
 	}
 	
+	@Type(type="org.hibernate.spatial.GeometryType")	
 	public MultiPolygon getMapPark() {
 		return mapPark;
 	}

@@ -39,24 +39,19 @@
 
   SG.serialize = function() {
 
-    arrayTemp = [];
- 
-    SG.wkt = new OpenLayers.Format.WKT();
+	   arrayTemp = [];
+	   
+	    SG.wkt = new OpenLayers.Format.WKT();
 
-    SG.out = SG.wkt.write(SG.vlayer.features);
-            
-    xXx = SG.vlayer.features;
+	    SG.out = SG.wkt.write(SG.vlayer.features);
+	            
+	    xXx = SG.vlayer.features;
 
-    for(var i = 0; i < xXx.length; i++) {              
-      alert(xXx[i].geometry);
-      arrayTemp.push(xXx[i].geometry);
-    }
-            
-    alert(arrayTemp);
-
-    SG.multipolygon = new OpenLayers.Geometry.MultiPolygon(arrayTemp);            
-
-    document.getElementById('feat_wkt').value = SG.multipolygon;  
+	    for(var i = 0; i < xXx.length; i++) {              
+	      arrayTemp.push(xXx[i].geometry);
+	    }
+	            
+	    SG.multipolygon = new OpenLayers.Geometry.MultiPolygon(arrayTemp);  
 
   };
 

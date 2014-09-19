@@ -6,7 +6,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Environmental;
 import org.apache.tapestry5.annotations.Import;
@@ -19,7 +18,10 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 import org.hibernate.annotations.Type;
 
+import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.MultiPolygon;
+import com.vividsolutions.jts.io.ParseException;
+import com.vividsolutions.jts.io.WKTReader;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
@@ -60,7 +62,7 @@ public class CreatePark {
 	private String companyName;	
 	
 	@Property
-    private Company company;	
+    private Company company;
 	
 	@Property
 	@Type(type="org.hibernate.spatial.GeometryType")	
@@ -91,8 +93,8 @@ public class CreatePark {
 	private TextField startupDateField;
 	
 	@Component(id="productionDate")
-	private TextField productionDateField;    
-    
+	private TextField productionDateField;
+	
     @Inject
     private Messages messages;
 
@@ -102,8 +104,9 @@ public class CreatePark {
     @Environmental
     private JavaScriptSupport javaScriptSupport;	
     
+	private String wkt_temp;
+    
     void onValidateFromCreateParkForm() {
-    	
 
         if (!createParkForm.isValid()) {
             return;
@@ -116,9 +119,18 @@ public class CreatePark {
 		Calendar productionDateAsCalendar = Calendar.getInstance();
 		startupDateAsCalendar.setTime(startupDateAsDate);
 		productionDateAsCalendar.setTime(productionDateAsDate);
+			
+		wkt_temp= "MULTIPOLYGON(((-5.5439446866512 41.567382365465,-1.5888665616512 40.688476115465,-2.8193353116512 39.458007365465,-6.1591790616512 39.545897990465,-5.5439446866512 41.567382365465)),((-5.8076165616512 37.963866740465,-3.5224603116512 38.139647990465,-3.5224603116512 36.909179240465,-5.7197259366512 36.645507365465,-5.8076165616512 37.963866740465)))";
+
+//		wkt_temp ="MULTIPOLYGON (((10 10 0,20 10 0,20 20 0,20 10 0,10 10 0),(5 5 0,5 6 0,6 6 0,6 5 0,5 5 0)),((10 10 0,20 10 0,20 20 0,20 10 0,10 10 0),(5 5 0,5 6 0,6 6 0,6 5 0,5 5 0)))";
 		
-//		MultiPolygon mapPark = new MultiPolygon(null, null);
-        
+		Geometry geom = wktToGeometry(wkt_temp);
+		
+//		Geometry geom = wktToGeometry();
+		
+//		MultiPolygon mapPark = new MultiPolygon(wkt_temp, null);
+		
+       
         try {
         	       	       	        	
         	try {
@@ -138,7 +150,7 @@ public class CreatePark {
         		
         	}
         	
-        	Park park = parkService.createPark(parkName, startupDateAsCalendar, productionDateAsCalendar, userProfile, company, mapPark);
+        	Park park = parkService.createPark(parkName, startupDateAsCalendar, productionDateAsCalendar, userProfile, company, (MultiPolygon) geom);
         //	parkId = park.getParkId();
             
         } catch (DuplicateInstanceException e) {
@@ -153,6 +165,17 @@ public class CreatePark {
         return Index.class;
 
     }
+ 
+    private Geometry wktToGeometry(String wktPoint) {
+        WKTReader fromText = new WKTReader();
+        Geometry geom = null;
+        try {
+            geom = fromText.read(wktPoint);
+        } catch (ParseException e) {
+            throw new RuntimeException("Not a WKT string:" + wktPoint);
+        }
+        return geom;
+    }    
     
 	void onActivate() {
 		startupDate = dateToString(Calendar.getInstance().getTime());
