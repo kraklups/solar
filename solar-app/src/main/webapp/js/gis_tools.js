@@ -1,17 +1,18 @@
 (function($, window, document, SG, undefined ) {
-  SG.lon = 5;
-  SG.lat = 40;
-  SG.zoom = 4;
 
-  SG.options = {
-    clickout: true, toggle: false, 
-    multiple: false, hover: false,
-    toggleKey: "ctrlKey", // ctrl key removes from selection
-    multipleKey: "shiftKey", // shift key adds to selection
-  };
-  
   SG.init = function() {
 
+	  SG.lon = 5;
+	  SG.lat = 40;
+	  SG.zoom = 4;
+
+	  SG.options = {
+	    clickout: true, toggle: false, 
+	    multiple: false, hover: false,
+	    toggleKey: "ctrlKey", // ctrl key removes from selection
+	    multipleKey: "shiftKey", // shift key adds to selection
+	  };
+	  
     OpenLayers.Feature.Vector.style['default']['strokeWidth'] = '2';
 
     SG.map = new OpenLayers.Map('map');
@@ -39,24 +40,29 @@
 
   SG.serialize = function() {
 
-	   arrayTemp = [];
+	  arrayTemp = [];
 	   
-	    SG.wkt = new OpenLayers.Format.WKT();
+	  SG.wkt = new OpenLayers.Format.WKT();
 
-	    SG.out = SG.wkt.write(SG.vlayer.features);
-	            
-	    xXx = SG.vlayer.features;
+	  SG.out = SG.wkt.write(SG.vlayer.features);
+	           
+	  xXx = SG.vlayer.features;
 
-	    for(var i = 0; i < xXx.length; i++) {              
-	      arrayTemp.push(xXx[i].geometry);
-	    }
+	  for(var i = 0; i < xXx.length; i++) {              
+		  arrayTemp.push(xXx[i].geometry);
+	  }
 	            
-	    SG.multipolygon = new OpenLayers.Geometry.MultiPolygon(arrayTemp);  
+	  SG.multipolygon = new OpenLayers.Geometry.MultiPolygon(arrayTemp);
+	    
+	  document.getElementById('solarPark').value = SG.multipolygon;
 
   };
 
   $(document).ready(function(){   
     SG.init(); 
+    $('#gisOpenLayers').click(function() {
+    	  SG.serialize();
+    });
   });
 
  }(jQuery, window, window.document, (window.SolarGis = window.SolarGis || {}) ));

@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Environmental;
 import org.apache.tapestry5.annotations.Import;
@@ -16,7 +17,6 @@ import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
-import org.hibernate.annotations.Type;
 
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.MultiPolygon;
@@ -62,11 +62,7 @@ public class CreatePark {
 	private String companyName;	
 	
 	@Property
-    private Company company;
-	
-	@Property
-	@Type(type="org.hibernate.spatial.GeometryType")	
-	private MultiPolygon mapPark;
+    private Company company;	
 	
 	@Property
 	private String solarPark;		
@@ -95,6 +91,9 @@ public class CreatePark {
 	@Component(id="productionDate")
 	private TextField productionDateField;
 	
+	@Component(id="solarPark")
+	private TextField solarParkField;
+	
     @Inject
     private Messages messages;
 
@@ -106,12 +105,12 @@ public class CreatePark {
     
 	private String wkt_temp;
     
-    void onValidateFromCreateParkForm() {
-
+   	void onValidateFromCreateParkForm() {
+   		   		
         if (!createParkForm.isValid()) {
             return;
         }
-
+        
 		startupDateAsDate = validateDate(startupDateField, startupDate);
 		productionDateAsDate = validateDate(productionDateField, productionDate);
 		
@@ -120,16 +119,17 @@ public class CreatePark {
 		startupDateAsCalendar.setTime(startupDateAsDate);
 		productionDateAsCalendar.setTime(productionDateAsDate);
 			
-		wkt_temp= "MULTIPOLYGON(((-5.5439446866512 41.567382365465,-1.5888665616512 40.688476115465,-2.8193353116512 39.458007365465,-6.1591790616512 39.545897990465,-5.5439446866512 41.567382365465)),((-5.8076165616512 37.963866740465,-3.5224603116512 38.139647990465,-3.5224603116512 36.909179240465,-5.7197259366512 36.645507365465,-5.8076165616512 37.963866740465)))";
+//		wkt_temp= "MULTIPOLYGON(((-5.5439446866512 41.567382365465,-1.5888665616512 40.688476115465,-2.8193353116512 39.458007365465,-6.1591790616512 39.545897990465,-5.5439446866512 41.567382365465)),((-5.8076165616512 37.963866740465,-3.5224603116512 38.139647990465,-3.5224603116512 36.909179240465,-5.7197259366512 36.645507365465,-5.8076165616512 37.963866740465)))";
 
-//		wkt_temp ="MULTIPOLYGON (((10 10 0,20 10 0,20 20 0,20 10 0,10 10 0),(5 5 0,5 6 0,6 6 0,6 5 0,5 5 0)),((10 10 0,20 10 0,20 20 0,20 10 0,10 10 0),(5 5 0,5 6 0,6 6 0,6 5 0,5 5 0)))";
+		wkt_temp ="MULTIPOLYGON (((10 10 0,20 10 0,20 20 0,20 10 0,10 10 0),(5 5 0,5 6 0,6 6 0,6 5 0,5 5 0)),((10 10 0,20 10 0,20 20 0,20 10 0,10 10 0),(5 5 0,5 6 0,6 6 0,6 5 0,5 5 0)))";
+		
+//		Geometry geom = wktToGeometry(solarPark);
 		
 		Geometry geom = wktToGeometry(wkt_temp);
 		
 //		Geometry geom = wktToGeometry();
 		
-//		MultiPolygon mapPark = new MultiPolygon(wkt_temp, null);
-		
+//		MultiPolygon mapPark = new MultiPolygon(wkt_temp, null);		
        
         try {
         	       	       	        	
@@ -201,6 +201,5 @@ public class CreatePark {
 		return DateFormat.getDateInstance(DateFormat.SHORT, locale).
 			format(date);
 	}  
-	    
     
 }

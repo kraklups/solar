@@ -58,12 +58,12 @@
 	        						<t:label for="solarPark"/>
 									<div id="map" class="smallmap"></div>
 	        						<span class="entry">    
-		            					<input t:id="solarPark" t:type="TextField" />
+		            					<input t:id="solarPark" t:type="TextField" t:validate="required" />
 	        						</span>									
 	   							</div>
 	   							   								    
 		    					<div class="button">
-		        					<input type="submit" value="${message:submit}"/>        
+		        					<input t:type="submit" value="${message:submit}" t:id="gisOpenLayers" />        
 	    						</div>
 	    					</fieldset>		
 						</form>
