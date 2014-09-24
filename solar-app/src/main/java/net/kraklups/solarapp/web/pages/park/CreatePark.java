@@ -104,6 +104,8 @@ public class CreatePark {
     private JavaScriptSupport javaScriptSupport;	
     
 	private String wkt_temp;
+	
+	private static final int SRID = 4326;
     
    	void onValidateFromCreateParkForm() {
    		   		
@@ -123,9 +125,9 @@ public class CreatePark {
 
 		wkt_temp ="MULTIPOLYGON (((10 10 0,20 10 0,20 20 0,20 10 0,10 10 0),(5 5 0,5 6 0,6 6 0,6 5 0,5 5 0)),((10 10 0,20 10 0,20 20 0,20 10 0,10 10 0),(5 5 0,5 6 0,6 6 0,6 5 0,5 5 0)))";
 		
-//		Geometry geom = wktToGeometry(solarPark);
+		Geometry geom = wktToGeometry(solarPark);
 		
-		Geometry geom = wktToGeometry(wkt_temp);
+//		Geometry geom = wktToGeometry(wkt_temp);
 		
 //		Geometry geom = wktToGeometry();
 		
@@ -167,10 +169,12 @@ public class CreatePark {
     }
  
     private Geometry wktToGeometry(String wktPoint) {
+    	
         WKTReader fromText = new WKTReader();
         Geometry geom = null;
         try {
             geom = fromText.read(wktPoint);
+            geom.setSRID(SRID);
         } catch (ParseException e) {
             throw new RuntimeException("Not a WKT string:" + wktPoint);
         }
