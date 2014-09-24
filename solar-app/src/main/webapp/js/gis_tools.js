@@ -1,68 +1,72 @@
 (function($, window, document, SG, undefined ) {
-
+  
   SG.init = function() {
 
-	  SG.lon = 5;
-	  SG.lat = 40;
-	  SG.zoom = 4;
+    lon = 5;
+    lat = 40;
+    zoom = 4;
 
-	  SG.options = {
-	    clickout: true, toggle: false, 
-	    multiple: false, hover: false,
-	    toggleKey: "ctrlKey", // ctrl key removes from selection
-	    multipleKey: "shiftKey", // shift key adds to selection
-	  };
-	  
+    options = {
+      clickout: true, toggle: false, 
+      multiple: false, hover: false,
+      toggleKey: "ctrlKey", // ctrl key removes from selection
+      multipleKey: "shiftKey", // shift key adds to selection
+    };
+
     OpenLayers.Feature.Vector.style['default']['strokeWidth'] = '2';
 
-    SG.map = new OpenLayers.Map('map');
+    map = new OpenLayers.Map('map');
 
     layer = new OpenLayers.Layer.WMS( 
       "OpenLayers WMS",
       "http://vmap0.tiles.osgeo.org/wms/vmap0", 
       {layers: 'basic'} );
     
-    SG.vlayer = new OpenLayers.Layer.Vector("Park");
+    vlayer = new OpenLayers.Layer.Vector("Park");
 
-    SG.map.addLayers([layer, SG.vlayer]);
+    map.addLayers([layer, vlayer]);
 
-    select = new OpenLayers.Control.SelectFeature(SG.vlayer, SG.options)
+    select = new OpenLayers.Control.SelectFeature(vlayer, options)
 
-    SG.map.addControl(new OpenLayers.Control.MousePosition());
-    SG.map.addControl(new OpenLayers.Control.EditingToolbar(SG.vlayer));
-    SG.map.addControl(select);
+    map.addControl(new OpenLayers.Control.MousePosition());
+    map.addControl(new OpenLayers.Control.EditingToolbar(vlayer));
+    map.addControl(select);
     
     select.activate();
 
-    SG.map.setCenter(new OpenLayers.LonLat(SG.lon, SG.lat), SG.zoom);
+    map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);
  
   };
 
   SG.serialize = function() {
 
-	  arrayTemp = [];
-	   
-	  SG.wkt = new OpenLayers.Format.WKT();
+    arrayTemp = [];
+ 
+    wkt = new OpenLayers.Format.WKT();
+            
+    xXx = vlayer.features;
 
-	  SG.out = SG.wkt.write(SG.vlayer.features);
-	           
-	  xXx = SG.vlayer.features;
+    for(var i = 0; i < xXx.length; i++) {
+      if (xXx[i].geometry.CLASS_NAME == "OpenLayers.Geometry.Polygon") {
+        arrayTemp.push(xXx[i].geometry);
+      }
+    }
+     
+    if (arrayTemp.length >0) { 
+      multipolygon = new OpenLayers.Geometry.MultiPolygon(arrayTemp);            
 
-	  for(var i = 0; i < xXx.length; i++) {              
-		  arrayTemp.push(xXx[i].geometry);
-	  }
-	            
-	  SG.multipolygon = new OpenLayers.Geometry.MultiPolygon(arrayTemp);
-	    
-	  document.getElementById('solarPark').value = SG.multipolygon;
-
+      document.getElementById('solarPark').value = multipolygon;  
+    } else {
+      document.getElementById('solarPark').value = []; 
+    }
+ 
   };
 
   $(document).ready(function(){   
-    SG.init(); 
+    SG.init();
     $('#gisOpenLayers').click(function() {
     	  SG.serialize();
-    });
+    }); 
   });
 
  }(jQuery, window, window.document, (window.SolarGis = window.SolarGis || {}) ));
