@@ -6,7 +6,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Environmental;
 import org.apache.tapestry5.annotations.Import;
@@ -101,9 +100,7 @@ public class CreatePark {
 	private Locale locale;  
 	
     @Environmental
-    private JavaScriptSupport javaScriptSupport;	
-    
-	private String wkt_temp;
+    private JavaScriptSupport javaScriptSupport;
 	
 	private static final int SRID = 4326;
     
@@ -121,18 +118,8 @@ public class CreatePark {
 		startupDateAsCalendar.setTime(startupDateAsDate);
 		productionDateAsCalendar.setTime(productionDateAsDate);
 			
-//		wkt_temp= "MULTIPOLYGON(((-5.5439446866512 41.567382365465,-1.5888665616512 40.688476115465,-2.8193353116512 39.458007365465,-6.1591790616512 39.545897990465,-5.5439446866512 41.567382365465)),((-5.8076165616512 37.963866740465,-3.5224603116512 38.139647990465,-3.5224603116512 36.909179240465,-5.7197259366512 36.645507365465,-5.8076165616512 37.963866740465)))";
-
-		wkt_temp ="MULTIPOLYGON (((10 10 0,20 10 0,20 20 0,20 10 0,10 10 0),(5 5 0,5 6 0,6 6 0,6 5 0,5 5 0)),((10 10 0,20 10 0,20 20 0,20 10 0,10 10 0),(5 5 0,5 6 0,6 6 0,6 5 0,5 5 0)))";
-		
 		Geometry geom = wktToGeometry(solarPark);
-		
-//		Geometry geom = wktToGeometry(wkt_temp);
-		
-//		Geometry geom = wktToGeometry();
-		
-//		MultiPolygon mapPark = new MultiPolygon(wkt_temp, null);		
-       
+		       
         try {
         	       	       	        	
         	try {
