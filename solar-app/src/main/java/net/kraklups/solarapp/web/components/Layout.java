@@ -28,12 +28,11 @@ public class Layout {
 
     @Inject
     private Cookies cookies;
-
+   
     @AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
    	Object onActionFromLogout() {
         userSession = null;
         CookiesManager.removeCookies(cookies);
         return Index.class;
-	}
-    
+	}    
 }
