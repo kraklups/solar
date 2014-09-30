@@ -25,250 +25,255 @@
 
 <body>
 
-    	<t:if test="userSession">
+	<t:if test="userSession">
 
-    <div id="wrapper">
+    	<div id="wrapper">
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">SB Admin</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
+        	<!-- Navigation -->
+        	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            	<!-- Brand and toggle get grouped for better mobile display -->
+            	<div class="navbar-header">
+ 	               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+    	                <span class="sr-only">Toggle navigation</span>
+        	            <span class="icon-bar"></span>
+            	        <span class="icon-bar"></span>
+                	    <span class="icon-bar"></span>
+                	</button>
+                	<a class="navbar-brand" href="index.html">SB Admin</a>
+            	</div>
+            	<!-- Top Menu Items -->
+            	<ul class="nav navbar-right top-nav">
 
-                			<li class="dropdown">
-                    			<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
-                        			<i class="fa fa-location-arrow fa-fw"></i>  
-                        			<i class="fa fa-caret-down"></i>
-                    			</a>
-                    			<ul class="dropdown-menu dropdown-user">
-                        			<li>                        				
-                        				<i class="fa fa-location-arrow fa-fw"></i>                        				
-                        			</li>                                                			
-                    			</ul>
+                	<li class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+                        	<i class="fa fa-location-arrow fa-fw"></i>  
+                        	<i class="fa fa-caret-down"></i>
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-user">
+                        	<li>                        				
+                        		<i class="fa fa-location-arrow fa-fw"></i>                        				
+                        	</li>                                                			
+                    	</ul>
                     			
-                    			<ul class="dropdown-menu dropdown-user">
-                        			<li>
-                        				<a href="#" t:type="PageLink" t:page="park/CreatePark">
-                        					<i class="fa fa-user fa-fw"></i> ${message:menu-createPark}
-                        				</a>
-                        			</li>                        
-                        			<li class="divider" />
-                        			<li>
-                        				<a href="#" t:type="PageLink" t:page="park/CreatePark">
-                        					<i class="fa fa-user fa-fw"></i> ${message:menu-createPark}
-                        				</a>
-                        			</li>
-                    			</ul>                    			                    			
-                			</li>    					
+                    	<ul class="dropdown-menu dropdown-user">
+                        	<li>
+                        		<a href="#" t:type="PageLink" t:page="park/CreatePark">
+                        			<i class="fa fa-user fa-fw"></i> ${message:menu-createPark}
+                        		</a>
+                        	</li>                        
+                        	<li class="divider" />
+                        	<li>
+                        		<a href="#" t:type="PageLink" t:page="park/UpdatePark">
+                        			<i class="fa fa-user fa-fw"></i> ${message:menu-updatePark}
+                        		</a>
+                        	</li>
+                        	<li class="divider" />
+                        	<li>
+                        		<a href="#" t:type="PageLink" t:page="park/ShowParks">
+                        			<i class="fa fa-user fa-fw"></i> ${message:menu-showParks}
+                        		</a>
+                        	</li>                        	
+                    	</ul>                    			                    			
+                	</li>    					
 
-                			<li class="dropdown">
-                    			<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
-                        			<i class="fa fa-users fa-fw"></i>  
-                        			<i class="fa fa-caret-down"></i>
-                    			</a>
-                    			<ul class="dropdown-menu dropdown-user">
-                        			<li>                        				
-                        				<i class="fa fa-user fa-fw"></i>                        				
-                        			</li>                                                			
-                    			</ul>
-                			</li>    					
+                	<li class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+                        	<i class="fa fa-users fa-fw"></i>  
+                        	<i class="fa fa-caret-down"></i>
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-user">
+                        	<li>                        				
+                        		<i class="fa fa-user fa-fw"></i>                        				
+                        	</li>                                                			
+                    	</ul>
+                	</li>    					
 
     					
-                			<li class="dropdown">
-                    			<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-                        			<i class="fa fa-calendar fa-fw"></i>  
-                        			<i class="fa fa-caret-down"></i>
-                    			</a>
-                    			<ul class="dropdown-menu dropdown-messages" data-role="dropdown" data-effect='fade'>
-                        			<li>
-                            			<a href="#">
-                                			<div>
-                                    			<strong>Timetable</strong>
-                                    			<span class="pull-right text-muted">
-                                        			<em>Yesterday</em>
-                                    			</span>
-                                			</div>                                			
-                            			</a>
-                        			</li>
-                        			<li class="divider"></li>                                                
-                        			<li>
-                            			<a class="text-center" href="#">
-                                			<strong>View All Calendars</strong>
-                                			<i class="fa fa-angle-right"></i>
-                            			</a>
-                        			</li>
-                    			</ul>
-                    	    </li>            		    					
+                	<li class="dropdown">
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                        	<i class="fa fa-calendar fa-fw"></i>  
+                        	<i class="fa fa-caret-down"></i>
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-messages" data-role="dropdown" data-effect='fade'>
+                        	<li>
+                        		<a href="#">
+                                	<div>
+                                		<strong>Timetable</strong>
+                                    	<span class="pull-right text-muted">
+                                       		<em>Yesterday</em>
+                                    	</span>
+                                	</div>                                			
+                            	</a>
+                        	</li>
+                        	<li class="divider"></li>                                                
+                        		<li>
+                            		<a class="text-center" href="#">
+                            			<strong>View All Calendars</strong>
+                               			<i class="fa fa-angle-right"></i>
+                            		</a>
+                        		</li>
+                    	</ul>
+                    </li>            		    					
     					    					
-                			<li class="dropdown">
-                    			<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-                        			<i class="fa fa-envelope fa-fw"></i>  
-                        			<i class="fa fa-caret-down"></i>
-                    			</a>
-                    			<ul class="dropdown-menu dropdown-messages" data-role="dropdown" data-effect='fade'>
-                        			<li>
-                            			<a href="#">
-                                			<div>
-                                    			<strong>John Smith</strong>
-                                    			<span class="pull-right text-muted">
-                                        			<em>Yesterday</em>
-                                    			</span>
-                                			</div>
-                                			<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                            			</a>
-                        			</li>
-                        			<li class="divider"></li>                                                
-                        			<li>
-                            			<a class="text-center" href="#">
-                                			<strong>Read All Messages</strong>
-                                			<i class="fa fa-angle-right"></i>
-                            			</a>
-                        			</li>
-                    			</ul>
-                    	    </li>
+                	<li class="dropdown">
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                    		<i class="fa fa-envelope fa-fw"></i>  
+                        	<i class="fa fa-caret-down"></i>
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-messages" data-role="dropdown" data-effect='fade'>
+                        	<li>
+                            	<a href="#">
+                            		<div>
+                                		<strong>John Smith</strong>
+                                    	<span class="pull-right text-muted">
+                                    		<em>Yesterday</em>
+                                    	</span>
+                                	</div>
+                                	<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            	</a>
+                        	</li>
+                        	<li class="divider"></li>                                                
+                        	<li>
+                            	<a class="text-center" href="#">
+                            		<strong>Read All Messages</strong>
+                                	<i class="fa fa-angle-right"></i>
+                            	</a>
+                        	</li>
+                    	</ul>
+                    </li>
 
-                			<li class="dropdown">
-                    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        			<i class="fa fa-bell fa-fw"></i>  
-                        			<i class="fa fa-caret-down"></i>
-                    			</a>
-                    			<ul class="dropdown-menu dropdown-alerts" data-role="dropdown" data-effect='fade'>
-                        			<li>
-                            			<a href="#">
-                                			<div>
-                                    			<i class="fa fa-comment fa-fw"></i> New Comment
-                                    			<span class="pull-right text-muted small">4 minutes ago</span>
-                                			</div>
-                            			</a>
-                        			</li>
-                        			<li class="divider"></li>
-                        			<li>
-                            			<a href="#" class="text-center">
-                                			<strong>See All Alerts</strong>
-                                			<i class="fa fa-angle-right"></i>
-                            			</a>
-                        			</li>
-                    			</ul>
-                			</li>
+                	<li class="dropdown">
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        	<i class="fa fa-bell fa-fw"></i>  
+                        	<i class="fa fa-caret-down"></i>
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-alerts" data-role="dropdown" data-effect='fade'>
+                        	<li>
+                        		<a href="#">
+                            		<div>
+                               			<i class="fa fa-comment fa-fw"></i> New Comment
+                               			<span class="pull-right text-muted small">4 minutes ago</span>
+                            		</div>
+                            	</a>
+                        	</li>
+                        	<li class="divider"></li>
+                        	<li>
+                            	<a href="#" class="text-center">
+                            		<strong>See All Alerts</strong>
+                            		<i class="fa fa-angle-right"></i>
+                            	</a>
+                        	</li>
+                    	</ul>
+                	</li>
                     	    
-                			<li class="dropdown">
-                    			<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-                        			<i class="fa fa-tasks fa-fw"></i>  
-                        			<i class="fa fa-caret-down"></i>
+                	<li class="dropdown">
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                    		<i class="fa fa-tasks fa-fw"></i>  
+                    		<i class="fa fa-caret-down"></i>
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-tasks">
+                    		<li>
+                       			<a href="#">
+                           			<div>
+                               			<p>
+                        	       			<strong>Task 1</strong>
+                            	   			<span class="pull-right text-muted">40% Complete</span>
+                    	       			</p>
+                                		<div class="progress progress-striped active">
+                                   			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+	                                   			<span class="sr-only">40% Complete (success)</span>
+                                  			</div>
+                               			</div>
+                           			</div>
+                       			</a>
+							</li>
+							<li class="divider"></li>
+    	               		<li>
+                          		<a class="text-center" href="#">
+                            		<strong>See All Tasks</strong>
+                              		<i class="fa fa-angle-right"></i>
+                          		</a>
+                      		</li>
+                  		</ul>
+              		</li>                    	    
+                  	        					
+              		<li class="dropdown">
+                  		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    		<i class="fa fa-user fa-fw"></i>  
+                    		<i class="fa fa-caret-down"></i>
+                  		</a>
+                  		<ul class="dropdown-menu dropdown-user">
+                    		<li>
+                    			<a href="#" t:type="PageLink" t:page="user/UpdateProfile">
+                    				<i class="fa fa-user fa-fw"></i> ${message:menu-updateProfile}
                     			</a>
-                    			<ul class="dropdown-menu dropdown-tasks">
-                        			<li>
-                            			<a href="#">
-                                			<div>
-                                    			<p>
-                                        			<strong>Task 1</strong>
-                                        			<span class="pull-right text-muted">40% Complete</span>
-                                    			</p>
-                                    			<div class="progress progress-striped active">
-                                        			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                            			<span class="sr-only">40% Complete (success)</span>
-                                        			</div>
-                                    			</div>
-                                			</div>
-                            			</a>
-                        			</li>
-                        			<li class="divider"></li>
-                        			<li>
-                            			<a class="text-center" href="#">
-                                			<strong>See All Tasks</strong>
-                                			<i class="fa fa-angle-right"></i>
-                            			</a>
-                        			</li>
-                    			</ul>
-                			</li>                    	    
-                    	        					
-                			<li class="dropdown">
-                    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        			<i class="fa fa-user fa-fw"></i>  
-                        			<i class="fa fa-caret-down"></i>
+                    		</li>                        
+                    		<li class="divider" />
+                    		<li>
+                    			<a href="#" t:type="ActionLink" t:id="logout">
+                    				<i class="fa fa-sign-out fa-fw"></i> ${message:menu-logout}
                     			</a>
-                    			<ul class="dropdown-menu dropdown-user">
-                        			<li>
-                        				<a href="#" t:type="PageLink" t:page="user/UpdateProfile">
-                        					<i class="fa fa-user fa-fw"></i> ${message:menu-updateProfile}
-                        				</a>
-                        			</li>                        
-                        			<li class="divider" />
-                        			<li>
-                        				<a href="#" t:type="ActionLink" t:id="logout">
-                        					<i class="fa fa-sign-out fa-fw"></i> ${message:menu-logout}
-                        				</a>
-                        			</li>
-                    			</ul>
-                			</li>    					
-                
-            </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-                    </li>
-                    <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
-                    </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
-
-   </div>
-    <!-- /#wrapper -->
+                    		</li>
+                  		</ul>
+              		</li>    					
+              
+          		</ul>
             
-         <p:else>
-            <ul>
-	          <li>
-  	            <a href="#" t:type="PageLink" t:page="user/Login">${message:menu-authenticate}</a>
-	          </li>
-	        </ul>
-          </p:else>
-          </t:if>    
+            	<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            	<div class="collapse navbar-collapse navbar-ex1-collapse">
+                	<ul class="nav navbar-nav side-nav">
+                    	<li class="active">
+                        	<a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    	</li>
+                    	<li>
+                        	<a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                    	</li>
+                    	<li>
+                        	<a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                    	</li>
+                    	<li>
+                        	<a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                    	</li>
+                    	<li>
+	                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                    	</li>
+                    	<li>
+                        	<a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                    	</li>
+                    	<li>
+	                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+    	                    <ul id="demo" class="collapse">
+        	                    <li>
+            	                    <a href="#">Dropdown Item</a>
+                	            </li>
+                    	        <li>
+                        	        <a href="#">Dropdown Item</a>
+                            	</li>
+                        	</ul>
+                    	</li>
+                    	<li>
+                        	<a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    	</li>
+                	</ul>
+            	</div>
+            	<!-- /.navbar-collapse -->
+        	</nav>
 
-<!-- Content. -->
+		</div>
+      	<!-- /#wrapper -->
+            
+    <p:else>
+    	<ul>
+	    	<li>
+  	        	<a href="#" t:type="PageLink" t:page="user/Login">${message:menu-authenticate}</a>
+	        </li>
+	    </ul>
+   	</p:else>
+    </t:if>    
+
+	<!-- Content. -->
 
   	<t:body/>
-
-
 
 <!-- End of HTML body. -->
 </body>
