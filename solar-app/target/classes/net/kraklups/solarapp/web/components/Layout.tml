@@ -82,12 +82,25 @@
                         	<i class="fa fa-caret-down"></i>
                     	</a>
                     	<ul class="dropdown-menu dropdown-user">
-                        	<li>                        				
-                        		<i class="fa fa-user fa-fw"></i>                        				
-                        	</li>                                                			
+                        	<li>
+                        		<a href="#" t:type="PageLink" t:page="user/Register">
+                        			<i class="fa fa-user fa-fw"></i> ${message:menu-register}
+                        		</a>
+                        	</li>                        
+                        	<li class="divider" />
+                        	<li>
+                        		<a href="#" t:type="PageLink" t:page="user/updateRegister">
+                        			<i class="fa fa-user fa-fw"></i> ${message:menu-updateRegister}
+                        		</a>
+                        	</li>                        
+                        	<li class="divider" />
+                        	<li>
+                        		<a href="#" t:type="PageLink" t:page="user/showRegisters">
+                        			<i class="fa fa-user fa-fw"></i> ${message:menu-showRegisters}
+                        		</a>
+                        	</li>                        
                     	</ul>
                 	</li>    					
-
     					
                 	<li class="dropdown">
                     	<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
