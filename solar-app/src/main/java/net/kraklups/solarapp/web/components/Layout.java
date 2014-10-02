@@ -1,5 +1,6 @@
 package net.kraklups.solarapp.web.components;
 
+import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
@@ -12,6 +13,9 @@ import net.kraklups.solarapp.web.services.AuthenticationPolicyType;
 import net.kraklups.solarapp.web.util.CookiesManager;
 import net.kraklups.solarapp.web.util.UserSession;
 
+@Import(stylesheet={"context:css/solar_gis.css", "context:css/gis.css", "context:css/ie6-style.css", "context:css/bootstrap.min.css", 
+		"context:font-awesome/css/font-awesome.css", "context:css/sb-admin.css"},
+		library={"context:js/Firebug/firebug.js", "context:js/jquery-1.11.0.js", "context:js/bootstrap.min.js"})
 public class Layout {
 		
     @Property

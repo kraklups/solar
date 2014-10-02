@@ -35,8 +35,7 @@ import net.kraklups.solarapp.web.services.AuthenticationPolicyType;
 import net.kraklups.solarapp.web.util.UserSession;
 
 @AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
-@Import(stylesheet={"context:css/solar_gis.css", "context:css/gis.css", "context:css/ie6-style.css"},
-	library={"context:js/OpenLayers.js", "context:js/gis_tools.js", "context:js/Firebug/firebug.js"})
+@Import(library={"context:js/OpenLayers.js", "context:js/gis_tools.js"})
 public class CreatePark {
 
 	@Property

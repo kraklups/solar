@@ -10,17 +10,6 @@
     	
     <title>${pageTitle}</title>
     
-    <!-- Core CSS - Include with every page -->
-    <link rel="stylesheet" href="${context:/css/bootstrap.min.css}" />
-    <link rel="stylesheet" href="${context:/font-awesome/css/font-awesome.css}" />
-
-    <!-- SB Admin CSS - Include with every page -->
-    <link rel="stylesheet" href="${context:/css/sb-admin.css}" />    
-            
-    <!-- Core Scripts - Include with every page -->
-    <script src="${context:/js/jquery-1.11.0.js}" />
-    <script src="${context:/js/bootstrap.min.js}" />
-    
 </head>
 
 <body>
@@ -39,38 +28,33 @@
             	        <span class="icon-bar"></span>
                 	    <span class="icon-bar"></span>
                 	</button>
-                	<a class="navbar-brand" href="index.html">SB Admin</a>
+                	<a class="navbar-brand" href="#" t:type="PageLink" t:page="Index">SolarApp</a>
             	</div>
             	<!-- Top Menu Items -->
             	<ul class="nav navbar-right top-nav">
 
                 	<li class="dropdown">
                     	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
-                        	<i class="fa fa-location-arrow fa-fw"></i>  
+                        	<i class="fa fa-fw fa-location-arrow"></i>  
                         	<i class="fa fa-caret-down"></i>
                     	</a>
-                    	<ul class="dropdown-menu dropdown-user">
-                        	<li>                        				
-                        		<i class="fa fa-location-arrow fa-fw"></i>                        				
-                        	</li>                                                			
-                    	</ul>
                     			
                     	<ul class="dropdown-menu dropdown-user">
                         	<li>
                         		<a href="#" t:type="PageLink" t:page="park/CreatePark">
-                        			<i class="fa fa-user fa-fw"></i> ${message:menu-createPark}
+                        			<i class="fa fa-location-arrow fa-fw"></i> ${message:menu-createPark}
                         		</a>
                         	</li>                        
                         	<li class="divider" />
                         	<li>
                         		<a href="#" t:type="PageLink" t:page="park/UpdatePark">
-                        			<i class="fa fa-user fa-fw"></i> ${message:menu-updatePark}
+                        			<i class="fa fa-location-arrow fa-fw"></i> ${message:menu-updatePark}
                         		</a>
                         	</li>
                         	<li class="divider" />
                         	<li>
                         		<a href="#" t:type="PageLink" t:page="park/ShowParks">
-                        			<i class="fa fa-user fa-fw"></i> ${message:menu-showParks}
+                        			<i class="fa fa-location-arrow fa-fw"></i> ${message:menu-showParks}
                         		</a>
                         	</li>                        	
                     	</ul>                    			                    			
@@ -84,19 +68,19 @@
                     	<ul class="dropdown-menu dropdown-user">
                         	<li>
                         		<a href="#" t:type="PageLink" t:page="user/Register">
-                        			<i class="fa fa-user fa-fw"></i> ${message:menu-register}
+                        			<i class="fa fa-users fa-fw"></i> ${message:menu-register}
                         		</a>
                         	</li>                        
                         	<li class="divider" />
                         	<li>
                         		<a href="#" t:type="PageLink" t:page="user/updateRegister">
-                        			<i class="fa fa-user fa-fw"></i> ${message:menu-updateRegister}
+                        			<i class="fa fa-users fa-fw"></i> ${message:menu-updateRegister}
                         		</a>
                         	</li>                        
                         	<li class="divider" />
                         	<li>
                         		<a href="#" t:type="PageLink" t:page="user/showRegisters">
-                        			<i class="fa fa-user fa-fw"></i> ${message:menu-showRegisters}
+                        			<i class="fa fa-users fa-fw"></i> ${message:menu-showRegisters}
                         		</a>
                         	</li>                        
                     	</ul>
@@ -104,7 +88,7 @@
     					
                 	<li class="dropdown">
                     	<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-                        	<i class="fa fa-calendar fa-fw"></i>  
+                        	<i class="fa fa-fw fa-calendar"></i>  
                         	<i class="fa fa-caret-down"></i>
                     	</a>
                     	<ul class="dropdown-menu dropdown-messages" data-role="dropdown" data-effect='fade'>
@@ -131,28 +115,24 @@
                 	<li class="dropdown">
                     	<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
                     		<i class="fa fa-envelope fa-fw"></i>  
-                        	<i class="fa fa-caret-down"></i>
+                        	<b class="fa fa-caret-down"></b>
                     	</a>
-                    	<ul class="dropdown-menu dropdown-messages" data-role="dropdown" data-effect='fade'>
-                        	<li>
+                    	<ul class="dropdown-menu message-dropdown">
+                        	<li class="message-preview">
                             	<a href="#">
-                            		<div>
-                                		<strong>John Smith</strong>
-                                    	<span class="pull-right text-muted">
-                                    		<em>Yesterday</em>
-                                    	</span>
+                                	<div class="media">
+                                    	<div class="media-body">
+                                        	<h5 class="media-heading"><strong>John Smith</strong></h5>
+                                        	<p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        	<p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    	</div>
                                 	</div>
-                                	<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
                             	</a>
                         	</li>
-                        	<li class="divider"></li>                                                
-                        	<li>
-                            	<a class="text-center" href="#">
-                            		<strong>Read All Messages</strong>
-                                	<i class="fa fa-angle-right"></i>
-                            	</a>
+                        	<li class="message-footer">
+                            	<a href="#">Read All New Messages</a>
                         	</li>
-                    	</ul>
+                    	</ul>                    
                     </li>
 
                 	<li class="dropdown">
@@ -160,7 +140,7 @@
                         	<i class="fa fa-bell fa-fw"></i>  
                         	<i class="fa fa-caret-down"></i>
                     	</a>
-                    	<ul class="dropdown-menu dropdown-alerts" data-role="dropdown" data-effect='fade'>
+                    	<ul class="dropdown-menu dropdown-alerts">
                         	<li>
                         		<a href="#">
                             		<div>
@@ -181,7 +161,7 @@
                     	    
                 	<li class="dropdown">
                     	<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-                    		<i class="fa fa-tasks fa-fw"></i>  
+                    		<i class="fa fa-fw fa-tasks"></i>  
                     		<i class="fa fa-caret-down"></i>
                     	</a>
                     	<ul class="dropdown-menu dropdown-tasks">
@@ -212,7 +192,7 @@
                   	        					
               		<li class="dropdown">
                   		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    		<i class="fa fa-user fa-fw"></i>  
+                    		<i class="fa fa-fw fa-user"></i>  
                     		<i class="fa fa-caret-down"></i>
                   		</a>
                   		<ul class="dropdown-menu dropdown-user">
@@ -236,16 +216,16 @@
             	<div class="collapse navbar-collapse navbar-ex1-collapse">
                 	<ul class="nav navbar-nav side-nav">
                     	<li class="active">
-                        	<a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        	<a href="#" t:type="PageLink" t:page="Index"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     	</li>
                     	<li>
-                        	<a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                        	<a href="#" t:type="PageLink" t:page="park/ShowParks"><i class="fa fa-fw fa-location-arrow"></i> Parks</a>
                     	</li>
                     	<li>
-                        	<a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                        	<a href="tables.html"><i class="fa fa-fw fa-calendar"></i> Timetables</a>
                     	</li>
                     	<li>
-                        	<a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                        	<a href="forms.html"><i class="fa fa-fw fa-tasks"></i> Tasks</a>
                     	</li>
                     	<li>
 	                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
