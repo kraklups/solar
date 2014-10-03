@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.Locale;
 
 import org.apache.tapestry5.annotations.Component;
-import org.apache.tapestry5.annotations.Environmental;
 import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
@@ -15,7 +14,6 @@ import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.MultiPolygon;
@@ -35,7 +33,8 @@ import net.kraklups.solarapp.web.services.AuthenticationPolicyType;
 import net.kraklups.solarapp.web.util.UserSession;
 
 @AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
-@Import(library={"context:js/OpenLayers.js", "context:js/gis_tools.js"})
+@Import(stylesheet={"context:css/gis.css"},
+		library={"context:js/OpenLayers.js", "context:js/gis_tools.js"})
 public class CreatePark {
 
 	@Property
@@ -97,10 +96,7 @@ public class CreatePark {
 
 	@Inject
 	private Locale locale;  
-	
-    @Environmental
-    private JavaScriptSupport javaScriptSupport;
-	
+		
 	private static final int SRID = 4326;
     
    	void onValidateFromCreateParkForm() {
@@ -192,4 +188,5 @@ public class CreatePark {
 			format(date);
 	}  
     
+
 }

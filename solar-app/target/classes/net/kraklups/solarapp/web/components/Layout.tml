@@ -8,15 +8,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     	
-    <title>${pageTitle}</title>
+    <title>${pageTitle}</title>    
     
 </head>
 
 <body>
 
-	<t:if test="userSession">
+    <div id="wrapper">
 
-    	<div id="wrapper">
+	<t:if test="userSession">
 
         	<!-- Navigation -->
         	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -252,21 +252,32 @@
             	<!-- /.navbar-collapse -->
         	</nav>
 
-		</div>
-      	<!-- /#wrapper -->
-            
+					<!-- Content. -->
+
+  					<t:body/>
+
+        	           
     <p:else>
+    
     	<ul>
 	    	<li>
   	        	<a href="#" t:type="PageLink" t:page="user/Login">${message:menu-authenticate}</a>
 	        </li>
 	    </ul>
+	    
+
+					<!-- Content. -->
+
+  					<t:body/>
+
+ 
+        		    
    	</p:else>
     </t:if>    
 
-	<!-- Content. -->
+	</div>
+    <!-- /#wrapper -->
 
-  	<t:body/>
 
 <!-- End of HTML body. -->
 </body>

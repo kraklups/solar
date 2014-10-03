@@ -13,10 +13,8 @@ import net.kraklups.solarapp.web.services.AuthenticationPolicyType;
 import net.kraklups.solarapp.web.util.CookiesManager;
 import net.kraklups.solarapp.web.util.UserSession;
 
-@Import(stylesheet={"context:css/solar_gis.css", "context:css/gis.css", "context:css/ie6-style.css", "context:css/bootstrap.min.css", 
-		"context:font-awesome/css/font-awesome.css", "context:css/sb-admin.css"},
+@Import(stylesheet={"context:css/bootstrap.min.css", "context:css/sb-admin.css", "context:font-awesome/css/font-awesome.css"},
 		library={"context:js/Firebug/firebug.js", "context:js/jquery-1.11.0.js", "context:js/bootstrap.min.js"})
-
 public class Layout {
 		
     @Property
@@ -40,4 +38,6 @@ public class Layout {
         CookiesManager.removeCookies(cookies);
         return Index.class;
 	}    
+    
+
 }
