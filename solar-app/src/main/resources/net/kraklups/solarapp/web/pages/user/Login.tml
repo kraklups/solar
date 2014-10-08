@@ -33,7 +33,7 @@
 	        						</span>           
 	        						<t:label for="rememberMyPassword"/>                     
 	        					</div>
-                                    <div class="button">
+                                <div class="button">
 	                            	<input type="submit" value="${message:submit}"/>        
 	   		 					</div>                                                                                            
                             </fieldset>
