@@ -1,6 +1,9 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
 	t:type="Layout" t:pageTitle="title"> 
 
+	<div class="page-wrapper">
+    
+    	<div class="container-fluid">
     	<div class="row">
         	<div class="col-lg-12">
             	<h2 class="page-header">Update Profile</h2>
@@ -76,5 +79,10 @@
             </div>
         </div>
 
+		</div>
+        <!-- /.container-fluid -->
+
+	</div>
+    <!-- /#page-wrapper -->   
 
 </html>

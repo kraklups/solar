@@ -23,7 +23,7 @@ import net.kraklups.solarapp.web.util.UserSession;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
-@AuthenticationPolicy(AuthenticationPolicyType.NON_AUTHENTICATED_USERS)
+@AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
 public class Register {
 	 	
     @Property

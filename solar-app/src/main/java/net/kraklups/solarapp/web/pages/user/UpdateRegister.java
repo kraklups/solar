@@ -1,9 +1,15 @@
 package net.kraklups.solarapp.web.pages.user;
 
+import org.apache.tapestry5.annotations.SessionState;
+
+import net.kraklups.solarapp.web.services.AuthenticationPolicy;
+import net.kraklups.solarapp.web.services.AuthenticationPolicyType;
+import net.kraklups.solarapp.web.util.UserSession;
+
+@AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
 public class UpdateRegister {
 
-	public UpdateRegister() {
-		// TODO Auto-generated constructor stub
-	}
+    @SessionState(create=false)
+    private UserSession userSession;
 
 }
