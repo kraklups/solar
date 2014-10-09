@@ -1,4 +1,4 @@
-package net.kraklups.solarapp.web.pages.messsage;
+package net.kraklups.solarapp.web.pages.message;
 
 import org.apache.tapestry5.annotations.SessionState;
 
