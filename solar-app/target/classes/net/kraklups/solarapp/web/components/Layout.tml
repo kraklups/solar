@@ -54,7 +54,7 @@
                         	<li class="divider" />
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="park/ShowParks">
-                        			<i class="fa fa-location-arrow fa-fw" /> <span class="text-muted small">${message:menu-showParks}</span>
+                        			<strong><span class="text-muted small">${message:menu-showParks}</span></strong>
                         			<i class="fa fa-angle-right" />
                         		</a>
                         	</li>                        	
@@ -81,7 +81,7 @@
                         	<li class="divider" />
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="user/showRegisters">
-                        			<i class="fa fa-users fa-fw"></i> <span class="text-muted small">${message:menu-showRegisters}</span>
+                        			<strong><span class="text-muted small">${message:menu-showRegisters}</span></strong>
                         			<i class="fa fa-angle-right" />
                         		</a>
                         	</li>                        
@@ -109,7 +109,7 @@
                         	<li class="divider" />
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="timetable/showTimetables">
-                        			<i class="fa fa-calendar fa-fw"></i> <span class="text-muted small">${message:menu-showTimetables} </span>
+                        			<strong><span class="text-muted small">${message:menu-showTimetables} </span></strong>
                         			<i class="fa fa-angle-right" />
                         		</a>
                         	</li>                                            	
@@ -138,7 +138,7 @@
                         	<li class="divider" />
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="message/showMessages">
-                        			<i class="fa fa-envelope fa-fw" /> <span class="text-muted small">${message:menu-showMessages}</span>
+                        			<strong><span class="text-muted small">${message:menu-showMessages}</span></strong>
                         			<i class="fa fa-angle-right" />
                         		</a>
                         	</li>                    
@@ -152,21 +152,26 @@
                         	<i class="fa fa-caret-down" />
                     	</a>
                     	<ul class="dropdown-menu dropdown-alerts">
+                    	
+                    		<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="alarm/createAlarm">
+                        			<i class="fa fa-bell fa-fw" /> <span class="text-muted small">${message:menu-createAlarm}</span>
+                        		</a>
+                        	</li>                        
+                        	<li class="divider" />
                         	<li>
-                        		<a href="#">
-                            		<div>
-                               			<i class="fa fa-comment fa-fw" /> New Comment
-                               			<span class="pull-right text-muted small">4 minutes ago</span>
-                            		</div>
-                            	</a>
-                        	</li>
-                        	<li class="divider"></li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="alarm/updateAlarm">
+                        			<i class="fa fa-bell fa-fw" /> <span class="text-muted small">${message:menu-updateAlarm}</span>
+                        		</a>
+                        	</li>                        
+                        	<li class="divider" />
                         	<li>
-                            	<a href="#" class="text-center">
-                            		<strong>See All Alerts</strong>
-                            		<i class="fa fa-angle-right"></i>
-                            	</a>
-                        	</li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="alarm/showAlarms">
+                        			<strong><span class="text-muted small">${message:menu-showAlarms}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>   
+                    	                    	
                     	</ul>
                 	</li>
                     	    
