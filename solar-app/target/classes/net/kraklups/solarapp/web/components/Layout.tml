@@ -229,23 +229,17 @@
             	<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             	<div class="collapse navbar-collapse navbar-ex1-collapse">
                 	<ul class="nav navbar-nav side-nav">
-                    	<li class="active">
+                    	<li>
                         	<a href="#" t:type="PageLink" t:page="Index"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     	</li>
                     	<li>
                         	<a href="#" t:type="PageLink" t:page="park/ShowParks"><i class="fa fa-fw fa-location-arrow"></i> Parks</a>
                     	</li>
                     	<li>
-                        	<a href="tables.html"><i class="fa fa-fw fa-calendar"></i> Timetables</a>
+                        	<a href="#" t:type="PageLink" t:page="timetable/showTimetables"><i class="fa fa-fw fa-calendar"></i> Timetables</a>
                     	</li>
                     	<li>
-                        	<a href="forms.html"><i class="fa fa-fw fa-tasks"></i> Tasks</a>
-                    	</li>
-                    	<li>
-	                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                    	</li>
-                    	<li>
-                        	<a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                        	<a href="#" t:type="PageLink" t:page="task/showTasks"><i class="fa fa-fw fa-tasks"></i> Tasks</a>
                     	</li>
                     	<li>
 	                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
@@ -257,9 +251,6 @@
                         	        <a href="#">Dropdown Item</a>
                             	</li>
                         	</ul>
-                    	</li>
-                    	<li>
-                        	<a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
                     	</li>
                 	</ul>
             	</div>
