@@ -63,13 +63,13 @@
                         	           
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="timetable/createTimetable">
-                        			<i class="fa fa-calendar-o fa-fw"></i> <span class="text-muted small">${message:menu-createTimetable} </span>
+                        			<i class="fa fa-calendar fa-fw"></i> <span class="text-muted small">${message:menu-createTimetable} </span>
                         		</a>
                         	</li>                        
                         	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="timetable/updateTimetable">
-                        			<i class="fa fa-calendar-o fa-fw"></i> <span class="text-muted small">${message:menu-updateTimetable} </span>
+                        			<i class="fa fa-calendar fa-fw"></i> <span class="text-muted small">${message:menu-updateTimetable} </span>
                         		</a>
                         	</li>                        
                         	
@@ -134,13 +134,13 @@
 
                     	    <li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="event/createEvent">
-                        			<i class="fa fa-cogs fa-fw" /> <span class="text-muted small">${message:menu-createEvent}</span>
+                        			<i class="fa fa-leaf fa-fw" /> <span class="text-muted small">${message:menu-createEvent}</span>
                         		</a>
                         	</li>                        
                         	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="event/updateEvent">
-                        			<i class="fa fa-cogs fa-fw" /> <span class="text-muted small">${message:menu-updateEvent}</span>
+                        			<i class="fa fa-leaf fa-fw" /> <span class="text-muted small">${message:menu-updateEvent}</span>
                         		</a>
                         	</li>                        
                         	
@@ -176,13 +176,13 @@
                         	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="alarm/createAlarm">
-                        			<i class="fa fa-bell fa-fw" /> <span class="text-muted small">${message:menu-createAlarm}</span>
+                        			<i class="fa fa-warning fa-fw" /> <span class="text-muted small">${message:menu-createAlarm}</span>
                         		</a>
                         	</li>                        
                         	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="alarm/updateAlarm">
-                        			<i class="fa fa-bell fa-fw" /> <span class="text-muted small">${message:menu-updateAlarm}</span>
+                        			<i class="fa fa-warning fa-fw" /> <span class="text-muted small">${message:menu-updateAlarm}</span>
                         		</a>
                         	</li>                        
                         	
@@ -303,7 +303,67 @@
                     	</a>
                     	<ul class="dropdown-menu dropdown-tasks">
                     	
-                    	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="role/createRole">
+                        			<i class="fa fa-users fa-fw" /> <span class="text-muted small">${message:menu-createRole}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="role/updateRole">
+                        			<i class="fa fa-users fa-fw" /> <span class="text-muted small">${message:menu-updateRole}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="role/showRoles">
+                        			<strong><span class="text-muted small">${message:menu-showRoles}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>
+
+							<li class="divider" />                        	
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="module/createModule">
+                        			<i class="fa fa-building fa-fw" /> <span class="text-muted small">${message:menu-createModule}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="module/updateModule">
+                        			<i class="fa fa-building fa-fw" /> <span class="text-muted small">${message:menu-updateModule}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="module/showModules">
+                        			<strong><span class="text-muted small">${message:menu-showModules}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>                           	                                          	
+
+							<li class="divider" />                        	
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="state/createState">
+                        			<i class="fa fa-building fa-fw" /> <span class="text-muted small">${message:menu-createState}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="state/updateState">
+                        			<i class="fa fa-building fa-fw" /> <span class="text-muted small">${message:menu-updateState}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="state/showStates">
+                        			<strong><span class="text-muted small">${message:menu-showStates}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>                           	                                          	
+                    	                    	
                     	</ul>                    
                     </li>
 
@@ -313,6 +373,7 @@
                         	<b class="fa fa-caret-down" />
                     	</a>
                     	<ul class="dropdown-menu dropdown-tasks">
+                    	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="user/Register">
                         			<i class="fa fa-users fa-fw" /> <span class="text-muted small">${message:menu-register}</span>
@@ -330,7 +391,29 @@
                         			<strong><span class="text-muted small">${message:menu-showRegisters}</span></strong>
                         			<i class="fa fa-angle-right" />
                         		</a>
+                        	</li>
+
+							<li class="divider" />                        	
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="company/createCompany">
+                        			<i class="fa fa-building fa-fw" /> <span class="text-muted small">${message:menu-createCompany}</span>
+                        		</a>
                         	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="company/updateCompany">
+                        			<i class="fa fa-building fa-fw" /> <span class="text-muted small">${message:menu-updateCompany}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="company/showCompanies">
+                        			<strong><span class="text-muted small">${message:menu-showCompanies}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>                           	                                          	
+                        	                        
                     	</ul>
                 	</li>    					
     					
