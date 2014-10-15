@@ -39,142 +39,50 @@
                         	<b class="fa fa-caret-down" />
                     	</a>
                     			
-                    	<ul class="dropdown-menu dropdown-user">
+                    	<ul class="dropdown-menu dropdown-tasks">
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="park/CreatePark">
                         			<i class="fa fa-location-arrow fa-fw" /> <span class="text-muted small">${message:menu-createPark}</span>                        			
                         		</a>
                         	</li>                        
-                        	<li class="divider" />
+                        	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="park/UpdatePark">
                         			<i class="fa fa-location-arrow fa-fw" /> <span class="text-muted small">${message:menu-updatePark}</span>
                         		</a>
                         	</li>
-                        	<li class="divider" />
+                        	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="park/ShowParks">
                         			<strong><span class="text-muted small">${message:menu-showParks}</span></strong>
                         			<i class="fa fa-angle-right" />
                         		</a>
-                        	</li>                        	
-                    	</ul>                    			                    			
-                	</li>    					
-
-                	<li class="dropdown">
-                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
-                        	<i class="fa fa-users fa-fw" />  
-                        	<b class="fa fa-caret-down" />
-                    	</a>
-                    	<ul class="dropdown-menu dropdown-user">
-                        	<li>
-                        		<a class="text-center" href="#" t:type="PageLink" t:page="user/Register">
-                        			<i class="fa fa-users fa-fw" /> <span class="text-muted small">${message:menu-register}</span>
-                        		</a>
-                        	</li>                        
+                        	</li>  
+                        	       
                         	<li class="divider" />
-                        	<li>
-                        		<a class="text-center" href="#" t:type="PageLink" t:page="user/updateRegister">
-                        			<i class="fa fa-users fa-fw" /> <span class="text-muted small">${message:menu-updateRegister}</span>
-                        		</a>
-                        	</li>                        
-                        	<li class="divider" />
-                        	<li>
-                        		<a class="text-center" href="#" t:type="PageLink" t:page="user/showRegisters">
-                        			<strong><span class="text-muted small">${message:menu-showRegisters}</span></strong>
-                        			<i class="fa fa-angle-right" />
-                        		</a>
-                        	</li>                        
-                    	</ul>
-                	</li>    					
-    					
-                	<li class="dropdown">
-                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
-                        	<i class="fa fa-calendar fa-fw" />  
-                        	<b class="fa fa-caret-down" />
-                    	</a>
-                    	<ul class="dropdown-menu dropdown-messages">
-                    	
+                        	           
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="timetable/createTimetable">
-                        			<i class="fa fa-calendar fa-fw"></i> <span class="text-muted small">${message:menu-createTimetable} </span>
+                        			<i class="fa fa-calendar-o fa-fw"></i> <span class="text-muted small">${message:menu-createTimetable} </span>
                         		</a>
                         	</li>                        
-                        	<li class="divider" />
+                        	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="timetable/updateTimetable">
-                        			<i class="fa fa-calendar fa-fw"></i> <span class="text-muted small">${message:menu-updateTimetable} </span>
+                        			<i class="fa fa-calendar-o fa-fw"></i> <span class="text-muted small">${message:menu-updateTimetable} </span>
                         		</a>
                         	</li>                        
-                        	<li class="divider" />
+                        	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="timetable/showTimetables">
                         			<strong><span class="text-muted small">${message:menu-showTimetables} </span></strong>
                         			<i class="fa fa-angle-right" />
                         		</a>
                         	</li>                                            	
-                    	
-                    	</ul>
-                    </li>            		    					
-    					    					
-                	<li class="dropdown">
-                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-                    		<i class="fa fa-envelope fa-fw" />  
-                        	<b class="fa fa-caret-down" />
-                    	</a>
-                    	<ul class="dropdown-menu dropdown-messages">
-                    	
-                    	    <li>
-                        		<a class="text-center" href="#" t:type="PageLink" t:page="message/createMessage">
-                        			<i class="fa fa-envelope fa-fw" /> <span class="text-muted small">${message:menu-createMessage}</span>
-                        		</a>
-                        	</li>                        
-                        	<li class="divider" />
-                        	<li>
-                        		<a class="text-center" href="#" t:type="PageLink" t:page="message/updateMessage">
-                        			<i class="fa fa-envelope fa-fw" /> <span class="text-muted small">${message:menu-updateMessage}</span>
-                        		</a>
-                        	</li>                        
-                        	<li class="divider" />
-                        	<li>
-                        		<a class="text-center" href="#" t:type="PageLink" t:page="message/showMessages">
-                        			<strong><span class="text-muted small">${message:menu-showMessages}</span></strong>
-                        			<i class="fa fa-angle-right" />
-                        		</a>
-                        	</li>                    
-                    	
-                    	</ul>                    
-                    </li>
+                        	                                   	                      	
+                    	</ul>                    			                    			
+                	</li>    					
 
-                	<li class="dropdown">
-                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        	<i class="fa fa-bell fa-fw" />  
-                        	<i class="fa fa-caret-down" />
-                    	</a>
-                    	<ul class="dropdown-menu dropdown-alerts">
-                    	
-                    		<li>
-                        		<a class="text-center" href="#" t:type="PageLink" t:page="alarm/createAlarm">
-                        			<i class="fa fa-bell fa-fw" /> <span class="text-muted small">${message:menu-createAlarm}</span>
-                        		</a>
-                        	</li>                        
-                        	<li class="divider" />
-                        	<li>
-                        		<a class="text-center" href="#" t:type="PageLink" t:page="alarm/updateAlarm">
-                        			<i class="fa fa-bell fa-fw" /> <span class="text-muted small">${message:menu-updateAlarm}</span>
-                        		</a>
-                        	</li>                        
-                        	<li class="divider" />
-                        	<li>
-                        		<a class="text-center" href="#" t:type="PageLink" t:page="alarm/showAlarms">
-                        			<strong><span class="text-muted small">${message:menu-showAlarms}</span></strong>
-                        			<i class="fa fa-angle-right" />
-                        		</a>
-                        	</li>   
-                    	                    	
-                    	</ul>
-                	</li>
-                    	    
                 	<li class="dropdown">
                     	<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
                     		<i class="fa fa-tasks fa-fw" />  
@@ -187,23 +95,245 @@
                         			<i class="fa fa-tasks fa-fw" /> <span class="text-muted small">${message:menu-createTask}</span>
                         		</a>
                         	</li>                        
-                        	<li class="divider" />
+                        	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="task/updateTask">
                         			<i class="fa fa-tasks fa-fw" /> <span class="text-muted small">${message:menu-updateTask}</span>
                         		</a>
                         	</li>                        
-                        	<li class="divider" />
+                        	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="task/showTasks">
                         			<strong><span class="text-muted small">${message:menu-showTasks}</span></strong>
                         			<i class="fa fa-angle-right" />
                         		</a>
                         	</li>   
-                    	                    	
+                        	
+                        	<li class="divider" />                        	
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="report/createReport">
+                        			<i class="fa fa-area-chart fa-fw" /> <span class="text-muted small">${message:menu-createReport}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="report/updateReport">
+                        			<i class="fa fa-area-chart fa-fw" /> <span class="text-muted small">${message:menu-updateReport}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="report/showReports">
+                        			<strong><span class="text-muted small">${message:menu-showReports}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>        
+                        	
+                        	<li class="divider" />
+
+                    	    <li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="event/createEvent">
+                        			<i class="fa fa-cogs fa-fw" /> <span class="text-muted small">${message:menu-createEvent}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="event/updateEvent">
+                        			<i class="fa fa-cogs fa-fw" /> <span class="text-muted small">${message:menu-updateEvent}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="event/showEvents">
+                        			<strong><span class="text-muted small">${message:menu-showMessages}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>  
+                        	                	
+							<li class="divider" />
+
+                    	    <li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="message/createMessage">
+                        			<i class="fa fa-envelope fa-fw" /> <span class="text-muted small">${message:menu-createMessage}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="message/updateMessage">
+                        			<i class="fa fa-envelope fa-fw" /> <span class="text-muted small">${message:menu-updateMessage}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="message/showMessages">
+                        			<strong><span class="text-muted small">${message:menu-showMessages}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>  
+                        	
+							<li class="divider" />                        	
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="alarm/createAlarm">
+                        			<i class="fa fa-bell fa-fw" /> <span class="text-muted small">${message:menu-createAlarm}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="alarm/updateAlarm">
+                        			<i class="fa fa-bell fa-fw" /> <span class="text-muted small">${message:menu-updateAlarm}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="alarm/showAlarms">
+                        			<strong><span class="text-muted small">${message:menu-showAlarms}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>                           	                                          	
+                        	                      	                    	                    	
                   		</ul>
               		</li>                    	    
-                  	        					
+    					   
+    				<li class="dropdown">
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        	<i class="fa fa-puzzle-piece fa-fw" />  
+                        	<i class="fa fa-caret-down" />
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-tasks">
+
+                    	    <li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="element/createElement">
+                        			<i class="fa fa-puzzle-piece fa-fw" /> <span class="text-muted small">${message:menu-createElement}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="element/updateElement">
+                        			<i class="fa fa-puzzle-piece fa-fw" /> <span class="text-muted small">${message:menu-updateElement}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="element/showElements">
+                        			<strong><span class="text-muted small">${message:menu-showElements}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>  
+                        	
+							<li class="divider" />                        	
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="sensor/createSensor">
+                        			<i class="fa fa-tags fa-fw" /> <span class="text-muted small">${message:menu-createSensor}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="sensor/updateSensor">
+                        			<i class="fa fa-tags fa-fw" /> <span class="text-muted small">${message:menu-updateSensor}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="sensor/showSensors">
+                        			<strong><span class="text-muted small">${message:menu-showSensors}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>                           	                                          	
+                    	                    	                    	
+                    	</ul>
+                	</li>
+
+                	<li class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+                        	<i class="fa fa-database fa-fw" />  
+                        	<b class="fa fa-caret-down" />
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-tasks">
+                    	
+                    	    <li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="datavalue/createDatavalue">
+                        			<i class="fa fa-database fa-fw" /> <span class="text-muted small">${message:menu-createDatavalue}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="datavalue/updateDatavalue">
+                        			<i class="fa fa-database fa-fw" /> <span class="text-muted small">${message:menu-updateDatavalue}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="datavalue/showDatavalues">
+                        			<strong><span class="text-muted small">${message:menu-showDatavalues}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>  
+                        	
+							<li class="divider" />                        	
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="datalogger/createDatalogger">
+                        			<i class="fa fa-recycle fa-fw" /> <span class="text-muted small">${message:menu-createDatalogger}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="datalogger/updateDatalogger">
+                        			<i class="fa fa-recycle fa-fw" /> <span class="text-muted small">${message:menu-updateDatalogger}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="datalogger/showDataloggers">
+                        			<strong><span class="text-muted small">${message:menu-showDataloggers}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>                           	                                          	
+                    	                    	
+                    	</ul>
+                    </li>            		    					
+                    	                      	        					    					       					    					
+                	<li class="dropdown">
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                    		<i class="fa fa-cogs fa-fw" />  
+                        	<b class="fa fa-caret-down" />
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-tasks">
+                    	
+                    	
+                    	</ul>                    
+                    </li>
+
+                	<li class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+                        	<i class="fa fa-users fa-fw" />  
+                        	<b class="fa fa-caret-down" />
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-tasks">
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="user/Register">
+                        			<i class="fa fa-users fa-fw" /> <span class="text-muted small">${message:menu-register}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="user/updateRegister">
+                        			<i class="fa fa-users fa-fw" /> <span class="text-muted small">${message:menu-updateRegister}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="user/showRegisters">
+                        			<strong><span class="text-muted small">${message:menu-showRegisters}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>                        
+                    	</ul>
+                	</li>    					
+    					
               		<li class="dropdown">
                   		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     		<i class="fa fa-fw fa-user"></i>  
@@ -212,7 +342,7 @@
                   		<ul class="dropdown-menu dropdown-user">
                     		<li>
                     			<a href="#" t:type="PageLink" t:page="user/UpdateProfile">
-                    				<i class="fa fa-user fa-fw"></i> <span class="text-nowrap">${message:menu-updateProfile}</span>
+                    				<i class="fa fa-cog fa-fw"></i> <span class="text-nowrap">${message:menu-updateProfile}</span>
                     			</a>
                     		</li>                        
                     		<li class="divider" />
@@ -241,6 +371,9 @@
                     	<li>
                         	<a href="#" t:type="PageLink" t:page="task/showTasks"><i class="fa fa-fw fa-tasks"></i> Tasks</a>
                     	</li>
+                    	<li>
+                        	<a href="#" t:type="PageLink" t:page="Index"><i class="fa fa-fw fa-area-chart"></i> Report</a>
+                    	</li>                    	
                     	<li>
 	                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
     	                    <ul id="demo" class="collapse">
