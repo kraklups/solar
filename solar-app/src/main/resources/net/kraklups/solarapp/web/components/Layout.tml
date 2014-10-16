@@ -305,13 +305,13 @@
                     	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="role/createRole">
-                        			<i class="fa fa-users fa-fw" /> <span class="text-muted small">${message:menu-createRole}</span>
+                        			<i class="fa fa-bug fa-fw" /> <span class="text-muted small">${message:menu-createRole}</span>
                         		</a>
                         	</li>                        
                         	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="role/updateRole">
-                        			<i class="fa fa-users fa-fw" /> <span class="text-muted small">${message:menu-updateRole}</span>
+                        			<i class="fa fa-bug fa-fw" /> <span class="text-muted small">${message:menu-updateRole}</span>
                         		</a>
                         	</li>                        
                         	
@@ -326,13 +326,13 @@
                         	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="module/createModule">
-                        			<i class="fa fa-building fa-fw" /> <span class="text-muted small">${message:menu-createModule}</span>
+                        			<i class="fa fa-barcode fa-fw" /> <span class="text-muted small">${message:menu-createModule}</span>
                         		</a>
                         	</li>                        
                         	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="module/updateModule">
-                        			<i class="fa fa-building fa-fw" /> <span class="text-muted small">${message:menu-updateModule}</span>
+                        			<i class="fa fa-barcode fa-fw" /> <span class="text-muted small">${message:menu-updateModule}</span>
                         		</a>
                         	</li>                        
                         	
@@ -347,13 +347,13 @@
                         	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="state/createState">
-                        			<i class="fa fa-building fa-fw" /> <span class="text-muted small">${message:menu-createState}</span>
+                        			<i class="fa fa-refresh fa-fw" /> <span class="text-muted small">${message:menu-createState}</span>
                         		</a>
                         	</li>                        
                         	
                         	<li>
                         		<a class="text-center" href="#" t:type="PageLink" t:page="state/updateState">
-                        			<i class="fa fa-building fa-fw" /> <span class="text-muted small">${message:menu-updateState}</span>
+                        			<i class="fa fa-refresh fa-fw" /> <span class="text-muted small">${message:menu-updateState}</span>
                         		</a>
                         	</li>                        
                         	
@@ -455,7 +455,7 @@
                         	<a href="#" t:type="PageLink" t:page="task/showTasks"><i class="fa fa-fw fa-tasks"></i> Tasks</a>
                     	</li>
                     	<li>
-                        	<a href="#" t:type="PageLink" t:page="Index"><i class="fa fa-fw fa-area-chart"></i> Report</a>
+                        	<a href="#" t:type="PageLink" t:page="report/showReports"><i class="fa fa-fw fa-area-chart"></i> Report</a>
                     	</li>                    	
                     	<li>
 	                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
