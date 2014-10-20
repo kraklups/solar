@@ -42,9 +42,9 @@
 -->
         <hibernate-spatial.version>4.3</hibernate-spatial.version>
         <junit.version>4.11</junit.version>
-        <spring.version>4.0.6.RELEASE</spring.version>
+        <spring.version>4.1.1.RELEASE</spring.version>
         <servletApi.version>3.1.0</servletApi.version>
-        <tapestry.version>5.4-beta-6</tapestry.version>
+        <tapestry.version>5.4-beta-22</tapestry.version>
         <mongo.version>2.12.3</mongo.version>
         <spring-data-mongodb.version>1.5.2.RELEASE</spring-data-mongodb.version>
 
@@ -53,7 +53,7 @@
         <mavenResourcesPlugin.version>2.6</mavenResourcesPlugin.version>
         <sqlMavenPlugin.version>1.5</sqlMavenPlugin.version>
         <mavenAssemblyPlugin.version>2.4</mavenAssemblyPlugin.version>
-        <jettyMavenPlugin>8.1.15.v20140411</jettyMavenPlugin>
+        <jettyMavenPlugin>8.1.16.v20140903</jettyMavenPlugin>
     </properties>
 
     <!-- ========================================================== -->
