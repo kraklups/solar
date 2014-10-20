@@ -5,6 +5,7 @@
 DROP TABLE IF EXISTS PingTable;
 CREATE TABLE PingTable (foo CHAR(1));
 
+
 -- ------------------------------ Company --------------------------------------
 -- table company
 
