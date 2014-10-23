@@ -248,6 +248,8 @@
                 <includes>
                     <include>spring-config.xml</include>
                     <include>hibernate-config.xml</include>
+                    <include>servlet-contect-config.xml</include>
+                    <include>tiles-definitions.xml</include>
                 </includes>
             </resource>
 
