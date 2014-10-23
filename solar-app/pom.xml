@@ -37,16 +37,12 @@
         <javassist.version>3.18.2-GA</javassist.version>
         <cglib.version>3.1</cglib.version>
         <hibernate.version>4.3.6.Final</hibernate.version>
-<!--
-        <hibernate-ogm-mongodb.version>4.1.0.Beta6</hibernate-ogm-mongodb.version> 
--->
         <hibernate-spatial.version>4.3</hibernate-spatial.version>
         <junit.version>4.11</junit.version>
-        <spring.version>4.0.6.RELEASE</spring.version>
+        <spring.version>4.0.7.RELEASE</spring.version>
         <servletApi.version>3.1.0</servletApi.version>
-        <tapestry.version>5.4-beta-6</tapestry.version>
-        <mongo.version>2.12.3</mongo.version>
-        <spring-data-mongodb.version>1.5.2.RELEASE</spring-data-mongodb.version>
+        <tiles-version>3.0.5</tiles-version>
+        <jstl.version>1.2</jstl.version>
 
         <!-- Plugin versions -->
         <mavenCompilerPlugin.version>2.5.1</mavenCompilerPlugin.version>
@@ -121,20 +117,6 @@
                 <artifactId>hibernate-core</artifactId>
                 <version>${hibernate.version}</version>
             </dependency>            
-            <!-- Hibernate OGM Core-->
-<!--        	<dependency>
-            	<groupId>org.hibernate.ogm</groupId>
-            	<artifactId>hibernate-ogm-core</artifactId>
-            	<version>${hibernate-ogm-mongodb.version}</version>
-        	</dependency> 
--->            
-            <!-- Hibernate OGM MongoDB-->
-<!--            <dependency>
-                <groupId>org.hibernate.ogm</groupId>
-                <artifactId>hibernate-ogm-mongodb</artifactId>
-                <version>${hibernate-ogm-mongodb.version}</version>
-            </dependency> 
--->                        
             <!-- JUnit -->
             <dependency>
                 <groupId>junit</groupId>
@@ -164,7 +146,13 @@
                 <artifactId>spring-web</artifactId>
                 <version>${spring.version}</version>
                 <scope>runtime</scope>
-            </dependency>            
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+                <scope>runtime</scope>
+            </dependency>                        
             <!-- Servlet API -->
             <dependency>
                 <groupId>javax.servlet</groupId>
@@ -172,18 +160,7 @@
                 <version>${servletApi.version}</version>
                 <scope>provided</scope>
             </dependency>
-            <!-- Tapestry -->
-            <dependency>
-                <groupId>org.apache.tapestry</groupId>
-                <artifactId>tapestry-core</artifactId>
-                <version>${tapestry.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.tapestry</groupId>
-                <artifactId>tapestry-spring</artifactId>
-                <version>${tapestry.version}</version>
-            </dependency>
-        </dependencies>
+		</dependencies>
     </dependencyManagement>
 
     <dependencies>
@@ -230,39 +207,29 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
         </dependency>
-		<dependency>
-    		<groupId>org.springframework.data</groupId>
-    		<artifactId>spring-data-mongodb</artifactId>
-    		<version>${spring-data-mongodb.version}</version>
-		</dependency>                    
-        <!-- Tapestry -->
         <dependency>
-            <groupId>org.apache.tapestry</groupId>
-            <artifactId>tapestry-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tapestry</groupId>
-            <artifactId>tapestry-spring</artifactId>
-        </dependency>          
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>        
         <!-- Hibernate Spatial -->            
         <dependency>
         	<groupId>org.hibernate</groupId>
             <artifactId>hibernate-spatial</artifactId>
             <version>${hibernate-spatial.version}</version>
         </dependency>
-       	<!-- MongoDB -->
+        <!-- Tiles 3 -->
+		<dependency>
+    		<groupId>org.apache.tiles</groupId>
+    		<artifactId>tiles-extras</artifactId>
+    		<version>${tiles-version}</version>
+		</dependency>
+        <!-- JSTL -->		
         <dependency>
-        	<groupId>org.mongodb</groupId>
-        	<artifactId>mongo-java-driver</artifactId>
-        	<version>${mongo.version}</version>
-        </dependency>        
-<!--      	<dependency>
-        	<groupId>org.hibernate.javax.persistence</groupId>
-        	<artifactId>hibernate-jpa-2.0-api</artifactId>
-        	<version>1.0.1.Final</version>
-    	</dependency> 
--->
-		
+    		<groupId>javax.servlet</groupId>
+    		<artifactId>jstl</artifactId>
+    		<version>${jstl.version}</version>
+		</dependency>            
+
     </dependencies>
 
     <build>
