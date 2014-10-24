@@ -1,4 +1,4 @@
-package net.kraklups.solarapp.web;
+package net.kraklups.solarapp.web.about;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,10 +18,10 @@ public class AboutController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/about", method = RequestMethod.GET)
+	@RequestMapping(value = "/about/about", method = RequestMethod.GET)
 	public String home(Model model) {
 		logger.info("About page !");
 		
-		return "about";
+		return "about/about";
 	}
 }

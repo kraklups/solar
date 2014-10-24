@@ -124,7 +124,7 @@ public final class menu_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.UrlTag _jspx_th_spring_url_1 = (org.springframework.web.servlet.tags.UrlTag) _jspx_tagPool_spring_url_var_value_htmlEscape_nobody.get(org.springframework.web.servlet.tags.UrlTag.class);
     _jspx_th_spring_url_1.setPageContext(_jspx_page_context);
     _jspx_th_spring_url_1.setParent(null);
-    _jspx_th_spring_url_1.setValue("/about");
+    _jspx_th_spring_url_1.setValue("/about/about");
     _jspx_th_spring_url_1.setVar("aboutUrl");
     _jspx_th_spring_url_1.setHtmlEscape(true);
     int[] _jspx_push_body_count_spring_url_1 = new int[] { 0 };

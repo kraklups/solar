@@ -1,4 +1,5 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -7,7 +8,8 @@
 		<title>Default tiles template</title>
 		
 		<!-- Bootstrap Core CSS -->
-    	<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+		<c:url var="bootstrapCSS" value="/resources/css/bootstrap.min.css" />
+    	<link href="${bootstrapCSS}" rel="stylesheet">
 				
 		<!-- Custom CSS -->
 		<link href="resources/css/sb-admin.css" rel="stylesheet">
