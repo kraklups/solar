@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:tiles="http://tiles.apache.org/tags-tiles" version="2.0" >
+<jsp:root 
+	xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	version="2.0" >
+	
 <jsp:directive.page contentType="text/html;charset=UTF-8"/>
 <jsp:output omit-xml-declaration="yes"/>
+<jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />
 
 <tiles:insertDefinition name="defaultTemplate">
 	<tiles:putAttribute name="body">

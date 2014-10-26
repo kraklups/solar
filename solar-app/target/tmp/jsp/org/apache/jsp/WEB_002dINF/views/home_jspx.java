@@ -41,6 +41,7 @@ public final class home_jspx extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("<!DOCTYPE HTML SYSTEM \"about:legacy-compat\">\n");
       if (_jspx_meth_tiles_insertDefinition_0(_jspx_page_context))
         return;
     } catch (Throwable t) {
