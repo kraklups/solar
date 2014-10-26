@@ -1,1 +1,20 @@
-<div class="footer">I am the Footer !</div>
+<jsp:root xmlns:tiles="http://tiles.apache.org/tags-tiles" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0" >
+<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+<jsp:output omit-xml-declaration="yes"/>
+
+	<div class="footer">I am the Footer !</div>
+
+    <!-- jQuery Version 1.11.0 -->
+    <c:url var="jqueryJS" value="/resources/js/jquery-1.11.0.js" />
+    <script src="${jqueryJS}" ><jsp:text /></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <c:url var="bootstrapJS" value="/resources/js/bootstrap.min.js" />
+    <script src="${bootstrapJS}" ><jsp:text /></script>
+
+    <!-- Firebug JavaScript -->
+    <c:url var="firebugJS" value="/resources/js/Firebug/firebug.js" />
+    <script src="${firebugJS}" ><jsp:text /></script>	
+
+
+</jsp:root>

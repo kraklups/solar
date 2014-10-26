@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <html 
 	xmlns:tiles="http://tiles.apache.org/tags-tiles"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:jsp="http://java.sun.com/JSP/Page" >
 	
+	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+	<jsp:output omit-xml-declaration="yes"/>
+		
 	<head>
 	
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,31 +24,18 @@
     	<!-- Custom Fonts -->
     	<c:url var="fontawesomeCSS" value="/resources/font-awesome/css/font-awesome.css" />
     	<link href="${fontawesomeCSS}" rel="stylesheet" type="text/css" />		
-		
+				
 	</head>
 	
 	<body>
-	
-		<div class="page">
+			
 			<tiles:insertAttribute name="header" ignore="true" />
-			<div class="content">
+			<div>
 				<tiles:insertAttribute name="menu" ignore="true" />
 				<tiles:insertAttribute name="body" />
 			</div>
 			<tiles:insertAttribute name="footer" ignore="true" />
-		</div>
-		
-    <!-- jQuery Version 1.11.0 -->
-    <c:url var="jqueryJS" value="/resources/js/jquery-1.11.0.js" />    
-    <script src="${jqueryJS}" />
-
-    <!-- Bootstrap Core JavaScript -->
-    <c:url var="bootstrapJS" value="/resources/js/bootstrap.min.js" />
-    <script src="${bootstrapJS}"></script>	
-
-    <!-- Firebug JavaScript -->
-    <c:url var="firebugJS" value="/resources/js/Firebug/firebug.js" />
-    <script src="${firebugJS}"></script>		
+				
 		
 	</body>
 	

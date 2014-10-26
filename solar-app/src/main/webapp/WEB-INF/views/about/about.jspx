@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<div id="about" xmlns:tiles="http://tiles.apache.org/tags-tiles" xmlns:jsp="http://java.sun.com/JSP/Page" >
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jsp:root xmlns:tiles="http://tiles.apache.org/tags-tiles" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0" >
 <jsp:directive.page contentType="text/html;charset=UTF-8"/>
 <jsp:output omit-xml-declaration="yes"/>
-
  
 <tiles:insertDefinition name="defaultTemplate">
 	<tiles:putAttribute name="body">
 
 
 
-		<div class="body">
+		<div>
 			<h1>About page !</h1>
 
 			<p>This is a simple example of Tiles 3 integration with Spring Framework.</p>
@@ -20,5 +19,4 @@
 
 	</tiles:putAttribute>
 </tiles:insertDefinition>
-
-</div>
+</jsp:root>
