@@ -1,6 +1,11 @@
-<jsp:root xmlns:tiles="http://tiles.apache.org/tags-tiles" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0" >
-<jsp:directive.page contentType="text/html;charset=UTF-8"/>
-<jsp:output omit-xml-declaration="yes"/>
+<jsp:root 
+	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
+	xmlns:jsp="http://java.sun.com/JSP/Page" 
+	version="2.0" >
+	
+	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+	<jsp:output omit-xml-declaration="yes"/>
 
 	<div class="footer">I am the Footer !</div>
 

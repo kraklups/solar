@@ -40,7 +40,7 @@ public final class layout_jspx extends org.apache.jasper.runtime.HttpJspBase
     PageContext _jspx_page_context = null;
 
     try {
-      response.setContentType("text/xml;charset=UTF-8");
+      response.setContentType("text/html;charset=UTF-8");
       pageContext = _jspxFactory.getPageContext(this, request, response,
       			null, true, 8192, true);
       _jspx_page_context = pageContext;
@@ -51,6 +51,7 @@ public final class layout_jspx extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("<!DOCTYPE HTML SYSTEM \"about:legacy-compat\">\n");
       out.write("<html>");
       out.write("<head>");
       out.write("<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\" />");
