@@ -2,12 +2,11 @@
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
-<tiles-definitions>
-  
-    <definition name="defaultTemplate" template="/WEB-INF/template/layout.jsp">
-        <put-attribute name="header" value="/WEB-INF/template/header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/template/menu.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/template/footer.jsp" />
-    </definition>
-  
+       
+<tiles-definitions>  
+    <definition name="defaultTemplate" template="/WEB-INF/template/layout.jspx">
+        <put-attribute name="header" value="/WEB-INF/template/header.jspx" />
+        <put-attribute name="menu" value="/WEB-INF/template/menu.jspx" />
+        <put-attribute name="footer" value="/WEB-INF/template/footer.jspx" />
+    </definition>  
 </tiles-definitions>

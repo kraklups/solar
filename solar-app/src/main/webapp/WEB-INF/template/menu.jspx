@@ -1,5 +1,4 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<div class="menu">
+<div class="menu" xmlns:spring="http://www.springframework.org/tags" >
 Menu
 	<ul>
 	    <li>
@@ -12,3 +11,4 @@ Menu
  		</li>
 	</ul>
 </div>
+
