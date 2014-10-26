@@ -1,11 +1,471 @@
 <jsp:root 
 	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
 	xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:spring="http://www.springframework.org/tags"
 	version="2.0" >
 	
 	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
 	<jsp:output omit-xml-declaration="yes"/>
 
-	<div class="header">I am the header</div>
+    <div id="wrapper">
+
+        	<!-- Navigation -->
+        	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            	<!-- Brand and toggle get grouped for better mobile display -->
+            	<div class="navbar-header">
+ 	               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+    	                <span class="sr-only">Toggle navigation</span>
+        	            <span class="icon-bar"><jsp:text /></span>
+            	        <span class="icon-bar"><jsp:text /></span>
+                	    <span class="icon-bar"><jsp:text /></span>
+                	</button>
+                	<spring:url value="/home" var="homeUrl" htmlEscape="true"/>
+ 					<a href="${homeUrl}">SolarApp</a>
+            	</div>
+            	<!-- Top Menu Items -->
+            	<ul class="nav navbar-right top-nav">
+
+                	<li class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+                        	<i class="fa fa-fw fa-location-arrow"><jsp:text /></i>  
+                        	<b class="fa fa-caret-down"><jsp:text /></b>
+                    	</a>
+                    			
+                    	<ul class="dropdown-menu dropdown-tasks">
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="park/CreatePark">
+                        			<i class="fa fa-location-arrow fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createPark}</span>                        			
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="park/UpdatePark">
+                        			<i class="fa fa-location-arrow fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updatePark}</span>
+                        		</a>
+                        	</li>
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="park/ShowParks">
+                        			<strong><span class="text-muted small">${message:menu-showParks}</span></strong>
+                        			<i class="fa fa-angle-right"><jsp:text /></i>
+                        		</a>
+                        	</li>  
+                        	       
+                        	<li class="divider"><jsp:text /></li>
+                        	           
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="timetable/createTimetable">
+                        			<i class="fa fa-calendar fa-fw"></i> <span class="text-muted small">${message:menu-createTimetable} </span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="timetable/updateTimetable">
+                        			<i class="fa fa-calendar fa-fw"></i> <span class="text-muted small">${message:menu-updateTimetable} </span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="timetable/showTimetables">
+                        			<strong><span class="text-muted small">${message:menu-showTimetables} </span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>                                            	
+                        	                                   	                      	
+                    	</ul>                    			                    			
+                	</li>    					
+
+                	<li class="dropdown">
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                    		<i class="fa fa-tasks fa-fw"><jsp:text /></i>  
+                    		<b class="fa fa-caret-down"><jsp:text /></b>
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-tasks">
+                    	
+                    		<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="task/createTask">
+                        			<i class="fa fa-tasks fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createTask}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="task/updateTask">
+                        			<i class="fa fa-tasks fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updateTask}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="task/showTasks">
+                        			<strong><span class="text-muted small">${message:menu-showTasks}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>   
+                        	
+                        	<li class="divider"><jsp:text /></li>                        	
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="report/createReport">
+                        			<i class="fa fa-area-chart fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createReport}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="report/updateReport">
+                        			<i class="fa fa-area-chart fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updateReport}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="report/showReports">
+                        			<strong><span class="text-muted small">${message:menu-showReports}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>        
+                        	
+                        	<li class="divider"><jsp:text /></li>
+
+                    	    <li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="event/createEvent">
+                        			<i class="fa fa-leaf fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createEvent}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="event/updateEvent">
+                        			<i class="fa fa-leaf fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updateEvent}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="event/showEvents">
+                        			<strong><span class="text-muted small">${message:menu-showMessages}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>  
+                        	                	
+							<li class="divider"><jsp:text /></li>
+
+                    	    <li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="message/createMessage">
+                        			<i class="fa fa-envelope fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createMessage}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="message/updateMessage">
+                        			<i class="fa fa-envelope fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updateMessage}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="message/showMessages">
+                        			<strong><span class="text-muted small">${message:menu-showMessages}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>  
+                        	
+							<li class="divider"><jsp:text /></li>                        	
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="alarm/createAlarm">
+                        			<i class="fa fa-warning fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createAlarm}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="alarm/updateAlarm">
+                        			<i class="fa fa-warning fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updateAlarm}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="alarm/showAlarms">
+                        			<strong><span class="text-muted small">${message:menu-showAlarms}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>                           	                                          	
+                        	                      	                    	                    	
+                  		</ul>
+              		</li>                    	    
+    					   
+    				<li class="dropdown">
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        	<i class="fa fa-puzzle-piece fa-fw"><jsp:text /></i>  
+                        	<b class="fa fa-caret-down"><jsp:text /></b>
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-tasks">
+
+                    	    <li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="element/createElement">
+                        			<i class="fa fa-puzzle-piece fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createElement}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="element/updateElement">
+                        			<i class="fa fa-puzzle-piece fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updateElement}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="element/showElements">
+                        			<strong><span class="text-muted small">${message:menu-showElements}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>  
+                        	
+							<li class="divider"><jsp:text /></li>                        	
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="sensor/createSensor">
+                        			<i class="fa fa-tags fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createSensor}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="sensor/updateSensor">
+                        			<i class="fa fa-tags fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updateSensor}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="sensor/showSensors">
+                        			<strong><span class="text-muted small">${message:menu-showSensors}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>                           	                                          	
+                    	                    	                    	
+                    	</ul>
+                	</li>
+
+                	<li class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+                        	<i class="fa fa-database fa-fw"><jsp:text /></i>  
+                        	<b class="fa fa-caret-down"><jsp:text /></b> />
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-tasks">
+                    	
+                    	    <li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="datavalue/createDatavalue">
+                        			<i class="fa fa-database fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createDatavalue}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="datavalue/updateDatavalue">
+                        			<i class="fa fa-database fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updateDatavalue}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="datavalue/showDatavalues">
+                        			<strong><span class="text-muted small">${message:menu-showDatavalues}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>  
+                        	
+							<li class="divider"><jsp:text /></li>                        	
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="datalogger/createDatalogger">
+                        			<i class="fa fa-recycle fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createDatalogger}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="datalogger/updateDatalogger">
+                        			<i class="fa fa-recycle fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updateDatalogger}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="datalogger/showDataloggers">
+                        			<strong><span class="text-muted small">${message:menu-showDataloggers}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>                           	                                          	
+                    	                    	
+                    	</ul>
+                    </li>            		    					
+                    	                      	        					    					       					    					
+                	<li class="dropdown">
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                    		<i class="fa fa-cogs fa-fw"><jsp:text /></i>  
+                        	<b class="fa fa-caret-down"><jsp:text /></b>
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-tasks">
+                    	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="role/createRole">
+                        			<i class="fa fa-bug fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createRole}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="role/updateRole">
+                        			<i class="fa fa-bug fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updateRole}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="role/showRoles">
+                        			<strong><span class="text-muted small">${message:menu-showRoles}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>
+
+							<li class="divider"><jsp:text /></li>                        	
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="module/createModule">
+                        			<i class="fa fa-barcode fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createModule}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="module/updateModule">
+                        			<i class="fa fa-barcode fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updateModule}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="module/showModules">
+                        			<strong><span class="text-muted small">${message:menu-showModules}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>                           	                                          	
+
+							<li class="divider"><jsp:text /></li>                        	
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="state/createState">
+                        			<i class="fa fa-refresh fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createState}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="state/updateState">
+                        			<i class="fa fa-refresh fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updateState}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="state/showStates">
+                        			<strong><span class="text-muted small">${message:menu-showStates}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>                           	                                          	
+                    	                    	
+                    	</ul>                    
+                    </li>
+
+                	<li class="dropdown">
+                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+                        	<i class="fa fa-users fa-fw"><jsp:text /></i>  
+                        	<b class="fa fa-caret-down"><jsp:text /></b>
+                    	</a>
+                    	<ul class="dropdown-menu dropdown-tasks">
+                    	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="user/Register">
+                        			<i class="fa fa-users fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-register}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="user/updateRegister">
+                        			<i class="fa fa-users fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updateRegister}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="user/showRegisters">
+                        			<strong><span class="text-muted small">${message:menu-showRegisters}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>
+
+							<li class="divider"><jsp:text /></li>                        	
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="company/createCompany">
+                        			<i class="fa fa-building fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createCompany}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="company/updateCompany">
+                        			<i class="fa fa-building fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updateCompany}</span>
+                        		</a>
+                        	</li>                        
+                        	
+                        	<li>
+                        		<a class="text-center" href="#" t:type="PageLink" t:page="company/showCompanies">
+                        			<strong><span class="text-muted small">${message:menu-showCompanies}</span></strong>
+                        			<i class="fa fa-angle-right" />
+                        		</a>
+                        	</li>                           	                                          	
+                        	                        
+                    	</ul>
+                	</li>    					
+    					
+              		<li class="dropdown">
+                  		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    		<i class="fa fa-fw fa-user"></i>  
+                    		<i class="fa fa-caret-down"></i>
+                  		</a>
+                  		<ul class="dropdown-menu dropdown-user">
+                    		<li>
+                    			<a href="#" t:type="PageLink" t:page="user/UpdateProfile">
+                    				<i class="fa fa-cog fa-fw"></i> <span class="text-nowrap">${message:menu-updateProfile}</span>
+                    			</a>
+                    		</li>                        
+                    		<li class="divider"><jsp:text /></li>
+                    		<li>
+                    			<a href="#" t:type="ActionLink" t:id="logout">
+                    				<i class="fa fa-sign-out fa-fw"></i> <span class="text-warning">${message:menu-logout}</span>
+                    			</a>
+                    		</li>
+                  		</ul>
+              		</li>    					
+              
+          		</ul>
+            
+            	<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            	<div class="collapse navbar-collapse navbar-ex1-collapse">
+                	<ul class="nav navbar-nav side-nav">
+                    	<li>
+                        	<a href="#" t:type="PageLink" t:page="Index"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    	</li>
+                    	<li>
+                        	<a href="#" t:type="PageLink" t:page="park/ShowParks"><i class="fa fa-fw fa-location-arrow"></i> Parks</a>
+                    	</li>
+                    	<li>
+                        	<a href="#" t:type="PageLink" t:page="timetable/showTimetables"><i class="fa fa-fw fa-calendar"></i> Timetables</a>
+                    	</li>
+                    	<li>
+                        	<a href="#" t:type="PageLink" t:page="task/showTasks"><i class="fa fa-fw fa-tasks"></i> Tasks</a>
+                    	</li>
+                    	<li>
+                        	<a href="#" t:type="PageLink" t:page="report/showReports"><i class="fa fa-fw fa-area-chart"></i> Report</a>
+                    	</li>                    	
+                    	<li>
+	                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+    	                    <ul id="demo" class="collapse">
+        	                    <li>
+            	                    <a href="#">Dropdown Item</a>
+                	            </li>
+                    	        <li>
+                        	        <a href="#">Dropdown Item</a>
+                            	</li>
+                        	</ul>
+                    	</li>
+                	</ul>
+            	</div>
+            	<!-- /.navbar-collapse -->
+        	</nav>
+
+	</div>
+    <!-- /#wrapper -->
 	
 </jsp:root>

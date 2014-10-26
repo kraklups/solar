@@ -56,29 +56,25 @@ public final class layout_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<head>");
       out.write("<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\" />");
       out.write("<meta content=\"width=device-width, initial-scale=1\" name=\"viewport\" />");
-      out.write("<title>");
-      out.write("Default tiles template");
-      out.write("</title>");
       if (_jspx_meth_c_url_0(_jspx_page_context))
         return;
-      out.write("<link media=\"all\" type=\"text/css\" rel=\"stylesheet\" href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${bootstrapCSS}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" />");
+      out.write("<link rel=\"stylesheet\" href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${bootstrapCSS}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" />");
       if (_jspx_meth_c_url_1(_jspx_page_context))
         return;
-      out.write("<link media=\"all\" type=\"text/css\" rel=\"stylesheet\" href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sbadminCSS}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" />");
+      out.write("<link rel=\"stylesheet\" href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sbadminCSS}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" />");
       if (_jspx_meth_c_url_2(_jspx_page_context))
         return;
-      out.write("<link media=\"all\" type=\"text/css\" rel=\"stylesheet\" href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${fontawesomeCSS}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" />");
+      out.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${fontawesomeCSS}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" />");
+      out.write("<title>");
+      out.write("Merda Project");
+      out.write("</title>");
       out.write("</head>");
       out.write("<body>");
       if (_jspx_meth_tiles_insertAttribute_0(_jspx_page_context))
         return;
-      out.write("<div>");
       if (_jspx_meth_tiles_insertAttribute_1(_jspx_page_context))
         return;
       if (_jspx_meth_tiles_insertAttribute_2(_jspx_page_context))
-        return;
-      out.write("</div>");
-      if (_jspx_meth_tiles_insertAttribute_3(_jspx_page_context))
         return;
       out.write("</body>");
       out.write("</html>");
@@ -172,8 +168,7 @@ public final class layout_jspx extends org.apache.jasper.runtime.HttpJspBase
     //  tiles:insertAttribute
     org.apache.tiles.jsp.taglib.InsertAttributeTag _jspx_th_tiles_insertAttribute_1 = (_jspx_resourceInjector != null) ? _jspx_resourceInjector.createTagHandlerInstance(org.apache.tiles.jsp.taglib.InsertAttributeTag.class) : new org.apache.tiles.jsp.taglib.InsertAttributeTag();
     _jspx_th_tiles_insertAttribute_1.setJspContext(_jspx_page_context);
-    _jspx_th_tiles_insertAttribute_1.setIgnore(true);
-    _jspx_th_tiles_insertAttribute_1.setName("menu");
+    _jspx_th_tiles_insertAttribute_1.setName("body");
     _jspx_th_tiles_insertAttribute_1.doTag();
     return false;
   }
@@ -185,21 +180,9 @@ public final class layout_jspx extends org.apache.jasper.runtime.HttpJspBase
     //  tiles:insertAttribute
     org.apache.tiles.jsp.taglib.InsertAttributeTag _jspx_th_tiles_insertAttribute_2 = (_jspx_resourceInjector != null) ? _jspx_resourceInjector.createTagHandlerInstance(org.apache.tiles.jsp.taglib.InsertAttributeTag.class) : new org.apache.tiles.jsp.taglib.InsertAttributeTag();
     _jspx_th_tiles_insertAttribute_2.setJspContext(_jspx_page_context);
-    _jspx_th_tiles_insertAttribute_2.setName("body");
+    _jspx_th_tiles_insertAttribute_2.setIgnore(true);
+    _jspx_th_tiles_insertAttribute_2.setName("footer");
     _jspx_th_tiles_insertAttribute_2.doTag();
-    return false;
-  }
-
-  private boolean _jspx_meth_tiles_insertAttribute_3(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  tiles:insertAttribute
-    org.apache.tiles.jsp.taglib.InsertAttributeTag _jspx_th_tiles_insertAttribute_3 = (_jspx_resourceInjector != null) ? _jspx_resourceInjector.createTagHandlerInstance(org.apache.tiles.jsp.taglib.InsertAttributeTag.class) : new org.apache.tiles.jsp.taglib.InsertAttributeTag();
-    _jspx_th_tiles_insertAttribute_3.setJspContext(_jspx_page_context);
-    _jspx_th_tiles_insertAttribute_3.setIgnore(true);
-    _jspx_th_tiles_insertAttribute_3.setName("footer");
-    _jspx_th_tiles_insertAttribute_3.doTag();
     return false;
   }
 }

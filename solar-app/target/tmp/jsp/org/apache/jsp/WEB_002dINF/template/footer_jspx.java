@@ -51,9 +51,6 @@ public final class footer_jspx extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("<div class=\"footer\">");
-      out.write("I am the Footer !");
-      out.write("</div>");
       if (_jspx_meth_c_url_0(_jspx_page_context))
         return;
       out.write("<script src=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${jqueryJS}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\">");

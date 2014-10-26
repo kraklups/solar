@@ -10,39 +10,36 @@
 
 <html>
 			
-				
-			
 	<head>
 	
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     	<meta name="viewport" content="width=device-width, initial-scale=1"/>
     	
-		<title>Default tiles template</title>
-		
 		<!-- Bootstrap Core CSS -->
 		<c:url var="bootstrapCSS" value="/resources/css/bootstrap.min.css" />
-    	<link href="${bootstrapCSS}" rel="stylesheet" type="text/css" media="all" />
+    	<link href="${bootstrapCSS}" rel="stylesheet" />
 				
 		<!-- Custom CSS -->
 		<c:url var="sbadminCSS" value="/resources/css/sb-admin.css" />
-		<link href="${sbadminCSS}" rel="stylesheet" type="text/css" media="all" />
+		<link href="${sbadminCSS}" rel="stylesheet" />
 		
     	<!-- Custom Fonts -->
     	<c:url var="fontawesomeCSS" value="/resources/font-awesome/css/font-awesome.css" />
-    	<link href="${fontawesomeCSS}" rel="stylesheet" type="text/css" media="all" />		
-				
+    	<link href="${fontawesomeCSS}" rel="stylesheet" type="text/css" />		
+    	
+    	
+		<title>Merda Project</title>
+						
 	</head>
 	
-	<body>
+	<body>			
 			
 			<tiles:insertAttribute name="header" ignore="true" />
-			<div>
-				<tiles:insertAttribute name="menu" ignore="true" />
-				<tiles:insertAttribute name="body" />
-			</div>
-			<tiles:insertAttribute name="footer" ignore="true" />
+
+			<tiles:insertAttribute name="body" />
 				
-		
+			<tiles:insertAttribute name="footer" ignore="true" />
+			
 	</body>
 	
 </html>

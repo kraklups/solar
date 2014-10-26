@@ -7,8 +7,6 @@
 	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
 	<jsp:output omit-xml-declaration="yes"/>
 
-	<div class="footer">I am the Footer !</div>
-
     <!-- jQuery Version 1.11.0 -->
     <c:url var="jqueryJS" value="/resources/js/jquery-1.11.0.js" />
     <script src="${jqueryJS}" ><jsp:text /></script>
