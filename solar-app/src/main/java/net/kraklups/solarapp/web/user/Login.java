@@ -1,27 +1,38 @@
 package net.kraklups.solarapp.web.user;
 
-import org.apache.tapestry5.annotations.Component;
-import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.annotations.SessionState;
-import org.apache.tapestry5.corelib.components.Form;
-import org.apache.tapestry5.ioc.Messages;
-import org.apache.tapestry5.ioc.annotations.Inject;
-import org.apache.tapestry5.services.Cookies;
 
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userservice.IncorrectPasswordException;
 import net.kraklups.solarapp.model.userservice.UserService;
-import net.kraklups.solarapp.web.pages.Index;
-import net.kraklups.solarapp.web.services.AuthenticationPolicy;
-import net.kraklups.solarapp.web.services.AuthenticationPolicyType;
-import net.kraklups.solarapp.web.util.CookiesManager;
-import net.kraklups.solarapp.web.util.UserSession;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
-@AuthenticationPolicy(AuthenticationPolicyType.NON_AUTHENTICATED_USERS)
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+/**
+ * Handles requests for the application Login page.
+ */
+@Controller
 public class Login {
 
-    @Property
+	private static final Logger logger = LoggerFactory.getLogger(Login.class);
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/user/login", method = RequestMethod.GET)
+	public String home(Model model) {
+		logger.info("Login page !");
+		
+		return "user/login";
+	}	
+	
+	
+/*    @Property
     private String loginName;
 
     @Property
@@ -77,5 +88,5 @@ public class Login {
         return Index.class;
 
     }
-
+*/
 }

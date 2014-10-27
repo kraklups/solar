@@ -33,13 +33,15 @@
                     			
                     	<ul class="dropdown-menu dropdown-tasks">
                         	<li>
-                        		<a class="text-center" href="#" t:type="PageLink" t:page="park/CreatePark">
+                        		<spring:url value="/park/createPark" var="createParkUrl" htmlEscape="true"/>
+ 								<a class="text-center" href="${createParkUrl}">
                         			<i class="fa fa-location-arrow fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-createPark}</span>                        			
                         		</a>
                         	</li>                        
                         	
                         	<li>
-                        		<a class="text-center" href="#" t:type="PageLink" t:page="park/UpdatePark">
+                        		<spring:url value="/park/UpdatePark" var="UpdateParkUrl" htmlEscape="true"/>
+								<a class="text-center" href="${UpdateParkUrl}">
                         			<i class="fa fa-location-arrow fa-fw"><jsp:text /></i> <span class="text-muted small">${message:menu-updatePark}</span>
                         		</a>
                         	</li>

@@ -20,9 +20,9 @@ public class CreateCompany {
 	 */
 	@RequestMapping(value = "/company/createCompany", method = RequestMethod.GET)
 	public String home(Model model) {
-		logger.info("Create Alarm page !");
+		logger.info("Create Company page !");
 		
-		return "alarm/createAlarm";
+		return "company/createCompany";
 	}
 
 }

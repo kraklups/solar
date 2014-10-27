@@ -6,15 +6,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import org.apache.tapestry5.annotations.Component;
-import org.apache.tapestry5.annotations.Import;
-import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.annotations.SessionState;
-import org.apache.tapestry5.corelib.components.Form;
-import org.apache.tapestry5.corelib.components.TextField;
-import org.apache.tapestry5.ioc.Messages;
-import org.apache.tapestry5.ioc.annotations.Inject;
-
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.io.ParseException;
@@ -27,12 +18,35 @@ import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.parkservice.ParkService;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userservice.UserService;
-import net.kraklups.solarapp.web.pages.Index;
-import net.kraklups.solarapp.web.services.AuthenticationPolicy;
-import net.kraklups.solarapp.web.services.AuthenticationPolicyType;
-import net.kraklups.solarapp.web.util.UserSession;
 
-@AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+/**
+ * Handles requests for the application Park page.
+ */
+@Controller
+public class CreatePark {
+
+	private static final Logger logger = LoggerFactory.getLogger(CreatePark.class);
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/park/createPark", method = RequestMethod.GET)
+	public String home(Model model) {
+		logger.info("Create Park page !");
+		
+		return "park/createPark";
+	}
+
+}
+
+/*@AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
 @Import(stylesheet={"context:css/gis.css"},
 		library={"context:js/OpenLayers.js", "context:js/gis_tools.js"})
 public class CreatePark {
@@ -190,3 +204,4 @@ public class CreatePark {
     
 
 }
+*/

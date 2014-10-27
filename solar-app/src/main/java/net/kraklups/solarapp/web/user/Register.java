@@ -2,31 +2,41 @@ package net.kraklups.solarapp.web.user;
 
 import java.util.Calendar;
 
-import org.apache.tapestry5.annotations.Component;
-import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.annotations.SessionState;
-import org.apache.tapestry5.corelib.components.Form;
-import org.apache.tapestry5.corelib.components.PasswordField;
-import org.apache.tapestry5.corelib.components.TextField;
-import org.apache.tapestry5.ioc.Messages;
-import org.apache.tapestry5.ioc.annotations.Inject;
-
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.role.Role;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userservice.UserProfileDetails;
 import net.kraklups.solarapp.model.userservice.UserService;
-import net.kraklups.solarapp.web.pages.Index;
-import net.kraklups.solarapp.web.services.AuthenticationPolicy;
-import net.kraklups.solarapp.web.services.AuthenticationPolicyType;
-import net.kraklups.solarapp.web.util.UserSession;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
-@AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+/**
+ * Handles requests for the application Register page.
+ */
+@Controller
 public class Register {
-	 	
-    @Property
+	 
+	private static final Logger logger = LoggerFactory.getLogger(Register.class);
+	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/user/register", method = RequestMethod.GET)
+	public String home(Model model) {
+		logger.info("Register page !");
+		
+		return "user/register";
+	}	
+	
+	
+/*    @Property
     private String loginName;
 
     @Property
@@ -126,5 +136,5 @@ public class Register {
         return Index.class;
 
     }
-
+*/
 }
