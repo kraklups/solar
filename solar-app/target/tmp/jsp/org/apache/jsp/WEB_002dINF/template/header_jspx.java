@@ -811,7 +811,7 @@ public final class header_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<li>");
       if (_jspx_meth_spring_url_51(_jspx_page_context))
         return;
-      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${homeUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
+      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${homeUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\">");
       out.write("<i class=\"fa fa-fw fa-dashboard\">");
       out.write("</i>");
       out.write(" Dashboard");
@@ -820,7 +820,7 @@ public final class header_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<li>");
       if (_jspx_meth_spring_url_52(_jspx_page_context))
         return;
-      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${showParksUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
+      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${showParksUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\">");
       out.write("<i class=\"fa fa-fw fa-location-arrow\">");
       out.write("</i>");
       out.write(" Parks");
@@ -829,7 +829,7 @@ public final class header_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<li>");
       if (_jspx_meth_spring_url_53(_jspx_page_context))
         return;
-      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${showTimetablesUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
+      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${showTimetablesUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\">");
       out.write("<i class=\"fa fa-fw fa-calendar\">");
       out.write("</i>");
       out.write(" Timetables");
@@ -838,7 +838,7 @@ public final class header_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<li>");
       if (_jspx_meth_spring_url_54(_jspx_page_context))
         return;
-      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${showTasksUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
+      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${showTasksUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\">");
       out.write("<i class=\"fa fa-fw fa-tasks\">");
       out.write("</i>");
       out.write(" Tasks");
@@ -847,7 +847,7 @@ public final class header_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<li>");
       if (_jspx_meth_spring_url_55(_jspx_page_context))
         return;
-      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${showReportsUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
+      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${showReportsUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\">");
       out.write("<i class=\"fa fa-fw fa-area-chart\">");
       out.write("</i>");
       out.write(" Report");

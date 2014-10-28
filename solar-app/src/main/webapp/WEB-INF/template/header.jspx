@@ -491,27 +491,27 @@
                 	<ul class="nav navbar-nav side-nav">
                     	<li>
                         	<spring:url value="/home" var="homeUrl" htmlEscape="true"/>
-							<a class="text-center" href="${homeUrl}">
+							<a href="${homeUrl}">
                         		<i class="fa fa-fw fa-dashboard"><jsp:text /></i> Dashboard</a>
                     	</li>
                     	<li>
 							<spring:url value="/park/showParks" var="showParksUrl" htmlEscape="true"/>
-							<a class="text-center" href="${showParksUrl}">
+							<a href="${showParksUrl}">
                         		<i class="fa fa-fw fa-location-arrow"><jsp:text /></i> Parks</a>
                     	</li>
                     	<li>
                        		<spring:url value="/timetable/showTimetables" var="showTimetablesUrl" htmlEscape="true"/>
-							<a class="text-center" href="${showTimetablesUrl}">
+							<a href="${showTimetablesUrl}">
 								<i class="fa fa-fw fa-calendar"><jsp:text /></i> Timetables</a>
                     	</li>
                     	<li>
 							<spring:url value="/task/showTasks" var="showTasksUrl" htmlEscape="true"/>
-							<a class="text-center" href="${showTasksUrl}">
+							<a href="${showTasksUrl}">
                         		<i class="fa fa-fw fa-tasks"><jsp:text /></i> Tasks</a>
                     	</li>
                     	<li>
                         	<spring:url value="/report/showReports" var="showReportsUrl" htmlEscape="true"/>
-							<a class="text-center" href="${showReportsUrl}">
+							<a href="${showReportsUrl}">
                         	 <i class="fa fa-fw fa-area-chart"><jsp:text /></i> Report</a>
                     	</li>                    	
                     	<li>
