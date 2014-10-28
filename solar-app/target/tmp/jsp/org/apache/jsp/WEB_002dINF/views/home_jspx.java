@@ -104,6 +104,7 @@ public final class home_jspx extends org.apache.jasper.runtime.HttpJspBase
     public boolean invoke1( JspWriter out ) 
       throws Throwable
     {
+      out.write("<div id=\"wrapper\">");
       out.write("<div class=\"page-wrapper\">");
       out.write("<div class=\"container-fluid\">");
       out.write("<div class=\"row\">");
@@ -176,6 +177,7 @@ public final class home_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<p>");
       out.write("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
       out.write("</p>");
+      out.write("</div>");
       out.write("</div>");
       out.write("</div>");
       out.write("</div>");

@@ -899,7 +899,7 @@ public final class header_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.el.fmt.SetBundleTag _jspx_th_fmt_setBundle_0 = (org.apache.taglibs.standard.tag.el.fmt.SetBundleTag) _jspx_tagPool_fmt_setBundle_basename_nobody.get(org.apache.taglibs.standard.tag.el.fmt.SetBundleTag.class);
     _jspx_th_fmt_setBundle_0.setPageContext(_jspx_page_context);
     _jspx_th_fmt_setBundle_0.setParent(null);
-    _jspx_th_fmt_setBundle_0.setBasename("layout_en.properties");
+    _jspx_th_fmt_setBundle_0.setBasename("i18n/layout_en.properties");
     int _jspx_eval_fmt_setBundle_0 = _jspx_th_fmt_setBundle_0.doStartTag();
     if (_jspx_th_fmt_setBundle_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_fmt_setBundle_basename_nobody.reuse(_jspx_th_fmt_setBundle_0);
