@@ -1050,7 +1050,7 @@ public final class header_jspx extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_spring_url_2.setPageContext(_jspx_page_context);
     _jspx_th_spring_url_2.setParent(null);
     _jspx_th_spring_url_2.setHtmlEscape(true);
-    _jspx_th_spring_url_2.setVar("UpdateParkUrl");
+    _jspx_th_spring_url_2.setVar("updateParkUrl");
     _jspx_th_spring_url_2.setValue("/park/updatePark");
     int[] _jspx_push_body_count_spring_url_2 = new int[] { 0 };
     try {

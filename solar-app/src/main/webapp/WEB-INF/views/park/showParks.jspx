@@ -10,7 +10,7 @@
 <tiles:insertDefinition name="defaultTemplate">
 	<tiles:putAttribute name="body">
 
-<div id="wrapper">
+	<div id="wrapper">
 
 	<div class="page-wrapper">
     

@@ -44,7 +44,7 @@
                         	</li>                        
                         	
                         	<li>
-                        		<spring:url value="/park/updatePark" var="UpdateParkUrl" htmlEscape="true"/>
+                        		<spring:url value="/park/updatePark" var="updateParkUrl" htmlEscape="true"/>
 								<a class="text-center" href="${updateParkUrl}">
                         			<i class="fa fa-location-arrow fa-fw"><jsp:text /></i> <span class="text-muted small"><spring:message code="menu-updatePark" /></span>
                         		</a>
