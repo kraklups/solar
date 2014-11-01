@@ -1,5 +1,16 @@
-<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	t:type="Layout" t:pageTitle="title">
+<jsp:root 
+	xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	version="2.0" >
+	
+	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+	<jsp:output omit-xml-declaration="yes"/>	
+
+<tiles:insertDefinition name="defaultTemplate">
+	<tiles:putAttribute name="body">
+
+<div id="wrapper">
 
 	<div class="page-wrapper">
     
@@ -63,6 +74,12 @@
         <!-- /.container-fluid -->
 
 	</div>
-    <!-- /#page-wrapper -->        
-    	
-</html>
+    <!-- /#page-wrapper -->  
+  
+	</div>
+    <!-- /#wrapper -->  
+    
+	</tiles:putAttribute>
+</tiles:insertDefinition>
+
+</jsp:root>

@@ -18,11 +18,11 @@ public class ShowReports {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/report/ShowReports", method = RequestMethod.GET)
+	@RequestMapping(value = "/report/showReports", method = RequestMethod.GET)
 	public String home(Model model) {
 		logger.info("Show Reports page !");
 		
-		return "report/ShowReports";
+		return "report/showReports";
 	}
 	
 }
