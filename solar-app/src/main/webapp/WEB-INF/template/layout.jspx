@@ -35,6 +35,8 @@
 	<body>			
 			
 			<tiles:insertAttribute name="header" ignore="true" />
+			
+			<tiles:insertAttribute name="menu" ignore="true" />
 
 			<tiles:insertAttribute name="body" />
 				

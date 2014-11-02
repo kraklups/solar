@@ -1,47 +1,89 @@
-<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	t:type="Layout" t:pageTitle="title">
+<jsp:root 	
+	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
+	xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jstl/fmt"
+	version="2.0" >
+	
+	<jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+	<jsp:output omit-xml-declaration="yes"/> 
+	<jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />	
+	
+	<fmt:setLocale value="en" scope="application"/>
+	<fmt:setBundle basename='i18n/messages_en.properties'/>	
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-3">
-                <div class="login-panel panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form t:type="Form" t:id="loginForm">
-                            <fieldset>
-                                <div class="form-group">
-	        						<t:label for="loginName"/>
-	        						<span class="entry">    
-	            					<input t:id="loginName" t:type="TextField"
-				       							t:validate="required" 
-				       							size="16" maxlength="30" />
-	        						</span>                                    
-                                </div>
-                                <div class="form-group">
-	        						<t:label for="password"/>
-	        						<span class="entry">
-	            						<input t:id="password" t:type="PasswordField"
-				       							t:validate="required" 
-	                   							size="16" maxlength="8"/>
-	        						</span>                                    
-                                </div>
-                                <div class="checkbox">            						
-	        						<span class="entry">    
-	            						<input t:type="checkbox" t:id="rememberMyPassword" /> 
-	        						</span>           
-	        						<t:label for="rememberMyPassword"/>                     
-	        					</div>
-                                <div class="button">
-	                            	<input type="submit" value="${message:submit}"/>        
-	   		 					</div>                                                                                            
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-	</div>
+<html>
+			
+	<head>
+	
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    	
+		<!-- Bootstrap Core CSS -->
+		<c:url var="bootstrapCSS" value="/resources/css/bootstrap.min.css" />
+    	<link href="${bootstrapCSS}" rel="stylesheet" />
+				
+		<!-- Custom CSS -->
+		<c:url var="sbadminCSS" value="/resources/css/sb-admin.css" />
+		<link href="${sbadminCSS}" rel="stylesheet" />
+		
+    	<!-- Custom Fonts -->
+    	<c:url var="fontawesomeCSS" value="/resources/font-awesome/css/font-awesome.css" />
+    	<link href="${fontawesomeCSS}" rel="stylesheet" type="text/css" />		
+    	
+    	
+		<title>Merda Project</title>
+						
+	</head>
+	
+	<body>
 
+		    <div class="container">
+        		<div class="row">
+            		<div class="col-md-4 col-md-offset-4">
+                		<div class="login-panel panel panel-default">
+                    		<div class="panel-heading">
+                        		<h3 class="panel-title"><spring:message code="login.menuExplanation" /></h3>
+                    		</div>
+                    		
+                    		<div class="panel-body">
+                    		
+                        		<form role="form" name='loginForm'>
+                            		<fieldset>                                
+                                		<div class="form-group">
+	        								<spring:message code="login.loginName" />
+	            							<input class="form-control" placeholder="E-mail" name="loginName" type="text" autofocus="autofocus" />
+                                		</div>
+                                	
+                                		<div class="form-group">	        							
+	        								<spring:message code="login.password" />	        								
+	            							<input class="form-control" placeholder="Password" name="password" type="password" value="" />
+                                		</div>
+                                
+                                		<div class="checkbox">
+                                			<label>            						
+	            								<input type="checkbox" name="rememberMyPassword" value="Remember Me" /> 
+	        									<spring:message code="login.rememberMyPassword" />
+	        								</label>                     
+	        							</div>
+                                
+                                		<div class="button">
+                                			<spring:message code="login.submit" var="loginSubmit" />
+	                            			<input type="submit" value="${loginSubmit}"/>        
+	   		 							</div>
+                            		</fieldset>
+                        		</form>
+
+                    		</div>
+                    		                    		
+                		</div>
+            		</div>
+        		</div>
+			</div>
+
+	</body>
+	
 </html>
+
+</jsp:root>
