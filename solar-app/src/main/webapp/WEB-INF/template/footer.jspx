@@ -8,7 +8,7 @@
 	<jsp:output omit-xml-declaration="yes"/>
 
     <!-- jQuery Version 1.11.0 -->
-    <c:url var="jqueryJS" value="/resources/js/jquery-1.11.0.js" />
+    <c:url var="jqueryJS" value="/resources/js/jquery.js" />
     <script src="${jqueryJS}" ><jsp:text /></script>
 
     <!-- Bootstrap Core JavaScript -->

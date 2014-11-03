@@ -84,7 +84,7 @@ public final class footer_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_url_0 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _jspx_tagPool_c_url_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_url_0.setPageContext(_jspx_page_context);
     _jspx_th_c_url_0.setParent(null);
-    _jspx_th_c_url_0.setValue("/resources/js/jquery-1.11.0.js");
+    _jspx_th_c_url_0.setValue("/resources/js/jquery.js");
     _jspx_th_c_url_0.setVar("jqueryJS");
     int _jspx_eval_c_url_0 = _jspx_th_c_url_0.doStartTag();
     if (_jspx_th_c_url_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {

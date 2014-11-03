@@ -1,5 +1,23 @@
-<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	t:type="Layout" t:pageTitle="title">
+<jsp:root 
+	xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"	
+	xmlns="http://www.w3.org/1999/xhtml"
+	version="2.0" >
+	
+	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+	<jsp:output omit-xml-declaration="yes"/>	
+
+<tiles:insertDefinition name="defaultTemplate">
+	<tiles:putAttribute name="body">
+
+	<!-- GIS CSS -->
+	<c:url var="gisCSS" value="/resources/css/gis.css" />
+	<link href="${gisCSS}" rel="stylesheet" />
+
+
+<div id="wrapper">
 
 	<div class="page-wrapper">
 	
@@ -7,7 +25,7 @@
 
     		<div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header">Parks</h2>
+                    <h2 class="page-header"><spring:message code="createPark.title" /></h2>
                 </div>
             </div>
             
@@ -15,61 +33,46 @@
             	<div class="col-lg-12">
                 	<div class="panel panel-default">
                     	<div class="panel-heading">
-                        	<h3 class="panel-title">Create Park</h3>
+                        	<h3 class="panel-title"><spring:message code="createPark.menuExplanation" /></h3>
                     	</div>
                     	<div class="panel-body">
-							<form t:type="Form" t:id="createParkForm">
+                    	
+							<form role="Form" name="createParkForm">
     	                        <fieldset>	   						
-	   								<t:errors/>
 	   								<div class="form-group">        
-		        						<t:label for="parkName"/>
-		        						<span class="entry">    
-	    	        						<input class="form-control" t:id="parkName" t:type="TextField"
-					       						t:validate="required" 
-					       						size="16" maxlength="30" />
-	        							</span>
+		        						<spring:message code="createPark.parkName" />
+       	        						<input class="form-control" placeholder="Park Name" name="parkName" type="text" autofocus="autofocus" />
+
 		   							</div>
 	    
 		   							<div class="form-group">        
-	    	    						<t:label for="companyName"/>
-	        							<span class="entry">    
-		        	    					<input class="form-control" t:id="companyName" t:type="TextField"
-						       					t:validate="required" 
-					    	   					size="16" maxlength="30" />
-	        							</span>
+	    	    						<spring:message code="createPark.companyName" />   
+		        	    				<input class="form-control" placeholder="Company Name" name="companyName" type="text" value="" />
 	   								</div>
 	    
 	   								<div class="form-group">        
-	        							<t:label for="startupDate"/>
-	        							<span class="entry">    
-		            						<input class="form-control" t:id="startupDate" t:type="TextField"
-					       						t:validate="required" 
-					       						size="10" maxlength="10" />
-		        						</span>
+	        							<spring:message code="createPark.startupDate" />
+		            					<input class="form-control" placeholder="StartupDate" name="startupDate" type="text" />
 		   							</div>	    
 
 	   								<div class="form-group">        
-	        							<t:label for="productionDate"/>
-	        							<span class="entry">    
-		            						<input class="form-control" t:id="productionDate" t:type="TextField"
-					    	   					t:validate="required" 
-					       						size="10" maxlength="10" />
-	        							</span>
+	        							<spring:message code="createPark.productionDate" />    
+		            					<input class="form-control" placeholder="ProductionDate" name="productionDate" type="text" />
 		   							</div>
-	   							
-		   						    <div class="form-group">        
-	    	    						<t:label for="solarPark"/>
-										<div id="map"></div>
-	        							<span class="entry">    
-		            						<input class="form-control" t:id="solarPark" t:type="TextField" t:validate="required" />
-	        							</span>									
+		   							
+		   						    <div class="form-group">
+		   						    	<spring:message code="createPark.solarPark" />
+		   						   		<div id="map"><jsp:text /></div>							
+		   						    	<input class="form-control" placeholder="SolarMap" name="solarPark" type="text"  />        		   						    
 	   								</div>
 	   							   								    
 		    						<div class="button">
-		        						<input t:type="submit" value="${message:submit}" t:id="gisOpenLayers" />        
+		    							<spring:message code="createPark.submit" var="parkSubmit" />
+		        						<input type="submit" value="${parkSubmit}" name="gisOpenLayers" />        
 	    							</div>
 	    						</fieldset>		
 							</form>
+							
                     	</div>
                 	</div>
             	</div>
@@ -81,4 +84,18 @@
 	</div>
     <!-- /#page-wrapper -->    
     	
-</html>
+	</div>
+    <!-- /#wrapper -->  
+    
+	</tiles:putAttribute>
+</tiles:insertDefinition>
+
+    <!-- openLayersJS Version 1.11.0 -->
+    <c:url var="openLayersJS" value="/resources/js/OpenLayers.js" />
+    <script src="${openLayersJS}" ><jsp:text /></script>
+
+    <!-- gisToolsJS Version 1.11.0 -->
+    <c:url var="gisToolsJS" value="/resources/js/gis_tools.js" />
+    <script src="${gisToolsJS}" ><jsp:text /></script>
+
+</jsp:root>
