@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.elementprk;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,8 +25,8 @@ public class Cell extends ElementPrk {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cell(String elementName, String elementTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public Cell(String elementName, String elementTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, ArrayPanel arrayPanel, 
 			StringLine stringLine) {
 		

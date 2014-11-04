@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.elementprk;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,8 +26,8 @@ public class Inverter extends ElementPrk {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Inverter(String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public Inverter(String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, Counter counter, ArrayBox arrayBox, 
 			ElectricalSubstation electricalSubstation) {
 		

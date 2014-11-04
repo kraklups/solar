@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.alarm;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -24,14 +24,14 @@ public class Alarm {
 	private Long alarmId;
 	private String alarmTag;
 	
-	private Calendar triggerDate;
+	private Timestamp triggerDate;
 	
 	private EventTsk eventTsk;
 	
 	public Alarm() {		
 	}
 	
-	public Alarm(String alarmTag, Calendar triggerDate, EventTsk eventTsk) {
+	public Alarm(String alarmTag, Timestamp triggerDate, EventTsk eventTsk) {
 		this.alarmTag = alarmTag;
 		this.triggerDate = triggerDate;
 		this.eventTsk = eventTsk;
@@ -53,11 +53,11 @@ public class Alarm {
 	}	
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	public void setTriggerDate(Calendar triggerDate) {
+	public void setTriggerDate(Timestamp triggerDate) {
 		this.triggerDate = triggerDate;
 	}
 
-	public Calendar getTriggerDate(){
+	public Timestamp getTriggerDate(){
 		return triggerDate;
 	}
 

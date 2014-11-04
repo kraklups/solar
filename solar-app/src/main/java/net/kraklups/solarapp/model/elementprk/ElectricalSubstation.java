@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.elementprk;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +25,7 @@ public class ElectricalSubstation extends ElementPrk {
 	}
 
 	public ElectricalSubstation(String elementPrkName, String elementPrkTag,
-			Calendar tvi, Calendar lastAccess, UserProfile userProfile,
+			Timestamp tvi, Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, MediumVoltage mediumVoltage) {
 		
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,

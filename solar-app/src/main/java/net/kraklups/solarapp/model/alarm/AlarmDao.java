@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.alarm;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 import java.util.List;
 
 import net.kraklups.modelutil.dao.GenericDao;
@@ -23,7 +23,7 @@ public interface AlarmDao extends GenericDao<Alarm, Long> {
       * @param triggerDate not the module identifier
       * @return list of alarms
       */			     
-      public List<Alarm> getAlarmsByTriggerDate(Calendar triggerDate, int startIndex, int count) 
+      public List<Alarm> getAlarmsByTriggerDate(Timestamp triggerDate, int startIndex, int count) 
              throws InstanceNotFoundException; 	
    
       /**

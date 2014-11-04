@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.userservice;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.role.Role;
@@ -11,14 +11,14 @@ public class UserProfileDetails {
 	private String surname1;
 	private String surname2;
 	private String email;
-	private Calendar date;
+	private Timestamp date;
 	private Boolean blocked;
 	private Boolean erased;
 	private Company company;
 	private Role role;
 	
 	public UserProfileDetails(String firstName, String surname1, String surname2, 
-			String email, Calendar date, Boolean blocked, Boolean erased, Company company, Role role) {
+			String email, Timestamp date, Boolean blocked, Boolean erased, Company company, Role role) {
 		this.firstName = firstName;
 		this.surname1 = surname1;
 		this.surname2 = surname2;
@@ -46,7 +46,7 @@ public class UserProfileDetails {
 		return email;
 	}
 	
-	public Calendar getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 	

@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.role;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,7 +29,7 @@ public class Role {
 
 	private Long roleId;
 	private String roleName;
-	private Calendar date;
+	private Timestamp date;
 	private UserProfile userProfile;
 	private Long weight;
 	private Set<RoleModuleAccess> roleModuleAccess = new HashSet<RoleModuleAccess>(0);
@@ -37,7 +37,7 @@ public class Role {
 	public Role() {
 	}
 	
-	public Role(String roleName, Calendar date, UserProfile userProfile, Long weight) {
+	public Role(String roleName, Timestamp date, UserProfile userProfile, Long weight) {
 		
 		this.roleName = roleName;
 		this.date = date;
@@ -45,7 +45,7 @@ public class Role {
 		this.weight = weight;
 	}
 
-	public Role(String roleName, Calendar date, UserProfile userProfile, Long weight, Set<RoleModuleAccess> roleModuleAccess) {		
+	public Role(String roleName, Timestamp date, UserProfile userProfile, Long weight, Set<RoleModuleAccess> roleModuleAccess) {		
 
 		this.roleName = roleName;
 		this.date = date;
@@ -78,11 +78,11 @@ public class Role {
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
-    public Calendar getDate() {
+    public Timestamp getDate() {
 		return date;
 	}
 	
-	public void setDate(Calendar date){
+	public void setDate(Timestamp date){
 		this.date = date;
 	}	
 	

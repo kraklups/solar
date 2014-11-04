@@ -1,5 +1,6 @@
 package net.kraklups.solarapp.model.userservice;
 
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.List;
 
@@ -202,7 +203,7 @@ public class UserServiceImpl implements UserService {
 	}	
 
 	@Override
-	public Company createCompany(String companyName, Calendar date)
+	public Company createCompany(String companyName, Timestamp date)
 			throws DuplicateInstanceException {
 
 		try {
@@ -216,7 +217,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void updateCompany(Long companyId, String companyName, Calendar date) 
+	public void updateCompany(Long companyId, String companyName, Timestamp date) 
 			throws InstanceNotFoundException {
 		
 		Company company = companyDao.find(companyId);
@@ -273,8 +274,9 @@ public class UserServiceImpl implements UserService {
 			roleDao.findByName(roleName);
 			throw new DuplicateInstanceException(roleName, Role.class.getName()); 
 		} catch (InstanceNotFoundException e) { 
-			Calendar cal = Calendar.getInstance();
-			Role role = new Role(roleName, cal, userProfile, weight);
+			Calendar calendar = Calendar.getInstance();
+			Timestamp timestamp = new Timestamp(calendar.getTime().getTime()); 			
+			Role role = new Role(roleName, timestamp, userProfile, weight);
 			roleDao.save(role);
 			return role;
 		}
@@ -293,7 +295,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void updateRole(Long roleId, String roleName, Calendar date,
+	public void updateRole(Long roleId, String roleName, Timestamp date,
 			UserProfile userProfile, Long weight) throws InstanceNotFoundException {
 
 		Role role = roleDao.find(roleId);
@@ -310,8 +312,9 @@ public class UserServiceImpl implements UserService {
 			moduleDao.findByName(moduleName);
 			throw new DuplicateInstanceException(moduleName, Module.class.getName()); 
 		} catch (InstanceNotFoundException e) { 
-			Calendar cal = Calendar.getInstance();
-			Module module = new Module(moduleName, cal);
+			Calendar calendar = Calendar.getInstance();
+			Timestamp timestamp = new Timestamp(calendar.getTime().getTime()); 			
+			Module module = new Module(moduleName, timestamp);
 			moduleDao.save(module);
 			return module;
 		}
@@ -330,7 +333,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void updateModule(Long moduleId, String moduleName, Calendar date)
+	public void updateModule(Long moduleId, String moduleName, Timestamp date)
 			throws InstanceNotFoundException {
 
 		Module module = moduleDao.find(moduleId);

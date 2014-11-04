@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.elementservice;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
@@ -24,125 +24,125 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 public interface ElementService {
 
-	public ArrayBox createArrayBox(String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public ArrayBox createArrayBox(String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, StringLine stringLine)
 					throws DuplicateInstanceException;
 	
-	public ArrayBox updateArrayBox(Long arrayBoxId, String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public ArrayBox updateArrayBox(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, StringLine stringLine)
 					throws InstanceNotFoundException;	
 	
-	public ArrayPanel createArrayPanel(String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public ArrayPanel createArrayPanel(String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park)
 					throws DuplicateInstanceException;
 	
-	public ArrayPanel updateArrayPanel(Long arrayBoxId, String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public ArrayPanel updateArrayPanel(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park)
 					throws InstanceNotFoundException;	
 
-	public Cell createCell(String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public Cell createCell(String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, ArrayPanel arrayPanel, StringLine stringLine)
 					throws DuplicateInstanceException;
 	
-	public Cell updateCell(Long arrayBoxId, String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public Cell updateCell(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, ArrayPanel arrayPanel, StringLine stringLine)
 					throws InstanceNotFoundException;	
 
-	public Counter createCounter(String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public Counter createCounter(String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park)
 					throws DuplicateInstanceException;
 	
-	public Counter updateCounter(Long arrayBoxId, String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public Counter updateCounter(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park)
 					throws InstanceNotFoundException;	
 	
-	public ElectricalSubstation createElectricalSubstation(String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public ElectricalSubstation createElectricalSubstation(String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, MediumVoltage mediumVoltage)
 					throws DuplicateInstanceException;
 	
-	public ElectricalSubstation updateElectricalSubstation(Long arrayBoxId, String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public ElectricalSubstation updateElectricalSubstation(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, MediumVoltage mediumVoltage)
 					throws InstanceNotFoundException;	
 	
-	public ExtractionPoint createExtractionPoint(String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public ExtractionPoint createExtractionPoint(String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park)
 					throws DuplicateInstanceException;
 	
-	public ExtractionPoint updateExtractionPoint(Long arrayBoxId, String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public ExtractionPoint updateExtractionPoint(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park)
 					throws InstanceNotFoundException;	
 	
-	public Gps createGps(String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public Gps createGps(String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park)
 					throws DuplicateInstanceException;
 	
-	public Gps updateGps(Long arrayBoxId, String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public Gps updateGps(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park)
 					throws InstanceNotFoundException;	
 	
-	public Inverter createInverter(String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public Inverter createInverter(String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, Counter counter, ArrayBox arrayBox, 
 			ElectricalSubstation electricalSubstation)
 					throws DuplicateInstanceException;
 	
-	public Inverter updateInverter(Long arrayBoxId, String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public Inverter updateInverter(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, Counter counter, ArrayBox arrayBox, 
 			ElectricalSubstation electricalSubstation)
 					throws InstanceNotFoundException;	
 	
-	public MediumVoltage createMediumVoltage(String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public MediumVoltage createMediumVoltage(String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, ExtractionPoint extractionPoint)
 					throws DuplicateInstanceException;
 	
-	public MediumVoltage updateMediumVoltage(Long arrayBoxId, String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public MediumVoltage updateMediumVoltage(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, ExtractionPoint extractionPoint)
 					throws InstanceNotFoundException;	
 	
-	public SolarTracker createSolarTracker(String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public SolarTracker createSolarTracker(String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park)
 					throws DuplicateInstanceException;
 	
-	public SolarTracker updateSolarTracker(Long arrayBoxId, String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public SolarTracker updateSolarTracker(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park)
 					throws InstanceNotFoundException;
 	
-	public StringLine createStringLine(String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public StringLine createStringLine(String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, ArrayBox arrayBox)
 					throws DuplicateInstanceException;
 	
-	public StringLine updateStringLine(Long arrayBoxId, String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public StringLine updateStringLine(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, ArrayBox arrayBox)
 					throws InstanceNotFoundException;	
 
-	public WeatherStation createWeatherStation(String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public WeatherStation createWeatherStation(String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park)
 					throws DuplicateInstanceException;
 	
-	public WeatherStation updateWeatherStation(Long arrayBoxId, String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public WeatherStation updateWeatherStation(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
+			Timestamp lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park)
 					throws InstanceNotFoundException;	
 	
@@ -155,10 +155,10 @@ public interface ElementService {
 	public void assignElementPrkTagElementPrk(ElementPrk elementPrk, String elementPrkTag) 
 			throws InstanceNotFoundException;
 
-	public void assignTviElementPrk(ElementPrk elementPrk, Calendar tvi) 
+	public void assignTviElementPrk(ElementPrk elementPrk, Timestamp tvi) 
 			throws InstanceNotFoundException;
 
-	public void assignLastAccessElementPrk(ElementPrk elementPrk, Calendar lastAccess) 
+	public void assignLastAccessElementPrk(ElementPrk elementPrk, Timestamp lastAccess) 
 			throws InstanceNotFoundException;
 
 	public void assignDataLoggerElementPrk(ElementPrk elementPrk, DataLogger dataLogger) 

@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.messageevent;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -15,9 +15,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
-
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 
 @Entity
@@ -25,10 +22,8 @@ import net.kraklups.solarapp.model.eventtsk.EventTsk;
 public class MessageEvent {
 	
 	private Long messageId;
-	
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(iso = ISO.DATE)		
-	private Calendar tvi;
+			
+	private Timestamp tvi;
 	
 	private String messageText;
 	private EventTsk eventTsk;
@@ -36,7 +31,7 @@ public class MessageEvent {
 	public MessageEvent() {
 	}
 	
-	public MessageEvent(Calendar tvi, String messageText, EventTsk eventTsk) {
+	public MessageEvent(Timestamp tvi, String messageText, EventTsk eventTsk) {
 		this.tvi = tvi;
 		this.messageText = messageText;
 		this.eventTsk = eventTsk;		
@@ -58,11 +53,11 @@ public class MessageEvent {
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	public Calendar getTvi() {
+	public Timestamp getTvi() {
 		return tvi;
 	}
 	
-	public void setTvi(Calendar tvi) {
+	public void setTvi(Timestamp tvi) {
 		this.tvi = tvi;
 	}
 	

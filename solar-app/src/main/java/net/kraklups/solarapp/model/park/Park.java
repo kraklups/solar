@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.park;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,11 +35,11 @@ public class Park {
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(iso = ISO.DATE)		
-	private Calendar startupDate;
+	private Timestamp startupDate;
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(iso = ISO.DATE)		
-	private Calendar productionDate;
+	private Timestamp productionDate;
 	
 	private UserProfile userProfile;
 	private Company company;	
@@ -49,7 +49,7 @@ public class Park {
 	public Park() {		
 	}
 	
-	public Park(String parkName, Calendar startupDate, Calendar productionDate, UserProfile userProfile, Company company, MultiPolygon mapPark) {
+	public Park(String parkName, Timestamp startupDate, Timestamp productionDate, UserProfile userProfile, Company company, MultiPolygon mapPark) {
 	
 		this.parkName = parkName;
 		this.startupDate = startupDate;
@@ -84,20 +84,20 @@ public class Park {
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
-    public Calendar getStartupDate() {
+    public Timestamp getStartupDate() {
 		return startupDate;
 	}
 	
-	public void setStartupDate(Calendar startupDate){
+	public void setStartupDate(Timestamp startupDate){
 		this.startupDate = startupDate;
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
-    public Calendar getProductionDate() {
+    public Timestamp getProductionDate() {
 		return productionDate;
 	}
 	
-	public void setProductionDate(Calendar productionDate){
+	public void setProductionDate(Timestamp productionDate){
 		this.productionDate = productionDate;
 	}	
 

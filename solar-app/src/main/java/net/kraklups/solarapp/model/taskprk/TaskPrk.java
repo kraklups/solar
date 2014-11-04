@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.taskprk;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -26,7 +26,7 @@ public abstract class TaskPrk {
 	
 	private Long taskPrkId;
 	private String taskName;
-	private Calendar creationDate;
+	private Timestamp creationDate;
 	private Park park;
 	private Role role;
 	private UserProfile userProfile;
@@ -34,7 +34,7 @@ public abstract class TaskPrk {
 	public TaskPrk() {		
 	}
 	
-	public TaskPrk(String taskName, Calendar creationDate, Park park, Role role, UserProfile userProfile) {
+	public TaskPrk(String taskName, Timestamp creationDate, Park park, Role role, UserProfile userProfile) {
 		this.taskName = taskName;
 		this.creationDate = creationDate;
 		this.park = park;
@@ -65,11 +65,11 @@ public abstract class TaskPrk {
 		this.taskName = taskName;
 	}
 	
-	public Calendar getCreationDate() {
+	public Timestamp getCreationDate() {
 		return creationDate;
 	}
 	
-	public void setCreationDate(Calendar creationDate) {
+	public void setCreationDate(Timestamp creationDate) {
 		this.creationDate = creationDate;
 	}
 

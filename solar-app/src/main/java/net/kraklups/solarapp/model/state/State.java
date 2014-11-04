@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.state;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -26,8 +26,8 @@ import net.kraklups.solarapp.model.park.Park;
 public class State {
 
 	private Long stateId;
-	private Calendar tvi;
-	private Calendar tvf;
+	private Timestamp tvi;
+	private Timestamp tvf;
 	private Park park;
 	private EventTsk eventTsk;
 	private Upkeep upkeep;
@@ -36,7 +36,7 @@ public class State {
 	public State() {		
 	}
 	
-	public State(Long stateId, Calendar tvi, Calendar tvf, Park park, EventTsk eventTsk, TaskPrk taskPrk, Upkeep upkeep, StateType stateType) {
+	public State(Long stateId, Timestamp tvi, Timestamp tvf, Park park, EventTsk eventTsk, TaskPrk taskPrk, Upkeep upkeep, StateType stateType) {
 		this.stateId = stateId;
 		this.tvi = tvi;
 		this.tvf = tvf;
@@ -61,21 +61,21 @@ public class State {
 		this.stateId = stateId;
 	}
 	
-	public Calendar getTvi(){
+	public Timestamp getTvi(){
 		return tvi;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	public void setTvi(Calendar tvi) {
+	public void setTvi(Timestamp tvi) {
 		this.tvi = tvi;
 	}
 
-	public Calendar getTvf(){
+	public Timestamp getTvf(){
 		return tvf;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	public void setTvf(Calendar tvf) {
+	public void setTvf(Timestamp tvf) {
 		this.tvf = tvf;
 	}
 	

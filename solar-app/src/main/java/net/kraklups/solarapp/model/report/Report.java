@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.report;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -29,11 +29,11 @@ public class Report {
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(iso = ISO.DATE)
-	private Calendar dateRequest;
+	private Timestamp dateRequest;
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(iso = ISO.DATE)
-	private Calendar dateServed;
+	private Timestamp dateServed;
 	
 	private UserProfile userProfile;
 	private String urlReport;
@@ -41,7 +41,7 @@ public class Report {
 	public Report() {		
 	}
 	
-	public Report(String reportTitle, Calendar dateRequest, Calendar dateServed, UserProfile userProfile, String urlReport) {
+	public Report(String reportTitle, Timestamp dateRequest, Timestamp dateServed, UserProfile userProfile, String urlReport) {
 		this.reportTitle = reportTitle;
 		this.dateRequest = dateRequest;
 		this.dateServed = dateServed;
@@ -72,19 +72,19 @@ public class Report {
 		this.reportTitle = reportTitle;
 	}
 	
-	public Calendar getDateRequest() {
+	public Timestamp getDateRequest() {
 		return dateRequest;
 	}
 
-	public void setDateRequest(Calendar dateRequest) {
+	public void setDateRequest(Timestamp dateRequest) {
 		this.dateRequest = dateRequest;
 	}
 
-	public Calendar getDateServed() {
+	public Timestamp getDateServed() {
 		return dateServed;
 	}
 
-	public void setDateServed(Calendar dateServed) {
+	public void setDateServed(Timestamp dateServed) {
 		this.dateServed = dateServed;
 	}
 

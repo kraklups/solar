@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.module;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,9 +18,6 @@ import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
-
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
 
 @Entity
@@ -31,21 +28,19 @@ public class Module {
 	private Long moduleId;
 	private String moduleName;
 	
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(iso = ISO.DATE)		
-	private Calendar date;
+	private Timestamp date;
 	
 	private Set<RoleModuleAccess> roleModuleAccess = new HashSet <RoleModuleAccess>(0);
 	
 	public Module() {
 	}
 	
-	public Module(String moduleName, Calendar date) {		
+	public Module(String moduleName, Timestamp date) {		
 		this.moduleName = moduleName;
 		this.date = date;
 	}
 	
-	public Module(String moduleName, Calendar date, Set<RoleModuleAccess> roleModuleAccess) {		
+	public Module(String moduleName, Timestamp date, Set<RoleModuleAccess> roleModuleAccess) {		
 		this.moduleName = moduleName;
 		this.date = date;
 		this.roleModuleAccess = roleModuleAccess;
@@ -76,11 +71,11 @@ public class Module {
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
-    public Calendar getDate() {
+    public Timestamp getDate() {
 		return date;
 	}
 	
-	public void setDate(Calendar date){
+	public void setDate(Timestamp date){
 		this.date = date;
 	}
 	

@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.eventtsk;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -26,8 +26,8 @@ public class EventTsk {
 	private String tagET;	
 	private String definitionET;
 	
-	private Calendar tvi;	
-	private Calendar tvf;
+	private Timestamp tvi;	
+	private Timestamp tvf;
 	
 	private TaskPrk taskPrk;
 	private Timetable timetable;
@@ -37,7 +37,7 @@ public class EventTsk {
 	public EventTsk() {
 	}
 	
-	public EventTsk(String tagET, String definitionET, Calendar tvi, Calendar tvf,  
+	public EventTsk(String tagET, String definitionET, Timestamp tvi, Timestamp tvf,  
 			TaskPrk taskPrk, Timetable timetable, Boolean triggerAlarm, Boolean triggerMessage) {
 		this.tvi = tvi;
 		this.tvf = tvf;
@@ -64,21 +64,21 @@ public class EventTsk {
 		this.eventTskId = eventTskId;
 	}	
 	
-	public Calendar getTvi(){
+	public Timestamp getTvi(){
 		return tvi;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	public void setTvi(Calendar tvi) {
+	public void setTvi(Timestamp tvi) {
 		this.tvi = tvi;
 	}
 
-	public Calendar getTvf(){
+	public Timestamp getTvf(){
 		return tvf;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	public void setTvf(Calendar tvf) {
+	public void setTvf(Timestamp tvf) {
 		this.tvf = tvf;
 	}	
 

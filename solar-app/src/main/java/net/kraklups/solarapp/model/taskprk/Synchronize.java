@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.taskprk;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -19,7 +19,7 @@ public class Synchronize extends TaskPrk {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Synchronize(String taskName, Calendar creationDate,
+	public Synchronize(String taskName, Timestamp creationDate,
 			Park park, Role role, UserProfile userProfile) {
 		super(taskName, creationDate, park, role, userProfile);		
 	}

@@ -1,5 +1,6 @@
 package net.kraklups.solarapp.test.experiments;
 
+import java.sql.Timestamp;
 import java.util.Calendar;
 
 import org.hibernate.Transaction;
@@ -23,8 +24,9 @@ public class ModuleDaoExperiments {
 		
 		try {
 			// Register module.
-			Calendar startDate = Calendar.getInstance();
-			Module module = new Module("xXx", startDate);
+			Calendar calendar = Calendar.getInstance();
+			Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
+			Module module = new Module("xXx", timestamp);
 			moduleDao.save(module);
 			Long moduleId = module.getModuleId();
 			System.out.println("Company with companyId '" + moduleId

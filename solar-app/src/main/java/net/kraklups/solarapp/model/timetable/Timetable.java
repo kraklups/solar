@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.timetable;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -25,13 +25,13 @@ public class Timetable {
 	private Long timetableId;
 	private String timetableTag;
 	private UserProfile userProfile;
-	private Calendar tvi;
+	private Timestamp tvi;
 	private Park park;
 	
 	public Timetable() {
 	}
 	
-	public Timetable(String timetableTag, UserProfile userProfile, Calendar tvi, Park park){
+	public Timetable(String timetableTag, UserProfile userProfile, Timestamp tvi, Park park){
 		this.timetableTag = timetableTag;
 		this.userProfile = userProfile;
 		this.tvi = tvi;
@@ -71,12 +71,12 @@ public class Timetable {
 		this.timetableTag = timetableTag;
 	}
 	
-	public Calendar getTvi(){
+	public Timestamp getTvi(){
 		return tvi;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	public void setTvi(Calendar tvi) {
+	public void setTvi(Timestamp tvi) {
 		this.tvi = tvi;
 	}
 	

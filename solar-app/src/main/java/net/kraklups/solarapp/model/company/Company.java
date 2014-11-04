@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.company;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,12 +29,12 @@ public class Company {
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(iso = ISO.DATE)	
-	private Calendar date;
+	private Timestamp date;
 	
 	public Company() {
 	}
 	
-	public Company(String companyName, Calendar date){
+	public Company(String companyName, Timestamp date){
 		
 		/**
 		 * NOTE: "companyId" *must* be left as "null" since its value is
@@ -69,11 +69,11 @@ public class Company {
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
-    public Calendar getDate() {
+    public Timestamp getDate() {
 		return date;
 	}
 	
-	public void setDate(Calendar date){
+	public void setDate(Timestamp date){
 		this.date = date;
 	}
 	

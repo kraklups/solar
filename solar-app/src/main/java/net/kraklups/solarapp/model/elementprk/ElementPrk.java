@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.elementprk;
 
-import java.util.Calendar;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,8 +33,8 @@ public abstract class ElementPrk {
 	private Long elementPrkId;
 	private String elementPrkName;
 	private String elementPrkTag;
-	private Calendar tvi;
-	private Calendar lastAccess;
+	private Timestamp tvi;
+	private Timestamp lastAccess;
 	private UserProfile userProfile;
 	private DataLogger dataLogger;
 	private Park park;
@@ -46,7 +46,7 @@ public abstract class ElementPrk {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ElementPrk(String elementPrkName, String elementPrkTag, Calendar tvi, Calendar lastAccess, 
+	public ElementPrk(String elementPrkName, String elementPrkTag, Timestamp tvi, Timestamp lastAccess, 
 			UserProfile userProfile, DataLogger dataLogger, Park park) {
 		
 		this.elementPrkName = elementPrkName;
@@ -90,20 +90,20 @@ public abstract class ElementPrk {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-    public Calendar getTvi() {
+    public Timestamp getTvi() {
 		return tvi;
 	}
 	
-	public void setTvi(Calendar tvi){
+	public void setTvi(Timestamp tvi){
 		this.tvi = tvi;
 	}	
 	
 	@Temporal(TemporalType.TIMESTAMP)
-    public Calendar getLastAccess() {
+    public Timestamp getLastAccess() {
 		return lastAccess;
 	}
 
-	public void setLastAccess(Calendar lastAccess){
+	public void setLastAccess(Timestamp lastAccess){
 		this.lastAccess = lastAccess;
 	}
 

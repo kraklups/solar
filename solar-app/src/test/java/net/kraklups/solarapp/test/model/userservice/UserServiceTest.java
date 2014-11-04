@@ -4,6 +4,7 @@ import static net.kraklups.solarapp.model.util.GlobalNames.SPRING_CONFIG_FILE;
 import static net.kraklups.solarapp.test.util.GlobalNames.SPRING_CONFIG_TEST_FILE;
 import static org.junit.Assert.assertEquals;
 
+import java.sql.Timestamp;
 import java.util.Calendar;
 
 import org.junit.Test;
@@ -47,10 +48,11 @@ public class UserServiceTest {
         throws DuplicateInstanceException, InstanceNotFoundException {
 
         /* Register user and find profile. */
-    	Calendar cal = Calendar.getInstance();
+		Calendar calendar = Calendar.getInstance();
+		Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
     	Long value = new Long("1");
     	UserProfileDetails userProfileDetails = new UserProfileDetails("adminName","adminSurname1",
-    			"adminSurname2","admin@kraklups.net",cal,false,false,
+    			"adminSurname2","admin@kraklups.net",timestamp,false,false,
     			userService.findCompany(value),userService.findRole(value));    	
     	
         UserProfile userProfile = userService.registerUser(
@@ -70,10 +72,11 @@ public class UserServiceTest {
 
         String loginName = "user";
         String clearPassword = "userPassword";
-    	Calendar cal = Calendar.getInstance();
+		Calendar calendar = Calendar.getInstance();
+		Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
     	Long value = new Long("1");
     	UserProfileDetails userProfileDetails = new UserProfileDetails("adminName","adminSurname1",
-    			"adminSurname2","admin@kraklups.net",cal,false,false,
+    			"adminSurname2","admin@kraklups.net",timestamp,false,false,
     			userService.findCompany(value),userService.findRole(value));
 
         userService.registerUser(loginName, clearPassword, userProfileDetails);
@@ -146,8 +149,9 @@ public class UserServiceTest {
 		throws DuplicateInstanceException, InstanceNotFoundException {
 		
 		/* Register company and find company */
-		Calendar cal = Calendar.getInstance();
-		Company company = userService.createCompany("Kraklups", cal);
+		Calendar calendar = Calendar.getInstance();
+		Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
+		Company company = userService.createCompany("Kraklups", timestamp);
 		
 		Company company2 = userService.findCompany(company.getCompanyId());
 		assertEquals(company, company2);		
@@ -165,11 +169,12 @@ public class UserServiceTest {
         InstanceNotFoundException {
     	
     	String companyName = "Kraklups";
-    	Calendar cal = Calendar.getInstance();
+		Calendar calendar = Calendar.getInstance();
+		Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
     	
-    	userService.createCompany(companyName, cal);
+    	userService.createCompany(companyName, timestamp);
     	
-    	userService.createCompany(companyName, cal);
+    	userService.createCompany(companyName, timestamp);
     }    
     
 }
