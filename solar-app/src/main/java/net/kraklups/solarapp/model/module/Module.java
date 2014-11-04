@@ -14,8 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.TemporalType;
-import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
 
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
@@ -70,7 +68,6 @@ public class Module {
 		this.moduleName = moduleName;
 	}
 	
-	@Temporal(TemporalType.TIMESTAMP)
     public Timestamp getDate() {
 		return date;
 	}

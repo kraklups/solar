@@ -9,12 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.TemporalType;
-import javax.persistence.Temporal;
 
 import org.hibernate.annotations.Immutable;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import javax.persistence.UniqueConstraint;
 
@@ -26,9 +22,6 @@ public class Company {
 
 	private Long companyId;
 	private String companyName;
-	
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(iso = ISO.DATE)	
 	private Timestamp date;
 	
 	public Company() {
@@ -68,7 +61,6 @@ public class Company {
 		this.companyName = companyName;
 	}
 	
-	@Temporal(TemporalType.TIMESTAMP)
     public Timestamp getDate() {
 		return date;
 	}

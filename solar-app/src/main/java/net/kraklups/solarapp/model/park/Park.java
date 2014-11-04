@@ -11,8 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.TemporalType;
-import javax.persistence.Temporal;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
@@ -20,8 +18,6 @@ import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 import org.hibernate.annotations.Type;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.vividsolutions.jts.geom.MultiPolygon;
 
@@ -33,12 +29,7 @@ public class Park {
 	private Long parkId;
 	private String parkName;
 	
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(iso = ISO.DATE)		
 	private Timestamp startupDate;
-	
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(iso = ISO.DATE)		
 	private Timestamp productionDate;
 	
 	private UserProfile userProfile;
@@ -83,7 +74,6 @@ public class Park {
 		this.parkName = parkName;
 	}
 	
-	@Temporal(TemporalType.TIMESTAMP)
     public Timestamp getStartupDate() {
 		return startupDate;
 	}
@@ -92,7 +82,6 @@ public class Park {
 		this.startupDate = startupDate;
 	}
 	
-	@Temporal(TemporalType.TIMESTAMP)
     public Timestamp getProductionDate() {
 		return productionDate;
 	}

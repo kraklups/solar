@@ -12,11 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
@@ -27,12 +22,7 @@ public class Report {
 	private Long reportId;
 	private String reportTitle;
 
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(iso = ISO.DATE)
-	private Timestamp dateRequest;
-	
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(iso = ISO.DATE)
+	private Timestamp dateRequest;	
 	private Timestamp dateServed;
 	
 	private UserProfile userProfile;

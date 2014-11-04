@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.TemporalType;
-import javax.persistence.Temporal;
 
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 
@@ -52,7 +50,6 @@ public class MessageEvent {
 		this.messageId = messageId;
 	}
 	
-	@Temporal(TemporalType.TIMESTAMP)
 	public Timestamp getTvi() {
 		return tvi;
 	}

@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
@@ -123,7 +121,6 @@ public class UserProfile {
 		this.email = email;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
 	public Timestamp getDate() {
 		return date;
 	}

@@ -12,8 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.TemporalType;
-import javax.persistence.Temporal;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
@@ -89,7 +87,6 @@ public abstract class ElementPrk {
 		this.elementPrkTag = elementPrkTag;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
     public Timestamp getTvi() {
 		return tvi;
 	}
@@ -98,7 +95,6 @@ public abstract class ElementPrk {
 		this.tvi = tvi;
 	}	
 	
-	@Temporal(TemporalType.TIMESTAMP)
     public Timestamp getLastAccess() {
 		return lastAccess;
 	}

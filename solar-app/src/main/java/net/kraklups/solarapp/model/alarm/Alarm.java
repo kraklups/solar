@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.TemporalType;
-import javax.persistence.Temporal;
 
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 
@@ -22,10 +20,8 @@ import net.kraklups.solarapp.model.eventtsk.EventTsk;
 public class Alarm {
 	
 	private Long alarmId;
-	private String alarmTag;
-	
-	private Timestamp triggerDate;
-	
+	private String alarmTag;	
+	private Timestamp triggerDate;	
 	private EventTsk eventTsk;
 	
 	public Alarm() {		
@@ -52,7 +48,6 @@ public class Alarm {
 		this.alarmId = alarmId;
 	}	
 	
-	@Temporal(TemporalType.TIMESTAMP)
 	public void setTriggerDate(Timestamp triggerDate) {
 		this.triggerDate = triggerDate;
 	}

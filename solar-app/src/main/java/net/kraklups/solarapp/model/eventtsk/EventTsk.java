@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.TemporalType;
-import javax.persistence.Temporal;
 
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
 import net.kraklups.solarapp.model.timetable.Timetable;
@@ -68,7 +66,6 @@ public class EventTsk {
 		return tvi;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
 	public void setTvi(Timestamp tvi) {
 		this.tvi = tvi;
 	}
@@ -77,7 +74,6 @@ public class EventTsk {
 		return tvf;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
 	public void setTvf(Timestamp tvf) {
 		this.tvf = tvf;
 	}	
