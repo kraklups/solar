@@ -25,8 +25,10 @@ public class EventTsk {
 	private Long eventTskId;
 	private String tagET;	
 	private String definitionET;
+	
 	private Calendar tvi;	
 	private Calendar tvf;
+	
 	private TaskPrk taskPrk;
 	private Timetable timetable;
 	private Boolean triggerAlarm;

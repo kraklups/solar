@@ -13,6 +13,9 @@ import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
 
 import org.hibernate.annotations.Immutable;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import javax.persistence.UniqueConstraint;
 
 @Entity
@@ -23,6 +26,9 @@ public class Company {
 
 	private Long companyId;
 	private String companyName;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = ISO.DATE)	
 	private Calendar date;
 	
 	public Company() {

@@ -20,6 +20,8 @@ import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 import org.hibernate.annotations.Type;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.vividsolutions.jts.geom.MultiPolygon;
 
@@ -30,8 +32,15 @@ public class Park {
 	
 	private Long parkId;
 	private String parkName;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = ISO.DATE)		
 	private Calendar startupDate;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = ISO.DATE)		
 	private Calendar productionDate;
+	
 	private UserProfile userProfile;
 	private Company company;	
 		

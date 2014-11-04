@@ -19,10 +19,17 @@ public class UpdateCompany {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/company/updateCompany", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String updateCompanyGet(Model model) {
 		logger.info("Create Company page !");
 		
 		return "company/updateCompany";
 	}
+	
+	@RequestMapping(value = "/company/updateCompany", method = RequestMethod.POST)
+	public String updateCompanyPost(Model model) {
+		logger.info("Create Company page !");
+		
+		return "company/updateCompany";
+	}	
 
 }

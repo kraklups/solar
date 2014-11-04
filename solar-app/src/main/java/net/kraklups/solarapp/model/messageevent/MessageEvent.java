@@ -15,6 +15,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 
 @Entity
@@ -22,7 +25,11 @@ import net.kraklups.solarapp.model.eventtsk.EventTsk;
 public class MessageEvent {
 	
 	private Long messageId;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = ISO.DATE)		
 	private Calendar tvi;
+	
 	private String messageText;
 	private EventTsk eventTsk;
 	

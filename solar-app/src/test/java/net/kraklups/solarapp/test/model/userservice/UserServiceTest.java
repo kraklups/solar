@@ -146,7 +146,8 @@ public class UserServiceTest {
 		throws DuplicateInstanceException, InstanceNotFoundException {
 		
 		/* Register company and find company */
-		Company company = userService.createCompany("Kraklups");
+		Calendar cal = Calendar.getInstance();
+		Company company = userService.createCompany("Kraklups", cal);
 		
 		Company company2 = userService.findCompany(company.getCompanyId());
 		assertEquals(company, company2);		
@@ -164,10 +165,11 @@ public class UserServiceTest {
         InstanceNotFoundException {
     	
     	String companyName = "Kraklups";
+    	Calendar cal = Calendar.getInstance();
     	
-    	userService.createCompany(companyName);
+    	userService.createCompany(companyName, cal);
     	
-    	userService.createCompany(companyName);
+    	userService.createCompany(companyName, cal);
     }    
     
 }

@@ -33,7 +33,7 @@
     	<link href="${fontawesomeCSS}" rel="stylesheet" type="text/css" />		
     	
     	
-		<title>Merda Project</title>
+		<title><spring:message code="login.menuExplanation" /></title>
 						
 	</head>
 	

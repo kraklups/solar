@@ -60,7 +60,7 @@ public interface UserService {
     public UserProfileBlock getEmployeeBySurname2(String surname2, int startIndex, int count)
     		throws InstanceNotFoundException;    
         
-	public Company createCompany(String companyName) 
+	public Company createCompany(String companyName, Calendar date) 
 			throws DuplicateInstanceException;
 	
 	public void updateCompany(Long companyId, String companyName, Calendar date) 

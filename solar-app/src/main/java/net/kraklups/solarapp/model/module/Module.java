@@ -18,6 +18,9 @@ import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
 
 @Entity
@@ -27,7 +30,11 @@ public class Module {
 
 	private Long moduleId;
 	private String moduleName;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = ISO.DATE)		
 	private Calendar date;
+	
 	private Set<RoleModuleAccess> roleModuleAccess = new HashSet <RoleModuleAccess>(0);
 	
 	public Module() {

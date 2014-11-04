@@ -23,7 +23,9 @@ public class Alarm {
 	
 	private Long alarmId;
 	private String alarmTag;
+	
 	private Calendar triggerDate;
+	
 	private EventTsk eventTsk;
 	
 	public Alarm() {		

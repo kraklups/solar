@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
 import org.hibernate.annotations.Type;
+
 import com.vividsolutions.jts.geom.Point;
 
 import net.kraklups.solarapp.model.datalogger.DataLogger;

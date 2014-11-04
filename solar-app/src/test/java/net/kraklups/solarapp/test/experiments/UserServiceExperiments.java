@@ -44,7 +44,7 @@ public class UserServiceExperiments {
 					+ userProfile.getUserProfileId() + "' has been retrieved");
 			System.out.println(userProfile);
 
-			Company company = userService.createCompany("testingcompany");
+			Company company = userService.createCompany("testingcompany", cal);
 			System.out.println("company with companyId '"
 					+ company.getCompanyId() + "' has been created");
 			// Find company.

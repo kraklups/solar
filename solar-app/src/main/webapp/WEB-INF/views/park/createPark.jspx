@@ -42,7 +42,6 @@
 	   								<div class="form-group">        
 		        						<spring:message code="createPark.parkName" />
        	        						<input class="form-control" placeholder="Park Name" name="parkName" type="text" autofocus="autofocus" />
-
 		   							</div>
 	    
 		   							<div class="form-group">        
@@ -90,11 +89,11 @@
 	</tiles:putAttribute>
 </tiles:insertDefinition>
 
-    <!-- openLayersJS Version 1.11.0 -->
+    <!-- openLayersJS  -->
     <c:url var="openLayersJS" value="/resources/js/OpenLayers.js" />
     <script src="${openLayersJS}" ><jsp:text /></script>
 
-    <!-- gisToolsJS Version 1.11.0 -->
+    <!-- gisToolsJS  -->
     <c:url var="gisToolsJS" value="/resources/js/gis_tools.js" />
     <script src="${gisToolsJS}" ><jsp:text /></script>
 
