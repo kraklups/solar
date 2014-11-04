@@ -15,7 +15,7 @@ public final class createCompany_jspx extends org.apache.jasper.runtime.HttpJspB
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_form_modelAttribute_method;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_spring_message_var_code_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_input_placeholder_path_class_autofocus_nobody;
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_input_type_placeholder_path_class_nobody;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_input_placeholder_path_class_nobody;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
@@ -28,7 +28,7 @@ public final class createCompany_jspx extends org.apache.jasper.runtime.HttpJspB
     _jspx_tagPool_form_form_modelAttribute_method = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_spring_message_var_code_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_form_input_placeholder_path_class_autofocus_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _jspx_tagPool_form_input_type_placeholder_path_class_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_form_input_placeholder_path_class_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
@@ -36,7 +36,7 @@ public final class createCompany_jspx extends org.apache.jasper.runtime.HttpJspB
     _jspx_tagPool_form_form_modelAttribute_method.release();
     _jspx_tagPool_spring_message_var_code_nobody.release();
     _jspx_tagPool_form_input_placeholder_path_class_autofocus_nobody.release();
-    _jspx_tagPool_form_input_type_placeholder_path_class_nobody.release();
+    _jspx_tagPool_form_input_placeholder_path_class_nobody.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -296,12 +296,11 @@ public final class createCompany_jspx extends org.apache.jasper.runtime.HttpJspB
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  form:input
-    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_input_1 = (org.springframework.web.servlet.tags.form.InputTag) _jspx_tagPool_form_input_type_placeholder_path_class_nobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
+    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_input_1 = (org.springframework.web.servlet.tags.form.InputTag) _jspx_tagPool_form_input_placeholder_path_class_nobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_form_input_1.setPageContext(_jspx_page_context);
     _jspx_th_form_input_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
     _jspx_th_form_input_1.setDynamicAttribute(null, "placeholder", new String("Date"));
     _jspx_th_form_input_1.setDynamicAttribute(null, "class", new String("form-control"));
-    _jspx_th_form_input_1.setDynamicAttribute(null, "type", new String("date"));
     _jspx_th_form_input_1.setPath("date");
     int[] _jspx_push_body_count_form_input_1 = new int[] { 0 };
     try {
@@ -315,7 +314,7 @@ public final class createCompany_jspx extends org.apache.jasper.runtime.HttpJspB
       _jspx_th_form_input_1.doCatch(_jspx_exception);
     } finally {
       _jspx_th_form_input_1.doFinally();
-      _jspx_tagPool_form_input_type_placeholder_path_class_nobody.reuse(_jspx_th_form_input_1);
+      _jspx_tagPool_form_input_placeholder_path_class_nobody.reuse(_jspx_th_form_input_1);
     }
     return false;
   }

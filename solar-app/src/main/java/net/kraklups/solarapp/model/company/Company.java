@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.company;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Immutable;
 
@@ -22,12 +24,12 @@ public class Company {
 
 	private Long companyId;
 	private String companyName;
-	private Timestamp date;
+	private Date date;
 	
 	public Company() {
 	}
 	
-	public Company(String companyName, Timestamp date){
+	public Company(String companyName, Date date){
 		
 		/**
 		 * NOTE: "companyId" *must* be left as "null" since its value is
@@ -61,11 +63,12 @@ public class Company {
 		this.companyName = companyName;
 	}
 	
-    public Timestamp getDate() {
+    public Date getDate() {
 		return date;
 	}
-	
-	public void setDate(Timestamp date){
+    
+    @Temporal(TemporalType.TIMESTAMP)    
+    public void setDate(Date date){
 		this.date = date;
 	}
 	

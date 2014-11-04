@@ -40,7 +40,7 @@ public class CreateCompany {
 	@RequestMapping(value = "/company/createCompany", method = RequestMethod.POST)
 	public String createCompanyPost(@ModelAttribute Company company) {
 		
-		logger.debug("Create Company page POST!" + "company name: " + company.getCompanyName());
+		logger.info("Create Company page POST!" + "company name: " + company.getCompanyName() + " date: " + company.getDate());
 		
 			
 		return "company/createCompany";
