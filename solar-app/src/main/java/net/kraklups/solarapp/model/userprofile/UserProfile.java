@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.userprofile;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
@@ -30,7 +32,7 @@ public class UserProfile {
 	private String surname1;
 	private String surname2;	
 	private String email;
-	private Timestamp date;
+	private Date date;
 	private Boolean blocked;
 	private Boolean erased;
 	private Company company;
@@ -42,7 +44,7 @@ public class UserProfile {
 	
 	public UserProfile(String loginName, String encryptedPassword,
 			String firstName, String surname1, String surname2, String email, 
-			Timestamp date, Boolean blocked, Boolean erased, Company company, Role role) {
+			Date date, Boolean blocked, Boolean erased, Company company, Role role) {
 
 		this.loginName = loginName;
 		this.encryptedPassword = encryptedPassword;
@@ -121,11 +123,12 @@ public class UserProfile {
 		this.email = email;
 	}
 
-	public Timestamp getDate() {
+	public Date getDate() {
 		return date;
 	}
-	
-	public void setDate(Timestamp date) {
+
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	

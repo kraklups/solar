@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.parkservice;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +38,8 @@ public class ParkServiceImpl implements ParkService {
     
     
 	@Override
-	public Park createPark(String parkName, Timestamp startupDate,
-			Timestamp productionDate, UserProfile userProfile, Company company,
+	public Park createPark(String parkName, Date startupDate,
+			Date productionDate, UserProfile userProfile, Company company,
 			MultiPolygon mapPark) throws DuplicateInstanceException {
 		
         try {
@@ -57,8 +57,8 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public Park updatePark(Long parkId, String parkName, Timestamp startupDate,
-			Timestamp productionDate, UserProfile userProfile, Company company,
+	public Park updatePark(Long parkId, String parkName, Date startupDate,
+			Date productionDate, UserProfile userProfile, Company company,
 			MultiPolygon mapPark) throws InstanceNotFoundException {
 		
 		Park park = parkDao.find(parkId);
@@ -125,7 +125,7 @@ public class ParkServiceImpl implements ParkService {
 
 	@Override
 	public Timetable createTimetable(String tag, UserProfile userProfile,
-			Timestamp tvi, Park park) throws DuplicateInstanceException {
+			Date tvi, Park park) throws DuplicateInstanceException {
 		
 		Timetable timetable = new Timetable(tag, userProfile, tvi, park);
 		
@@ -136,7 +136,7 @@ public class ParkServiceImpl implements ParkService {
 
 	@Override
 	public Timetable updateTimetable(Long timetableId, String timetableTag,
-			UserProfile userProfile, Timestamp tvi, Park park)
+			UserProfile userProfile, Date tvi, Park park)
 			throws InstanceNotFoundException {
 		
 		Timetable timetable = timetableDao.find(timetableId);
@@ -164,7 +164,7 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public void assignTviTimetable(Timetable timetable, Timestamp tvi)
+	public void assignTviTimetable(Timetable timetable, Date tvi)
 			throws InstanceNotFoundException {
 		
 		timetable.setTvi(tvi);

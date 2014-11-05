@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.elementprk;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,8 +24,8 @@ public class ArrayBox extends ElementPrk {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ArrayBox(String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
+	public ArrayBox(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, StringLine stringLine) {
 		
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,

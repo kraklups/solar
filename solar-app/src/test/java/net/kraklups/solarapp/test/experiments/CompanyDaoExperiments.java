@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.test.experiments;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Calendar;
 
 import org.hibernate.Transaction;
@@ -26,7 +26,7 @@ public class CompanyDaoExperiments {
 			
 			// Register company.
 			Calendar calendar = Calendar.getInstance();
-			Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
+			Date timestamp = new Date(calendar.getTime().getTime());
 			Company company = new Company("thylacinus.net", timestamp);
 			companyDao.save(company);
 			Long companyId = company.getCompanyId();

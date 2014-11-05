@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.timetable;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
@@ -23,13 +25,13 @@ public class Timetable {
 	private Long timetableId;
 	private String timetableTag;
 	private UserProfile userProfile;
-	private Timestamp tvi;
+	private Date tvi;
 	private Park park;
 	
 	public Timetable() {
 	}
 	
-	public Timetable(String timetableTag, UserProfile userProfile, Timestamp tvi, Park park){
+	public Timetable(String timetableTag, UserProfile userProfile, Date tvi, Park park){
 		this.timetableTag = timetableTag;
 		this.userProfile = userProfile;
 		this.tvi = tvi;
@@ -69,11 +71,12 @@ public class Timetable {
 		this.timetableTag = timetableTag;
 	}
 	
-	public Timestamp getTvi(){
+	public Date getTvi(){
 		return tvi;
 	}
 
-	public void setTvi(Timestamp tvi) {
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setTvi(Date tvi) {
 		this.tvi = tvi;
 	}
 	

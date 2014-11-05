@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.test.experiments;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Calendar;
 
 import org.hibernate.Transaction;
@@ -25,7 +25,7 @@ public class RoleDaoExperiments {
 		try {
 			// Register module. Need UserProfile created FK dependency loginName...
 			Calendar calendar = Calendar.getInstance();
-			Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
+			Date timestamp = new Date(calendar.getTime().getTime());
 			Long weight = new Long("1");
 			UserProfile userProfile = new UserProfile();
 			

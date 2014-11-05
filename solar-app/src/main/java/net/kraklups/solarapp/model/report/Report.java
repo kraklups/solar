@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.report;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
@@ -22,8 +24,8 @@ public class Report {
 	private Long reportId;
 	private String reportTitle;
 
-	private Timestamp dateRequest;	
-	private Timestamp dateServed;
+	private Date dateRequest;	
+	private Date dateServed;
 	
 	private UserProfile userProfile;
 	private String urlReport;
@@ -31,7 +33,7 @@ public class Report {
 	public Report() {		
 	}
 	
-	public Report(String reportTitle, Timestamp dateRequest, Timestamp dateServed, UserProfile userProfile, String urlReport) {
+	public Report(String reportTitle, Date dateRequest, Date dateServed, UserProfile userProfile, String urlReport) {
 		this.reportTitle = reportTitle;
 		this.dateRequest = dateRequest;
 		this.dateServed = dateServed;
@@ -62,19 +64,21 @@ public class Report {
 		this.reportTitle = reportTitle;
 	}
 	
-	public Timestamp getDateRequest() {
+	public Date getDateRequest() {
 		return dateRequest;
 	}
 
-	public void setDateRequest(Timestamp dateRequest) {
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setDateRequest(Date dateRequest) {
 		this.dateRequest = dateRequest;
 	}
 
-	public Timestamp getDateServed() {
+	public Date getDateServed() {
 		return dateServed;
 	}
 
-	public void setDateServed(Timestamp dateServed) {
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setDateServed(Date dateServed) {
 		this.dateServed = dateServed;
 	}
 

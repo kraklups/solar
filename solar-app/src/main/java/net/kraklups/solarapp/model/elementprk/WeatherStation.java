@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.elementprk;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -19,8 +19,8 @@ public class WeatherStation extends ElementPrk {
 		// TODO Auto-generated constructor stub
 	}
 
-	public WeatherStation(String elementName, String elementTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
+	public WeatherStation(String elementName, String elementTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park) {
 		super(elementName, elementTag, tvi, lastAccess, userProfile,
 				dataLogger, park);

@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.alarm;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import net.kraklups.modelutil.dao.GenericDaoHibernate;
@@ -33,7 +33,7 @@ public class AlarmDaoHibernate extends
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Alarm> getAlarmsByTriggerDate(Timestamp triggerDate,
+	public List<Alarm> getAlarmsByTriggerDate(Date triggerDate,
 			int startIndex, int count) throws InstanceNotFoundException {
 		
 		List<Alarm> alarms = (List<Alarm>)  getSession().createQuery(

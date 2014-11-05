@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.report;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import net.kraklups.modelutil.dao.GenericDao;
@@ -23,7 +23,7 @@ public interface ReportDao extends GenericDao<Report, Long> {
       * @param dateRequest not the module identifier
       * @return list of reports
       */			     
-      public List<Report> getReportsByDateRequest(Timestamp dateRequest, int startIndex, int count) 
+      public List<Report> getReportsByDateRequest(Date dateRequest, int startIndex, int count) 
              throws InstanceNotFoundException; 	
      
       /**

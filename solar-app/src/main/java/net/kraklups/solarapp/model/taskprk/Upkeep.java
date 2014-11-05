@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.taskprk;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -19,7 +19,7 @@ public class Upkeep extends TaskPrk {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Upkeep(String taskName, Timestamp creationDate,
+	public Upkeep(String taskName, Date creationDate,
 			Park park, Role role, UserProfile userProfile) {
 		super(taskName, creationDate, park, role, userProfile);
 		// TODO Auto-generated constructor stub

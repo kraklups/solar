@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.elementprk;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
 
@@ -31,8 +33,8 @@ public abstract class ElementPrk {
 	private Long elementPrkId;
 	private String elementPrkName;
 	private String elementPrkTag;
-	private Timestamp tvi;
-	private Timestamp lastAccess;
+	private Date tvi;
+	private Date lastAccess;
 	private UserProfile userProfile;
 	private DataLogger dataLogger;
 	private Park park;
@@ -44,7 +46,7 @@ public abstract class ElementPrk {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ElementPrk(String elementPrkName, String elementPrkTag, Timestamp tvi, Timestamp lastAccess, 
+	public ElementPrk(String elementPrkName, String elementPrkTag, Date tvi, Date lastAccess, 
 			UserProfile userProfile, DataLogger dataLogger, Park park) {
 		
 		this.elementPrkName = elementPrkName;
@@ -87,19 +89,21 @@ public abstract class ElementPrk {
 		this.elementPrkTag = elementPrkTag;
 	}
 
-    public Timestamp getTvi() {
+    public Date getTvi() {
 		return tvi;
 	}
-	
-	public void setTvi(Timestamp tvi){
+
+    @Temporal(TemporalType.TIMESTAMP)
+	public void setTvi(Date tvi){
 		this.tvi = tvi;
 	}	
 	
-    public Timestamp getLastAccess() {
+    public Date getLastAccess() {
 		return lastAccess;
 	}
 
-	public void setLastAccess(Timestamp lastAccess){
+    @Temporal(TemporalType.TIMESTAMP)
+	public void setLastAccess(Date lastAccess){
 		this.lastAccess = lastAccess;
 	}
 

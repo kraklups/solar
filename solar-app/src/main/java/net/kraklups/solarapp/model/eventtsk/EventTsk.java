@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.eventtsk;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
 import net.kraklups.solarapp.model.timetable.Timetable;
@@ -24,8 +26,8 @@ public class EventTsk {
 	private String tagET;	
 	private String definitionET;
 	
-	private Timestamp tvi;	
-	private Timestamp tvf;
+	private Date tvi;	
+	private Date tvf;
 	
 	private TaskPrk taskPrk;
 	private Timetable timetable;
@@ -35,7 +37,7 @@ public class EventTsk {
 	public EventTsk() {
 	}
 	
-	public EventTsk(String tagET, String definitionET, Timestamp tvi, Timestamp tvf,  
+	public EventTsk(String tagET, String definitionET, Date tvi, Date tvf,  
 			TaskPrk taskPrk, Timetable timetable, Boolean triggerAlarm, Boolean triggerMessage) {
 		this.tvi = tvi;
 		this.tvf = tvf;
@@ -62,19 +64,21 @@ public class EventTsk {
 		this.eventTskId = eventTskId;
 	}	
 	
-	public Timestamp getTvi(){
+	public Date getTvi(){
 		return tvi;
 	}
 
-	public void setTvi(Timestamp tvi) {
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setTvi(Date tvi) {
 		this.tvi = tvi;
 	}
 
-	public Timestamp getTvf(){
+	public Date getTvf(){
 		return tvf;
 	}
 
-	public void setTvf(Timestamp tvf) {
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setTvf(Date tvf) {
 		this.tvf = tvf;
 	}	
 

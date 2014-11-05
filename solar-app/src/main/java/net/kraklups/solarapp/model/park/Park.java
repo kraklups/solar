@@ -1,10 +1,12 @@
 package net.kraklups.solarapp.model.park;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -29,8 +31,8 @@ public class Park {
 	private Long parkId;
 	private String parkName;
 	
-	private Timestamp startupDate;
-	private Timestamp productionDate;
+	private Date startupDate;
+	private Date productionDate;
 	
 	private UserProfile userProfile;
 	private Company company;	
@@ -40,7 +42,7 @@ public class Park {
 	public Park() {		
 	}
 	
-	public Park(String parkName, Timestamp startupDate, Timestamp productionDate, UserProfile userProfile, Company company, MultiPolygon mapPark) {
+	public Park(String parkName, Date startupDate, Date productionDate, UserProfile userProfile, Company company, MultiPolygon mapPark) {
 	
 		this.parkName = parkName;
 		this.startupDate = startupDate;
@@ -74,19 +76,21 @@ public class Park {
 		this.parkName = parkName;
 	}
 	
-    public Timestamp getStartupDate() {
+    public Date getStartupDate() {
 		return startupDate;
 	}
-	
-	public void setStartupDate(Timestamp startupDate){
+
+    @Temporal(TemporalType.TIMESTAMP)
+	public void setStartupDate(Date startupDate){
 		this.startupDate = startupDate;
 	}
 	
-    public Timestamp getProductionDate() {
+    public Date getProductionDate() {
 		return productionDate;
 	}
 	
-	public void setProductionDate(Timestamp productionDate){
+    @Temporal(TemporalType.TIMESTAMP)    
+	public void setProductionDate(Date productionDate){
 		this.productionDate = productionDate;
 	}	
 

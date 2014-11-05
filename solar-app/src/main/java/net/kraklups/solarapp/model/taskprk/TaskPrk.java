@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.taskprk;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.role.Role;
@@ -26,7 +28,7 @@ public abstract class TaskPrk {
 	
 	private Long taskPrkId;
 	private String taskName;
-	private Timestamp creationDate;
+	private Date creationDate;
 	private Park park;
 	private Role role;
 	private UserProfile userProfile;
@@ -34,7 +36,7 @@ public abstract class TaskPrk {
 	public TaskPrk() {		
 	}
 	
-	public TaskPrk(String taskName, Timestamp creationDate, Park park, Role role, UserProfile userProfile) {
+	public TaskPrk(String taskName, Date creationDate, Park park, Role role, UserProfile userProfile) {
 		this.taskName = taskName;
 		this.creationDate = creationDate;
 		this.park = park;
@@ -65,11 +67,12 @@ public abstract class TaskPrk {
 		this.taskName = taskName;
 	}
 	
-	public Timestamp getCreationDate() {
+	public Date getCreationDate() {
 		return creationDate;
 	}
-	
-	public void setCreationDate(Timestamp creationDate) {
+
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
 

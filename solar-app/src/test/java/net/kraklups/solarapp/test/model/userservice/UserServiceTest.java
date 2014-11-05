@@ -4,7 +4,7 @@ import static net.kraklups.solarapp.model.util.GlobalNames.SPRING_CONFIG_FILE;
 import static net.kraklups.solarapp.test.util.GlobalNames.SPRING_CONFIG_TEST_FILE;
 import static org.junit.Assert.assertEquals;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Calendar;
 
 import org.junit.Test;
@@ -49,7 +49,7 @@ public class UserServiceTest {
 
         /* Register user and find profile. */
 		Calendar calendar = Calendar.getInstance();
-		Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
+		Date timestamp = new Date(calendar.getTime().getTime());
     	Long value = new Long("1");
     	UserProfileDetails userProfileDetails = new UserProfileDetails("adminName","adminSurname1",
     			"adminSurname2","admin@kraklups.net",timestamp,false,false,
@@ -73,7 +73,7 @@ public class UserServiceTest {
         String loginName = "user";
         String clearPassword = "userPassword";
 		Calendar calendar = Calendar.getInstance();
-		Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
+		Date timestamp = new Date(calendar.getTime().getTime());
     	Long value = new Long("1");
     	UserProfileDetails userProfileDetails = new UserProfileDetails("adminName","adminSurname1",
     			"adminSurname2","admin@kraklups.net",timestamp,false,false,
@@ -150,7 +150,7 @@ public class UserServiceTest {
 		
 		/* Register company and find company */
 		Calendar calendar = Calendar.getInstance();
-		Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
+		Date timestamp = new Date(calendar.getTime().getTime());
 		Company company = userService.createCompany("Kraklups", timestamp);
 		
 		Company company2 = userService.findCompany(company.getCompanyId());
@@ -170,7 +170,7 @@ public class UserServiceTest {
     	
     	String companyName = "Kraklups";
 		Calendar calendar = Calendar.getInstance();
-		Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
+		Date timestamp = new Date(calendar.getTime().getTime());
     	
     	userService.createCompany(companyName, timestamp);
     	

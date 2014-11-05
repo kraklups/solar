@@ -3,7 +3,7 @@ package net.kraklups.solarapp.test.experiments;
 import static net.kraklups.solarapp.model.util.GlobalNames.SPRING_CONFIG_FILE;
 import static net.kraklups.solarapp.test.util.GlobalNames.SPRING_CONFIG_TEST_FILE;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class UserServiceExperiments {
 		try {
 			// Register user.
 			Calendar calendar = Calendar.getInstance();
-			Timestamp timestamp = new Timestamp(calendar.getTime().getTime());
+			Date timestamp = new Date(calendar.getTime().getTime());
 	    	Long value = new Long("1");	    		
 			UserProfile userProfile = userService.registerUser("serviceUser",
 					"userPassword", new UserProfileDetails("adminName","adminSurname1",

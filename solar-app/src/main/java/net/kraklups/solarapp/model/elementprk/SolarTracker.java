@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.elementprk;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -20,7 +20,7 @@ public class SolarTracker extends ElementPrk {
 	}
 
 	public SolarTracker(String elementPrkName, String elementPrkTag,
-			Timestamp tvi, Timestamp lastAccess, UserProfile userProfile,
+			Date tvi, Date lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park) {
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,
 				dataLogger, park);

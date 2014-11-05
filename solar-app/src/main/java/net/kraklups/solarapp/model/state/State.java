@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.state;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 import net.kraklups.solarapp.model.statetype.StateType;
@@ -24,8 +26,8 @@ import net.kraklups.solarapp.model.park.Park;
 public class State {
 
 	private Long stateId;
-	private Timestamp tvi;
-	private Timestamp tvf;
+	private Date tvi;
+	private Date tvf;
 	private Park park;
 	private EventTsk eventTsk;
 	private Upkeep upkeep;
@@ -34,7 +36,7 @@ public class State {
 	public State() {		
 	}
 	
-	public State(Long stateId, Timestamp tvi, Timestamp tvf, Park park, EventTsk eventTsk, TaskPrk taskPrk, Upkeep upkeep, StateType stateType) {
+	public State(Long stateId, Date tvi, Date tvf, Park park, EventTsk eventTsk, TaskPrk taskPrk, Upkeep upkeep, StateType stateType) {
 		this.stateId = stateId;
 		this.tvi = tvi;
 		this.tvf = tvf;
@@ -59,19 +61,21 @@ public class State {
 		this.stateId = stateId;
 	}
 	
-	public Timestamp getTvi(){
+	public Date getTvi(){
 		return tvi;
 	}
 
-	public void setTvi(Timestamp tvi) {
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setTvi(Date tvi) {
 		this.tvi = tvi;
 	}
 
-	public Timestamp getTvf(){
+	public Date getTvf(){
 		return tvf;
 	}
 
-	public void setTvf(Timestamp tvf) {
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setTvf(Date tvf) {
 		this.tvf = tvf;
 	}
 	

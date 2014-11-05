@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.userservice;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.module.Module;
@@ -60,10 +60,10 @@ public interface UserService {
     public UserProfileBlock getEmployeeBySurname2(String surname2, int startIndex, int count)
     		throws InstanceNotFoundException;    
         
-	public Company createCompany(String companyName, Timestamp date) 
+	public Company createCompany(String companyName, Date date) 
 			throws DuplicateInstanceException;
 	
-	public void updateCompany(Long companyId, String companyName, Timestamp date) 
+	public void updateCompany(Long companyId, String companyName, Date date) 
 			throws InstanceNotFoundException;
 	
 	public void removeCompany(Long companyId) 
@@ -90,7 +90,7 @@ public interface UserService {
 	
 	public void removeRole(Long roleId) throws InstanceNotFoundException;
 	
-	public void updateRole(Long roleId, String roleName, Timestamp date, 
+	public void updateRole(Long roleId, String roleName, Date date, 
 			UserProfile userProfile, Long weight) throws InstanceNotFoundException;
 
 	public Module registerModule(String moduleName) throws DuplicateInstanceException;
@@ -101,7 +101,7 @@ public interface UserService {
 	
 	public void removeModule(Long moduleId) throws InstanceNotFoundException;
 	
-	public void updateModule(Long moduleId, String moduleName, Timestamp date) 
+	public void updateModule(Long moduleId, String moduleName, Date date) 
 			throws InstanceNotFoundException;
 	
 	public RoleModuleAccess registerRoleModuleAccess(Role role, Module module, Type type) 

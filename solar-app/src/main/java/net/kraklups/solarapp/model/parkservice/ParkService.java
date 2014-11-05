@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.parkservice;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import com.vividsolutions.jts.geom.MultiPolygon;
 
@@ -13,10 +13,10 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 public interface ParkService {
 
-    public Park createPark(String parkName, Timestamp startupDate, Timestamp productionDate, UserProfile userProfile, 
+    public Park createPark(String parkName, Date startupDate, Date productionDate, UserProfile userProfile, 
     		Company company, MultiPolygon mapPark) throws DuplicateInstanceException;
 
-    public Park updatePark(Long parkId, String parkName, Timestamp startupDate, Timestamp productionDate, UserProfile userProfile, 
+    public Park updatePark(Long parkId, String parkName, Date startupDate, Date productionDate, UserProfile userProfile, 
     		Company company, MultiPolygon mapPark) throws InstanceNotFoundException;
 
     public Park findParkByName(String parkName)
@@ -37,10 +37,10 @@ public interface ParkService {
     public ParkBlock getParkByCompanyId(Long companyId, int startIndex, int count) 
             throws InstanceNotFoundException; 
     
-    public Timetable createTimetable(String tag, UserProfile userProfile, Timestamp tvi, Park park)
+    public Timetable createTimetable(String tag, UserProfile userProfile, Date tvi, Park park)
     		throws DuplicateInstanceException;
     
-    public Timetable updateTimetable(Long timetableId, String timetableTag, UserProfile userProfile, Timestamp tvi, Park park) 
+    public Timetable updateTimetable(Long timetableId, String timetableTag, UserProfile userProfile, Date tvi, Park park) 
     		throws InstanceNotFoundException; 
     
     public void assignParkTimetable(Timetable timetable, Park park)
@@ -49,7 +49,7 @@ public interface ParkService {
     public void assignUserProfileTimetable(Timetable timetable, UserProfile userProfile)
     		throws InstanceNotFoundException;  
     
-    public void assignTviTimetable(Timetable timetable, Timestamp tvi)
+    public void assignTviTimetable(Timetable timetable, Date tvi)
     		throws InstanceNotFoundException;
     
     public Park getParkByTimetable(Timetable timetable)

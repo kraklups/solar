@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.role;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
@@ -27,7 +29,7 @@ public class Role {
 
 	private Long roleId;
 	private String roleName;
-	private Timestamp date;
+	private Date date;
 	private UserProfile userProfile;
 	private Long weight;
 	private Set<RoleModuleAccess> roleModuleAccess = new HashSet<RoleModuleAccess>(0);
@@ -35,7 +37,7 @@ public class Role {
 	public Role() {
 	}
 	
-	public Role(String roleName, Timestamp date, UserProfile userProfile, Long weight) {
+	public Role(String roleName, Date date, UserProfile userProfile, Long weight) {
 		
 		this.roleName = roleName;
 		this.date = date;
@@ -43,7 +45,7 @@ public class Role {
 		this.weight = weight;
 	}
 
-	public Role(String roleName, Timestamp date, UserProfile userProfile, Long weight, Set<RoleModuleAccess> roleModuleAccess) {		
+	public Role(String roleName, Date date, UserProfile userProfile, Long weight, Set<RoleModuleAccess> roleModuleAccess) {		
 
 		this.roleName = roleName;
 		this.date = date;
@@ -75,11 +77,12 @@ public class Role {
 		this.roleName = roleName;
 	}
 	
-    public Timestamp getDate() {
+    public Date getDate() {
 		return date;
 	}
-	
-	public void setDate(Timestamp date){
+
+    @Temporal(TemporalType.TIMESTAMP)
+	public void setDate(Date date){
 		this.date = date;
 	}	
 	

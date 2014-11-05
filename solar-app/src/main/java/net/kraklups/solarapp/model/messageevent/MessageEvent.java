@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.messageevent;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 
@@ -21,7 +23,7 @@ public class MessageEvent {
 	
 	private Long messageId;
 			
-	private Timestamp tvi;
+	private Date tvi;
 	
 	private String messageText;
 	private EventTsk eventTsk;
@@ -29,7 +31,7 @@ public class MessageEvent {
 	public MessageEvent() {
 	}
 	
-	public MessageEvent(Timestamp tvi, String messageText, EventTsk eventTsk) {
+	public MessageEvent(Date tvi, String messageText, EventTsk eventTsk) {
 		this.tvi = tvi;
 		this.messageText = messageText;
 		this.eventTsk = eventTsk;		
@@ -50,11 +52,12 @@ public class MessageEvent {
 		this.messageId = messageId;
 	}
 	
-	public Timestamp getTvi() {
+	public Date getTvi() {
 		return tvi;
 	}
-	
-	public void setTvi(Timestamp tvi) {
+
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setTvi(Date tvi) {
 		this.tvi = tvi;
 	}
 	
