@@ -12,6 +12,7 @@ public final class layout_jspx extends org.apache.jasper.runtime.HttpJspBase
   private static java.util.List<String> _jspx_dependants;
 
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_url_var_value_nobody;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_spring_message_code_nobody;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
@@ -21,10 +22,12 @@ public final class layout_jspx extends org.apache.jasper.runtime.HttpJspBase
 
   public void _jspInit() {
     _jspx_tagPool_c_url_var_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_spring_message_code_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
     _jspx_tagPool_c_url_var_value_nobody.release();
+    _jspx_tagPool_spring_message_code_nobody.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -66,7 +69,8 @@ public final class layout_jspx extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${fontawesomeCSS}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" />");
       out.write("<title>");
-      out.write("Merda Project");
+      if (_jspx_meth_spring_message_0(_jspx_page_context))
+        return;
       out.write("</title>");
       out.write("</head>");
       out.write("<body>");
@@ -147,6 +151,32 @@ public final class layout_jspx extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _jspx_tagPool_c_url_var_value_nobody.reuse(_jspx_th_c_url_2);
+    return false;
+  }
+
+  private boolean _jspx_meth_spring_message_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  spring:message
+    org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_0 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
+    _jspx_th_spring_message_0.setPageContext(_jspx_page_context);
+    _jspx_th_spring_message_0.setParent(null);
+    _jspx_th_spring_message_0.setCode("header");
+    int[] _jspx_push_body_count_spring_message_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_spring_message_0 = _jspx_th_spring_message_0.doStartTag();
+      if (_jspx_th_spring_message_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_spring_message_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_spring_message_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_spring_message_0.doFinally();
+      _jspx_tagPool_spring_message_code_nobody.reuse(_jspx_th_spring_message_0);
+    }
     return false;
   }
 

@@ -1,9 +1,12 @@
 package net.kraklups.solarapp.web.module;
 
+import net.kraklups.solarapp.model.module.Module;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,9 +22,22 @@ public class CreateModule {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/module/createModule", method = RequestMethod.GET)
-	public String home(Model model) {
-		logger.info("Create Module page !");
+	public String createModuleGet(Model model) {
 		
+		logger.info("Create Module page GET!");
+		
+		model.addAttribute("module", new Module());
+				
 		return "module/createModule";
 	}
+	
+	@RequestMapping(value = "/module/createModule", method = RequestMethod.POST)
+	public String createModulePost(@ModelAttribute Module module) {
+		
+		logger.info("Create Module page POST!" + "module name: " + module.getModuleName() + " date: " + module.getDate());
+		
+			
+		return "module/createModule";
+	}
+	
 }

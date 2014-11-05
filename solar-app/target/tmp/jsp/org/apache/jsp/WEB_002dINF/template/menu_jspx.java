@@ -80,7 +80,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("</button>");
       if (_jspx_meth_spring_url_0(_jspx_page_context))
         return;
-      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${homeUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\">");
+      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${homeUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"navbar-brand\">");
       if (_jspx_meth_spring_message_0(_jspx_page_context))
         return;
       out.write("</a>");
@@ -943,7 +943,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_spring_url_0.setParent(null);
     _jspx_th_spring_url_0.setHtmlEscape(true);
     _jspx_th_spring_url_0.setVar("homeUrl");
-    _jspx_th_spring_url_0.setValue("/home");
+    _jspx_th_spring_url_0.setValue("/");
     int[] _jspx_push_body_count_spring_url_0 = new int[] { 0 };
     try {
       int _jspx_eval_spring_url_0 = _jspx_th_spring_url_0.doStartTag();

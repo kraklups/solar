@@ -41,7 +41,7 @@
 	    
 	   								<div class="form-group">        
 	        							<spring:message code="createCompany.date" />
-		            					<input class="form-control" placeholder="Date" name="date" type="text" />
+		            					<input path="date" class="form-control" placeholder="MM/DD/YYYY" />
 		   							</div>	    
 	   							   								    
 		    						<div class="button">

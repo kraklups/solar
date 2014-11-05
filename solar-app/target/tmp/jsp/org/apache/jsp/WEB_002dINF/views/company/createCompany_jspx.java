@@ -299,7 +299,7 @@ public final class createCompany_jspx extends org.apache.jasper.runtime.HttpJspB
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_input_1 = (org.springframework.web.servlet.tags.form.InputTag) _jspx_tagPool_form_input_placeholder_path_class_nobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_form_input_1.setPageContext(_jspx_page_context);
     _jspx_th_form_input_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
-    _jspx_th_form_input_1.setDynamicAttribute(null, "placeholder", new String("Date"));
+    _jspx_th_form_input_1.setDynamicAttribute(null, "placeholder", new String("MM/DD/YYYY"));
     _jspx_th_form_input_1.setDynamicAttribute(null, "class", new String("form-control"));
     _jspx_th_form_input_1.setPath("date");
     int[] _jspx_push_body_count_form_input_1 = new int[] { 0 };

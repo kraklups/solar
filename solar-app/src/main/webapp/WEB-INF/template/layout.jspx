@@ -1,6 +1,7 @@
 <jsp:root
 	xmlns:tiles="http://tiles.apache.org/tags-tiles"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags"	
 	xmlns:jsp="http://java.sun.com/JSP/Page"
 	version="2.0" >
 	
@@ -28,7 +29,7 @@
     	<link href="${fontawesomeCSS}" rel="stylesheet" type="text/css" />		
     	
     	
-		<title>Merda Project</title>
+		<title><spring:message code="header" /></title>
 						
 	</head>
 	

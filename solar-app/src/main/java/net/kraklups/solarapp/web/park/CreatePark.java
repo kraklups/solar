@@ -23,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -38,12 +39,23 @@ public class CreatePark {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/park/createPark", method = RequestMethod.GET)
-	public String home(Model model) {
-		logger.info("Create Park page !");
+	public String createParkGet(Model model) {
 		
+		logger.info("Create Park page GET!");
+		
+		model.addAttribute("park", new Park());
+				
 		return "park/createPark";
 	}
-
+	
+	@RequestMapping(value = "/park/createPark", method = RequestMethod.POST)
+	public String createParkPost(@ModelAttribute Park park) {
+		
+		logger.info("Create Park page POST!" + "park name: " + park.getParkName());
+		
+			
+		return "park/createPark";
+	}	
 }
 
 /*@AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
