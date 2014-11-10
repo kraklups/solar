@@ -26,10 +26,8 @@ import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
 public class Module {
 
 	private Long moduleId;
-	private String moduleName;
-	
+	private String moduleName;	
 	private Date date;
-	
 	private Set<RoleModuleAccess> roleModuleAccess = new HashSet <RoleModuleAccess>(0);
 	
 	public Module() {

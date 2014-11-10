@@ -37,14 +37,47 @@
     	                        <fieldset>	   							    
 	   								<div class="form-group">        
 	        							<spring:message code="createState.dateTvi" />
-		            					<form:input path="tvi" class="form-control" placeholder="MM/DD/YYYY" />
+		            					<form:input path="tvi" class="form-control" placeholder="MM/DD/YYYY" autofocus="autofocus" />
 		   							</div>	    
 		   							
 		   							<div class="form-group">
 	        							<spring:message code="createState.dateTvf" />
 		            					<form:input path="tvf" class="form-control" placeholder="MM/DD/YYYY" />
 		   							</div>	    		   							
+	   							   		
+	   								<div class="form-group">
+	   									<spring:message code="select.chooseOne" var="chooseOne" />
+	   									<spring:message code="createState.eventTsk" />
+										<form:select path="eventTsk" class="form-control">
+    										<form:option value="" label="${chooseOne}" />
+    										<form:options items="${eventTskList}" itemValue="eventTskId" itemLabel="name" />
+										</form:select>	   							   								    
+	   								</div>
 	   							   								    
+	   								<div class="form-group">
+	   									<spring:message code="createState.park" />
+										<form:select path="park" class="form-control">
+    										<form:option value="" label="${chooseOne}" />
+    										<form:options items="${parkList}" itemValue="parkId" itemLabel="name" />
+										</form:select>	   							   								    
+	   								</div>
+
+	   								<div class="form-group">
+	   									<spring:message code="createState.upkeep" />
+										<form:select path="upkeep" class="form-control">
+    										<form:option value="" label="${chooseOne}" />
+    										<form:options items="${upkeepList}" itemValue="upkeepId" itemLabel="name" />
+										</form:select>	   							   								    
+	   								</div>
+	   							   								    
+	   								<div class="form-group">
+	   									<spring:message code="createState.stateType" />
+										<form:select path="stateType" class="form-control">
+    										<form:option value="" label="${chooseOne}" />
+    										<form:options items="${stateTypeList}" itemValue="stateTypeId" itemLabel="name" />
+										</form:select>	   							   								    
+	   								</div>
+	   							   								    	   							   								    
 		    						<div class="button">
 		    							<spring:message code="createState.submit" var="stateSubmit" />
 		        						<input type="submit" value="${stateSubmit}" />        
