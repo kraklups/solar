@@ -24,11 +24,9 @@ public class EventTsk {
 	
 	private Long eventTskId;
 	private String tagET;	
-	private String definitionET;
-	
+	private String definitionET;	
 	private Date tvi;	
-	private Date tvf;
-	
+	private Date tvf;	
 	private TaskPrk taskPrk;
 	private Timetable timetable;
 	private Boolean triggerAlarm;

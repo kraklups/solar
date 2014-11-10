@@ -645,7 +645,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		MessageEvent messageEvent = messageEventDao.find(messageId);
 		
 		messageEvent.setTvi(tvi);
-		messageEvent.setMessageText(messageTxt);
+		messageEvent.setMessageEventText(messageTxt);
 		messageEvent.setEventTsk(eventTsk);
 		
 		return messageEvent;
@@ -662,7 +662,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	public void assignMessageTxtMessageEvent(MessageEvent messageEvent,
 			String messageTxt) throws InstanceNotFoundException {
 		
-		messageEvent.setMessageText(messageTxt);
+		messageEvent.setMessageEventText(messageTxt);
 	}
 
 	@Override
