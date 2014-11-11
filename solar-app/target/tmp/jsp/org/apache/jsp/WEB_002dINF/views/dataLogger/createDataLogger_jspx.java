@@ -1,10 +1,10 @@
-package org.apache.jsp.WEB_002dINF.views.alarm;
+package org.apache.jsp.WEB_002dINF.views.dataLogger;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBase
+public final class createDataLogger_jspx extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -76,7 +76,7 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
       org.apache.tiles.jsp.taglib.InsertDefinitionTag _jspx_th_tiles_insertDefinition_0 = (_jspx_resourceInjector != null) ? _jspx_resourceInjector.createTagHandlerInstance(org.apache.tiles.jsp.taglib.InsertDefinitionTag.class) : new org.apache.tiles.jsp.taglib.InsertDefinitionTag();
       _jspx_th_tiles_insertDefinition_0.setJspContext(_jspx_page_context);
       _jspx_th_tiles_insertDefinition_0.setName("defaultTemplate");
-      _jspx_th_tiles_insertDefinition_0.setJspBody(new createAlarm_jspxHelper( 0, _jspx_page_context, _jspx_th_tiles_insertDefinition_0, null));
+      _jspx_th_tiles_insertDefinition_0.setJspBody(new createDataLogger_jspxHelper( 0, _jspx_page_context, _jspx_th_tiles_insertDefinition_0, null));
       _jspx_th_tiles_insertDefinition_0.doTag();
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -99,7 +99,7 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_0 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_0.setPageContext(_jspx_page_context);
     _jspx_th_spring_message_0.setParent(new javax.servlet.jsp.tagext.TagAdapter((javax.servlet.jsp.tagext.SimpleTag) _jspx_parent));
-    _jspx_th_spring_message_0.setCode("createAlarm.title");
+    _jspx_th_spring_message_0.setCode("createDataLogger.title");
     int[] _jspx_push_body_count_spring_message_0 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_0 = _jspx_th_spring_message_0.doStartTag();
@@ -125,7 +125,7 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_1 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_1.setPageContext(_jspx_page_context);
     _jspx_th_spring_message_1.setParent(new javax.servlet.jsp.tagext.TagAdapter((javax.servlet.jsp.tagext.SimpleTag) _jspx_parent));
-    _jspx_th_spring_message_1.setCode("createAlarm.menuExplanation");
+    _jspx_th_spring_message_1.setCode("createDataLogger.menuExplanation");
     int[] _jspx_push_body_count_spring_message_1 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_1 = _jspx_th_spring_message_1.doStartTag();
@@ -151,7 +151,7 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_2 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_2.setPageContext(_jspx_page_context);
     _jspx_th_spring_message_2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
-    _jspx_th_spring_message_2.setCode("createAlarm.alarmTag");
+    _jspx_th_spring_message_2.setCode("createDataLogger.dataLoggerTag");
     int[] _jspx_push_body_count_spring_message_2 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_2 = _jspx_th_spring_message_2.doStartTag();
@@ -178,9 +178,9 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
     _jspx_th_form_input_0.setPageContext(_jspx_page_context);
     _jspx_th_form_input_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
     _jspx_th_form_input_0.setDynamicAttribute(null, "autofocus", new String("autofocus"));
-    _jspx_th_form_input_0.setDynamicAttribute(null, "placeholder", new String("Alarm Tag"));
+    _jspx_th_form_input_0.setDynamicAttribute(null, "placeholder", new String("DataLogger Tag"));
     _jspx_th_form_input_0.setDynamicAttribute(null, "class", new String("form-control"));
-    _jspx_th_form_input_0.setPath("alarmTag");
+    _jspx_th_form_input_0.setPath("dataLoggerTag");
     int[] _jspx_push_body_count_form_input_0 = new int[] { 0 };
     try {
       int _jspx_eval_form_input_0 = _jspx_th_form_input_0.doStartTag();
@@ -206,7 +206,7 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_3 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_3.setPageContext(_jspx_page_context);
     _jspx_th_spring_message_3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
-    _jspx_th_spring_message_3.setCode("createAlarm.triggerDate");
+    _jspx_th_spring_message_3.setCode("createDataLogger.dataLoggerType");
     int[] _jspx_push_body_count_spring_message_3 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_3 = _jspx_th_spring_message_3.doStartTag();
@@ -232,9 +232,9 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_input_1 = (org.springframework.web.servlet.tags.form.InputTag) _jspx_tagPool_form_input_placeholder_path_class_nobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_form_input_1.setPageContext(_jspx_page_context);
     _jspx_th_form_input_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
-    _jspx_th_form_input_1.setDynamicAttribute(null, "placeholder", new String("Trigger Date"));
+    _jspx_th_form_input_1.setDynamicAttribute(null, "placeholder", new String("DataLogger Tag"));
     _jspx_th_form_input_1.setDynamicAttribute(null, "class", new String("form-control"));
-    _jspx_th_form_input_1.setPath("triggerDate");
+    _jspx_th_form_input_1.setPath("dataLoggerTag");
     int[] _jspx_push_body_count_form_input_1 = new int[] { 0 };
     try {
       int _jspx_eval_form_input_1 = _jspx_th_form_input_1.doStartTag();
@@ -287,7 +287,7 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_5 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_5.setPageContext(_jspx_page_context);
     _jspx_th_spring_message_5.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
-    _jspx_th_spring_message_5.setCode("createAlarm.eventTsk");
+    _jspx_th_spring_message_5.setCode("createDataLogger.dataLogger");
     int[] _jspx_push_body_count_spring_message_5 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_5 = _jspx_th_spring_message_5.doStartTag();
@@ -314,8 +314,8 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
     _jspx_th_form_options_0.setPageContext(_jspx_page_context);
     _jspx_th_form_options_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_select_0);
     _jspx_th_form_options_0.setItemLabel("name");
-    _jspx_th_form_options_0.setItemValue("eventTskId");
-    _jspx_th_form_options_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${eventTskList}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_form_options_0.setItemValue("dataLoggerId");
+    _jspx_th_form_options_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${dataLoggerList}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int[] _jspx_push_body_count_form_options_0 = new int[] { 0 };
     try {
       int _jspx_eval_form_options_0 = _jspx_th_form_options_0.doStartTag();
@@ -341,8 +341,8 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_6 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_var_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_6.setPageContext(_jspx_page_context);
     _jspx_th_spring_message_6.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
-    _jspx_th_spring_message_6.setVar("alarmSubmit");
-    _jspx_th_spring_message_6.setCode("createAlarm.submit");
+    _jspx_th_spring_message_6.setVar("dataLoggerSubmit");
+    _jspx_th_spring_message_6.setCode("createDataLogger.submit");
     int[] _jspx_push_body_count_spring_message_6 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_6 = _jspx_th_spring_message_6.doStartTag();
@@ -360,13 +360,13 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
     return false;
   }
 
-  private class createAlarm_jspxHelper
+  private class createDataLogger_jspxHelper
       extends org.apache.jasper.runtime.JspFragmentHelper
   {
     private javax.servlet.jsp.tagext.JspTag _jspx_parent;
     private int[] _jspx_push_body_count;
 
-    public createAlarm_jspxHelper( int discriminator, JspContext jspContext, javax.servlet.jsp.tagext.JspTag _jspx_parent, int[] _jspx_push_body_count ) {
+    public createDataLogger_jspxHelper( int discriminator, JspContext jspContext, javax.servlet.jsp.tagext.JspTag _jspx_parent, int[] _jspx_push_body_count ) {
       super( discriminator, jspContext, _jspx_parent );
       this._jspx_parent = _jspx_parent;
       this._jspx_push_body_count = _jspx_push_body_count;
@@ -379,7 +379,7 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
       _jspx_th_tiles_putAttribute_0.setJspContext(_jspx_page_context);
       _jspx_th_tiles_putAttribute_0.setParent(_jspx_parent);
       _jspx_th_tiles_putAttribute_0.setName("body");
-      _jspx_th_tiles_putAttribute_0.setJspBody(new createAlarm_jspxHelper( 1, _jspx_page_context, _jspx_th_tiles_putAttribute_0, null));
+      _jspx_th_tiles_putAttribute_0.setJspBody(new createDataLogger_jspxHelper( 1, _jspx_page_context, _jspx_th_tiles_putAttribute_0, null));
       _jspx_th_tiles_putAttribute_0.doTag();
       return;
     }
@@ -412,7 +412,7 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
       _jspx_th_form_form_0.setPageContext(_jspx_page_context);
       _jspx_th_form_form_0.setParent(new javax.servlet.jsp.tagext.TagAdapter((javax.servlet.jsp.tagext.SimpleTag) _jspx_parent));
       _jspx_th_form_form_0.setMethod("POST");
-      _jspx_th_form_form_0.setModelAttribute("alarm");
+      _jspx_th_form_form_0.setModelAttribute("dataLogger");
       int[] _jspx_push_body_count_form_form_0 = new int[] { 0 };
       try {
         int _jspx_eval_form_form_0 = _jspx_th_form_form_0.doStartTag();
@@ -441,7 +441,7 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
             _jspx_th_form_select_0.setPageContext(_jspx_page_context);
             _jspx_th_form_select_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
             _jspx_th_form_select_0.setDynamicAttribute(null, "class", new String("form-control"));
-            _jspx_th_form_select_0.setPath("eventTsk");
+            _jspx_th_form_select_0.setPath("dataLogger");
             int[] _jspx_push_body_count_form_select_0 = new int[] { 0 };
             try {
               int _jspx_eval_form_select_0 = _jspx_th_form_select_0.doStartTag();
@@ -489,7 +489,7 @@ public final class createAlarm_jspx extends org.apache.jasper.runtime.HttpJspBas
             out.write("<div class=\"button\">");
             if (_jspx_meth_spring_message_6((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
               return;
-            out.write("<input value=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${alarmSubmit}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" type=\"submit\" />");
+            out.write("<input value=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${dataLoggerSubmit}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" type=\"submit\" />");
             out.write("</div>");
             out.write("</fieldset>");
             int evalDoAfterBody = _jspx_th_form_form_0.doAfterBody();

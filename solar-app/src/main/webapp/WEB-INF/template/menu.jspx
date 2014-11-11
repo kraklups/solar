@@ -491,7 +491,7 @@
             	<div class="collapse navbar-collapse navbar-ex1-collapse">
                 	<ul class="nav navbar-nav side-nav">
                     	<li>
-                        	<spring:url value="/home" var="homeUrl" htmlEscape="true"/>
+                        	<spring:url value="/" var="homeUrl" htmlEscape="true"/>
 							<a href="${homeUrl}">
                         		<i class="fa fa-fw fa-dashboard"><jsp:text /></i> Dashboard</a>
                     	</li>

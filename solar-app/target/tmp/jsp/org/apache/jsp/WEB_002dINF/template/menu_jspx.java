@@ -3697,7 +3697,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_spring_url_51.setParent(null);
     _jspx_th_spring_url_51.setHtmlEscape(true);
     _jspx_th_spring_url_51.setVar("homeUrl");
-    _jspx_th_spring_url_51.setValue("/home");
+    _jspx_th_spring_url_51.setValue("/");
     int[] _jspx_push_body_count_spring_url_51 = new int[] { 0 };
     try {
       int _jspx_eval_spring_url_51 = _jspx_th_spring_url_51.doStartTag();

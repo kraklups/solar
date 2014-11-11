@@ -1,14 +1,17 @@
 package net.kraklups.solarapp.web.datavalue;
 
+import net.kraklups.solarapp.model.datavalue.DataValue;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Handles requests for the application Datavalue page.
+ * Handles requests for the application DataValue page.
  */
 @Controller
 public class CreateDatavalue {
@@ -18,10 +21,22 @@ public class CreateDatavalue {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/datavalue/createDatavalue", method = RequestMethod.GET)
-	public String home(Model model) {
-		logger.info("Create Datavalue page !");
+	@RequestMapping(value = "/dataValue/createDataValue", method = RequestMethod.GET)
+	public String createDataValueGet(Model model) {
 		
-		return "datavalue/createDatavalue";
+		logger.info("Create DataValue page !");
+		
+		model.addAttribute("dataValue", new DataValue());
+		
+		return "dataValue/createDataValue";
 	}
+	
+	@RequestMapping(value = "/dataValue/createDataValue", method = RequestMethod.POST)
+	public String createDataValuePost(@ModelAttribute DataValue dataValue) {
+		
+		logger.info("Create DataValue page !" + "dataValue name: " + dataValue.getDataValueId());
+		
+		return "dataValue/createDataValue";
+	}	
+	
 }
