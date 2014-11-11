@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application about page.
  */
 @Controller
-public class UpdateDatalogger {
+public class ShowDataLoggers {
 
-	private static final Logger logger = LoggerFactory.getLogger(UpdateDatalogger.class);
+	private static final Logger logger = LoggerFactory.getLogger(ShowDataLoggers.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/datalogger/updateDatalogger", method = RequestMethod.GET)
+	@RequestMapping(value = "/datalogger/showDataLoggers", method = RequestMethod.GET)
 	public String home(Model model) {
-		logger.info("Create Datalogger page !");
+		logger.info("Create DataLogger page !");
 		
-		return "datalogger/updateDatalogger";
+		return "datalogger/showDataLoggers";
 	}
 
 }

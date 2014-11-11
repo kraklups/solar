@@ -481,7 +481,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<li>");
       if (_jspx_meth_spring_url_28(_jspx_page_context))
         return;
-      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${createDatavalueUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
+      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${createDataValueUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
       out.write("<i class=\"fa fa-database fa-fw\">");
       out.write("</i>");
       out.write("<span class=\"text-muted small\">");
@@ -493,7 +493,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<li>");
       if (_jspx_meth_spring_url_29(_jspx_page_context))
         return;
-      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${updateDatavalueUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
+      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${updateDataValueUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
       out.write("<i class=\"fa fa-database fa-fw\">");
       out.write("</i>");
       out.write("<span class=\"text-muted small\">");
@@ -505,7 +505,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<li>");
       if (_jspx_meth_spring_url_30(_jspx_page_context))
         return;
-      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${showDatavaluesUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
+      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${showDataValuesUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
       out.write("<strong>");
       out.write("<span class=\"text-muted small\">");
       if (_jspx_meth_spring_message_30(_jspx_page_context))
@@ -521,7 +521,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<li>");
       if (_jspx_meth_spring_url_31(_jspx_page_context))
         return;
-      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${createDataloggerUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
+      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${createDataLoggerUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
       out.write("<i class=\"fa fa-recycle fa-fw\">");
       out.write("</i>");
       out.write("<span class=\"text-muted small\">");
@@ -533,7 +533,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<li>");
       if (_jspx_meth_spring_url_32(_jspx_page_context))
         return;
-      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${updateDataloggerUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
+      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${updateDataLoggerUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
       out.write("<i class=\"fa fa-recycle fa-fw\">");
       out.write("</i>");
       out.write("<span class=\"text-muted small\">");
@@ -545,7 +545,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<li>");
       if (_jspx_meth_spring_url_33(_jspx_page_context))
         return;
-      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${showDataloggersUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
+      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${showDataLoggersUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
       out.write("<strong>");
       out.write("<span class=\"text-muted small\">");
       if (_jspx_meth_spring_message_33(_jspx_page_context))
@@ -2454,8 +2454,8 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_spring_url_28.setPageContext(_jspx_page_context);
     _jspx_th_spring_url_28.setParent(null);
     _jspx_th_spring_url_28.setHtmlEscape(true);
-    _jspx_th_spring_url_28.setVar("createDatavalueUrl");
-    _jspx_th_spring_url_28.setValue("/datavalue/createDatavalue");
+    _jspx_th_spring_url_28.setVar("createDataValueUrl");
+    _jspx_th_spring_url_28.setValue("/dataValue/createDataValue");
     int[] _jspx_push_body_count_spring_url_28 = new int[] { 0 };
     try {
       int _jspx_eval_spring_url_28 = _jspx_th_spring_url_28.doStartTag();
@@ -2481,7 +2481,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_28 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_28.setPageContext(_jspx_page_context);
     _jspx_th_spring_message_28.setParent(null);
-    _jspx_th_spring_message_28.setCode("menu-createDatavalue");
+    _jspx_th_spring_message_28.setCode("menu-createDataValue");
     int[] _jspx_push_body_count_spring_message_28 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_28 = _jspx_th_spring_message_28.doStartTag();
@@ -2508,8 +2508,8 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_spring_url_29.setPageContext(_jspx_page_context);
     _jspx_th_spring_url_29.setParent(null);
     _jspx_th_spring_url_29.setHtmlEscape(true);
-    _jspx_th_spring_url_29.setVar("updateDatavalueUrl");
-    _jspx_th_spring_url_29.setValue("/datavalue/updateDatavalue");
+    _jspx_th_spring_url_29.setVar("updateDataValueUrl");
+    _jspx_th_spring_url_29.setValue("/dataValue/updateDataValue");
     int[] _jspx_push_body_count_spring_url_29 = new int[] { 0 };
     try {
       int _jspx_eval_spring_url_29 = _jspx_th_spring_url_29.doStartTag();
@@ -2535,7 +2535,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_29 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_29.setPageContext(_jspx_page_context);
     _jspx_th_spring_message_29.setParent(null);
-    _jspx_th_spring_message_29.setCode("menu-updateDatavalue");
+    _jspx_th_spring_message_29.setCode("menu-updateDataValue");
     int[] _jspx_push_body_count_spring_message_29 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_29 = _jspx_th_spring_message_29.doStartTag();
@@ -2562,8 +2562,8 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_spring_url_30.setPageContext(_jspx_page_context);
     _jspx_th_spring_url_30.setParent(null);
     _jspx_th_spring_url_30.setHtmlEscape(true);
-    _jspx_th_spring_url_30.setVar("showDatavaluesUrl");
-    _jspx_th_spring_url_30.setValue("/datavalue/showDatavalues");
+    _jspx_th_spring_url_30.setVar("showDataValuesUrl");
+    _jspx_th_spring_url_30.setValue("/dataValue/showDataValues");
     int[] _jspx_push_body_count_spring_url_30 = new int[] { 0 };
     try {
       int _jspx_eval_spring_url_30 = _jspx_th_spring_url_30.doStartTag();
@@ -2589,7 +2589,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_30 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_30.setPageContext(_jspx_page_context);
     _jspx_th_spring_message_30.setParent(null);
-    _jspx_th_spring_message_30.setCode("menu-showDatavalues");
+    _jspx_th_spring_message_30.setCode("menu-showDataValues");
     int[] _jspx_push_body_count_spring_message_30 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_30 = _jspx_th_spring_message_30.doStartTag();
@@ -2616,8 +2616,8 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_spring_url_31.setPageContext(_jspx_page_context);
     _jspx_th_spring_url_31.setParent(null);
     _jspx_th_spring_url_31.setHtmlEscape(true);
-    _jspx_th_spring_url_31.setVar("createDataloggerUrl");
-    _jspx_th_spring_url_31.setValue("/datalogger/createDatalogger");
+    _jspx_th_spring_url_31.setVar("createDataLoggerUrl");
+    _jspx_th_spring_url_31.setValue("/dataLogger/createDataLogger");
     int[] _jspx_push_body_count_spring_url_31 = new int[] { 0 };
     try {
       int _jspx_eval_spring_url_31 = _jspx_th_spring_url_31.doStartTag();
@@ -2643,7 +2643,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_31 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_31.setPageContext(_jspx_page_context);
     _jspx_th_spring_message_31.setParent(null);
-    _jspx_th_spring_message_31.setCode("menu-createDatalogger");
+    _jspx_th_spring_message_31.setCode("menu-createDataLogger");
     int[] _jspx_push_body_count_spring_message_31 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_31 = _jspx_th_spring_message_31.doStartTag();
@@ -2670,8 +2670,8 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_spring_url_32.setPageContext(_jspx_page_context);
     _jspx_th_spring_url_32.setParent(null);
     _jspx_th_spring_url_32.setHtmlEscape(true);
-    _jspx_th_spring_url_32.setVar("updateDataloggerUrl");
-    _jspx_th_spring_url_32.setValue("/datalogger/updateDatalogger");
+    _jspx_th_spring_url_32.setVar("updateDataLoggerUrl");
+    _jspx_th_spring_url_32.setValue("/dataLogger/updateDataLogger");
     int[] _jspx_push_body_count_spring_url_32 = new int[] { 0 };
     try {
       int _jspx_eval_spring_url_32 = _jspx_th_spring_url_32.doStartTag();
@@ -2697,7 +2697,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_32 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_32.setPageContext(_jspx_page_context);
     _jspx_th_spring_message_32.setParent(null);
-    _jspx_th_spring_message_32.setCode("menu-updateDatalogger");
+    _jspx_th_spring_message_32.setCode("menu-updateDataLogger");
     int[] _jspx_push_body_count_spring_message_32 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_32 = _jspx_th_spring_message_32.doStartTag();
@@ -2724,8 +2724,8 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_spring_url_33.setPageContext(_jspx_page_context);
     _jspx_th_spring_url_33.setParent(null);
     _jspx_th_spring_url_33.setHtmlEscape(true);
-    _jspx_th_spring_url_33.setVar("showDataloggersUrl");
-    _jspx_th_spring_url_33.setValue("/datalogger/showDataloggers");
+    _jspx_th_spring_url_33.setVar("showDataLoggersUrl");
+    _jspx_th_spring_url_33.setValue("/dataLogger/showDataLoggers");
     int[] _jspx_push_body_count_spring_url_33 = new int[] { 0 };
     try {
       int _jspx_eval_spring_url_33 = _jspx_th_spring_url_33.doStartTag();
@@ -2751,7 +2751,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_33 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_33.setPageContext(_jspx_page_context);
     _jspx_th_spring_message_33.setParent(null);
-    _jspx_th_spring_message_33.setCode("menu-showDataloggers");
+    _jspx_th_spring_message_33.setCode("menu-showDataLoggers");
     int[] _jspx_push_body_count_spring_message_33 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_33 = _jspx_th_spring_message_33.doStartTag();

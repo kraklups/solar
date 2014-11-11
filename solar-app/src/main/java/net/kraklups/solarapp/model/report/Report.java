@@ -23,10 +23,8 @@ public class Report {
 
 	private Long reportId;
 	private String reportTitle;
-
 	private Date dateRequest;	
-	private Date dateServed;
-	
+	private Date dateServed;	
 	private UserProfile userProfile;
 	private String urlReport;
 	

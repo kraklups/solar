@@ -277,23 +277,23 @@
                     	<ul class="dropdown-menu dropdown-tasks">
                     	
                     	    <li>
-                        		<spring:url value="/datavalue/createDatavalue" var="createDatavalueUrl" htmlEscape="true"/>
-								<a class="text-center" href="${createDatavalueUrl}">
-                        			<i class="fa fa-database fa-fw"><jsp:text /></i> <span class="text-muted small"><spring:message code="menu-createDatavalue" /></span>
+                        		<spring:url value="/dataValue/createDataValue" var="createDataValueUrl" htmlEscape="true"/>
+								<a class="text-center" href="${createDataValueUrl}">
+                        			<i class="fa fa-database fa-fw"><jsp:text /></i> <span class="text-muted small"><spring:message code="menu-createDataValue" /></span>
                         		</a>
                         	</li>                        
                         	
                         	<li>
-                        		<spring:url value="/datavalue/updateDatavalue" var="updateDatavalueUrl" htmlEscape="true"/>
-								<a class="text-center" href="${updateDatavalueUrl}">
-                        			<i class="fa fa-database fa-fw"><jsp:text /></i> <span class="text-muted small"><spring:message code="menu-updateDatavalue" /></span>
+                        		<spring:url value="/dataValue/updateDataValue" var="updateDataValueUrl" htmlEscape="true"/>
+								<a class="text-center" href="${updateDataValueUrl}">
+                        			<i class="fa fa-database fa-fw"><jsp:text /></i> <span class="text-muted small"><spring:message code="menu-updateDataValue" /></span>
                         		</a>
                         	</li>                        
                         	
                         	<li>
-                        		<spring:url value="/datavalue/showDatavalues" var="showDatavaluesUrl" htmlEscape="true"/>
-								<a class="text-center" href="${showDatavaluesUrl}">
-                        			<strong><span class="text-muted small"><spring:message code="menu-showDatavalues" /></span></strong>
+                        		<spring:url value="/dataValue/showDataValues" var="showDataValuesUrl" htmlEscape="true"/>
+								<a class="text-center" href="${showDataValuesUrl}">
+                        			<strong><span class="text-muted small"><spring:message code="menu-showDataValues" /></span></strong>
                         			<i class="fa fa-angle-right" ><jsp:text /></i>
                         		</a>
                         	</li>  
@@ -301,23 +301,23 @@
 							<li class="divider"><jsp:text /></li>                        	
                         	
                         	<li>
-                        		<spring:url value="/datalogger/createDatalogger" var="createDataloggerUrl" htmlEscape="true"/>
-								<a class="text-center" href="${createDataloggerUrl}">
-                        			<i class="fa fa-recycle fa-fw"><jsp:text /></i> <span class="text-muted small"><spring:message code="menu-createDatalogger" /></span>
+                        		<spring:url value="/dataLogger/createDataLogger" var="createDataLoggerUrl" htmlEscape="true"/>
+								<a class="text-center" href="${createDataLoggerUrl}">
+                        			<i class="fa fa-recycle fa-fw"><jsp:text /></i> <span class="text-muted small"><spring:message code="menu-createDataLogger" /></span>
                         		</a>
                         	</li>                        
                         	
                         	<li>
-                        		<spring:url value="/datalogger/updateDatalogger" var="updateDataloggerUrl" htmlEscape="true"/>
-								<a class="text-center" href="${updateDataloggerUrl}">
-                        			<i class="fa fa-recycle fa-fw"><jsp:text /></i> <span class="text-muted small"><spring:message code="menu-updateDatalogger" /></span>
+                        		<spring:url value="/dataLogger/updateDataLogger" var="updateDataLoggerUrl" htmlEscape="true"/>
+								<a class="text-center" href="${updateDataLoggerUrl}">
+                        			<i class="fa fa-recycle fa-fw"><jsp:text /></i> <span class="text-muted small"><spring:message code="menu-updateDataLogger" /></span>
                         		</a>
                         	</li>                        
                         	
                         	<li>
-                        		<spring:url value="/datalogger/showDataloggers" var="showDataloggersUrl" htmlEscape="true"/>
-								<a class="text-center" href="${showDataloggersUrl}">
-                        			<strong><span class="text-muted small"><spring:message code="menu-showDataloggers" /></span></strong>
+                        		<spring:url value="/dataLogger/showDataLoggers" var="showDataLoggersUrl" htmlEscape="true"/>
+								<a class="text-center" href="${showDataLoggersUrl}">
+                        			<strong><span class="text-muted small"><spring:message code="menu-showDataLoggers" /></span></strong>
                         			<i class="fa fa-angle-right" ><jsp:text /></i>
                         		</a>
                         	</li>                           	                                          	

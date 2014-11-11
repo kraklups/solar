@@ -42,7 +42,7 @@
 
 	   								<div class="form-group">        
 		        						<spring:message code="createEventTsk.definitionET" />
-       	        						<form:input path="definitionET" class="form-control" placeholder="DefinitionET" autofocus="autofocus" />
+       	        						<form:input path="definitionET" class="form-control" placeholder="DefinitionET" />
 		   							</div>
 	   							   		
 	   								<div class="form-group">        
