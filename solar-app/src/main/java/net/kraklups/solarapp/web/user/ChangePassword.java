@@ -1,5 +1,6 @@
 package net.kraklups.solarapp.web.user;
 
+import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userservice.IncorrectPasswordException;
 import net.kraklups.solarapp.model.userservice.UserService;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
@@ -8,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,11 +25,20 @@ public class ChangePassword {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/user/changePassword", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String changePasswordGet(Model model) {
+		
 		logger.info("Change Password page !");
 		
 		return "user/changePassword";
-	}	
+	}
+	
+	@RequestMapping(value = "/user/changePassword", method = RequestMethod.POST)
+	public String changePasswordPost(@ModelAttribute UserProfile userProfile) {
+		
+		logger.info("Create DataValue page !" );
+		
+		return "user/changePassword";
+	}
 	
 /*    @Property
     private String oldPassword;

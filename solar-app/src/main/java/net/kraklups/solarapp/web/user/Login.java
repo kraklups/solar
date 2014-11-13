@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,12 +26,21 @@ public class Login {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/user/login", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String loginGet(Model model) {
 		logger.info("Login page !");
+		
+		model.addAttribute("userProfile", new UserProfile());
 		
 		return "user/login";
 	}	
-	
+
+	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
+	public String loginPost(@ModelAttribute UserProfile userProfile) {
+		
+		logger.info("Login page !" + "login: " + userProfile.getLoginName());
+		
+		return "user/login";
+	}	
 	
 /*    @Property
     private String loginName;

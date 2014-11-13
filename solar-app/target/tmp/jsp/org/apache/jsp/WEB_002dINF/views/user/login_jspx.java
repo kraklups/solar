@@ -15,7 +15,10 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_spring_message_code_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_fmt_setBundle_basename_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_fmt_setLocale_value_scope_nobody;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_form_modelAttribute_method;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_spring_message_var_code_nobody;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_input_placeholder_path_class_autofocus_nobody;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_input_placeholder_path_class_nobody;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
@@ -28,7 +31,10 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
     _jspx_tagPool_spring_message_code_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_fmt_setBundle_basename_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_fmt_setLocale_value_scope_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_form_form_modelAttribute_method = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_spring_message_var_code_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_form_input_placeholder_path_class_autofocus_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_form_input_placeholder_path_class_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
@@ -36,7 +42,10 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
     _jspx_tagPool_spring_message_code_nobody.release();
     _jspx_tagPool_fmt_setBundle_basename_nobody.release();
     _jspx_tagPool_fmt_setLocale_value_scope_nobody.release();
+    _jspx_tagPool_form_form_modelAttribute_method.release();
     _jspx_tagPool_spring_message_var_code_nobody.release();
+    _jspx_tagPool_form_input_placeholder_path_class_autofocus_nobody.release();
+    _jspx_tagPool_form_input_placeholder_path_class_nobody.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -82,7 +91,8 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write("<link type=\"text/css\" rel=\"stylesheet\" href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${fontawesomeCSS}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" />");
       out.write("<title>");
-      out.write("Merda Project");
+      if (_jspx_meth_spring_message_0(_jspx_page_context))
+        return;
       out.write("</title>");
       out.write("</head>");
       out.write("<body>");
@@ -92,37 +102,13 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<div class=\"login-panel panel panel-default\">");
       out.write("<div class=\"panel-heading\">");
       out.write("<h3 class=\"panel-title\">");
-      if (_jspx_meth_spring_message_0(_jspx_page_context))
+      if (_jspx_meth_spring_message_1(_jspx_page_context))
         return;
       out.write("</h3>");
       out.write("</div>");
       out.write("<div class=\"panel-body\">");
-      out.write("<form name=\"loginForm\" role=\"form\">");
-      out.write("<fieldset>");
-      out.write("<div class=\"form-group\">");
-      if (_jspx_meth_spring_message_1(_jspx_page_context))
+      if (_jspx_meth_form_form_0(_jspx_page_context))
         return;
-      out.write("<input autofocus=\"autofocus\" type=\"text\" name=\"loginName\" placeholder=\"E-mail\" class=\"form-control\" />");
-      out.write("</div>");
-      out.write("<div class=\"form-group\">");
-      if (_jspx_meth_spring_message_2(_jspx_page_context))
-        return;
-      out.write("<input value=\"\" type=\"password\" name=\"password\" placeholder=\"Password\" class=\"form-control\" />");
-      out.write("</div>");
-      out.write("<div class=\"checkbox\">");
-      out.write("<label>");
-      out.write("<input value=\"Remember Me\" name=\"rememberMyPassword\" type=\"checkbox\" />");
-      if (_jspx_meth_spring_message_3(_jspx_page_context))
-        return;
-      out.write("</label>");
-      out.write("</div>");
-      out.write("<div class=\"button\">");
-      if (_jspx_meth_spring_message_4(_jspx_page_context))
-        return;
-      out.write("<input value=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${loginSubmit}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" type=\"submit\" />");
-      out.write("</div>");
-      out.write("</fieldset>");
-      out.write("</form>");
       out.write("</div>");
       out.write("</div>");
       out.write("</div>");
@@ -271,7 +257,7 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_1 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_1.setPageContext(_jspx_page_context);
     _jspx_th_spring_message_1.setParent(null);
-    _jspx_th_spring_message_1.setCode("login.loginName");
+    _jspx_th_spring_message_1.setCode("login.menuExplanation");
     int[] _jspx_push_body_count_spring_message_1 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_1 = _jspx_th_spring_message_1.doStartTag();
@@ -289,15 +275,77 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_spring_message_2(PageContext _jspx_page_context)
+  private boolean _jspx_meth_form_form_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  form:form
+    org.springframework.web.servlet.tags.form.FormTag _jspx_th_form_form_0 = (org.springframework.web.servlet.tags.form.FormTag) _jspx_tagPool_form_form_modelAttribute_method.get(org.springframework.web.servlet.tags.form.FormTag.class);
+    _jspx_th_form_form_0.setPageContext(_jspx_page_context);
+    _jspx_th_form_form_0.setParent(null);
+    _jspx_th_form_form_0.setMethod("POST");
+    _jspx_th_form_form_0.setModelAttribute("userProfile");
+    int[] _jspx_push_body_count_form_form_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_form_form_0 = _jspx_th_form_form_0.doStartTag();
+      if (_jspx_eval_form_form_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("<fieldset>");
+          out.write("<div class=\"form-group\">");
+          if (_jspx_meth_spring_message_2((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
+            return true;
+          if (_jspx_meth_form_input_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
+            return true;
+          out.write("</div>");
+          out.write("<div class=\"form-group\">");
+          if (_jspx_meth_spring_message_3((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
+            return true;
+          if (_jspx_meth_form_input_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
+            return true;
+          out.write("</div>");
+          out.write("<div class=\"form-group\">");
+          out.write("<div class=\"checkbox\">");
+          out.write("<label class=\"checkbox-inline\">");
+          out.write("<input value=\"Remember Me\" name=\"rememberMyPassword\" type=\"checkbox\" />");
+          if (_jspx_meth_spring_message_4((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
+            return true;
+          out.write("</label>");
+          out.write("</div>");
+          out.write("</div>");
+          out.write("<div class=\"button\">");
+          if (_jspx_meth_spring_message_5((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
+            return true;
+          out.write("<input value=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${loginSubmit}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" type=\"submit\" />");
+          out.write("</div>");
+          out.write("</fieldset>");
+          int evalDoAfterBody = _jspx_th_form_form_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_form_form_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_form_form_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_form_form_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_form_form_0.doFinally();
+      _jspx_tagPool_form_form_modelAttribute_method.reuse(_jspx_th_form_form_0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_spring_message_2(javax.servlet.jsp.tagext.JspTag _jspx_th_form_form_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_form_0)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  spring:message
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_2 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_2.setPageContext(_jspx_page_context);
-    _jspx_th_spring_message_2.setParent(null);
-    _jspx_th_spring_message_2.setCode("login.password");
+    _jspx_th_spring_message_2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
+    _jspx_th_spring_message_2.setCode("login.loginName");
     int[] _jspx_push_body_count_spring_message_2 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_2 = _jspx_th_spring_message_2.doStartTag();
@@ -315,15 +363,44 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_spring_message_3(PageContext _jspx_page_context)
+  private boolean _jspx_meth_form_input_0(javax.servlet.jsp.tagext.JspTag _jspx_th_form_form_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_form_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  form:input
+    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_input_0 = (org.springframework.web.servlet.tags.form.InputTag) _jspx_tagPool_form_input_placeholder_path_class_autofocus_nobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
+    _jspx_th_form_input_0.setPageContext(_jspx_page_context);
+    _jspx_th_form_input_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
+    _jspx_th_form_input_0.setDynamicAttribute(null, "autofocus", new String("autofocus"));
+    _jspx_th_form_input_0.setDynamicAttribute(null, "placeholder", new String("Login"));
+    _jspx_th_form_input_0.setDynamicAttribute(null, "class", new String("form-control"));
+    _jspx_th_form_input_0.setPath("loginName");
+    int[] _jspx_push_body_count_form_input_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_form_input_0 = _jspx_th_form_input_0.doStartTag();
+      if (_jspx_th_form_input_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_form_input_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_form_input_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_form_input_0.doFinally();
+      _jspx_tagPool_form_input_placeholder_path_class_autofocus_nobody.reuse(_jspx_th_form_input_0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_spring_message_3(javax.servlet.jsp.tagext.JspTag _jspx_th_form_form_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_form_0)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  spring:message
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_3 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_3.setPageContext(_jspx_page_context);
-    _jspx_th_spring_message_3.setParent(null);
-    _jspx_th_spring_message_3.setCode("login.rememberMyPassword");
+    _jspx_th_spring_message_3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
+    _jspx_th_spring_message_3.setCode("login.password");
     int[] _jspx_push_body_count_spring_message_3 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_3 = _jspx_th_spring_message_3.doStartTag();
@@ -341,16 +418,43 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_spring_message_4(PageContext _jspx_page_context)
+  private boolean _jspx_meth_form_input_1(javax.servlet.jsp.tagext.JspTag _jspx_th_form_form_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_form_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  form:input
+    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_input_1 = (org.springframework.web.servlet.tags.form.InputTag) _jspx_tagPool_form_input_placeholder_path_class_nobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
+    _jspx_th_form_input_1.setPageContext(_jspx_page_context);
+    _jspx_th_form_input_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
+    _jspx_th_form_input_1.setDynamicAttribute(null, "placeholder", new String("Password"));
+    _jspx_th_form_input_1.setDynamicAttribute(null, "class", new String("form-control"));
+    _jspx_th_form_input_1.setPath("encryptedPassword");
+    int[] _jspx_push_body_count_form_input_1 = new int[] { 0 };
+    try {
+      int _jspx_eval_form_input_1 = _jspx_th_form_input_1.doStartTag();
+      if (_jspx_th_form_input_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_form_input_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_form_input_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_form_input_1.doFinally();
+      _jspx_tagPool_form_input_placeholder_path_class_nobody.reuse(_jspx_th_form_input_1);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_spring_message_4(javax.servlet.jsp.tagext.JspTag _jspx_th_form_form_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_form_0)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  spring:message
-    org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_4 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_var_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
+    org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_4 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_message_4.setPageContext(_jspx_page_context);
-    _jspx_th_spring_message_4.setParent(null);
-    _jspx_th_spring_message_4.setVar("loginSubmit");
-    _jspx_th_spring_message_4.setCode("login.submit");
+    _jspx_th_spring_message_4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
+    _jspx_th_spring_message_4.setCode("login.rememberMyPassword");
     int[] _jspx_push_body_count_spring_message_4 = new int[] { 0 };
     try {
       int _jspx_eval_spring_message_4 = _jspx_th_spring_message_4.doStartTag();
@@ -363,7 +467,34 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
       _jspx_th_spring_message_4.doCatch(_jspx_exception);
     } finally {
       _jspx_th_spring_message_4.doFinally();
-      _jspx_tagPool_spring_message_var_code_nobody.reuse(_jspx_th_spring_message_4);
+      _jspx_tagPool_spring_message_code_nobody.reuse(_jspx_th_spring_message_4);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_spring_message_5(javax.servlet.jsp.tagext.JspTag _jspx_th_form_form_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_form_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  spring:message
+    org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_message_5 = (org.springframework.web.servlet.tags.MessageTag) _jspx_tagPool_spring_message_var_code_nobody.get(org.springframework.web.servlet.tags.MessageTag.class);
+    _jspx_th_spring_message_5.setPageContext(_jspx_page_context);
+    _jspx_th_spring_message_5.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
+    _jspx_th_spring_message_5.setVar("loginSubmit");
+    _jspx_th_spring_message_5.setCode("login.submit");
+    int[] _jspx_push_body_count_spring_message_5 = new int[] { 0 };
+    try {
+      int _jspx_eval_spring_message_5 = _jspx_th_spring_message_5.doStartTag();
+      if (_jspx_th_spring_message_5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_spring_message_5[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_spring_message_5.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_spring_message_5.doFinally();
+      _jspx_tagPool_spring_message_var_code_nobody.reuse(_jspx_th_spring_message_5);
     }
     return false;
   }

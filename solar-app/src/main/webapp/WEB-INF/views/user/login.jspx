@@ -2,6 +2,7 @@
 	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
 	xmlns:jsp="http://java.sun.com/JSP/Page" 
 	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:form="http://www.springframework.org/tags/form"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fmt="http://java.sun.com/jstl/fmt"
 	version="2.0" >
@@ -49,23 +50,25 @@
                     		
                     		<div class="panel-body">
                     		
-                        		<form role="form" name='loginForm'>
+                        		<form:form modelAttribute="userProfile" method="POST">
                             		<fieldset>                                
                                 		<div class="form-group">
 	        								<spring:message code="login.loginName" />
-	            							<input class="form-control" placeholder="Login" name="loginName" type="text" autofocus="autofocus" />
+	            							<form:input path="loginName" class="form-control" placeholder="Login" autofocus="autofocus" />
                                 		</div>
                                 	
                                 		<div class="form-group">	        							
 	        								<spring:message code="login.password" />	        								
-	            							<input class="form-control" placeholder="Password" name="password" type="password" value="" />
+	            							<form:input path="encryptedPassword" class="form-control" placeholder="Password" />
                                 		</div>
                                 
-                                		<div class="checkbox">
-                                			<label>            						
-	            								<input type="checkbox" name="rememberMyPassword" value="Remember Me" /> 
-	        									<spring:message code="login.rememberMyPassword" />
-	        								</label>                     
+                                		<div class="form-group">
+                                			<div class="checkbox">                                		    
+                                    			<label class="checkbox-inline">
+	            									<input type="checkbox" name="rememberMyPassword" value="Remember Me" />  
+	        										<spring:message code="login.rememberMyPassword" />
+	        									</label> 
+	        								</div>                    
 	        							</div>
                                 
                                 		<div class="button">
@@ -73,7 +76,7 @@
 	                            			<input type="submit" value="${loginSubmit}"/>        
 	   		 							</div>
                             		</fieldset>
-                        		</form>
+                        		</form:form>
 
                     		</div>
                     		                    		

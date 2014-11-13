@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,12 +30,19 @@ public class Register {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/user/register", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String registerGet(Model model) {
 		logger.info("Register page !");
 		
 		return "user/register";
 	}	
-	
+
+	@RequestMapping(value = "/user/register", method = RequestMethod.POST)
+	public String registerPost(@ModelAttribute UserProfile userProfile) {
+		
+		logger.info("Register page !" );
+		
+		return "user/register";
+	}	
 	
 /*    @Property
     private String loginName;

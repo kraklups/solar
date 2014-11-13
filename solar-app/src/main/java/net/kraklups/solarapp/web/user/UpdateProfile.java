@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,12 +27,19 @@ public class UpdateProfile {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/user/updateProfile", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String updateProfileGet(Model model) {
 		logger.info("Update Profile page !");
 		
 		return "user/updateProfile";
 	}	
-	
+
+	@RequestMapping(value = "/user/updateProfile", method = RequestMethod.POST)
+	public String updateProfilePost(@ModelAttribute UserProfile userProfile) {
+		
+		logger.info("Create DataValue page !" );
+		
+		return "user/updateProfile";
+	}	
 	
 /*    @Property
     private String firstName;
