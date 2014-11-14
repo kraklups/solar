@@ -33,6 +33,8 @@ public class Register {
 	public String registerGet(Model model) {
 		logger.info("Register page !");
 		
+		model.addAttribute("userProfile", new UserProfile());
+		
 		return "user/register";
 	}	
 

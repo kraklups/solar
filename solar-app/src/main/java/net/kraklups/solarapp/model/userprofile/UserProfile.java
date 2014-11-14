@@ -132,7 +132,7 @@ public class UserProfile {
 		this.date = date;
 	}
 	
-	public boolean getBlocked () {
+	public Boolean getBlocked () {
 		return blocked;
 	}
 	
@@ -140,7 +140,7 @@ public class UserProfile {
 		this.blocked = blocked;
 	}
 
-	public boolean getErased () {
+	public Boolean getErased () {
 		return erased;
 	}
 	
