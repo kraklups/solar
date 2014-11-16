@@ -28,7 +28,10 @@ public class UpdateProfile {
 	 */
 	@RequestMapping(value = "/user/updateProfile", method = RequestMethod.GET)
 	public String updateProfileGet(Model model) {
+		
 		logger.info("Update Profile page !");
+		
+		model.addAttribute("userProfile", new UserProfile());
 		
 		return "user/updateProfile";
 	}	
@@ -36,7 +39,7 @@ public class UpdateProfile {
 	@RequestMapping(value = "/user/updateProfile", method = RequestMethod.POST)
 	public String updateProfilePost(@ModelAttribute UserProfile userProfile) {
 		
-		logger.info("Create DataValue page !" );
+		logger.info("Create Profile page !" );
 		
 		return "user/updateProfile";
 	}	

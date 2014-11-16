@@ -23,7 +23,10 @@ public class UpdateRegister {
 	 */
 	@RequestMapping(value = "/user/updateRegister", method = RequestMethod.GET)
 	public String updateRegisterGet(Model model) {
+		
 		logger.info("Update Register page !");
+		
+		model.addAttribute("userProfile", new UserProfile());
 		
 		return "user/updateRegister";
 	}	
