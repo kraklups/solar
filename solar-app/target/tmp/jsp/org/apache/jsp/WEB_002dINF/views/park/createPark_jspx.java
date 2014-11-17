@@ -11,6 +11,7 @@ public final class createPark_jspx extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_input_type_placeholder_path_name_class_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_url_var_value_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_spring_message_code_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_form_modelAttribute_method;
@@ -28,6 +29,7 @@ public final class createPark_jspx extends org.apache.jasper.runtime.HttpJspBase
   }
 
   public void _jspInit() {
+    _jspx_tagPool_form_input_type_placeholder_path_name_class_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_url_var_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_spring_message_code_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_form_form_modelAttribute_method = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
@@ -40,6 +42,7 @@ public final class createPark_jspx extends org.apache.jasper.runtime.HttpJspBase
   }
 
   public void _jspDestroy() {
+    _jspx_tagPool_form_input_type_placeholder_path_name_class_nobody.release();
     _jspx_tagPool_c_url_var_value_nobody.release();
     _jspx_tagPool_spring_message_code_nobody.release();
     _jspx_tagPool_form_form_modelAttribute_method.release();
@@ -443,6 +446,36 @@ public final class createPark_jspx extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
+  private boolean _jspx_meth_form_input_3(javax.servlet.jsp.tagext.JspTag _jspx_th_form_form_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_form_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  form:input
+    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_input_3 = (org.springframework.web.servlet.tags.form.InputTag) _jspx_tagPool_form_input_type_placeholder_path_name_class_nobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
+    _jspx_th_form_input_3.setPageContext(_jspx_page_context);
+    _jspx_th_form_input_3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
+    _jspx_th_form_input_3.setDynamicAttribute(null, "type", new String("text"));
+    _jspx_th_form_input_3.setDynamicAttribute(null, "name", new String("solarPark"));
+    _jspx_th_form_input_3.setDynamicAttribute(null, "placeholder", new String("SolarMap"));
+    _jspx_th_form_input_3.setDynamicAttribute(null, "class", new String("form-control"));
+    _jspx_th_form_input_3.setPath("mapPark");
+    int[] _jspx_push_body_count_form_input_3 = new int[] { 0 };
+    try {
+      int _jspx_eval_form_input_3 = _jspx_th_form_input_3.doStartTag();
+      if (_jspx_th_form_input_3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        throw new SkipPageException();
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_form_input_3[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_form_input_3.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_form_input_3.doFinally();
+      _jspx_tagPool_form_input_type_placeholder_path_name_class_nobody.reuse(_jspx_th_form_input_3);
+    }
+    return false;
+  }
+
   private boolean _jspx_meth_spring_message_8(javax.servlet.jsp.tagext.JspTag _jspx_th_form_form_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_form_0)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -648,7 +681,8 @@ public final class createPark_jspx extends org.apache.jasper.runtime.HttpJspBase
               return;
             out.write("<div id=\"map\">");
             out.write("</div>");
-            out.write("<input type=\"text\" name=\"solarPark\" placeholder=\"SolarMap\" class=\"form-control\" />");
+            if (_jspx_meth_form_input_3((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
+              return;
             out.write("</div>");
             out.write("<div class=\"button\">");
             if (_jspx_meth_spring_message_8((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))

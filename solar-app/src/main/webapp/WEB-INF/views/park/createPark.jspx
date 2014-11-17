@@ -67,7 +67,7 @@
 		   						    <div class="form-group">
 		   						    	<spring:message code="createPark.solarPark" />
 		   						   		<div id="map"><jsp:text /></div>							
-		   						    	<input class="form-control" placeholder="SolarMap" name="solarPark" type="text"  />        		   						    
+		   						    	<form:input path="mapPark" class="form-control" placeholder="SolarMap" name="solarPark" type="text"  />        		   						    
 	   								</div>
 	   							   								    
 		    						<div class="button">

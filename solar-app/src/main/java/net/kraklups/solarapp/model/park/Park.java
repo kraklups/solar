@@ -29,6 +29,8 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 public class Park {
 	
 	private Long parkId;
+	
+//	@NotEmpty
 	private String parkName;
 	
 	private Date startupDate;
