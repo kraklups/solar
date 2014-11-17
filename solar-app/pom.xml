@@ -38,7 +38,7 @@
         <cglib.version>3.1</cglib.version>
         <hibernate.version>4.3.7.Final</hibernate.version>
         <hibernate-spatial.version>4.3</hibernate-spatial.version>
-        <hibernate-validator.version>4.3.2.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
         <junit.version>4.11</junit.version>
         <spring.version>4.0.7.RELEASE</spring.version>
         <servletApi.version>3.1.0</servletApi.version>
@@ -190,8 +190,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-        </dependency>
-   
+        </dependency>   
         <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>
@@ -233,7 +232,17 @@
     		<version>${jstl.version}</version>
 		</dependency>            
         <!-- Validation API -->
-
+        <dependency>
+    		<groupId>javax.validation</groupId>
+    		<artifactId>validation-api</artifactId>
+    		<version>${validation-api.version}</version>
+		</dependency>
+		<!-- Hibernate Validation -->
+		<dependency>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-validator</artifactId>
+    		<version>${hibernate-validator.version}</version>
+	    </dependency>   
     </dependencies>
 
     <build>

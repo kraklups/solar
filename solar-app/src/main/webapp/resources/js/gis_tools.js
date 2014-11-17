@@ -55,9 +55,9 @@
     if (arrayTemp.length >0) { 
       multipolygon = new OpenLayers.Geometry.MultiPolygon(arrayTemp);            
 
-      document.getElementById('solarPark').value = multipolygon;  
+      document.getElementById('mapPark').value = multipolygon;  
     } else {
-      document.getElementById('solarPark').value = []; 
+      document.getElementById('mapPark').value = []; 
     }
  
   };

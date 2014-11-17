@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.validation.Valid;
+
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.io.ParseException;
@@ -23,6 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,18 +52,19 @@ public class CreatePark {
 	}
 	
 	@RequestMapping(value = "/park/createPark", method = RequestMethod.POST)
-	public String createParkPost(@ModelAttribute Park park) {
+	public String createParkPost(@Valid @ModelAttribute("park") Park park, BindingResult result) {
 		
 		logger.info("Create Park page POST!" + "park name: " + park.getParkName());
 		
+		if(result.hasErrors()) {
+			return "park/createPark";
+		}
 			
-		return "park/createPark";
+		return "/";
 	}	
 }
 
-/*@AuthenticationPolicy(AuthenticationPolicyType.AUTHENTICATED_USERS)
-@Import(stylesheet={"context:css/gis.css"},
-		library={"context:js/OpenLayers.js", "context:js/gis_tools.js"})
+/*
 public class CreatePark {
 
 	@Property

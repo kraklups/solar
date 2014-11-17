@@ -11,14 +11,14 @@ public final class createPark_jspx extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_input_type_placeholder_path_name_class_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_url_var_value_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_spring_message_code_nobody;
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_form_modelAttribute_method;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_option_value_label_nobody;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_errors_path_cssClass_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_spring_message_var_code_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_options_items_itemValue_itemLabel_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_input_placeholder_path_class_autofocus_nobody;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_form_modelAttribute_commandName;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_input_placeholder_path_class_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_select_path_class;
 
@@ -29,27 +29,27 @@ public final class createPark_jspx extends org.apache.jasper.runtime.HttpJspBase
   }
 
   public void _jspInit() {
-    _jspx_tagPool_form_input_type_placeholder_path_name_class_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_url_var_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_spring_message_code_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _jspx_tagPool_form_form_modelAttribute_method = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_form_option_value_label_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_form_errors_path_cssClass_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_spring_message_var_code_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_form_options_items_itemValue_itemLabel_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_form_input_placeholder_path_class_autofocus_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_form_form_modelAttribute_commandName = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_form_input_placeholder_path_class_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_form_select_path_class = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
-    _jspx_tagPool_form_input_type_placeholder_path_name_class_nobody.release();
     _jspx_tagPool_c_url_var_value_nobody.release();
     _jspx_tagPool_spring_message_code_nobody.release();
-    _jspx_tagPool_form_form_modelAttribute_method.release();
     _jspx_tagPool_form_option_value_label_nobody.release();
+    _jspx_tagPool_form_errors_path_cssClass_nobody.release();
     _jspx_tagPool_spring_message_var_code_nobody.release();
     _jspx_tagPool_form_options_items_itemValue_itemLabel_nobody.release();
     _jspx_tagPool_form_input_placeholder_path_class_autofocus_nobody.release();
+    _jspx_tagPool_form_form_modelAttribute_commandName.release();
     _jspx_tagPool_form_input_placeholder_path_class_nobody.release();
     _jspx_tagPool_form_select_path_class.release();
   }
@@ -451,11 +451,9 @@ public final class createPark_jspx extends org.apache.jasper.runtime.HttpJspBase
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  form:input
-    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_input_3 = (org.springframework.web.servlet.tags.form.InputTag) _jspx_tagPool_form_input_type_placeholder_path_name_class_nobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
+    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_input_3 = (org.springframework.web.servlet.tags.form.InputTag) _jspx_tagPool_form_input_placeholder_path_class_nobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_form_input_3.setPageContext(_jspx_page_context);
     _jspx_th_form_input_3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
-    _jspx_th_form_input_3.setDynamicAttribute(null, "type", new String("text"));
-    _jspx_th_form_input_3.setDynamicAttribute(null, "name", new String("solarPark"));
     _jspx_th_form_input_3.setDynamicAttribute(null, "placeholder", new String("SolarMap"));
     _jspx_th_form_input_3.setDynamicAttribute(null, "class", new String("form-control"));
     _jspx_th_form_input_3.setPath("mapPark");
@@ -471,7 +469,7 @@ public final class createPark_jspx extends org.apache.jasper.runtime.HttpJspBase
       _jspx_th_form_input_3.doCatch(_jspx_exception);
     } finally {
       _jspx_th_form_input_3.doFinally();
-      _jspx_tagPool_form_input_type_placeholder_path_name_class_nobody.reuse(_jspx_th_form_input_3);
+      _jspx_tagPool_form_input_placeholder_path_class_nobody.reuse(_jspx_th_form_input_3);
     }
     return false;
   }
@@ -592,10 +590,10 @@ public final class createPark_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("</div>");
       out.write("<div class=\"panel-body\">");
       //  form:form
-      org.springframework.web.servlet.tags.form.FormTag _jspx_th_form_form_0 = (org.springframework.web.servlet.tags.form.FormTag) _jspx_tagPool_form_form_modelAttribute_method.get(org.springframework.web.servlet.tags.form.FormTag.class);
+      org.springframework.web.servlet.tags.form.FormTag _jspx_th_form_form_0 = (org.springframework.web.servlet.tags.form.FormTag) _jspx_tagPool_form_form_modelAttribute_commandName.get(org.springframework.web.servlet.tags.form.FormTag.class);
       _jspx_th_form_form_0.setPageContext(_jspx_page_context);
       _jspx_th_form_form_0.setParent(new javax.servlet.jsp.tagext.TagAdapter((javax.servlet.jsp.tagext.SimpleTag) _jspx_parent));
-      _jspx_th_form_form_0.setMethod("POST");
+      _jspx_th_form_form_0.setCommandName("park");
       _jspx_th_form_form_0.setModelAttribute("park");
       int[] _jspx_push_body_count_form_form_0 = new int[] { 0 };
       try {
@@ -608,6 +606,26 @@ public final class createPark_jspx extends org.apache.jasper.runtime.HttpJspBase
               return;
             if (_jspx_meth_form_input_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
               return;
+            //  form:errors
+            org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_form_errors_0 = (org.springframework.web.servlet.tags.form.ErrorsTag) _jspx_tagPool_form_errors_path_cssClass_nobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
+            _jspx_th_form_errors_0.setPageContext(_jspx_page_context);
+            _jspx_th_form_errors_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_form_0);
+            _jspx_th_form_errors_0.setCssClass("error");
+            _jspx_th_form_errors_0.setPath("parkName");
+            int[] _jspx_push_body_count_form_errors_0 = new int[] { 0 };
+            try {
+              int _jspx_eval_form_errors_0 = _jspx_th_form_errors_0.doStartTag();
+              if (_jspx_th_form_errors_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+                throw new SkipPageException();
+              }
+            } catch (Throwable _jspx_exception) {
+              while (_jspx_push_body_count_form_errors_0[0]-- > 0)
+                out = _jspx_page_context.popBody();
+              _jspx_th_form_errors_0.doCatch(_jspx_exception);
+            } finally {
+              _jspx_th_form_errors_0.doFinally();
+              _jspx_tagPool_form_errors_path_cssClass_nobody.reuse(_jspx_th_form_errors_0);
+            }
             out.write("</div>");
             out.write("<div class=\"form-group\">");
             if (_jspx_meth_spring_message_3((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
@@ -704,7 +722,7 @@ public final class createPark_jspx extends org.apache.jasper.runtime.HttpJspBase
         _jspx_th_form_form_0.doCatch(_jspx_exception);
       } finally {
         _jspx_th_form_form_0.doFinally();
-        _jspx_tagPool_form_form_modelAttribute_method.reuse(_jspx_th_form_form_0);
+        _jspx_tagPool_form_form_modelAttribute_commandName.reuse(_jspx_th_form_form_0);
       }
       out.write("</div>");
       out.write("</div>");

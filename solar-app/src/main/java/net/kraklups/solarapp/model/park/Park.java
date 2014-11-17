@@ -20,6 +20,7 @@ import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.vividsolutions.jts.geom.MultiPolygon;
 
@@ -30,7 +31,7 @@ public class Park {
 	
 	private Long parkId;
 	
-//	@NotEmpty
+	@NotEmpty
 	private String parkName;
 	
 	private Date startupDate;
