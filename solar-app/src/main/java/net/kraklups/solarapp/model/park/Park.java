@@ -34,12 +34,16 @@ public class Park {
 	@NotEmpty
 	private String parkName;
 	
+
 	private Date startupDate;
+	
+
 	private Date productionDate;
 	
 	private UserProfile userProfile;
 	private Company company;	
-		
+	
+
 	private MultiPolygon mapPark;
 	
 	public Park() {		

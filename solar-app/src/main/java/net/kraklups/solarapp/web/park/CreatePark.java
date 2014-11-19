@@ -58,9 +58,9 @@ public class CreatePark {
 		
 		if(result.hasErrors()) {
 			return "park/createPark";
+		} else {
+			return "Done";
 		}
-			
-		return "/";
 	}	
 }
 
