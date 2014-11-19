@@ -16,11 +16,16 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.vividsolutions.jts.geom.MultiPolygon;
 
@@ -32,18 +37,20 @@ public class Park {
 	private Long parkId;
 	
 	@NotEmpty
+	@Size(min=6, max=30)
 	private String parkName;
 	
-
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	@NotNull @Past
 	private Date startupDate;
 	
-
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+    @NotNull @Past
 	private Date productionDate;
 	
 	private UserProfile userProfile;
 	private Company company;	
 	
-
 	private MultiPolygon mapPark;
 	
 	public Park() {		

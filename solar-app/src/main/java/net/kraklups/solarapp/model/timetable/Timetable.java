@@ -14,6 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
@@ -23,9 +28,17 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 public class Timetable {
 	
 	private Long timetableId;
+	
+	@NotEmpty
+	@Size(min=6, max=30)	
 	private String timetableTag;
+	
 	private UserProfile userProfile;
+	
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	@NotNull	
 	private Date tvi;
+	
 	private Park park;
 	
 	public Timetable() {
