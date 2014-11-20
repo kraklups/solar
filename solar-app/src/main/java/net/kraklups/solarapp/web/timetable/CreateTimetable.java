@@ -35,7 +35,7 @@ public class CreateTimetable {
 	}
 	
 	@RequestMapping(value = "/timetable/createTimetable", method = RequestMethod.POST)
-	public String createTimetablePost(@Valid @ModelAttribute Timetable timetable, BindingResult result) {
+	public String createTimetablePost(@Valid @ModelAttribute("timetable") Timetable timetable, BindingResult result) {
 		
 		logger.info("Create Timetable page POST!" + "timetableTag: " + timetable.getTimetableTag());
 					

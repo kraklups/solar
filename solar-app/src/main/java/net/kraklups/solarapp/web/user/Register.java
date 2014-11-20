@@ -2,6 +2,8 @@ package net.kraklups.solarapp.web.user;
 
 import java.util.Calendar;
 
+import javax.validation.Valid;
+
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.role.Role;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
@@ -14,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,11 +42,16 @@ public class Register {
 	}	
 
 	@RequestMapping(value = "/user/register", method = RequestMethod.POST)
-	public String registerPost(@ModelAttribute UserProfile userProfile) {
+	public String registerPost(@Valid @ModelAttribute("userProfile") UserProfile userProfile, BindingResult result) {
 		
 		logger.info("Register page !" );
 		
-		return "user/register";
+		if(result.hasErrors()) {
+			return "user/register";
+		} else {
+			return "Done";
+		}
+
 	}	
 	
 /*    @Property

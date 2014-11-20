@@ -54,22 +54,25 @@
 	   									<spring:message code="createPark.companyName" />
 										<form:select path="company" class="form-control">
     										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${companyList}" itemValue="companyId" itemLabel="name" />
-										</form:select>	   							   								    
+    										<form:options items="${companyList}" itemValue="companyId" itemLabel="companyName" />
+										</form:select>
+<!--  										<form:errors path="company" cssClass="control-label" for="inputError" element="label" /> -->	   							   								    
 	   								</div>	    
 	    
-    	                            <spring:bind path="startupDate">           	
+    	                            <spring:bind path="startupDate">
+    	                            	<spring:message code="createPark.startupDate" var="stdout" />           	
 	   									<div class="form-group ${status.error ? 'has-error' : '' }">        
-		        							<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createPark.startupDate" /></label>      
-		            						<form:input path="startupDate" class="form-control" placeholder="StartupDate" />
+		        							<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>      
+		            						<form:input path="startupDate" class="form-control" placeholder="${stdout} MM/dd/yyyy" />
 		            						<form:errors path="startupDate" cssClass="control-label" for="inputError" element="label" />
 		   								</div>
 		   							</spring:bind>	    
 
-									<spring:bind path="productionDate">           	
+									<spring:bind path="productionDate">
+										<spring:message code="createPark.productionDate" var="stdout" />           	
   										<div class="form-group ${status.error ? 'has-error' : '' }">        
-    										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createPark.productionDate" /></label>    
-		            						<form:input path="productionDate" class="form-control" placeholder="ProductionDate" />
+    										<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>    
+		            						<form:input path="productionDate" class="form-control" placeholder="${stdout} MM/dd/yyyy" />
 		            						<form:errors path="productionDate" cssClass="control-label" for="inputError" element="label" />
 		   								</div>
 		   							</spring:bind>

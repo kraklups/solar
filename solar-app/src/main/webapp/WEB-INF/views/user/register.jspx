@@ -30,10 +30,13 @@
                     		
                         		<form:form modelAttribute="userProfile" metod="POST">
                             		<fieldset>                                
-										<div class="form-group">        
-		        							<spring:message code="register.loginName" />
+										<spring:bind path="loginName">           	
+											<div class="form-group ${status.error ? 'has-error' : '' }">        
+												<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.loginName" /></label>
        	        								<form:input path="loginName" class="form-control" placeholder="Login Name" autofocus="autofocus" />
-		   								</div>
+       	        								<form:errors path="loginName" cssClass="control-label" for="inputError" element="label" />
+		   									</div>
+		   								</spring:bind>
 
 										<div class="form-group">        
 		        							<spring:message code="register.password" />
@@ -45,25 +48,37 @@
        	        							<input path="retypePassword" class="form-control" placeholder="Retype Password" />
 		   								</div>
 		   								
-		   								<div class="form-group">        
-		        							<spring:message code="register.firstName" />
+										<spring:bind path="firstName">           	
+											<div class="form-group ${status.error ? 'has-error' : '' }">        
+												<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.firstName" /></label>
        	        								<form:input path="firstName" class="form-control" placeholder="First Name" />
-		   								</div>
+       	        								<form:errors path="firstName" cssClass="control-label" for="inputError" element="label" />
+		   									</div>
+		   								</spring:bind>
 		   								
-		   								<div class="form-group">        
-		        							<spring:message code="register.surname1" />
+										<spring:bind path="surname1">           	
+											<div class="form-group ${status.error ? 'has-error' : '' }">        
+												<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.surname1" /></label>
        	        								<form:input path="surname1" class="form-control" placeholder="Surname" />
-		   								</div>
+       	        								<form:errors path="surname1" cssClass="control-label" for="inputError" element="label" />
+		   									</div>
+		   								</spring:bind>
 		   								
-		   								<div class="form-group">        
-		        							<spring:message code="register.surname2" />
+										<spring:bind path="surname2">           	
+											<div class="form-group ${status.error ? 'has-error' : '' }">        
+												<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.surname2" /></label>
        	        								<form:input path="surname2" class="form-control" placeholder="Surname" />
-		   								</div>
+       	        								<form:errors path="surname2" cssClass="control-label" for="inputError" element="label" />
+		   									</div>
+		   								</spring:bind>
 
-		   								<div class="form-group">        
-		        							<spring:message code="register.email" />
+										<spring:bind path="email">           	
+											<div class="form-group ${status.error ? 'has-error' : '' }">        
+												<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.email" /></label>
        	        								<form:input path="email" class="form-control" placeholder="Email" />
-		   								</div>
+       	        								<form:errors path="email" cssClass="control-label" for="inputError" element="label" />
+		   									</div>
+		   								</spring:bind>
 		   								                                		
                                 		<div class="form-group">
 	   										<spring:message code="select.chooseOne" var="chooseOne" />

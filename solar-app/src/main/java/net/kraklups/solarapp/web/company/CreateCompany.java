@@ -1,5 +1,7 @@
 package net.kraklups.solarapp.web.company;
 
+import javax.validation.Valid;
+
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.userservice.UserService;
@@ -9,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,12 +41,16 @@ public class CreateCompany {
 	}
 	
 	@RequestMapping(value = "/company/createCompany", method = RequestMethod.POST)
-	public String createCompanyPost(@ModelAttribute Company company) {
+	public String createCompanyPost(@Valid @ModelAttribute("company") Company company, BindingResult result) {
 		
 		logger.info("Create Company page POST!" + "company name: " + company.getCompanyName() + " date: " + company.getDate());
 		
-			
-		return "company/createCompany";
+		if(result.hasErrors()) {
+			return "company/createCompany";
+		} else {
+			return "Done";
+		}	
+				
 	}	
 
 }

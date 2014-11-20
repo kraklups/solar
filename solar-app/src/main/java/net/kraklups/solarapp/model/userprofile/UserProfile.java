@@ -16,6 +16,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.role.Role;
@@ -26,13 +30,33 @@ import net.kraklups.solarapp.model.role.Role;
 public class UserProfile {
 
 	private Long userProfileId;
+	
+	@NotEmpty
+	@Size(min=6, max=30)	
 	private String loginName;
+
+	@NotEmpty
+	@Size(min=8, max=30)	
 	private String encryptedPassword;
+	
+	@NotEmpty
+	@Size(min=2, max=30)	
 	private String firstName;
+	
+	@NotEmpty
+	@Size(min=2, max=30)	
 	private String surname1;
-	private String surname2;	
+	
+	@NotEmpty
+	@Size(min=2, max=30)	
+	private String surname2;
+	
+	@NotEmpty
+	@Email	
 	private String email;
+	
 	private Date date;
+	
 	private Boolean blocked;
 	private Boolean erased;
 	private Company company;

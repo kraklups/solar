@@ -16,6 +16,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
@@ -49,6 +50,7 @@ public class Park {
 	private Date productionDate;
 	
 	private UserProfile userProfile;
+	
 	private Company company;	
 	
 	private MultiPolygon mapPark;

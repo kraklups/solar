@@ -13,8 +13,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Immutable;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 @Entity
 @Immutable
@@ -23,7 +28,13 @@ import javax.persistence.UniqueConstraint;
 public class Company {
 
 	private Long companyId;
+	
+	@NotEmpty
+	@Size(min=6, max=30)	
 	private String companyName;
+	
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	@NotNull @Past	
 	private Date date;
 	
 	public Company() {
