@@ -35,19 +35,26 @@
                     	
 							<form:form modelAttribute="alarm" method="POST">
     	                        <fieldset>	   							    
-	   								<div class="form-group">        
-		        						<spring:message code="createAlarm.alarmTag" />
-       	        						<form:input path="alarmTag" class="form-control" placeholder="Alarm Tag" autofocus="autofocus" />
-		   							</div>
+    	                            <spring:bind path="alarmTag">           	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">        
+		        							<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createAlarm.alarmTag" /></label>
+       	        							<form:input path="alarmTag" class="form-control" placeholder="Alarm Tag" autofocus="autofocus" />
+       	        							<form:errors path="alarmTag" cssClass="control-label" for="inputError" element="label" />       	        							
+		   								</div>
+		   							</spring:bind>
 
-	   								<div class="form-group">        
-	        							<spring:message code="createAlarm.triggerDate" />
-		            					<form:input path="triggerDate" class="form-control" placeholder="Trigger Date" />
-		   							</div>	   							   		
+									<spring:bind path="triggerDate">
+										<spring:message code="createAlarm.triggerDate" var="stdout" />
+  										<div class="form-group ${status.error ? 'has-error' : '' }">        
+    										<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>    
+											<form:input path="triggerDate" class="form-control" placeholder="${stdout} yyyy-MM-dd'T'HH:mm:ss.SSS" />
+											<form:errors path="triggerDate" cssClass="control-label" for="inputError" element="label" />
+		   								</div>	 
+		   							</spring:bind>
 	   							   			   							   								    	   							   			   							   								   
 	   								<div class="form-group">
 	   									<spring:message code="select.chooseOne" var="chooseOne" />
-	   									<spring:message code="createAlarm.eventTsk" />
+	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createAlarm.eventTsk" /></label>
 										<form:select path="eventTsk" class="form-control">
     										<form:option value="" label="${chooseOne}" />
     										<form:options items="${eventTskList}" itemValue="eventTskId" itemLabel="name" />

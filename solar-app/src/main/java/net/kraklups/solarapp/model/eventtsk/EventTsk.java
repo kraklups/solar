@@ -14,6 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
 import net.kraklups.solarapp.model.timetable.Timetable;
@@ -23,10 +28,23 @@ import net.kraklups.solarapp.model.timetable.Timetable;
 public class EventTsk {
 	
 	private Long eventTskId;
-	private String tagET;	
-	private String definitionET;	
+	
+	@NotEmpty
+	@Size(min=8, max=30)	
+	private String tagET;
+	
+	@NotEmpty
+	@Size(min=8, max=30)	
+	private String definitionET;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull	
 	private Date tvi;	
-	private Date tvf;	
+
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull
+	private Date tvf;
+	
 	private TaskPrk taskPrk;
 	private Timetable timetable;
 	private Boolean triggerAlarm;

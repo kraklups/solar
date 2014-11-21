@@ -14,6 +14,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.URL;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
@@ -22,10 +28,23 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 public class Report {
 
 	private Long reportId;
+	
+	@NotEmpty
+	@Size(min=6, max=50)	
 	private String reportTitle;
-	private Date dateRequest;	
-	private Date dateServed;	
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull	
+	private Date dateRequest;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull	
+	private Date dateServed;
+	
 	private UserProfile userProfile;
+	
+	@URL
+	@NotEmpty
 	private String urlReport;
 	
 	public Report() {		

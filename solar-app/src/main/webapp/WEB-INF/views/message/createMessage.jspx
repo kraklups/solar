@@ -36,19 +36,26 @@
 							<form:form modelAttribute="messageEvent" method="POST">
     	                        <fieldset>	   			
     	                        
-	   								<div class="form-group">        
-	        							<spring:message code="createMessage.date" />
-		            					<form:input path="tvi" class="form-control" placeholder="Message Date" autofocus="autofocus" />
-		   							</div>    	                        
+    	                        	<spring:bind path="tvi">
+    	                        		<spring:message code="createMessage.date" var="stdout" />
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>       
+		            						<form:input path="tvi" class="form-control" placeholder="${stdout} yyyy-MM-dd'T'HH:mm:ss.SSS" autofocus="autofocus" />
+       	        							<form:errors path="messageEventText" cssClass="control-label" for="inputError" element="label" />
+		   								</div>
+		   							</spring:bind>               
     	                        				    
-	   								<div class="form-group">        
-		        						<spring:message code="createMessage.messageEventText" />
-       	        						<form:input path="messageEventText" class="form-control" placeholder="Message Text" />
-		   							</div>
+	   								<spring:bind path="messageEventText">           	
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createMessage.messageEventText" /></label>
+       	        							<form:input path="messageEventText" class="form-control" placeholder="Message Text" />
+       	        							<form:errors path="messageEventText" cssClass="control-label" for="inputError" element="label" />
+		   								</div>
+		   							</spring:bind>
 	   							   			   							   								       							   			   							   								   
 	   								<div class="form-group">
 	   									<spring:message code="select.chooseOne" var="chooseOne" />
-	   									<spring:message code="createMessage.eventTsk" />
+	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createMessage.eventTsk" /></label>
 										<form:select path="eventTsk" class="form-control">
     										<form:option value="" label="${chooseOne}" />
     										<form:options items="${eventTskList}" itemValue="eventTskId" itemLabel="name" />

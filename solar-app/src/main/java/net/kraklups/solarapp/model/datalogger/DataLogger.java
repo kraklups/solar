@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 
@@ -18,8 +21,15 @@ import net.kraklups.solarapp.model.datalogger.DataLogger;
 public class DataLogger {
 
 	private Long dataLoggerId;
+	
+	@NotEmpty
+	@Size(min=8, max=30)	
 	private String dataLoggerTag;
+	
+	@NotEmpty
+	@Size(min=8, max=30)
 	private String dataLoggerType;
+	
 	private DataLogger dataLogger; 
 	
 	public DataLogger() {

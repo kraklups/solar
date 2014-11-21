@@ -17,6 +17,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
 
@@ -26,8 +31,15 @@ import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
 public class Module {
 
 	private Long moduleId;
-	private String moduleName;	
+	
+	@NotEmpty
+	@Size(min=8, max=30)	
+	private String moduleName;
+	
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	@NotNull	
 	private Date date;
+	
 	private Set<RoleModuleAccess> roleModuleAccess = new HashSet <RoleModuleAccess>(0);
 	
 	public Module() {

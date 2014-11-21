@@ -14,6 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 
@@ -22,8 +27,15 @@ import net.kraklups.solarapp.model.eventtsk.EventTsk;
 public class MessageEvent {
 	
 	private Long messageEventId;
-	private Date tvi;	
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull	
+	private Date tvi;
+	
+	@NotEmpty
+	@Range(min = 1, max = 500)
 	private String messageEventText;
+	
 	private EventTsk eventTsk;
 	
 	public MessageEvent() {

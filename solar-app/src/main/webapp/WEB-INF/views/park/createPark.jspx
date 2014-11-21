@@ -51,12 +51,12 @@
 	        						        						
 	   								<div class="form-group">
 	   									<spring:message code="select.chooseOne" var="chooseOne" />
-	   									<spring:message code="createPark.companyName" />
+	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createPark.companyName" /></label>
 										<form:select path="company" class="form-control">
     										<form:option value="" label="${chooseOne}" />
     										<form:options items="${companyList}" itemValue="companyId" itemLabel="companyName" />
 										</form:select>
-<!--  										<form:errors path="company" cssClass="control-label" for="inputError" element="label" /> -->	   							   								    
+<!--  									<form:errors path="company" cssClass="control-label" for="inputError" element="label" /> -->	   							   								    
 	   								</div>	    
 	    
     	                            <spring:bind path="startupDate">

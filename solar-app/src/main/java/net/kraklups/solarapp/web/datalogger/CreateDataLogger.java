@@ -1,11 +1,14 @@
 package net.kraklups.solarapp.web.datalogger;
 
+import javax.validation.Valid;
+
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,12 +35,16 @@ public class CreateDataLogger {
 	}
 	
 	@RequestMapping(value = "/dataLogger/createDataLogger", method = RequestMethod.POST)
-	public String createDataLoggerPost(@ModelAttribute DataLogger dataLogger) {
+	public String createDataLoggerPost(@Valid @ModelAttribute("dataLogger") DataLogger dataLogger, BindingResult result) {
 		
 		logger.info("Create DataLogger page POST!" + "dataLogger Tag: " + dataLogger.getDataLoggerTag());
+				
+		if(result.hasErrors()) {
+			return "dataLogger/createDataLogger";
+		} else {
+			return "Done";
+		}
 		
-			
-		return "dataLogger/createDataLogger";
 	}	
 
 }

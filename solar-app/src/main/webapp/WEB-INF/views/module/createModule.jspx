@@ -35,15 +35,22 @@
                     	
 							<form:form modelAttribute="module" method="POST">
     	                        <fieldset>	   						
-		   							<div class="form-group">        
-	    	    						<spring:message code="createModule.moduleName" />   
-		        	    				<form:input path="moduleName" class="form-control" placeholder="Module Name" autofocus="autofocus" />
-	   								</div>
+									<spring:bind path="moduleName">           	
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createModule.moduleName" /></label>   
+		        	    					<form:input path="moduleName" class="form-control" placeholder="Module Name" autofocus="autofocus" />
+	   										<form:errors path="moduleName" cssClass="control-label" for="inputError" element="label" /> 						
+										</div> 
+									</spring:bind> 
 	    
-	   								<div class="form-group">        
-	        							<spring:message code="createModule.date" />
-		            					<form:input path="date" class="form-control" placeholder="MM/DD/YYYY" />
-		   							</div>	    
+	   								<spring:bind path="date">
+	   								    <spring:message code="createModule.date" var="stdout" />
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>        	        							
+		            						<form:input path="date" class="form-control" placeholder="${stdout} MM/DD/YYYY" />
+		            						<form:errors path="date" cssClass="control-label" for="inputError" element="label" />
+										</div> 
+									</spring:bind>     
 	   							   								    
 		    						<div class="button">
 		    							<spring:message code="createModule.submit" var="moduleSubmit" />

@@ -38,10 +38,13 @@
 		   									</div>
 		   								</spring:bind>
 
-										<div class="form-group">        
-		        							<spring:message code="register.password" />
-       	        							<input path="password" class="form-control" placeholder="Password" />
-		   								</div>
+										<spring:bind path="encryptedPassword">           	
+											<div class="form-group ${status.error ? 'has-error' : '' }">        
+												<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.password" /></label>
+       	        								<form:input path="encryptedPassword" class="form-control" placeholder="Password" />
+       	        								<form:errors path="encryptedPassword" cssClass="control-label" for="inputError" element="label" />
+		   									</div>
+		   								</spring:bind>
                                 
 										<div class="form-group">        
 		        							<spring:message code="register.retypePassword" />
@@ -82,7 +85,7 @@
 		   								                                		
                                 		<div class="form-group">
 	   										<spring:message code="select.chooseOne" var="chooseOne" />
-	   										<spring:message code="register.company" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.company" /></label>
 											<form:select path="company" class="form-control">
     											<form:option value="" label="${chooseOne}" />
     											<form:options items="${companyList}" itemValue="companyId" itemLabel="name" />
@@ -91,7 +94,7 @@
                                 		                              
                                 		<div class="form-group">
 	   										<spring:message code="select.chooseOne" var="chooseOne" />
-	   										<spring:message code="register.role" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.role" /></label>
 											<form:select path="role" class="form-control">
     											<form:option value="" label="${chooseOne}" />
     											<form:options items="${roleList}" itemValue="roleId" itemLabel="name" />

@@ -1,11 +1,14 @@
 package net.kraklups.solarapp.web.datavalue;
 
+import javax.validation.Valid;
+
 import net.kraklups.solarapp.model.datavalue.DataValue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,11 +35,16 @@ public class CreateDatavalue {
 	}
 	
 	@RequestMapping(value = "/dataValue/createDataValue", method = RequestMethod.POST)
-	public String createDataValuePost(@ModelAttribute DataValue dataValue) {
+	public String createDataValuePost(@Valid @ModelAttribute("dataValue") DataValue dataValue, BindingResult result) {
 		
 		logger.info("Create DataValue page !" + "dataValue name: " + dataValue.getDataValueId());
+
+		if(result.hasErrors()) {
+			return "dataValue/createDataValue";
+		} else {
+			return "Done";
+		}		
 		
-		return "dataValue/createDataValue";
 	}	
 	
 }

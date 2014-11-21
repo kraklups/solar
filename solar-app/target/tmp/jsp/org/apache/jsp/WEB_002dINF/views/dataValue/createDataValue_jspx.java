@@ -469,8 +469,10 @@ public final class createDataValue_jspx extends org.apache.jasper.runtime.HttpJs
             out.write("<div class=\"form-group\">");
             if (_jspx_meth_spring_message_2((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
               return;
+            out.write("<label for=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${status.error ? 'inputError' : '' }", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"control-label\">");
             if (_jspx_meth_spring_message_3((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
               return;
+            out.write("</label>");
             //  form:select
             org.springframework.web.servlet.tags.form.SelectTag _jspx_th_form_select_0 = (org.springframework.web.servlet.tags.form.SelectTag) _jspx_tagPool_form_select_path_class.get(org.springframework.web.servlet.tags.form.SelectTag.class);
             _jspx_th_form_select_0.setPageContext(_jspx_page_context);
@@ -522,8 +524,10 @@ public final class createDataValue_jspx extends org.apache.jasper.runtime.HttpJs
             }
             out.write("</div>");
             out.write("<div class=\"form-group\">");
+            out.write("<label for=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${status.error ? 'inputError' : '' }", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"control-label\">");
             if (_jspx_meth_spring_message_4((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
               return;
+            out.write("</label>");
             //  form:select
             org.springframework.web.servlet.tags.form.SelectTag _jspx_th_form_select_1 = (org.springframework.web.servlet.tags.form.SelectTag) _jspx_tagPool_form_select_path_class.get(org.springframework.web.servlet.tags.form.SelectTag.class);
             _jspx_th_form_select_1.setPageContext(_jspx_page_context);
@@ -575,8 +579,10 @@ public final class createDataValue_jspx extends org.apache.jasper.runtime.HttpJs
             }
             out.write("</div>");
             out.write("<div class=\"form-group\">");
+            out.write("<label for=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${status.error ? 'inputError' : '' }", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"control-label\">");
             if (_jspx_meth_spring_message_5((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
               return;
+            out.write("</label>");
             //  form:select
             org.springframework.web.servlet.tags.form.SelectTag _jspx_th_form_select_2 = (org.springframework.web.servlet.tags.form.SelectTag) _jspx_tagPool_form_select_path_class.get(org.springframework.web.servlet.tags.form.SelectTag.class);
             _jspx_th_form_select_2.setPageContext(_jspx_page_context);
@@ -628,8 +634,10 @@ public final class createDataValue_jspx extends org.apache.jasper.runtime.HttpJs
             }
             out.write("</div>");
             out.write("<div class=\"form-group\">");
+            out.write("<label for=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${status.error ? 'inputError' : '' }", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"control-label\">");
             if (_jspx_meth_spring_message_6((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
               return;
+            out.write("</label>");
             //  form:select
             org.springframework.web.servlet.tags.form.SelectTag _jspx_th_form_select_3 = (org.springframework.web.servlet.tags.form.SelectTag) _jspx_tagPool_form_select_path_class.get(org.springframework.web.servlet.tags.form.SelectTag.class);
             _jspx_th_form_select_3.setPageContext(_jspx_page_context);

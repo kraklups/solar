@@ -1,11 +1,14 @@
 package net.kraklups.solarapp.web.event;
 
+import javax.validation.Valid;
+
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,12 +35,16 @@ public class CreateEvent {
 	}
 	
 	@RequestMapping(value = "/event/createEvent", method = RequestMethod.POST)
-	public String createEventPost(@ModelAttribute EventTsk eventTsk) {
+	public String createEventPost(@Valid @ModelAttribute("eventTsk") EventTsk eventTsk, BindingResult result) {
 		
 		logger.info("Create Event page POST!" + "event TagET: " + eventTsk.getTagET());
 		
+		if(result.hasErrors()) {
+			return "event/createEvent";
+		} else {
+			return "Done";
+		}
 			
-		return "event/createEvent";
 	}	
 
 }
