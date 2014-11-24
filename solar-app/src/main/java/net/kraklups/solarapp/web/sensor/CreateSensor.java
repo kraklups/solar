@@ -1,11 +1,14 @@
 package net.kraklups.solarapp.web.sensor;
 
+import javax.validation.Valid;
+
 import net.kraklups.solarapp.model.sensor.Sensor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,12 +35,16 @@ public class CreateSensor {
 	}
 	
 	@RequestMapping(value = "/sensor/createSensor", method = RequestMethod.POST)
-	public String createSensorPost(@ModelAttribute Sensor sensor) {
+	public String createSensorPost(@Valid @ModelAttribute("sensor") Sensor sensor, BindingResult result) {
 		
 		logger.info("Create Sensor page POST!" + "sensor name: " + sensor.getSensorTag());
 		
-			
-		return "sensor/createSensor";
+		if(result.hasErrors()) {
+			return "sensor/createSensor";
+		} else {
+			return "Done";
+		}
+		
 	}	
 	
 }

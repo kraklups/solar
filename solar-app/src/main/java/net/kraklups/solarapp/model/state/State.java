@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 import net.kraklups.solarapp.model.statetype.StateType;
@@ -26,8 +29,15 @@ import net.kraklups.solarapp.model.park.Park;
 public class State {
 
 	private Long stateId;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull	
 	private Date tvi;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull	
 	private Date tvf;
+	
 	private Park park;
 	private EventTsk eventTsk;
 	private Upkeep upkeep;

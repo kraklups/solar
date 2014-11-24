@@ -1,11 +1,14 @@
 package net.kraklups.solarapp.web.state;
 
+import javax.validation.Valid;
+
 import net.kraklups.solarapp.model.state.State;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,11 +35,16 @@ public class CreateState {
 	}
 	
 	@RequestMapping(value = "/state/createState", method = RequestMethod.POST)
-	public String createStatePost(@ModelAttribute State state) {
+	public String createStatePost(@Valid @ModelAttribute("state") State state, BindingResult result) {
 		
 		logger.info("Create State page !" + "state name: " + state.getStateId());
 		
-		return "state/createState";
+		if(result.hasErrors()) {
+			return "state/createState";
+		} else {
+			return "Done";
+		}
+		
 	}	
 
 }

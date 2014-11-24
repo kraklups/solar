@@ -18,6 +18,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
@@ -28,10 +35,20 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 public class Role {
 
 	private Long roleId;
+
+	@NotEmpty
+	@Size(min=6, max=30)
 	private String roleName;
+	
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	@NotNull	
 	private Date date;
+	
 	private UserProfile userProfile;
+	
+	@NotNull
 	private Long weight;
+	
 	private Set<RoleModuleAccess> roleModuleAccess = new HashSet<RoleModuleAccess>(0);
 	
 	public Role() {

@@ -35,19 +35,27 @@
                     	
 							<form:form modelAttribute="state" method="POST">
     	                        <fieldset>	   							    
-	   								<div class="form-group">        
-	        							<spring:message code="createState.dateTvi" />
-		            					<form:input path="tvi" class="form-control" placeholder="MM/DD/YYYY" autofocus="autofocus" />
-		   							</div>	    
+									<spring:bind path="tvi">           	
+										<spring:message code="createState.dateTvi" var="stdout" />
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>        	        							 
+		            						<form:input path="tvi" class="form-control" placeholder="${stdout} yyyy-MM-dd'T'HH:mm:ss.SSS" autofocus="autofocus" />
+											<form:errors path="tvi" cssClass="control-label" for="inputError" element="label" />		            						
+		   								</div>
+		   							</spring:bind>
 		   							
-		   							<div class="form-group">
-	        							<spring:message code="createState.dateTvf" />
-		            					<form:input path="tvf" class="form-control" placeholder="MM/DD/YYYY" />
-		   							</div>	    		   							
+									<spring:bind path="tvf">           	
+										<spring:message code="createState.dateTvf" var="stdout" />
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>	        						
+		            						<form:input path="tvf" class="form-control" placeholder="${stdout} yyyy-MM-dd'T'HH:mm:ss.SSS" />	
+											<form:errors path="tvf" cssClass="control-label" for="inputError" element="label" />		            						
+		   								</div>
+		   							</spring:bind>	    		   							
 	   							   		
 	   								<div class="form-group">
 	   									<spring:message code="select.chooseOne" var="chooseOne" />
-	   									<spring:message code="createState.eventTsk" />
+	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createState.eventTsk" /></label>
 										<form:select path="eventTsk" class="form-control">
     										<form:option value="" label="${chooseOne}" />
     										<form:options items="${eventTskList}" itemValue="eventTskId" itemLabel="name" />
@@ -55,7 +63,7 @@
 	   								</div>
 	   							   								    
 	   								<div class="form-group">
-	   									<spring:message code="createState.park" />
+	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createState.park" /></label>
 										<form:select path="park" class="form-control">
     										<form:option value="" label="${chooseOne}" />
     										<form:options items="${parkList}" itemValue="parkId" itemLabel="name" />
@@ -63,7 +71,7 @@
 	   								</div>
 
 	   								<div class="form-group">
-	   									<spring:message code="createState.upkeep" />
+	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createState.upkeep" /></label>
 										<form:select path="upkeep" class="form-control">
     										<form:option value="" label="${chooseOne}" />
     										<form:options items="${upkeepList}" itemValue="upkeepId" itemLabel="name" />
@@ -71,7 +79,7 @@
 	   								</div>
 	   							   								    
 	   								<div class="form-group">
-	   									<spring:message code="createState.stateType" />
+	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createState.stateType" /></label>
 										<form:select path="stateType" class="form-control">
     										<form:option value="" label="${chooseOne}" />
     										<form:options items="${stateTypeList}" itemValue="stateTypeId" itemLabel="name" />

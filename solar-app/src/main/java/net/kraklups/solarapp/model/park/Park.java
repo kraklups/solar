@@ -53,6 +53,7 @@ public class Park {
 	
 	private Company company;	
 	
+	@NotNull
 	private MultiPolygon mapPark;
 	
 	public Park() {		
