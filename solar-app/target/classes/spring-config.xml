@@ -55,14 +55,15 @@
         <constructor-arg name="decisionVoters" ref="roleVoter" />
     </bean>
             
-    <security:http authentication-manager-ref="dao-auth" access-decision-manager-ref="accessDecisionManager"> 
-        <security:form-login login-page="/login" authentication-failure-url="/denied"
+    <security:http authentication-manager-ref="dao-auth" access-decision-manager-ref="accessDecisionManager">
+    	<security:intercept-url pattern="/**" /> 
+        <security:form-login login-page="/user/login" authentication-failure-url="/user/denied"
             username-parameter="username" password-parameter="password"
             default-target-url="/" />
-        <security:logout invalidate-session="true" logout-success-url="/login" logout-url="/j_spring_security_logout" />
-        <security:access-denied-handler error-page="/denied"/>
-        <security:session-management invalid-session-url="/login">
-            <security:concurrency-control max-sessions="1" expired-url="/login" />
+        <security:logout invalidate-session="true" logout-success-url="/user/login" logout-url="/user/j_spring_security_logout" />
+        <security:access-denied-handler error-page="/user/denied"/>
+        <security:session-management invalid-session-url="/user/login">
+            <security:concurrency-control max-sessions="1" expired-url="/user/login" />
         </security:session-management>
     </security:http>    
     
