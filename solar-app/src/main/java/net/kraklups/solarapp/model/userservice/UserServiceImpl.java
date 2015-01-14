@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -87,6 +89,13 @@ public class UserServiceImpl implements UserService {
 
     }
 
+	@Override
+	public UserDetails loadUserByUsername(String arg0)
+			throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}	    
+    
     @Transactional(readOnly = true)
     public UserProfile findUserProfile(Long userProfileId)
             throws InstanceNotFoundException {
@@ -385,5 +394,6 @@ public class UserServiceImpl implements UserService {
 	public Module findModuleByName(String moduleName) throws InstanceNotFoundException {
 
 		return moduleDao.findByName(moduleName);	
-	}	
+	}
+
 }

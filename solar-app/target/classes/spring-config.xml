@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:p="http://www.springframework.org/schema/p"
     xmlns:tx="http://www.springframework.org/schema/tx"
     xmlns:context="http://www.springframework.org/schema/context"
-    xsi:schemaLocation="
-    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
     <!-- Enable usage of @Autowired. -->
     <context:annotation-config/>
@@ -42,5 +43,42 @@
 	<!-- Enable the configuration of transactional behavior based on
 	     annotations. -->
     <tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- Configuring RoleVoter bean to use custom access roles, by default roles should be in the form ROLE_{XXX} -->
+    <bean id="roleVoter"
+        class="org.springframework.security.access.vote.RoleVoter">
+        <property name="rolePrefix" value=""></property>
+    </bean>
+ 
+    <bean id="accessDecisionManager"
+        class="org.springframework.security.access.vote.AffirmativeBased">
+        <constructor-arg name="decisionVoters" ref="roleVoter" />
+    </bean>
+            
+    <security:http authentication-manager-ref="dao-auth" access-decision-manager-ref="accessDecisionManager"> 
+        <security:form-login login-page="/login" authentication-failure-url="/denied"
+            username-parameter="username" password-parameter="password"
+            default-target-url="/" />
+        <security:logout invalidate-session="true" logout-success-url="/login" logout-url="/j_spring_security_logout" />
+        <security:access-denied-handler error-page="/denied"/>
+        <security:session-management invalid-session-url="/login">
+            <security:concurrency-control max-sessions="1" expired-url="/login" />
+        </security:session-management>
+    </security:http>    
+    
+	<security:authentication-manager id="dao-auth">
+        <security:authentication-provider user-service-ref="userDetailsService" />
+    </security:authentication-manager>  
+    
+    <bean id="userDetailsService"
+        class="net.kraklups.solarapp.model.userservice.UserServiceImpl" />  
+    
+    <security:authentication-manager id="in-memory-auth">
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="kraklups" password="kraklups" authorities="admin" />
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>        
 
 </beans>

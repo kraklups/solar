@@ -2,6 +2,8 @@ package net.kraklups.solarapp.model.userservice;
 
 import java.util.Date;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
+
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.module.Module;
 import net.kraklups.solarapp.model.role.Role;
@@ -12,7 +14,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
-public interface UserService {
+public interface UserService extends UserDetailsService {
 
     public UserProfile registerUser(String loginName, String clearPassword,
             UserProfileDetails userProfileDetails)
