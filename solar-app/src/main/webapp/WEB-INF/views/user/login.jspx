@@ -50,7 +50,8 @@
                     		
                     		<div class="panel-body">
                     		
-                        		<form:form modelAttribute="userProfile" method="POST">
+ 								<c:url var="loginUrl" value="/j_spring_security_check"></c:url>                   		
+                        		<form:form action="${loginUrl}" modelAttribute="userProfile" method="POST">
                             		<fieldset>                                
                                 		<div class="form-group">
 	        								<spring:message code="login.loginName" />

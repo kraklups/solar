@@ -68,8 +68,9 @@
     </security:http>    
     
 	<security:authentication-manager id="dao-auth">
-        <security:authentication-provider user-service-ref="userDetailsService" />
-        <password-encoder hash="md5"/>
+        <security:authentication-provider user-service-ref="userDetailsService">
+        	<security:password-encoder hash="md5"/>
+        </security:authentication-provider>
     </security:authentication-manager>  
     
     <bean id="userDetailsService"
