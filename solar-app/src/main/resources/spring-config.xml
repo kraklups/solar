@@ -55,20 +55,21 @@
         <constructor-arg name="decisionVoters" ref="roleVoter" />
     </bean>
             
-    <security:http authentication-manager-ref="dao-auth" access-decision-manager-ref="accessDecisionManager">
-    	<security:intercept-url pattern="/**" /> 
+    <security:http create-session="ifRequired" auto-config="false" disable-url-rewriting="true"
+    		authentication-manager-ref="dao-auth" access-decision-manager-ref="accessDecisionManager">    	
         <security:form-login login-page="/user/login" authentication-failure-url="/user/denied"
-            username-parameter="username" password-parameter="password"
+            username-parameter="loginName" password-parameter="encryptedPassword"
             default-target-url="/" />
         <security:logout invalidate-session="true" logout-success-url="/user/login" logout-url="/user/j_spring_security_logout" />
         <security:access-denied-handler error-page="/user/denied"/>
-        <security:session-management invalid-session-url="/user/login">
-            <security:concurrency-control max-sessions="1" expired-url="/user/login" />
+        <security:session-management session-fixation-protection="migrateSession" invalid-session-url="/user/login">
+            <security:concurrency-control max-sessions="2" expired-url="/user/login" />
         </security:session-management>
     </security:http>    
     
 	<security:authentication-manager id="dao-auth">
         <security:authentication-provider user-service-ref="userDetailsService" />
+        <password-encoder hash="md5"/>
     </security:authentication-manager>  
     
     <bean id="userDetailsService"

@@ -2,9 +2,15 @@ package net.kraklups.solarapp.model.userservice;
 
 import java.util.Date;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -90,12 +96,40 @@ public class UserServiceImpl implements UserService {
     }
 
 	@Override
-	public UserDetails loadUserByUsername(String arg0)
-			throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional(readOnly=true)
+	public UserDetails loadUserByUsername(String loginName)
+			throws UsernameNotFoundException, org.springframework.dao.DataAccessException {
+		
+		boolean accountNonExpired = true;
+        boolean credentialsNonExpired = true;
+        
+        UserProfile userProfile = null;
+				
+        try {
+        	userProfile = userProfileDao.findByLoginName(loginName);
+        } catch (InstanceNotFoundException e) {
+        	throw new UsernameNotFoundException("No user with loginName '" + loginName + "' found!");
+        }
+        
+    	List<GrantedAuthority> authorities = 
+                buildUserAuthority(userProfile.getRole());
+		
+        return new User(userProfile.getLoginName(),userProfile.getEncryptedPassword(), 
+        		userProfile.getBlocked(), accountNonExpired, credentialsNonExpired, 
+        		userProfile.getErased(), authorities);       
 	}	    
     
+	private List<GrantedAuthority> buildUserAuthority(Role role) {
+	
+		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
+
+		setAuths.add(new SimpleGrantedAuthority(role.getRoleName()));
+ 
+		List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
+ 
+		return Result;
+	}	
+	
     @Transactional(readOnly = true)
     public UserProfile findUserProfile(Long userProfileId)
             throws InstanceNotFoundException {
