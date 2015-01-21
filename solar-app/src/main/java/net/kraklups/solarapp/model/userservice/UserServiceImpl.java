@@ -104,7 +104,7 @@ public class UserServiceImpl implements UserService {
         boolean credentialsNonExpired = true;
         
         UserProfile userProfile = null;
-				
+		        
         try {
         	userProfile = userProfileDao.findByLoginName(loginName);
         } catch (InstanceNotFoundException e) {

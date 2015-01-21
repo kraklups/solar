@@ -1,14 +1,14 @@
 package net.kraklups.solarapp.web.user;
 
+import javax.validation.Valid;
+
 import net.kraklups.solarapp.model.userprofile.UserProfile;
-import net.kraklups.solarapp.model.userservice.IncorrectPasswordException;
-import net.kraklups.solarapp.model.userservice.UserService;
-import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,11 +34,15 @@ public class Login {
 	}	
 
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
-	public String loginPost(@ModelAttribute UserProfile userProfile) {
+	public String loginPost(@Valid @ModelAttribute UserProfile userProfile, BindingResult result) {
 		
 		logger.info("Login page !" + "login: " + userProfile.getLoginName());
 		
-		return "user/login";
+		if(result.hasErrors()) {
+			return "user/login";
+		} else {
+			return "Done";
+		}				
 	}	
 	
 /*    @Property

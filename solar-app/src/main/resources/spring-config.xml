@@ -56,7 +56,7 @@
     </bean>
             
     <security:http create-session="ifRequired" auto-config="false" disable-url-rewriting="true"
-    		authentication-manager-ref="dao-auth" access-decision-manager-ref="accessDecisionManager">    	
+    		authentication-manager-ref="in-memory-auth" access-decision-manager-ref="accessDecisionManager">				    		    
         <security:form-login login-page="/user/login" authentication-failure-url="/user/denied"
             username-parameter="loginName" password-parameter="encryptedPassword"
             default-target-url="/" />
@@ -73,13 +73,13 @@
         </security:authentication-provider>
     </security:authentication-manager>  
     
-    <bean id="userDetailsService"
-        class="net.kraklups.solarapp.model.userservice.UserServiceImpl" />  
+    <bean id="userDetailsService" class="net.kraklups.solarapp.model.userservice.UserServiceImpl" />  
     
     <security:authentication-manager id="in-memory-auth">
         <security:authentication-provider>
+        	<security:password-encoder hash="md5"/>
             <security:user-service>
-                <security:user name="kraklups" password="kraklups" authorities="admin" />
+                <security:user name="kraklups" password="f561aaf6ef0bf14d4208bb46a4ccb3ad" authorities="admin" />
             </security:user-service>
         </security:authentication-provider>
     </security:authentication-manager>        

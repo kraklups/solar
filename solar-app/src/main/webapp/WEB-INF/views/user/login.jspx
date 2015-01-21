@@ -52,16 +52,22 @@
                     		
  								<c:url var="loginUrl" value="/j_spring_security_check"></c:url>                   		
                         		<form:form action="${loginUrl}" modelAttribute="userProfile" method="POST">
-                            		<fieldset>                                
-                                		<div class="form-group">
-	        								<spring:message code="login.loginName" />
-	            							<form:input path="loginName" class="form-control" placeholder="Login" autofocus="autofocus" />
-                                		</div>
+                            		<fieldset>
+                            			<spring:bind path="loginName">                                
+                                			<div class="form-group ${status.error ? 'has-error' : '' }">
+	        									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="login.loginName" /></label>
+	            								<form:input path="loginName" class="form-control" placeholder="Login" autofocus="autofocus" />
+	            								<form:errors path="loginName" cssClass="control-label" for="inputError" element="label" />       	                
+                                			</div>
+                                		</spring:bind>
                                 	
-                                		<div class="form-group">	        							
-	        								<spring:message code="login.password" />	        								
-	            							<form:input path="encryptedPassword" class="form-control" placeholder="Password" />
-                                		</div>
+                                		<spring:bind path="encryptedPassword">
+                                			<div class="form-group ${status.error ? 'has-error' : '' }">	        							
+	        									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="login.password" /></label>	        								
+	            								<form:input path="encryptedPassword" class="form-control" placeholder="Password" />
+	            								<form:errors path="encryptedPassword" cssClass="control-label" for="inputError" element="label" />
+                                			</div>
+                                		</spring:bind>
                                 
                                 		<div class="form-group">
                                 			<div class="checkbox">                                		    

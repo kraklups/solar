@@ -17,8 +17,8 @@ INSERT into Role (roleId,roleName,date,userProfileId,weight) VALUES (nextval('Ro
 
 INSERT into Role (roleId,roleName,date,userProfileId,weight) VALUES (nextval('RoleSeq'),'default',CURRENT_TIMESTAMP,1,10);
 
-INSERT into UserProfile (userProfileId,loginName,enpassword,firstName,surname1,surname2,email,date,blocked,erased,version,roleId,companyId) 
-            VALUES (nextval('UserProfileSeq'),'admin','DLYsce016be6c','adminName','adminSurname1','adminSurname2','admin@kraklups.net',
+INSERT into UserProfile (userProfileId,loginName,encryptedPassword,firstName,surname1,surname2,email,date,blocked,erased,version,roleId,companyId) 
+            VALUES (nextval('UserProfileSeq'),'admin','f561aaf6ef0bf14d4208bb46a4ccb3ad','adminName','adminSurname1','adminSurname2','admin@kraklups.net',
             CURRENT_TIMESTAMP,DEFAULT,DEFAULT,DEFAULT,currval('ModuleSeq'),currval('ModuleSeq'));
 
 COMMIT;
