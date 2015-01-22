@@ -83,7 +83,7 @@ public abstract class ElementPrk implements java.io.Serializable {
 	
 	@SequenceGenerator(                                 // It only takes effect
 			name="ElementIdGenerator",                     // for databases providing
-	        sequenceName="ElementSeq", allocationSize=1)   // identifier generators.
+	        sequenceName="ElementPrkSeq", allocationSize=1)   // identifier generators.
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,
 		generator="ElementIdGenerator")

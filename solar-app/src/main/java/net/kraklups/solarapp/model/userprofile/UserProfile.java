@@ -36,7 +36,7 @@ public class UserProfile {
 	private String loginName;
 
 	@NotEmpty
-	@Size(min=8, max=30)	
+	@Size(min=8, max=32)	
 	private String encryptedPassword;
 	
 	@NotEmpty
@@ -106,7 +106,6 @@ public class UserProfile {
 		this.loginName = loginName;
 	}
 
-	@Column(name = "enPassword")
 	public String getEncryptedPassword() {
 		return encryptedPassword;
 	}

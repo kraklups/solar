@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -29,6 +32,7 @@ import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccessId;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userprofile.UserProfileDao;
 import net.kraklups.solarapp.model.userservice.util.PasswordEncrypter;
+import net.kraklups.solarapp.web.user.Login;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
@@ -100,34 +104,43 @@ public class UserServiceImpl implements UserService {
 	public UserDetails loadUserByUsername(String loginName)
 			throws UsernameNotFoundException, org.springframework.dao.DataAccessException {
 		
+		final Logger logger = LoggerFactory.getLogger(UserProfile.class);
+		
 		boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
-        
+       
         UserProfile userProfile = null;
 		        
         try {
         	userProfile = userProfileDao.findByLoginName(loginName);
         } catch (InstanceNotFoundException e) {
+        	e.printStackTrace();
         	throw new UsernameNotFoundException("No user with loginName '" + loginName + "' found!");
+        	
         }
+        
+        if (userProfile==null) throw new UsernameNotFoundException("No user with loginName '" + loginName + "' found!");
         
     	List<GrantedAuthority> authorities = 
                 buildUserAuthority(userProfile.getRole());
-		
+        
+    	 
+		logger.info("Nadia !" + userProfile);
+    	
         return new User(userProfile.getLoginName(),userProfile.getEncryptedPassword(), 
-        		userProfile.getBlocked(), accountNonExpired, credentialsNonExpired, 
-        		userProfile.getErased(), authorities);       
+        		accountNonExpired, accountNonExpired, credentialsNonExpired, 
+        		accountNonExpired, authorities);       
 	}	    
     
-	private List<GrantedAuthority> buildUserAuthority(Role role) {
-	
+	private List<GrantedAuthority> buildUserAuthority(Role role) {			
+		
 		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
 
 		setAuths.add(new SimpleGrantedAuthority(role.getRoleName()));
  
-		List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
- 
-		return Result;
+		List<GrantedAuthority> result = new ArrayList<GrantedAuthority>(setAuths);
+		
+		return result;
 	}	
 	
     @Transactional(readOnly = true)
