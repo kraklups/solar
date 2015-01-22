@@ -477,8 +477,8 @@
                     		<li class="divider"><jsp:text /></li>
                     		
                     		<li>
-                    			<spring:url value="/logout" var="logoutUrl" htmlEscape="true"/>
-								<a class="text-center" href="${logout}">
+                    			<spring:url value="/user/j_spring_security_logout" var="logoutUrl" htmlEscape="true"/>
+								<a class="text-center" href="${logoutUrl}">
                     				<i class="fa fa-sign-out fa-fw"><jsp:text /></i> <span class="text-warning"><spring:message code="menu-logout" /></span>
                     			</a>
                     		</li>

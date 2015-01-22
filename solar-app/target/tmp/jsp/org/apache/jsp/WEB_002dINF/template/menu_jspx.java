@@ -799,7 +799,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<li>");
       if (_jspx_meth_spring_url_50(_jspx_page_context))
         return;
-      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${logout}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
+      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${logoutUrl}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" class=\"text-center\">");
       out.write("<i class=\"fa fa-sign-out fa-fw\">");
       out.write("</i>");
       out.write("<span class=\"text-warning\">");
@@ -3643,7 +3643,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_spring_url_50.setParent(null);
     _jspx_th_spring_url_50.setHtmlEscape(true);
     _jspx_th_spring_url_50.setVar("logoutUrl");
-    _jspx_th_spring_url_50.setValue("/logout");
+    _jspx_th_spring_url_50.setValue("/user/j_spring_security_logout");
     int[] _jspx_push_body_count_spring_url_50 = new int[] { 0 };
     try {
       int _jspx_eval_spring_url_50 = _jspx_th_spring_url_50.doStartTag();
