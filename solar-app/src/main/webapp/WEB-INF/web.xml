@@ -29,6 +29,7 @@
      
     <session-config>
         <session-timeout>5</session-timeout>
+        <tracking-mode>COOKIE</tracking-mode>        
     </session-config>
  
     <!-- Spring Security Filter -->
