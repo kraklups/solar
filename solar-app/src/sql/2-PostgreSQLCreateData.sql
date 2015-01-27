@@ -15,9 +15,9 @@ SET CONSTRAINTS ALL DEFERRED;
 
 INSERT into Role (roleId,roleName,date,userProfileId,weight) VALUES (nextval('RoleSeq'),'admin',CURRENT_TIMESTAMP,1,10);
 
-INSERT into UserProfile (userProfileId,loginName,encryptedPassword,firstName,surname1,surname2,email,date,blocked,erased,version,roleId,companyId) 
+INSERT into UserProfile (userProfileId,loginName,encryptedPassword,firstName,surname1,surname2,email,date,enabled,accountNonExpired,credentialsNonExpired,accountNonLocked,version,roleId,companyId) 
             VALUES (nextval('UserProfileSeq'),'admin','f561aaf6ef0bf14d4208bb46a4ccb3ad','adminName','adminSurname1','adminSurname2','admin@kraklups.net',
-            CURRENT_TIMESTAMP,DEFAULT,DEFAULT,DEFAULT,currval('RoleSeq'),currval('CompanySeq'));
+            CURRENT_TIMESTAMP,TRUE,TRUE,TRUE,TRUE,DEFAULT,currval('RoleSeq'),currval('CompanySeq'));
 
 INSERT into RoleModuleAccess (roleId,moduleId,accessFlag) VALUES (currval('RoleSeq'),currval('ModuleSeq'),2);
 
@@ -29,9 +29,9 @@ SET CONSTRAINTS ALL DEFERRED;
 
 INSERT into Role (roleId,roleName,date,userProfileId,weight) VALUES (nextval('RoleSeq'),'default',CURRENT_TIMESTAMP,2,10);
 
-INSERT into UserProfile (userProfileId,loginName,encryptedPassword,firstName,surname1,surname2,email,date,blocked,erased,version,roleId,companyId) 
+INSERT into UserProfile (userProfileId,loginName,encryptedPassword,firstName,surname1,surname2,email,date,enabled,accountNonExpired,credentialsNonExpired,accountNonLocked,version,roleId,companyId) 
             VALUES (nextval('UserProfileSeq'),'kraklups','f561aaf6ef0bf14d4208bb46a4ccb3ad','adminName','adminSurname1','adminSurname2','admin@kraklups.net',
-            CURRENT_TIMESTAMP,DEFAULT,DEFAULT,DEFAULT,currval('RoleSeq'),currval('CompanySeq'));
+            CURRENT_TIMESTAMP,TRUE,TRUE,TRUE,TRUE,DEFAULT,currval('RoleSeq'),currval('CompanySeq'));
 
 INSERT into RoleModuleAccess (roleId,moduleId,accessFlag) VALUES (currval('RoleSeq'),currval('ModuleSeq'),2);
 

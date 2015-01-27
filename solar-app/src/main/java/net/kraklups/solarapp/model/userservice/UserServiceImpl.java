@@ -32,7 +32,6 @@ import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccessId;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userprofile.UserProfileDao;
 import net.kraklups.solarapp.model.userservice.util.PasswordEncrypter;
-import net.kraklups.solarapp.web.user.Login;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
@@ -104,8 +103,7 @@ public class UserServiceImpl implements UserService {
 	public UserDetails loadUserByUsername(String loginName)
 			throws UsernameNotFoundException, org.springframework.dao.DataAccessException {
 		
-		final Logger logger = LoggerFactory.getLogger(UserProfile.class);
-		
+	
 		boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
        
@@ -123,13 +121,10 @@ public class UserServiceImpl implements UserService {
         
     	List<GrantedAuthority> authorities = 
                 buildUserAuthority(userProfile.getRole());
-        
-    	 
-		logger.info("Nadia !" + userProfile);
     	
         return new User(userProfile.getLoginName(),userProfile.getEncryptedPassword(), 
-        		accountNonExpired, accountNonExpired, credentialsNonExpired, 
-        		accountNonExpired, authorities);       
+        		userProfile.getEnabled(),userProfile.getAccountNonExpired(),
+        		userProfile.getCredentialsNonExpired(),userProfile.getAccountNonLocked(),authorities);       
 	}	    
     
 	private List<GrantedAuthority> buildUserAuthority(Role role) {			
@@ -182,19 +177,19 @@ public class UserServiceImpl implements UserService {
     }
 
 	@Override
-	public void removeUser(Long userProfileId, boolean erased)
+	public void removeUser(Long userProfileId, boolean enabled)
 			throws InstanceNotFoundException {
 
 		UserProfile userProfile = userProfileDao.find(userProfileId);
-		userProfile.setErased(erased);			
+		userProfile.setEnabled(enabled);			
 	}
 
 	@Override
-	public void blockUser(Long userProfileId, boolean blocked)
+	public void blockUser(Long userProfileId, boolean accountNonExpired)
 			throws InstanceNotFoundException {
 
 		UserProfile userProfile = userProfileDao.find(userProfileId);
-		userProfile.setBlocked(blocked);
+		userProfile.setAccountNonExpired(accountNonExpired);
 	}
 
 	@Override

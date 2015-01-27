@@ -58,7 +58,6 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
         throws java.io.IOException, ServletException {
 
     PageContext pageContext = null;
-    HttpSession session = null;
     ServletContext application = null;
     ServletConfig config = null;
     JspWriter out = null;
@@ -69,11 +68,10 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
     try {
       response.setContentType("text/html;charset=UTF-8");
       pageContext = _jspxFactory.getPageContext(this, request, response,
-      			null, true, 8192, true);
+      			null, false, 8192, true);
       _jspx_page_context = pageContext;
       application = pageContext.getServletContext();
       config = pageContext.getServletConfig();
-      session = pageContext.getSession();
       out = pageContext.getOut();
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");

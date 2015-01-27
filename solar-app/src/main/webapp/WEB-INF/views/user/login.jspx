@@ -10,6 +10,7 @@
 	<jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
 	<jsp:output omit-xml-declaration="yes"/> 
 	<jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />	
+	<jsp:directive.page session="false"/>
 	
 	<fmt:setLocale value="en" scope="application"/>
 	<fmt:setBundle basename='i18n/messages_en.properties'/>	
@@ -32,8 +33,7 @@
     	<!-- Custom Fonts -->
     	<c:url var="fontawesomeCSS" value="/resources/font-awesome/css/font-awesome.css" />
     	<link href="${fontawesomeCSS}" rel="stylesheet" type="text/css" />		
-    	
-    	
+    	    	
 		<title><spring:message code="login.menuExplanation" /></title>
 						
 	</head>

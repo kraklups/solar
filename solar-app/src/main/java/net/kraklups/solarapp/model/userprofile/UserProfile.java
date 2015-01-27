@@ -57,8 +57,11 @@ public class UserProfile {
 	
 	private Date date;
 	
-	private Boolean blocked;
-	private Boolean erased;
+	private Boolean enabled;
+	private Boolean accountNonExpired;
+	private Boolean credentialsNonExpired;
+	private Boolean accountNonLocked;
+	
 	private Company company;
 	private Role role;
 	private long version;
@@ -68,7 +71,7 @@ public class UserProfile {
 	
 	public UserProfile(String loginName, String encryptedPassword,
 			String firstName, String surname1, String surname2, String email, 
-			Date date, Boolean blocked, Boolean erased, Company company, Role role) {
+			Date date, Boolean enabled, Boolean accountNonExpired, Company company, Role role) {
 
 		this.loginName = loginName;
 		this.encryptedPassword = encryptedPassword;
@@ -77,8 +80,8 @@ public class UserProfile {
 		this.surname2 = surname2;		
 		this.email = email;
 		this.date = date;
-		this.blocked = blocked;
-		this.erased = erased;
+		this.enabled = enabled;
+		this.accountNonExpired = accountNonExpired;
 		this.company = company;
 		this.role = role;
 	}
@@ -155,21 +158,37 @@ public class UserProfile {
 		this.date = date;
 	}
 	
-	public Boolean getBlocked () {
-		return blocked;
+	public Boolean getEnabled() {
+		return enabled;
 	}
 	
-	public void setBlocked(Boolean blocked) {
-		this.blocked = blocked;
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
-	public Boolean getErased () {
-		return erased;
+	public Boolean getAccountNonExpired () {
+		return accountNonExpired;
 	}
 	
-	public void setErased(Boolean erased) {
-		this.erased = erased;
+	public void setAccountNonExpired(Boolean accountNonExpired) {
+		this.accountNonExpired = accountNonExpired;
 	}	
+	
+	public Boolean getCredentialsNonExpired() {
+		return credentialsNonExpired;
+	}
+	
+	public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
+		this.credentialsNonExpired = credentialsNonExpired;
+	}
+	
+	public Boolean getAccountNonLocked() {
+		return accountNonLocked;
+	}
+	
+	public void setAccountNonLocked(Boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
+	}
 	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="companyId")
@@ -205,7 +224,7 @@ public class UserProfile {
 		return "UserProfile [userProfileId=" + userProfileId + ", loginName="
 				+ loginName + ", encryptedPassword=" + encryptedPassword
 				+ ", firstName=" + firstName + ", surname1=" + surname1
-				+ ", surname2=" + surname2 + ", blocked=" + blocked+ ", erased=" + erased  
+				+ ", surname2=" + surname2 + ", enabled=" + enabled+ ", accountNonExpired=" + accountNonExpired  
 				+ ", email=" + email + ", version=" + version + "]";
 	}
 

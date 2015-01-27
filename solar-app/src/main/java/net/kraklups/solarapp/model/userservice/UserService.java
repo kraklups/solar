@@ -35,10 +35,10 @@ public interface UserService extends UserDetailsService {
             String newClearPassword) 
             throws IncorrectPasswordException, InstanceNotFoundException;
     
-    public void removeUser(Long userProfileId, boolean erased) 
+    public void removeUser(Long userProfileId, boolean enabled) 
             throws InstanceNotFoundException;
 
-    public void blockUser(Long userProfileId, boolean blocked)
+    public void blockUser(Long userProfileId, boolean accountNonExpired)
     		throws InstanceNotFoundException;
     
     public UserProfile findUserProfileByLogin(String loginName)
