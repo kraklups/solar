@@ -65,6 +65,9 @@ public interface UserService extends UserDetailsService {
 	public Company createCompany(String companyName, Date date) 
 			throws DuplicateInstanceException;
 	
+	public Company saveCompany(Company company) 
+			throws DuplicateInstanceException;	
+	
 	public void updateCompany(Long companyId, String companyName, Date date) 
 			throws InstanceNotFoundException;
 	

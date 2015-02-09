@@ -57,6 +57,21 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
+	public Park savePark(Park park) throws DuplicateInstanceException {
+		
+        try {
+            parkDao.findByParkName(park.getParkName());
+            throw new DuplicateInstanceException(park.getParkName(),
+                    Park.class.getName());
+        } catch (InstanceNotFoundException e) {
+        	            
+            parkDao.save(park);
+         
+            return park;
+        }
+	}	
+	
+	@Override
 	public Park updatePark(Long parkId, String parkName, Date startupDate,
 			Date productionDate, UserProfile userProfile, Company company,
 			MultiPolygon mapPark) throws InstanceNotFoundException {

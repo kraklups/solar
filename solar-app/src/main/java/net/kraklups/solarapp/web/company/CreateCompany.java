@@ -41,17 +41,17 @@ public class CreateCompany {
 	}
 	
 	@RequestMapping(value = "/company/createCompany", method = RequestMethod.POST)
-	public String createCompanyPost(@Valid @ModelAttribute("company") Company company, BindingResult result, Model model) throws DuplicateInstanceException {
-		
-		
-		
+	public String createCompanyPost(@Valid @ModelAttribute("company") Company company, BindingResult result, Model model) 
+			throws DuplicateInstanceException {
+				
 		if(result.hasErrors()) {
 			logger.info("Returning createCompany.jspx page");
+			
 			return "company/createCompany";
 		} else {
 			logger.info("CreateCompany done");
 			model.addAttribute("company", company);
-			Company merda = userService.createCompany(company.getCompanyName(), company.getDate());
+			Company merda = userService.saveCompany(company);
 			
 			logger.info("Create Company page POST!" + merda);
 			

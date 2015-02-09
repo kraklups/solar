@@ -74,7 +74,7 @@
     
 	<security:authentication-manager id="dao-auth">
         <security:authentication-provider user-service-ref="userDetailsService">
-        	<security:password-encoder hash="md5"/>
+        	<security:password-encoder hash="bcrypt"/>
         </security:authentication-provider>
     </security:authentication-manager>  
     
@@ -82,9 +82,9 @@
     
     <security:authentication-manager id="in-memory-auth">
         <security:authentication-provider>
-        	<security:password-encoder hash="md5"/>
+        	<security:password-encoder hash="bcrypt"/>
             <security:user-service>
-                <security:user name="kraklups" password="f561aaf6ef0bf14d4208bb46a4ccb3ad" authorities="admin" />
+                <security:user name="kraklups" password="$2a$10$TySr.M7KjWQfQlzXtXxJkePIpuK0eN5pptThBegMVt6MZwDaYjeyi" authorities="admin" />
             </security:user-service>
         </security:authentication-provider>
     </security:authentication-manager>        

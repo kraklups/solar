@@ -36,7 +36,7 @@ public class UserProfile {
 	private String loginName;
 
 	@NotEmpty
-	@Size(min=8, max=32)	
+	@Size(min=60)	
 	private String encryptedPassword;
 	
 	@NotEmpty

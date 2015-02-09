@@ -261,6 +261,20 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public Company saveCompany(Company company)
+			throws DuplicateInstanceException {
+
+		try {
+			companyDao.findByName(company.getCompanyName());
+			throw new DuplicateInstanceException(company.getCompanyName(), Company.class.getName());
+		} catch (InstanceNotFoundException e) { 						
+			companyDao.save(company);
+			
+			return company;
+		}
+	}
+		
+	@Override
 	public void updateCompany(Long companyId, String companyName, Date date) 
 			throws InstanceNotFoundException {
 		

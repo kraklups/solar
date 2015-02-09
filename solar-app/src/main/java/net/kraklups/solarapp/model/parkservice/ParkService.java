@@ -15,6 +15,8 @@ public interface ParkService {
 
     public Park createPark(String parkName, Date startupDate, Date productionDate, UserProfile userProfile, 
     		Company company, MultiPolygon mapPark) throws DuplicateInstanceException;
+    
+    public Park savePark(Park park) throws DuplicateInstanceException;
 
     public Park updatePark(Long parkId, String parkName, Date startupDate, Date productionDate, UserProfile userProfile, 
     		Company company, MultiPolygon mapPark) throws InstanceNotFoundException;
