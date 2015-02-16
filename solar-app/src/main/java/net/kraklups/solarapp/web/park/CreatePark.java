@@ -2,9 +2,13 @@ package net.kraklups.solarapp.web.park;
 
 import java.text.DateFormat;
 import java.text.ParsePosition;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -16,6 +20,7 @@ import com.vividsolutions.jts.io.WKTReader;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.company.Company;
+import net.kraklups.solarapp.model.company.CompanyDao;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.parkservice.ParkService;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
@@ -37,20 +42,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class CreatePark {
 
+	private final static int COMPANIES_PER_PAGE = 50;
+	
+	private int startIndex = 0;
+	
 	@Autowired
 	private ParkService parkService;
 	
+	@Autowired
+	private UserService userService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(CreatePark.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@RequestMapping(value = "/park/createPark", method = RequestMethod.GET)
-	public String createParkGet(Model model) {
+	public String createParkGet(Model model) throws InstanceNotFoundException {
 		
 		logger.info("Create Park page GET!");
 		
-		model.addAttribute("park", new Park());
+		List <Company> companyList = userService.getCompanies(startIndex, COMPANIES_PER_PAGE).getCompanies();
+		
+		Park park = new Park();
+		
+		model.addAttribute("park", park);
+		
+		model.addAttribute("companyList",companyList);
 				
 		return "park/createPark";
 	}
@@ -176,7 +191,7 @@ public class CreatePark {
         		
         	}
         	
-        	Park park = parkService.createPark(parkName, startupDateAsCalendar, productionDateAsCalendar, userProfile, company, (MultiPolygon) geom);
+        	Park park = parkService.createPark(parkName, startupDateAsCalendar, productionDateAsCalendar, userProfile, company, (MapPark) geom);
         //	parkId = park.getParkId();
             
         } catch (DuplicateInstanceException e) {

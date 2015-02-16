@@ -80,6 +80,9 @@ public interface UserService extends UserDetailsService {
 	public Company findCompanyByName(String companyName)
 			throws InstanceNotFoundException;
 	
+	public CompanyBlock getCompanies(int startIndex, int count) 
+			throws InstanceNotFoundException;  
+		
 	public UserProfileBlock getEmployeesByCompanyId(Long companyId, int startIndex, int count) 
 			throws InstanceNotFoundException; 
 

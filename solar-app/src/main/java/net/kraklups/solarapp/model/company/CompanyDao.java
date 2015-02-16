@@ -25,5 +25,14 @@ public interface CompanyDao extends GenericDao<Company, Long>{
      */	
 	public Company findByName(String companyName) 
 			throws InstanceNotFoundException; 
+	
+    /**
+     * Returns a Company using the company name (not company identifier)
+     *
+     * @param companyName not the company identifier
+     * @return the Company
+     */	
+	public List<Company> findCompanies(int startIndex, int count) 
+			throws InstanceNotFoundException; 	
 
 }

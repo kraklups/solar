@@ -304,6 +304,18 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	public CompanyBlock getCompanies(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Company> companies = companyDao.findCompanies(startIndex, count + 1);
+		
+		boolean existMoreCompanies = companies.size() == (count + 1);
+		
+		return new CompanyBlock(companies, existMoreCompanies);
+		
+	}	
+	
+	@Override
 	public UserProfileBlock getEmployeesByCompanyId(Long companyId,
 			int startIndex, int count) throws InstanceNotFoundException {
 
