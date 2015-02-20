@@ -50,11 +50,12 @@ public class CreatePark {
 	
 	private int startIndex = 0;
 	
+/*	
 	@InitBinder
 	public void InitBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
 	}
-	
+*/	
 	@Autowired
 	private ParkService parkService;
 		
