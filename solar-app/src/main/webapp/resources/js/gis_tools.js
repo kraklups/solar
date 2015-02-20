@@ -34,12 +34,12 @@
     
     select.activate();
 
-    map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);
+    map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);  
  
   };
 
   SG.serialize = function() {
-
+	  
     arrayTemp = [];
  
     wkt = new OpenLayers.Format.WKT();
@@ -51,7 +51,7 @@
         arrayTemp.push(xXx[i].geometry);
       }
     }
-     
+    
     if (arrayTemp.length >0) { 
       multipolygon = new OpenLayers.Geometry.MultiPolygon(arrayTemp);            
 
@@ -66,7 +66,9 @@
     SG.init();
     $('#gisOpenLayers').click(function() {
     	  SG.serialize();
+    	  alert("click-inside");
     }); 
+    
   });
 
  }(jQuery, window, window.document, (window.SolarGis = window.SolarGis || {}) ));

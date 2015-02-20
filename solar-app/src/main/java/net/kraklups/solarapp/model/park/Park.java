@@ -29,8 +29,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.vividsolutions.jts.geom.MultiPolygon;
 
-import net.kraklups.solarapp.model.park.validator.MapPark;
-
 @Entity
 @Table(name="Park", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "parkName") })
@@ -54,7 +52,7 @@ public class Park {
 	
 	private Company company;	
 	
-	@MapPark
+//	@MapPark
 	private MultiPolygon mapPark;
 	
 	public Park() {		

@@ -20,18 +20,22 @@ import com.vividsolutions.jts.io.WKTReader;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.company.Company;
-import net.kraklups.solarapp.model.company.CompanyDao;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.parkservice.ParkService;
-import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userservice.UserService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,14 +50,19 @@ public class CreatePark {
 	
 	private int startIndex = 0;
 	
+	@InitBinder
+	public void InitBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+	}
+	
 	@Autowired
 	private ParkService parkService;
-	
+		
 	@Autowired
-	private UserService userService;
+	private UserService userService;			
 	
-	private static final Logger logger = LoggerFactory.getLogger(CreatePark.class);
-	
+	private static final Logger logger = LoggerFactory.getLogger(CreatePark.class);	
+		
 	@RequestMapping(value = "/park/createPark", method = RequestMethod.GET)
 	public String createParkGet(Model model) throws InstanceNotFoundException {
 		
@@ -63,17 +72,17 @@ public class CreatePark {
 		
 		Park park = new Park();
 		
-		model.addAttribute("park", park);
-		
+		model.addAttribute("park", park);		
 		model.addAttribute("companyList",companyList);
-				
+						
 		return "park/createPark";
 	}
+
 	
 	@RequestMapping(value = "/park/createPark", method = RequestMethod.POST)
 	public String createParkPost(@Valid @ModelAttribute("park") Park park, BindingResult result, Model model) 
-			throws DuplicateInstanceException {
-		
+ 			throws DuplicateInstanceException {		
+			
 		if(result.hasErrors()) {
 			logger.info("Returning createPark.jspx page");
 			
@@ -88,7 +97,7 @@ public class CreatePark {
 			
 			return "Done";
 		}
-	}	
+	} 	
 }
 
 /*

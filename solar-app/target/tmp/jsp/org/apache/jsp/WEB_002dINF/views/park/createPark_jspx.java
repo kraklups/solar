@@ -895,7 +895,7 @@ public final class createPark_jspx extends org.apache.jasper.runtime.HttpJspBase
             out.write("<div class=\"button\">");
             if (_jspx_meth_spring_message_8((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_form_0, _jspx_page_context, _jspx_push_body_count_form_form_0))
               return;
-            out.write("<input name=\"gisOpenLayers\" value=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${parkSubmit}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" type=\"submit\" />");
+            out.write("<input id=\"gisOpenLayers\" value=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${parkSubmit}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" type=\"submit\" />");
             out.write("</div>");
             out.write("</fieldset>");
             int evalDoAfterBody = _jspx_th_form_form_0.doAfterBody();

@@ -88,7 +88,7 @@
 	   							   								    
 		    						<div class="button">
 		    							<spring:message code="createPark.submit" var="parkSubmit" />
-		        						<input type="submit" value="${parkSubmit}" name="gisOpenLayers" />        
+		        						<input type="submit" value="${parkSubmit}" id="gisOpenLayers" />        
 	    							</div>
 	    						</fieldset>		
 							</form:form>
