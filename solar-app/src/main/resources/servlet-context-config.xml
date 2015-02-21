@@ -6,9 +6,19 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
- 
-    <mvc:annotation-driven />
+
+	<!-- Enable the configuration of mvc behavior based on annotations. --> 
+    <mvc:annotation-driven conversion-service="conversionService" />
     <context:component-scan base-package="net.kraklups.solarapp.web" />
+     	 	
+	<bean id="conversionService"
+    	class="org.springframework.format.support.FormattingConversionServiceFactoryBean"> 	
+    	<property name="formatters">
+        	<set>
+            	<bean class="net.kraklups.solarapp.web.util.CompanyFormatter" />            	
+        	</set>
+    	</property>
+	</bean> 	
      
     <!-- Used to serve static resources like css, images and javascript files-->
     <mvc:resources mapping="/resources/**" location="/resources/" />
