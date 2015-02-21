@@ -18,7 +18,7 @@ public class CompanyFormatter implements Formatter<Company> {
 	@Override
 	public String print(Company company, Locale locale) {
 		
-		logger.debug("merde print" + company);
+		logger.info("merde print: " + company);
 		
 		return company.getCompanyId().toString();
 	}
@@ -26,7 +26,7 @@ public class CompanyFormatter implements Formatter<Company> {
 	@Override
 	public Company parse(String companyId, Locale locale) throws ParseException {
 		
-		logger.debug("merde parse" + companyId);
+		logger.info("merde parse: " + companyId);
 		
 		Company company = new Company();
 		company.setCompanyId(Long.parseLong(companyId));
