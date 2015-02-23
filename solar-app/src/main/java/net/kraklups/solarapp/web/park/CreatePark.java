@@ -63,13 +63,11 @@ public class CreatePark {
 	@RequestMapping(value = "/park/createPark", method = RequestMethod.POST)
 	public String createParkPost(@Valid @ModelAttribute("park") Park park, BindingResult result, Model model) 
  			throws DuplicateInstanceException, InstanceNotFoundException {		
-						
-		logger.info("Returning createPark.jspx page");
-		
+								
 		if(result.hasErrors()) {
-			logger.info("Returning createPark.jspx page");
+			logger.info("Returning after error createPark.jspx page");
 			
-			initModelList(model);
+			//initModelList(model);
 			
 			return "park/createPark";
 		} else {

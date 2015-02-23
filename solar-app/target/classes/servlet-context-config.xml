@@ -15,7 +15,8 @@
     	class="org.springframework.format.support.FormattingConversionServiceFactoryBean"> 	
     	<property name="formatters">
         	<set>
-            	<bean class="net.kraklups.solarapp.web.util.CompanyFormatter" />            	
+            	<bean class="net.kraklups.solarapp.web.formatters.CompanyFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.MapParkFormatter" />            	
         	</set>
     	</property>
 	</bean> 	

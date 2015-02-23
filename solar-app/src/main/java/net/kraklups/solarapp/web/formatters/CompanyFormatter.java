@@ -1,4 +1,4 @@
-package net.kraklups.solarapp.web.util;
+package net.kraklups.solarapp.web.formatters;
 
 import java.text.ParseException;
 import java.util.Locale;
