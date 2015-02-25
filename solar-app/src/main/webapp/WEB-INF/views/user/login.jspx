@@ -83,8 +83,6 @@
 	                            			<input type="submit" value="${loginSubmit}"/>        
 	   		 							</div>
 	   		 							
-	   		 						<!--  	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> -->
-	   		 							
                             		</fieldset>
                         		</form:form>
 

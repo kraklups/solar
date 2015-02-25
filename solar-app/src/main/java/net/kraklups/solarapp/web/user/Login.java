@@ -6,6 +6,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,13 +21,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class Login {
 
 	private static final Logger logger = LoggerFactory.getLogger(Login.class);
-	
+		
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/user/login", method = RequestMethod.GET)
 	public String loginGet(Model model) {
-		logger.info("Login page !");
+		logger.info("Login page GET PAGE!");
 		
 		model.addAttribute("userProfile", new UserProfile());
 		
@@ -34,13 +35,16 @@ public class Login {
 	}	
 
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
-	public String loginPost(@Valid @ModelAttribute UserProfile userProfile, BindingResult result) {
+	public String loginPost(@Valid @ModelAttribute UserProfile userProfile, BindingResult result, Model model) {
 		
-		logger.info("Login page !" + "login: " + userProfile.getLoginName());
+		logger.info("Login page Session!" + "login: " + userProfile.getLoginName());
 		
 		if(result.hasErrors()) {
 			return "user/login";
 		} else {
+									
+			logger.info("Login page POST PAGE!" + "login: " + userProfile.getLoginName());
+			
 			return "Done";
 		}				
 	}	

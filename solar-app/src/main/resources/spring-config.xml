@@ -63,13 +63,13 @@
  		<security:intercept-url pattern="/**" access="admin,default"/>
         <security:form-login login-page="/user/login" authentication-failure-url="/user/denied"
             username-parameter="loginName" password-parameter="encryptedPassword"
-            default-target-url="/" />
+            default-target-url="/" always-use-default-target="true" />
         <security:logout invalidate-session="true" logout-success-url="/user/login" logout-url="/user/j_spring_security_logout" />        
         <security:access-denied-handler error-page="/user/denied"/>        
         <security:session-management session-fixation-protection="migrateSession" invalid-session-url="/user/login">
-            <security:concurrency-control max-sessions="2" expired-url="/user/login" />
+            <security:concurrency-control max-sessions="1" expired-url="/user/login" />
         </security:session-management>
-       <!--   <security:csrf /> -->
+        <!--  <security:csrf />              --> 
     </security:http>    
     
 	<security:authentication-manager id="dao-auth">

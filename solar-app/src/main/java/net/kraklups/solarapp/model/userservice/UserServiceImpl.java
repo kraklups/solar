@@ -91,8 +91,8 @@ public class UserServiceImpl implements UserService {
                 throw new IncorrectPasswordException(loginName);
             }
         }
+        
         return userProfile;
-
     }
 
 	@Override

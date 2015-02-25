@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,7 +36,7 @@ public class CreatePark {
 	private static final Logger logger = LoggerFactory.getLogger(CreatePark.class);
 	
 	private int startIndex = 0;
-		
+
 	@Autowired
 	private ParkService parkService;
 		
@@ -51,7 +52,7 @@ public class CreatePark {
 		
 		model.addAttribute("park", park);		
 		initModelList(model);
-						
+		
 		return "park/createPark";
 	}
 
@@ -71,12 +72,17 @@ public class CreatePark {
 			
 			return "park/createPark";
 		} else {
-			logger.info("CreateCompany done");
-						
+			
+			logger.info("Create Company page POST!");
+			
 			model.addAttribute("park", park);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			park.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));
 			Park merda = parkService.savePark(park);
 			
-			logger.info("Create Company page POST!" + merda);
+			logger.info("Create Company page POST! " + merda);
 			
 			return "Done";
 		}

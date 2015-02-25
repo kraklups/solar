@@ -24,4 +24,12 @@ public class Denied {
 		return "user/denied";
 	}	
 	
+	@RequestMapping(value = "/user/denied", method = RequestMethod.POST)
+	public String DeniedPost() {
+		logger.info("Denied page !");
+		
+		return "user/denied";
+	}	
+	
+	
 }
