@@ -50,7 +50,9 @@
                     		</div>
                     		
                     		<div class="panel-body">
-                    			<spring:message code="denied.fuckoff" />
+                    			<c:if test="${!empty CustomSessionAttribute}">
+                    				<spring:message code="denied.fuckoff" />                		
+                    			</c:if>
                     		</div>
                     		                    		
                 		</div>

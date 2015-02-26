@@ -16,12 +16,12 @@
             username-parameter="loginName" password-parameter="encryptedPassword"
             default-target-url="/" always-use-default-target="true" login-processing-url="/j_spring_security_check" />
         <sec:logout invalidate-session="true" logout-success-url="/user/login" logout-url="/j_spring_security_logout" />        
-<!--          <sec:access-denied-handler error-page="/user/denied"/>           -->      
+     	<sec:access-denied-handler error-page="/user/denied"/>           
         <sec:session-management session-fixation-protection="migrateSession" invalid-session-url="/user/login">
             <sec:concurrency-control max-sessions="1" expired-url="/user/login" />
         </sec:session-management>                      
     </sec:http>    
-    
+        
 	<sec:authentication-manager id="dao-auth">
         <sec:authentication-provider user-service-ref="userDetailsService">
         	<sec:password-encoder hash="bcrypt"/>

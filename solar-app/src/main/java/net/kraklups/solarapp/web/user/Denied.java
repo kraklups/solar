@@ -13,23 +13,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class Denied {
 
 	private static final Logger logger = LoggerFactory.getLogger(Denied.class);
-	
+		
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/user/denied", method = RequestMethod.GET)
 	public String DeniedGet() {
-		logger.info("Denied page !");
+		logger.info("Denied GET page !");
 		
 		return "user/denied";
 	}	
 	
 	@RequestMapping(value = "/user/denied", method = RequestMethod.POST)
 	public String DeniedPost() {
-		logger.info("Denied page !");
+		logger.info("Denied POST page !");
 		
 		return "user/denied";
-	}	
-	
-	
+	}
+		
 }

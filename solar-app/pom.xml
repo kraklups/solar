@@ -41,17 +41,17 @@
         <hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
         <junit.version>4.11</junit.version>
         <spring.version>4.0.9.RELEASE</spring.version>
-        <servletApi.version>3.1.0</servletApi.version>
+        <servletApi.version>3.0.1</servletApi.version>
         <tiles-version>3.0.5</tiles-version>
         <jstl.version>1.2</jstl.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
         <spring-security.version>3.2.5.RELEASE</spring-security.version> 
 
         <!-- Plugin versions -->
-        <mavenCompilerPlugin.version>2.5.1</mavenCompilerPlugin.version>
+        <mavenCompilerPlugin.version>3.2</mavenCompilerPlugin.version>
         <mavenResourcesPlugin.version>2.7</mavenResourcesPlugin.version>
         <sqlMavenPlugin.version>1.5</sqlMavenPlugin.version>
-        <mavenAssemblyPlugin.version>2.5.2</mavenAssemblyPlugin.version>
+        <mavenAssemblyPlugin.version>2.5.3</mavenAssemblyPlugin.version>
         <jettyMavenPlugin>8.1.16.v20140903</jettyMavenPlugin>
         <mavenEclipsePlugin.version>2.9</mavenEclipsePlugin.version>
     </properties>
@@ -183,7 +183,7 @@
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${servletApi.version}</version>
                 <scope>provided</scope>
-            </dependency>       
+            </dependency>                              
 		</dependencies>
     </dependencyManagement>
 
@@ -301,7 +301,12 @@
     		<groupId>org.hibernate</groupId>
     		<artifactId>hibernate-validator</artifactId>
     		<version>${hibernate-validator.version}</version>
-	    </dependency>  
+	    </dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
     </dependencies>
 
     <build>
@@ -320,8 +325,9 @@
                 <includes>
                     <include>spring-config.xml</include>
                     <include>hibernate-config.xml</include>
-                    <include>servlet-contect-config.xml</include>
-                    <include>tiles-definitions.xml</include>
+                    <include>servlet-context-config.xml</include>
+                    <include>spring-sec-config</include>
+                    <include>tiles-definitions.xml</include>                    
                 </includes>
             </resource>
 
