@@ -4,13 +4,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
     	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
-                        
+                            
+	<sec:global-method-security secured-annotations="enabled" />
+
 	<sec:http pattern="/resources/**" security="none"/>            
 	<sec:http pattern="/user/login" security="none"/>            
-            
+       
     <sec:http create-session="ifRequired" auto-config="true" disable-url-rewriting="true"
     		authentication-manager-ref="dao-auth" access-decision-manager-ref="accessDecisionManager">
-     <!--    	<sec:csrf />-->           		
+         	<sec:csrf />         		
  		<sec:intercept-url pattern="/**" access="admin,default"/>
         <sec:form-login login-page="/user/login" authentication-failure-url="/user/denied"
             username-parameter="loginName" password-parameter="encryptedPassword"
