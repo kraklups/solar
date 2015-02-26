@@ -24,7 +24,7 @@
     </listener>
     
     <!-- Spring Security Filter -->     
-    <filter>
+      <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
         <async-supported>true</async-supported>
@@ -72,7 +72,7 @@
 	<session-config>
 		<session-timeout>20</session-timeout>
 		<!-- Disables URL-based sessions (no more 'jsessionid' in the URL using Tomcat) -->
-		<tracking-mode>COOKIE</tracking-mode>
+	 	<tracking-mode>COOKIE</tracking-mode>
 	</session-config>      
     
 </web-app>

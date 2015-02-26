@@ -45,6 +45,8 @@ public class Login {
 									
 			logger.info("Login page POST PAGE!" + "login: " + userProfile.getLoginName());
 			
+			model.addAttribute("userProfile", new UserProfile());
+			
 			return "Done";
 		}				
 	}	

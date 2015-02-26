@@ -3643,7 +3643,7 @@ public final class menu_jspx extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_spring_url_50.setParent(null);
     _jspx_th_spring_url_50.setHtmlEscape(true);
     _jspx_th_spring_url_50.setVar("logoutUrl");
-    _jspx_th_spring_url_50.setValue("/user/j_spring_security_logout");
+    _jspx_th_spring_url_50.setValue("/j_spring_security_logout");
     int[] _jspx_push_body_count_spring_url_50 = new int[] { 0 };
     try {
       int _jspx_eval_spring_url_50 = _jspx_th_spring_url_50.doStartTag();
