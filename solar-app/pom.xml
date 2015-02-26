@@ -52,7 +52,8 @@
         <mavenResourcesPlugin.version>2.7</mavenResourcesPlugin.version>
         <sqlMavenPlugin.version>1.5</sqlMavenPlugin.version>
         <mavenAssemblyPlugin.version>2.5.3</mavenAssemblyPlugin.version>
-        <jettyMavenPlugin>8.1.16.v20140903</jettyMavenPlugin>
+<!--          <jettyMavenPlugin>8.1.16.v20140903</jettyMavenPlugin>               -->
+        <jettyMavenPlugin>9.3.0.M1</jettyMavenPlugin>
         <mavenEclipsePlugin.version>2.9</mavenEclipsePlugin.version>
     </properties>
 
@@ -531,21 +532,31 @@
             <!-- ========================================================== -->
             <!-- Jetty configuration -->
             <plugin>
+            <!--  
                 <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jettyMavenPlugin}</version>
+			-->
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jettyMavenPlugin}</version>
 
                 <configuration>
-                    <webAppConfig>
+                    <webApp>
                       <contextPath>/${project.artifactId}</contextPath>
                         <jettyEnvXml>target/jetty/jetty-env.xml</jettyEnvXml>
-                    </webAppConfig>
-                    <reload>manual</reload>
+                    </webApp>
+                    <reload>manual</reload>                   
+                    <httpConnector>
+                    	<port>9090</port>
+                    </httpConnector>
+<!--  
                     <connectors>
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
                             <port>9090</port>
                         </connector>
                     </connectors>
+-->                    
                 </configuration>
 
                 <dependencies>

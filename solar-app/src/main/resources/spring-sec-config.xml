@@ -10,7 +10,7 @@
             
     <sec:http create-session="ifRequired" auto-config="true" disable-url-rewriting="true"
     		authentication-manager-ref="dao-auth" access-decision-manager-ref="accessDecisionManager">
-       	<sec:csrf />           		
+     <!--    	<sec:csrf />-->           		
  		<sec:intercept-url pattern="/**" access="admin,default"/>
         <sec:form-login login-page="/user/login" authentication-failure-url="/user/denied"
             username-parameter="loginName" password-parameter="encryptedPassword"
