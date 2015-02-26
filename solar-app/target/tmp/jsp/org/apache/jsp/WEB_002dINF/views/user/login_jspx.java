@@ -12,13 +12,13 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
   private static java.util.List<String> _jspx_dependants;
 
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_url_var_value_nobody;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_password_placeholder_path_class_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_spring_message_code_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_fmt_setBundle_basename_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_fmt_setLocale_value_scope_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_spring_message_var_code_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_spring_bind_path;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_input_placeholder_path_class_autofocus_nobody;
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_input_placeholder_path_class_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_errors_path_for_element_cssClass_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_form_modelAttribute_method_action;
 
@@ -30,26 +30,26 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
 
   public void _jspInit() {
     _jspx_tagPool_c_url_var_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_form_password_placeholder_path_class_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_spring_message_code_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_fmt_setBundle_basename_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_fmt_setLocale_value_scope_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_spring_message_var_code_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_spring_bind_path = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_form_input_placeholder_path_class_autofocus_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _jspx_tagPool_form_input_placeholder_path_class_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_form_errors_path_for_element_cssClass_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_form_form_modelAttribute_method_action = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
     _jspx_tagPool_c_url_var_value_nobody.release();
+    _jspx_tagPool_form_password_placeholder_path_class_nobody.release();
     _jspx_tagPool_spring_message_code_nobody.release();
     _jspx_tagPool_fmt_setBundle_basename_nobody.release();
     _jspx_tagPool_fmt_setLocale_value_scope_nobody.release();
     _jspx_tagPool_spring_message_var_code_nobody.release();
     _jspx_tagPool_spring_bind_path.release();
     _jspx_tagPool_form_input_placeholder_path_class_autofocus_nobody.release();
-    _jspx_tagPool_form_input_placeholder_path_class_nobody.release();
     _jspx_tagPool_form_errors_path_for_element_cssClass_nobody.release();
     _jspx_tagPool_form_form_modelAttribute_method_action.release();
   }
@@ -85,6 +85,8 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<head>");
       out.write("<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\" />");
       out.write("<meta content=\"width=device-width, initial-scale=1\" name=\"viewport\" />");
+      out.write("<meta content=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${_csrf.token}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" name=\"_csrf\" />");
+      out.write("<meta content=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${_csrf.headerName}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" name=\"_csrf_header\" />");
       if (_jspx_meth_c_url_0(_jspx_page_context))
         return;
       out.write("<link rel=\"stylesheet\" href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${bootstrapCSS}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" />");
@@ -197,7 +199,7 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
                   if (_jspx_meth_spring_message_3((javax.servlet.jsp.tagext.JspTag) _jspx_th_spring_bind_1, _jspx_page_context, _jspx_push_body_count_spring_bind_1))
                     return;
                   out.write("</label>");
-                  if (_jspx_meth_form_input_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_spring_bind_1, _jspx_page_context, _jspx_push_body_count_spring_bind_1))
+                  if (_jspx_meth_form_password_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_spring_bind_1, _jspx_page_context, _jspx_push_body_count_spring_bind_1))
                     return;
                   //  form:errors
                   org.springframework.web.servlet.tags.form.ErrorsTag _jspx_th_form_errors_1 = (org.springframework.web.servlet.tags.form.ErrorsTag) _jspx_tagPool_form_errors_path_for_element_cssClass_nobody.get(org.springframework.web.servlet.tags.form.ErrorsTag.class);
@@ -253,6 +255,7 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
             out.write("<input value=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${loginSubmit}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" type=\"submit\" />");
             out.write("</div>");
             out.write("</fieldset>");
+            out.write("<input value=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${_csrf.token}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" name=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${_csrf.parameterName}", java.lang.String.class, (PageContext)_jspx_page_context, null) + "\" type=\"hidden\" />");
             int evalDoAfterBody = _jspx_th_form_form_0.doAfterBody();
             if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
               break;
@@ -535,30 +538,30 @@ public final class login_jspx extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_form_input_1(javax.servlet.jsp.tagext.JspTag _jspx_th_spring_bind_1, PageContext _jspx_page_context, int[] _jspx_push_body_count_spring_bind_1)
+  private boolean _jspx_meth_form_password_0(javax.servlet.jsp.tagext.JspTag _jspx_th_spring_bind_1, PageContext _jspx_page_context, int[] _jspx_push_body_count_spring_bind_1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
-    //  form:input
-    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_input_1 = (org.springframework.web.servlet.tags.form.InputTag) _jspx_tagPool_form_input_placeholder_path_class_nobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
-    _jspx_th_form_input_1.setPageContext(_jspx_page_context);
-    _jspx_th_form_input_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_spring_bind_1);
-    _jspx_th_form_input_1.setDynamicAttribute(null, "placeholder", new String("Password"));
-    _jspx_th_form_input_1.setDynamicAttribute(null, "class", new String("form-control"));
-    _jspx_th_form_input_1.setPath("encryptedPassword");
-    int[] _jspx_push_body_count_form_input_1 = new int[] { 0 };
+    //  form:password
+    org.springframework.web.servlet.tags.form.PasswordInputTag _jspx_th_form_password_0 = (org.springframework.web.servlet.tags.form.PasswordInputTag) _jspx_tagPool_form_password_placeholder_path_class_nobody.get(org.springframework.web.servlet.tags.form.PasswordInputTag.class);
+    _jspx_th_form_password_0.setPageContext(_jspx_page_context);
+    _jspx_th_form_password_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_spring_bind_1);
+    _jspx_th_form_password_0.setDynamicAttribute(null, "placeholder", new String("Password"));
+    _jspx_th_form_password_0.setDynamicAttribute(null, "class", new String("form-control"));
+    _jspx_th_form_password_0.setPath("encryptedPassword");
+    int[] _jspx_push_body_count_form_password_0 = new int[] { 0 };
     try {
-      int _jspx_eval_form_input_1 = _jspx_th_form_input_1.doStartTag();
-      if (_jspx_th_form_input_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      int _jspx_eval_form_password_0 = _jspx_th_form_password_0.doStartTag();
+      if (_jspx_th_form_password_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
         return true;
       }
     } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_form_input_1[0]-- > 0)
+      while (_jspx_push_body_count_form_password_0[0]-- > 0)
         out = _jspx_page_context.popBody();
-      _jspx_th_form_input_1.doCatch(_jspx_exception);
+      _jspx_th_form_password_0.doCatch(_jspx_exception);
     } finally {
-      _jspx_th_form_input_1.doFinally();
-      _jspx_tagPool_form_input_placeholder_path_class_nobody.reuse(_jspx_th_form_input_1);
+      _jspx_th_form_password_0.doFinally();
+      _jspx_tagPool_form_password_placeholder_path_class_nobody.reuse(_jspx_th_form_password_0);
     }
     return false;
   }

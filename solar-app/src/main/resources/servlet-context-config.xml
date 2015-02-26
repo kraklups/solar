@@ -53,10 +53,10 @@
     <bean id="tilesConfigurer"
         class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <property name="definitions">
-            <list>
+            <set>
                 <value>classpath:/tiles-definitions.xml</value>
-            </list>
+            </set>
         </property>
-    </bean>
- 
+    </bean>    
+         
 </beans>

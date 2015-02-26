@@ -149,16 +149,16 @@
 			<dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
-                <version>${spring.version}</version>
-                <exclusions>
+                <version>${spring.version}</version>                 
+                <exclusions>                
                 	<!-- Exclude Commons Logging in favor of SLF4j -->
                 	<exclusion>
                     	<groupId>commons-logging</groupId>
                     	<artifactId>commons-logging</artifactId>
                  	</exclusion>
             	</exclusions>
-			</dependency>  
-            <dependency>
+			</dependency> 
+			<dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
@@ -241,7 +241,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
-                
+        <dependency>
+        	<groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>					
+                       
 		<!-- Spring Security --> 
 		<dependency>  
     		<groupId>org.springframework.security</groupId>  
@@ -257,7 +261,12 @@
     		<groupId>org.springframework.security</groupId>  
     		<artifactId>spring-security-config</artifactId>  
     		<version>${spring-security.version}</version>  
-		</dependency>               
+		</dependency>      
+		<dependency>
+    		<groupId>org.springframework.security</groupId>
+    		<artifactId>spring-security-taglibs</artifactId>
+    		<version>${spring-security.version}</version>
+		</dependency>		         
                                 
         <!-- Hibernate Spatial -->            
         <dependency>

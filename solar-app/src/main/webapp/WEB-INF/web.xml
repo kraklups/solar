@@ -15,35 +15,30 @@
 	
     <context-param>
     	<param-name>contextConfigLocation</param-name>
-    	<param-value>classpath:/spring-config.xml</param-value>
+    	<param-value>classpath:/spring-config.xml,classpath:/spring-sec-config.xml</param-value>
     </context-param>
-        
+                
     <!-- Creates the Spring Container shared by all Servlets and Filters -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
-   <listener>
-        <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
-    </listener>
-     
-    <session-config>
-        <session-timeout>5</session-timeout>
-        <tracking-mode>COOKIE</tracking-mode>        
-    </session-config>
- 
-    <!-- Spring Security Filter -->
-     
+    
+    <!-- Spring Security Filter -->     
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <async-supported>true</async-supported>
     </filter>
  
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+        <url-pattern>/*</url-pattern>      
+    </filter-mapping>    
 
+   <listener>
+        <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+    </listener>
+      
     <!-- Processes application requests -->
     <servlet>
         <servlet-name>appServlet</servlet-name>
@@ -75,9 +70,9 @@
     </filter-mapping>
     
 	<session-config>
-		<session-timeout>720</session-timeout>
+		<session-timeout>20</session-timeout>
 		<!-- Disables URL-based sessions (no more 'jsessionid' in the URL using Tomcat) -->
 		<tracking-mode>COOKIE</tracking-mode>
-	</session-config>        
+	</session-config>      
     
 </web-app>
