@@ -14,11 +14,6 @@
     <!--
         ===================================================================
     -->
-    <!--
-        Default values for properties. These default values are expected
-        to be valid for most profiles. Specific profiles can overwrite
-        values when necessary.
-    -->
     <properties>
         <!--  Data source properties -->
         <dataSource.user>solarapp</dataSource.user>
@@ -48,14 +43,13 @@
         <tiles-version>3.0.5</tiles-version>
         <jstl.version>1.2</jstl.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
-        <spring-security.version>3.2.5.RELEASE</spring-security.version> 
+        <spring-security.version>3.2.6.RELEASE</spring-security.version> 
 
         <!-- Plugin versions -->
         <mavenCompilerPlugin.version>3.2</mavenCompilerPlugin.version>
         <mavenResourcesPlugin.version>2.7</mavenResourcesPlugin.version>
         <sqlMavenPlugin.version>1.5</sqlMavenPlugin.version>
         <mavenAssemblyPlugin.version>2.5.3</mavenAssemblyPlugin.version>
-<!--          <jettyMavenPlugin>8.1.16.v20140903</jettyMavenPlugin>               -->
         <jettyMavenPlugin>9.3.0.M1</jettyMavenPlugin>
         <mavenEclipsePlugin.version>2.9</mavenEclipsePlugin.version>
     </properties>
