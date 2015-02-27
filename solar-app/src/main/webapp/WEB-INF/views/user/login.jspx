@@ -3,13 +3,13 @@
 	xmlns:form="http://www.springframework.org/tags/form"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:spring="http://www.springframework.org/tags"
-	xmlns:tiles="http://tiles.apache.org/tags-tiles"	
+	xmlns:tiles="http://tiles.apache.org/tags-tiles"
 	xmlns:fmt="http://java.sun.com/jstl/fmt"	
 	version="2.0" >
 	
-	<jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+	<jsp:directive.page language="java" contentType="text/html" pageEncoding="UTF-8" />
 	<jsp:output omit-xml-declaration="yes"/> 
-	<jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />	
+	<jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />
 	<jsp:directive.page session="false"/>
 	
 	<fmt:setLocale value="en" scope="application"/>
@@ -52,6 +52,7 @@
                     		
  								<c:url var="loginUrl" value="/j_spring_security_check"></c:url>                   		
                         		<form:form action="${loginUrl}" modelAttribute="userProfile" method="POST">
+                        		
                             		<fieldset>
                             			<spring:bind path="loginName">                                
                                 			<div class="form-group ${status.error ? 'has-error' : '' }">
@@ -84,7 +85,7 @@
 	   		 							</div>
 	   		 							
                             		</fieldset>
-                            		                            		
+                            		                   		
                         		</form:form>
 
                     		</div>

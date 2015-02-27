@@ -54,7 +54,7 @@
         class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <property name="definitions">
             <set>
-                <value>classpath:/tiles-definitions.xml</value>
+                <value>classpath:tiles-definitions.xml</value>
             </set>
         </property>
     </bean>    
