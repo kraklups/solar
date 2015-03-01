@@ -13,6 +13,10 @@
 
     <!-- Enable component scanning for defining beans with annotations. -->
     <context:component-scan base-package="net.kraklups.solarapp.model"/>
+    
+	<!-- Enable the configuration of transactional behavior based on
+	     annotations. -->
+    <tx:annotation-driven transaction-manager="transactionManager" />    
 
     <!--  For translating native persistence exceptions to Spring's 
           DataAccessException hierarchy. -->
@@ -31,15 +35,13 @@
     <bean id="sessionFactory"
         class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
         p:dataSource-ref="dataSourceProxy"
-        p:configLocation="classpath:/hibernate-config.xml"/>
+        p:configLocation="classpath:hibernate-config.xml"/>
 
     <!-- Transaction manager for a single Hibernate SessionFactory.  -->
     <bean id="transactionManager"
         class="org.springframework.orm.hibernate4.HibernateTransactionManager"
         p:sessionFactory-ref="sessionFactory" />
 
-	<!-- Enable the configuration of transactional behavior based on
-	     annotations. -->
-    <tx:annotation-driven transaction-manager="transactionManager" />
+
         
 </beans>

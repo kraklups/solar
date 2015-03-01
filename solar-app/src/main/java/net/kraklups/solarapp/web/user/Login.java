@@ -1,5 +1,6 @@
 package net.kraklups.solarapp.web.user;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import net.kraklups.solarapp.model.userprofile.UserProfile;
@@ -7,6 +8,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class Login {
 
+	@Autowired 
+	private HttpServletRequest request;
+	
 	private static final Logger logger = LoggerFactory.getLogger(Login.class);
 		
 	/**
@@ -27,7 +32,7 @@ public class Login {
 	 */
 	@RequestMapping(value = "/user/login", method = RequestMethod.GET)
 	public String loginGet(Model model) {
-		logger.info("Login page GET PAGE!");
+		logger.info("Login page GET PAGE!" + request.getParameterNames());
 		
 		model.addAttribute("userProfile", new UserProfile());
 		
@@ -36,8 +41,6 @@ public class Login {
 
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
 	public String loginPost(@Valid @ModelAttribute UserProfile userProfile, BindingResult result, Model model) {
-		
-		logger.info("Login page Session!" + "login: " + userProfile.getLoginName());
 		
 		if(result.hasErrors()) {
 			return "user/login";

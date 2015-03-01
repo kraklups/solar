@@ -9,6 +9,7 @@
 
 	<!-- Enable the configuration of mvc behavior based on annotations. --> 
     <mvc:annotation-driven conversion-service="conversionService" />
+
     <context:component-scan base-package="net.kraklups.solarapp.web"/>
      	 	
 	<bean id="conversionService"

@@ -12,7 +12,7 @@
        
     <sec:http create-session="ifRequired" auto-config="true" disable-url-rewriting="true"
     		authentication-manager-ref="dao-auth" access-decision-manager-ref="accessDecisionManager">
-<!--               <sec:csrf />  -->                             		
+<!--                <sec:csrf />           -->                             		
  		<sec:intercept-url pattern="/**" access="admin,default"/>
         <sec:form-login login-page="/user/login" authentication-failure-url="/user/denied"
             username-parameter="loginName" password-parameter="encryptedPassword"
@@ -39,7 +39,7 @@
                 <sec:user name="kraklups" password="$2a$10$TySr.M7KjWQfQlzXtXxJkePIpuK0eN5pptThBegMVt6MZwDaYjeyi" authorities="admin" />
             </sec:user-service>
         </sec:authentication-provider>
-    </sec:authentication-manager>    
+    </sec:authentication-manager>  
 
 	<!-- Configuring RoleVoter bean to use custom access roles, by default roles should be in the form ROLE_{XXX} -->
     <bean id="roleVoter"
