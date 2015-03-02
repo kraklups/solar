@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+                            
+	<sec:global-method-security secured-annotations="enabled" />
+
+	<sec:http pattern="/resources/**" security="none"/>            
+	<sec:http pattern="/user/login" security="none"/>            
+       
+    <sec:http create-session="ifRequired" auto-config="true" disable-url-rewriting="true"
+    		authentication-manager-ref="dao-auth" access-decision-manager-ref="accessDecisionManager">
+<!--                <sec:csrf />           -->                             		
+ 		<sec:intercept-url pattern="/**" access="admin,default"/>
+        <sec:form-login login-page="/user/login" authentication-failure-url="/user/denied"
+            username-parameter="loginName" password-parameter="encryptedPassword"
+            default-target-url="/" always-use-default-target="true" login-processing-url="/j_spring_security_check" />
+        <sec:logout invalidate-session="true" logout-success-url="/user/login" logout-url="/j_spring_security_logout" />        
+		<sec:access-denied-handler error-page="/user/denied"/>           
+        <sec:session-management session-fixation-protection="migrateSession" invalid-session-url="/user/login">
+            <sec:concurrency-control max-sessions="1" expired-url="/user/login" />
+        </sec:session-management>                      
+    </sec:http>    
+        
+	<sec:authentication-manager id="dao-auth">
+        <sec:authentication-provider user-service-ref="userDetailsService">
+        	<sec:password-encoder hash="bcrypt"/>
+        </sec:authentication-provider>
+    </sec:authentication-manager>  
+    
+    <bean id="userDetailsService" class="net.kraklups.solarapp.model.userservice.UserServiceImpl" />  
+    
+    <sec:authentication-manager id="in-memory-auth">
+        <sec:authentication-provider>
+        	<sec:password-encoder hash="bcrypt"/>
+            <sec:user-service>
+                <sec:user name="kraklups" password="$2a$10$TySr.M7KjWQfQlzXtXxJkePIpuK0eN5pptThBegMVt6MZwDaYjeyi" authorities="admin" />
+            </sec:user-service>
+        </sec:authentication-provider>
+    </sec:authentication-manager>  
+
+	<!-- Configuring RoleVoter bean to use custom access roles, by default roles should be in the form ROLE_{XXX} -->
+    <bean id="roleVoter"
+        class="org.springframework.security.access.vote.RoleVoter">
+        <property name="rolePrefix" value=""></property>
+    </bean>
+ 
+    <bean id="accessDecisionManager"
+        class="org.springframework.security.access.vote.AffirmativeBased">
+        <constructor-arg name="decisionVoters" ref="roleVoter" />
+    </bean>        
+
+</beans>
