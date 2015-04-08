@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.elementprk;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +25,7 @@ public class StringLine extends ElementPrk {
 	}
 
 	public StringLine(String elementPrkName, String elementPrkTag,
-			Calendar tvi, Calendar lastAccess, UserProfile userProfile,
+			Date tvi, Date lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park, ArrayBox arrayBox) {
 		
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,

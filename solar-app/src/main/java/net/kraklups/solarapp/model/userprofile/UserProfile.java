@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.userprofile;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +16,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.role.Role;
@@ -26,15 +30,38 @@ import net.kraklups.solarapp.model.role.Role;
 public class UserProfile {
 
 	private Long userProfileId;
+	
+	@NotEmpty
+	@Size(min=6, max=30)	
 	private String loginName;
+
+	@NotEmpty
+	@Size(min=60)	
 	private String encryptedPassword;
+	
+	@NotEmpty
+	@Size(min=2, max=30)	
 	private String firstName;
+	
+	@NotEmpty
+	@Size(min=2, max=30)	
 	private String surname1;
-	private String surname2;	
+	
+	@NotEmpty
+	@Size(min=2, max=30)	
+	private String surname2;
+	
+	@NotEmpty
+	@Email	
 	private String email;
-	private Calendar date;
-	private Boolean blocked;
-	private Boolean erased;
+	
+	private Date date;
+	
+	private Boolean enabled;
+	private Boolean accountNonExpired;
+	private Boolean credentialsNonExpired;
+	private Boolean accountNonLocked;
+	
 	private Company company;
 	private Role role;
 	private long version;
@@ -44,7 +71,7 @@ public class UserProfile {
 	
 	public UserProfile(String loginName, String encryptedPassword,
 			String firstName, String surname1, String surname2, String email, 
-			Calendar date, Boolean blocked, Boolean erased, Company company, Role role) {
+			Date date, Boolean enabled, Boolean accountNonExpired, Company company, Role role) {
 
 		this.loginName = loginName;
 		this.encryptedPassword = encryptedPassword;
@@ -53,8 +80,8 @@ public class UserProfile {
 		this.surname2 = surname2;		
 		this.email = email;
 		this.date = date;
-		this.blocked = blocked;
-		this.erased = erased;
+		this.enabled = enabled;
+		this.accountNonExpired = accountNonExpired;
 		this.company = company;
 		this.role = role;
 	}
@@ -82,7 +109,6 @@ public class UserProfile {
 		this.loginName = loginName;
 	}
 
-	@Column(name = "enPassword")
 	public String getEncryptedPassword() {
 		return encryptedPassword;
 	}
@@ -123,30 +149,46 @@ public class UserProfile {
 		this.email = email;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	public Calendar getDate() {
+	public Date getDate() {
 		return date;
 	}
-	
-	public void setDate(Calendar date) {
+
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	
-	public boolean getBlocked () {
-		return blocked;
+	public Boolean getEnabled() {
+		return enabled;
 	}
 	
-	public void setBlocked(Boolean blocked) {
-		this.blocked = blocked;
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
-	public boolean getErased () {
-		return erased;
+	public Boolean getAccountNonExpired () {
+		return accountNonExpired;
 	}
 	
-	public void setErased(Boolean erased) {
-		this.erased = erased;
+	public void setAccountNonExpired(Boolean accountNonExpired) {
+		this.accountNonExpired = accountNonExpired;
 	}	
+	
+	public Boolean getCredentialsNonExpired() {
+		return credentialsNonExpired;
+	}
+	
+	public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
+		this.credentialsNonExpired = credentialsNonExpired;
+	}
+	
+	public Boolean getAccountNonLocked() {
+		return accountNonLocked;
+	}
+	
+	public void setAccountNonLocked(Boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
+	}
 	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="companyId")
@@ -182,7 +224,7 @@ public class UserProfile {
 		return "UserProfile [userProfileId=" + userProfileId + ", loginName="
 				+ loginName + ", encryptedPassword=" + encryptedPassword
 				+ ", firstName=" + firstName + ", surname1=" + surname1
-				+ ", surname2=" + surname2 + ", blocked=" + blocked+ ", erased=" + erased  
+				+ ", surname2=" + surname2 + ", enabled=" + enabled+ ", accountNonExpired=" + accountNonExpired  
 				+ ", email=" + email + ", version=" + version + "]";
 	}
 

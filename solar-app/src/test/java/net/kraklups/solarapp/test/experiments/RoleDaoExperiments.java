@@ -1,5 +1,6 @@
 package net.kraklups.solarapp.test.experiments;
 
+import java.util.Date;
 import java.util.Calendar;
 
 import org.hibernate.Transaction;
@@ -23,11 +24,12 @@ public class RoleDaoExperiments {
 		
 		try {
 			// Register module. Need UserProfile created FK dependency loginName...
-			Calendar startDate = Calendar.getInstance();
+			Calendar calendar = Calendar.getInstance();
+			Date timestamp = new Date(calendar.getTime().getTime());
 			Long weight = new Long("1");
 			UserProfile userProfile = new UserProfile();
 			
-			Role role = new Role("jelon", startDate, userProfile, weight);
+			Role role = new Role("jelon", timestamp, userProfile, weight);
 			roleDao.save(role);
 			Long roleId = role.getRoleId();
 			System.out.println("Company with companyId '" + roleId

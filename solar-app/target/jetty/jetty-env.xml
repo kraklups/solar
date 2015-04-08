@@ -3,7 +3,7 @@
 
 <Configure class="org.eclipse.jetty.webapp.WebAppContext">
 
-    <New id="POJO-ExamplesDS" class="org.eclipse.jetty.plus.jndi.Resource">
+    <New id="Solar-AppDS" class="org.eclipse.jetty.plus.jndi.Resource">
         <Arg>jdbc/solar-examples-ds</Arg>
         <Arg>
             <New class="org.springframework.jdbc.datasource.DriverManagerDataSource">

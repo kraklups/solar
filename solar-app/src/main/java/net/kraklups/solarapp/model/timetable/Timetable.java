@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.timetable;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,8 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
@@ -23,15 +28,23 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 public class Timetable {
 	
 	private Long timetableId;
+	
+	@NotEmpty
+	@Size(min=6, max=30)	
 	private String timetableTag;
+	
 	private UserProfile userProfile;
-	private Calendar tvi;
+	
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	@NotNull	
+	private Date tvi;
+	
 	private Park park;
 	
 	public Timetable() {
 	}
 	
-	public Timetable(String timetableTag, UserProfile userProfile, Calendar tvi, Park park){
+	public Timetable(String timetableTag, UserProfile userProfile, Date tvi, Park park){
 		this.timetableTag = timetableTag;
 		this.userProfile = userProfile;
 		this.tvi = tvi;
@@ -71,12 +84,12 @@ public class Timetable {
 		this.timetableTag = timetableTag;
 	}
 	
-	public Calendar getTvi(){
+	public Date getTvi(){
 		return tvi;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	public void setTvi(Calendar tvi) {
+	public void setTvi(Date tvi) {
 		this.tvi = tvi;
 	}
 	

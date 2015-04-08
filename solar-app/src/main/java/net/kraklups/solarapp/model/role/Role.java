@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.role;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,9 +15,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.OneToMany;
-import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
@@ -28,16 +33,26 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 public class Role {
 
 	private Long roleId;
+
+	@NotEmpty
+	@Size(min=6, max=30)
 	private String roleName;
-	private Calendar date;
+	
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	@NotNull	
+	private Date date;
+	
 	private UserProfile userProfile;
+	
+	@NotNull
 	private Long weight;
+	
 	private Set<RoleModuleAccess> roleModuleAccess = new HashSet<RoleModuleAccess>(0);
 	
 	public Role() {
 	}
 	
-	public Role(String roleName, Calendar date, UserProfile userProfile, Long weight) {
+	public Role(String roleName, Date date, UserProfile userProfile, Long weight) {
 		
 		this.roleName = roleName;
 		this.date = date;
@@ -45,7 +60,7 @@ public class Role {
 		this.weight = weight;
 	}
 
-	public Role(String roleName, Calendar date, UserProfile userProfile, Long weight, Set<RoleModuleAccess> roleModuleAccess) {		
+	public Role(String roleName, Date date, UserProfile userProfile, Long weight, Set<RoleModuleAccess> roleModuleAccess) {		
 
 		this.roleName = roleName;
 		this.date = date;
@@ -77,12 +92,12 @@ public class Role {
 		this.roleName = roleName;
 	}
 	
-	@Temporal(TemporalType.TIMESTAMP)
-    public Calendar getDate() {
+    public Date getDate() {
 		return date;
 	}
-	
-	public void setDate(Calendar date){
+
+    @Temporal(TemporalType.TIMESTAMP)
+	public void setDate(Date date){
 		this.date = date;
 	}	
 	

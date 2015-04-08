@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.report;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,6 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.URL;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
@@ -20,16 +28,29 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 public class Report {
 
 	private Long reportId;
+	
+	@NotEmpty
+	@Size(min=6, max=50)	
 	private String reportTitle;
-	private Calendar dateRequest;
-	private Calendar dateServed;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull	
+	private Date dateRequest;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull	
+	private Date dateServed;
+	
 	private UserProfile userProfile;
+	
+	@URL
+	@NotEmpty
 	private String urlReport;
 	
 	public Report() {		
 	}
 	
-	public Report(String reportTitle, Calendar dateRequest, Calendar dateServed, UserProfile userProfile, String urlReport) {
+	public Report(String reportTitle, Date dateRequest, Date dateServed, UserProfile userProfile, String urlReport) {
 		this.reportTitle = reportTitle;
 		this.dateRequest = dateRequest;
 		this.dateServed = dateServed;
@@ -60,19 +81,21 @@ public class Report {
 		this.reportTitle = reportTitle;
 	}
 	
-	public Calendar getDateRequest() {
+	public Date getDateRequest() {
 		return dateRequest;
 	}
 
-	public void setDateRequest(Calendar dateRequest) {
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setDateRequest(Date dateRequest) {
 		this.dateRequest = dateRequest;
 	}
 
-	public Calendar getDateServed() {
+	public Date getDateServed() {
 		return dateServed;
 	}
 
-	public void setDateServed(Calendar dateServed) {
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setDateServed(Date dateServed) {
 		this.dateServed = dateServed;
 	}
 

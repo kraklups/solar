@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.report;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -34,7 +34,7 @@ public class ReportDaoHibernate extends
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Report> getReportsByDateRequest(Calendar dateRequest,
+	public List<Report> getReportsByDateRequest(Date dateRequest,
 			int startIndex, int count) throws InstanceNotFoundException {
 
 		List<Report> reports = (List<Report>)  getSession().createQuery(

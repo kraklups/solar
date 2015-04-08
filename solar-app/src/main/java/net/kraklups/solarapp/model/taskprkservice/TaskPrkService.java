@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.taskprkservice;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
@@ -20,48 +20,48 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 public interface TaskPrkService {
 	
-	public Upkeep createUpkeep(String taskName, Calendar creationDate,
+	public Upkeep createUpkeep(String taskName, Date creationDate,
 			Park park, Role role, UserProfile userProfile) 
 			throws DuplicateInstanceException;
 
-	public Upkeep updateUpkeep(Long upkeepId, String taskName, Calendar creationDate,
+	public Upkeep updateUpkeep(Long upkeepId, String taskName, Date creationDate,
 			Park park, Role role, UserProfile userProfile) 
 			throws InstanceNotFoundException;
 
-	public Track createTrack(String taskName, Calendar creationDate,
-			Park park, Role role, UserProfile userProfile, Calendar tvf, Report report) 
+	public Track createTrack(String taskName, Date creationDate,
+			Park park, Role role, UserProfile userProfile, Date tvf, Report report) 
 			throws DuplicateInstanceException;
 
-	public Track updateTrack(Long trackId, String taskName, Calendar creationDate,
-			Park park, Role role, UserProfile userProfile, Calendar tvf, Report report) 
+	public Track updateTrack(Long trackId, String taskName, Date creationDate,
+			Park park, Role role, UserProfile userProfile, Date tvf, Report report) 
 			throws InstanceNotFoundException;
 
-	public Monitor createMonitor(String taskName, Calendar creationDate,
+	public Monitor createMonitor(String taskName, Date creationDate,
 			Park park, Role role, UserProfile userProfile) 
 			throws DuplicateInstanceException;
 
-	public Monitor updateMonitor(Long monitorId, String taskName, Calendar creationDate,
+	public Monitor updateMonitor(Long monitorId, String taskName, Date creationDate,
 			Park park, Role role, UserProfile userProfile) 
 			throws InstanceNotFoundException;
 
-	public Synchronize createSynchronize(String taskName, Calendar creationDate,
+	public Synchronize createSynchronize(String taskName, Date creationDate,
 			Park park, Role role, UserProfile userProfile) 
 			throws DuplicateInstanceException;
 
-	public Synchronize updateSynchronize(Long synchronizeId, String taskName, Calendar creationDate,
+	public Synchronize updateSynchronize(Long synchronizeId, String taskName, Date creationDate,
 			Park park, Role role, UserProfile userProfile) 
 			throws InstanceNotFoundException;	
 	
-	public Alarm createAlarm(String alarmTag, Calendar triggerDate, EventTsk eventTsk) 
+	public Alarm createAlarm(String alarmTag, Date triggerDate, EventTsk eventTsk) 
 			throws DuplicateInstanceException;
 	
-	public Alarm updateAlarm(Long alarmId, String alarmTag, Calendar triggerDate, EventTsk eventTsk) 
+	public Alarm updateAlarm(Long alarmId, String alarmTag, Date triggerDate, EventTsk eventTsk) 
 			throws InstanceNotFoundException;
 
 	public void assignEventTskAlarm(Alarm alarm, EventTsk eventTsk) 
 			throws InstanceNotFoundException;
 	
-	public void assignTriggerDateAlarm(Alarm alarm, Calendar triggerDate) 
+	public void assignTriggerDateAlarm(Alarm alarm, Date triggerDate) 
 			throws InstanceNotFoundException;
 	
 	public void assignAlarmTagAlarm(Alarm alarm, String alarmTag) 
@@ -70,16 +70,16 @@ public interface TaskPrkService {
 	public AlarmBlock getAlarmByAlarmTag(String alarmTag, int startIndex, int count) 
 			throws InstanceNotFoundException;
 	
-	public AlarmBlock getAlarmByTriggerDate(Calendar triggerDate, int startIndex, int count) 
+	public AlarmBlock getAlarmByTriggerDate(Date triggerDate, int startIndex, int count) 
 			throws InstanceNotFoundException;
 	
 	public AlarmBlock getAlarmByEventTskId(Long eventTskId, int startIndex, int count) 
 			throws InstanceNotFoundException;
 	
-	public Report createReport(String reportTitle, Calendar dateRequest, Calendar dateServed, 
+	public Report createReport(String reportTitle, Date dateRequest, Date dateServed, 
 			UserProfile loginRequest, String urlReport) throws DuplicateInstanceException;
 	
-	public Report updateReport(Long reportId, String reportTitle, Calendar dateRequest, Calendar dateServed, 
+	public Report updateReport(Long reportId, String reportTitle, Date dateRequest, Date dateServed, 
 			UserProfile loginRequest, String urlReport) throws InstanceNotFoundException;
 	
 	public void assignLoginRequestReport(Report report, UserProfile loginRequest) 
@@ -88,10 +88,10 @@ public interface TaskPrkService {
 	public void assignReportTitleReport(Report report, String reportTitle) 
 			throws InstanceNotFoundException;
 	
-	public void assignDateRequestReport(Report report, Calendar dateRequest)
+	public void assignDateRequestReport(Report report, Date dateRequest)
 			throws InstanceNotFoundException;
 	
-	public void assignDateServedReport(Report report, Calendar dateServed)
+	public void assignDateServedReport(Report report, Date dateServed)
 			throws InstanceNotFoundException;	
 	
 	public void assignUrlReportReport(Report report, String urlReport)
@@ -100,7 +100,7 @@ public interface TaskPrkService {
 	public ReportBlock getReportByUserProfileId(Long userProfileId, int startIndex, int count) 
 			throws InstanceNotFoundException;
 	
-	public ReportBlock getReportByDateRequest(Calendar dateRequest, int startIndex, int count)
+	public ReportBlock getReportByDateRequest(Date dateRequest, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
 	public TaskPrkBlock getTaskPrkByParkId(Long parkId, int startIndex, int count)
@@ -160,7 +160,7 @@ public interface TaskPrkService {
 	public void assignTaskNameTaskPrk(TaskPrk taskPrk, String taskName) 
 			throws InstanceNotFoundException;
 	
-	public void assignCreationTimeTaskPrk(TaskPrk taskPrk, Calendar creationTime) 
+	public void assignCreationTimeTaskPrk(TaskPrk taskPrk, Date creationTime) 
 			throws InstanceNotFoundException;
 	
 	public TaskPrk cloneTaskPrk(TaskPrk taskPrk) 
@@ -169,18 +169,18 @@ public interface TaskPrkService {
 	public ReportBlock getReportByParkId(Long parkId, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
-    public EventTsk createEventTsk(String tagET, String definitionET, Calendar tvi, Calendar tvf, 
+    public EventTsk createEventTsk(String tagET, String definitionET, Date tvi, Date tvf, 
             TaskPrk taskPrk, Timetable timetable, Boolean triggerAlarm, Boolean triggerMessage)
             throws DuplicateInstanceException;
 
-    public EventTsk updateEventTsk(Long eventTaskId, String tagET, String definitionET, Calendar tvi, Calendar tvf, 
+    public EventTsk updateEventTsk(Long eventTaskId, String tagET, String definitionET, Date tvi, Date tvf, 
             TaskPrk taskPrk, Timetable timetable, Boolean triggerAlarm, Boolean triggerMessage) 
             throws InstanceNotFoundException; 
     
-    public void assignTviEventTsk(EventTsk eventTsk, Calendar tvi)
+    public void assignTviEventTsk(EventTsk eventTsk, Date tvi)
     		throws InstanceNotFoundException;
 
-    public void assignTvfEventTsk(EventTsk eventTsk, Calendar tvf)
+    public void assignTvfEventTsk(EventTsk eventTsk, Date tvf)
     		throws InstanceNotFoundException;
 
 	public void assignTaskPrkEventTsk(EventTsk eventTsk, TaskPrk taskPrk)
@@ -195,13 +195,13 @@ public interface TaskPrkService {
     public MessageEventBlock getMessageEventByEventTskId(Long eventTskId, int startIndex, int count)
 			throws InstanceNotFoundException;  
        
-    public MessageEvent createMessageEvent(String messageTxt, Calendar tvi, EventTsk eventTsk)
+    public MessageEvent createMessageEvent(String messageTxt, Date tvi, EventTsk eventTsk)
     		throws DuplicateInstanceException;
     
-    public MessageEvent updateMessageEvent(Long messageId, String messageTxt, Calendar tvi, EventTsk eventTsk)
+    public MessageEvent updateMessageEvent(Long messageId, String messageTxt, Date tvi, EventTsk eventTsk)
     		throws InstanceNotFoundException;
     
-    public void assignTviMessageEvent(MessageEvent messageEvent, Calendar tvi)
+    public void assignTviMessageEvent(MessageEvent messageEvent, Date tvi)
     		throws InstanceNotFoundException;
     
     public void assignEventTskMessageEvent(MessageEvent messageEvent, EventTsk eventTsk)

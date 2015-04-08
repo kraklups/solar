@@ -53,10 +53,11 @@ CREATE SEQUENCE UserProfileSeq;
 
 DROP TABLE IF EXISTS UserProfile CASCADE;
 CREATE TABLE UserProfile (userProfileId BIGINT NOT NULL,
-    loginName VARCHAR(30) NOT NULL, enPassword VARCHAR(13) NOT NULL, 
+    loginName VARCHAR(30) NOT NULL, encryptedPassword VARCHAR(60) NOT NULL, 
     firstName VARCHAR(30) NOT NULL, surname1 VARCHAR(40) NOT NULL, surname2 VARCHAR(40) DEFAULT NULL, 
     email VARCHAR(60) NOT NULL, date TIMESTAMP NOT NULL, 
-    blocked BOOLEAN NOT NULL DEFAULT FALSE, erased BOOLEAN NOT NULL DEFAULT FALSE,  
+    enabled BOOLEAN NOT NULL DEFAULT FALSE, accountNonExpired BOOLEAN NOT NULL DEFAULT FALSE,
+    credentialsNonExpired BOOLEAN NOT NULL DEFAULT FALSE, accountNonLocked BOOLEAN NOT NULL DEFAULT FALSE,
     version BIGINT DEFAULT 0,
     roleId BIGINT NOT NULL, companyId BIGINT NOT NULL,
     CONSTRAINT loginNameU UNIQUE(loginName),
@@ -104,6 +105,22 @@ CREATE TABLE Park (parkId BIGINT NOT NULL, parkName VARCHAR(30),
         REFERENCES Company (companyId) ON DELETE CASCADE,
     CONSTRAINT ParkIdPK PRIMARY KEY (parkId));
 
+-- ------------------------------ Timetable -----------------------------
+-- table Timetable
+
+DROP SEQUENCE IF EXISTS TimetableSeq;
+CREATE SEQUENCE TimetableSeq;
+
+DROP TABLE IF EXISTS Timetable CASCADE;
+CREATE TABLE Timetable (timetableId BIGINT NOT NULL,
+    timetableTag VARCHAR(30), tvi TIMESTAMP NOT NULL, 
+    userProfileId BIGINT NOT NULL, parkId BIGINT NOT NULL, 
+    CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
+        REFERENCES UserProfile (userProfileId) ON DELETE CASCADE,
+    CONSTRAINT ParkIdFK FOREIGN KEY(parkId)
+        REFERENCES Park (parkId) ON DELETE CASCADE,
+    CONSTRAINT TimetableIdPK PRIMARY KEY (timetableId));
+
 -- ------------------------------ EventTsk -----------------------------
 -- table EventTsk
 
@@ -135,12 +152,12 @@ CREATE TABLE Alarm (alarmId BIGINT NOT NULL, alarmTag VARCHAR(30),
 -- ------------------------------ MessageEvent -----------------------------
 -- table MessageEvent
 
-DROP SEQUENCE IF EXISTS MessageSeq;
-CREATE SEQUENCE MessageSeq;
+DROP SEQUENCE IF EXISTS MessageEventSeq;
+CREATE SEQUENCE MessageEventSeq;
 
 DROP TABLE IF EXISTS MessageEvent CASCADE;
 CREATE TABLE MessageEvent (messageEventId BIGINT NOT NULL,
-    tvi TIMESTAMP NOT NULL, messageText VARCHAR(30), 
+    tvi TIMESTAMP NOT NULL, messageEventText VARCHAR(30), 
     eventTskId BIGINT NOT NULL,
     CONSTRAINT EventTskIdFK FOREIGN KEY(eventTskId)
         REFERENCES EventTsk (eventTskId) ON DELETE CASCADE,
@@ -175,10 +192,6 @@ CREATE TABLE State (stateId BIGINT NOT NULL,
         REFERENCES Park (parkId) ON DELETE CASCADE,
     CONSTRAINT EventTskIdFK FOREIGN KEY(eventTskId)
         REFERENCES EventTsk (eventTskId) ON DELETE CASCADE,
-    CONSTRAINT UpkeepIdFK FOREIGN KEY(upkeepId)
-        REFERENCES Upkeep (upkeepId) ON DELETE CASCADE,
-    CONSTRAINT StateTypeIdFK FOREIGN KEY(stateTypeId)
-        REFERENCES StateType (stateTypeId) ON DELETE CASCADE,
     CONSTRAINT StateIdPK PRIMARY KEY (stateId));
 
 -- ------------------------------ StateType -----------------------------
@@ -191,6 +204,13 @@ DROP TABLE IF EXISTS StateType CASCADE;
 CREATE TABLE StateType (stateTypeId BIGINT NOT NULL,
     nameST VARCHAR(30), definitionST VARCHAR(30),
     CONSTRAINT StateTypeIdPK PRIMARY KEY (stateTypeId));
+
+-- Added for cyclic dependency loop with both FK
+
+ALTER TABLE ONLY State
+    ADD CONSTRAINT StateTypeIdFK FOREIGN KEY(stateTypeId)
+        REFERENCES StateType (stateTypeId) ON DELETE CASCADE 
+        DEFERRABLE INITIALLY DEFERRED;
 
 -- ------------------------------ TaskPrk -----------------------------
 -- table TaskPrk
@@ -218,30 +238,19 @@ ALTER TABLE ONLY EventTsk
         REFERENCES TaskPrk (taskPrkId) ON DELETE CASCADE 
         DEFERRABLE INITIALLY DEFERRED;
 
--- ------------------------------ Timetable -----------------------------
--- table Timetable
-
-DROP SEQUENCE IF EXISTS TimetableSeq;
-CREATE SEQUENCE TimetableSeq;
-
-DROP TABLE IF EXISTS Timetable CASCADE;
-CREATE TABLE Timetable (timetableId BIGINT NOT NULL,
-    timetableTag VARCHAR(30), tvi TIMESTAMP NOT NULL, 
-    userProfileId BIGINT NOT NULL, parkId BIGINT NOT NULL, 
-    CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
-        REFERENCES UserProfile (userProfileId) ON DELETE CASCADE,
-    CONSTRAINT ParkIdFK FOREIGN KEY(parkId)
-        REFERENCES Park (parkId) ON DELETE CASCADE,
-    CONSTRAINT TimetableIdPK PRIMARY KEY (timetableId));
-
 -- ------------------------------ Upkeep -----------------------------
 -- table Upkeep
 
 DROP TABLE IF EXISTS Upkeep CASCADE;
-
 CREATE TABLE Upkeep(upkeepId BIGINT NOT NULL,
     CONSTRAINT UpkeepIdPK PRIMARY KEY (upkeepId));
 
+-- Added for cyclic dependency loop with both FK
+
+ALTER TABLE ONLY State
+    ADD CONSTRAINT UpkeepIdFK FOREIGN KEY(upkeepId)
+        REFERENCES Upkeep (upkeepId) ON DELETE CASCADE 
+        DEFERRABLE INITIALLY DEFERRED;
 
 -- ------------------------------ Track -----------------------------
 -- table Track
@@ -370,6 +379,25 @@ DROP TABLE IF EXISTS Counter CASCADE;
 CREATE TABLE Counter(counterId BIGINT NOT NULL,
     CONSTRAINT CounterIdPK PRIMARY KEY (counterId));
     
+
+-- ------------------------------ ExtractionPoint -----------------------------
+-- table ExtractionPoint
+
+DROP TABLE IF EXISTS ExtractionPoint CASCADE;
+CREATE TABLE ExtractionPoint(extractionPointId BIGINT NOT NULL,
+    CONSTRAINT ExtractionPointIdPK PRIMARY KEY (extractionPointId));
+
+
+-- ------------------------------ MediumVoltage -----------------------------
+-- table MediumVoltage
+
+DROP TABLE IF EXISTS MediumVoltage CASCADE;
+CREATE TABLE MediumVoltage(mediumVoltageId BIGINT NOT NULL,
+    extractionPointId BIGINT NOT NULL, 
+    CONSTRAINT ExtractionPointIdFK FOREIGN KEY(extractionPointId)
+        REFERENCES ExtractionPoint (extractionPointId) ON DELETE CASCADE,
+    CONSTRAINT MediumVoltageIdPK PRIMARY KEY (mediumVoltageId));
+
     
 -- ------------------------------ ElectricalSubstation -----------------------------
 -- table ElectricalSubstation
@@ -380,14 +408,6 @@ CREATE TABLE ElectricalSubstation(electricalSubstationId BIGINT NOT NULL,
     CONSTRAINT MediumVoltageIdFK FOREIGN KEY(mediumVoltageId)
         REFERENCES MediumVoltage (mediumVoltageId) ON DELETE CASCADE,
     CONSTRAINT ElectricalSubstationIdPK PRIMARY KEY (electricalSubstationId));
-
-    
--- ------------------------------ ExtractionPoint -----------------------------
--- table ExtractionPoint
-
-DROP TABLE IF EXISTS ExtractionPoint CASCADE;
-CREATE TABLE ExtractionPoint(extractionPointId BIGINT NOT NULL,
-    CONSTRAINT ExtractionPointIdPK PRIMARY KEY (extractionPointId));
     
     
 -- ------------------------------ Gps -----------------------------
@@ -412,18 +432,6 @@ CREATE TABLE Inverter(inverterId BIGINT NOT NULL,
     CONSTRAINT ElectricalSubstationIdFK FOREIGN KEY(electricalSubstationId)
         REFERENCES ElectricalSubstation (electricalSubstationId) ON DELETE CASCADE,
     CONSTRAINT InverterIdPK PRIMARY KEY (inverterId));
-    
-
--- ------------------------------ MediumVoltage -----------------------------
--- table MediumVoltage
-
-DROP TABLE IF EXISTS MediumVoltage CASCADE;
-CREATE TABLE MediumVoltage(mediumVoltageId BIGINT NOT NULL,
-    extractionPointId BIGINT NOT NULL, 
-    CONSTRAINT ExtractionPointIdFK FOREIGN KEY(extractionPointId)
-        REFERENCES ExtractionPoint (extractionPointId) ON DELETE CASCADE,
-    CONSTRAINT MediumVoltageIdPK PRIMARY KEY (mediumVoltageId));
-    
 
     
 -- ------------------------------ WeatherStation -----------------------------

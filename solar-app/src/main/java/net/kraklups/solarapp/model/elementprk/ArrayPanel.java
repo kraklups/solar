@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.elementprk;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -20,7 +20,7 @@ public class ArrayPanel extends ElementPrk {
 	}
 
 	public ArrayPanel(String elementPrkName, String elementPrkTag,
-			Calendar tvi, Calendar lastAccess, UserProfile userProfile,
+			Date tvi, Date lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park) {
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,
 				dataLogger, park);

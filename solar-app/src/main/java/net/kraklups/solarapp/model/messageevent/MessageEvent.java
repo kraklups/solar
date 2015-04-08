@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.messageevent;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,8 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 
@@ -21,50 +26,57 @@ import net.kraklups.solarapp.model.eventtsk.EventTsk;
 @Table(name="MessageEvent")
 public class MessageEvent {
 	
-	private Long messageId;
-	private Calendar tvi;
-	private String messageText;
+	private Long messageEventId;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull	
+	private Date tvi;
+	
+	@NotEmpty
+	@Range(min = 1, max = 500)
+	private String messageEventText;
+	
 	private EventTsk eventTsk;
 	
 	public MessageEvent() {
 	}
 	
-	public MessageEvent(Calendar tvi, String messageText, EventTsk eventTsk) {
+	public MessageEvent(Date tvi, String messageEventText, EventTsk eventTsk) {
 		this.tvi = tvi;
-		this.messageText = messageText;
+		this.messageEventText = messageEventText;
 		this.eventTsk = eventTsk;		
 	}
 
 	@SequenceGenerator(                                    // It only takes effect
 			name="MessageIdGenerator",                     // for databases providing
-	        sequenceName="MessageSeq", allocationSize=1)   // identifier generators.
+	        sequenceName="MessageEventSeq", allocationSize=1)   // identifier generators.
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,
 		generator="MessageIdGenerator")
-	@Column(name="messageId", unique= true, nullable = false)
-	public Long getMessageId() {
-		return messageId;
+	@Column(name="messageEventId", unique= true, nullable = false)
+	public Long getMessageEventId() {
+		return messageEventId;
 	}
 	
-	public void setMessageId(Long messageId) {
-		this.messageId = messageId;
+	public void setMessageEventId(Long messageEventId) {
+		this.messageEventId = messageEventId;
 	}
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	public Calendar getTvi() {
+	public Date getTvi() {
 		return tvi;
 	}
-	
-	public void setTvi(Calendar tvi) {
+
+	@Temporal(TemporalType.TIMESTAMP)
+	public void setTvi(Date tvi) {
 		this.tvi = tvi;
 	}
 	
-	public String getMessageText() {
-		return messageText;
+	public String getMessageEventText() {
+		return messageEventText;
 	}
 	
-	public void setMessageText(String messageText) {
-		this.messageText = messageText;
+	public void setMessageEventText(String messageEventText) {
+		this.messageEventText = messageEventText;
 	}
 	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
@@ -79,6 +91,6 @@ public class MessageEvent {
 	
 	@Override
 	public String toString() {
-		return "MessageEvent [messageId=" + messageId + ", tvi=" + tvi + ", messageText=" + messageText + "]";
+		return "MessageEvent [messageEventId=" + messageEventId + ", tvi=" + tvi + ", messageEventText=" + messageEventText + "]";
 	}	
 }

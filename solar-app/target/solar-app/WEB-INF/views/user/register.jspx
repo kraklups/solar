@@ -1,0 +1,137 @@
+<jsp:root 
+	xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"	
+	xmlns="http://www.w3.org/1999/xhtml"
+	version="2.0" >
+	
+	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+	<jsp:output omit-xml-declaration="yes"/>	
+
+<tiles:insertDefinition name="defaultTemplate">
+	<tiles:putAttribute name="body">
+
+<div id="wrapper">
+
+	<div class="page-wrapper">
+    
+    	<div class="container-fluid">
+
+        		<div class="row">
+            		<div class="col-md-4 col-md-offset-4">
+                		<div class="login-panel panel panel-default">
+                    		<div class="panel-heading">
+                        		<h3 class="panel-title"><spring:message code="register.menuExplanation" /></h3>
+                    		</div>
+                    		
+                    		<div class="panel-body">
+                    		
+                        		<form:form modelAttribute="userProfile" metod="POST">
+                            		<fieldset>                                
+										<spring:bind path="loginName">           	
+											<div class="form-group ${status.error ? 'has-error' : '' }">        
+												<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.loginName" /></label>
+       	        								<form:input path="loginName" class="form-control" placeholder="Login Name" autofocus="autofocus" />
+       	        								<form:errors path="loginName" cssClass="control-label" for="inputError" element="label" />
+		   									</div>
+		   								</spring:bind>
+
+										<spring:bind path="encryptedPassword">           	
+											<div class="form-group ${status.error ? 'has-error' : '' }">        
+												<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.password" /></label>
+       	        								<form:input path="encryptedPassword" class="form-control" placeholder="Password" />
+       	        								<form:errors path="encryptedPassword" cssClass="control-label" for="inputError" element="label" />
+		   									</div>
+		   								</spring:bind>
+                                
+										<div class="form-group">        
+		        							<spring:message code="register.retypePassword" />
+       	        							<input path="retypePassword" class="form-control" placeholder="Retype Password" />
+		   								</div>
+		   								
+										<spring:bind path="firstName">           	
+											<div class="form-group ${status.error ? 'has-error' : '' }">        
+												<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.firstName" /></label>
+       	        								<form:input path="firstName" class="form-control" placeholder="First Name" />
+       	        								<form:errors path="firstName" cssClass="control-label" for="inputError" element="label" />
+		   									</div>
+		   								</spring:bind>
+		   								
+										<spring:bind path="surname1">           	
+											<div class="form-group ${status.error ? 'has-error' : '' }">        
+												<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.surname1" /></label>
+       	        								<form:input path="surname1" class="form-control" placeholder="Surname" />
+       	        								<form:errors path="surname1" cssClass="control-label" for="inputError" element="label" />
+		   									</div>
+		   								</spring:bind>
+		   								
+										<spring:bind path="surname2">           	
+											<div class="form-group ${status.error ? 'has-error' : '' }">        
+												<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.surname2" /></label>
+       	        								<form:input path="surname2" class="form-control" placeholder="Surname" />
+       	        								<form:errors path="surname2" cssClass="control-label" for="inputError" element="label" />
+		   									</div>
+		   								</spring:bind>
+
+										<spring:bind path="email">           	
+											<div class="form-group ${status.error ? 'has-error' : '' }">        
+												<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.email" /></label>
+       	        								<form:input path="email" class="form-control" placeholder="Email" />
+       	        								<form:errors path="email" cssClass="control-label" for="inputError" element="label" />
+		   									</div>
+		   								</spring:bind>
+		   								                                		
+                                		<div class="form-group">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.company" /></label>
+											<form:select path="company" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${companyList}" itemValue="companyId" itemLabel="name" />
+											</form:select>	   							   								    
+	   									</div>
+                                		                              
+                                		<div class="form-group">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.role" /></label>
+											<form:select path="role" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${roleList}" itemValue="roleId" itemLabel="name" />
+											</form:select>	   							   								    
+	   									</div>
+
+										<div class="form-group">
+                         		    		<div class="checkbox">                         		    	
+                                				<label class="checkbox-inline">                                        		
+                                        			<form:checkbox path="blocked" /><spring:message code="register.blocked" />
+                                    			</label>
+                                			</div>
+                                		</div>
+                                                                
+                                		<div class="button">
+                                			<spring:message code="register.submit" var="registerSubmit" />
+	                            			<input type="submit" value="${registerSubmit}"/>        
+	   		 							</div>
+                            		</fieldset>
+                        		</form:form>
+
+                    		</div>
+                    		                    		
+                		</div>
+            		</div>
+        		</div>
+
+		</div>
+        <!-- /.container-fluid -->
+
+	</div>
+    <!-- /#page-wrapper -->  
+  
+</div>
+<!-- /#wrapper -->  
+    
+	</tiles:putAttribute>
+</tiles:insertDefinition>
+
+</jsp:root>

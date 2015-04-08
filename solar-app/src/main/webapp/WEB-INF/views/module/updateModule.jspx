@@ -1,0 +1,72 @@
+<jsp:root 
+	xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"	
+	xmlns="http://www.w3.org/1999/xhtml"
+	version="2.0" >
+	
+	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+	<jsp:output omit-xml-declaration="yes"/>	
+
+<tiles:insertDefinition name="defaultTemplate">
+	<tiles:putAttribute name="body">
+
+<div id="wrapper">
+
+	<div class="page-wrapper">
+    
+    	<div class="container-fluid">
+
+    		<div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header"><spring:message code="createModule.title" /></h2>
+                </div>
+            </div>
+            
+        	<div class="row">
+            	<div class="col-lg-12">
+                	<div class="panel panel-default">
+                    	<div class="panel-heading">
+                        	<h3 class="panel-title"><spring:message code="createModule.menuExplanation" /></h3>
+                    	</div>
+                    	<div class="panel-body">
+                    	
+							<form:form modelAttribute="module" method="POST">
+    	                        <fieldset>	   						
+		   							<div class="form-group">        
+	    	    						<spring:message code="createModule.moduleName" />   
+		        	    				<form:input path="moduleName" class="form-control" placeholder="Module Name" autofocus="autofocus" />
+	   								</div>
+	    
+	   								<div class="form-group">        
+	        							<spring:message code="createModule.date" />
+		            					<form:input path="date" class="form-control" placeholder="MM/DD/YYYY" />
+		   							</div>	    
+	   							   								    
+		    						<div class="button">
+		    							<spring:message code="createModule.submit" var="moduleSubmit" />
+		        						<input type="submit" value="${moduleSubmit}" />        
+	    							</div>
+	    						</fieldset>		
+							</form:form>
+							
+                    	</div>
+                	</div>
+            	</div>
+        	</div>
+        
+		</div>
+        <!-- /.container-fluid -->
+
+	</div>
+    <!-- /#page-wrapper -->  
+  
+</div>
+<!-- /#wrapper -->  
+    
+	</tiles:putAttribute>
+</tiles:insertDefinition>
+
+</jsp:root>

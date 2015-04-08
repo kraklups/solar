@@ -16,7 +16,7 @@ public class CompanyDaoHibernate extends
 	public List<UserProfile> getEmployees(Long companyId, int startIndex, int count) 
 		throws InstanceNotFoundException {
 		
-		List<UserProfile> userProfiles = (List<UserProfile>)  getSession().createQuery(
+		List<UserProfile> userProfiles = (List<UserProfile>) getSession().createQuery(
 	        	"SELECT a FROM UserProfile a WHERE a.companyId = :companyId " +
 	        	"ORDER BY a.UserProfileId").
 	         	setParameter("companyId", companyId).
@@ -42,6 +42,24 @@ public class CompanyDaoHibernate extends
 			throw new InstanceNotFoundException(companyName, Company.class.getName());
 		} else {
 			return company;
+		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Company> findCompanies(int startIndex, int count) 
+			throws InstanceNotFoundException {
+		
+		List<Company> companies = (List<Company>) getSession().createQuery(
+	        	"SELECT a FROM Company a " +
+	        	"ORDER BY CompanyId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (companies == null) {
+			throw new InstanceNotFoundException(null, Company.class.getName());
+		} else {
+			return companies;
 		}
 	}
 

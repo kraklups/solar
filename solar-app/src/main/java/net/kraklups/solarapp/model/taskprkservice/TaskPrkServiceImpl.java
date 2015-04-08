@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.taskprkservice;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
@@ -48,7 +48,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
     private MessageEventDao messageEventDao;
 	
 	@Override
-	public Upkeep createUpkeep(String taskName, Calendar creationDate,
+	public Upkeep createUpkeep(String taskName, Date creationDate,
 			Park park, Role role, UserProfile userProfile)
 			throws DuplicateInstanceException {
 		
@@ -61,7 +61,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 
 	@Override
 	public Upkeep updateUpkeep(Long upkeepId, String taskName,
-			Calendar creationDate, Park park, Role role, UserProfile userProfile)
+			Date creationDate, Park park, Role role, UserProfile userProfile)
 			throws InstanceNotFoundException {
 		
 		Upkeep upkeep = (Upkeep) taskPrkDao.find(upkeepId);
@@ -76,8 +76,8 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	}
 
 	@Override
-	public Track createTrack(String taskName, Calendar creationDate, Park park,
-			Role role, UserProfile userProfile, Calendar tvf, Report report)
+	public Track createTrack(String taskName, Date creationDate, Park park,
+			Role role, UserProfile userProfile, Date tvf, Report report)
 			throws DuplicateInstanceException {
 		
 		Track track = new Track(taskName, creationDate, park, role, userProfile, tvf, report);
@@ -89,8 +89,8 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 
 	@Override
 	public Track updateTrack(Long trackId, String taskName,
-			Calendar creationDate, Park park, Role role,
-			UserProfile userProfile, Calendar tvf, Report report)
+			Date creationDate, Park park, Role role,
+			UserProfile userProfile, Date tvf, Report report)
 			throws InstanceNotFoundException {
 		
 		Track track = (Track) taskPrkDao.find(trackId);
@@ -99,7 +99,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	}
 
 	@Override
-	public Monitor createMonitor(String taskName, Calendar creationDate,
+	public Monitor createMonitor(String taskName, Date creationDate,
 			Park park, Role role, UserProfile userProfile)
 			throws DuplicateInstanceException {
 		
@@ -112,7 +112,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 
 	@Override
 	public Monitor updateMonitor(Long monitorId, String taskName,
-			Calendar creationDate, Park park, Role role, UserProfile userProfile)
+			Date creationDate, Park park, Role role, UserProfile userProfile)
 			throws InstanceNotFoundException {
 		
 		Monitor monitor = (Monitor) taskPrkDao.find(monitorId);
@@ -128,7 +128,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 
 	@Override
 	public Synchronize createSynchronize(String taskName,
-			Calendar creationDate, Park park, Role role, UserProfile userProfile)
+			Date creationDate, Park park, Role role, UserProfile userProfile)
 			throws DuplicateInstanceException {
 		
 		Synchronize synchronize = new Synchronize(taskName, creationDate, park, role, userProfile);
@@ -140,7 +140,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 
 	@Override
 	public Synchronize updateSynchronize(Long synchronizeId, String taskName,
-			Calendar creationDate, Park park, Role role, UserProfile userProfile)
+			Date creationDate, Park park, Role role, UserProfile userProfile)
 			throws InstanceNotFoundException {
 		 
 		Synchronize synchronize = (Synchronize) taskPrkDao.find(synchronizeId);
@@ -155,7 +155,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	}
 
 	@Override
-	public Alarm createAlarm(String alarmTag, Calendar triggerDate,
+	public Alarm createAlarm(String alarmTag, Date triggerDate,
 			EventTsk eventTsk) throws DuplicateInstanceException {
 		
 		Alarm alarm = new Alarm(alarmTag, triggerDate, eventTsk);
@@ -167,7 +167,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 
 	@Override
 	public Alarm updateAlarm(Long alarmId, String alarmTag,
-			Calendar triggerDate, EventTsk eventTsk)
+			Date triggerDate, EventTsk eventTsk)
 			throws InstanceNotFoundException {
 		
 		Alarm alarm = alarmDao.find(alarmId);
@@ -187,7 +187,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	}
 
 	@Override
-	public void assignTriggerDateAlarm(Alarm alarm, Calendar triggerDate)
+	public void assignTriggerDateAlarm(Alarm alarm, Date triggerDate)
 			throws InstanceNotFoundException {
 		
 		alarm.setTriggerDate(triggerDate);
@@ -212,7 +212,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	}
 
 	@Override
-	public AlarmBlock getAlarmByTriggerDate(Calendar triggerDate,
+	public AlarmBlock getAlarmByTriggerDate(Date triggerDate,
 			int startIndex, int count) throws InstanceNotFoundException {
 
 		List<Alarm> alarms = alarmDao.getAlarmsByTriggerDate(triggerDate, startIndex, count + 1);
@@ -234,8 +234,8 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	}
 
 	@Override
-	public Report createReport(String reportTitle, Calendar dateRequest,
-			Calendar dateServed, UserProfile userProfile, String urlReport)
+	public Report createReport(String reportTitle, Date dateRequest,
+			Date dateServed, UserProfile userProfile, String urlReport)
 			throws DuplicateInstanceException {
 		
 		Report report = new Report(reportTitle, dateRequest, dateServed, userProfile, urlReport);
@@ -247,7 +247,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 
 	@Override
 	public Report updateReport(Long reportId, String reportTitle,
-			Calendar dateRequest, Calendar dateServed,
+			Date dateRequest, Date dateServed,
 			UserProfile userProfile, String urlReport)
 			throws InstanceNotFoundException {
 		
@@ -277,14 +277,14 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	}
 
 	@Override
-	public void assignDateRequestReport(Report report, Calendar dateRequest)
+	public void assignDateRequestReport(Report report, Date dateRequest)
 			throws InstanceNotFoundException {
 		
 		report.setDateRequest(dateRequest);
 	}
 
 	@Override
-	public void assignDateServedReport(Report report, Calendar dateServed)
+	public void assignDateServedReport(Report report, Date dateServed)
 			throws InstanceNotFoundException {
 		
 		report.setDateServed(dateServed);
@@ -309,7 +309,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	}
 
 	@Override
-	public ReportBlock getReportByDateRequest(Calendar dateRequest,
+	public ReportBlock getReportByDateRequest(Date dateRequest,
 			int startIndex, int count) throws InstanceNotFoundException {
 
 		List<Report> reports = reportDao.getReportsByDateRequest(dateRequest, startIndex, count + 1); 
@@ -515,7 +515,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	}
 
 	@Override
-	public void assignCreationTimeTaskPrk(TaskPrk taskPrk, Calendar creationTime)
+	public void assignCreationTimeTaskPrk(TaskPrk taskPrk, Date creationTime)
 			throws InstanceNotFoundException {
 		
 		taskPrk.setCreationDate(creationTime);
@@ -542,7 +542,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 
 	@Override
 	public EventTsk createEventTsk(String tagET, String definitionET,
-			Calendar tvi, Calendar tvf, TaskPrk taskPrk, Timetable timetable,
+			Date tvi, Date tvf, TaskPrk taskPrk, Timetable timetable,
 			Boolean triggerAlarm, Boolean triggerMessage) 
 					throws DuplicateInstanceException {
 		
@@ -556,7 +556,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 
 	@Override
 	public EventTsk updateEventTsk(Long eventTaskId, String tagET,
-			String definitionET, Calendar tvi, Calendar tvf, TaskPrk taskPrk,
+			String definitionET, Date tvi, Date tvf, TaskPrk taskPrk,
 			Timetable timetable, Boolean triggerAlarm, Boolean triggerMessage) 
 					throws InstanceNotFoundException {
 		
@@ -575,14 +575,14 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	}
 
 	@Override
-	public void assignTviEventTsk(EventTsk eventTsk, Calendar tvi)
+	public void assignTviEventTsk(EventTsk eventTsk, Date tvi)
 			throws InstanceNotFoundException {
 		
 		eventTsk.setTvi(tvi);
 	}
 
 	@Override
-	public void assignTvfEventTsk(EventTsk eventTsk, Calendar tvf)
+	public void assignTvfEventTsk(EventTsk eventTsk, Date tvf)
 			throws InstanceNotFoundException {
 		
 		eventTsk.setTvf(tvf);
@@ -628,7 +628,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	}
 
 	@Override
-	public MessageEvent createMessageEvent(String messageTxt, Calendar tvi, EventTsk eventTsk)
+	public MessageEvent createMessageEvent(String messageTxt, Date tvi, EventTsk eventTsk)
 			throws DuplicateInstanceException {
 		
 		MessageEvent messageEvent = new MessageEvent(tvi, messageTxt, eventTsk);
@@ -640,19 +640,19 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 
 	@Override
 	public MessageEvent updateMessageEvent(Long messageId, String messageTxt,
-			Calendar tvi, EventTsk eventTsk) throws InstanceNotFoundException {
+			Date tvi, EventTsk eventTsk) throws InstanceNotFoundException {
 		
 		MessageEvent messageEvent = messageEventDao.find(messageId);
 		
 		messageEvent.setTvi(tvi);
-		messageEvent.setMessageText(messageTxt);
+		messageEvent.setMessageEventText(messageTxt);
 		messageEvent.setEventTsk(eventTsk);
 		
 		return messageEvent;
 	}
 
 	@Override
-	public void assignTviMessageEvent(MessageEvent messageEvent, Calendar tvi)
+	public void assignTviMessageEvent(MessageEvent messageEvent, Date tvi)
 			throws InstanceNotFoundException {
 		
 		messageEvent.setTvi(tvi);		
@@ -662,7 +662,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	public void assignMessageTxtMessageEvent(MessageEvent messageEvent,
 			String messageTxt) throws InstanceNotFoundException {
 		
-		messageEvent.setMessageText(messageTxt);
+		messageEvent.setMessageEventText(messageTxt);
 	}
 
 	@Override

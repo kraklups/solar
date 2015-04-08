@@ -1,0 +1,81 @@
+<jsp:root 
+	xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"	
+	xmlns="http://www.w3.org/1999/xhtml"
+	version="2.0" >
+	
+	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+	<jsp:output omit-xml-declaration="yes"/>	
+
+<tiles:insertDefinition name="defaultTemplate">
+	<tiles:putAttribute name="body">
+
+<div id="wrapper">
+
+	<div class="page-wrapper">
+    
+    	<div class="container-fluid">
+
+    		<div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header"><spring:message code="createAlarm.title" /></h2>
+                </div>
+            </div>
+            
+        	<div class="row">
+            	<div class="col-lg-12">
+                	<div class="panel panel-default">
+                    	<div class="panel-heading">
+                        	<h3 class="panel-title"><spring:message code="createAlarm.menuExplanation" /></h3>
+                    	</div>
+                    	<div class="panel-body">
+                    	
+							<form:form modelAttribute="alarm" method="POST">
+    	                        <fieldset>	   							    
+	   								<div class="form-group">        
+		        						<spring:message code="createAlarm.alarmTag" />
+       	        						<form:input path="alarmTag" class="form-control" placeholder="Alarm Tag" autofocus="autofocus" />
+		   							</div>
+
+	   								<div class="form-group">        
+	        							<spring:message code="createAlarm.triggerDate" />
+		            					<form:input path="triggerDate" class="form-control" placeholder="Trigger Date" />
+		   							</div>	   							   		
+	   							   			   							   								    	   							   			   							   								   
+	   								<div class="form-group">
+	   									<spring:message code="select.chooseOne" var="chooseOne" />
+	   									<spring:message code="createAlarm.eventTsk" />
+										<form:select path="eventTsk" class="form-control">
+    										<form:option value="" label="${chooseOne}" />
+    										<form:options items="${eventTskList}" itemValue="eventTskId" itemLabel="name" />
+										</form:select>	   							   								    
+	   								</div>
+
+		    						<div class="button">
+		    							<spring:message code="createAlarm.submit" var="alarmSubmit" />
+		        						<input type="submit" value="${alarmSubmit}" />        
+	    							</div>
+	    						</fieldset>		
+							</form:form>
+							
+                    	</div>
+                	</div>
+            	</div>
+        	</div>
+        
+		</div>
+        <!-- /.container-fluid -->
+
+	</div>
+    <!-- /#page-wrapper -->  
+  
+</div>
+<!-- /#wrapper -->  
+    
+	</tiles:putAttribute>
+</tiles:insertDefinition>
+
+</jsp:root>

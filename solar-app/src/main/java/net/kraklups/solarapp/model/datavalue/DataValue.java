@@ -25,13 +25,9 @@ import net.kraklups.solarapp.model.taskprk.TaskPrk;
 public class DataValue {
 	
 	private String dataValueId;
-	
 	private TaskPrk taskPrk;
-	
 	private ElementPrk elementPrk;
-	
-	private DataLogger dataLogger;
-	
+	private DataLogger dataLogger;	
 	private Sensor sensor; 
 
 	public DataValue() {

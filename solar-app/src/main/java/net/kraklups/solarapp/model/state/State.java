@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.state;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,8 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 import net.kraklups.solarapp.model.statetype.StateType;
@@ -26,8 +29,15 @@ import net.kraklups.solarapp.model.park.Park;
 public class State {
 
 	private Long stateId;
-	private Calendar tvi;
-	private Calendar tvf;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull	
+	private Date tvi;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull	
+	private Date tvf;
+	
 	private Park park;
 	private EventTsk eventTsk;
 	private Upkeep upkeep;
@@ -36,7 +46,7 @@ public class State {
 	public State() {		
 	}
 	
-	public State(Long stateId, Calendar tvi, Calendar tvf, Park park, EventTsk eventTsk, TaskPrk taskPrk, Upkeep upkeep, StateType stateType) {
+	public State(Long stateId, Date tvi, Date tvf, Park park, EventTsk eventTsk, TaskPrk taskPrk, Upkeep upkeep, StateType stateType) {
 		this.stateId = stateId;
 		this.tvi = tvi;
 		this.tvf = tvf;
@@ -61,21 +71,21 @@ public class State {
 		this.stateId = stateId;
 	}
 	
-	public Calendar getTvi(){
+	public Date getTvi(){
 		return tvi;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	public void setTvi(Calendar tvi) {
+	public void setTvi(Date tvi) {
 		this.tvi = tvi;
 	}
 
-	public Calendar getTvf(){
+	public Date getTvf(){
 		return tvf;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	public void setTvf(Calendar tvf) {
+	public void setTvf(Date tvf) {
 		this.tvf = tvf;
 	}
 	

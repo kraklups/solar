@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- SQL dialect -->
+        <property name="hibernate.dialect">org.hibernate.spatial.dialect.postgis.PostgisDialect</property>        
+        
+        <!-- Show and print nice SQL on stdout -->        
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.use_sql_comments">true</property>
+                        
+        <property name="hibernate.max_fetch_depth">5</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- NoSQL MongoDB -->
+<!--    <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+    	<property name="hibernate.ogm.datastore.grid_dialect">org.hibernate.ogm.dialect.mongodb.MongoDBDialect</property>
+   		<property name="hibernate.ogm.datastore.provider">MongoDB</property>
+    	<property name="hibernate.ogm.mongodb.database">solardb</property>
+    	<property name="hibernate.ogm.mongodb.host">192.168.1.107</property>
+    	<property name="hibernate.ogm.mongodb.port">27017</property>                       -->
+
+        <mapping class="net.kraklups.solarapp.model.userprofile.UserProfile" />
+        <mapping class="net.kraklups.solarapp.model.company.Company" />
+        <mapping class="net.kraklups.solarapp.model.role.Role" />
+        <mapping class="net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess" />
+        <mapping class="net.kraklups.solarapp.model.module.Module" />
+        
+        <mapping class="net.kraklups.solarapp.model.park.Park" />
+        <mapping class="net.kraklups.solarapp.model.eventtsk.EventTsk" />
+        <mapping class="net.kraklups.solarapp.model.messageevent.MessageEvent" />
+        <mapping class="net.kraklups.solarapp.model.timetable.Timetable" />
+        <mapping class="net.kraklups.solarapp.model.state.State" />
+        <mapping class="net.kraklups.solarapp.model.statetype.StateType" />
+        
+		
+        <mapping class="net.kraklups.solarapp.model.alarm.Alarm" />		
+        <mapping class="net.kraklups.solarapp.model.report.Report" />
+        <mapping class="net.kraklups.solarapp.model.taskprk.TaskPrk" />
+        <mapping class="net.kraklups.solarapp.model.taskprk.Upkeep" />
+        <mapping class="net.kraklups.solarapp.model.taskprk.Monitor" />
+        <mapping class="net.kraklups.solarapp.model.taskprk.Track" />
+        <mapping class="net.kraklups.solarapp.model.taskprk.Synchronize" />          
+
+		<mapping class="net.kraklups.solarapp.model.datalogger.DataLogger" />
+       
+		<mapping class="net.kraklups.solarapp.model.sensor.Sensor" />		
+		
+		<mapping class="net.kraklups.solarapp.model.elementprk.ElementPrk" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.ArrayBox" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.StringLine" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.ArrayPanel" />		
+		<mapping class="net.kraklups.solarapp.model.elementprk.Cell" />	
+		<mapping class="net.kraklups.solarapp.model.elementprk.ElectricalSubstation" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.ExtractionPoint" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.Gps" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.Counter" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.Inverter" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.MediumVoltage" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.SolarTracker" />
+		<mapping class="net.kraklups.solarapp.model.elementprk.WeatherStation" />
+		
+		<mapping class="net.kraklups.solarapp.model.datavalue.DataValue" />
+		
+    </session-factory>
+</hibernate-configuration>

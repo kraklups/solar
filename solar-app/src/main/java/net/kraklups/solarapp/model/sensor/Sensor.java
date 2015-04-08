@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
 
@@ -18,8 +21,15 @@ import net.kraklups.solarapp.model.elementprk.ElementPrk;
 public class Sensor {
 	
 	private Long sensorId;
+	
+	@NotEmpty
+	@Size(min=6, max=30)	
 	private String sensorTag;
+	
+	@NotEmpty
+	@Size(min=6, max=30)	
 	private String sensorType;
+	
 	private ElementPrk elementPrk;
 
 	public Sensor() {

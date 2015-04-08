@@ -1,0 +1,116 @@
+<jsp:root 
+	xmlns:jsp="http://java.sun.com/JSP/Page" 
+	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"	
+	xmlns="http://www.w3.org/1999/xhtml"
+	version="2.0" >
+	
+	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+	<jsp:output omit-xml-declaration="yes"/>	
+
+<tiles:insertDefinition name="defaultTemplate">
+	<tiles:putAttribute name="body">
+
+<div id="wrapper">
+
+	<div class="page-wrapper">
+    
+    	<div class="container-fluid">
+
+    		<div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header"><spring:message code="createEventTsk.title" /></h2>
+                </div>
+            </div>
+            
+        	<div class="row">
+            	<div class="col-lg-12">
+                	<div class="panel panel-default">
+                    	<div class="panel-heading">
+                        	<h3 class="panel-title"><spring:message code="createEventTsk.menuExplanation" /></h3>
+                    	</div>
+                    	<div class="panel-body">
+                    	
+							<form:form modelAttribute="eventTsk" method="POST">
+    	                        <fieldset>	   							    
+	   								<div class="form-group">        
+		        						<spring:message code="createEventTsk.tagET" />
+       	        						<form:input path="tagET" class="form-control" placeholder="TagET" autofocus="autofocus" />
+		   							</div>
+
+	   								<div class="form-group">        
+		        						<spring:message code="createEventTsk.definitionET" />
+       	        						<form:input path="definitionET" class="form-control" placeholder="DefinitionET" autofocus="autofocus" />
+		   							</div>
+	   							   		
+	   								<div class="form-group">        
+	        							<spring:message code="createEventTsk.dateTvi" />
+		            					<form:input path="tvi" class="form-control" placeholder="Date tvi" />
+		   							</div>	   							   		
+
+	   								<div class="form-group">        
+	        							<spring:message code="createEventTsk.dateTvf" />
+		            					<form:input path="tvf" class="form-control" placeholder="Date tvf" />
+		   							</div>	   							   		
+	   							   			   							   								    	   							   			   							   								   
+	   								<div class="form-group">
+	   									<spring:message code="select.chooseOne" var="chooseOne" />
+	   									<spring:message code="createEventTsk.taskPrk" />
+										<form:select path="taskPrk" class="form-control">
+    										<form:option value="" label="${chooseOne}" />
+    										<form:options items="${taskPrkList}" itemValue="taskPrkId" itemLabel="name" />
+										</form:select>	   							   								    
+	   								</div>
+
+	   								<div class="form-group">
+	   									<spring:message code="select.chooseOne" var="chooseOne" />
+	   									<spring:message code="createEventTsk.timetable" />
+										<form:select path="timetable" class="form-control">
+    										<form:option value="" label="${chooseOne}" />
+    										<form:options items="${timetableList}" itemValue="timetableId" itemLabel="name" />
+										</form:select>	   							   								    
+	   								</div>
+	   							   	
+                            		<div class="form-group">
+                         		    	<div class="checkbox">                         		    	
+                                			<label class="checkbox-inline">                                        		
+                                        		<form:checkbox path="triggerAlarm" /><spring:message code="createEventTsk.triggerAlarm" />
+                                    		</label>
+                                		</div>
+                                	</div>	
+                                	
+                                	<div class="form-group">
+                                		<div class="checkbox">                                		    
+                                    		<label class="checkbox-inline">
+                                        		<form:checkbox path="triggerMessage" /><spring:message code="createEventTsk.triggerMessage" />                                        	
+                                    		</label>
+                                		</div>
+   							   		</div>	
+	   							   								    	   							   								    
+		    						<div class="button">
+		    							<spring:message code="createEventTsk.submit" var="eventTskSubmit" />
+		        						<input type="submit" value="${eventTskSubmit}" />        
+	    							</div>
+	    						</fieldset>		
+							</form:form>
+							
+                    	</div>
+                	</div>
+            	</div>
+        	</div>
+        
+		</div>
+        <!-- /.container-fluid -->
+
+	</div>
+    <!-- /#page-wrapper -->  
+  
+</div>
+<!-- /#wrapper -->  
+    
+	</tiles:putAttribute>
+</tiles:insertDefinition>
+
+</jsp:root>

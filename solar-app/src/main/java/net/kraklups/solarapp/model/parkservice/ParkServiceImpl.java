@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.parkservice;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +38,8 @@ public class ParkServiceImpl implements ParkService {
     
     
 	@Override
-	public Park createPark(String parkName, Calendar startupDate,
-			Calendar productionDate, UserProfile userProfile, Company company,
+	public Park createPark(String parkName, Date startupDate,
+			Date productionDate, UserProfile userProfile, Company company,
 			MultiPolygon mapPark) throws DuplicateInstanceException {
 		
         try {
@@ -57,8 +57,23 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public Park updatePark(Long parkId, String parkName, Calendar startupDate,
-			Calendar productionDate, UserProfile userProfile, Company company,
+	public Park savePark(Park park) throws DuplicateInstanceException {
+		
+        try {
+            parkDao.findByParkName(park.getParkName());
+            throw new DuplicateInstanceException(park.getParkName(),
+                    Park.class.getName());
+        } catch (InstanceNotFoundException e) {
+        	            
+            parkDao.save(park);
+         
+            return park;
+        }
+	}	
+	
+	@Override
+	public Park updatePark(Long parkId, String parkName, Date startupDate,
+			Date productionDate, UserProfile userProfile, Company company,
 			MultiPolygon mapPark) throws InstanceNotFoundException {
 		
 		Park park = parkDao.find(parkId);
@@ -125,7 +140,7 @@ public class ParkServiceImpl implements ParkService {
 
 	@Override
 	public Timetable createTimetable(String tag, UserProfile userProfile,
-			Calendar tvi, Park park) throws DuplicateInstanceException {
+			Date tvi, Park park) throws DuplicateInstanceException {
 		
 		Timetable timetable = new Timetable(tag, userProfile, tvi, park);
 		
@@ -136,7 +151,7 @@ public class ParkServiceImpl implements ParkService {
 
 	@Override
 	public Timetable updateTimetable(Long timetableId, String timetableTag,
-			UserProfile userProfile, Calendar tvi, Park park)
+			UserProfile userProfile, Date tvi, Park park)
 			throws InstanceNotFoundException {
 		
 		Timetable timetable = timetableDao.find(timetableId);
@@ -164,7 +179,7 @@ public class ParkServiceImpl implements ParkService {
 	}
 
 	@Override
-	public void assignTviTimetable(Timetable timetable, Calendar tvi)
+	public void assignTviTimetable(Timetable timetable, Date tvi)
 			throws InstanceNotFoundException {
 		
 		timetable.setTvi(tvi);

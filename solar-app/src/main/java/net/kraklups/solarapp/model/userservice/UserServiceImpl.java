@@ -1,9 +1,18 @@
 package net.kraklups.solarapp.model.userservice;
 
+import java.util.Date;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -82,10 +91,46 @@ public class UserServiceImpl implements UserService {
                 throw new IncorrectPasswordException(loginName);
             }
         }
+        
         return userProfile;
-
     }
 
+	@Override
+	@Transactional(readOnly=true)
+	public UserDetails loadUserByUsername(String loginName)
+			throws UsernameNotFoundException, org.springframework.dao.DataAccessException {
+		       
+        UserProfile userProfile = null;
+		        
+        try {
+        	userProfile = userProfileDao.findByLoginName(loginName);
+        } catch (InstanceNotFoundException e) {
+        	e.printStackTrace();
+        	throw new UsernameNotFoundException("No user with loginName '" + loginName + "' found!");
+        	
+        }
+        
+        if (userProfile==null) throw new UsernameNotFoundException("No user with loginName '" + loginName + "' found!");
+        
+    	List<GrantedAuthority> authorities = 
+                buildUserAuthority(userProfile.getRole());
+    	
+        return new User(userProfile.getLoginName(),userProfile.getEncryptedPassword(), 
+        		userProfile.getEnabled(),userProfile.getAccountNonExpired(),
+        		userProfile.getCredentialsNonExpired(),userProfile.getAccountNonLocked(),authorities);       
+	}	    
+    
+	private List<GrantedAuthority> buildUserAuthority(Role role) {			
+		
+		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
+
+		setAuths.add(new SimpleGrantedAuthority(role.getRoleName()));
+ 
+		List<GrantedAuthority> result = new ArrayList<GrantedAuthority>(setAuths);
+		
+		return result;
+	}	
+	
     @Transactional(readOnly = true)
     public UserProfile findUserProfile(Long userProfileId)
             throws InstanceNotFoundException {
@@ -125,19 +170,19 @@ public class UserServiceImpl implements UserService {
     }
 
 	@Override
-	public void removeUser(Long userProfileId, boolean erased)
+	public void removeUser(Long userProfileId, boolean enabled)
 			throws InstanceNotFoundException {
 
 		UserProfile userProfile = userProfileDao.find(userProfileId);
-		userProfile.setErased(erased);			
+		userProfile.setEnabled(enabled);			
 	}
 
 	@Override
-	public void blockUser(Long userProfileId, boolean blocked)
+	public void blockUser(Long userProfileId, boolean accountNonExpired)
 			throws InstanceNotFoundException {
 
 		UserProfile userProfile = userProfileDao.find(userProfileId);
-		userProfile.setBlocked(blocked);
+		userProfile.setAccountNonExpired(accountNonExpired);
 	}
 
 	@Override
@@ -202,22 +247,35 @@ public class UserServiceImpl implements UserService {
 	}	
 
 	@Override
-	public Company createCompany(String companyName)
+	public Company createCompany(String companyName, Date date)
 			throws DuplicateInstanceException {
 
 		try {
 			companyDao.findByName(companyName);
 			throw new DuplicateInstanceException(companyName, Company.class.getName());
-		} catch (InstanceNotFoundException e) { 			
-			Calendar cal = Calendar.getInstance();			
-			Company company = new Company(companyName, cal);			
+		} catch (InstanceNotFoundException e) { 						
+			Company company = new Company(companyName, date);			
 			companyDao.save(company);			
 			return company;
 		}
 	}
 
 	@Override
-	public void updateCompany(Long companyId, String companyName, Calendar date) 
+	public Company saveCompany(Company company)
+			throws DuplicateInstanceException {
+
+		try {
+			companyDao.findByName(company.getCompanyName());
+			throw new DuplicateInstanceException(company.getCompanyName(), Company.class.getName());
+		} catch (InstanceNotFoundException e) { 						
+			companyDao.save(company);
+			
+			return company;
+		}
+	}
+		
+	@Override
+	public void updateCompany(Long companyId, String companyName, Date date) 
 			throws InstanceNotFoundException {
 		
 		Company company = companyDao.find(companyId);
@@ -244,6 +302,18 @@ public class UserServiceImpl implements UserService {
 		
 		return companyDao.findByName(companyName);		
 	}
+	
+	@Override
+	public CompanyBlock getCompanies(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Company> companies = companyDao.findCompanies(startIndex, count + 1);
+		
+		boolean existMoreCompanies = companies.size() == (count + 1);
+		
+		return new CompanyBlock(companies, existMoreCompanies);
+		
+	}	
 	
 	@Override
 	public UserProfileBlock getEmployeesByCompanyId(Long companyId,
@@ -274,8 +344,9 @@ public class UserServiceImpl implements UserService {
 			roleDao.findByName(roleName);
 			throw new DuplicateInstanceException(roleName, Role.class.getName()); 
 		} catch (InstanceNotFoundException e) { 
-			Calendar cal = Calendar.getInstance();
-			Role role = new Role(roleName, cal, userProfile, weight);
+			Calendar calendar = Calendar.getInstance();
+			Date timestamp = new Date(calendar.getTime().getTime()); 			
+			Role role = new Role(roleName, timestamp, userProfile, weight);
 			roleDao.save(role);
 			return role;
 		}
@@ -294,7 +365,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void updateRole(Long roleId, String roleName, Calendar date,
+	public void updateRole(Long roleId, String roleName, Date date,
 			UserProfile userProfile, Long weight) throws InstanceNotFoundException {
 
 		Role role = roleDao.find(roleId);
@@ -311,8 +382,9 @@ public class UserServiceImpl implements UserService {
 			moduleDao.findByName(moduleName);
 			throw new DuplicateInstanceException(moduleName, Module.class.getName()); 
 		} catch (InstanceNotFoundException e) { 
-			Calendar cal = Calendar.getInstance();
-			Module module = new Module(moduleName, cal);
+			Calendar calendar = Calendar.getInstance();
+			Date timestamp = new Date(calendar.getTime().getTime()); 			
+			Module module = new Module(moduleName, timestamp);
 			moduleDao.save(module);
 			return module;
 		}
@@ -331,7 +403,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void updateModule(Long moduleId, String moduleName, Calendar date)
+	public void updateModule(Long moduleId, String moduleName, Date date)
 			throws InstanceNotFoundException {
 
 		Module module = moduleDao.find(moduleId);
@@ -383,5 +455,6 @@ public class UserServiceImpl implements UserService {
 	public Module findModuleByName(String moduleName) throws InstanceNotFoundException {
 
 		return moduleDao.findByName(moduleName);	
-	}	
+	}
+
 }

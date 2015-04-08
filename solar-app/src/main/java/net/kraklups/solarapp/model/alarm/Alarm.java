@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.alarm;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,8 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 
@@ -22,14 +27,22 @@ import net.kraklups.solarapp.model.eventtsk.EventTsk;
 public class Alarm {
 	
 	private Long alarmId;
-	private String alarmTag;
-	private Calendar triggerDate;
+	
+	@NotEmpty
+	@Size(min=6, max=30)	
+	private String alarmTag;	
+
+	//2014-07-04T12:08:56.235
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull
+	private Date triggerDate;	
+	
 	private EventTsk eventTsk;
 	
 	public Alarm() {		
 	}
 	
-	public Alarm(String alarmTag, Calendar triggerDate, EventTsk eventTsk) {
+	public Alarm(String alarmTag, Date triggerDate, EventTsk eventTsk) {
 		this.alarmTag = alarmTag;
 		this.triggerDate = triggerDate;
 		this.eventTsk = eventTsk;
@@ -49,13 +62,13 @@ public class Alarm {
 	public void setAlarmId(Long alarmId){
 		this.alarmId = alarmId;
 	}	
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
-	public void setTriggerDate(Calendar triggerDate) {
+	public void setTriggerDate(Date triggerDate) {
 		this.triggerDate = triggerDate;
 	}
 
-	public Calendar getTriggerDate(){
+	public Date getTriggerDate(){
 		return triggerDate;
 	}
 

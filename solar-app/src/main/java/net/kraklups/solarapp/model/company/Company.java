@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.company;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,11 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Immutable;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 @Entity
 @Immutable
@@ -22,13 +28,19 @@ import javax.persistence.UniqueConstraint;
 public class Company {
 
 	private Long companyId;
+	
+	@NotEmpty
+	@Size(min=6, max=30)	
 	private String companyName;
-	private Calendar date;
+	
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	@NotNull @Past	
+	private Date date;
 	
 	public Company() {
 	}
 	
-	public Company(String companyName, Calendar date){
+	public Company(String companyName, Date date){
 		
 		/**
 		 * NOTE: "companyId" *must* be left as "null" since its value is
@@ -62,12 +74,12 @@ public class Company {
 		this.companyName = companyName;
 	}
 	
-	@Temporal(TemporalType.TIMESTAMP)
-    public Calendar getDate() {
+    public Date getDate() {
 		return date;
 	}
-	
-	public void setDate(Calendar date){
+    
+    @Temporal(TemporalType.TIMESTAMP)    
+    public void setDate(Date date){
 		this.date = date;
 	}
 	

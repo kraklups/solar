@@ -3,6 +3,7 @@ package net.kraklups.solarapp.test.experiments;
 import static net.kraklups.solarapp.model.util.GlobalNames.SPRING_CONFIG_FILE;
 import static net.kraklups.solarapp.test.util.GlobalNames.SPRING_CONFIG_TEST_FILE;
 
+import java.util.Date;
 import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,12 @@ public class UserServiceExperiments {
 
 		try {
 			// Register user.
-			Calendar cal = Calendar.getInstance();
+			Calendar calendar = Calendar.getInstance();
+			Date timestamp = new Date(calendar.getTime().getTime());
 	    	Long value = new Long("1");	    		
 			UserProfile userProfile = userService.registerUser("serviceUser",
 					"userPassword", new UserProfileDetails("adminName","adminSurname1",
-			    			"adminSurname2","admin@kraklups.net",cal,false,false,null,null)); 
+			    			"adminSurname2","admin@kraklups.net",timestamp,false,false,null,null)); 
 			System.out.println("User with userId '"
 					+ userProfile.getUserProfileId() + "' has been created");
 			System.out.println(userProfile);
@@ -44,7 +46,7 @@ public class UserServiceExperiments {
 					+ userProfile.getUserProfileId() + "' has been retrieved");
 			System.out.println(userProfile);
 
-			Company company = userService.createCompany("testingcompany");
+			Company company = userService.createCompany("testingcompany", timestamp);
 			System.out.println("company with companyId '"
 					+ company.getCompanyId() + "' has been created");
 			// Find company.

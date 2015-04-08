@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.elementprk;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -19,8 +19,8 @@ public class Counter extends ElementPrk {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Counter(String elementPrkName, String elementPrkTag, Calendar tvi,
-			Calendar lastAccess, UserProfile userProfile,
+	public Counter(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
 			DataLogger dataLogger, Park park) {
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,
 				dataLogger, park);

@@ -3,7 +3,6 @@ package net.kraklups.modelutil.dao;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;

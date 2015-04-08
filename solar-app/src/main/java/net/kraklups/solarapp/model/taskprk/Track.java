@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.taskprk;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,15 +21,15 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @PrimaryKeyJoinColumn(name = "trackId", referencedColumnName = "taskPrkId")
 public class Track extends TaskPrk {
 
-	private Calendar tvf;	
+	private Date tvf;	
 	private Report report;
 	
 	public Track() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Track(String taskName, Calendar creationDate,
-			Park park, Role role, UserProfile userProfile, Calendar tvf, Report report) {
+	public Track(String taskName, Date creationDate,
+			Park park, Role role, UserProfile userProfile, Date tvf, Report report) {
 		super(taskName, creationDate, park, role, userProfile);
 		
 		this.tvf = tvf;
@@ -46,12 +46,12 @@ public class Track extends TaskPrk {
 		this.report = report;
 	}
 	
-	public Calendar getTvf(){
+	public Date getTvf(){
 		return tvf;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	public void setTvf(Calendar tvf) {
+	public void setTvf(Date tvf) {
 		this.tvf = tvf;
 	}	
 	

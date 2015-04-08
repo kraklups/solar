@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.module;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,9 +14,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.TemporalType;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
 
@@ -26,19 +31,26 @@ import net.kraklups.solarapp.model.rolemoduleaccess.RoleModuleAccess;
 public class Module {
 
 	private Long moduleId;
+	
+	@NotEmpty
+	@Size(min=8, max=30)	
 	private String moduleName;
-	private Calendar date;
+	
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	@NotNull	
+	private Date date;
+	
 	private Set<RoleModuleAccess> roleModuleAccess = new HashSet <RoleModuleAccess>(0);
 	
 	public Module() {
 	}
 	
-	public Module(String moduleName, Calendar date) {		
+	public Module(String moduleName, Date date) {		
 		this.moduleName = moduleName;
 		this.date = date;
 	}
 	
-	public Module(String moduleName, Calendar date, Set<RoleModuleAccess> roleModuleAccess) {		
+	public Module(String moduleName, Date date, Set<RoleModuleAccess> roleModuleAccess) {		
 		this.moduleName = moduleName;
 		this.date = date;
 		this.roleModuleAccess = roleModuleAccess;
@@ -68,12 +80,12 @@ public class Module {
 		this.moduleName = moduleName;
 	}
 	
-	@Temporal(TemporalType.TIMESTAMP)
-    public Calendar getDate() {
+    public Date getDate() {
 		return date;
 	}
-	
-	public void setDate(Calendar date){
+    
+    @Temporal(TemporalType.TIMESTAMP)	
+	public void setDate(Date date){
 		this.date = date;
 	}
 	

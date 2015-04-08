@@ -1,25 +1,31 @@
 package net.kraklups.solarapp.model.park;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.TemporalType;
-import javax.persistence.Temporal;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.vividsolutions.jts.geom.MultiPolygon;
 
@@ -29,18 +35,30 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 public class Park {
 	
 	private Long parkId;
+	
+	@NotEmpty
+	@Size(min=6, max=30)
 	private String parkName;
-	private Calendar startupDate;
-	private Calendar productionDate;
+	
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	@NotNull @Past
+	private Date startupDate;
+	
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+    @NotNull @Past
+	private Date productionDate;
+	
 	private UserProfile userProfile;
+	
 	private Company company;	
-		
+	
+//	@MapPark
 	private MultiPolygon mapPark;
 	
 	public Park() {		
 	}
 	
-	public Park(String parkName, Calendar startupDate, Calendar productionDate, UserProfile userProfile, Company company, MultiPolygon mapPark) {
+	public Park(String parkName, Date startupDate, Date productionDate, UserProfile userProfile, Company company, MultiPolygon mapPark) {
 	
 		this.parkName = parkName;
 		this.startupDate = startupDate;
@@ -74,21 +92,21 @@ public class Park {
 		this.parkName = parkName;
 	}
 	
-	@Temporal(TemporalType.TIMESTAMP)
-    public Calendar getStartupDate() {
+    public Date getStartupDate() {
 		return startupDate;
 	}
-	
-	public void setStartupDate(Calendar startupDate){
+
+    @Temporal(TemporalType.TIMESTAMP)
+	public void setStartupDate(Date startupDate){
 		this.startupDate = startupDate;
 	}
 	
-	@Temporal(TemporalType.TIMESTAMP)
-    public Calendar getProductionDate() {
+    public Date getProductionDate() {
 		return productionDate;
 	}
 	
-	public void setProductionDate(Calendar productionDate){
+    @Temporal(TemporalType.TIMESTAMP)    
+	public void setProductionDate(Date productionDate){
 		this.productionDate = productionDate;
 	}	
 
