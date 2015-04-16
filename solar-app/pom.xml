@@ -8,7 +8,7 @@
     <groupId>net.kraklups.solarapp</groupId>
     <artifactId>solar-app</artifactId>
     <packaging>war</packaging>
-    <version>3.2.4</version>
+    <version>4.0.0</version>
     <name>${project.artifactId} Project</name>
     <url>http://maven.apache.org</url>
 
@@ -37,28 +37,32 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- Package versions (except those defined in "profiles" section) -->
-        <slf4j.version>1.7.10</slf4j.version>
+        <slf4j.version>1.7.12</slf4j.version>
         <javassist.version>3.19.0-GA</javassist.version>
         <cglib.version>3.1</cglib.version>
-        <hibernate.version>4.3.8.Final</hibernate.version>
+        <hibernate.version>4.3.9.Final</hibernate.version>
         <hibernate-spatial.version>4.3</hibernate-spatial.version>
         <hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
         <junit.version>4.12</junit.version>
-        <spring.version>4.1.5.RELEASE</spring.version>
-        <servletApi.version>3.0.1</servletApi.version>
+        <spring.version>4.1.6.RELEASE</spring.version>
+        <servletApi.version>3.1.0</servletApi.version>
         <tiles-version>3.0.5</tiles-version>
         <jstl.version>1.2</jstl.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
-        <spring-security.version>3.2.6.RELEASE</spring-security.version> 
+        <spring-security.version>3.2.7.RELEASE</spring-security.version>
+        <spring-boot-parent.version>1.2.3.RELEASE</spring-boot-parent.version>
 
         <!-- Plugin versions -->
-        <mavenCompilerPlugin.version>3.2</mavenCompilerPlugin.version>
+        <mavenCompilerPlugin.version>3.3</mavenCompilerPlugin.version>
         <mavenResourcesPlugin.version>2.7</mavenResourcesPlugin.version>
         <sqlMavenPlugin.version>1.5</sqlMavenPlugin.version>
         <mavenAssemblyPlugin.version>2.5.3</mavenAssemblyPlugin.version>
-        <jettyMavenPlugin>9.3.0.M1</jettyMavenPlugin>
+        <jettyMavenPlugin>9.3.0.M2</jettyMavenPlugin>
         <mavenEclipsePlugin.version>2.9</mavenEclipsePlugin.version>
         <java.version>1.7</java.version>
+        
+        <!-- start class for REST -->
+<!--            <start-class>solar-app.ApplicationRest</start-class>             -->             
     </properties>
 
     <!-- ========================================================== -->
@@ -92,7 +96,7 @@
                 <!-- JDBC driver properties -->
                 <jdbcDriver.groupId>org.postgresql</jdbcDriver.groupId>
                 <jdbcDriver.artifactId>postgresql</jdbcDriver.artifactId>
-                <jdbcDriver.version>9.3-1102-jdbc41</jdbcDriver.version>
+                <jdbcDriver.version>9.4-1201-jdbc41</jdbcDriver.version>
                 <jdbcDriver.className>org.postgresql.Driver</jdbcDriver.className>
 
                 <!--  Data source properties -->
@@ -150,7 +154,18 @@
             	<version>${spring-security.version}</version>
             	<type>pom</type>
             	<scope>import</scope>
-        	</dependency>        
+        	</dependency>  
+
+			<!-- Spring Boot -->
+       		<dependency>
+            	<!-- Import dependency management from Spring Boot -->
+            	<groupId>org.springframework.boot</groupId>
+            	<artifactId>spring-boot-dependencies</artifactId>
+            	<version>${spring-boot-parent.version}</version>
+            	<type>pom</type>
+            	<scope>import</scope>
+        	</dependency>        	
+        	      
     	</dependencies>
 	</dependencyManagement>    
     <!-- ========================================================== -->	       
@@ -173,7 +188,6 @@
 		<dependency>
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
-			<version>${javassist.version}</version>
 			<scope>runtime</scope>
 		</dependency>
             
@@ -276,7 +290,7 @@
 		<dependency>
     		<groupId>org.springframework.security</groupId>
     		<artifactId>spring-security-taglibs</artifactId>
-		</dependency>		         
+		</dependency>
                                 
         <!-- Hibernate Spatial -->            
         <dependency>
@@ -303,7 +317,6 @@
         <dependency>
     		<groupId>javax.servlet</groupId>
     		<artifactId>jstl</artifactId>
-    		<version>${jstl.version}</version>
 		</dependency>
 		            
         <!-- Validation API -->
@@ -317,14 +330,12 @@
 		<dependency>
     		<groupId>org.hibernate</groupId>
     		<artifactId>hibernate-validator</artifactId>
-    		<version>${hibernate-validator.version}</version>
 	    </dependency>
 	    
 		<!-- Servlet API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>${servletApi.version}</version>
 			<scope>provided</scope>
 		</dependency>        
     </dependencies>
