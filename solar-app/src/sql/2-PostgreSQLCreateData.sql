@@ -36,3 +36,14 @@ INSERT into UserProfile (userProfileId,loginName,encryptedPassword,firstName,sur
 INSERT into RoleModuleAccess (roleId,moduleId,accessFlag) VALUES (currval('RoleSeq'),currval('ModuleSeq'),2);
 
 COMMIT;
+
+INSERT into Timetable (timetableId,timetableTag,tvi,userProfileId,parkId) 
+            VALUES (nextval('TimetableSeq'),'TimeTtableTag',CURRENT_TIMESTAMP,1,2);
+
+INSERT into TaskPrk (taskPrkId,taskName,creationDate,parkId,roleId,userProfileId) 
+            VALUES (nextval('TaskPrkSeq'),'TaskName',CURRENT_TIMESTAMP,2,2,1);
+            
+INSERT into EventTsk (eventTskId,tagET,definitionET,tvi,tvf,taskPrkId,timetableId,triggerAlarm,triggerMessage) 
+            VALUES (nextval('EventTskSeq'),'eventtskTag','eventskDef',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1,1,TRUE,TRUE);
+
+COMMIT;                        

@@ -1,14 +1,10 @@
-package net.kraklups.solarapp.controller;
-
-import java.util.List;
-
-import javax.validation.Valid;
+package net.kraklups.solarapp.web.controller;
 
 import net.kraklups.modelutil.exceptions.AlarmNotFoundException;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.alarm.Alarm;
-import net.kraklups.solarapp.model.taskprkservice.AlarmBlock;
+import net.kraklups.solarapp.model.alarm.AlarmDTO;
 import net.kraklups.solarapp.model.taskprkservice.TaskPrkService;
 
 import org.slf4j.Logger;
@@ -19,19 +15,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/rest/setalarm")
+@RequestMapping("/rest")
 final class AlarmController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(AlarmController.class);
-	
-	private int startIndex = 0;
-	private final static int ALARMS_PER_PAGE = 20;
-	private AlarmBlock alarmBlock;
-	private String alarmTag;
 
 	@Autowired
 	private final TaskPrkService taskPrk;
@@ -41,22 +33,13 @@ final class AlarmController {
 		this.taskPrk = taskPrk;
 	}	
 	
-	@RequestMapping(method = RequestMethod.POST)
-	public Alarm create(@RequestBody @Valid Alarm alarm) throws DuplicateInstanceException {
+	@RequestMapping(value = "/notifyalarm", method = RequestMethod.POST) //, headers="Accept=application/json")
+	public @ResponseBody Alarm create(@RequestBody AlarmDTO alarmDTO) throws DuplicateInstanceException, InstanceNotFoundException {
 		
-		LOGGER.error("Handling error with message: {}", alarm);
+		LOGGER.warn("Handling EventTsk & NotifyAlarm: {}", alarmDTO.getEventTskId());
 		
-		return taskPrk.createAlarm(alarm.getAlarmTag(), alarm.getTriggerDate(), alarm.getEventTsk());
-	}
-
-	@RequestMapping(method = RequestMethod.GET)
-    public List<Alarm> findAll(@RequestBody @Valid String alarmTag) throws InstanceNotFoundException {
-		this.alarmTag = alarmTag;
-		
-        alarmBlock = taskPrk.getAlarmByAlarmTag(alarmTag, startIndex, ALARMS_PER_PAGE);
-        
-        return alarmBlock.getAlarms();
-    }		
+		return taskPrk.alarmTriggered(alarmDTO);
+	}		
 	
 	@ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)

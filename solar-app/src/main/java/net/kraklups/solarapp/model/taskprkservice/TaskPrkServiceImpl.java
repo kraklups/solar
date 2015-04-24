@@ -6,6 +6,7 @@ import java.util.List;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.alarm.Alarm;
+import net.kraklups.solarapp.model.alarm.AlarmDTO;
 import net.kraklups.solarapp.model.alarm.AlarmDao;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 import net.kraklups.solarapp.model.eventtsk.EventTskDao;
@@ -24,6 +25,8 @@ import net.kraklups.solarapp.model.taskprk.Upkeep;
 import net.kraklups.solarapp.model.timetable.Timetable;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,6 +34,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Service("taskService")
 @Transactional
 public class TaskPrkServiceImpl implements TaskPrkService {
+	
+	@SuppressWarnings("unused")
+	private static final Logger LOGGER = LoggerFactory.getLogger(TaskPrkServiceImpl.class);
 
 	@Autowired
 	private TaskPrkDao taskPrkDao;
@@ -670,6 +676,19 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 			throws InstanceNotFoundException {
 		
 		messageEvent.setEventTsk(eventTsk);
+	}
+
+	@Override
+	public Alarm alarmTriggered(AlarmDTO alarmDTO)
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		Long eventTskId = Long.valueOf(alarmDTO.getEventTskId());
+				
+		Alarm alarm = new Alarm(alarmDTO.getAlarmTag(), alarmDTO.getTriggerDate(), eventTskDao.find(eventTskId));
+		
+		alarmDao.save(alarm);
+		
+		return alarm;
 	}
 	
 }

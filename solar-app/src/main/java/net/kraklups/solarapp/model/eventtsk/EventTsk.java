@@ -37,10 +37,12 @@ public class EventTsk {
 	@Size(min=8, max=30)	
 	private String definitionET;
 	
+	//2014-07-04T12:08:56.235
 	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
 	@NotNull	
 	private Date tvi;	
 
+	//2014-07-04T12:08:56.235
 	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
 	@NotNull
 	private Date tvf;

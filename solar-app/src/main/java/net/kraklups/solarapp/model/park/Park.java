@@ -32,8 +32,10 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 @Entity
 @Table(name="Park", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "parkName") })
-public class Park {
+public class Park implements java.io.Serializable {
 	
+	private static final long serialVersionUID = 2984860031831160751L;
+
 	private Long parkId;
 	
 	@NotEmpty

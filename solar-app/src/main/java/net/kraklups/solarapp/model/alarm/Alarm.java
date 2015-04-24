@@ -24,8 +24,10 @@ import net.kraklups.solarapp.model.eventtsk.EventTsk;
 
 @Entity
 @Table(name="Alarm")
-public class Alarm {
+public class Alarm implements java.io.Serializable {
 	
+	private static final long serialVersionUID = -2121025241726659407L;
+
 	private Long alarmId;
 	
 	@NotEmpty

@@ -25,7 +25,9 @@ import javax.validation.constraints.Size;
 @Immutable
 @Table(name="Company", uniqueConstraints = {
 	@UniqueConstraint(columnNames = "companyName") })
-public class Company {
+public class Company implements java.io.Serializable {
+
+	private static final long serialVersionUID = 1236220179752539048L;
 
 	private Long companyId;
 	

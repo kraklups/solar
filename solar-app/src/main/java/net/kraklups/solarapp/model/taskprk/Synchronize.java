@@ -13,8 +13,10 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="Synchronize")
 @PrimaryKeyJoinColumn(name = "synchronizeId", referencedColumnName = "taskPrkId")
-public class Synchronize extends TaskPrk {
+public class Synchronize extends TaskPrk implements java.io.Serializable {
 	
+	private static final long serialVersionUID = 5713333023352008921L;
+
 	public Synchronize() {
 		// TODO Auto-generated constructor stub
 	}

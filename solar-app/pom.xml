@@ -50,7 +50,8 @@
         <jstl.version>1.2</jstl.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
         <spring-security.version>3.2.7.RELEASE</spring-security.version>
-        <spring-boot-parent.version>1.2.3.RELEASE</spring-boot-parent.version>
+        <jackson.databind-version>2.5.2</jackson.databind-version>
+        <jackson.datatype-version>2.5.2</jackson.datatype-version>
 
         <!-- Plugin versions -->
         <mavenCompilerPlugin.version>3.3</mavenCompilerPlugin.version>
@@ -155,17 +156,7 @@
             	<type>pom</type>
             	<scope>import</scope>
         	</dependency>  
-
-			<!-- Spring Boot -->
-       		<dependency>
-            	<!-- Import dependency management from Spring Boot -->
-            	<groupId>org.springframework.boot</groupId>
-            	<artifactId>spring-boot-dependencies</artifactId>
-            	<version>${spring-boot-parent.version}</version>
-            	<type>pom</type>
-            	<scope>import</scope>
-        	</dependency>        	
-        	      
+        	      	
     	</dependencies>
 	</dependencyManagement>    
     <!-- ========================================================== -->	       
@@ -188,6 +179,7 @@
 		<dependency>
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
+			<version>${javassist.version}</version>
 			<scope>runtime</scope>
 		</dependency>
             
@@ -317,6 +309,7 @@
         <dependency>
     		<groupId>javax.servlet</groupId>
     		<artifactId>jstl</artifactId>
+    		<version>${jstl.version}</version>
 		</dependency>
 		            
         <!-- Validation API -->
@@ -330,14 +323,43 @@
 		<dependency>
     		<groupId>org.hibernate</groupId>
     		<artifactId>hibernate-validator</artifactId>
+    		<version>${hibernate-validator.version}</version>
 	    </dependency>
 	    
 		<!-- Servlet API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
+			<version>${servletApi.version}</version>
 			<scope>provided</scope>
-		</dependency>        
+		</dependency>  
+		
+		<!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.databind-version}</version>
+        </dependency>
+               	
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.databind-version}</version>
+        </dependency>          
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.databind-version}</version>
+        </dependency>          
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-hibernate4</artifactId>
+            <version>${jackson.datatype-version}</version>
+        </dependency>          
+
+        
     </dependencies>
 
     <build>

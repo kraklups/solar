@@ -27,7 +27,9 @@ import net.kraklups.solarapp.model.role.Role;
 @Entity
 @Table(name="UserProfile", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "loginName") })
-public class UserProfile {
+public class UserProfile implements java.io.Serializable {
+
+	private static final long serialVersionUID = -13777050080219053L;
 
 	private Long userProfileId;
 	

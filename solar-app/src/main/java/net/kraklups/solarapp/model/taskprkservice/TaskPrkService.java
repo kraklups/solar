@@ -5,6 +5,7 @@ import java.util.Date;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.alarm.Alarm;
+import net.kraklups.solarapp.model.alarm.AlarmDTO;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 import net.kraklups.solarapp.model.messageevent.MessageEvent;
 import net.kraklups.solarapp.model.park.Park;
@@ -51,6 +52,9 @@ public interface TaskPrkService {
 	public Synchronize updateSynchronize(Long synchronizeId, String taskName, Date creationDate,
 			Park park, Role role, UserProfile userProfile) 
 			throws InstanceNotFoundException;	
+	
+	public Alarm alarmTriggered(AlarmDTO alarmDTO) 
+			throws DuplicateInstanceException, InstanceNotFoundException;
 	
 	public Alarm createAlarm(String alarmTag, Date triggerDate, EventTsk eventTsk) 
 			throws DuplicateInstanceException;
@@ -211,5 +215,5 @@ public interface TaskPrkService {
     		throws InstanceNotFoundException;    
     
     public void assignTimetableEventTsk(EventTsk eventTsk, Timetable timetable)
-    		throws InstanceNotFoundException;    
+    		throws InstanceNotFoundException;
 }
