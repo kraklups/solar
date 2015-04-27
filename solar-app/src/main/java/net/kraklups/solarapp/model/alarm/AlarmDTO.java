@@ -59,8 +59,7 @@ public class AlarmDTO implements java.io.Serializable {
 	public void setrulEEventTsk(String ruleEventTsk) {
 		this.ruleEventTsk = ruleEventTsk;
 	}
-		
-	
+			
 	@Override
     public String toString() {
         return "AlarmMngDb [eventTskId=" + eventTskId + ", alarmTag=" + alarmTag +  

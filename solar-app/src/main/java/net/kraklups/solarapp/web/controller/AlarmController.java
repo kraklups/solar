@@ -33,7 +33,7 @@ final class AlarmController {
 		this.taskPrk = taskPrk;
 	}	
 	
-	@RequestMapping(value = "/notifyalarm", method = RequestMethod.POST) //, headers="Accept=application/json")
+	@RequestMapping(value = "/notifyalarm", method = RequestMethod.POST, headers="Accept=application/json")
 	public @ResponseBody Alarm create(@RequestBody AlarmDTO alarmDTO) throws DuplicateInstanceException, InstanceNotFoundException {
 		
 		LOGGER.warn("Handling EventTsk & NotifyAlarm: {}", alarmDTO.getEventTskId());

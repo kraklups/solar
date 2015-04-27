@@ -685,7 +685,6 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		Long eventTskId = Long.valueOf(alarmDTO.getEventTskId());
 				
 		Alarm alarm = new Alarm(alarmDTO.getAlarmTag(), alarmDTO.getTriggerDate(), eventTskDao.find(eventTskId));
-		
 		alarmDao.save(alarm);
 		
 		return alarm;
