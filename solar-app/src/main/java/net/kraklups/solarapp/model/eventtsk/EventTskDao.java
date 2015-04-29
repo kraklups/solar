@@ -13,4 +13,7 @@ public interface EventTskDao extends GenericDao<EventTsk, Long> {
 	public List<EventTsk> getEventTsksByTaskPrkId(Long taskPrkId, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
+	public List<EventTsk> getEventTsks(int startIndex, int count)
+			throws InstanceNotFoundException;	
+	
 }

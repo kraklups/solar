@@ -51,6 +51,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementservice/ElementServiceImpl.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/userservice/IncorrectPasswordException.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/modelutil/exceptions/InstanceException.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/taskprkservice/EventTskBlock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/role/RoleDaoHibernate.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/report/ReportDaoHibernate.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/taskprk/TaskPrk.java
@@ -140,6 +141,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/role/CreateRole.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/timetable/UpdateTimetable.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/company/CreateCompany.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/EventTskFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/util/GlobalNames.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/state/UpdateState.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementprk/Gps.java

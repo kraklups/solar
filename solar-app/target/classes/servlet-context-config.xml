@@ -26,7 +26,8 @@
     	<property name="formatters">
         	<set>
             	<bean class="net.kraklups.solarapp.web.formatters.CompanyFormatter" />
-            	<bean class="net.kraklups.solarapp.web.formatters.MapParkFormatter" />            	
+            	<bean class="net.kraklups.solarapp.web.formatters.MapParkFormatter" /> 
+            	<bean class="net.kraklups.solarapp.web.formatters.EventTskFormatter" />           	
         	</set>
     	</property>
 	</bean> 		

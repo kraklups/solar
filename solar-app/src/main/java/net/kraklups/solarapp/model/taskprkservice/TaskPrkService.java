@@ -181,6 +181,15 @@ public interface TaskPrkService {
             TaskPrk taskPrk, Timetable timetable, Boolean triggerAlarm, Boolean triggerMessage) 
             throws InstanceNotFoundException; 
     
+	public EventTskBlock getEventTskByTaskPrkId(Long parkId, int startIndex, int count)
+			throws InstanceNotFoundException;    
+    
+	public EventTskBlock getEventTskByTimetableId(Long parkId, int startIndex, int count)
+			throws InstanceNotFoundException;	
+	
+	public EventTskBlock getEventTsks(int startIndex, int count)
+			throws InstanceNotFoundException;	
+	
     public void assignTviEventTsk(EventTsk eventTsk, Date tvi)
     		throws InstanceNotFoundException;
 
@@ -216,4 +225,8 @@ public interface TaskPrkService {
     
     public void assignTimetableEventTsk(EventTsk eventTsk, Timetable timetable)
     		throws InstanceNotFoundException;
+    
+    public Alarm saveAlarm(Alarm alarm)
+    		throws DuplicateInstanceException;
+    
 }
