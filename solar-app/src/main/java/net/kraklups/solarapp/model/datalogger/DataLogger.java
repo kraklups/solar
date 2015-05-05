@@ -3,7 +3,6 @@ package net.kraklups.solarapp.model.datalogger;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -27,12 +26,12 @@ public class DataLogger {
 
 	private Long dataLoggerId;
 	
-//	@NotEmpty
-//	@Size(min=6, max=30)	
+	@NotEmpty
+	@Size(min=6, max=30)	
 	private String dataLoggerTag;
 	
-//	@NotEmpty
-//	@Size(min=6, max=30)
+	@NotEmpty
+	@Size(min=6, max=30)
 	private String dataLoggerType;
 	
 	private DataLogger dataLoggerManager;

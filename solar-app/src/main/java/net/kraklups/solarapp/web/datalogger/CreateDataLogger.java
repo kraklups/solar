@@ -52,7 +52,7 @@ public class CreateDataLogger {
 	}
 	
 	@RequestMapping(value = "/dataLogger/createDataLogger", method = RequestMethod.POST)
-	public String createDataLoggerPost(@ModelAttribute("dataLogger") DataLogger dataLogger, BindingResult result, Model model) 
+	public String createDataLoggerPost(@Valid @ModelAttribute("dataLogger") DataLogger dataLogger, BindingResult result, Model model) 
 			throws DuplicateInstanceException, InstanceNotFoundException {
 				
 		if(result.hasErrors()) {
