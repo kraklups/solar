@@ -37,6 +37,12 @@ INSERT into RoleModuleAccess (roleId,moduleId,accessFlag) VALUES (currval('RoleS
 
 COMMIT;
 
+INSERT INTO park (parkid, parkname, startupdate, productiondate, userprofileid, companyid, mappark) VALUES (nextval('ParkSeq'), 'lemerde', '2013-01-01 00:00:00', '2014-02-02 00:00:00', 1, 1, '0106000020E6100000010000000103000000010000000500000000000000002215C000000000207644400000000000B0FDBF00000000A08C44400000000000B0FDBF000000002095434000000000009E11C000000000A051434000000000002215C00000000020764440');
+
+INSERT INTO park (parkid, parkname, startupdate, productiondate, userprofileid, companyid, mappark) VALUES (nextval('ParkSeq'), 'lemerdemerde', '2013-01-01 00:00:00', '2014-02-02 00:00:00', 1, 1, '0106000020E6100000010000000103000000010000000500000000000000002215C000000000207644400000000000B0FDBF00000000A08C44400000000000B0FDBF000000002095434000000000009E11C000000000A051434000000000002215C00000000020764440');
+
+COMMIT;
+
 INSERT into Timetable (timetableId,timetableTag,tvi,userProfileId,parkId) 
             VALUES (nextval('TimetableSeq'),'TimeTtableTag',CURRENT_TIMESTAMP,1,2);
 
@@ -46,4 +52,12 @@ INSERT into TaskPrk (taskPrkId,taskName,creationDate,parkId,roleId,userProfileId
 INSERT into EventTsk (eventTskId,tagET,definitionET,tvi,tvf,taskPrkId,timetableId,triggerAlarm,triggerMessage) 
             VALUES (nextval('EventTskSeq'),'eventtskTag','eventskDef',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1,1,TRUE,TRUE);
 
-COMMIT;                        
+COMMIT;            
+
+INSERT into DataLogger (dataLoggerId,dataLoggerTag,dataLoggerType,dataLoggerFK) 
+            VALUES (nextval('DataLoggerSeq'),'merdelemerde','merdelemerde',currval('DataLoggerSeq'));
+            
+INSERT into DataLogger (dataLoggerId,dataLoggerTag,dataLoggerType,dataLoggerFK) 
+            VALUES (0,'No Parent','No Parent',0);            
+            
+COMMIT;             

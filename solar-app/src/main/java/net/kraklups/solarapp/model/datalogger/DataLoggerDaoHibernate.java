@@ -13,12 +13,12 @@ public class DataLoggerDaoHibernate extends
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<DataLogger> getDataLoggerByDataLoggerId(Long dataLoggerId,
+	public List<DataLogger> getDataLoggersByDataLoggerId(Long dataLoggerId,
 			int startIndex, int count) throws InstanceNotFoundException {
 		
 		List<DataLogger> dataLoggers = (List<DataLogger>)  getSession().createQuery(
 	        	"SELECT a FROM DataLogger a WHERE a.dataLoggerFk = :dataLoggerId " +
-	        	"ORDER BY a.parkId").
+	        	"ORDER BY a.dataLoggerId").
 	         	setParameter("dataLoggerId", dataLoggerId).
 	           	setFirstResult(startIndex).
 	           	setMaxResults(count).list();
@@ -29,4 +29,25 @@ public class DataLoggerDaoHibernate extends
 			return dataLoggers;
 		}	
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<DataLogger> getDataLoggers(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<DataLogger> dataLoggers = (List<DataLogger>)  getSession().createQuery(
+	        	"SELECT a FROM DataLogger a " +
+	        	"ORDER BY a.dataLoggerId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (dataLoggers == null) {
+			throw new InstanceNotFoundException(null, DataLogger.class.getName());
+		} else {
+			return dataLoggers;
+		}	
+
+	
+	}
+
 }

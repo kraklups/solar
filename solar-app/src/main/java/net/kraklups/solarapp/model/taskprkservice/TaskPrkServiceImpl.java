@@ -694,33 +694,33 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	public EventTskBlock getEventTskByTaskPrkId(Long parkId, int startIndex,
 			int count) throws InstanceNotFoundException {
 
-		List<EventTsk> evenTsks = eventTskDao.getEventTsksByTaskPrkId(parkId, startIndex, count + 1); 
+		List<EventTsk> eventTsks = eventTskDao.getEventTsksByTaskPrkId(parkId, startIndex, count + 1); 
 		
-		boolean existMoreEventTsks = evenTsks.size() == (count +1);
+		boolean existMoreEventTsks = eventTsks.size() == (count +1);
 		
-		return new EventTskBlock(evenTsks, existMoreEventTsks);	
+		return new EventTskBlock(eventTsks, existMoreEventTsks);	
 	}
 
 	@Override
 	public EventTskBlock getEventTskByTimetableId(Long timetableId, int startIndex,
 			int count) throws InstanceNotFoundException {
 		
-		List<EventTsk> evenTsks = eventTskDao.getEventTsksByTimetableId(timetableId, startIndex, count + 1); 
+		List<EventTsk> eventTsks = eventTskDao.getEventTsksByTimetableId(timetableId, startIndex, count + 1); 
 		
-		boolean existMoreEventTsks = evenTsks.size() == (count +1);
+		boolean existMoreEventTsks = eventTsks.size() == (count +1);
 		
-		return new EventTskBlock(evenTsks, existMoreEventTsks);	
+		return new EventTskBlock(eventTsks, existMoreEventTsks);	
 	}
 
 	@Override
 	public EventTskBlock getEventTsks(int startIndex, int count)
 			throws InstanceNotFoundException {
 		
-		List<EventTsk> evenTsks = eventTskDao.getEventTsks(startIndex, count + 1);
+		List<EventTsk> eventTsks = eventTskDao.getEventTsks(startIndex, count + 1);
 		
-		boolean existMoreEventTsks = evenTsks.size() == (count +1);
+		boolean existMoreEventTsks = eventTsks.size() == (count +1);
 		
-		return new EventTskBlock(evenTsks, existMoreEventTsks);	
+		return new EventTskBlock(eventTsks, existMoreEventTsks);	
 	}
 
 	@Override

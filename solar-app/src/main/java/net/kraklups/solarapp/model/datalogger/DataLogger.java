@@ -1,7 +1,12 @@
 package net.kraklups.solarapp.model.datalogger;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -22,25 +27,27 @@ public class DataLogger {
 
 	private Long dataLoggerId;
 	
-	@NotEmpty
-	@Size(min=8, max=30)	
+//	@NotEmpty
+//	@Size(min=6, max=30)	
 	private String dataLoggerTag;
 	
-	@NotEmpty
-	@Size(min=8, max=30)
+//	@NotEmpty
+//	@Size(min=6, max=30)
 	private String dataLoggerType;
 	
-	private DataLogger dataLogger; 
+	private DataLogger dataLoggerManager;
+	
+	private Set<DataLogger> dataLoggersManaged = new HashSet<DataLogger>(0);
 	
 	public DataLogger() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public DataLogger(String dataLoggerTag, String dataLoggerType, DataLogger dataLogger) {
+	public DataLogger(String dataLoggerTag, String dataLoggerType, DataLogger dataLoggerManager) {
 		
 		this.dataLoggerTag = dataLoggerTag;
 		this.dataLoggerType = dataLoggerType;
-		this.dataLogger = dataLogger;
+		this.dataLoggerManager = dataLoggerManager;
 	}
 
 	@SequenceGenerator(                                 // It only takes effect
@@ -75,19 +82,28 @@ public class DataLogger {
 	}	
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
-	@JoinColumn(name="dataLoggerId", insertable=false, updatable=false)
-	public DataLogger getDataLogger(){
-		return dataLogger;
+	@JoinColumn(name="dataLoggerFK")
+	public DataLogger getDataLoggerManager(){
+		return dataLoggerManager;
 	}
 	
-	public void setDataLogger(DataLogger dataLogger){
-		this.dataLogger = dataLogger;
+	public void setDataLoggerManager(DataLogger dataLoggerManager){
+		this.dataLoggerManager = dataLoggerManager;
 	}		
+	
+	@OneToMany(mappedBy="dataLoggerManager")
+	public Set<DataLogger> getDataLoggersManaged() {
+		return dataLoggersManaged;
+	}
+	
+	public void setDataLoggersManaged(Set<DataLogger> dataLoggersManaged) {
+		this.dataLoggersManaged = dataLoggersManaged;
+	}
 	
 	@Override
 	public String toString() {
 		return "Park [dataLoggerId=" + dataLoggerId + ", dataLoggerTag=" + dataLoggerTag + ", dataLoggerType=" + dataLoggerType +  
-                       ", DataLoggerSupervise=" + dataLogger.getDataLoggerId() + "]";
+                       ", DataLoggerSupervise=" + dataLoggerManager.getDataLoggerId() + "]";
 	}		
 	
 }

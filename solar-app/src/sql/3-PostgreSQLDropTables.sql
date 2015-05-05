@@ -59,7 +59,7 @@ DROP TABLE IF EXISTS Alarm CASCADE;
 -- ------------------------------ MessageEvent -----------------------------
 -- table MessageEvent
 
-DROP SEQUENCE IF EXISTS MessageSeq;
+DROP SEQUENCE IF EXISTS MessageEventSeq;
 
 DROP TABLE IF EXISTS MessageEvent CASCADE;
 
@@ -205,3 +205,7 @@ DROP TABLE IF EXISTS SolarTracker CASCADE;
 DROP SEQUENCE IF EXISTS DataValueSeq;
 
 DROP TABLE IF EXISTS DataValue CASCADE;
+
+-- ------------------------------ monitor_elementprk -----------------------------
+-- table monitor_elementprk
+DROP TABLE IF EXISTS monitor_elementprk CASCADE;

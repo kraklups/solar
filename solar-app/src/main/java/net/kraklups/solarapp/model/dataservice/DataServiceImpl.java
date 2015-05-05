@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.datalogger.DataLogger;
+import net.kraklups.solarapp.model.datalogger.DataLoggerDao;
 import net.kraklups.solarapp.model.datavalue.DataValue;
 import net.kraklups.solarapp.model.datavalue.DataValueDao;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
@@ -21,6 +22,9 @@ public class DataServiceImpl implements DataService {
 
 	@Autowired
 	private DataValueDao dataValueDao;
+	
+	@Autowired
+	private DataLoggerDao dataLoggerDao;	
 	
 	@Override
 	public DataValue createDataValue(TaskPrk taskPrk, ElementPrk elementPrk,
@@ -118,6 +122,55 @@ public class DataServiceImpl implements DataService {
 		boolean existMoreDataValues = dataValues.size() == (count +1);
 		
 		return new DataValueBlock(dataValues, existMoreDataValues);
+	}
+
+	@Override
+	public DataLogger createDataLogger(String dataLoggerTag,
+			String dataLoggerType, DataLogger dataLogger)
+			throws DuplicateInstanceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DataLogger updateDataLogger(Long dataLoggerId, String dataLoggerTag,
+			String dataLoggerType, DataLogger dataLogger)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DataLoggerBlock getDataLoggerByDataLoggerId(Long dataLoggerId,
+			int startIndex, int count) throws InstanceNotFoundException {
+		
+		List<DataLogger> dataLoggers = dataLoggerDao.getDataLoggersByDataLoggerId(dataLoggerId, startIndex, count +1);
+		
+		boolean existMoreDataLoggers = dataLoggers.size() == (count +1);
+		
+		return new DataLoggerBlock(dataLoggers, existMoreDataLoggers);
+		
+	}
+
+	@Override
+	public DataLoggerBlock getDataLoggers(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<DataLogger> dataLoggers = dataLoggerDao.getDataLoggers(startIndex, count + 1);
+		
+		boolean existMoreDataLoggers = dataLoggers.size() == (count +1);
+		
+		return new DataLoggerBlock(dataLoggers, existMoreDataLoggers);
+		
+	}
+
+	@Override
+	public DataLogger saveDataLogger(DataLogger dataLogger)
+			throws DuplicateInstanceException {
+				
+		dataLoggerDao.save(dataLogger);
+		
+		return dataLogger;
 	}
 
 }

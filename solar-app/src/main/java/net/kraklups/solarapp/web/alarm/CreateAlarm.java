@@ -75,8 +75,8 @@ public class CreateAlarm {
 	}
 
 	private void initModelList(Model model) throws InstanceNotFoundException {
-		List <EventTsk> evenTskList = taskPrkService.getEventTsks(startIndex, EVENTTSK_PER_PAGE).getEventTsks();
-		model.addAttribute(evenTskList);
+		List <EventTsk> eventTskList = taskPrkService.getEventTsks(startIndex, EVENTTSK_PER_PAGE).getEventTsks();
+		model.addAttribute(eventTskList);
 	}	
 	
 }

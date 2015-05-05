@@ -40,4 +40,19 @@ public interface DataService {
 	public DataValueBlock getDataValueBySensorId(Long sensorId, int startIndex, int count) 
 			throws InstanceNotFoundException;	
 	
+	public DataLogger createDataLogger(String dataLoggerTag, String dataLoggerType, DataLogger dataLogger) 
+			throws DuplicateInstanceException;
+
+	public DataLogger updateDataLogger(Long dataLoggerId, String dataLoggerTag, String dataLoggerType, DataLogger dataLogger) 
+			throws InstanceNotFoundException;	
+	
+	public DataLoggerBlock getDataLoggerByDataLoggerId(Long dataLoggerId, int startIndex, int count) 
+			throws InstanceNotFoundException;
+		
+	public DataLoggerBlock getDataLoggers(int startIndex, int count) 
+			throws InstanceNotFoundException;
+	
+    public DataLogger saveDataLogger(DataLogger dataLogger)
+    		throws DuplicateInstanceException;	
+	
 }

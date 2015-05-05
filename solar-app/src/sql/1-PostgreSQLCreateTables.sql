@@ -289,9 +289,9 @@ CREATE SEQUENCE DataLoggerSeq;
 DROP TABLE IF EXISTS DataLogger CASCADE;
 CREATE TABLE DataLogger (dataLoggerId BIGINT NOT NULL,
     dataLoggerTag VARCHAR(30), dataLoggerType VARCHAR(30),
-    dataLoggerFK BIGINT NOT NULL, 
+    dataLoggerFK BIGINT DEFAULT 0, 
     CONSTRAINT DataLoggerIdFK FOREIGN KEY(dataLoggerFK)
-        REFERENCES DataLogger (dataLoggerId) ON DELETE CASCADE,    
+        REFERENCES DataLogger(dataLoggerId) ON DELETE CASCADE,    
     CONSTRAINT dataLoggerIdPK PRIMARY KEY (dataLoggerId));
 
 -- ------------------------------ ElementPrk -----------------------------
