@@ -57,5 +57,7 @@ public interface ParkService {
     public Park getParkByTimetable(Timetable timetable)
     		throws InstanceNotFoundException;  
     
-
+	public TimetableBlock getTimetables(int startIndex, int count) 
+			throws InstanceNotFoundException;
+    
 }

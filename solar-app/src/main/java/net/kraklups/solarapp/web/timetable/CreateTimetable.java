@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Handles requests for the application Timetable page.
+ * Handles requests for the application TimetableBlock page.
  */
 @Controller
 public class CreateTimetable {
@@ -27,7 +27,7 @@ public class CreateTimetable {
 	@RequestMapping(value = "/timetable/createTimetable", method = RequestMethod.GET)
 	public String createTimetableGet(Model model) {
 		
-		logger.info("Create Timetable page GET!");
+		logger.info("Create TimetableBlock page GET!");
 		
 		model.addAttribute("timetable", new Timetable());
 				
@@ -37,7 +37,7 @@ public class CreateTimetable {
 	@RequestMapping(value = "/timetable/createTimetable", method = RequestMethod.POST)
 	public String createTimetablePost(@Valid @ModelAttribute("timetable") Timetable timetable, BindingResult result) {
 		
-		logger.info("Create Timetable page POST!" + "timetableTag: " + timetable.getTimetableTag());
+		logger.info("Create TimetableBlock page POST!" + "timetableTag: " + timetable.getTimetableTag());
 					
 		if(result.hasErrors()) {
 			return "timetable/createTimetable";

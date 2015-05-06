@@ -230,6 +230,9 @@ public interface TaskPrkService {
     		throws DuplicateInstanceException;
     
 	public TaskPrkBlock getTaskPrks(int startIndex, int count) 
-			throws InstanceNotFoundException;    
+			throws InstanceNotFoundException;   
+	
+    public EventTsk saveEventTsk(EventTsk eventTsk)
+    		throws DuplicateInstanceException;	
     
 }

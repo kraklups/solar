@@ -24,7 +24,7 @@ import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
-@Table(name="Timetable")
+@Table(name="TimetableBlock")
 public class Timetable {
 	
 	private Long timetableId;
@@ -105,7 +105,7 @@ public class Timetable {
 
 	@Override
 	public String toString() {
-		return "Timetable [timetableId=" + timetableId + ", etiqueta=" + timetableTag + ", loginName="
+		return "TimetableBlock [timetableId=" + timetableId + ", etiqueta=" + timetableTag + ", loginName="
 				+ userProfile.getLoginName() + ", tiempo validez inicial=" + tvi + ", Park=" + park.getParkName() + "]";
 	}
 }

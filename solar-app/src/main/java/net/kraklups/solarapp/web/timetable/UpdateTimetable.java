@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Handles requests for the application Timetable page.
+ * Handles requests for the application TimetableBlock page.
  */
 @Controller
 public class UpdateTimetable {
@@ -20,7 +20,7 @@ public class UpdateTimetable {
 	 */
 	@RequestMapping(value = "/timetable/updateTimetable", method = RequestMethod.GET)
 	public String home(Model model) {
-		logger.info("Update Timetable page !");
+		logger.info("Update TimetableBlock page !");
 		
 		return "timetable/updateTimetable";
 	}

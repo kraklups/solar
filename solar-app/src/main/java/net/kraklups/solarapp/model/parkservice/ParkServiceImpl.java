@@ -192,5 +192,16 @@ public class ParkServiceImpl implements ParkService {
 		return timetable.getPark();
 	}
 
+	@Override
+	public TimetableBlock getTimetables(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Timetable> timetables = timetableDao.getTimetables(startIndex, count + 1);
+		
+		boolean existMoreTimetables = timetables.size() == (count +1);
+		
+		return new TimetableBlock(timetables, existMoreTimetables);
+	}
+
 
 }

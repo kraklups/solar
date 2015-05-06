@@ -743,5 +743,14 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		return new TaskPrkBlock(taskPrks, existMoreTaskPrks);
 
 	}
+
+	@Override
+	public EventTsk saveEventTsk(EventTsk eventTsk)
+			throws DuplicateInstanceException {
+
+		eventTskDao.save(eventTsk);
+        
+		return eventTsk;
+	}
 	
 }

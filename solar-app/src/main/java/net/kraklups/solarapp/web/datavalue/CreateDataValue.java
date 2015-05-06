@@ -79,17 +79,17 @@ public class CreateDataValue {
 			throws DuplicateInstanceException, InstanceNotFoundException {
 				
 		if(result.hasErrors()) {
-			logger.info("Returning after error createDataLogger.jspx page");
+			logger.info("Returning after error createDataValue.jspx page");
 			
 			return "dataValue/createDataValue";
 		} else {
-			logger.info("Create DataLogger page! " + "datalogger: " + dataValue);
+			logger.info("Create DataValue page! " + "dataValue: " + dataValue);
 
-			model.addAttribute("dataLogger", dataValue);
+			model.addAttribute("dataValue", dataValue);
 			
 			DataValue merda = dataService.saveDataValue(dataValue);
 			
-			logger.info("Create DataLogger page POST! " + merda);
+			logger.info("Create DataValue page POST! " + merda);
 			
 			return "Done";
 
