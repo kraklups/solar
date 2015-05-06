@@ -125,19 +125,27 @@ public class DataServiceImpl implements DataService {
 	}
 
 	@Override
-	public DataLogger createDataLogger(String dataLoggerTag,
-			String dataLoggerType, DataLogger dataLogger)
+	public DataLogger createDataLogger(String dataLoggerTag, String dataLoggerType, DataLogger dataLoggerManager)
 			throws DuplicateInstanceException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		DataLogger dataLogger = new DataLogger(dataLoggerTag, dataLoggerType, dataLoggerManager); 
+		dataLoggerDao.save(dataLogger);
+		
+		return dataLogger;
 	}
 
 	@Override
-	public DataLogger updateDataLogger(Long dataLoggerId, String dataLoggerTag,
-			String dataLoggerType, DataLogger dataLogger)
+	public DataLogger updateDataLogger(Long dataLoggerId, String dataLoggerTag, String dataLoggerType, DataLogger dataLoggerManager)
 			throws InstanceNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		DataLogger dataLogger = (DataLogger) dataLoggerDao.find(dataLoggerId);
+		
+		dataLogger.setDataLoggerTag(dataLoggerTag);
+		dataLogger.setDataLoggerType(dataLoggerType);
+		dataLogger.setDataLoggerManager(dataLoggerManager);
+		
+		return dataLogger;
+		
 	}
 
 	@Override
@@ -171,6 +179,15 @@ public class DataServiceImpl implements DataService {
 		dataLoggerDao.save(dataLogger);
 		
 		return dataLogger;
+	}
+
+	@Override
+	public DataValue saveDataValue(DataValue dataValue)
+			throws DuplicateInstanceException {
+		
+		dataValueDao.save(dataValue);
+		
+		return dataValue;
 	}
 
 }

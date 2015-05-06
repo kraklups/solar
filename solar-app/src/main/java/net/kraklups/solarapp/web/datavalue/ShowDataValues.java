@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application Datavalue page.
  */
 @Controller
-public class ShowDatavalues {
+public class ShowDataValues {
 
-	private static final Logger logger = LoggerFactory.getLogger(ShowDatavalues.class);
+	private static final Logger logger = LoggerFactory.getLogger(ShowDataValues.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.

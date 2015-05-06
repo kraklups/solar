@@ -235,4 +235,10 @@ public interface ElementService {
 	
 	public ElementPrkBlock getElementPrkByDataLoggerId(Long dataLoggerId, int startIndex, int count) 
 			throws InstanceNotFoundException;
+	
+	public SensorBlock getSensors(int startIndex, int count) 
+			throws InstanceNotFoundException;
+	
+	public ElementPrkBlock getElementPrks(int startIndex, int count) 
+			throws InstanceNotFoundException;	
 }

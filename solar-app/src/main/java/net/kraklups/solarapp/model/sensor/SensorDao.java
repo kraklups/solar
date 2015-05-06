@@ -19,4 +19,7 @@ public interface SensorDao extends GenericDao<Sensor, Long> {
 
      public List<Sensor> getSensorsByElementPrkId(Long elementPrkId, int startIndex, int count) 
              throws InstanceNotFoundException;	
+     
+     public List<Sensor> getSensors(int startIndex, int count)
+ 			throws InstanceNotFoundException;     
 }

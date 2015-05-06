@@ -45,9 +45,7 @@ public class DataLoggerDaoHibernate extends
 			throw new InstanceNotFoundException(null, DataLogger.class.getName());
 		} else {
 			return dataLoggers;
-		}	
-
-	
+		}		
 	}
 
 }

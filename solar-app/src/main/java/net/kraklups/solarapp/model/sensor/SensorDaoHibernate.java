@@ -50,5 +50,23 @@ public class SensorDaoHibernate extends
 			return sensors;
 		}			
 	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Sensor> getSensors(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Sensor> sensors = (List<Sensor>)  getSession().createQuery(
+	        	"SELECT a FROM Sensor a " +
+	        	"ORDER BY a.sensorId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (sensors == null) {
+			throw new InstanceNotFoundException(null, Sensor.class.getName());
+		} else {
+			return sensors;
+		}
+	}
 
 }

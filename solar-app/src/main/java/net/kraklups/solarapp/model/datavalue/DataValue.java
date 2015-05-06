@@ -7,8 +7,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
@@ -21,10 +19,9 @@ import net.kraklups.solarapp.model.taskprk.TaskPrk;
 
 @Entity
 @Table(name="DataValue")
-@Inheritance(strategy=InheritanceType.JOINED)
 public class DataValue {
 	
-	private String dataValueId;
+	private Long dataValueId;
 	private TaskPrk taskPrk;
 	private ElementPrk elementPrk;
 	private DataLogger dataLogger;	
@@ -50,11 +47,11 @@ public class DataValue {
 	@GeneratedValue(strategy=GenerationType.AUTO,
 		generator="DataValueIdGenerator")
 	@Column(name="DataValueId", unique= true, nullable = false)
-	public String getDataValueId() {
+	public Long getDataValueId() {
 		return dataValueId;
 	}
 	
-	public void setDataValueId(String dataValueId) {
+	public void setDataValueId(Long dataValueId) {
 		this.dataValueId = dataValueId;
 	}
 

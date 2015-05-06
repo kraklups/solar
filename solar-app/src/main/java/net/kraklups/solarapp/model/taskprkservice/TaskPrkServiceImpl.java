@@ -731,5 +731,17 @@ public class TaskPrkServiceImpl implements TaskPrkService {
          
 		return alarm;
 	}
+
+	@Override
+	public TaskPrkBlock getTaskPrks(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<TaskPrk> taskPrks = taskPrkDao.getTaskPrks(startIndex, count + 1);
+		
+		boolean existMoreTaskPrks = taskPrks.size() == (count +1);
+		
+		return new TaskPrkBlock(taskPrks, existMoreTaskPrks);
+
+	}
 	
 }

@@ -705,4 +705,27 @@ public class ElementServiceImpl implements ElementService {
 		return new ElementPrkBlock(elements, existMoreElements);
 	}
 
+	@Override
+	public SensorBlock getSensors(int startIndex, int count)
+			throws InstanceNotFoundException {
+		
+		List<Sensor> sensors = sensorDao.getSensors(startIndex, count + 1);
+		
+		boolean existMoreSensors = sensors.size() == (count +1);
+		
+		return new SensorBlock(sensors, existMoreSensors);
+
+	}
+
+	@Override
+	public ElementPrkBlock getElementPrks(int startIndex, int count)
+			throws InstanceNotFoundException {
+		
+		List<ElementPrk> elementPrks = elementPrkDao.getElementPrks(startIndex, count + 1);
+		
+		boolean existMoreElementPrks = elementPrks.size() == (count +1);
+		
+		return new ElementPrkBlock(elementPrks, existMoreElementPrks);
+	}
+
 }

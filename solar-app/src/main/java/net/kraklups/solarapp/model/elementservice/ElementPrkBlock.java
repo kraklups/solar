@@ -6,22 +6,22 @@ import net.kraklups.solarapp.model.elementprk.ElementPrk;
 
 public class ElementPrkBlock {
 
-    private List<ElementPrk> elements;
-    private boolean existMoreElements;
+    private List<ElementPrk> elementPrks;
+    private boolean existMoreElementPrks;
 	
-    public ElementPrkBlock(List<ElementPrk> elements, boolean existMoreElements) {
+    public ElementPrkBlock(List<ElementPrk> elementPrks, boolean existMoreElementPrks) {
         
-        this.elements = elements;
-        this.existMoreElements = existMoreElements;
+        this.elementPrks = elementPrks;
+        this.existMoreElementPrks = existMoreElementPrks;
 
     }
     
-    public List<ElementPrk> getElements() {
-        return elements;
+    public List<ElementPrk> getElementPrks() {
+        return elementPrks;
     }
     
-    public boolean getExistMoreElements() {
-        return existMoreElements;
+    public boolean getExistMoreElementPrks() {
+        return existMoreElementPrks;
     }
 
 }

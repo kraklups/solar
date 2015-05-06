@@ -34,39 +34,54 @@
                     	<div class="panel-body">
                     	
 							<form:form modelAttribute="dataValue" method="POST">
-    	                        <fieldset>	   							       							   			   							   								    	   							   			   							   								   
-	   								<div class="form-group">
-	   									<spring:message code="select.chooseOne" var="chooseOne" />
-	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createDataValue.taskPrk" /></label>
-										<form:select path="taskPrk" class="form-control">
-    										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${taskPrkList}" itemValue="taskPrkId" itemLabel="name" />
-										</form:select>	   							   								    
-	   								</div>
+    	                        <fieldset>
+									<spring:bind path="taskPrk">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createDataValue.taskPrk" /></label>
+											<form:select path="taskPrk" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${taskPrkList}" itemValue="taskPrkId" itemLabel="taskName" />
+											</form:select>
+											<form:errors path="taskPrk" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
 
-	   								<div class="form-group">
-	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createDataValue.elementPrk" /></label>
-										<form:select path="elementPrk" class="form-control">
-    										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${elementPrkList}" itemValue="elementPrkId" itemLabel="name" />
-										</form:select>	   							   								    
-	   								</div>
+									<spring:bind path="elementPrk">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createDataValue.elementPrk" /></label>
+											<form:select path="elementPrk" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${elementPrkList}" itemValue="elementPrkId" itemLabel="elementPrkName" />
+											</form:select>
+											<form:errors path="elementPrk" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
 
-	   								<div class="form-group">
-	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createDataValue.sensor" /></label>
-										<form:select path="sensor" class="form-control">
-    										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${sensorList}" itemValue="sensorId" itemLabel="name" />
-										</form:select>	   							   								    
-	   								</div>
+									<spring:bind path="sensor">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createDataValue.sensor" /></label>
+											<form:select path="sensor" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${sensorList}" itemValue="sensorId" itemLabel="sensorTag" />
+											</form:select>
+											<form:errors path="sensor" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
 
-	   								<div class="form-group">
-	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createDataValue.dataLogger" /></label>
-										<form:select path="dataLogger" class="form-control">
-    										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${dataLoggerList}" itemValue="dataLoggerId" itemLabel="name" />
-										</form:select>	   							   								    
-	   								</div>
+									<spring:bind path="dataLogger">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createDataValue.dataLogger" /></label>
+											<form:select path="sensor" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${dataLoggerList}" itemValue="dataLoggerId" itemLabel="dataLoggerTag" />
+											</form:select>
+											<form:errors path="dataLogger" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
 	   							   	
 		    						<div class="button">
 		    							<spring:message code="createDataValue.submit" var="dataValueSubmit" />

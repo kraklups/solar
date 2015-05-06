@@ -28,7 +28,10 @@
             	<bean class="net.kraklups.solarapp.web.formatters.CompanyFormatter" />
             	<bean class="net.kraklups.solarapp.web.formatters.MapParkFormatter" /> 
             	<bean class="net.kraklups.solarapp.web.formatters.EventTskFormatter" />
-            	<bean class="net.kraklups.solarapp.web.formatters.DataLoggerFormatter" />           	
+            	<bean class="net.kraklups.solarapp.web.formatters.DataLoggerFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.TaskPrkFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.ElementPrkFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.SensorFormatter" />
         	</set>
     	</property>
 	</bean> 		

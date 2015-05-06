@@ -24,7 +24,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="TaskPrk")
 @Inheritance(strategy=InheritanceType.JOINED)
-public abstract class TaskPrk implements java.io.Serializable {
+public class TaskPrk implements java.io.Serializable {
 	
 	private static final long serialVersionUID = 6497472672620027142L;
 	

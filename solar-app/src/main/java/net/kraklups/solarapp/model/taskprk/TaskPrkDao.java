@@ -142,5 +142,7 @@ public interface TaskPrkDao extends GenericDao<TaskPrk, Long> {
 	public List<TaskPrk> getSynchronizesByRoleId(Long roleId, int startIndex, int count) 
 			throws InstanceNotFoundException; 	
 
-	
+    public List<TaskPrk> getTaskPrks(int startIndex, int count)
+			throws InstanceNotFoundException;
+    
 }

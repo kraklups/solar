@@ -223,6 +223,24 @@ public class ElementPrkDaoHibernate extends
 		}			
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<ElementPrk> getElementPrks(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<ElementPrk> elementPrks = (List<ElementPrk>)  getSession().createQuery(
+	        	"SELECT a FROM ElementPrk a " +
+	        	"ORDER BY a.elementPrkId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (elementPrks == null) {
+			throw new InstanceNotFoundException(null, ElementPrk.class.getName());
+		} else {
+			return elementPrks;
+		}
+	}
+
 
 
 }

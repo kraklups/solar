@@ -229,4 +229,7 @@ public interface TaskPrkService {
     public Alarm saveAlarm(Alarm alarm)
     		throws DuplicateInstanceException;
     
+	public TaskPrkBlock getTaskPrks(int startIndex, int count) 
+			throws InstanceNotFoundException;    
+    
 }

@@ -106,4 +106,7 @@ public interface ElementPrkDao extends GenericDao<ElementPrk, Long> {
      public List<ElementPrk> getElementPrksByDataLogger(Long dataLoggerId, int startIndex, int count) 
              throws InstanceNotFoundException;
      
+     public List<ElementPrk> getElementPrks(int startIndex, int count)
+ 			throws InstanceNotFoundException;     
+     
 }

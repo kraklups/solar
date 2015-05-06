@@ -296,4 +296,22 @@ public class TaskPrkDaoHibernate extends
 		}
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<TaskPrk> getTaskPrks(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<TaskPrk> taskPrks = (List<TaskPrk>)  getSession().createQuery(
+	        	"SELECT a FROM TaskPrk a " +
+	        	"ORDER BY a.taskPrkId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (taskPrks == null) {
+			throw new InstanceNotFoundException(null, TaskPrk.class.getName());
+		} else {
+			return taskPrks;
+		}
+	}
+
 }

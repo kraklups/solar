@@ -54,5 +54,8 @@ public interface DataService {
 	
     public DataLogger saveDataLogger(DataLogger dataLogger)
     		throws DuplicateInstanceException;	
-	
+
+    public DataValue saveDataValue(DataValue dataValue)
+    		throws DuplicateInstanceException;	    
+    
 }

@@ -34,7 +34,7 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="ElementPrk")
 @Inheritance(strategy=InheritanceType.JOINED)
-public abstract class ElementPrk implements java.io.Serializable {
+public class ElementPrk implements java.io.Serializable {
 	
 	private static final long serialVersionUID = -8979274625904669832L;
 	
