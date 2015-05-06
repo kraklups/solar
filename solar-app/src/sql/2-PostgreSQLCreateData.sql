@@ -58,6 +58,21 @@ INSERT into DataLogger (dataLoggerId,dataLoggerTag,dataLoggerType,dataLoggerFK)
             VALUES (nextval('DataLoggerSeq'),'merdelemerde','merdelemerde',currval('DataLoggerSeq'));
             
 INSERT into DataLogger (dataLoggerId,dataLoggerTag,dataLoggerType,dataLoggerFK) 
-            VALUES (0,'No Parent','No Parent',0);            
+            VALUES (0,'No Parent','No Parent',0);    
+            
+INSERT into TaskPrk (taskPrkId,taskName,creationDate,parkId,roleId,userProfileId) 
+            VALUES (nextval('TaskPrkSeq'),'TaskNameMerde','2013-01-01 00:00:00',1,1,1);     
+            
+INSERT into Monitor (monitorId) 
+            VALUES (1);
+            
+INSERT into ElementPrk (elementPrkId,elementPrkName,elementPrkTag,tvi,lastAccess,userProfileId,dataLoggerId,parkId,mapElement) 
+            VALUES (nextval('ElementPrkSeq'),'ElementPrkNameMerde','ElementPrkTagMerde','2013-01-01 00:00:00','2013-02-01 00:00:00',1,1,1,ST_GeomFromText('POINT(-71.060316 48.432044)', 4326));
+
+INSERT into Gps (gpsId) 
+            VALUES (1);
+
+INSERT into Sensor (sensorId,sensorTag,elementPrkId) 
+            VALUES (nextval('SensorSeq'),'SensorTag',1);            
             
 COMMIT;             
