@@ -24,7 +24,7 @@ import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
-@Table(name="TimetableBlock")
+@Table(name="Timetable")
 public class Timetable {
 	
 	private Long timetableId;

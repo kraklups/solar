@@ -98,21 +98,21 @@ public class CreateDataValue {
 	
 	private void initModelListSensor(Model model) throws InstanceNotFoundException {
 		List <Sensor> sensorList = elementService.getSensors(startIndex, SENSOR_PER_PAGE).getSensors();
-		model.addAttribute(sensorList);
+		model.addAttribute("sensorList",sensorList);
 	}
 	
 	private void initModelListTaskPrk(Model model) throws InstanceNotFoundException {
 		List <TaskPrk> taskPrkList = taskPrkService.getTaskPrks(startIndex, TASKPRK_PER_PAGE).getTaskPrks();
-		model.addAttribute(taskPrkList);
+		model.addAttribute("taskPrkList",taskPrkList);
 	}	
 
 	private void initModelListDataLogger(Model model) throws InstanceNotFoundException {
 		List <DataLogger> dataLoggerList = dataService.getDataLoggers(startIndex, DATALOGGER_PER_PAGE).getDataLoggers();
-		model.addAttribute(dataLoggerList);
+		model.addAttribute("dataLoggerList",dataLoggerList);
 	}	
 	
 	private void initModelListElementPrk(Model model) throws InstanceNotFoundException {
 		List <ElementPrk> elementPrkList = elementService.getElementPrks(startIndex, ELEMENTPRK_PER_PAGE).getElementPrks();
-		model.addAttribute(elementPrkList);
+		model.addAttribute("elementPrkList",elementPrkList);
 	}	
 }
