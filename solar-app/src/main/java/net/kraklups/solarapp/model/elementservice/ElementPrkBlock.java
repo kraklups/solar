@@ -13,7 +13,6 @@ public class ElementPrkBlock {
         
         this.elementPrks = elementPrks;
         this.existMoreElementPrks = existMoreElementPrks;
-
     }
     
     public List<ElementPrk> getElementPrks() {

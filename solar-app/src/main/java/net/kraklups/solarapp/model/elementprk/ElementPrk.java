@@ -46,10 +46,7 @@ public class ElementPrk implements java.io.Serializable {
 	private UserProfile userProfile;
 	private DataLogger dataLogger;
 	private Park park;
-	
-	private Set<Monitor> monitors = new HashSet<Monitor>(0);
-	
-	@Type(type="org.hibernate.spatial.GeometryType")	
+	private Set<Monitor> monitors = new HashSet<Monitor>(0);	
 	private Point mapElement;	
 
 	public ElementPrk() {
@@ -159,7 +156,8 @@ public class ElementPrk implements java.io.Serializable {
 	public void setPark(Park park){
 		this.park = park;
 	}
-	
+
+	@Type(type="org.hibernate.spatial.GeometryType")	
 	public Point getMapElement() {
 		return mapElement;
 	}
