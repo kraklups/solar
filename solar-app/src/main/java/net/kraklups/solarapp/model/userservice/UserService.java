@@ -121,4 +121,7 @@ public interface UserService extends UserDetailsService {
 	
 	public RoleModuleAccess checkRoleModuleAccess() throws InstanceNotFoundException;	
 	
+    public Module saveModule(Module module)
+    		throws DuplicateInstanceException;	
+	
 }

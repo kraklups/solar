@@ -457,4 +457,12 @@ public class UserServiceImpl implements UserService {
 		return moduleDao.findByName(moduleName);	
 	}
 
+	@Override
+	public Module saveModule(Module module) throws DuplicateInstanceException {
+
+		moduleDao.save(module);
+        
+		return module;
+	}
+
 }

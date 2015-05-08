@@ -36,6 +36,7 @@ public class Module {
 	@Size(min=8, max=30)	
 	private String moduleName;
 	
+	//2014-07-04T12:08:56.235	
 	@DateTimeFormat(pattern="MM/dd/yyyy")
 	@NotNull	
 	private Date date;
