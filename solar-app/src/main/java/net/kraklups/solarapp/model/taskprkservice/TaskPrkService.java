@@ -233,6 +233,9 @@ public interface TaskPrkService {
 			throws InstanceNotFoundException;   
 	
     public EventTsk saveEventTsk(EventTsk eventTsk)
-    		throws DuplicateInstanceException;	
+    		throws DuplicateInstanceException;
+    
+    public MessageEvent saveMessageEvent(MessageEvent messageEvent)
+    		throws DuplicateInstanceException;	    
     
 }

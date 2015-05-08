@@ -39,7 +39,8 @@ public class CreateAlarm {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/alarm/createAlarm", method = RequestMethod.GET)
-	public String createAlarmGet(Model model) throws InstanceNotFoundException {
+	public String createAlarmGet(Model model) 
+			throws InstanceNotFoundException {
 		
 		logger.info("Create Alarm page !");
 		
@@ -71,7 +72,6 @@ public class CreateAlarm {
 			
 			return "Done";
 		}
-				
 	}
 
 	private void initModelList(Model model) throws InstanceNotFoundException {

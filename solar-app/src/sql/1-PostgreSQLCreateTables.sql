@@ -157,7 +157,7 @@ CREATE SEQUENCE MessageEventSeq;
 
 DROP TABLE IF EXISTS MessageEvent CASCADE;
 CREATE TABLE MessageEvent (messageEventId BIGINT NOT NULL,
-    tvi TIMESTAMP NOT NULL, messageEventText VARCHAR(30), 
+    tvi TIMESTAMP NOT NULL, messageEventText VARCHAR(50), 
     eventTskId BIGINT NOT NULL,
     CONSTRAINT EventTskIdFK FOREIGN KEY(eventTskId)
         REFERENCES EventTsk (eventTskId) ON DELETE CASCADE,

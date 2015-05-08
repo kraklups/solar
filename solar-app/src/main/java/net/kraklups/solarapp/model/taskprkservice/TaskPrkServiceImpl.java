@@ -752,5 +752,14 @@ public class TaskPrkServiceImpl implements TaskPrkService {
         
 		return eventTsk;
 	}
+
+	@Override
+	public MessageEvent saveMessageEvent(MessageEvent messageEvent)
+			throws DuplicateInstanceException {
+
+		messageEventDao.save(messageEvent);
+        
+		return messageEvent;
+	}
 	
 }
