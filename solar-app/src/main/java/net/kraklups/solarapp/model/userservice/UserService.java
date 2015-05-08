@@ -123,5 +123,8 @@ public interface UserService extends UserDetailsService {
 	
     public Module saveModule(Module module)
     		throws DuplicateInstanceException;	
+    
+	public UserProfileBlock getUserProfiles(int startIndex, int count) 
+			throws InstanceNotFoundException;    
 	
 }

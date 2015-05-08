@@ -32,11 +32,13 @@ public class Report {
 	@NotEmpty
 	@Size(min=6, max=50)	
 	private String reportTitle;
-	
+
+	//2014-07-04T12:08:56.235
 	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
 	@NotNull	
 	private Date dateRequest;
 	
+	//2014-07-04T12:08:56.235	
 	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
 	@NotNull	
 	private Date dateServed;

@@ -238,4 +238,7 @@ public interface TaskPrkService {
     public MessageEvent saveMessageEvent(MessageEvent messageEvent)
     		throws DuplicateInstanceException;	    
     
+    public Report saveReport(Report report)
+    		throws DuplicateInstanceException;    
+    
 }

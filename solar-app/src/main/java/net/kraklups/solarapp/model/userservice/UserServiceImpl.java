@@ -465,4 +465,15 @@ public class UserServiceImpl implements UserService {
 		return module;
 	}
 
+	@Override
+	public UserProfileBlock getUserProfiles(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<UserProfile> userProfiles = userProfileDao.getUserProfiles(startIndex, count + 1);
+		
+		boolean existMoreUserProfiles = userProfiles.size() == (count +1);
+		
+		return new UserProfileBlock(userProfiles, existMoreUserProfiles);
+	}
+
 }

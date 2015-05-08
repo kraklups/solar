@@ -761,5 +761,13 @@ public class TaskPrkServiceImpl implements TaskPrkService {
         
 		return messageEvent;
 	}
+
+	@Override
+	public Report saveReport(Report report) throws DuplicateInstanceException {
+
+		reportDao.save(report);
+        
+		return report;
+	}
 	
 }
