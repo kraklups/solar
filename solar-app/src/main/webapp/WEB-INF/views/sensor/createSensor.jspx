@@ -51,14 +51,17 @@
 										</div> 
 									</spring:bind>
 	   							   			   							   								   
-	   								<div class="form-group">
-	   									<spring:message code="select.chooseOne" var="chooseOne" />
-	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createSensor.elementPrk" /></label>
-										<form:select path="elementPrk" class="form-control">
-    										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${elementPrkList}" itemValue="elementPrkId" itemLabel="name" />
-										</form:select>	   							   								    
-	   								</div>
+									<spring:bind path="elementPrk">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createDataValue.elementPrk" /></label>
+											<form:select path="elementPrk" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${elementPrkList}" itemValue="elementPrkId" itemLabel="elementPrkName" />
+											</form:select>
+											<form:errors path="elementPrk" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
 	   							   								    	   							   								    
 		    						<div class="button">
 		    							<spring:message code="createSensor.submit" var="sensorSubmit" />

@@ -241,4 +241,8 @@ public interface ElementService {
 	
 	public ElementPrkBlock getElementPrks(int startIndex, int count) 
 			throws InstanceNotFoundException;	
+	
+    public Sensor saveSensor(Sensor sensor)
+    		throws DuplicateInstanceException;	
+
 }
