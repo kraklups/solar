@@ -127,4 +127,7 @@ public interface UserService extends UserDetailsService {
 	public UserProfileBlock getUserProfiles(int startIndex, int count) 
 			throws InstanceNotFoundException;    
 	
+    public Role saveRole(Role role)
+    		throws DuplicateInstanceException;	
+	
 }

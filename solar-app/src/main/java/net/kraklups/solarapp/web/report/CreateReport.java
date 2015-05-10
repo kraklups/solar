@@ -60,6 +60,8 @@ public class CreateReport {
 			throws DuplicateInstanceException, InstanceNotFoundException {
 				
 		if(result.hasErrors()) {
+			logger.info("Returning after error createReport.jspx page");
+			
 			return "report/createReport";
 		} else {
 			logger.info("Create Report page !" + "reportId: " + report.getReportId());

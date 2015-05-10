@@ -38,6 +38,7 @@ public class Role {
 	@Size(min=6, max=30)
 	private String roleName;
 	
+	//2014-07-04T12:08:56.235	
 	@DateTimeFormat(pattern="MM/dd/yyyy")
 	@NotNull	
 	private Date date;

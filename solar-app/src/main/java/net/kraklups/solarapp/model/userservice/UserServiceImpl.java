@@ -476,4 +476,12 @@ public class UserServiceImpl implements UserService {
 		return new UserProfileBlock(userProfiles, existMoreUserProfiles);
 	}
 
+	@Override
+	public Role saveRole(Role role) throws DuplicateInstanceException {
+		
+		roleDao.save(role);
+		
+		return role;
+	}
+
 }
