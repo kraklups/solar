@@ -19,8 +19,7 @@ public class StateType {
 	public StateType() {		
 	}
 	
-	public StateType(Long stateTypeId, String nameST, String definitionST) {
-		this.stateTypeId = stateTypeId;
+	public StateType(String nameST, String definitionST) {
 		this.nameST = nameST;
 		this.definitionST = definitionST;
 	}
@@ -58,7 +57,7 @@ public class StateType {
 	
 	@Override
 	public String toString() {
-		return "StateType [stateTypeId=" + stateTypeId + ", nombre=" + nameST + ", " +
+		return "StateType [stateTypeId=" + stateTypeId + ", nombre=" + nameST +
 				", definition=" + definitionST + "]";
 	}	
 	

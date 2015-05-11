@@ -232,6 +232,9 @@ public interface TaskPrkService {
 	public TaskPrkBlock getTaskPrks(int startIndex, int count) 
 			throws InstanceNotFoundException;   
 	
+	public UpkeepBlock getUpkeeps(int startIndex, int count) 
+			throws InstanceNotFoundException;	
+	
     public EventTsk saveEventTsk(EventTsk eventTsk)
     		throws DuplicateInstanceException;
     
@@ -240,5 +243,5 @@ public interface TaskPrkService {
     
     public Report saveReport(Report report)
     		throws DuplicateInstanceException;    
-    
+        
 }

@@ -20,7 +20,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 import net.kraklups.solarapp.model.statetype.StateType;
-import net.kraklups.solarapp.model.taskprk.TaskPrk;
 import net.kraklups.solarapp.model.taskprk.Upkeep;
 import net.kraklups.solarapp.model.park.Park;
 
@@ -30,10 +29,12 @@ public class State {
 
 	private Long stateId;
 	
+	//2014-07-04T12:08:56.235
 	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
 	@NotNull	
 	private Date tvi;
 	
+	//2014-07-04T12:08:56.235
 	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
 	@NotNull	
 	private Date tvf;
@@ -46,8 +47,7 @@ public class State {
 	public State() {		
 	}
 	
-	public State(Long stateId, Date tvi, Date tvf, Park park, EventTsk eventTsk, TaskPrk taskPrk, Upkeep upkeep, StateType stateType) {
-		this.stateId = stateId;
+	public State(Date tvi, Date tvf, Park park, EventTsk eventTsk, Upkeep upkeep, StateType stateType) {
 		this.tvi = tvi;
 		this.tvf = tvf;
 		this.park = park;
@@ -132,7 +132,7 @@ public class State {
 	@Override
 	public String toString() {
 		return "State [stateId=" + stateId + ", tvi=" + tvi + ", tvf=" + tvf + ", Park=" + park.getParkName() +
-				", EventTsk=" + eventTsk.getEventTskId() + ", TaskPrk=" + upkeep.getTaskPrkId() + 
+				", EventTsk=" + eventTsk.getEventTskId() + ", TaskPrk=" + upkeep.getUpkeepId() + 
 				", StateType=" + stateType.getStateTypeId() +  "]";
 	}
 }

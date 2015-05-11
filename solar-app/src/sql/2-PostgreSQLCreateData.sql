@@ -66,6 +66,12 @@ INSERT into TaskPrk (taskPrkId,taskName,creationDate,parkId,roleId,userProfileId
 INSERT into Monitor (monitorId) 
             VALUES (1);
             
+INSERT into TaskPrk (taskPrkId,taskName,creationDate,parkId,roleId,userProfileId) 
+            VALUES (nextval('TaskPrkSeq'),'UpkeepMerde','2012-01-01 00:00:00',1,1,1);     
+            
+INSERT into Upkeep (upkeepId) 
+            VALUES (currval('TaskPrkSeq'));            
+            
 INSERT into ElementPrk (elementPrkId,elementPrkName,elementPrkTag,tvi,lastAccess,userProfileId,dataLoggerId,parkId,mapElement) 
             VALUES (nextval('ElementPrkSeq'),'ElementPrkNameMerde','ElementPrkTagMerde','2013-01-01 00:00:00','2013-02-01 00:00:00',1,1,1,ST_GeomFromText('POINT(-71.060316 48.432044)', 4326));
 
@@ -73,6 +79,18 @@ INSERT into Gps (gpsId)
             VALUES (1);
 
 INSERT into Sensor (sensorId,sensorTag,elementPrkId) 
-            VALUES (nextval('SensorSeq'),'SensorTag',1);            
+            VALUES (nextval('SensorSeq'),'SensorTag',1);
+            
+INSERT into StateType (stateTypeId,nameST,definitionST) 
+            VALUES (1,'Parada','Parada');  
+
+INSERT into StateType (stateTypeId,nameST,definitionST) 
+            VALUES (2,'Produccion','Produccion');
+
+INSERT into StateType (stateTypeId,nameST,definitionST) 
+            VALUES (3,'Mantenimiento','Mantenimiento');
+
+INSERT into StateType (stateTypeId,nameST,definitionST) 
+            VALUES (4,'Revision','Revision');
             
 COMMIT;             

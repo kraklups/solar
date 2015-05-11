@@ -21,6 +21,8 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @PrimaryKeyJoinColumn(name = "trackId", referencedColumnName = "taskPrkId")
 public class Track extends TaskPrk {
 
+	private static final long serialVersionUID = -550692764739942399L;
+	
 	private Date tvf;	
 	private Report report;
 	

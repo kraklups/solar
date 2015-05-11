@@ -145,4 +145,7 @@ public interface TaskPrkDao extends GenericDao<TaskPrk, Long> {
     public List<TaskPrk> getTaskPrks(int startIndex, int count)
 			throws InstanceNotFoundException;
     
+    public List<Upkeep> getUpkeeps(int startIndex, int count)
+			throws InstanceNotFoundException;    
+    
 }

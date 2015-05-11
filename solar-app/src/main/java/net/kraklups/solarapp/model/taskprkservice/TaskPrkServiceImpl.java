@@ -769,5 +769,16 @@ public class TaskPrkServiceImpl implements TaskPrkService {
         
 		return report;
 	}
+
+	@Override
+	public UpkeepBlock getUpkeeps(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Upkeep> upkeeps = taskPrkDao.getUpkeeps(startIndex, count + 1);
+		
+		boolean existMoreUpkeeps = upkeeps.size() == (count +1);
+		
+		return new UpkeepBlock(upkeeps, existMoreUpkeeps);
+	}
 	
 }

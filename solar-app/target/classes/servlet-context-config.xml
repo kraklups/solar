@@ -33,6 +33,9 @@
             	<bean class="net.kraklups.solarapp.web.formatters.ElementPrkFormatter" />
             	<bean class="net.kraklups.solarapp.web.formatters.SensorFormatter" />
             	<bean class="net.kraklups.solarapp.web.formatters.TimetableFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.StateTypeFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.UpkeepFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.ParkFormatter" />
         	</set>
     	</property>
 	</bean> 		

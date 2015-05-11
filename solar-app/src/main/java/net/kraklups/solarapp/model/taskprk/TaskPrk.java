@@ -52,7 +52,7 @@ public class TaskPrk implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,
 		generator="TaskPrkIdGenerator")
-	@Column(name="TaskPrkId", unique= true, nullable = false)
+	@Column(name="taskPrkId", unique= true, nullable = false)
 	public Long getTaskPrkId() {
 		return taskPrkId;
 	}

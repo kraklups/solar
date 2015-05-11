@@ -27,6 +27,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementservice/ElementPrkBlock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/event/CreateEvent.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementservice/ElementService.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/taskprkservice/UpkeepBlock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/TimetableFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/datalogger/UpdateDataLogger.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/company/UpdateCompany.java
@@ -34,6 +35,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/alarm/AlarmDaoHibernate.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementprk/StringLine.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/userprofile/UserProfile.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/parkservice/StateTypeBlock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/role/UpdateRole.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/module/CreateModule.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/timetable/Timetable.java
@@ -43,9 +45,10 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/alarm/CreateAlarm.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementservice/SensorBlock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementprk/MediumVoltage.java
-/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/user/Login.java
-/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/taskprk/Synchronize.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/taskprk/Upkeep.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/taskprk/Synchronize.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/UpkeepFormatter.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/user/Login.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/message/UpdateMessage.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/message/CreateMessage.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/user/UpdateRegister.java
@@ -67,6 +70,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/dataservice/DataService.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/sensor/CreateSensor.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/user/ShowRegisters.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/StateTypeFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/MapParkFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/user/Register.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/userservice/UserProfileBlock.java
@@ -129,6 +133,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/datavalue/DataValueDaoHibernate.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/sensor/UpdateSensor.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/eventtsk/EventTskDao.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/ParkFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/parkservice/TimetableBlock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/alarm/UpdateAlarm.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementprk/ExtractionPoint.java

@@ -52,7 +52,7 @@
 		   							</spring:bind>
 	   							   		
 									<spring:bind path="tvi">           	
-										<spring:message code="createEventTsk.dateTvi" var="stdout" />
+										<spring:message code="createEventTsk.tvi" var="stdout" />
 										<div class="form-group ${status.error ? 'has-error' : '' }">        
 											<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>
 		            						<form:input path="tvi" class="form-control" placeholder="${stdout} yyyy-MM-dd'T'HH:mm:ss.SSS" />
@@ -61,11 +61,11 @@
 		   							</spring:bind>	   							   		
 
 									<spring:bind path="tvf">        
-	        							<spring:message code="createEventTsk.dateTvf" var="stdout" />
+	        							<spring:message code="createEventTsk.tvf" var="stdout" />
 										<div class="form-group ${status.error ? 'has-error' : '' }">        
 											<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>	        							
 		            						<form:input path="tvf" class="form-control" placeholder="Date tvf" />
-											<form:errors path="tvf" cssClass="control-label" for="inputError" element="label" />		            						
+											<form:errors path="tvf" cssClass="control-label" for="inputError" element="label" />
 		   								</div>
 		   							</spring:bind>   							   		
 

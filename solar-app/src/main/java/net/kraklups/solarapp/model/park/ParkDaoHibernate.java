@@ -65,4 +65,22 @@ public class ParkDaoHibernate extends
 			return parks;
 		}			
 	}
+
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<Park> getParks(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Park> parks = (List<Park>)  getSession().createQuery(
+	        	"SELECT a FROM Park a  " +
+	        	"ORDER BY a.parkId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (parks == null) {
+			throw new InstanceNotFoundException(null, Park.class.getName());
+		} else {
+			return parks;
+		}
+	}
 }

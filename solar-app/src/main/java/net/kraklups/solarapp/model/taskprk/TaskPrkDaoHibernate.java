@@ -314,4 +314,22 @@ public class TaskPrkDaoHibernate extends
 		}
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<Upkeep> getUpkeeps(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Upkeep> upkeeps = (List<Upkeep>)  getSession().createQuery(
+	        	"SELECT a FROM Upkeep a " +
+	        	"ORDER BY a.upkeepId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (upkeeps == null) {
+			throw new InstanceNotFoundException(null, Upkeep.class.getName());
+		} else {
+			return upkeeps;
+		}
+	}
+
 }
