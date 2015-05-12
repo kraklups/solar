@@ -2,6 +2,7 @@ package net.kraklups.solarapp.model.taskprk;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -27,17 +28,26 @@ public class Track extends TaskPrk {
 	private Report report;
 	
 	public Track() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Track(String taskName, Date creationDate,
 			Park park, Role role, UserProfile userProfile, Date tvf, Report report) {
+		
 		super(taskName, creationDate, park, role, userProfile);
 		
 		this.tvf = tvf;
 		this.report = report;
 	}
 
+	@Column(name = "trackId", nullable = false, insertable = false, updatable = false)	
+	public Long getTrackId() {
+		return super.getTaskPrkId();
+	}
+		
+	public void setTrackId(Long trackId){
+		super.setTaskPrkId(trackId);
+	}	
+	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="reportId")	
 	public Report getReport() {

@@ -19,7 +19,6 @@ public class Upkeep extends TaskPrk {
 	private static final long serialVersionUID = 8435842604520449680L;
 
 	public Upkeep() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Upkeep(String taskName, Date creationDate,
