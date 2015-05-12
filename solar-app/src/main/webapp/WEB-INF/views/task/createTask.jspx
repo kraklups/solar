@@ -35,6 +35,46 @@
                     	
 							<form:form modelAttribute="taskPrk" method="POST">
     	                        <fieldset>
+    	                            <spring:bind path="taskName">           	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">        
+		        							<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createTask.taskName" /></label>
+       	        							<form:input path="taskName" class="form-control" placeholder="Task Name" autofocus="autofocus" />
+       	        							<form:errors path="taskName" cssClass="control-label" for="inputError" element="label" />       	        							
+		   								</div>
+		   							</spring:bind>
+	   							   	
+									<spring:bind path="creationDate">
+										<spring:message code="createTask.creationDate" var="stdout" />
+  										<div class="form-group ${status.error ? 'has-error' : '' }">        
+    										<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>    
+											<form:input path="creationDate" class="form-control" placeholder="${stdout} yyyy-MM-dd'T'HH:mm:ss.SSS" />
+											<form:errors path="creationDate" cssClass="control-label" for="inputError" element="label" />
+		   								</div>	 
+		   							</spring:bind>
+	   							   	
+									<spring:bind path="park">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createTask.park" /></label>
+											<form:select path="park" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${parkList}" itemValue="parkId" itemLabel="parkName" />
+											</form:select>
+											<form:errors path="park" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
+
+									<spring:bind path="role">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createTask.role" /></label>
+											<form:select path="role" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${roleList}" itemValue="roleId" itemLabel="roleName" />
+											</form:select>
+											<form:errors path="role" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
 	   							   	
 		    						<div class="button">
 		    							<spring:message code="createTask.submit" var="taskSubmit" />

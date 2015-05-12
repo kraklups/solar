@@ -75,7 +75,7 @@
 	   									<div class="form-group ${status.error ? 'has-error' : '' }">
 	   										<spring:message code="select.chooseOne" var="chooseOne" />
 	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createDataValue.dataLogger" /></label>
-											<form:select path="sensor" class="form-control">
+											<form:select path="dataLogger" class="form-control">
     											<form:option value="" label="${chooseOne}" />
     											<form:options items="${dataLoggerList}" itemValue="dataLoggerId" itemLabel="dataLoggerTag" />
 											</form:select>

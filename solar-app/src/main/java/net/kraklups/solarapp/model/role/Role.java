@@ -129,4 +129,10 @@ public class Role {
 		this.roleModuleAccess = roleModuleAccess;
 	}
 	
+	@Override
+	public String toString() {
+		return "Role [roleId=" + roleId + ", roleName=" + roleName +
+			", date=" + date + ", weight=" + weight + "]";
+	}	
+	
 }

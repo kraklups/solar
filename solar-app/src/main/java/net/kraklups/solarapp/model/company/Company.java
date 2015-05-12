@@ -85,6 +85,10 @@ public class Company implements java.io.Serializable {
 		this.date = date;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Company [companyId=" + companyId + ", companyName=" + companyName +
+			", date=" + date + "]";
+	}		
 	
 }
