@@ -780,5 +780,14 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		
 		return new UpkeepBlock(upkeeps, existMoreUpkeeps);
 	}
+
+	@Override
+	public TaskPrk saveTaskPrk(TaskPrk taskPrk)
+			throws DuplicateInstanceException {
+
+		taskPrkDao.save(taskPrk);
+		
+		return taskPrk;
+	}
 	
 }

@@ -243,5 +243,8 @@ public interface TaskPrkService {
     
     public Report saveReport(Report report)
     		throws DuplicateInstanceException;    
-        
+    
+    public TaskPrk saveTaskPrk(TaskPrk taskPrk)
+    		throws DuplicateInstanceException;
+    
 }

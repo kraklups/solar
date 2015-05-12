@@ -16,6 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.role.Role;
@@ -29,8 +34,16 @@ public class TaskPrk implements java.io.Serializable {
 	private static final long serialVersionUID = 6497472672620027142L;
 	
 	private Long taskPrkId;
+	
+	@NotEmpty
+	@Size(min=6, max=30)		
 	private String taskName;
+	
+	//2014-07-04T12:08:56.235
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull	
 	private Date creationDate;
+	
 	private Park park;
 	private Role role;
 	private UserProfile userProfile;

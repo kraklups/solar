@@ -26,6 +26,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/parkservice/ParkServiceImpl.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementservice/ElementPrkBlock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/event/CreateEvent.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/userservice/RoleBlock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementservice/ElementService.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/taskprkservice/UpkeepBlock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/TimetableFormatter.java
