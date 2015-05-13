@@ -247,4 +247,7 @@ public interface TaskPrkService {
     public TaskPrk saveTaskPrk(TaskPrk taskPrk)
     		throws DuplicateInstanceException;
     
+    public Monitor saveTaskPrk(Monitor monitor)
+    		throws DuplicateInstanceException;
+    
 }

@@ -789,5 +789,14 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		
 		return taskPrk;
 	}
+
+	@Override
+	public Monitor saveTaskPrk(Monitor monitor)
+			throws DuplicateInstanceException {
+
+		taskPrkDao.save(monitor);
+		
+		return monitor;
+	}
 	
 }

@@ -9,6 +9,7 @@ import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.parkservice.ParkService;
 import net.kraklups.solarapp.model.role.Role;
+import net.kraklups.solarapp.model.taskprk.Monitor;
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
 import net.kraklups.solarapp.model.taskprkservice.TaskPrkService;
 import net.kraklups.solarapp.model.userservice.UserService;
@@ -60,6 +61,10 @@ public class CreateTask {
 		
 		model.addAttribute("taskPrk", taskPrk);
 		
+		Monitor monitor = new Monitor();
+		
+		model.addAttribute("monitor", monitor);
+		
 		initModelListPark(model);
 		
 		initModelListRole(model);		
@@ -90,8 +95,35 @@ public class CreateTask {
 			
 			return "Done";
 
-		}	}
+		}	
+	}
+	
+	@RequestMapping(value = "/task/createMonitorTask", method = RequestMethod.POST)
+	public String createMonitorPost(@Valid @ModelAttribute("monitor") Monitor monitor, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createTask.jspx page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create Monitor page! " + "monitor: " + monitor.getMonitorId());
 
+			model.addAttribute("monitor", monitor);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			monitor.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			Monitor merda = taskPrkService.saveTaskPrk(monitor);
+			
+			logger.info("Create Monitor page POST! " + merda);
+			
+			return "Done";
+
+		}	
+	}	
+	
 	private void initModelListPark(Model model) throws InstanceNotFoundException {
 		List <Park> parkList = parkService.getParks(startIndex, PARK_PER_PAGE).getParks();
 		model.addAttribute("parkList",parkList);
