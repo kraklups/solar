@@ -2,6 +2,7 @@ package net.kraklups.solarapp.model.elementprk;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -32,4 +33,13 @@ public class WeatherStation extends ElementPrk implements java.io.Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Column(name = "weatherStationId", nullable = false, insertable = false, updatable = false)	
+	public Long getWeatherStationId() {
+		return super.getElementPrkId();
+	}
+		
+	public void setWeatherStationId(Long weatherStationId){
+		super.setElementPrkId(weatherStationId);
+	}	
+	
 }

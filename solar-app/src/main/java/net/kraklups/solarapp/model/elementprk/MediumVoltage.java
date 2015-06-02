@@ -2,6 +2,7 @@ package net.kraklups.solarapp.model.elementprk;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -38,6 +39,15 @@ public class MediumVoltage extends ElementPrk implements java.io.Serializable {
 		this.extractionPoint = extractionPoint;
 	}
 
+	@Column(name = "mediumVoltageId", nullable = false, insertable = false, updatable = false)	
+	public Long getMediumVoltageId() {
+		return super.getElementPrkId();
+	}
+		
+	public void setMediumVoltageId(Long mediumVoltageId){
+		super.setElementPrkId(mediumVoltageId);
+	}	
+	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="extractionPointId")	
 	public ExtractionPoint getExtractionPoint() {

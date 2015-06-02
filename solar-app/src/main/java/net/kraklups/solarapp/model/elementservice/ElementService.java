@@ -26,22 +26,22 @@ public interface ElementService {
 
 	public ArrayBox createArrayBox(String elementPrkName, String elementPrkTag, Timestamp tvi,
 			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, StringLine stringLine)
+			DataLogger dataLogger, Park park)
 					throws DuplicateInstanceException;
 	
 	public ArrayBox updateArrayBox(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
 			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, StringLine stringLine)
+			DataLogger dataLogger, Park park)
 					throws InstanceNotFoundException;	
 	
 	public ArrayPanel createArrayPanel(String elementPrkName, String elementPrkTag, Timestamp tvi,
 			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park)
+			DataLogger dataLogger, Park park, StringLine stringLine)
 					throws DuplicateInstanceException;
 	
 	public ArrayPanel updateArrayPanel(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
 			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park)
+			DataLogger dataLogger, Park park, StringLine stringLine)
 					throws InstanceNotFoundException;	
 
 	public Cell createCell(String elementPrkName, String elementPrkTag, Timestamp tvi,
@@ -167,7 +167,7 @@ public interface ElementService {
 	public void assignUserProfileElementPrk(ElementPrk elementPrk, UserProfile userProfile) 
 			throws InstanceNotFoundException;
 	
-	public void assignStringLineArrayBox(ArrayBox arrayBox, StringLine stringLine) 
+	public void assignStringLineArrayPanel(ArrayPanel arrayPanel, StringLine stringLine) 
 			throws InstanceNotFoundException;
 
 	public void assignArrayPanelCell(Cell cell, ArrayPanel arrayPanel) 
@@ -246,6 +246,9 @@ public interface ElementService {
     		throws DuplicateInstanceException;	
     
     public ElementPrk saveElementPrk(ElementPrk elementPrk)
-    		throws DuplicateInstanceException;	    
+    		throws DuplicateInstanceException;	 
+    
+	public StringLineBlock getStringLines(int startIndex, int count) 
+			throws InstanceNotFoundException;    
 
 }

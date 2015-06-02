@@ -2,6 +2,7 @@ package net.kraklups.solarapp.model.elementprk;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -35,6 +36,15 @@ public class ElectricalSubstation extends ElementPrk implements java.io.Serializ
 		this.mediumVoltage = mediumVoltage;
 	}
 
+	@Column(name = "electricalSubstationId", nullable = false, insertable = false, updatable = false)	
+	public Long getElectricalSubstationId() {
+		return super.getElementPrkId();
+	}
+		
+	public void setElectricalSubstationId(Long electricalSubstationId){
+		super.setElementPrkId(electricalSubstationId);
+	}	
+	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="mediumVoltageId")	
 	public MediumVoltage getMediumVoltage() {

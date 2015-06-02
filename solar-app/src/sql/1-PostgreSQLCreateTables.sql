@@ -353,9 +353,11 @@ CREATE TABLE ArrayBox(arrayBoxId BIGINT NOT NULL,
 -- table ArrayPanel
 
 DROP TABLE IF EXISTS ArrayPanel CASCADE;
-CREATE TABLE ArrayPanel(arrayPanelId BIGINT NOT NULL,
+CREATE TABLE ArrayPanel(arrayPanelId BIGINT NOT NULL, stringLineId BIGINT NOT NULL,
     CONSTRAINT ArrayPanelIdFK FOREIGN KEY(arrayPanelId)
         REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,
+    CONSTRAINT StringLineIdFK FOREIGN KEY(stringLineId)
+        REFERENCES StringLine (stringLineId) ON DELETE CASCADE,        
     CONSTRAINT ArrayPanelIdPK PRIMARY KEY (arrayPanelId));
 
 

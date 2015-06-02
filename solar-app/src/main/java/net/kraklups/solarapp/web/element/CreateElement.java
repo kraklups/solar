@@ -10,6 +10,7 @@ import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.dataservice.DataService;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.elementprk.ElementPrkMock;
+import net.kraklups.solarapp.model.elementprk.StringLine;
 import net.kraklups.solarapp.model.elementservice.ElementService;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.parkservice.ParkService;
@@ -33,6 +34,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CreateElement {
 	
 	private final static int PARK_PER_PAGE = 50;
+	
+	private final static int STRINGLINE_PER_PAGE = 50;
 	
 	private final static int DATALOGGER_PER_PAGE = 50;
 
@@ -68,6 +71,8 @@ public class CreateElement {
 		initModelListPark(model);
 		
 		initModelListDataLogger(model);
+		
+		initModelListStringLine(model);
 		
 		return "element/createElement";
 	}
@@ -105,6 +110,11 @@ public class CreateElement {
 	private void initModelListDataLogger(Model model) throws InstanceNotFoundException {
 		List <DataLogger> dataLoggerList = dataService.getDataLoggers(startIndex, DATALOGGER_PER_PAGE).getDataLoggers();
 		model.addAttribute(dataLoggerList);
+	}	
+	
+	private void initModelListStringLine(Model model) throws InstanceNotFoundException {
+		List <StringLine> stringLineList = elementService.getStringLines(startIndex, STRINGLINE_PER_PAGE).getStringLines();
+		model.addAttribute(stringLineList);
 	}	
 	
 }

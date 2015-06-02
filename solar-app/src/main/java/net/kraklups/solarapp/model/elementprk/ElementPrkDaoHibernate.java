@@ -241,6 +241,24 @@ public class ElementPrkDaoHibernate extends
 		}
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<StringLine> getStringLines(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<StringLine> stringLines = (List<StringLine>)  getSession().createQuery(
+	        	"SELECT a FROM StringLine a " +
+	        	"ORDER BY a.stringLineId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (stringLines == null) {
+			throw new InstanceNotFoundException(null, StringLine.class.getName());
+		} else {
+			return stringLines;
+		}
+	}
+
 
 
 }

@@ -67,6 +67,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/datavalue/DataValueDao.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/userservice/util/PasswordEncrypter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementprk/Counter.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementservice/StringLineBlock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/module/ModuleDaoHibernate.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/DataLoggerFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/dataservice/DataService.java

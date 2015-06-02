@@ -42,11 +42,11 @@ public class ElementServiceImpl implements ElementService {
 	@Override
 	public ArrayBox createArrayBox(String elementPrkName, String elementPrkTag,
 			Timestamp tvi, Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, StringLine stringLine)
+			DataLogger dataLogger, Park park)
 			throws DuplicateInstanceException {
 
 			ArrayBox arrayBox = new ArrayBox(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile, 
-				dataLogger, park, stringLine);
+				dataLogger, park);
 			elementPrkDao.save(arrayBox); 
 			
 		return arrayBox;
@@ -55,8 +55,7 @@ public class ElementServiceImpl implements ElementService {
 	@Override
 	public ArrayBox updateArrayBox(Long arrayBoxId, String elementPrkName,
 			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park,
-			StringLine stringLine) throws InstanceNotFoundException {
+			UserProfile userProfile, DataLogger dataLogger, Park park) throws InstanceNotFoundException {
 
 		ArrayBox arrayBox = (ArrayBox) elementPrkDao.find(arrayBoxId);
 		
@@ -67,7 +66,6 @@ public class ElementServiceImpl implements ElementService {
 		arrayBox.setUserProfile(userProfile);
 		arrayBox.setDataLogger(dataLogger);
 		arrayBox.setPark(park);
-		arrayBox.setStringLine(stringLine);
 		
 		return arrayBox;
 	}
@@ -75,11 +73,11 @@ public class ElementServiceImpl implements ElementService {
 	@Override
 	public ArrayPanel createArrayPanel(String elementPrkName,
 			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park)
+			UserProfile userProfile, DataLogger dataLogger, Park park, StringLine stringLine)
 			throws DuplicateInstanceException {
 
 		ArrayPanel arrayPanel = new ArrayPanel(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile, 
-			dataLogger, park);
+			dataLogger, park, stringLine);
 		elementPrkDao.save(arrayPanel); 
 		
 		return arrayPanel;	
@@ -88,7 +86,7 @@ public class ElementServiceImpl implements ElementService {
 	@Override
 	public ArrayPanel updateArrayPanel(Long arrayBoxId, String elementPrkName,
 			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park)
+			UserProfile userProfile, DataLogger dataLogger, Park park, StringLine stringLine)
 			throws InstanceNotFoundException {
 
 		ArrayPanel arrayPanel = (ArrayPanel) elementPrkDao.find(arrayBoxId);
@@ -100,6 +98,7 @@ public class ElementServiceImpl implements ElementService {
 		arrayPanel.setUserProfile(userProfile);
 		arrayPanel.setDataLogger(dataLogger);
 		arrayPanel.setPark(park);
+		arrayPanel.setStringLine(stringLine);
 		
 		return arrayPanel;
 	}
@@ -485,10 +484,10 @@ public class ElementServiceImpl implements ElementService {
 	}
 
 	@Override
-	public void assignStringLineArrayBox(ArrayBox arrayBox,
+	public void assignStringLineArrayPanel(ArrayPanel arrayPanel,
 			StringLine stringLine) throws InstanceNotFoundException {
 		
-		arrayBox.setStringLine(stringLine);
+		arrayPanel.setStringLine(stringLine);
 	}
 
 	@Override
@@ -743,6 +742,17 @@ public class ElementServiceImpl implements ElementService {
 		elementPrkDao.save(elementPrk);
 		
 		return elementPrk;
+	}
+
+	@Override
+	public StringLineBlock getStringLines(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<StringLine> stringLines = elementPrkDao.getStringLines(startIndex, count + 1);
+		
+		boolean existMoreStringLines = stringLines.size() == (count +1);
+		
+		return new StringLineBlock(stringLines, existMoreStringLines);
 	}
 
 }

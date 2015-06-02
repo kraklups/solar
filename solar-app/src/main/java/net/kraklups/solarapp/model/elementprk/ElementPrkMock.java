@@ -41,6 +41,15 @@ public class ElementPrkMock {
 	private Park park;
 	private Point mapElement;	
 	
+	private StringLine stringLine;
+	private ArrayPanel arrayPanel;
+	private MediumVoltage mediumVoltage;
+	private Counter counter;
+	private ArrayBox arrayBox;
+	private ElectricalSubstation electricalSubstation;	
+	private ExtractionPoint extractionPoint;
+	
+	
     public Long getElementPrkId() {
 		return elementPrkId;
 	}
@@ -115,6 +124,61 @@ public class ElementPrkMock {
 		this.mapElement = mapElement;
 	}
 	
+	public StringLine getStringLine() {
+		return stringLine;
+	}
+	
+	public void setStringLine(StringLine stringLine) {
+		this.stringLine = stringLine;
+	}
+	
+	public ArrayPanel getArrayPanel() {
+		return arrayPanel;
+	}
+	
+	public void setArrayPanel(ArrayPanel arrayPanel) {
+		this.arrayPanel = arrayPanel;
+	}	
 
+	public MediumVoltage getMediumVoltage() {
+		return mediumVoltage;
+	}
+	
+	public void setMediumVoltage(MediumVoltage mediumVoltage) {
+		this.mediumVoltage = mediumVoltage;
+	}	
+	
+	public Counter getCounter() {
+		return counter;
+	}
+	
+	public void setCounter(Counter counter) {
+		this.counter = counter;
+	}	
+	
+	public ArrayBox getArrayBox() {
+		return arrayBox;
+	}
+	
+	public void setArrayBox(ArrayBox arrayBox) {
+		this.arrayBox = arrayBox;
+	}
+	
+	public ElectricalSubstation getElectricalSubstation() {
+		return electricalSubstation;
+	}
+	
+	public void setElectricalSubstation(ElectricalSubstation electricalSubstation) {
+		this.electricalSubstation = electricalSubstation;
+	}	
 
+	public ExtractionPoint getExtractionPoint() {
+		return extractionPoint;
+	}
+	
+	public void setExtractionPoint(ExtractionPoint extractionPoint) {
+		this.extractionPoint = extractionPoint;
+	}
+	
+	
 }

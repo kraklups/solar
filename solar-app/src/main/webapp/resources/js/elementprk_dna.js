@@ -7,34 +7,27 @@
 			var selected = $(this).children(":selected").text();
 			
 			switch (selected) {
-				case "TaskPrk" :
-					$("#taskprkform").attr('action','createTask');
-					$("#elementstuff").hide();
+				case "ElementPrk" :
+					$("#elementprkform").attr('action','createElement');
+					$("#stringlinestuff").hide();
+
+					break;				
+
+				case "ArrayPanel" :
+					$("#elementprkform").attr('action','createArrayPanelElement');
+					$("#stringlinestuff").hide();
+
+					break;										
+					
+				case "Cell" :
+					$("#elementprkform").attr('action','createCellElement');
+					$("#stringlinestuff").show();
 
 					break;
-				case "Monitor" :
-					$("#taskprkform").attr('action','createMonitorTask');
-					$("#elementstuff").hide();
-
-					break;
-				case "Track" :
-					$("#taskprkform").attr('action','createTrackTask');
-					$("#elementstuff").show();
-
-					break;
-				case "Upkeep" :
-					$("#taskprkform").attr('action','createUpkeepTask');
-					$("#elementstuff").hide();
-
-					break;
-				case "Synchronize" :
-					$("#taskprkform").attr('action','createSynchronizeTask');
-					$("#elementstuff").hide();
-
-					break;
+					
 				default: 
-					$("#taskprkform").attr('action','createTask');
-					$("#elementstuff").hide();
+					$("#elementprkform").attr('action','createElement');
+					$("#stringlinestuff").hide();
 
 			}
 		}); 

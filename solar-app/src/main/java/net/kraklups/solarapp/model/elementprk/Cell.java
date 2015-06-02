@@ -2,6 +2,7 @@ package net.kraklups.solarapp.model.elementprk;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -38,6 +39,15 @@ public class Cell extends ElementPrk implements java.io.Serializable {
 		this.arrayPanel = arrayPanel;
 	}
 
+	@Column(name = "cellId", nullable = false, insertable = false, updatable = false)	
+	public Long getCellId() {
+		return super.getElementPrkId();
+	}
+		
+	public void setCellId(Long cellId){
+		super.setElementPrkId(cellId);
+	}	
+	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="arrayPanelId")	
 	public ArrayPanel getArrayPanel() {

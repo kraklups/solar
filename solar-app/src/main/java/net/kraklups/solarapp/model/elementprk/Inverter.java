@@ -2,6 +2,7 @@ package net.kraklups.solarapp.model.elementprk;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -43,6 +44,15 @@ public class Inverter extends ElementPrk implements java.io.Serializable {
 		this.electricalSubstation = electricalSubstation;
 	}
 
+	@Column(name = "inverterId", nullable = false, insertable = false, updatable = false)	
+	public Long getInverterId() {
+		return super.getElementPrkId();
+	}
+		
+	public void setInverterId(Long inverterId){
+		super.setElementPrkId(inverterId);
+	}	
+	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="counterId")	
 	public Counter getCounter() {
