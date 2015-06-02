@@ -244,5 +244,8 @@ public interface ElementService {
 	
     public Sensor saveSensor(Sensor sensor)
     		throws DuplicateInstanceException;	
+    
+    public ElementPrk saveElementPrk(ElementPrk elementPrk)
+    		throws DuplicateInstanceException;	    
 
 }

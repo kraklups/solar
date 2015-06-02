@@ -798,5 +798,44 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		
 		return monitor;
 	}
+
+	@Override
+	public Upkeep saveTaskPrk(Upkeep upkeep) throws DuplicateInstanceException {
+
+		taskPrkDao.save(upkeep);
+		
+		return upkeep;
+
+	}
+
+	@Override
+	public Synchronize saveTaskPrk(Synchronize synchronize)
+			throws DuplicateInstanceException {
+
+		taskPrkDao.save(synchronize);
+		
+		return synchronize;
+
+	}
+
+	@Override
+	public Track saveTaskPrk(Track track) throws DuplicateInstanceException {
+
+		taskPrkDao.save(track);
+		
+		return track;
+
+	}
+
+	@Override
+	public ReportBlock getReports(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Report> reports = taskPrkDao.getReports(startIndex, count + 1);
+		
+		boolean existMoreReports = reports.size() == (count +1);
+		
+		return new ReportBlock(reports, existMoreReports);
+	}
 	
 }

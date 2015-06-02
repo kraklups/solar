@@ -16,8 +16,9 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="ElectricalSubstation")
 @PrimaryKeyJoinColumn(name = "electricalSubstationId", referencedColumnName = "elementPrkId")
-public class ElectricalSubstation extends ElementPrk {
+public class ElectricalSubstation extends ElementPrk implements java.io.Serializable {
 
+	private static final long serialVersionUID = -7181551274157189676L;
 	private MediumVoltage mediumVoltage;
 	
 	public ElectricalSubstation() {

@@ -16,8 +16,9 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="ArrayBox")
 @PrimaryKeyJoinColumn(name = "arrayBoxId", referencedColumnName = "elementPrkId")
-public class ArrayBox extends ElementPrk {
+public class ArrayBox extends ElementPrk implements java.io.Serializable {
 
+	private static final long serialVersionUID = -169651705716922095L;
 	private StringLine stringLine;
 	
 	public ArrayBox() {

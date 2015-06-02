@@ -8,9 +8,14 @@ import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.parkservice.ParkService;
+import net.kraklups.solarapp.model.report.Report;
 import net.kraklups.solarapp.model.role.Role;
 import net.kraklups.solarapp.model.taskprk.Monitor;
+import net.kraklups.solarapp.model.taskprk.Synchronize;
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
+import net.kraklups.solarapp.model.taskprk.TaskPrkMock;
+import net.kraklups.solarapp.model.taskprk.Track;
+import net.kraklups.solarapp.model.taskprk.Upkeep;
 import net.kraklups.solarapp.model.taskprkservice.TaskPrkService;
 import net.kraklups.solarapp.model.userservice.UserService;
 
@@ -57,17 +62,15 @@ public class CreateTask {
 		
 		logger.info("Create TaskPrk page !");
 		
-		TaskPrk taskPrk = new TaskPrk();
+		TaskPrkMock taskPrkMock = new TaskPrkMock();
 		
-		model.addAttribute("taskPrk", taskPrk);
-		
-		Monitor monitor = new Monitor();
-		
-		model.addAttribute("monitor", monitor);
+		model.addAttribute("taskPrkMock", taskPrkMock);
 		
 		initModelListPark(model);
 		
 		initModelListRole(model);		
+		
+		initModelListReport(model);
 		
 		return "task/createTask";
 	}
@@ -77,7 +80,7 @@ public class CreateTask {
 			throws DuplicateInstanceException, InstanceNotFoundException {
 		
 		if(result.hasErrors()) {
-			logger.info("Returning after error createTask.jspx page");
+			logger.info("Returning after error createTask.jspx merde page");
 			
 			return "task/createTask";
 		} else {
@@ -94,7 +97,6 @@ public class CreateTask {
 			logger.info("Create TaskPrk page POST! " + merda);
 			
 			return "Done";
-
 		}	
 	}
 	
@@ -103,8 +105,8 @@ public class CreateTask {
 			throws DuplicateInstanceException, InstanceNotFoundException {
 		
 		if(result.hasErrors()) {
-			logger.info("Returning after error createTask.jspx page");
-			
+			logger.info("Returning after error createMonitorTask.jspx page");
+						
 			return "task/createTask";
 		} else {
 			logger.info("Create Monitor page! " + "monitor: " + monitor.getMonitorId());
@@ -120,7 +122,87 @@ public class CreateTask {
 			logger.info("Create Monitor page POST! " + merda);
 			
 			return "Done";
+		}	
+	}	
+	
+	@RequestMapping(value = "/task/createUpkeepTask", method = RequestMethod.POST)
+	public String createUpkeepPost(@Valid @ModelAttribute("upkeep") Upkeep upkeep, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createUpkeepTask.jspx page");
+			
+			logger.info(result.toString());
+			
+			model.addAttribute("taskPrkMock", upkeep);
+			
+			return "redirect:/task/createTask";
+		} else {
+			logger.info("Create Upkeep page! " + "upkeep: " + upkeep.getUpkeepId());
 
+			model.addAttribute("upkeep", upkeep);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			upkeep.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			Upkeep merda = taskPrkService.saveTaskPrk(upkeep);
+			
+			logger.info("Create Upkeep page POST! " + merda);
+			
+			return "Done";
+		}	
+	}	
+	
+	@RequestMapping(value = "/task/createSynchronizeTask", method = RequestMethod.POST)
+	public String createSynchronizePost(@Valid @ModelAttribute("synchronize") Synchronize synchronize, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createSynchronizeTask.jspx page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create Synchronize page! " + "synchronize: " + synchronize.getSynchronizeId());
+
+			model.addAttribute("synchronize", synchronize);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			synchronize.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			Synchronize merda = taskPrkService.saveTaskPrk(synchronize);
+			
+			logger.info("Create Synchronize page POST! " + merda);
+			
+			return "Done";
+		}	
+	}	
+
+	@RequestMapping(value = "/task/createTrackTask", method = RequestMethod.POST)
+	public String createTrackPost(@Valid @ModelAttribute("track") Track track, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createTrackTask.jspx page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create Track page! " + "track: " + track.getTrackId());
+
+			model.addAttribute("track", track);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			track.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			logger.info("Create Track page! " + "track: " + track);
+			
+			Track merda = taskPrkService.saveTaskPrk(track);
+			
+			logger.info("Create Track page POST! " + merda);
+			
+			return "Done";
 		}	
 	}	
 	
@@ -133,5 +215,11 @@ public class CreateTask {
 		List <Role> roleList = userService.getRoles(startIndex, ROLE_PER_PAGE).getRoles();
 		model.addAttribute("roleList",roleList);
 	}	
+	
+	private void initModelListReport(Model model) throws InstanceNotFoundException {
+		List <Report> reportList = taskPrkService.getReports(startIndex, ROLE_PER_PAGE).getReports();
+		model.addAttribute("reportList",reportList);
+	}	
+	
 	
 }

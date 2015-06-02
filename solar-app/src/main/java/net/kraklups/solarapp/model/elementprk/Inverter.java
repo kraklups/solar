@@ -16,8 +16,12 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="Inverter")
 @PrimaryKeyJoinColumn(name = "inverterId", referencedColumnName = "elementPrkId")
-public class Inverter extends ElementPrk {
+public class Inverter extends ElementPrk implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5140555951324493018L;
 	private Counter counter;
 	private ArrayBox arrayBox;
 	private ElectricalSubstation electricalSubstation;

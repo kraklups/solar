@@ -13,7 +13,12 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="Gps")
 @PrimaryKeyJoinColumn(name = "gpsId", referencedColumnName = "elementPrkId")
-public class Gps extends ElementPrk {
+public class Gps extends ElementPrk implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8868666633517727244L;
 
 	public Gps() {
 		// TODO Auto-generated constructor stub

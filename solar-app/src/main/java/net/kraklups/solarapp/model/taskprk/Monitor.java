@@ -33,14 +33,6 @@ public class Monitor extends TaskPrk implements java.io.Serializable {
 		
 		super(taskName, creationDate, park, role, userProfile);
 	}
-
-/*	public Monitor(String taskName, Date creationDate,
-			Park park, Role role, UserProfile userProfile, Set<ElementPrk> elementPrks) {
-		
-		super(taskName, creationDate, park, role, userProfile);
-		this.elementPrks = elementPrks; 
-	}
-*/
 	
 	@Column(name = "monitorId", nullable = false, insertable = false, updatable = false)	
 	public Long getMonitorId() {

@@ -14,7 +14,7 @@ import net.kraklups.solarapp.model.datavalue.DataValue;
 import net.kraklups.solarapp.model.datavalue.DataValueDao;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.sensor.Sensor;
-import net.kraklups.solarapp.model.taskprk.TaskPrk;
+import net.kraklups.solarapp.model.taskprk.Synchronize;
 
 @Service("dataService")
 @Transactional
@@ -27,24 +27,24 @@ public class DataServiceImpl implements DataService {
 	private DataLoggerDao dataLoggerDao;	
 	
 	@Override
-	public DataValue createDataValue(TaskPrk taskPrk, ElementPrk elementPrk,
+	public DataValue createDataValue(Synchronize syncronize, ElementPrk elementPrk,
 			DataLogger dataLogger, Sensor sensor)
 			throws DuplicateInstanceException {
 		
-		DataValue dataValue = new DataValue(taskPrk, elementPrk, dataLogger, sensor); 
+		DataValue dataValue = new DataValue(syncronize, elementPrk, dataLogger, sensor); 
 		dataValueDao.save(dataValue);
 		
 		return dataValue;
 	}
 
 	@Override
-	public DataValue updateDataValue(Long dataValueId, TaskPrk taskPrk,
+	public DataValue updateDataValue(Long dataValueId, Synchronize syncronize,
 			ElementPrk elementPrk, DataLogger dataLogger, Sensor sensor)
 			throws InstanceNotFoundException {
 		
 		DataValue dataValue = (DataValue) dataValueDao.find(dataValueId);
 		
-		dataValue.setTaskPrk(taskPrk);
+		dataValue.setSynchronize(syncronize);
 		dataValue.setElementPrk(elementPrk);
 		dataValue.setDataLogger(dataLogger);
 		dataValue.setSensor(sensor);
@@ -53,17 +53,17 @@ public class DataServiceImpl implements DataService {
 	}
 
 	@Override
-	public void assignTaskPrkDataValue(DataValue dataValue, TaskPrk taskPrk)
+	public void assignTaskPrkDataValue(DataValue dataValue, Synchronize syncronize)
 			throws InstanceNotFoundException {
 		
-		dataValue.setTaskPrk(taskPrk);
+		dataValue.setSynchronize(syncronize);
 	}
 
 	@Override
-	public DataValueBlock getDataValueByTaskPrkId(Long taskPrkId,
+	public DataValueBlock getDataValueBySynchronizeId(Long syncronizeId,
 			int startIndex, int count) throws InstanceNotFoundException {
 
-		List<DataValue> dataValues = dataValueDao.getDataValuesByTaskPrkId(taskPrkId, startIndex, count +1);
+		List<DataValue> dataValues = dataValueDao.getDataValuesByTaskPrkId(syncronizeId, startIndex, count +1);
 		
 		boolean existMoreDataValues = dataValues.size() == (count +1);
 		

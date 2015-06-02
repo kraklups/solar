@@ -21,6 +21,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/TaskPrkFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/datalogger/DataLogger.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/module/ShowModules.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementprk/ElementPrkMock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/state/CreateState.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/messageevent/MessageEventDao.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/parkservice/ParkServiceImpl.java
@@ -70,6 +71,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/DataLoggerFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/dataservice/DataService.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/sensor/CreateSensor.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/ReportFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/user/ShowRegisters.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/StateTypeFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/MapParkFormatter.java
@@ -92,8 +94,8 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/LayoutController.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/alarm/ShowAlarms.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/messageevent/MessageEvent.java
-/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/userservice/CompanyBlock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/userservice/UserService.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/userservice/CompanyBlock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/task/ShowTasks.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/rolemoduleaccess/RoleModuleAccess.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/report/UpdateReport.java
@@ -164,6 +166,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/park/Park.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/sensor/SensorDaoHibernate.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/task/UpdateTask.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/taskprk/TaskPrkMock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/company/CompanyDao.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/rolemoduleaccess/RoleModuleAccessDaoHibernate.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/timetable/CreateTimetable.java

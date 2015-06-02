@@ -13,7 +13,12 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="SolarTracker")
 @PrimaryKeyJoinColumn(name = "solarTrackerId", referencedColumnName = "elementPrkId")
-public class SolarTracker extends ElementPrk {
+public class SolarTracker extends ElementPrk implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2255007157602134302L;
 
 	public SolarTracker() {
 		// TODO Auto-generated constructor stub

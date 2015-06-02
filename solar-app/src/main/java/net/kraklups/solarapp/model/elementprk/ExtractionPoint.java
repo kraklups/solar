@@ -13,7 +13,9 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="ExtractionPoint")
 @PrimaryKeyJoinColumn(name = "extractionPointId", referencedColumnName = "elementPrkId")
-public class ExtractionPoint extends ElementPrk {
+public class ExtractionPoint extends ElementPrk implements java.io.Serializable {
+
+	private static final long serialVersionUID = 1379057683846064781L;
 
 	public ExtractionPoint() {
 		// TODO Auto-generated constructor stub

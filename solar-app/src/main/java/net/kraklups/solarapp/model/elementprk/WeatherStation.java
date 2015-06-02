@@ -13,7 +13,12 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="WeatherStation")
 @PrimaryKeyJoinColumn(name = "weatherStationId", referencedColumnName = "elementPrkId")
-public class WeatherStation extends ElementPrk {
+public class WeatherStation extends ElementPrk implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1411890365524632576L;
 
 	public WeatherStation() {
 		// TODO Auto-generated constructor stub

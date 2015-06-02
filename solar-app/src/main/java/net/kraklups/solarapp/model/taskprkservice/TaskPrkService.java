@@ -249,5 +249,17 @@ public interface TaskPrkService {
     
     public Monitor saveTaskPrk(Monitor monitor)
     		throws DuplicateInstanceException;
+
+    public Upkeep saveTaskPrk(Upkeep upkeep)
+    		throws DuplicateInstanceException;
+
+    public Synchronize saveTaskPrk(Synchronize synchronize)
+    		throws DuplicateInstanceException;
+
+    public Track saveTaskPrk(Track track)
+    		throws DuplicateInstanceException;
+    
+	public ReportBlock getReports(int startIndex, int count) 
+			throws InstanceNotFoundException;
     
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.kraklups.modelutil.dao.GenericDaoHibernate;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.solarapp.model.report.Report;
 
 import org.springframework.stereotype.Repository;
 
@@ -330,6 +331,25 @@ public class TaskPrkDaoHibernate extends
 		} else {
 			return upkeeps;
 		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Report> getReports(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Report> reports = (List<Report>)  getSession().createQuery(
+	        	"SELECT a FROM Report a " +
+	        	"ORDER BY a.reportId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (reports == null) {
+			throw new InstanceNotFoundException(null, Report.class.getName());
+		} else {
+			return reports;
+		}
+
 	}
 
 }

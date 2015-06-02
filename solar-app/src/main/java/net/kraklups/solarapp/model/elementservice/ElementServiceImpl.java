@@ -736,4 +736,13 @@ public class ElementServiceImpl implements ElementService {
 		return sensor;
 	}
 
+	@Override
+	public ElementPrk saveElementPrk(ElementPrk elementPrk)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(elementPrk);
+		
+		return elementPrk;
+	}
+
 }

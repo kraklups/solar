@@ -16,8 +16,9 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="Cell")
 @PrimaryKeyJoinColumn(name = "cellId", referencedColumnName = "elementPrkId")
-public class Cell extends ElementPrk {
+public class Cell extends ElementPrk implements java.io.Serializable {
 
+	private static final long serialVersionUID = 8460475323353477282L;
 	private ArrayPanel arrayPanel;
 	private StringLine stringLine;
 	

@@ -6,20 +6,20 @@ import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.datavalue.DataValue;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.sensor.Sensor;
-import net.kraklups.solarapp.model.taskprk.TaskPrk;
+import net.kraklups.solarapp.model.taskprk.Synchronize;
 
 public interface DataService {
 	
-	public DataValue createDataValue(TaskPrk taskPrk, ElementPrk elementPrk, DataLogger dataLogger, Sensor sensor) 
+	public DataValue createDataValue(Synchronize syncronize, ElementPrk elementPrk, DataLogger dataLogger, Sensor sensor) 
 			throws DuplicateInstanceException;
 
-	public DataValue updateDataValue(Long dataValueId, TaskPrk taskPrk, ElementPrk elementPrk, DataLogger dataLogger, Sensor sensor) 
+	public DataValue updateDataValue(Long dataValueId, Synchronize syncronize, ElementPrk elementPrk, DataLogger dataLogger, Sensor sensor) 
 			throws InstanceNotFoundException;
 
-	public void assignTaskPrkDataValue(DataValue dataValue, TaskPrk taskPrk) 
+	public void assignTaskPrkDataValue(DataValue dataValue, Synchronize syncronize) 
 			throws InstanceNotFoundException;
 
-	public DataValueBlock getDataValueByTaskPrkId(Long taskPrkId, int startIndex, int count) 
+	public DataValueBlock getDataValueBySynchronizeId(Long synchronizeId, int startIndex, int count) 
 			throws InstanceNotFoundException;
 
 	public void assignElementPrkDataValue(DataValue dataValue, ElementPrk elementPrk) 

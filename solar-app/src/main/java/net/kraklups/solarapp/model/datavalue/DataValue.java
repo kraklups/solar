@@ -15,14 +15,14 @@ import javax.persistence.Table;
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.sensor.Sensor;
-import net.kraklups.solarapp.model.taskprk.TaskPrk;
+import net.kraklups.solarapp.model.taskprk.Synchronize;
 
 @Entity
 @Table(name="DataValue")
 public class DataValue {
 	
 	private Long dataValueId;
-	private TaskPrk taskPrk;
+	private Synchronize syncronize;
 	private ElementPrk elementPrk;
 	private DataLogger dataLogger;	
 	private Sensor sensor; 
@@ -31,10 +31,10 @@ public class DataValue {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public DataValue(TaskPrk taskPrk, ElementPrk elementPrk, 
+	public DataValue(Synchronize syncronize, ElementPrk elementPrk, 
 			DataLogger dataLogger, Sensor sensor) {
 		
-		this.taskPrk = taskPrk;
+		this.syncronize = syncronize;
 		this.elementPrk = elementPrk;
 		this.dataLogger = dataLogger;
 		this.sensor = sensor;		
@@ -56,13 +56,13 @@ public class DataValue {
 	}
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
-	@JoinColumn(name="taskPrkId")	
-	public TaskPrk getTaskPrk(){
-		return taskPrk;
+	@JoinColumn(name="synchronizeId")	
+	public Synchronize getSynchronize(){
+		return syncronize;
 	}
 	
-	public void setTaskPrk(TaskPrk taskPrk){
-		this.taskPrk = taskPrk;
+	public void setSynchronize(Synchronize syncronize){
+		this.syncronize = syncronize;
 	}	
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
@@ -97,7 +97,7 @@ public class DataValue {
 	
 	@Override
     public String toString() {
-        return "DataValueMngDb [dataValueId=" + dataValueId + ", TaskPrk=" + taskPrk.getTaskPrkId() + 
+        return "DataValueMngDb [dataValueId=" + dataValueId + ", Synchronize=" + syncronize.getSynchronizeId() + 
         		", ElementPrk=" + elementPrk.getElementPrkId() + ", DataLogger=" + dataLogger.getDataLoggerId() + 
         		", Sensor=" + sensor.getSensorId() + "]";
     }	

@@ -16,8 +16,12 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="StringLine")
 @PrimaryKeyJoinColumn(name = "stringLineId", referencedColumnName = "elementPrkId")
-public class StringLine extends ElementPrk {
+public class StringLine extends ElementPrk implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7333101383382942282L;
 	private ArrayBox arrayBox;
 	
 	public StringLine() {

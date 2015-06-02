@@ -13,7 +13,9 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="ArrayPanel")
 @PrimaryKeyJoinColumn(name = "arrayPanelId", referencedColumnName = "elementPrkId")
-public class ArrayPanel extends ElementPrk {
+public class ArrayPanel extends ElementPrk implements java.io.Serializable {
+
+	private static final long serialVersionUID = 4714331747174978053L;
 
 	public ArrayPanel() {
 		// TODO Auto-generated constructor stub

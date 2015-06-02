@@ -13,7 +13,9 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="Counter")
 @PrimaryKeyJoinColumn(name = "counterId", referencedColumnName = "elementPrkId")
-public class Counter extends ElementPrk {
+public class Counter extends ElementPrk implements java.io.Serializable {
+
+	private static final long serialVersionUID = 8704437745152614696L;
 
 	public Counter() {
 		// TODO Auto-generated constructor stub

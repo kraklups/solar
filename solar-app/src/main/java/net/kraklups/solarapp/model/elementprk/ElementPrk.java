@@ -21,8 +21,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.vividsolutions.jts.geom.Point;
 
@@ -39,16 +43,32 @@ public class ElementPrk implements java.io.Serializable {
 	private static final long serialVersionUID = -8979274625904669832L;
 	
 	private Long elementPrkId;
+	
+	@NotEmpty
+	@Size(min=6, max=30)
 	private String elementPrkName;
+	
+	@Size(min=6, max=30)
+	@NotEmpty
 	private String elementPrkTag;
+	
+	//2014-07-04T12:08:56.235
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull		
 	private Date tvi;
+	
+	//2014-07-04T12:08:56.235
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull		
 	private Date lastAccess;
+	
 	private UserProfile userProfile;
 	private DataLogger dataLogger;
 	private Park park;
+	private Point mapElement;
+	
 	private Set<Monitor> monitors = new HashSet<Monitor>(0);	
-	private Point mapElement;	
-
+		
 	public ElementPrk() {
 		// TODO Auto-generated constructor stub
 	}

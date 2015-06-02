@@ -26,11 +26,11 @@ final class AlarmController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AlarmController.class);
 
 	@Autowired
-	private final TaskPrkService taskPrk;
+	private final TaskPrkService taskPrkService;
 	
 	@Autowired
-	public AlarmController(TaskPrkService taskPrk) {
-		this.taskPrk = taskPrk;
+	public AlarmController(TaskPrkService taskPrkService) {
+		this.taskPrkService = taskPrkService;
 	}	
 	
 	@RequestMapping(value = "/notifyalarm", method = RequestMethod.POST, headers="Accept=application/json")
@@ -38,7 +38,7 @@ final class AlarmController {
 		
 		LOGGER.warn("Handling EventTsk & NotifyAlarm: {}", alarmDTO.getEventTskId());
 		
-		return taskPrk.alarmTriggered(alarmDTO);
+		return taskPrkService.alarmTriggered(alarmDTO);
 	}		
 	
 	@ExceptionHandler
