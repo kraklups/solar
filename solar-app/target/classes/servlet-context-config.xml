@@ -38,6 +38,8 @@
             	<bean class="net.kraklups.solarapp.web.formatters.ParkFormatter" />
             	<bean class="net.kraklups.solarapp.web.formatters.RoleFormatter" />
 				<bean class="net.kraklups.solarapp.web.formatters.ReportFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.MapElementFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.StringLineFormatter" />
         	</set>
     	</property>
 	</bean> 		

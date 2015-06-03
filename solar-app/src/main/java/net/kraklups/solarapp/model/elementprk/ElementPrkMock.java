@@ -39,6 +39,7 @@ public class ElementPrkMock {
 	private UserProfile userProfile;
 	private DataLogger dataLogger;
 	private Park park;
+	//POINT (-71.060316 48.432044)
 	private Point mapElement;	
 	
 	private StringLine stringLine;

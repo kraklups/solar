@@ -15,9 +15,15 @@
 
 				case "ArrayPanel" :
 					$("#elementprkform").attr('action','createArrayPanelElement');
-					$("#stringlinestuff").hide();
+					$("#stringlinestuff").show();
 
 					break;										
+					
+				case "ArrayBox" :
+					$("#elementprkform").attr('action','createArrayBoxElement');
+					$("#stringlinestuff").hide();
+
+					break;					
 					
 				case "Cell" :
 					$("#elementprkform").attr('action','createCellElement');

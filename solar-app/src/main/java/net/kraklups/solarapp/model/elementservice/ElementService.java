@@ -250,5 +250,11 @@ public interface ElementService {
     
 	public StringLineBlock getStringLines(int startIndex, int count) 
 			throws InstanceNotFoundException;    
+	
+    public ArrayPanel saveElementPrk(ArrayPanel arrayPanel)
+    		throws DuplicateInstanceException;
+    
+    public ArrayBox saveElementPrk(ArrayBox arrayBox)
+    		throws DuplicateInstanceException;    
 
 }

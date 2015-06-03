@@ -137,6 +137,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/park/ParkDaoHibernate.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/datavalue/DataValueDaoHibernate.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/sensor/UpdateSensor.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/MapElementFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/eventtsk/EventTskDao.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/ParkFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/parkservice/TimetableBlock.java
@@ -155,6 +156,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/element/ShowElements.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/state/State.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/role/CreateRole.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/StringLineFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/timetable/UpdateTimetable.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/datavalue/CreateDataValue.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/company/CreateCompany.java

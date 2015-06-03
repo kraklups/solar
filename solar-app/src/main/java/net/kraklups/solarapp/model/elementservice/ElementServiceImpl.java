@@ -755,4 +755,22 @@ public class ElementServiceImpl implements ElementService {
 		return new StringLineBlock(stringLines, existMoreStringLines);
 	}
 
+	@Override
+	public ArrayPanel saveElementPrk(ArrayPanel arrayPanel)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(arrayPanel);
+		
+		return arrayPanel;
+	}
+
+	@Override
+	public ArrayBox saveElementPrk(ArrayBox arrayBox)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(arrayBox);
+		
+		return arrayBox;
+	}
+
 }

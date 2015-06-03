@@ -101,8 +101,13 @@
 	   									</div>
 									</spring:bind>
 									
-									
-
+									<spring:bind path="mapElement">           	
+  										<div class="form-group ${status.error ? 'has-error' : '' }">        
+    										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createElement.mapElement" /></label>						
+			   						    	<form:input path="mapElement" class="form-control" placeholder="MapElement" />
+			   						      	<form:errors path="mapElement" cssClass="control-label" for="inputError" element="label" /> 
+	   									</div>
+	   								</spring:bind>
 
 			<div id="stringlinestuff" style="display:none;">
 			 

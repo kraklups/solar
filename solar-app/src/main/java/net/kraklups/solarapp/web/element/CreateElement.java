@@ -8,6 +8,8 @@ import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.dataservice.DataService;
+import net.kraklups.solarapp.model.elementprk.ArrayBox;
+import net.kraklups.solarapp.model.elementprk.ArrayPanel;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.elementprk.ElementPrkMock;
 import net.kraklups.solarapp.model.elementprk.StringLine;
@@ -77,7 +79,7 @@ public class CreateElement {
 		return "element/createElement";
 	}
 
-	@RequestMapping(value = "/element/createElementk", method = RequestMethod.POST)
+	@RequestMapping(value = "/element/createElement", method = RequestMethod.POST)
 	public String createElementPost(@Valid @ModelAttribute("elementPrk") ElementPrk elementPrk, BindingResult result, Model model) 
 			throws DuplicateInstanceException, InstanceNotFoundException {
 		
@@ -101,6 +103,56 @@ public class CreateElement {
 			return "Done";
 		}	
 	}	
+	
+	@RequestMapping(value = "/element/createArrayPanelElement", method = RequestMethod.POST)
+	public String createElementPost(@Valid @ModelAttribute("arrayPanel") ArrayPanel arrayPanel, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createTask.jspx merde page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create ArrayPanel page! " + "arrayPanel: " + arrayPanel.getArrayPanelId());
+
+			model.addAttribute("arrayPanel", arrayPanel);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			arrayPanel.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			ArrayPanel merda = elementService.saveElementPrk(arrayPanel);
+			
+			logger.info("Create ElementPrk page POST! " + merda);
+			
+			return "Done";
+		}	
+	}
+	
+	@RequestMapping(value = "/element/createArrayBoxElement", method = RequestMethod.POST)
+	public String createElementPost(@Valid @ModelAttribute("arrayBox") ArrayBox arrayBox, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createTask.jspx merde page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create ArrayBox page! " + "arrayBox: " + arrayBox.getArrayBoxId());
+
+			model.addAttribute("arrayBox", arrayBox);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			arrayBox.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			ArrayBox merda = elementService.saveElementPrk(arrayBox);
+			
+			logger.info("Create ElementPrk page POST! " + merda);
+			
+			return "Done";
+		}	
+	}		
 	
 	private void initModelListPark(Model model) throws InstanceNotFoundException {
 		List <Park> parkList = parkService.getParks(startIndex, PARK_PER_PAGE).getParks();

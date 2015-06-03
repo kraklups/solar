@@ -65,6 +65,7 @@ public class ElementPrk implements java.io.Serializable {
 	private UserProfile userProfile;
 	private DataLogger dataLogger;
 	private Park park;
+	//POINT (-71.060316 48.432044)
 	private Point mapElement;
 	
 	private Set<Monitor> monitors = new HashSet<Monitor>(0);	
