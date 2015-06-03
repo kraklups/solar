@@ -7,6 +7,7 @@ import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.alarm.Alarm;
 import net.kraklups.solarapp.model.alarm.AlarmDTO;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
+import net.kraklups.solarapp.model.eventtsk.EventTskDTO;
 import net.kraklups.solarapp.model.messageevent.MessageEvent;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.report.Report;
@@ -261,5 +262,8 @@ public interface TaskPrkService {
     
 	public ReportBlock getReports(int startIndex, int count) 
 			throws InstanceNotFoundException;
+	
+	public void RegisterEventTsk(EventTskDTO evetntTskDTO)
+			throws Exception;
     
 }

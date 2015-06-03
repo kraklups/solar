@@ -77,6 +77,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/ParkFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/alarm/UpdateAlarm.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementprk/ExtractionPoint.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/eventtsk/EventTskDTO.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/alarm/Alarm.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/CounterFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/element/UpdateElement.java

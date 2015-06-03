@@ -56,7 +56,7 @@ public class AlarmDTO implements java.io.Serializable {
 		return ruleEventTsk;
 	}
 	
-	public void setrulEEventTsk(String ruleEventTsk) {
+	public void setRulEventTsk(String ruleEventTsk) {
 		this.ruleEventTsk = ruleEventTsk;
 	}
 			

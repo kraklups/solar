@@ -9,6 +9,7 @@ import net.kraklups.solarapp.model.alarm.Alarm;
 import net.kraklups.solarapp.model.alarm.AlarmDTO;
 import net.kraklups.solarapp.model.alarm.AlarmDao;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
+import net.kraklups.solarapp.model.eventtsk.EventTskDTO;
 import net.kraklups.solarapp.model.eventtsk.EventTskDao;
 import net.kraklups.solarapp.model.messageevent.MessageEvent;
 import net.kraklups.solarapp.model.messageevent.MessageEventDao;
@@ -30,12 +31,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @Service("taskService")
 @Transactional
 public class TaskPrkServiceImpl implements TaskPrkService {
 	
-	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LoggerFactory.getLogger(TaskPrkServiceImpl.class);
 
 	@Autowired
@@ -749,6 +753,18 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 			throws DuplicateInstanceException {
 
 		eventTskDao.save(eventTsk);
+		
+		EventTskDTO eventTskDTO = new EventTskDTO(eventTsk.getEventTskId().toString(),eventTsk.getTaskPrk().getTaskPrkId().toString(),
+				"1", eventTsk.getTvi(), eventTsk.getTvf(), eventTsk.getDefinitionET());
+				
+		if (eventTsk.getTriggerAlarm()) {
+			try {
+				RegisterEventTsk(eventTskDTO);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
         
 		return eventTsk;
 	}
@@ -836,6 +852,31 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		boolean existMoreReports = reports.size() == (count +1);
 		
 		return new ReportBlock(reports, existMoreReports);
+	}
+
+	@Override
+	public void RegisterEventTsk(EventTskDTO eventTskDTO) 
+			throws Exception {
+		
+		LOGGER.debug("Starting REST Client!!!!");
+		
+		final String SERVER_URI = "http://localhost:8080/rest/registereventtsk";
+		
+		ObjectMapper mapper = new ObjectMapper();
+		ObjectNode node = mapper.createObjectNode();
+		
+		node.put("eventTskId", eventTskDTO.getEventTskId());
+		node.put("synchronizeId", eventTskDTO.getSynchronizeId());		
+		node.put("dataValueId",eventTskDTO.getDataValueId());
+		node.put("tvi", eventTskDTO.getTvi().toString());
+		node.put("tvf", eventTskDTO.getTvf().toString());
+		node.put("ruleEventTsk", eventTskDTO.getRuleEventTsk());
+				
+		RestTemplate restTemplate = new RestTemplate();
+		
+		EventTskDTO response = restTemplate.postForObject(SERVER_URI, eventTskDTO, EventTskDTO.class);
+		LOGGER.debug(" REST Client!!!" + response);
+		
 	}
 	
 }
