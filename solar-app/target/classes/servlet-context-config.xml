@@ -40,6 +40,12 @@
 				<bean class="net.kraklups.solarapp.web.formatters.ReportFormatter" />
 				<bean class="net.kraklups.solarapp.web.formatters.MapElementFormatter" />
 				<bean class="net.kraklups.solarapp.web.formatters.StringLineFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.ArrayPanelFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.ArrayBoxFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.CounterFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.MediumVoltageFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.ExtractionPointFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.ElectricalSubstationFormatter" />
         	</set>
     	</property>
 	</bean> 		

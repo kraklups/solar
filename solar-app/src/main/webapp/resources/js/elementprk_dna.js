@@ -140,7 +140,7 @@
 					break;					
 					
 				case "StringLine" :
-					$("#elementprkform").attr('action','createSolarStringLineElement');
+					$("#elementprkform").attr('action','createStringLineElement');
 					$("#stringlinestuff").hide();
 					$("#arrayboxstuff").show();
 					$("#arraypanelstuff").hide();
@@ -152,7 +152,7 @@
 					break;					
 
 				case "WeatherStation" :
-					$("#elementprkform").attr('action','createWeatherStationLineElement');
+					$("#elementprkform").attr('action','createWeatherStationElement');
 					$("#stringlinestuff").hide();
 					$("#arrayboxstuff").hide();
 					$("#arraypanelstuff").hide();

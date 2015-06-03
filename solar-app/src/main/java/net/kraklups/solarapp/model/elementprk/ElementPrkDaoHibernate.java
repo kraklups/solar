@@ -259,6 +259,114 @@ public class ElementPrkDaoHibernate extends
 		}
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<ArrayPanel> getArrayPanels(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<ArrayPanel> arrayPanels = (List<ArrayPanel>)  getSession().createQuery(
+	        	"SELECT a FROM ArrayPanel a " +
+	        	"ORDER BY a.arrayPanelId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (arrayPanels == null) {
+			throw new InstanceNotFoundException(null, ArrayPanel.class.getName());
+		} else {
+			return arrayPanels;
+		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<ArrayBox> getArrayBoxs(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<ArrayBox> arrayBoxs = (List<ArrayBox>)  getSession().createQuery(
+	        	"SELECT a FROM ArrayBox a " +
+	        	"ORDER BY a.arrayBoxId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (arrayBoxs == null) {
+			throw new InstanceNotFoundException(null, ArrayBox.class.getName());
+		} else {
+			return arrayBoxs;
+		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<Counter> getCounters(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Counter> counters = (List<Counter>)  getSession().createQuery(
+	        	"SELECT a FROM Counter a " +
+	        	"ORDER BY a.counterId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (counters == null) {
+			throw new InstanceNotFoundException(null, Counter.class.getName());
+		} else {
+			return counters;
+		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<MediumVoltage> getMediumVoltages(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<MediumVoltage> mediumVoltages = (List<MediumVoltage>)  getSession().createQuery(
+	        	"SELECT a FROM MediumVoltage a " +
+	        	"ORDER BY a.mediumVoltageId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (mediumVoltages == null) {
+			throw new InstanceNotFoundException(null, MediumVoltage.class.getName());
+		} else {
+			return mediumVoltages;
+		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<ExtractionPoint> getExtractionPoints(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<ExtractionPoint> extractionPoints = (List<ExtractionPoint>)  getSession().createQuery(
+	        	"SELECT a FROM ExtractionPoint a " +
+	        	"ORDER BY a.extractionPointId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (extractionPoints == null) {
+			throw new InstanceNotFoundException(null, ExtractionPoint.class.getName());
+		} else {
+			return extractionPoints;
+		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<ElectricalSubstation> getElectricalSubstations(int startIndex,
+			int count) throws InstanceNotFoundException {
+
+		List<ElectricalSubstation> electricalSubstations = (List<ElectricalSubstation>)  getSession().createQuery(
+	        	"SELECT a FROM ElectricalSubstation a " +
+	        	"ORDER BY a.electricalSubstationId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (electricalSubstations == null) {
+			throw new InstanceNotFoundException(null, ElectricalSubstation.class.getName());
+		} else {
+			return electricalSubstations;
+		}
+	}
+
 
 
 }

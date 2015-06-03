@@ -1,9 +1,6 @@
 package net.kraklups.solarapp.web.user;
 
 import net.kraklups.solarapp.model.userprofile.UserProfile;
-import net.kraklups.solarapp.model.userservice.IncorrectPasswordException;
-import net.kraklups.solarapp.model.userservice.UserService;
-import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

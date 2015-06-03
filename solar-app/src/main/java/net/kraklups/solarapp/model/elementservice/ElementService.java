@@ -286,6 +286,23 @@ public interface ElementService {
     
     public WeatherStation saveElementPrk(WeatherStation weatherStation)
     		throws DuplicateInstanceException;
-    
+
+	public ArrayPanelBlock getArrayPanels(int startIndex, int count) 
+			throws InstanceNotFoundException; 
+	
+	public MediumVoltageBlock getMediumVoltages(int startIndex, int count) 
+			throws InstanceNotFoundException; 	
+	
+	public CounterBlock getCounters(int startIndex, int count) 
+			throws InstanceNotFoundException; 
+	
+	public ArrayBoxBlock getArrayBoxs(int startIndex, int count) 
+			throws InstanceNotFoundException;  	
+	
+	public ElectricalSubstationBlock getElectricalSubstations(int startIndex, int count) 
+			throws InstanceNotFoundException; 	
+	
+	public ExtractionPointBlock getExtractionPoints(int startIndex, int count) 
+			throws InstanceNotFoundException; 		
 
 }

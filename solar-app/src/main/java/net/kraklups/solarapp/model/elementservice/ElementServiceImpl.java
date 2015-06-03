@@ -862,4 +862,70 @@ public class ElementServiceImpl implements ElementService {
 		return stringLine;
 	}
 
+	@Override
+	public ArrayPanelBlock getArrayPanels(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<ArrayPanel> arrayPanels = elementPrkDao.getArrayPanels(startIndex, count + 1);
+		
+		boolean existMoreArrayPanels = arrayPanels.size() == (count +1);
+		
+		return new ArrayPanelBlock(arrayPanels, existMoreArrayPanels);
+	}
+
+	@Override
+	public MediumVoltageBlock getMediumVoltages(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<MediumVoltage> mediumVoltages = elementPrkDao.getMediumVoltages(startIndex, count + 1);
+		
+		boolean existMoreMediumVoltages = mediumVoltages.size() == (count +1);
+		
+		return new MediumVoltageBlock(mediumVoltages, existMoreMediumVoltages);
+	}
+
+	@Override
+	public CounterBlock getCounters(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Counter> counters = elementPrkDao.getCounters(startIndex, count + 1);
+		
+		boolean existMoreCounters = counters.size() == (count +1);
+		
+		return new CounterBlock(counters, existMoreCounters);
+	}
+
+	@Override
+	public ArrayBoxBlock getArrayBoxs(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<ArrayBox> arrayBoxs = elementPrkDao.getArrayBoxs(startIndex, count + 1);
+		
+		boolean existMoreArrayBoxs = arrayBoxs.size() == (count +1);
+		
+		return new ArrayBoxBlock(arrayBoxs, existMoreArrayBoxs);
+	}
+
+	@Override
+	public ElectricalSubstationBlock getElectricalSubstations(int startIndex,
+			int count) throws InstanceNotFoundException {
+
+		List<ElectricalSubstation> electricalSubstations = elementPrkDao.getElectricalSubstations(startIndex, count + 1);
+		
+		boolean existMoreElectricalSubstations = electricalSubstations.size() == (count +1);
+		
+		return new ElectricalSubstationBlock(electricalSubstations, existMoreElectricalSubstations);
+	}
+
+	@Override
+	public ExtractionPointBlock getExtractionPoints(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<ExtractionPoint> extractionPoints = elementPrkDao.getExtractionPoints(startIndex, count + 1);
+		
+		boolean existMoreExtractionPoints = extractionPoints.size() == (count +1);
+		
+		return new ExtractionPointBlock(extractionPoints, existMoreExtractionPoints);
+	}
+
 }

@@ -85,6 +85,18 @@ public class CreateElement {
 		
 		initModelListStringLine(model);
 		
+		initModelListArrayBox(model);
+		
+		initModelListArrayPanel(model);
+		
+		initModelListCounter(model);
+		
+		initModelListElectricalSubstation(model);
+		
+		initModelListExtractionPoint(model);
+		
+		initModelListMediumVoltage(model);
+		
 		return "element/createElement";
 	}
 
@@ -95,7 +107,7 @@ public class CreateElement {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
-			return "task/createTask";
+			return "element/createElement";
 		} else {
 			logger.info("Create ElementPrk page! " + "elementPrk: " + elementPrk.getElementPrkId());
 
@@ -120,7 +132,7 @@ public class CreateElement {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
-			return "task/createTask";
+			return "element/createElement";
 		} else {
 			logger.info("Create ArrayPanel page! " + "arrayPanel: " + arrayPanel.getArrayPanelId());
 
@@ -145,7 +157,7 @@ public class CreateElement {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
-			return "task/createTask";
+			return "element/createElement";
 		} else {
 			logger.info("Create ArrayBox page! " + "arrayBox: " + arrayBox.getArrayBoxId());
 
@@ -170,7 +182,7 @@ public class CreateElement {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
-			return "task/createTask";
+			return "element/createElement";
 		} else {
 			logger.info("Create Cell page! " + "cell: " + cell.getCellId());
 
@@ -195,7 +207,7 @@ public class CreateElement {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
-			return "task/createTask";
+			return "element/createElement";
 		} else {
 			logger.info("Create Counter page! " + "counter: " + counter.getCounterId());
 
@@ -220,7 +232,7 @@ public class CreateElement {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
-			return "task/createTask";
+			return "element/createElement";
 		} else {
 			logger.info("Create ElectricalSubstation page! " + "electricalSubstation: " + electricalSubstation.getElectricalSubstationId());
 
@@ -245,7 +257,7 @@ public class CreateElement {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
-			return "task/createTask";
+			return "element/createElement";
 		} else {
 			logger.info("Create ExtractionPoint page! " + "extractionPoint: " + extractionPoint.getExtractionPointId());
 
@@ -270,7 +282,7 @@ public class CreateElement {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
-			return "task/createTask";
+			return "element/createElement";
 		} else {
 			logger.info("Create Gps page! " + "gps: " + gps.getGpsId());
 
@@ -295,7 +307,7 @@ public class CreateElement {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
-			return "task/createTask";
+			return "element/createElement";
 		} else {
 			logger.info("Create Inverter page! " + "inverter: " + inverter.getInverterId());
 
@@ -320,7 +332,7 @@ public class CreateElement {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
-			return "task/createTask";
+			return "element/createElement";
 		} else {
 			logger.info("Create MediumVoltage page! " + "mediumVoltage: " + mediumVoltage.getMediumVoltageId());
 
@@ -345,7 +357,7 @@ public class CreateElement {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
-			return "task/createTask";
+			return "element/createElement";
 		} else {
 			logger.info("Create SolarTracker page! " + "solarTracker: " + solarTracker.getSolarTrackerId());
 
@@ -370,7 +382,7 @@ public class CreateElement {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
-			return "task/createTask";
+			return "element/createElement";
 		} else {
 			logger.info("Create StringLine page! " + "stringLine: " + stringLine.getStringLineId());
 
@@ -395,7 +407,7 @@ public class CreateElement {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
-			return "task/createTask";
+			return "element/createElement";
 		} else {
 			logger.info("Create WeatherStation page! " + "weatherStation: " + weatherStation.getWeatherStationId());
 
@@ -426,6 +438,37 @@ public class CreateElement {
 	private void initModelListStringLine(Model model) throws InstanceNotFoundException {
 		List <StringLine> stringLineList = elementService.getStringLines(startIndex, STRINGLINE_PER_PAGE).getStringLines();
 		model.addAttribute(stringLineList);
+	}
+	
+	private void initModelListArrayPanel(Model model) throws InstanceNotFoundException {
+		List <ArrayPanel> arrayPanelList = elementService.getArrayPanels(startIndex, STRINGLINE_PER_PAGE).getArrayPanels();
+		model.addAttribute(arrayPanelList);
+	}
+	
+	private void initModelListMediumVoltage(Model model) throws InstanceNotFoundException {
+		List <MediumVoltage> mediumVoltageList = elementService.getMediumVoltages(startIndex, STRINGLINE_PER_PAGE).getMediumVoltages();
+		model.addAttribute(mediumVoltageList);
 	}	
+	
+	private void initModelListCounter(Model model) throws InstanceNotFoundException {
+		List <Counter> counterList = elementService.getCounters(startIndex, STRINGLINE_PER_PAGE).getCounters();
+		model.addAttribute(counterList);
+	}	
+	
+	private void initModelListArrayBox(Model model) throws InstanceNotFoundException {
+		List <ArrayBox> arrayBoxList = elementService.getArrayBoxs(startIndex, STRINGLINE_PER_PAGE).getArrayBoxs();
+		model.addAttribute(arrayBoxList);
+	}
+	
+	private void initModelListElectricalSubstation(Model model) throws InstanceNotFoundException {
+		List <ElectricalSubstation> electricalSubstationList = elementService.getElectricalSubstations(startIndex, STRINGLINE_PER_PAGE).getElectricalSubstations();
+		model.addAttribute(electricalSubstationList);
+	}	
+	
+	private void initModelListExtractionPoint(Model model) throws InstanceNotFoundException {
+		List <ExtractionPoint> extractionPointList = elementService.getExtractionPoints(startIndex, STRINGLINE_PER_PAGE).getExtractionPoints();
+		model.addAttribute(extractionPointList);
+	}	
+	
 	
 }
