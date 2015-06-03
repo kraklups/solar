@@ -69,4 +69,22 @@ public class AlarmDaoHibernate extends
 		}
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Alarm> getAlarms(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Alarm> alarms = (List<Alarm>)  getSession().createQuery(
+	        	"SELECT a FROM Alarm a  " +
+	        	"ORDER BY a.alarmId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (alarms == null) {
+			throw new InstanceNotFoundException(null, Alarm.class.getName());
+		} else {
+			return alarms;
+		}
+	}
+
 }

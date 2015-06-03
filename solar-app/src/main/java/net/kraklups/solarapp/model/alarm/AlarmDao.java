@@ -35,5 +35,7 @@ public interface AlarmDao extends GenericDao<Alarm, Long> {
        public List<Alarm> getAlarmsByEventTskId(Long eventTskId, int startIndex, int count) 
               throws InstanceNotFoundException; 	
 
-     
+   	public List<Alarm> getAlarms(int startIndex, int count)
+			throws InstanceNotFoundException;
+   	
 }

@@ -878,5 +878,16 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		LOGGER.debug(" REST Client!!!" + response);
 		
 	}
+
+	@Override
+	public AlarmBlock getAlarms(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Alarm> Alarms = alarmDao.getAlarms(startIndex, count + 1);
+		
+		boolean existMoreAlarms = Alarms.size() == (count +1);
+		
+		return new AlarmBlock(Alarms, existMoreAlarms);
+	}
 	
 }

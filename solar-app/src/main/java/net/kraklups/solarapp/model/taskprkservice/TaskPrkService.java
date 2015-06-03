@@ -266,4 +266,7 @@ public interface TaskPrkService {
 	public void RegisterEventTsk(EventTskDTO evetntTskDTO)
 			throws Exception;
     
+	public AlarmBlock getAlarms(int startIndex, int count) 
+			throws InstanceNotFoundException;	
+	
 }
