@@ -269,4 +269,7 @@ public interface TaskPrkService {
 	public AlarmBlock getAlarms(int startIndex, int count) 
 			throws InstanceNotFoundException;	
 	
+	public Alarm getAlarmById(Long alarmId) 
+			throws InstanceNotFoundException;
+	
 }

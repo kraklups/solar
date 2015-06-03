@@ -889,5 +889,14 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		
 		return new AlarmBlock(Alarms, existMoreAlarms);
 	}
+
+	@Override
+	public Alarm getAlarmById(Long alarmId) 
+			throws InstanceNotFoundException {
+		
+		Alarm alarm = alarmDao.find(alarmId);
+		
+		return alarm;
+	}
 	
 }

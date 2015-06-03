@@ -21,7 +21,7 @@
 
     		<div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header"><spring:message code="createAlarm.title" /></h2>
+                    <h2 class="page-header"><spring:message code="updateAlarm.title" /></h2>
                 </div>
             </div>
             
@@ -29,7 +29,7 @@
             	<div class="col-lg-12">
                 	<div class="panel panel-default">
                     	<div class="panel-heading">
-                        	<h3 class="panel-title"><spring:message code="createAlarm.menuExplanation" /></h3>
+                        	<h3 class="panel-title"><spring:message code="updateAlarm.menuExplanation" /></h3>
                     	</div>
                     	<div class="panel-body">
                     	
@@ -50,7 +50,7 @@
 	   									<spring:message code="createAlarm.eventTsk" />
 										<form:select path="eventTsk" class="form-control">
     										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${eventTskList}" itemValue="eventTskId" itemLabel="name" />
+    										<form:options items="${eventTskList}" itemValue="eventTskId" itemLabel="tagET" />
 										</form:select>	   							   								    
 	   								</div>
 
