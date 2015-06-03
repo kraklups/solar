@@ -773,4 +773,93 @@ public class ElementServiceImpl implements ElementService {
 		return arrayBox;
 	}
 
+	@Override
+	public Cell saveElementPrk(Cell cell) throws DuplicateInstanceException {
+
+		elementPrkDao.save(cell);
+		
+		return cell;
+	}
+
+	@Override
+	public Counter saveElementPrk(Counter counter)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(counter);
+		
+		return counter;
+	}
+
+	@Override
+	public ElectricalSubstation saveElementPrk(
+			ElectricalSubstation electricalSubstation)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(electricalSubstation);
+		
+		return electricalSubstation;
+	}
+
+	@Override
+	public ExtractionPoint saveElementPrk(ExtractionPoint extractionPoint)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(extractionPoint);
+		
+		return extractionPoint;
+	}
+
+	@Override
+	public Gps saveElementPrk(Gps gps) throws DuplicateInstanceException {
+
+		elementPrkDao.save(gps);
+		
+		return gps;
+	}
+
+	@Override
+	public Inverter saveElementPrk(Inverter inverter)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(inverter);
+		
+		return inverter;
+	}
+
+	@Override
+	public MediumVoltage saveElementPrk(MediumVoltage mediumVoltage)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(mediumVoltage);
+		
+		return mediumVoltage;
+	}
+
+	@Override
+	public SolarTracker saveElementPrk(SolarTracker solarTracker)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(solarTracker);
+		
+		return solarTracker;
+	}
+
+	@Override
+	public WeatherStation saveElementPrk(WeatherStation weatherStation)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(weatherStation);
+		
+		return weatherStation;
+	}
+
+	@Override
+	public StringLine saveElementPrk(StringLine stringLine)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(stringLine);
+		
+		return stringLine;
+	}
+
 }

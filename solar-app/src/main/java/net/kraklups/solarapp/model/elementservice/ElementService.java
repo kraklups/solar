@@ -254,7 +254,38 @@ public interface ElementService {
     public ArrayPanel saveElementPrk(ArrayPanel arrayPanel)
     		throws DuplicateInstanceException;
     
-    public ArrayBox saveElementPrk(ArrayBox arrayBox)
+    public StringLine saveElementPrk(StringLine stringLine)
     		throws DuplicateInstanceException;    
+    
+    public Cell saveElementPrk(Cell cell)
+    		throws DuplicateInstanceException;    
+    
+    public Counter saveElementPrk(Counter counter)
+    		throws DuplicateInstanceException;
+    
+    public ElectricalSubstation saveElementPrk(ElectricalSubstation electricalSubstation)
+    		throws DuplicateInstanceException;
+    
+    public ExtractionPoint saveElementPrk(ExtractionPoint extractionPoint)
+    		throws DuplicateInstanceException;
+    
+    public Gps saveElementPrk(Gps gps)
+    		throws DuplicateInstanceException;
+    
+    public Inverter saveElementPrk(Inverter inverter)
+    		throws DuplicateInstanceException;
+    
+    public MediumVoltage saveElementPrk(MediumVoltage mediumVoltage)
+    		throws DuplicateInstanceException;
+    
+    public SolarTracker saveElementPrk(SolarTracker solarTracker)
+    		throws DuplicateInstanceException;
+    
+    public ArrayBox saveElementPrk(ArrayBox arrayBox)
+    		throws DuplicateInstanceException;
+    
+    public WeatherStation saveElementPrk(WeatherStation weatherStation)
+    		throws DuplicateInstanceException;
+    
 
 }

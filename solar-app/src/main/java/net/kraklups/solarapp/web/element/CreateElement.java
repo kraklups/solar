@@ -10,9 +10,18 @@ import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.dataservice.DataService;
 import net.kraklups.solarapp.model.elementprk.ArrayBox;
 import net.kraklups.solarapp.model.elementprk.ArrayPanel;
+import net.kraklups.solarapp.model.elementprk.Cell;
+import net.kraklups.solarapp.model.elementprk.Counter;
+import net.kraklups.solarapp.model.elementprk.ElectricalSubstation;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.elementprk.ElementPrkMock;
+import net.kraklups.solarapp.model.elementprk.ExtractionPoint;
+import net.kraklups.solarapp.model.elementprk.Gps;
+import net.kraklups.solarapp.model.elementprk.Inverter;
+import net.kraklups.solarapp.model.elementprk.MediumVoltage;
+import net.kraklups.solarapp.model.elementprk.SolarTracker;
 import net.kraklups.solarapp.model.elementprk.StringLine;
+import net.kraklups.solarapp.model.elementprk.WeatherStation;
 import net.kraklups.solarapp.model.elementservice.ElementService;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.parkservice.ParkService;
@@ -153,6 +162,256 @@ public class CreateElement {
 			return "Done";
 		}	
 	}		
+	
+	@RequestMapping(value = "/element/createCellElement", method = RequestMethod.POST)
+	public String createElementPost(@Valid @ModelAttribute("cell") Cell cell, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createTask.jspx merde page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create Cell page! " + "cell: " + cell.getCellId());
+
+			model.addAttribute("cell", cell);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			cell.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			Cell merda = elementService.saveElementPrk(cell);
+			
+			logger.info("Create ElementPrk page POST! " + merda);
+			
+			return "Done";
+		}	
+	}	
+	
+	@RequestMapping(value = "/element/createCounterElement", method = RequestMethod.POST)
+	public String createElementPost(@Valid @ModelAttribute("counter") Counter counter, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createTask.jspx merde page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create Counter page! " + "counter: " + counter.getCounterId());
+
+			model.addAttribute("counter", counter);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			counter.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			Counter merda = elementService.saveElementPrk(counter);
+			
+			logger.info("Create ElementPrk page POST! " + merda);
+			
+			return "Done";
+		}	
+	}	
+	
+	@RequestMapping(value = "/element/createElectricalSubstationElement", method = RequestMethod.POST)
+	public String createElementPost(@Valid @ModelAttribute("electricalSubstation") ElectricalSubstation electricalSubstation, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createTask.jspx merde page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create ElectricalSubstation page! " + "electricalSubstation: " + electricalSubstation.getElectricalSubstationId());
+
+			model.addAttribute("electricalSubstation", electricalSubstation);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			electricalSubstation.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			ElectricalSubstation merda = elementService.saveElementPrk(electricalSubstation);
+			
+			logger.info("Create ElementPrk page POST! " + merda);
+			
+			return "Done";
+		}	
+	}	
+	
+	@RequestMapping(value = "/element/createExtractionPointElement", method = RequestMethod.POST)
+	public String createElementPost(@Valid @ModelAttribute("extractionPoint") ExtractionPoint extractionPoint, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createTask.jspx merde page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create ExtractionPoint page! " + "extractionPoint: " + extractionPoint.getExtractionPointId());
+
+			model.addAttribute("extractionPoint", extractionPoint);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			extractionPoint.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			ExtractionPoint merda = elementService.saveElementPrk(extractionPoint);
+			
+			logger.info("Create ElementPrk page POST! " + merda);
+			
+			return "Done";
+		}	
+	}	
+	
+	@RequestMapping(value = "/element/createGpsElement", method = RequestMethod.POST)
+	public String createElementPost(@Valid @ModelAttribute("gps") Gps gps, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createTask.jspx merde page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create Gps page! " + "gps: " + gps.getGpsId());
+
+			model.addAttribute("gps", gps);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			gps.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			Gps merda = elementService.saveElementPrk(gps);
+			
+			logger.info("Create ElementPrk page POST! " + merda);
+			
+			return "Done";
+		}	
+	}	
+	
+	@RequestMapping(value = "/element/createInverterElement", method = RequestMethod.POST)
+	public String createElementPost(@Valid @ModelAttribute("inverter") Inverter inverter, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createTask.jspx merde page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create Inverter page! " + "inverter: " + inverter.getInverterId());
+
+			model.addAttribute("inverter", inverter);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			inverter.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			Inverter merda = elementService.saveElementPrk(inverter);
+			
+			logger.info("Create ElementPrk page POST! " + merda);
+			
+			return "Done";
+		}	
+	}	
+	
+	@RequestMapping(value = "/element/createMediumVoltageElement", method = RequestMethod.POST)
+	public String createElementPost(@Valid @ModelAttribute("mediumVoltage") MediumVoltage mediumVoltage, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createTask.jspx merde page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create MediumVoltage page! " + "mediumVoltage: " + mediumVoltage.getMediumVoltageId());
+
+			model.addAttribute("mediumVoltage", mediumVoltage);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			mediumVoltage.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			MediumVoltage merda = elementService.saveElementPrk(mediumVoltage);
+			
+			logger.info("Create ElementPrk page POST! " + merda);
+			
+			return "Done";
+		}	
+	}	
+
+	@RequestMapping(value = "/element/createSolarTrackerElement", method = RequestMethod.POST)
+	public String createElementPost(@Valid @ModelAttribute("solarTracker") SolarTracker solarTracker, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createTask.jspx merde page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create SolarTracker page! " + "solarTracker: " + solarTracker.getSolarTrackerId());
+
+			model.addAttribute("solarTracker", solarTracker);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			solarTracker.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			SolarTracker merda = elementService.saveElementPrk(solarTracker);
+			
+			logger.info("Create ElementPrk page POST! " + merda);
+			
+			return "Done";
+		}	
+	}	
+
+	@RequestMapping(value = "/element/createStringLineElement", method = RequestMethod.POST)
+	public String createElementPost(@Valid @ModelAttribute("stringLine") StringLine stringLine, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createTask.jspx merde page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create StringLine page! " + "stringLine: " + stringLine.getStringLineId());
+
+			model.addAttribute("stringLine", stringLine);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			stringLine.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			StringLine merda = elementService.saveElementPrk(stringLine);
+			
+			logger.info("Create ElementPrk page POST! " + merda);
+			
+			return "Done";
+		}	
+	}	
+	
+	@RequestMapping(value = "/element/createWeatherStationElement", method = RequestMethod.POST)
+	public String createElementPost(@Valid @ModelAttribute("weatherStation") WeatherStation weatherStation, BindingResult result, Model model) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		if(result.hasErrors()) {
+			logger.info("Returning after error createTask.jspx merde page");
+			
+			return "task/createTask";
+		} else {
+			logger.info("Create WeatherStation page! " + "weatherStation: " + weatherStation.getWeatherStationId());
+
+			model.addAttribute("weatherStation", weatherStation);
+			
+			logger.info("UserSession " + SecurityContextHolder.getContext().getAuthentication().getName());
+			
+			weatherStation.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
+			
+			WeatherStation merda = elementService.saveElementPrk(weatherStation);
+			
+			logger.info("Create ElementPrk page POST! " + merda);
+			
+			return "Done";
+		}	
+	}	
 	
 	private void initModelListPark(Model model) throws InstanceNotFoundException {
 		List <Park> parkList = parkService.getParks(startIndex, PARK_PER_PAGE).getParks();

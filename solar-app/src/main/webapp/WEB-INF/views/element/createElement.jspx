@@ -39,6 +39,15 @@
     							<option name="ArrayPanel">ArrayPanel</option>
     							<option name="Cell">Cell</option>
     							<option name="Counter">Counter</option>
+    							<option name="ElectricalSubstation">ElectricalSubstation</option>
+    							<option name="ExtractionPoint">ExtractionPoint</option>
+    							<option name="Gps">Gps</option>
+    							<option name="Inverter">Inverter</option>
+    							<option name="MediumVoltage">MediumVoltage</option>
+    							<option name="SolarTracker">SolarTracker</option>
+    							<option name="StringLine">StringLine</option>
+    							<option name="WeatherStation">WeatherStation</option>
+    							
 							</select>
 
 							<form:form action="" modelAttribute="elementPrkMock" method="POST" id="elementprkform" >
@@ -123,7 +132,104 @@
 	   									</div>
 									</spring:bind>
 			
-			</div>	   							   	
+			</div>
+			
+			<div id="arraypanelstuff" style="display:none;">
+			 
+									<spring:bind path="arrayPanel">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createElement.arrayPanel" /></label>
+											<form:select path="arrayPanel" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${arrayPanelList}" itemValue="arrayPanelId" itemLabel="elementPrkName" />
+											</form:select>
+											<form:errors path="arrayPanel" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
+			
+			</div>
+			
+			<div id="mediumvoltagestuff" style="display:none;">
+			 
+									<spring:bind path="mediumVoltage">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createElement.mediumVoltage" /></label>
+											<form:select path="mediumVoltage" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${mediumVoltageList}" itemValue="mediumVoltageId" itemLabel="elementPrkName" />
+											</form:select>
+											<form:errors path="mediumVoltage" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
+			
+			</div>
+			
+			<div id="counterstuff" style="display:none;">
+			 
+									<spring:bind path="counter">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createElement.counter" /></label>
+											<form:select path="counter" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${counterList}" itemValue="counterId" itemLabel="elementPrkName" />
+											</form:select>
+											<form:errors path="counter" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
+			
+			</div>
+			
+			<div id="arrayboxstuff" style="display:none;">
+			 
+									<spring:bind path="arrayBox">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createElement.arrayBox" /></label>
+											<form:select path="arrayBox" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${arrayBoxList}" itemValue="arrayBoxId" itemLabel="elementPrkName" />
+											</form:select>
+											<form:errors path="arrayBox" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
+			
+			</div>			
+			
+			<div id="electricalsubstationstuff" style="display:none;">
+			 
+									<spring:bind path="electricalSubstation">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createElement.electricalSubstation" /></label>
+											<form:select path="electricalSubstation" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${electricalSubstationList}" itemValue="electricalSubstationId" itemLabel="elementPrkName" />
+											</form:select>
+											<form:errors path="electricalSubstation" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
+			
+			</div>			
+			
+			<div id="extractionpointstuff" style="display:none;">
+			 
+									<spring:bind path="extractionPoint">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createElement.extractionPoint" /></label>
+											<form:select path="extractionPoint" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${extractionPointList}" itemValue="extractionPointId" itemLabel="elementPrkName" />
+											</form:select>
+											<form:errors path="extractionPoint" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
+			
+			</div>			
+						
 		    						<div class="button">
 		    							<spring:message code="createElement.submit" var="elementSubmit" />
 		        						<input type="submit" value="${elementSubmit}" />        
