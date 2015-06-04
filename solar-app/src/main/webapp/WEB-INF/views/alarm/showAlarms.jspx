@@ -46,10 +46,15 @@
                                 <tbody>
 									<c:forEach var="alarmValues" items="${AlarmList}">
                                     	<tr class="active">
-                                        	<td>${alarmValues.alarmId}</td>
-                                        	<td>${alarmValues.alarmTag}</td>
-                                        	<td>${alarmValues.triggerDate}</td>
-                                        	<td>${alarmValues.eventTsk}</td>
+                                    		<td>
+											<spring:url value="/alarm/updateAlarm/${alarmValues.alarmId}" var="updateAlarmUrl" htmlEscape="true"/>
+ 											<a class="text-center" href="${updateAlarmUrl}">
+                                        		<span class="text-muted small">${alarmValues.alarmId}</span> 											
+ 											</a>
+ 											</td>
+                                        	<td><span class="text-muted small">${alarmValues.alarmTag}</span></td>
+                                        	<td><span class="text-muted small">${alarmValues.triggerDate}</span></td>
+                                        	<td><span class="text-muted small">${alarmValues.eventTsk.eventTskId}</span></td>
                                     	</tr>				
 									</c:forEach>
                                 </tbody>
