@@ -129,6 +129,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/ExtractionPointFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/timetable/Timetable.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/report/Report.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/report/ShowReport.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/element/CreateElement.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/user/Login.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/UpkeepFormatter.java
