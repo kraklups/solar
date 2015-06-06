@@ -1,6 +1,7 @@
 package net.kraklups.solarapp.model.taskprkservice;
 
 import java.util.Date;
+import java.util.List;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
@@ -19,6 +20,7 @@ import net.kraklups.solarapp.model.taskprk.Track;
 import net.kraklups.solarapp.model.taskprk.Upkeep;
 import net.kraklups.solarapp.model.timetable.Timetable;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
+import net.kraklups.solarapp.model.util.ValueObject;
 
 public interface TaskPrkService {
 	
@@ -273,6 +275,9 @@ public interface TaskPrkService {
 			throws InstanceNotFoundException;
 	
 	public Report getReportById(Long reportId) 
-			throws InstanceNotFoundException;	
+			throws InstanceNotFoundException;
+	
+	public List<ValueObject> mapReduceRest(Long dataValueId)
+			throws InstanceNotFoundException;
 	
 }

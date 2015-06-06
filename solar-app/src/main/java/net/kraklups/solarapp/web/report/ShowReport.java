@@ -1,11 +1,12 @@
 package net.kraklups.solarapp.web.report;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.report.Report;
 import net.kraklups.solarapp.model.taskprkservice.TaskPrkService;
-import net.kraklups.solarapp.web.datavalue.CreateDataValue;
+import net.kraklups.solarapp.model.util.ValueObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,7 @@ public class ShowReport {
 
 	private final static int REPORT_PER_PAGE = 50;
 	
-	private static final Logger logger = LoggerFactory.getLogger(CreateDataValue.class);
+	private static final Logger logger = LoggerFactory.getLogger(ShowReport.class);
 	
 	private int startIndex = 0;
 
@@ -38,11 +39,15 @@ public class ShowReport {
 	public String showReportGet(@PathVariable String reportId, Model model) 
 			throws InstanceNotFoundException {
 		
-		logger.info("Show Report page !");
+		logger.info("Show Report page for MapReduce !");
 		
 		Report report = taskPrkService.getReportById(Long.valueOf(reportId));
 		
-
+		List<ValueObject> valObj = new ArrayList<ValueObject>();
+		
+		valObj = taskPrkService.mapReduceRest(Long.valueOf(reportId));
+		
+		System.out.println("isto é unha merda:" + valObj);
 		
 		return "report/showReport";
 	}

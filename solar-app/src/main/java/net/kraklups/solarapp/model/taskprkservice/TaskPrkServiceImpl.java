@@ -1,6 +1,8 @@
 package net.kraklups.solarapp.model.taskprkservice;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
@@ -25,12 +27,20 @@ import net.kraklups.solarapp.model.taskprk.Track;
 import net.kraklups.solarapp.model.taskprk.Upkeep;
 import net.kraklups.solarapp.model.timetable.Timetable;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
+import net.kraklups.solarapp.model.util.ValObjList;
+import net.kraklups.solarapp.model.util.ValueObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -906,5 +916,29 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		
 		return report;
 	}
-	
+
+	@Override
+	public List<ValueObject> mapReduceRest(Long reportId) 
+			throws InstanceNotFoundException {
+		
+		final String SERVER_URI = "http://localhost:8080/rest/mrdatavalue/1";
+		int i;
+		
+		LOGGER.debug("Starting REST Client!!!!");
+		
+		RestTemplate restTemplate = new RestTemplate();
+ 		
+		ResponseEntity<ValueObject[]> responseEntity = restTemplate.getForEntity(SERVER_URI, ValueObject[].class);
+		ValueObject[] response =responseEntity.getBody();
+		MediaType contentType = responseEntity.getHeaders().getContentType();
+		HttpStatus statusCode = responseEntity.getStatusCode();
+		
+		for(i=1; i<response.length;i++) {
+			System.out.println(response[i]);
+		}
+		
+		return null;
+ 
+	}
+		
 }
