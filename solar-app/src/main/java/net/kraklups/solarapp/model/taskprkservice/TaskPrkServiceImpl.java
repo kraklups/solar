@@ -898,5 +898,13 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		
 		return alarm;
 	}
+
+	@Override
+	public Report getReportById(Long reportId) throws InstanceNotFoundException {
+
+		Report report = reportDao.find(reportId);
+		
+		return report;
+	}
 	
 }

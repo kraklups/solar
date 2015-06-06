@@ -272,4 +272,7 @@ public interface TaskPrkService {
 	public Alarm getAlarmById(Long alarmId) 
 			throws InstanceNotFoundException;
 	
+	public Report getReportById(Long reportId) 
+			throws InstanceNotFoundException;	
+	
 }
