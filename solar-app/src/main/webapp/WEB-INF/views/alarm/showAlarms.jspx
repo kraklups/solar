@@ -47,10 +47,10 @@
 									<c:forEach var="alarmValues" items="${AlarmList}">
                                     	<tr class="active">
                                     		<td>
-											<spring:url value="/alarm/updateAlarm/${alarmValues.alarmId}" var="updateAlarmUrl" htmlEscape="true"/>
- 											<a class="text-center" href="${updateAlarmUrl}">
-                                        		<span class="text-muted small">${alarmValues.alarmId}</span> 											
- 											</a>
+												<spring:url value="/alarm/updateAlarm/${alarmValues.alarmId}" var="updateAlarmUrl" htmlEscape="true"/>
+ 												<a class="text-center" href="${updateAlarmUrl}">
+                                        			<span class="text-muted small">${alarmValues.alarmId}</span> 											
+ 												</a>
  											</td>
                                         	<td><span class="text-muted small">${alarmValues.alarmTag}</span></td>
                                         	<td><span class="text-muted small">${alarmValues.triggerDate}</span></td>
