@@ -56,6 +56,9 @@ public interface DataService {
     		throws DuplicateInstanceException;	
 
     public DataValue saveDataValue(DataValue dataValue)
-    		throws DuplicateInstanceException;	    
+    		throws DuplicateInstanceException;	  
+    
+	public DataLogger findDataLogger(Long dataLoggerId)
+            throws InstanceNotFoundException;
     
 }

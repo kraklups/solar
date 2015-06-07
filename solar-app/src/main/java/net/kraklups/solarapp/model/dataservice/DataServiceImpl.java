@@ -189,5 +189,12 @@ public class DataServiceImpl implements DataService {
 		
 		return dataValue;
 	}
+	
+    @Transactional(readOnly = true)
+    public DataLogger findDataLogger(Long dataLoggerId)
+            throws InstanceNotFoundException {
+
+        return dataLoggerDao.find(dataLoggerId);
+    }	
 
 }

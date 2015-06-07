@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.PrimaryKeyJoinColumn;
 
+import com.vividsolutions.jts.geom.Point;
+
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
@@ -33,11 +35,11 @@ public class Inverter extends ElementPrk implements java.io.Serializable {
 
 	public Inverter(String elementPrkName, String elementPrkTag, Date tvi,
 			Date lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, Counter counter, ArrayBox arrayBox, 
+			DataLogger dataLogger, Park park, Point mapElement, Counter counter, ArrayBox arrayBox, 
 			ElectricalSubstation electricalSubstation) {
 		
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,
-				dataLogger, park);
+				dataLogger, park, mapElement);
 		
 		this.counter = counter;
 		this.arrayBox = arrayBox;

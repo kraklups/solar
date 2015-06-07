@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.PrimaryKeyJoinColumn;
 
+import com.vividsolutions.jts.geom.Point;
+
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
@@ -24,10 +26,10 @@ public class ArrayBox extends ElementPrk implements java.io.Serializable {
 
 	public ArrayBox(String elementPrkName, String elementPrkTag, Date tvi,
 			Date lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park) {
+			DataLogger dataLogger, Park park, Point mapElement) {
 		
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,
-				dataLogger, park);
+				dataLogger, park, mapElement);
 				
 	}
 

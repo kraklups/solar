@@ -1,11 +1,18 @@
 package net.kraklups.solarapp.test.experiments;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.hibernate.Transaction;
 
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+
+import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.elementprk.ElementPrkDao;
 import net.kraklups.solarapp.model.elementprk.ElementPrkDaoHibernate;
+import net.kraklups.solarapp.model.park.Park;
+import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 public class ElementPrkDaoExperiments {
 
@@ -21,9 +28,18 @@ public class ElementPrkDaoExperiments {
 		
 		try {
 			
-			// Register elementPrk
+			// Register elementPrk    
+			//String elementPrkName, String elementPrkTag, Date tvi, Date lastAccess, 
+			//UserProfile userProfile, DataLogger dataLogger, Park park
 
-			ElementPrk elementPrk = new ElementPrk();
+			Calendar calendar = Calendar.getInstance();
+			Date timestamp = new Date(calendar.getTime().getTime());
+			UserProfile userProfile = new UserProfile();
+			DataLogger dataLogger = new DataLogger();
+			Park park = new Park();
+			
+			ElementPrk elementPrk = new ElementPrk("ferlerguelo","froselado",timestamp,timestamp,userProfile,dataLogger,park,null);
+			
 			elementPrkDao.save(elementPrk);
 			Long elementPrkId = elementPrk.getElementPrkId();
 			System.out.println("ElementPrk with elementPrkId '" + elementPrkId

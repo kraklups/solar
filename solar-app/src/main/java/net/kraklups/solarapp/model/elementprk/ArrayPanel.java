@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.PrimaryKeyJoinColumn;
 
+import com.vividsolutions.jts.geom.Point;
+
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
@@ -28,9 +30,10 @@ public class ArrayPanel extends ElementPrk implements java.io.Serializable {
 
 	public ArrayPanel(String elementPrkName, String elementPrkTag,
 			Date tvi, Date lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, StringLine stringLine) {
+			DataLogger dataLogger, Park park, Point mapElement, StringLine stringLine) {
+		
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,
-				dataLogger, park);
+				dataLogger, park, mapElement);
 
 		this.stringLine = stringLine;
 	}

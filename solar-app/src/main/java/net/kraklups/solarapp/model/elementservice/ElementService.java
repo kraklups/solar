@@ -1,6 +1,8 @@
 package net.kraklups.solarapp.model.elementservice;
 
-import java.sql.Timestamp;
+import java.util.Date;
+
+import com.vividsolutions.jts.geom.Point;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
@@ -24,126 +26,131 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 public interface ElementService {
 
-	public ArrayBox createArrayBox(String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park)
+	public ElementPrk createElementPrk(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement)
 					throws DuplicateInstanceException;
 	
-	public ArrayBox updateArrayBox(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park)
+	public ArrayBox createArrayBox(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement)
+					throws DuplicateInstanceException;
+	
+	public ArrayBox updateArrayBox(Long arrayBoxId, String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement)
 					throws InstanceNotFoundException;	
 	
-	public ArrayPanel createArrayPanel(String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, StringLine stringLine)
+	public ArrayPanel createArrayPanel(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, StringLine stringLine)
 					throws DuplicateInstanceException;
 	
-	public ArrayPanel updateArrayPanel(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, StringLine stringLine)
-					throws InstanceNotFoundException;	
-
-	public Cell createCell(String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, ArrayPanel arrayPanel, StringLine stringLine)
-					throws DuplicateInstanceException;
-	
-	public Cell updateCell(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, ArrayPanel arrayPanel, StringLine stringLine)
+	public ArrayPanel updateArrayPanel(Long arrayBoxId, String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, StringLine stringLine)
 					throws InstanceNotFoundException;	
 
-	public Counter createCounter(String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park)
+	public Cell createCell(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, ArrayPanel arrayPanel, StringLine stringLine)
 					throws DuplicateInstanceException;
 	
-	public Counter updateCounter(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park)
+	public Cell updateCell(Long arrayBoxId, String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, ArrayPanel arrayPanel, StringLine stringLine)
 					throws InstanceNotFoundException;	
-	
-	public ElectricalSubstation createElectricalSubstation(String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, MediumVoltage mediumVoltage)
+
+	public Counter createCounter(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement)
 					throws DuplicateInstanceException;
 	
-	public ElectricalSubstation updateElectricalSubstation(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, MediumVoltage mediumVoltage)
+	public Counter updateCounter(Long arrayBoxId, String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement)
 					throws InstanceNotFoundException;	
 	
-	public ExtractionPoint createExtractionPoint(String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park)
+	public ElectricalSubstation createElectricalSubstation(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, MediumVoltage mediumVoltage)
 					throws DuplicateInstanceException;
 	
-	public ExtractionPoint updateExtractionPoint(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park)
+	public ElectricalSubstation updateElectricalSubstation(Long arrayBoxId, String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, MediumVoltage mediumVoltage)
 					throws InstanceNotFoundException;	
 	
-	public Gps createGps(String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park)
+	public ExtractionPoint createExtractionPoint(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement)
 					throws DuplicateInstanceException;
 	
-	public Gps updateGps(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park)
+	public ExtractionPoint updateExtractionPoint(Long arrayBoxId, String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement)
 					throws InstanceNotFoundException;	
 	
-	public Inverter createInverter(String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, Counter counter, ArrayBox arrayBox, 
+	public Gps createGps(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement)
+					throws DuplicateInstanceException;
+	
+	public Gps updateGps(Long arrayBoxId, String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement)
+					throws InstanceNotFoundException;	
+	
+	public Inverter createInverter(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, Counter counter, ArrayBox arrayBox, 
 			ElectricalSubstation electricalSubstation)
 					throws DuplicateInstanceException;
 	
-	public Inverter updateInverter(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, Counter counter, ArrayBox arrayBox, 
+	public Inverter updateInverter(Long arrayBoxId, String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, Counter counter, ArrayBox arrayBox, 
 			ElectricalSubstation electricalSubstation)
 					throws InstanceNotFoundException;	
 	
-	public MediumVoltage createMediumVoltage(String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, ExtractionPoint extractionPoint)
+	public MediumVoltage createMediumVoltage(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, ExtractionPoint extractionPoint)
 					throws DuplicateInstanceException;
 	
-	public MediumVoltage updateMediumVoltage(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, ExtractionPoint extractionPoint)
+	public MediumVoltage updateMediumVoltage(Long arrayBoxId, String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, ExtractionPoint extractionPoint)
 					throws InstanceNotFoundException;	
 	
-	public SolarTracker createSolarTracker(String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park)
+	public SolarTracker createSolarTracker(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement)
 					throws DuplicateInstanceException;
 	
-	public SolarTracker updateSolarTracker(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park)
+	public SolarTracker updateSolarTracker(Long arrayBoxId, String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement)
 					throws InstanceNotFoundException;
 	
-	public StringLine createStringLine(String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, ArrayBox arrayBox)
+	public StringLine createStringLine(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, ArrayBox arrayBox)
 					throws DuplicateInstanceException;
 	
-	public StringLine updateStringLine(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, ArrayBox arrayBox)
+	public StringLine updateStringLine(Long arrayBoxId, String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, ArrayBox arrayBox)
 					throws InstanceNotFoundException;	
 
-	public WeatherStation createWeatherStation(String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park)
+	public WeatherStation createWeatherStation(String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement)
 					throws DuplicateInstanceException;
 	
-	public WeatherStation updateWeatherStation(Long arrayBoxId, String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park)
+	public WeatherStation updateWeatherStation(Long arrayBoxId, String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement)
 					throws InstanceNotFoundException;	
 	
 	public void assignParkElementPrk(ElementPrk elementPrk, Park park) 
@@ -155,10 +162,10 @@ public interface ElementService {
 	public void assignElementPrkTagElementPrk(ElementPrk elementPrk, String elementPrkTag) 
 			throws InstanceNotFoundException;
 
-	public void assignTviElementPrk(ElementPrk elementPrk, Timestamp tvi) 
+	public void assignTviElementPrk(ElementPrk elementPrk, Date tvi) 
 			throws InstanceNotFoundException;
 
-	public void assignLastAccessElementPrk(ElementPrk elementPrk, Timestamp lastAccess) 
+	public void assignLastAccessElementPrk(ElementPrk elementPrk, Date lastAccess) 
 			throws InstanceNotFoundException;
 
 	public void assignDataLoggerElementPrk(ElementPrk elementPrk, DataLogger dataLogger) 
@@ -303,6 +310,9 @@ public interface ElementService {
 			throws InstanceNotFoundException; 	
 	
 	public ExtractionPointBlock getExtractionPoints(int startIndex, int count) 
-			throws InstanceNotFoundException; 		
+			throws InstanceNotFoundException; 	
+	
+	public ElementPrk findElementPrk(Long elementPrkId)
+            throws InstanceNotFoundException;
 
 }

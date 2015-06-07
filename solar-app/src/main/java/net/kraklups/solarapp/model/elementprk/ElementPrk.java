@@ -75,7 +75,7 @@ public class ElementPrk implements java.io.Serializable {
 	}
 	
 	public ElementPrk(String elementPrkName, String elementPrkTag, Date tvi, Date lastAccess, 
-			UserProfile userProfile, DataLogger dataLogger, Park park) {
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement) {
 		
 		this.elementPrkName = elementPrkName;
 		this.elementPrkTag = elementPrkTag;
@@ -84,10 +84,11 @@ public class ElementPrk implements java.io.Serializable {
 		this.userProfile = userProfile;
 		this.dataLogger = dataLogger;
 		this.park = park;
+		this.mapElement = mapElement;
 	}
 	
 	public ElementPrk(String elementPrkName, String elementPrkTag, Date tvi, Date lastAccess, 
-			UserProfile userProfile, DataLogger dataLogger, Park park, Set<Monitor> monitors) {
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement, Set<Monitor> monitors) {
 		
 		this.elementPrkName = elementPrkName;
 		this.elementPrkTag = elementPrkTag;
@@ -96,6 +97,7 @@ public class ElementPrk implements java.io.Serializable {
 		this.userProfile = userProfile;
 		this.dataLogger = dataLogger;
 		this.park = park;
+		this.mapElement = mapElement;		
 		this.monitors = monitors;
 	}
 	

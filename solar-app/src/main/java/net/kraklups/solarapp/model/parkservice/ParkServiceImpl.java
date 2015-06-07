@@ -312,4 +312,12 @@ public class ParkServiceImpl implements ParkService {
 		
 		return new ParkBlock(parks, existMoreParks);
 	}
+	
+    @Transactional(readOnly = true)
+    public Park findPark(Long parkId)
+            throws InstanceNotFoundException {
+
+        return parkDao.find(parkId);
+    }	
+	
 }

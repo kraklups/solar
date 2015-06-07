@@ -1,6 +1,6 @@
 package net.kraklups.solarapp.model.elementprk;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.PrimaryKeyJoinColumn;
+
+import com.vividsolutions.jts.geom.Point;
 
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.park.Park;
@@ -27,11 +29,11 @@ public class ElectricalSubstation extends ElementPrk implements java.io.Serializ
 	}
 
 	public ElectricalSubstation(String elementPrkName, String elementPrkTag,
-			Timestamp tvi, Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, MediumVoltage mediumVoltage) {
+			Date tvi, Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, MediumVoltage mediumVoltage) {
 		
 		super(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile,
-				dataLogger, park);
+				dataLogger, park, mapElement);
 		
 		this.mediumVoltage = mediumVoltage;
 	}
