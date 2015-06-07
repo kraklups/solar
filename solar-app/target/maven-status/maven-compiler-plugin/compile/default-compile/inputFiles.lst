@@ -151,7 +151,6 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/user/Register.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/util/ValueObject.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/event/ShowEvents.java
-/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/util/ValObjList.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/taskprk/Monitor.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/company/CompanyDaoHibernate.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/alarm/ShowAlarms.java

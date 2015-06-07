@@ -1,10 +1,10 @@
 package net.kraklups.solarapp.web.report;
 
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.util.Iterator;
 import java.util.List;
 
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
-import net.kraklups.solarapp.model.report.Report;
 import net.kraklups.solarapp.model.taskprkservice.TaskPrkService;
 import net.kraklups.solarapp.model.util.ValueObject;
 
@@ -23,38 +23,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ShowReport {
 
-	private final static int REPORT_PER_PAGE = 50;
-	
 	private static final Logger logger = LoggerFactory.getLogger(ShowReport.class);
 	
-	private int startIndex = 0;
-
 	@Autowired
 	private TaskPrkService taskPrkService;	
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
+	 * @throws ParseException 
 	 */
 	@RequestMapping(value = "/report/showReport/{reportId}", method = RequestMethod.GET)
 	public String showReportGet(@PathVariable String reportId, Model model) 
-			throws InstanceNotFoundException {
+			throws InstanceNotFoundException, ParseException {
 		
 		logger.info("Show Report page for MapReduce !");
 		
-		Report report = taskPrkService.getReportById(Long.valueOf(reportId));
+//		Report report = taskPrkService.getReportById(Long.valueOf(reportId));	
 		
-		List<ValueObject> valObj = new ArrayList<ValueObject>();
+		List<ValueObject> valObj  = taskPrkService.mapReduceRest(Long.valueOf(reportId));
 		
-		valObj = taskPrkService.mapReduceRest(Long.valueOf(reportId));
+		Iterator<ValueObject> itr = valObj.iterator();
+		while(itr.hasNext()){
+			ValueObject xxx = itr.next();
+			xxx.setId(xxx.getId().substring(0,10));
+		}
 		
-		System.out.println("isto é unha merda:" + valObj);
+//		System.out.println("isto é unha merda:" + valObj);
+		
+		model.addAttribute("MorrisData", valObj);
 		
 		return "report/showReport";
 	}
-
-	private void initModelListReport(Model model) throws InstanceNotFoundException {
-		List <Report> ReportList = taskPrkService.getReports(startIndex, REPORT_PER_PAGE).getReports();
-		model.addAttribute("ReportList",ReportList);
-	}	
 	
 }
