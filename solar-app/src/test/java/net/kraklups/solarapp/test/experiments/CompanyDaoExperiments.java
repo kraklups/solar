@@ -5,10 +5,10 @@ import java.util.Calendar;
 
 import org.hibernate.Transaction;
 
+import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.company.CompanyDao;
 import net.kraklups.solarapp.model.company.CompanyDaoHibernate;
-
 
 public class CompanyDaoExperiments {
 	
@@ -34,7 +34,11 @@ public class CompanyDaoExperiments {
 					+ "' has been created");
 			System.out.println(company);
 			
-			
+			// Find user.
+			company = companyDao.find(companyId);
+			System.out.println("User with userId '" + companyId
+					+ "' has been retrieved");
+			System.out.println(companyId);			
 			
 			// ... no more cases/entities/methods			
 			
@@ -43,6 +47,9 @@ public class CompanyDaoExperiments {
 		} catch (RuntimeException e) {
 			e.printStackTrace();
 			tx.rollback();
+		} catch (InstanceNotFoundException e) {
+			e.printStackTrace();
+			tx.commit();
 		} finally {
 			HibernateUtil.getSessionFactory().getCurrentSession().close();
 		}

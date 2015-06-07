@@ -12,20 +12,27 @@ public class UserProfileDetails {
 	private String surname2;
 	private String email;
 	private Date date;
-	private Boolean blocked;
-	private Boolean erased;
+	private Boolean enabled;
+	private Boolean accountNonExpired;
+	private Boolean credentialsNonExpired;
+	private Boolean accountNonLocked;	
 	private Company company;
 	private Role role;
 	
 	public UserProfileDetails(String firstName, String surname1, String surname2, 
-			String email, Date date, Boolean blocked, Boolean erased, Company company, Role role) {
+			String email, Date date, Boolean enabled, Boolean accountNonExpired, 
+			Boolean credentialsNonExpired, Boolean accountNonLocked, 
+			Company company, Role role) {
+		
 		this.firstName = firstName;
 		this.surname1 = surname1;
 		this.surname2 = surname2;
 		this.email = email;
 		this.date = date;
-		this.blocked = blocked;
-		this.erased = erased;
+		this.enabled = enabled;
+		this.accountNonExpired = accountNonExpired;
+		this.credentialsNonExpired = credentialsNonExpired;
+		this.accountNonLocked = accountNonLocked;
 		this.company = company;
 		this.role = role;
 	}
@@ -50,14 +57,22 @@ public class UserProfileDetails {
 		return date;
 	}
 	
-	public Boolean getBlocked() {
-		return blocked;
+	public Boolean getEnabled() {
+		return enabled;
 	}
 
-	public Boolean getErased() {
-		return erased;
+	public Boolean getAccountNonExpired() {
+		return accountNonExpired;
 	}
-	
+
+	public Boolean getCredentialsNonExpired() {
+		return credentialsNonExpired;
+	}
+
+	public Boolean getAccountNonLocked() {
+		return accountNonLocked;
+	}
+
 	public Company getCompany() {
 		return company;
 	}

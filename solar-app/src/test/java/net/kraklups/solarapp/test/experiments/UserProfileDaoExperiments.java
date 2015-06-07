@@ -4,7 +4,6 @@ import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userprofile.UserProfileDao;
 import net.kraklups.solarapp.model.userprofile.UserProfileDaoHibernate;
-import net.kraklups.solarapp.model.userservice.util.PasswordEncrypter;
 
 import org.hibernate.Transaction;
 

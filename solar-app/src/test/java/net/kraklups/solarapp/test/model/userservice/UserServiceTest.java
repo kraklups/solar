@@ -18,7 +18,6 @@ import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.module.Module;
 import net.kraklups.solarapp.model.role.Role;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
-import net.kraklups.solarapp.model.userservice.IncorrectPasswordException;
 import net.kraklups.solarapp.model.userservice.UserProfileDetails;
 import net.kraklups.solarapp.model.userservice.UserService;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
@@ -35,10 +34,7 @@ import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 public class UserServiceTest {
 	
 	private final long NON_EXISTENT_USER_PROFILE_ID = -1;
-	private final long NON_EXISTENT_ROLE_ID = -1;
-	private final long NON_EXISTENT_MODULE_ID = -2;
 	private final long NON_EXISTENT_COMPANY_ID = -1;	
-	
 
     @Autowired
     private UserService userService;
@@ -52,7 +48,7 @@ public class UserServiceTest {
 		Date timestamp = new Date(calendar.getTime().getTime());
     	Long value = new Long("1");
     	UserProfileDetails userProfileDetails = new UserProfileDetails("adminName","adminSurname1",
-    			"adminSurname2","admin@kraklups.net",timestamp,false,false,
+    			"adminSurname2","admin@kraklups.net",timestamp,false,false,false,false,
     			userService.findCompany(value),userService.findRole(value));    	
     	
         UserProfile userProfile = userService.registerUser(
@@ -76,7 +72,7 @@ public class UserServiceTest {
 		Date timestamp = new Date(calendar.getTime().getTime());
     	Long value = new Long("1");
     	UserProfileDetails userProfileDetails = new UserProfileDetails("adminName","adminSurname1",
-    			"adminSurname2","admin@kraklups.net",timestamp,false,false,
+    			"adminSurname2","admin@kraklups.net",timestamp,false,false,false,false,
     			userService.findCompany(value),userService.findRole(value));
 
         userService.registerUser(loginName, clearPassword, userProfileDetails);

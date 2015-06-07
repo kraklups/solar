@@ -65,8 +65,10 @@ public class UserServiceImpl implements UserService {
             UserProfile userProfile = new UserProfile(loginName,
                     encryptedPassword, userProfileDetails.getFirstName(),
                     userProfileDetails.getSurname1(), userProfileDetails.getSurname2(), userProfileDetails
-                        .getEmail(), userProfileDetails.getDate(), userProfileDetails.getBlocked(), 
-                        userProfileDetails.getErased(), userProfileDetails.getCompany(), userProfileDetails.getRole());
+                        .getEmail(), userProfileDetails.getDate(), 
+                        userProfileDetails.getEnabled(), userProfileDetails.getAccountNonExpired(), 
+                        userProfileDetails.getCredentialsNonExpired(), userProfileDetails.getAccountNonLocked(),
+                        userProfileDetails.getCompany(), userProfileDetails.getRole());
 
             userProfileDao.save(userProfile);
             return userProfile;

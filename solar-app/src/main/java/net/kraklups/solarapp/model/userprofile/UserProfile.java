@@ -73,7 +73,8 @@ public class UserProfile implements java.io.Serializable {
 	
 	public UserProfile(String loginName, String encryptedPassword,
 			String firstName, String surname1, String surname2, String email, 
-			Date date, Boolean enabled, Boolean accountNonExpired, Company company, Role role) {
+			Date date, Boolean enabled, Boolean accountNonExpired, 
+			Boolean credentialsNonExpired, Boolean accountNonLocked, Company company, Role role) {
 
 		this.loginName = loginName;
 		this.encryptedPassword = encryptedPassword;
@@ -84,6 +85,8 @@ public class UserProfile implements java.io.Serializable {
 		this.date = date;
 		this.enabled = enabled;
 		this.accountNonExpired = accountNonExpired;
+		this.credentialsNonExpired = credentialsNonExpired;
+		this.accountNonLocked = accountNonLocked;
 		this.company = company;
 		this.role = role;
 	}
