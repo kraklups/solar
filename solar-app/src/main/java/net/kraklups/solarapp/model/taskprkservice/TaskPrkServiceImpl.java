@@ -642,7 +642,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	}
 
 	@Override
-	public MessageEvent createMessageEvent(String messageTxt, Date tvi, EventTsk eventTsk)
+	public MessageEvent createMessageEvent(Date tvi, String messageTxt, EventTsk eventTsk)
 			throws DuplicateInstanceException {
 		
 		MessageEvent messageEvent = new MessageEvent(tvi, messageTxt, eventTsk);
@@ -982,5 +982,33 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		
 		return taskPrk;
 	}
-		
+
+    @Transactional(readOnly = true)
+    public EventTsk findEventTsk(Long eventTskId)
+            throws InstanceNotFoundException {
+
+        return eventTskDao.find(eventTskId);
+    }	
+	
+    @Transactional(readOnly = true)
+    public Alarm findAlarm(Long alarmId)
+            throws InstanceNotFoundException {
+
+        return alarmDao.find(alarmId);
+    }
+    
+    @Transactional(readOnly = true)
+    public MessageEvent findMessageEvent(Long messageEventId)
+            throws InstanceNotFoundException {
+
+        return messageEventDao.find(messageEventId);
+    }    
+
+    @Transactional(readOnly = true)
+    public Report findReport(Long reportId)
+            throws InstanceNotFoundException {
+
+        return reportDao.find(reportId);
+    }    
+    
 }

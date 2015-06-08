@@ -319,5 +319,26 @@ public class ParkServiceImpl implements ParkService {
 
         return parkDao.find(parkId);
     }	
-	
+
+    @Transactional(readOnly = true)
+    public State findState(Long stateId)
+            throws InstanceNotFoundException {
+
+        return stateDao.find(stateId);
+    } 
+    
+    @Transactional(readOnly = true)
+    public Timetable findTimetable(Long timetableId)
+            throws InstanceNotFoundException {
+
+        return timetableDao.find(timetableId);
+    }    
+    
+    @Transactional(readOnly = true)
+    public StateType findStateType(Long stateTypeId)
+            throws InstanceNotFoundException {
+
+        return stateTypeDao.find(stateTypeId);
+    }    
+    
 }

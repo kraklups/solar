@@ -10,8 +10,14 @@ import java.util.Date;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.company.Company;
+import net.kraklups.solarapp.model.eventtsk.EventTsk;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.parkservice.ParkService;
+import net.kraklups.solarapp.model.state.State;
+import net.kraklups.solarapp.model.statetype.StateType;
+import net.kraklups.solarapp.model.taskprk.Upkeep;
+import net.kraklups.solarapp.model.taskprkservice.TaskPrkService;
+import net.kraklups.solarapp.model.timetable.Timetable;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userservice.UserService;
 
@@ -31,7 +37,10 @@ public class ParkServiceTest {
     private ParkService parkService;
     
     @Autowired
-    private UserService userService;    
+    private UserService userService;   
+    
+    @Autowired
+    private TaskPrkService taskPrkService;    
     
 	@Test
 	public void testCreateParkkAndFindPark() 
@@ -57,5 +66,55 @@ public class ParkServiceTest {
 		assertEquals(park, park2);
 		
 	}
+
+	@Test
+	public void testCreateTimetableAndFindTimetable() 
+		throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		// String timetableTag, UserProfile userProfile, Date tvi, Park park
+		
+		Long weight = new Long("1");
+		String cadena = "estraperlacio";
+		
+		Calendar calendar = Calendar.getInstance();
+		Date timestamp = new Date(calendar.getTime().getTime());
+		
+		UserProfile userProfile = userService.findUserProfile(weight);
+		Park park = parkService.findPark(weight);
+		
+		Timetable timetable = parkService.createTimetable(cadena, userProfile, timestamp, park);
+		
+		Timetable timetable2 = parkService.findTimetable(timetable.getTimetableId());
+		
+		assertEquals(timetable, timetable2);
+			
+	}
+	
+	@Test
+	public void testCreateStateAndFindState() 
+		throws DuplicateInstanceException, InstanceNotFoundException {
+		
+		//Date tvi, Date tvf, Park park, EventTsk eventTsk, Upkeep upkeep, StateType stateType
+		
+		Long weight = new Long("1");
+		
+		Long weight1 = new Long("3");
+		
+		Calendar calendar = Calendar.getInstance();
+		Date timestamp = new Date(calendar.getTime().getTime());
+		
+		Park park = parkService.findPark(weight);
+		EventTsk eventTsk = taskPrkService.findEventTsk(weight);
+		Upkeep upkeep = taskPrkService.findUpkeep(weight1);
+		StateType stateType = parkService.findStateType(weight);
+		
+		State state = parkService.createState(timestamp, timestamp, park, eventTsk, upkeep, stateType);
+		
+		State state2 = parkService.findState(state.getStateId());
+		
+		assertEquals(state, state2);		
+					
+	}	
+	
 	
 }

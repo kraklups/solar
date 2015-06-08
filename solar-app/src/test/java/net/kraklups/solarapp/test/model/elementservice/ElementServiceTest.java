@@ -15,6 +15,7 @@ import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.elementservice.ElementService;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.parkservice.ParkService;
+import net.kraklups.solarapp.model.sensor.Sensor;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userservice.UserService;
 
@@ -84,5 +85,24 @@ public class ElementServiceTest {
 		assertEquals(elementPrk, elementPrk2);		
 	}
 	
-    
+	@Test
+	public void testCreateSensorAndFindSensor() 
+		throws DuplicateInstanceException, InstanceNotFoundException, ParseException {
+		
+		/* Register element and find element */
+		//String sensorTag, String sensorType, ElementPrk elementPrk
+		
+		Long weight = new Long("1");
+		String cadena = "estraperlacio";
+		
+		ElementPrk elementPrk = elementService.findElementPrk(weight);
+		        
+		Sensor sensor = elementService.createSensor(cadena, cadena, elementPrk);       
+		
+		Sensor sensor2 = elementService.findSensor(sensor.getSensorId());
+		
+		assertEquals(sensor, sensor2);		
+	}    
+	
+	
 }

@@ -100,4 +100,13 @@ public interface ParkService {
 	public Park findPark(Long parkId)
             throws InstanceNotFoundException;
 	
+	public State findState(Long stateId)
+            throws InstanceNotFoundException;	
+	
+	public Timetable findTimetable(Long timetableId)
+            throws InstanceNotFoundException;	
+	
+	public StateType findStateType(Long stateTypeId)
+            throws InstanceNotFoundException;		
+	
 }

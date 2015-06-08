@@ -215,7 +215,7 @@ public interface TaskPrkService {
     public MessageEventBlock getMessageEventByEventTskId(Long eventTskId, int startIndex, int count)
 			throws InstanceNotFoundException;  
        
-    public MessageEvent createMessageEvent(String messageTxt, Date tvi, EventTsk eventTsk)
+    public MessageEvent createMessageEvent(Date tvi, String messageTxt, EventTsk eventTsk)
     		throws DuplicateInstanceException;
     
     public MessageEvent updateMessageEvent(Long messageId, String messageTxt, Date tvi, EventTsk eventTsk)
@@ -298,5 +298,18 @@ public interface TaskPrkService {
 	
 	public Monitor findMonitor(Long monitorId)
             throws InstanceNotFoundException;	
+	
+	public EventTsk findEventTsk(Long eventTskId)
+            throws InstanceNotFoundException;
+	
+	public Alarm findAlarm(Long alarmId)
+            throws InstanceNotFoundException;	
+	
+	public MessageEvent findMessageEvent(Long messageEventId)
+            throws InstanceNotFoundException;
+	
+	public Report findReport(Long reportId)
+            throws InstanceNotFoundException;
+		
 	
 }
