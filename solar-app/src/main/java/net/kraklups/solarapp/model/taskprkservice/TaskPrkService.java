@@ -23,6 +23,10 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.util.ValueObject;
 
 public interface TaskPrkService {
+
+	public TaskPrk createTaskPrk(String taskName, Date creationDate,
+			Park park, Role role, UserProfile userProfile) 
+			throws DuplicateInstanceException;
 	
 	public Upkeep createUpkeep(String taskName, Date creationDate,
 			Park park, Role role, UserProfile userProfile) 
@@ -279,5 +283,20 @@ public interface TaskPrkService {
 	
 	public List<ValueObject> mapReduceRest(Long dataValueId)
 			throws InstanceNotFoundException;
+	
+	public TaskPrk findTaskPrk(Long taskPrkId)
+            throws InstanceNotFoundException;
+	
+	public Upkeep findUpkeep(Long upkeepId)
+            throws InstanceNotFoundException;
+	
+	public Synchronize findSynchronize(Long synchronizeId)
+            throws InstanceNotFoundException;
+
+	public Track findTrack(Long trackId)
+            throws InstanceNotFoundException;
+	
+	public Monitor findMonitor(Long monitorId)
+            throws InstanceNotFoundException;	
 	
 }

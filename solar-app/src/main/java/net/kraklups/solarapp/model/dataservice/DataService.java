@@ -61,4 +61,6 @@ public interface DataService {
 	public DataLogger findDataLogger(Long dataLoggerId)
             throws InstanceNotFoundException;
     
+	public DataValue findDataValue(Long dataValueId)
+            throws InstanceNotFoundException;
 }

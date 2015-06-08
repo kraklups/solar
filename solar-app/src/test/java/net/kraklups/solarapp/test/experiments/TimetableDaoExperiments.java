@@ -1,11 +1,16 @@
 package net.kraklups.solarapp.test.experiments;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.hibernate.Transaction;
 
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.timetable.Timetable;
 import net.kraklups.solarapp.model.timetable.TimetableDao;
 import net.kraklups.solarapp.model.timetable.TimetableDaoHibernate;
+import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 public class TimetableDaoExperiments {
 
@@ -22,8 +27,15 @@ public class TimetableDaoExperiments {
 		try {
 			
 			// Register timetable
+			// String timetableTag, UserProfile userProfile, Date tvi, Park park
 
-			Timetable timetable = new Timetable();
+			Calendar calendar = Calendar.getInstance();
+			Date timestamp = new Date(calendar.getTime().getTime());
+			UserProfile userProfile = new UserProfile();
+			Park park = new Park();
+			
+			Timetable timetable = new Timetable("farleyo27", userProfile, timestamp, park);
+			
 			timetableDao.save(timetable);
 			Long timetableId = timetable.getTimetableId();
 			System.out.println("Timetable with timetableId '" + timetableId

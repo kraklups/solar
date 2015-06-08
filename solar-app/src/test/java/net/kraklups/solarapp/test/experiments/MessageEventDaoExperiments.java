@@ -1,8 +1,12 @@
 package net.kraklups.solarapp.test.experiments;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.hibernate.Transaction;
 
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.solarapp.model.eventtsk.EventTsk;
 import net.kraklups.solarapp.model.messageevent.MessageEvent;
 import net.kraklups.solarapp.model.messageevent.MessageEventDao;
 import net.kraklups.solarapp.model.messageevent.MessageEventDaoHibernate;
@@ -22,8 +26,15 @@ public class MessageEventDaoExperiments {
 		try {
 			
 			// Register messageEvent
+			//Date tvi, String messageEventText, EventTsk eventTsk
 
-			MessageEvent messageEvent = new MessageEvent();
+			Calendar calendar = Calendar.getInstance();
+			Date timestamp = new Date(calendar.getTime().getTime());			
+			
+			EventTsk eventTsk = new EventTsk();
+			
+			MessageEvent messageEvent = new MessageEvent(timestamp, "farleyoleyo", eventTsk);
+			
 			messageEventDao.save(messageEvent);
 			Long messageEventId = messageEvent.getMessageEventId();
 			System.out.println("MessageEvent with messageEventId '" + messageEventId

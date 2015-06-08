@@ -1,11 +1,18 @@
 package net.kraklups.solarapp.test.experiments;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.hibernate.Transaction;
 
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.solarapp.model.eventtsk.EventTsk;
+import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.state.State;
 import net.kraklups.solarapp.model.state.StateDao;
 import net.kraklups.solarapp.model.state.StateDaoHibernate;
+import net.kraklups.solarapp.model.statetype.StateType;
+import net.kraklups.solarapp.model.taskprk.Upkeep;
 
 public class StateDaoExperiments {
 
@@ -22,8 +29,18 @@ public class StateDaoExperiments {
 		try {
 			
 			// Register state
+			//Date tvi, Date tvf, Park park, EventTsk eventTsk, Upkeep upkeep, StateType stateType
+			
+			Calendar calendar = Calendar.getInstance();
+			Date timestamp = new Date(calendar.getTime().getTime());
 
-			State state = new State();
+			Park park = new Park();
+			EventTsk eventTsk = new EventTsk();
+			Upkeep upkeep = new Upkeep();
+			StateType stateType = new StateType();
+			
+			State state = new State(timestamp, timestamp, park, eventTsk, upkeep, stateType);
+			
 			stateDao.save(state);
 			Long stateId = state.getStateId();
 			System.out.println("State with stateId '" + stateId

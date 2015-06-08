@@ -963,4 +963,11 @@ public class ElementServiceImpl implements ElementService {
         return elementPrkDao.find(elementPrkId);
     }
 
+    @Transactional(readOnly = true)
+    public Sensor findSensor(Long sensorId)
+            throws InstanceNotFoundException {
+
+        return sensorDao.find(sensorId);
+    }    
+    
 }

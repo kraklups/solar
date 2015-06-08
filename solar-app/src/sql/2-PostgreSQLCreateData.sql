@@ -47,7 +47,10 @@ INSERT into Timetable (timetableId,timetableTag,tvi,userProfileId,parkId)
             VALUES (nextval('TimetableSeq'),'TimeTtableTag',CURRENT_TIMESTAMP,1,2);
 
 INSERT into TaskPrk (taskPrkId,taskName,creationDate,parkId,roleId,userProfileId) 
-            VALUES (nextval('TaskPrkSeq'),'TaskName',CURRENT_TIMESTAMP,2,2,1);
+            VALUES (nextval('TaskPrkSeq'),'TaskNameSynchronize',CURRENT_TIMESTAMP,2,2,1);
+            
+INSERT into Synchronize (synchronizeId) 
+            VALUES (currval('TaskPrkSeq'));
             
 INSERT into EventTsk (eventTskId,tagET,definitionET,tvi,tvf,taskPrkId,timetableId,triggerAlarm,triggerMessage) 
             VALUES (nextval('EventTskSeq'),'eventtskTag','eventskDef',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,1,1,TRUE,TRUE);
@@ -64,13 +67,21 @@ INSERT into TaskPrk (taskPrkId,taskName,creationDate,parkId,roleId,userProfileId
             VALUES (nextval('TaskPrkSeq'),'TaskNameMerde','2013-01-01 00:00:00',1,1,1);     
             
 INSERT into Monitor (monitorId) 
-            VALUES (1);
+            VALUES (currval('TaskPrkSeq'));
             
 INSERT into TaskPrk (taskPrkId,taskName,creationDate,parkId,roleId,userProfileId) 
             VALUES (nextval('TaskPrkSeq'),'UpkeepMerde','2012-01-01 00:00:00',1,1,1);     
             
 INSERT into Upkeep (upkeepId) 
-            VALUES (currval('TaskPrkSeq'));            
+            VALUES (currval('TaskPrkSeq'));     
+            
+INSERT into TaskPrk (taskPrkId,taskName,creationDate,parkId,roleId,userProfileId) 
+            VALUES (nextval('TaskPrkSeq'),'TrackMerde','2012-01-01 00:00:00',1,1,1);
+
+INSERT into Report(reportId,reportTitle,dateRequest,dateServed,userProfileId,urlReport) 
+			VALUES (nextval('ReportSeq'),'farleyofarleyo','2013-01-01 00:00:00','2013-01-01 00:00:00',1,'http://merde.org');
+
+INSERT into Track (trackId, tvf,reportId) VALUES (12,'2013-01-01 00:00:00',1);
             
 INSERT into ElementPrk (elementPrkId,elementPrkName,elementPrkTag,tvi,lastAccess,userProfileId,dataLoggerId,parkId,mapElement) 
             VALUES (nextval('ElementPrkSeq'),'ElementPrkNameMerde','ElementPrkTagMerde','2013-01-01 00:00:00','2013-02-01 00:00:00',1,1,1,ST_GeomFromText('POINT(-71.060316 48.432044)', 4326));

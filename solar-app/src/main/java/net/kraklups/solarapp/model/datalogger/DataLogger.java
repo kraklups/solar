@@ -39,7 +39,6 @@ public class DataLogger {
 	private Set<DataLogger> dataLoggersManaged = new HashSet<DataLogger>(0);
 	
 	public DataLogger() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public DataLogger(String dataLoggerTag, String dataLoggerType, DataLogger dataLoggerManager) {

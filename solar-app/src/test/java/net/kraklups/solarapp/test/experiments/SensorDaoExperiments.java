@@ -3,6 +3,7 @@ package net.kraklups.solarapp.test.experiments;
 import org.hibernate.Transaction;
 
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.sensor.Sensor;
 import net.kraklups.solarapp.model.sensor.SensorDao;
 import net.kraklups.solarapp.model.sensor.SensorDaoHibernate;
@@ -22,8 +23,12 @@ public class SensorDaoExperiments {
 		try {
 			
 			// Register sensor
+			//String sensorTag, String sensorType, ElementPrk elementPrk
 
-			Sensor sensor = new Sensor();
+			ElementPrk elementPrk = new ElementPrk();
+			
+			Sensor sensor = new Sensor("farleyero", "farleyomix", elementPrk);
+			
 			sensorDao.save(sensor);
 			Long sensorId = sensor.getSensorId();
 			System.out.println("Sensor with sensorId '" + sensorId

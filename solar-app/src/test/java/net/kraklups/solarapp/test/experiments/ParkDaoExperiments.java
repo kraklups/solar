@@ -1,11 +1,16 @@
 package net.kraklups.solarapp.test.experiments;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.hibernate.Transaction;
 
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.park.ParkDao;
 import net.kraklups.solarapp.model.park.ParkDaoHibernate;
+import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 public class ParkDaoExperiments {
 
@@ -22,8 +27,17 @@ public class ParkDaoExperiments {
 		try {
 			
 			// Register park
+			//String parkName, Date startupDate, Date productionDate, UserProfile userProfile, 
+			//Company company, MultiPolygon mapPark
 
-			Park park = new Park();
+			Calendar calendar = Calendar.getInstance();
+			Date timestamp = new Date(calendar.getTime().getTime());
+			
+			UserProfile userProfile = new UserProfile();
+			Company company = new Company();
+			
+			Park park = new Park("farleyopark", timestamp, timestamp, userProfile, company, null);
+			
 			parkDao.save(park);
 			Long parkId = park.getParkId();
 			System.out.println("Park with parkId '" + parkId

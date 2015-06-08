@@ -1,11 +1,16 @@
 package net.kraklups.solarapp.test.experiments;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.hibernate.Transaction;
 
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
 import net.kraklups.solarapp.model.eventtsk.EventTskDao;
 import net.kraklups.solarapp.model.eventtsk.EventTskDaoHibernate;
+import net.kraklups.solarapp.model.taskprk.TaskPrk;
+import net.kraklups.solarapp.model.timetable.Timetable;
 
 public class EventTskDaoExperiments {
 
@@ -22,8 +27,19 @@ public class EventTskDaoExperiments {
 		try {
 			
 			// Register eventTsk
+			//String tagET, String definitionET, Date tvi, Date tvf,  
+			//TaskPrk taskPrk, Timetable timetable, Boolean triggerAlarm, Boolean triggerMessage
+			
+			Calendar calendar = Calendar.getInstance();
+			Date timestamp = new Date(calendar.getTime().getTime());			
 
-			EventTsk eventTsk = new EventTsk();
+			TaskPrk taskPrk = new TaskPrk();
+			
+			Timetable timetable = new Timetable();
+			
+			EventTsk eventTsk = new EventTsk("eventofarleyo", "tagfarleyo", timestamp, timestamp, 
+					taskPrk, timetable, false, false);
+			
 			eventTskDao.save(eventTsk);
 			Long eventTskId = eventTsk.getEventTskId();
 			System.out.println("EventTsk with eventTskId '" + eventTskId

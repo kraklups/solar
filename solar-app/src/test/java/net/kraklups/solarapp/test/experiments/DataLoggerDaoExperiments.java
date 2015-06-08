@@ -22,8 +22,11 @@ public class DataLoggerDaoExperiments {
 		try {
 			
 			// Register dataLogger
+			//String dataLoggerTag, String dataLoggerType, DataLogger dataLoggerManager
 
-			DataLogger dataLogger = new DataLogger();
+			DataLogger dataLogger1 = new DataLogger();
+			
+			DataLogger dataLogger = new DataLogger("farleyo", "farleyero", dataLogger1);
 			dataLoggerDao.save(dataLogger);
 			Long dataLoggerId = dataLogger.getDataLoggerId();
 			System.out.println("DataLogger with dataLoggerId '" + dataLoggerId

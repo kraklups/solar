@@ -1,9 +1,13 @@
 package net.kraklups.solarapp.test.experiments;
 
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.datavalue.DataValue;
 import net.kraklups.solarapp.model.datavalue.DataValueDao;
 import net.kraklups.solarapp.model.datavalue.DataValueDaoHibernate;
+import net.kraklups.solarapp.model.elementprk.ElementPrk;
+import net.kraklups.solarapp.model.sensor.Sensor;
+import net.kraklups.solarapp.model.taskprk.Synchronize;
 
 import org.hibernate.Transaction;
 
@@ -22,8 +26,16 @@ public class DataValueDaoExperiments {
 		try {
 			
 			// Register dataValue
+			//Synchronize synchronize, ElementPrk elementPrk, 
+			//DataLogger dataLogger, Sensor sensor
 
-			DataValue dataValue = new DataValue();
+			Synchronize synchronize = new Synchronize();
+			DataLogger dataLogger = new DataLogger();
+			Sensor sensor = new Sensor();
+			ElementPrk elementPrk = new ElementPrk();			
+			
+			DataValue dataValue = new DataValue(synchronize, elementPrk, dataLogger, sensor);
+			
 			dataValueDao.save(dataValue);
 			Long dataValueId = dataValue.getDataValueId();
 			System.out.println("DataValue with dataValueId '" + dataValueId

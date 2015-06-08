@@ -1,19 +1,13 @@
 package net.kraklups.solarapp.test.experiments;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import org.hibernate.Transaction;
 
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
-import net.kraklups.solarapp.model.park.Park;
-import net.kraklups.solarapp.model.role.Role;
-import net.kraklups.solarapp.model.taskprk.TaskPrk;
 import net.kraklups.solarapp.model.taskprk.TaskPrkDao;
 import net.kraklups.solarapp.model.taskprk.TaskPrkDaoHibernate;
-import net.kraklups.solarapp.model.userprofile.UserProfile;
+import net.kraklups.solarapp.model.taskprk.Upkeep;
 
-public class TaskPrkDaoExperiments {
+public class UpkeepDaoExperiments {
 
 	public static void main(String[] args) {
 		
@@ -27,28 +21,21 @@ public class TaskPrkDaoExperiments {
 		
 		try {
 			
-			// Register taskPrk
-			//String taskName, Date creationDate, Park park, Role role, UserProfile userProfile
+			// Register Upkeep			
 			
-			Calendar calendar = Calendar.getInstance();
-			Date timestamp = new Date(calendar.getTime().getTime());
-			Park park = new Park();
-			Role role = new Role();
-			UserProfile userProfile = new UserProfile();
+			Upkeep upkeep = new Upkeep();
 			
-			TaskPrk taskPrk = new TaskPrk("trosmaville",timestamp, park, role, userProfile);
-			
-			taskPrkDao.save(taskPrk);
-			Long taskPrkId = taskPrk.getTaskPrkId();
-			System.out.println("TaskPrk with taskPrkId '" + taskPrkId
+			taskPrkDao.save(upkeep);
+			Long upkeepId = upkeep.getUpkeepId();
+			System.out.println("Upkeep with upkeepId '" + upkeepId
 					+ "' has been created");
-			System.out.println(taskPrk);
+			System.out.println(upkeep);
 			
 			// Find taskPrk.
-			taskPrk = taskPrkDao.find(taskPrkId);
-			System.out.println("User with userId '" + taskPrkId
+			upkeep = (Upkeep) taskPrkDao.find(upkeepId);
+			System.out.println("User with userId '" + upkeepId
 					+ "' has been retrieved");
-			System.out.println(taskPrk);			
+			System.out.println(upkeep);			
 						
 			// ... no more cases/entities/methods			
 			
@@ -67,6 +54,5 @@ public class TaskPrkDaoExperiments {
 		HibernateUtil.shutdown();
 		
 	}
-
 
 }

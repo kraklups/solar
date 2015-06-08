@@ -7,6 +7,7 @@
 /home/nexus7/Project/solar/solar-app/src/test/java/net/kraklups/solarapp/test/experiments/TimetableDaoExperiments.java
 /home/nexus7/Project/solar/solar-app/src/test/java/net/kraklups/solarapp/test/experiments/TaskPrkDaoExperiments.java
 /home/nexus7/Project/solar/solar-app/src/test/java/net/kraklups/solarapp/test/model/dataservice/DataServiceTest.java
+/home/nexus7/Project/solar/solar-app/src/test/java/net/kraklups/solarapp/test/experiments/UpkeepDaoExperiments.java
 /home/nexus7/Project/solar/solar-app/src/test/java/net/kraklups/solarapp/test/experiments/EventTskDaoExperiments.java
 /home/nexus7/Project/solar/solar-app/src/test/java/net/kraklups/solarapp/test/experiments/ReportDaoExperiments.java
 /home/nexus7/Project/solar/solar-app/src/test/java/net/kraklups/solarapp/test/experiments/SensorDaoExperiments.java
@@ -23,4 +24,5 @@
 /home/nexus7/Project/solar/solar-app/src/test/java/net/kraklups/solarapp/test/experiments/RoleModuleAccessDaoExperiments.java
 /home/nexus7/Project/solar/solar-app/src/test/java/net/kraklups/solarapp/test/experiments/CompanyDaoExperiments.java
 /home/nexus7/Project/solar/solar-app/src/test/java/net/kraklups/solarapp/test/experiments/DataLoggerDaoExperiments.java
+/home/nexus7/Project/solar/solar-app/src/test/java/net/kraklups/solarapp/test/experiments/SynchronizeDaoExperiments.java
 /home/nexus7/Project/solar/solar-app/src/test/java/net/kraklups/solarapp/test/experiments/AlarmDaoExperiments.java

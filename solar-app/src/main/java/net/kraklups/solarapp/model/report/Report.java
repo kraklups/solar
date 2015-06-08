@@ -52,12 +52,15 @@ public class Report {
 	public Report() {		
 	}
 	
-	public Report(String reportTitle, Date dateRequest, Date dateServed, UserProfile userProfile, String urlReport) {
+	public Report(String reportTitle, Date dateRequest, Date dateServed, UserProfile userProfile, 
+			String urlReport) {
+		
 		this.reportTitle = reportTitle;
 		this.dateRequest = dateRequest;
 		this.dateServed = dateServed;
 		this.userProfile = userProfile;
 		this.urlReport = urlReport;
+		
 	}
 	
 	@SequenceGenerator(                                   // It only takes effect

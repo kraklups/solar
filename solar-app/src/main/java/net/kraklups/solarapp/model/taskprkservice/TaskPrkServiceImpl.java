@@ -935,5 +935,52 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		return new ArrayList<ValueObject>(Arrays.asList(response));
  
 	}
+
+    @Transactional(readOnly = true)
+    public TaskPrk findTaskPrk(Long taskPrkId)
+            throws InstanceNotFoundException {
+
+        return taskPrkDao.find(taskPrkId);
+    }
+
+	@Override
+	public Upkeep findUpkeep(Long upkeepId) 
+			throws InstanceNotFoundException {
+
+		return (Upkeep) taskPrkDao.find(upkeepId);
+	}
+
+	@Override
+	public Synchronize findSynchronize(Long synchronizeId)
+			throws InstanceNotFoundException {
+
+		return (Synchronize) taskPrkDao.find(synchronizeId);
+	}
+
+	@Override
+	public Track findTrack(Long trackId) 
+			throws InstanceNotFoundException {
+		
+		return (Track) taskPrkDao.find(trackId);
+	}
+
+	@Override
+	public Monitor findMonitor(Long monitorId) 
+			throws InstanceNotFoundException {
+		
+		return (Monitor) taskPrkDao.find(monitorId);
+	}
+
+	@Override
+	public TaskPrk createTaskPrk(String taskName, Date creationDate, Park park,
+			Role role, UserProfile userProfile)
+			throws DuplicateInstanceException {
+
+		TaskPrk taskPrk = new TaskPrk(taskName, creationDate, park, role, userProfile);
+		
+		taskPrkDao.save(taskPrk);
+		
+		return taskPrk;
+	}
 		
 }

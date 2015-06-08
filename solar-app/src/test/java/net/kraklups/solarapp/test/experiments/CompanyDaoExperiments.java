@@ -27,7 +27,9 @@ public class CompanyDaoExperiments {
 			// Register company.
 			Calendar calendar = Calendar.getInstance();
 			Date timestamp = new Date(calendar.getTime().getTime());
+			
 			Company company = new Company("thylacinus.net", timestamp);
+			
 			companyDao.save(company);
 			Long companyId = company.getCompanyId();
 			System.out.println("Company with companyId '" + companyId

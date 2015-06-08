@@ -1,11 +1,15 @@
 package net.kraklups.solarapp.test.experiments;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.hibernate.Transaction;
 
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.alarm.Alarm;
 import net.kraklups.solarapp.model.alarm.AlarmDao;
 import net.kraklups.solarapp.model.alarm.AlarmDaoHibernate;
+import net.kraklups.solarapp.model.eventtsk.EventTsk;
 
 public class AlarmDaoExperiments {
 
@@ -22,8 +26,14 @@ public class AlarmDaoExperiments {
 		try {
 			
 			// Register alarm
+			//String alarmTag, Date triggerDate, EventTsk eventTsk
+			
+			Calendar calendar = Calendar.getInstance();
+			Date timestamp = new Date(calendar.getTime().getTime());
 
-			Alarm alarm = new Alarm();
+			EventTsk eventTsk = new EventTsk();
+			
+			Alarm alarm = new Alarm("farleyero", timestamp, eventTsk);
 			alarmDao.save(alarm);
 			Long alarmId = alarm.getAlarmId();
 			System.out.println("Alarm with alarmId '" + alarmId

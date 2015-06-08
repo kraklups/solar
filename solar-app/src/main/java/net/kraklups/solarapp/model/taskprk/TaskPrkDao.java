@@ -152,5 +152,4 @@ public interface TaskPrkDao extends GenericDao<TaskPrk, Long> {
     public List<Report> getReports(int startIndex, int count)
 			throws InstanceNotFoundException;    
     
-    
 }

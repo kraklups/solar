@@ -22,7 +22,7 @@ import net.kraklups.solarapp.model.taskprk.Synchronize;
 public class DataValue {
 	
 	private Long dataValueId;
-	private Synchronize syncronize;
+	private Synchronize synchronize;
 	private ElementPrk elementPrk;
 	private DataLogger dataLogger;	
 	private Sensor sensor; 
@@ -31,10 +31,10 @@ public class DataValue {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public DataValue(Synchronize syncronize, ElementPrk elementPrk, 
+	public DataValue(Synchronize synchronize, ElementPrk elementPrk, 
 			DataLogger dataLogger, Sensor sensor) {
 		
-		this.syncronize = syncronize;
+		this.synchronize = synchronize;
 		this.elementPrk = elementPrk;
 		this.dataLogger = dataLogger;
 		this.sensor = sensor;		
@@ -58,11 +58,11 @@ public class DataValue {
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="synchronizeId")	
 	public Synchronize getSynchronize(){
-		return syncronize;
+		return synchronize;
 	}
 	
-	public void setSynchronize(Synchronize syncronize){
-		this.syncronize = syncronize;
+	public void setSynchronize(Synchronize synchronize){
+		this.synchronize = synchronize;
 	}	
 
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
@@ -97,7 +97,7 @@ public class DataValue {
 	
 	@Override
     public String toString() {
-        return "DataValueMngDb [dataValueId=" + dataValueId + ", Synchronize=" + syncronize.getSynchronizeId() + 
+        return "DataValueMngDb [dataValueId=" + dataValueId + ", Synchronize=" + synchronize.getSynchronizeId() + 
         		", ElementPrk=" + elementPrk.getElementPrkId() + ", DataLogger=" + dataLogger.getDataLoggerId() + 
         		", Sensor=" + sensor.getSensorId() + "]";
     }	

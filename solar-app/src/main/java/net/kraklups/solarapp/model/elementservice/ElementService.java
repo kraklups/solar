@@ -315,4 +315,7 @@ public interface ElementService {
 	public ElementPrk findElementPrk(Long elementPrkId)
             throws InstanceNotFoundException;
 
+	public Sensor findSensor(Long sensorId)
+            throws InstanceNotFoundException;	
+	
 }

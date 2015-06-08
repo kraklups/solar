@@ -60,7 +60,8 @@ public class Park implements java.io.Serializable {
 	public Park() {		
 	}
 	
-	public Park(String parkName, Date startupDate, Date productionDate, UserProfile userProfile, Company company, MultiPolygon mapPark) {
+	public Park(String parkName, Date startupDate, Date productionDate, UserProfile userProfile, 
+			Company company, MultiPolygon mapPark) {
 	
 		this.parkName = parkName;
 		this.startupDate = startupDate;
