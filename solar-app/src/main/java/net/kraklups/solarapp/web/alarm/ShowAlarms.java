@@ -46,8 +46,8 @@ public class ShowAlarms {
 	}
 
 	private void initModelListAlarm(Model model) throws InstanceNotFoundException {
-		List <Alarm> AlarmList = taskPrkService.getAlarms(startIndex, ALARM_PER_PAGE).getAlarms();
-		model.addAttribute("AlarmList",AlarmList);
+		List <Alarm> alarmList = taskPrkService.getAlarms(startIndex, ALARM_PER_PAGE).getAlarms();
+		model.addAttribute("AlarmList",alarmList);
 	}
 
 }

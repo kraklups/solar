@@ -1,5 +1,6 @@
 package net.kraklups.solarapp.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.kraklups.modelutil.exceptions.AlarmNotFoundException;
@@ -53,22 +54,23 @@ final class AlarmController {
 		return taskPrkService.alarmTriggered(alarmDTO);
 	}		
 
-	@RequestMapping(value = "/alarmTriggered/{alarmId}", method = RequestMethod.GET)
-    public ObjectNode alarmsTriggered(@PathVariable String alarmId) 
+	@RequestMapping(value = "/alarmTriggered/{alarmId}", method = RequestMethod.GET, headers="Accept=application/json", produces = "application/json")
+    public @ResponseBody List<Alarm> alarmsTriggered(@PathVariable String alarmId) 
     		throws InstanceNotFoundException {
 		
 		Alarm alarm = taskPrkService.findAlarm(Long.valueOf(alarmId));
-		
+			
 		ObjectMapper mapper = new ObjectMapper();
 		ObjectNode node = mapper.createObjectNode();
 		
 		node.put("alarmId", alarm.getAlarmId());
-		
-		node.put("alarmId",alarm.getAlarmId());
+		node.put("URL", alarm.getAlarmTag());
 		
 		LOGGER.warn("Handling AlarmTriggered: {}", alarm.getAlarmId());
 		
-		return node;
+		List <Alarm> alarmList = taskPrkService.getAlarms(startIndex, ALARM_PER_PAGE).getAlarms();
+		
+		return alarmList;
 	}
 	
 	@ExceptionHandler
@@ -76,10 +78,5 @@ final class AlarmController {
     public void handleDataValueNotFound(AlarmNotFoundException ex) {
 		LOGGER.error("Handling error with message: {}", ex.getMessage());
     }
-	
-	private void initModelListAlarm(Model model) throws InstanceNotFoundException {
-		List <Alarm> AlarmList = taskPrkService.getAlarms(startIndex, ALARM_PER_PAGE).getAlarms();
-		model.addAttribute("AlarmList",AlarmList);
-	}	
-	
+		
 }

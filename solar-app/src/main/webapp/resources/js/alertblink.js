@@ -6,16 +6,17 @@
 	    		{
 			
 	        	    $.ajax({
-	        	    	url: 'http://localhost:9090/rest/alarmTriggered/1',	        	        
-	        	        contentType: 'application/json; charset=utf-8',
+	        	    	url: 'http://localhost:9090/solar-app/rest/alarmTriggered/1',	        	        
+	        	        contentType: 'application/json; charset=UTF-8',
 	        	        dataType: 'json',
 	        	    	type: 'GET',
 	        	        success: function (data, status, jqXHR) {
-	        	        	 alert("GET ajax!");
+	        	        	$("#alertstuff").show();
+	        	        	alert("GET ajax!" + data.alarmId);
+	        	        	 
 	        	        },
-
 	        	        error: function (jqXHR, status) {
-	        	        	alert("GET fucked!");
+	        	        	// msg error
 	        	        }
 	        	    }); 
 	        	    
