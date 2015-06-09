@@ -1,5 +1,6 @@
 package net.kraklups.solarapp.model.alarm;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -75,7 +76,7 @@ public class AlarmDaoHibernate extends
 			throws InstanceNotFoundException {
 
 		List<Alarm> alarms = (List<Alarm>)  getSession().createQuery(
-	        	"SELECT a FROM Alarm a  " +
+	        	"SELECT a FROM Alarm a " +
 	        	"ORDER BY a.alarmId").
 	           	setFirstResult(startIndex).
 	           	setMaxResults(count).list();
@@ -86,5 +87,27 @@ public class AlarmDaoHibernate extends
 			return alarms;
 		}
 	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Alarm> getAlarmsTriggered(int startIndex, int count)
+			throws InstanceNotFoundException {
+		
+	
+		Calendar calendar = Calendar.getInstance();		
+		Date timestamp = new Date(calendar.getTime().getTime() - (5 * 1000L));
+		
+		List<Alarm> alarms = (List<Alarm>)  getSession().createQuery(
+	        	"SELECT a FROM Alarm a WHERE a.triggerDate > :timestamp " +
+	        	"ORDER BY a.alarmId").
+	        	setParameter("timestamp", timestamp).
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (alarms == null) {
+			return null;
+		} else {
+			return alarms;
+		}	}
 
 }

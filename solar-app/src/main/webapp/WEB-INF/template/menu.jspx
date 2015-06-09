@@ -31,18 +31,11 @@
             	<ul class="nav navbar-right top-nav">
 					
                 	<li id="alertstuff" class="dropdown" style="display:none;">
-                    	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+                		<spring:url value="/alarm/showAlarms" var="showAlarmsUrl" htmlEscape="true"/>
+                    	<a class="text-center" href="${showAlarmsUrl}" >
                     		<i class="fa fa-bolt fa-lg text-danger"><jsp:text /></i> 
                     		<b class="fa fa-caret"><jsp:text /></b>
                     	</a>
-                    	<ul class="dropdown-menu alert-dropdown">
-                       		<li>
-                           		<a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        	</li>
-                        	<li>
-                           		<a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        	</li>
-                    	</ul>
                 	</li>            		
 
                 	<li class="dropdown">

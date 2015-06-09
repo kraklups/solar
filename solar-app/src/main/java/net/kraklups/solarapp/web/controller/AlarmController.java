@@ -57,18 +57,8 @@ final class AlarmController {
 	@RequestMapping(value = "/alarmTriggered/{alarmId}", method = RequestMethod.GET, headers="Accept=application/json", produces = "application/json")
     public @ResponseBody List<Alarm> alarmsTriggered(@PathVariable String alarmId) 
     		throws InstanceNotFoundException {
-		
-		Alarm alarm = taskPrkService.findAlarm(Long.valueOf(alarmId));
-			
-		ObjectMapper mapper = new ObjectMapper();
-		ObjectNode node = mapper.createObjectNode();
-		
-		node.put("alarmId", alarm.getAlarmId());
-		node.put("URL", alarm.getAlarmTag());
-		
-		LOGGER.warn("Handling AlarmTriggered: {}", alarm.getAlarmId());
-		
-		List <Alarm> alarmList = taskPrkService.getAlarms(startIndex, ALARM_PER_PAGE).getAlarms();
+					
+		List <Alarm> alarmList = taskPrkService.getAlarmsTriggered(startIndex, ALARM_PER_PAGE).getAlarms();
 		
 		return alarmList;
 	}

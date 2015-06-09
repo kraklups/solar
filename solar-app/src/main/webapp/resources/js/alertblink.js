@@ -10,17 +10,23 @@
 	        	        contentType: 'application/json; charset=UTF-8',
 	        	        dataType: 'json',
 	        	    	type: 'GET',
-	        	        success: function (data, status, jqXHR) {
-	        	        	$("#alertstuff").show();
-	        	        	alert("GET ajax!" + data.alarmId);
-	        	        	 
+	        	        success: function (data, status, jqXHR) {	        	        	
+	        	        	
+	        	        	if(data.length != 0) {
+	        	        		$("#alertstuff").show();	        	        		
+	        	        	} else {
+	        	        	} 
 	        	        },
 	        	        error: function (jqXHR, status) {
 	        	        	// msg error
 	        	        }
 	        	    }); 
 	        	    
-	    		}, 2000);		    
+	    		}, 5000);
+		
+		$("#alerthide").on('click', function() {
+			$("#alertstuff").hide();
+		});
 		
 	});
   
