@@ -311,7 +311,7 @@ public interface TaskPrkService {
 	public Report findReport(Long reportId)
             throws InstanceNotFoundException;
 
-	public AlarmBlock getAlarmsTriggered(int startIndex, int count) 
+	public int getAlarmsTriggered() 
 			throws InstanceNotFoundException;		
 	
 }

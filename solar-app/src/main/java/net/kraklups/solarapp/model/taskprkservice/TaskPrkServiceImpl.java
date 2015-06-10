@@ -1012,14 +1012,9 @@ public class TaskPrkServiceImpl implements TaskPrkService {
     }
 
 	@Override
-	public AlarmBlock getAlarmsTriggered(int startIndex, int count)
-			throws InstanceNotFoundException {
+	public int getAlarmsTriggered() throws InstanceNotFoundException {
 
-		List<Alarm> Alarms = alarmDao.getAlarmsTriggered(startIndex, count + 1);
-		
-		boolean existMoreAlarms = Alarms.size() == (count +1);
-		
-		return new AlarmBlock(Alarms, existMoreAlarms);
+		return alarmDao.getAlarmsTriggered();
 	}    
     
 }

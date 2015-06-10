@@ -12,7 +12,7 @@
 	        	    	type: 'GET',
 	        	        success: function (data, status, jqXHR) {	        	        	
 	        	        	
-	        	        	if(data.length != 0) {
+	        	        	if(data != 0) {
 	        	        		$("#alertstuff").show();	        	        		
 	        	        	} else {
 	        	        	} 

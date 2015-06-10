@@ -89,25 +89,21 @@ public class AlarmDaoHibernate extends
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
-	public List<Alarm> getAlarmsTriggered(int startIndex, int count)
+	public int getAlarmsTriggered()
 			throws InstanceNotFoundException {
 		
 	
 		Calendar calendar = Calendar.getInstance();		
 		Date timestamp = new Date(calendar.getTime().getTime() - (5 * 1000L));
 		
-		List<Alarm> alarms = (List<Alarm>)  getSession().createQuery(
-	        	"SELECT a FROM Alarm a WHERE a.triggerDate > :timestamp " +
-	        	"ORDER BY a.alarmId").
+		int alarms = (int) ((Long) getSession().createQuery(
+	        	"SELECT count(a.alarmId) FROM Alarm a WHERE a.triggerDate > :timestamp ").
 	        	setParameter("timestamp", timestamp).
-	           	setFirstResult(startIndex).
-	           	setMaxResults(count).list();
+	        	uniqueResult()).intValue();
 		
-		if (alarms == null) {
-			return null;
-		} else {
-			return alarms;
-		}	}
+		System.out.println("nadia: " + alarms);
+		
+		return alarms;
+	}
 
 }
