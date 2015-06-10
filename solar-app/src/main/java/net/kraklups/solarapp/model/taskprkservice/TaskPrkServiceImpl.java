@@ -1012,7 +1012,8 @@ public class TaskPrkServiceImpl implements TaskPrkService {
     }
 
 	@Override
-	public int getAlarmsTriggered() throws InstanceNotFoundException {
+	public int getAlarmsTriggered() 
+			throws InstanceNotFoundException {
 
 		return alarmDao.getAlarmsTriggered();
 	}    

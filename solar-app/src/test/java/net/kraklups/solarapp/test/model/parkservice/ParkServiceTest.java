@@ -43,7 +43,7 @@ public class ParkServiceTest {
     private TaskPrkService taskPrkService;    
     
 	@Test
-	public void testCreateParkkAndFindPark() 
+	public void testCreateParkAndFindPark() 
 		throws DuplicateInstanceException, InstanceNotFoundException {
 		
 		//String parkName, Date startupDate, Date productionDate, UserProfile userProfile, 
