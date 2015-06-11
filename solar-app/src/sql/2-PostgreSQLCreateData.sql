@@ -81,7 +81,7 @@ INSERT into TaskPrk (taskPrkId,taskName,creationDate,parkId,roleId,userProfileId
 INSERT into Report(reportId,reportTitle,dateRequest,dateServed,userProfileId,urlReport) 
 			VALUES (nextval('ReportSeq'),'farleyofarleyo','2013-01-01 00:00:00','2013-01-01 00:00:00',1,'http://merde.org');
 
-INSERT into Track (trackId, tvf,reportId) VALUES (12,'2013-01-01 00:00:00',1);
+INSERT into Track (trackId, tvf,reportId) VALUES (currval('TaskPrkSeq'),'2013-01-01 00:00:00',1);
             
 INSERT into ElementPrk (elementPrkId,elementPrkName,elementPrkTag,tvi,lastAccess,userProfileId,dataLoggerId,parkId,mapElement) 
             VALUES (nextval('ElementPrkSeq'),'ElementPrkNameMerde','ElementPrkTagMerde','2013-01-01 00:00:00','2013-02-01 00:00:00',1,1,1,ST_GeomFromText('POINT(-71.060316 48.432044)', 4326));
