@@ -170,9 +170,9 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 
 	@Override
 	public Alarm createAlarm(String alarmTag, Date triggerDate,
-			EventTsk eventTsk) throws DuplicateInstanceException {
+			EventTsk eventTsk, Boolean checked) throws DuplicateInstanceException {
 		
-		Alarm alarm = new Alarm(alarmTag, triggerDate, eventTsk);
+		Alarm alarm = new Alarm(alarmTag, triggerDate, eventTsk, checked);
 		
 		alarmDao.save(alarm);
 		
@@ -692,7 +692,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		
 		Long eventTskId = Long.valueOf(alarmDTO.getEventTskId());
 				
-		Alarm alarm = new Alarm(alarmDTO.getAlarmTag(), alarmDTO.getTriggerDate(), eventTskDao.find(eventTskId));
+		Alarm alarm = new Alarm(alarmDTO.getAlarmTag(), alarmDTO.getTriggerDate(), eventTskDao.find(eventTskId), false);
 		alarmDao.save(alarm);
 		
 		return alarm;
@@ -1012,10 +1012,31 @@ public class TaskPrkServiceImpl implements TaskPrkService {
     }
 
 	@Override
-	public int getAlarmsTriggered() 
+	public int countAlarmsTriggered() 
 			throws InstanceNotFoundException {
 
-		return alarmDao.getAlarmsTriggered();
+		return alarmDao.countAlarmsTriggered();
+	}
+
+	@Override
+	public void getAlarmChecked(Long alarmId) 
+			throws InstanceNotFoundException {
+		
+		Alarm alarm = alarmDao.find(alarmId);
+		alarm.setChecked(true);
+		
+		alarmDao.save(alarm);
+	}
+
+	@Override
+	public AlarmBlock getAlarmsTriggered(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Alarm> Alarms = alarmDao.getAlarmsTriggered(startIndex, count + 1);
+		
+		boolean existMoreAlarms = Alarms.size() == (count +1);
+		
+		return new AlarmBlock(Alarms, existMoreAlarms);
 	}    
     
 }

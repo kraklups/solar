@@ -38,7 +38,10 @@ public interface AlarmDao extends GenericDao<Alarm, Long> {
    	public List<Alarm> getAlarms(int startIndex, int count)
 			throws InstanceNotFoundException;
    	
-   	public int getAlarmsTriggered()
-			throws InstanceNotFoundException;   	
+   	public int countAlarmsTriggered()
+			throws InstanceNotFoundException; 
+   	
+   	public List<Alarm> getAlarmsTriggered(int startIndex, int count)
+			throws InstanceNotFoundException;    	
    	
 }

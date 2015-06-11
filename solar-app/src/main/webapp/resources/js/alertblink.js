@@ -22,7 +22,7 @@
 	        	        }
 	        	    }); 
 	        	    
-	    		}, 5000);
+	    		}, 3000);
 		
 		$("#alerthide").on('click', function() {
 			$("#alertstuff").hide();

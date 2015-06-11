@@ -19,5 +19,8 @@
     <c:url var="firebugJS" value="/resources/js/Firebug/firebug.js" />
     <script src="${firebugJS}" ><jsp:text /></script>	
 
+    <!-- AlertBlink Version 0.1 -->
+    <c:url var="alertblinkJS" value="/resources/js/alertblink.js" />
+    <script src="${alertblinkJS}" ><jsp:text /></script>
 
 </jsp:root>

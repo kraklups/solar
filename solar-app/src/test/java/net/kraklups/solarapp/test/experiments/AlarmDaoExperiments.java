@@ -33,7 +33,7 @@ public class AlarmDaoExperiments {
 
 			EventTsk eventTsk = new EventTsk();
 			
-			Alarm alarm = new Alarm("farleyero", timestamp, eventTsk);
+			Alarm alarm = new Alarm("farleyero", timestamp, eventTsk, false);
 			alarmDao.save(alarm);
 			Long alarmId = alarm.getAlarmId();
 			System.out.println("Alarm with alarmId '" + alarmId

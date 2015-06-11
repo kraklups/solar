@@ -63,7 +63,7 @@ public interface TaskPrkService {
 	public Alarm alarmTriggered(AlarmDTO alarmDTO) 
 			throws DuplicateInstanceException, InstanceNotFoundException;
 	
-	public Alarm createAlarm(String alarmTag, Date triggerDate, EventTsk eventTsk) 
+	public Alarm createAlarm(String alarmTag, Date triggerDate, EventTsk eventTsk, Boolean checked) 
 			throws DuplicateInstanceException;
 	
 	public Alarm updateAlarm(Long alarmId, String alarmTag, Date triggerDate, EventTsk eventTsk) 
@@ -311,7 +311,12 @@ public interface TaskPrkService {
 	public Report findReport(Long reportId)
             throws InstanceNotFoundException;
 
-	public int getAlarmsTriggered() 
+	public int countAlarmsTriggered() 
 			throws InstanceNotFoundException;		
 	
+	public void getAlarmChecked(Long alarmId)
+			throws InstanceNotFoundException;
+	
+	public AlarmBlock getAlarmsTriggered(int startIndex, int count) 
+			throws InstanceNotFoundException;			
 }

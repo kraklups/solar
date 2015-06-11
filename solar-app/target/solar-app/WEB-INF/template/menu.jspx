@@ -29,6 +29,14 @@
             	</div>
             	<!-- Top Menu Items -->
             	<ul class="nav navbar-right top-nav">
+					
+                	<li id="alertstuff" class="dropdown" style="display:none;">
+                		<spring:url value="/alarm/showAlarms" var="showAlarmsUrl" htmlEscape="true"/>
+                    	<a class="text-center" href="${showAlarmsUrl}" >
+                    		<i class="fa fa-bolt fa-lg text-danger"><jsp:text /></i> 
+                    		<b class="fa fa-caret"><jsp:text /></b>
+                    	</a>
+                	</li>            		
 
                 	<li class="dropdown">
                     	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
@@ -408,7 +416,7 @@
 
                 	<li class="dropdown">
                     	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >
-                        	<i class="fa fa-users fa-fw"><jsp:text /></i>  
+                        	<i class="fa fa-refresh fa-fw"><jsp:text /></i>  
                         	<b class="fa fa-caret-down"><jsp:text /></b>
                     	</a>
                     	<ul class="dropdown-menu dropdown-tasks">
@@ -514,16 +522,16 @@
                     	<li>
                         	<spring:url value="/report/showReports" var="showReportsUrl" htmlEscape="true"/>
 							<a href="${showReportsUrl}">
-                        	 <i class="fa fa-fw fa-area-chart"><jsp:text /></i> Report</a>
+                        	 <i class="fa fa-fw fa-area-chart"><jsp:text /></i> Reports</a>
                     	</li>                    	
                     	<li>
-	                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"><jsp:text /></i> Dropdown <i class="fa fa-fw fa-caret-down"><jsp:text /></i></a>
+	                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"><jsp:text /></i> Mixed Stuff <i class="fa fa-fw fa-caret-down"><jsp:text /></i></a>
     	                    <ul id="demo" class="collapse">
         	                    <li>
-            	                    <a href="#">Dropdown Item</a>
+            	                    <a href="#">Element Items</a>
                 	            </li>
                     	        <li>
-                        	        <a href="#">Dropdown Item</a>
+                        	        <a href="#">Sensor Items</a>
                             	</li>
                         	</ul>
                     	</li>

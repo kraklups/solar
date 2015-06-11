@@ -43,11 +43,27 @@ public class ShowAlarms {
 		initModelListAlarm(model);
 		
 		return "alarm/showAlarms";
-	}
+	}	
+	
+	@RequestMapping(value = "/alarm/showAlarmsTriggered", method = RequestMethod.GET)
+	public String showAlarmsTriggered(Model model) 
+			throws InstanceNotFoundException {
+		
+		logger.info("Show Alarms page !");
+		
+		initModelListAlarmTriggered(model);
+		
+		return "alarm/showAlarms";
+	}		
 
 	private void initModelListAlarm(Model model) throws InstanceNotFoundException {
 		List <Alarm> alarmList = taskPrkService.getAlarms(startIndex, ALARM_PER_PAGE).getAlarms();
 		model.addAttribute("AlarmList",alarmList);
 	}
+	
+	private void initModelListAlarmTriggered(Model model) throws InstanceNotFoundException {
+		List <Alarm> alarmList = taskPrkService.getAlarmsTriggered(startIndex, ALARM_PER_PAGE).getAlarms();
+		model.addAttribute("AlarmList",alarmList);
+	}	
 
 }

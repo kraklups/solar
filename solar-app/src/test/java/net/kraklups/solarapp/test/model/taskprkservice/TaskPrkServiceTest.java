@@ -81,7 +81,7 @@ public class TaskPrkServiceTest {
 		
 		EventTsk eventTsk = taskPrkService.findEventTsk(weight);
 		
-		Alarm alarm = taskPrkService.createAlarm(cadena, timestamp, eventTsk);
+		Alarm alarm = taskPrkService.createAlarm(cadena, timestamp, eventTsk, false);
 		
 		Alarm alarm2 = taskPrkService.findAlarm(alarm.getAlarmId());
 		

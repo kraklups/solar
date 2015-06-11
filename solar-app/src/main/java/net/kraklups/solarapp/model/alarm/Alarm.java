@@ -41,10 +41,12 @@ public class Alarm implements java.io.Serializable {
 	
 	private EventTsk eventTsk;
 	
+	private Boolean checked;
+	
 	public Alarm() {		
 	}
 	
-	public Alarm(String alarmTag, Date triggerDate, EventTsk eventTsk) {
+	public Alarm(String alarmTag, Date triggerDate, EventTsk eventTsk, Boolean checked) {
 		this.alarmTag = alarmTag;
 		this.triggerDate = triggerDate;
 		this.eventTsk = eventTsk;
@@ -91,10 +93,18 @@ public class Alarm implements java.io.Serializable {
 	public void setEventTsk(EventTsk eventTsk) {
 		this.eventTsk = eventTsk;
 	}
+	
+	public Boolean getChecked() {
+		return checked;
+	}
+	
+	public void setChecked(Boolean checked) {
+		this.checked = checked;
+	}
 
 	@Override
 	public String toString() {
-		return "Alarm [alarmId=" + alarmId + ", alarmTag=" + alarmTag + ", triggerDate=" + triggerDate + "]";
+		return "Alarm [alarmId=" + alarmId + ", alarmTag=" + alarmTag + ", triggerDate=" + triggerDate + ", checked=" + checked + "]";
 	}	
 	
 }

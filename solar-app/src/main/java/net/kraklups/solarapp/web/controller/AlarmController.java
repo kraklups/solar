@@ -47,7 +47,7 @@ final class AlarmController {
     public @ResponseBody int alarmsTriggered(@PathVariable String alarmId) 
     		throws InstanceNotFoundException {
 							 
-		return taskPrkService.getAlarmsTriggered(); 
+		return taskPrkService.countAlarmsTriggered(); 
 	}
 	
 	@ExceptionHandler

@@ -53,6 +53,14 @@
     										<form:options items="${eventTskList}" itemValue="eventTskId" itemLabel="tagET" />
 										</form:select>	   							   								    
 	   								</div>
+	   								
+                            		<div class="form-group">
+                         		    	<div class="checkbox">                         		    	
+                                			<label class="checkbox-inline">                                        		
+                                        		<form:checkbox path="checked" /><spring:message code="createAlarm.checked" />
+                                    		</label>
+                                		</div>
+                                	</div>		   									   								
 
 		    						<div class="button">
 		    							<spring:message code="createAlarm.submit" var="alarmSubmit" />

@@ -48,6 +48,17 @@ public class UpdateAlarm {
 		return "alarm/updateAlarm";
 	}
 
+	@RequestMapping(value = "/alarm/updateAlarmCheked/{alarmId}", method = RequestMethod.GET)
+	public String updateAlarmChecked(@PathVariable String alarmId, Model model) 
+			throws InstanceNotFoundException {
+
+		logger.info("Update Alarm Checked !");
+		
+		taskPrkService.getAlarmChecked(Long.valueOf(alarmId));
+		
+		return "redirect:/alarm/showAlarms";
+	}	
+	
 
 	private void initModelEventTskList(Model model) throws InstanceNotFoundException {
 		List <EventTsk> eventTskList = taskPrkService.getEventTsks(startIndex, EVENTTSK_PER_PAGE).getEventTsks();
