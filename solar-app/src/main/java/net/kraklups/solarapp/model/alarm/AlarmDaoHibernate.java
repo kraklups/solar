@@ -97,8 +97,8 @@ public class AlarmDaoHibernate extends
 		Date timestamp = new Date(calendar.getTime().getTime() - (10 * 1000L));
 		
 		int alarms = (int) ((Long) getSession().createQuery(
-	        	"SELECT count(a.alarmId) FROM Alarm a WHERE a.triggerDate > :timestamp " +
-				"AND a.checked is false ").
+	        	"SELECT count(a.alarmId) FROM Alarm a WHERE (a.triggerDate > :timestamp " +
+				"AND a.checked is false) OR a.checked is false ").
 	        	setParameter("timestamp", timestamp).
 	        	uniqueResult()).intValue();
 		

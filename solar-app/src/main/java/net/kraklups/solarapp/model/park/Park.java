@@ -42,6 +42,7 @@ public class Park implements java.io.Serializable {
 	@Size(min=6, max=30)
 	private String parkName;
 	
+	//2014-07-04T12:08:56.235
 	@DateTimeFormat(pattern="MM/dd/yyyy")
 	@NotNull @Past
 	private Date startupDate;
@@ -54,7 +55,7 @@ public class Park implements java.io.Serializable {
 	
 	private Company company;	
 	
-//	@MapPark
+	@NotNull
 	private MultiPolygon mapPark;
 	
 	public Park() {		

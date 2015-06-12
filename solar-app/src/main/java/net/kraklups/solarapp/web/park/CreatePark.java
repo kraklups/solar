@@ -68,7 +68,7 @@ public class CreatePark {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createPark.jspx page");
 			
-			//initModelList(model);
+			initModelList(model);
 			
 			return "park/createPark";
 		} else {
@@ -84,7 +84,7 @@ public class CreatePark {
 			
 			logger.info("Create Company page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/park/showParks";
 		}
 	} 
 	
