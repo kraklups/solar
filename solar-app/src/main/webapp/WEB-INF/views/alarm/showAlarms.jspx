@@ -41,7 +41,7 @@
                                         <th>AlarmTag</th>
                                         <th>TriggerDate</th>
                                         <th>EventTsk</th>
-                                        <th>checked</th>
+                                        <th>Checked</th>
                                     </tr>
                                 </thead>                                
                                 <tbody>

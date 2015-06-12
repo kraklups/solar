@@ -41,6 +41,7 @@
                                         <th>AlarmTag</th>
                                         <th>TriggerDate</th>
                                         <th>EventTsk</th>
+                                        <th>Checked</th>
                                     </tr>
                                 </thead>                                
                                 <tbody>
@@ -55,6 +56,12 @@
                                         	<td><span class="text-muted small">${alarmValues.alarmTag}</span></td>
                                         	<td><span class="text-muted small">${alarmValues.triggerDate}</span></td>
                                         	<td><span class="text-muted small">${alarmValues.eventTsk.eventTskId}</span></td>
+                                        	<td>                                        	
+												<spring:url value="/alarm/updateAlarmCheked/${alarmValues.alarmId}" var="updateAlarmChekedUrl" htmlEscape="true"/>
+ 												<a class="text-center" href="${updateAlarmChekedUrl}">
+                                        			<span class="text-muted small">${alarmValues.checked}</span> 											
+ 												</a>                                        	
+                                        	</td>
                                     	</tr>				
 									</c:forEach>
                                 </tbody>

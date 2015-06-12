@@ -31,7 +31,7 @@
             	<ul class="nav navbar-right top-nav">
 					
                 	<li id="alertstuff" class="dropdown" style="display:none;">
-                		<spring:url value="/alarm/showAlarms" var="showAlarmsUrl" htmlEscape="true"/>
+                		<spring:url value="/alarm/showAlarmsTriggered" var="showAlarmsUrl" htmlEscape="true"/>
                     	<a class="text-center" href="${showAlarmsUrl}" >
                     		<i class="fa fa-bolt fa-lg text-danger"><jsp:text /></i> 
                     		<b class="fa fa-caret"><jsp:text /></b>

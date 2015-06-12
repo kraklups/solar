@@ -915,7 +915,7 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	public List<ValueObject> mapReduceRest(Long reportId) 
 			throws InstanceNotFoundException {
 		
-		final String SERVER_URI = "http://localhost:8080/rest/mrdatavalue/1";
+		final String SERVER_URI = "http://localhost:9090/photonwell-app/rest/mrdatavalue/1";
 
 		
 		LOGGER.debug("Starting REST Client!!!!");
