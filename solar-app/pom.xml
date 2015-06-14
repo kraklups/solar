@@ -358,7 +358,6 @@
             <artifactId>jackson-datatype-hibernate4</artifactId>
             <version>${jackson.datatype-version}</version>
         </dependency>          
-
         
     </dependencies>
 

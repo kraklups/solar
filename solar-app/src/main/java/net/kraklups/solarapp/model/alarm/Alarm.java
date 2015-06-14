@@ -41,6 +41,7 @@ public class Alarm implements java.io.Serializable {
 	
 	private EventTsk eventTsk;
 	
+	@NotNull
 	private Boolean checked;
 	
 	public Alarm() {		
@@ -50,6 +51,7 @@ public class Alarm implements java.io.Serializable {
 		this.alarmTag = alarmTag;
 		this.triggerDate = triggerDate;
 		this.eventTsk = eventTsk;
+		this.checked = checked;
 	}
 
 	@SequenceGenerator(                                  // It only takes effect

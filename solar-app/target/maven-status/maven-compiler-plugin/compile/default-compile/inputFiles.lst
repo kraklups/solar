@@ -25,6 +25,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/taskprk/Synchronize.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/message/UpdateMessage.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/ArrayPanelFormatter.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/util/RestServiceURL.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementservice/ElementServiceImpl.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/modelutil/exceptions/InstanceException.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/taskprkservice/EventTskBlock.java
@@ -44,8 +45,8 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementprk/ArrayBox.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/module/Module.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/user/Denied.java
-/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/RoleFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/park/CreatePark.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/RoleFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementprk/ElectricalSubstation.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/taskprk/Track.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/userservice/util/jcrypt.java
@@ -91,9 +92,9 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/state/UpdateState.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/role/ShowRoles.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/sensor/SensorDaoHibernate.java
-/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/company/CompanyDao.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/taskprk/TaskPrkMock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/task/UpdateTask.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/company/CompanyDao.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/rolemoduleaccess/RoleModuleAccessDaoHibernate.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/timetable/CreateTimetable.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/modelutil/exceptions/DuplicateInstanceException.java

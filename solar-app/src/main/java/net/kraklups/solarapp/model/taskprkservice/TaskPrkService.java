@@ -60,7 +60,7 @@ public interface TaskPrkService {
 			Park park, Role role, UserProfile userProfile) 
 			throws InstanceNotFoundException;	
 	
-	public Alarm alarmTriggered(AlarmDTO alarmDTO) 
+	public AlarmDTO alarmTriggered(AlarmDTO alarmDTO) 
 			throws DuplicateInstanceException, InstanceNotFoundException;
 	
 	public Alarm createAlarm(String alarmTag, Date triggerDate, EventTsk eventTsk, Boolean checked) 

@@ -27,18 +27,17 @@ import net.kraklups.solarapp.model.taskprk.Track;
 import net.kraklups.solarapp.model.taskprk.Upkeep;
 import net.kraklups.solarapp.model.timetable.Timetable;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
+import net.kraklups.solarapp.model.util.RestServiceURL;
 import net.kraklups.solarapp.model.util.ValueObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @Service("taskService")
 @Transactional
@@ -60,6 +59,14 @@ public class TaskPrkServiceImpl implements TaskPrkService {
     
     @Autowired
     private MessageEventDao messageEventDao;
+    
+    @Autowired
+    @Qualifier("urlEventTskREST")
+    private RestServiceURL urlEventTskREST;
+    
+    @Autowired
+    @Qualifier("urlMapReduceREST")
+    private RestServiceURL urlMapReduceREST;    
 	
 	@Override
 	public Upkeep createUpkeep(String taskName, Date creationDate,
@@ -687,15 +694,15 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	}
 
 	@Override
-	public Alarm alarmTriggered(AlarmDTO alarmDTO)
+	public AlarmDTO alarmTriggered(AlarmDTO alarmDTO)
 			throws DuplicateInstanceException, InstanceNotFoundException {
 		
 		Long eventTskId = Long.valueOf(alarmDTO.getEventTskId());
 				
-		Alarm alarm = new Alarm(alarmDTO.getAlarmTag(), alarmDTO.getTriggerDate(), eventTskDao.find(eventTskId), false);
+		Alarm alarm = new Alarm(alarmDTO.getRuleEventTsk(), alarmDTO.getTriggerDate(), eventTskDao.find(eventTskId), false);
 		alarmDao.save(alarm);
 		
-		return alarm;
+		return alarmDTO;
 	}
 
 	@Override
@@ -862,10 +869,11 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	public void RegisterEventTsk(EventTskDTO eventTskDTO) 
 			throws Exception {
 		
+		final String SERVER_URI = urlEventTskREST.getUrlREST().toString();
+		
 		LOGGER.debug("Starting REST Client!!!!");
-		
-		final String SERVER_URI = "http://localhost:8080/rest/registereventtsk";
-		
+
+/*		
 		ObjectMapper mapper = new ObjectMapper();
 		ObjectNode node = mapper.createObjectNode();
 		
@@ -875,7 +883,8 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		node.put("tvi", eventTskDTO.getTvi().toString());
 		node.put("tvf", eventTskDTO.getTvf().toString());
 		node.put("ruleEventTsk", eventTskDTO.getRuleEventTsk());
-				
+				*/
+		
 		RestTemplate restTemplate = new RestTemplate();
 		
 		EventTskDTO response = restTemplate.postForObject(SERVER_URI, eventTskDTO, EventTskDTO.class);
@@ -915,15 +924,14 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 	public List<ValueObject> mapReduceRest(Long reportId) 
 			throws InstanceNotFoundException {
 		
-		final String SERVER_URI = "http://localhost:9090/photonwell-app/rest/mrdatavalue/1";
-
+		final String SERVER_URI = urlMapReduceREST.getUrlREST().toString();
 		
 		LOGGER.debug("Starting REST Client!!!!");
-		
+				
 		RestTemplate restTemplate = new RestTemplate();
  		
 		ResponseEntity<ValueObject[]> responseEntity = restTemplate.getForEntity(SERVER_URI, ValueObject[].class);
-		ValueObject[] response =responseEntity.getBody();
+		ValueObject[] response = responseEntity.getBody();
 //		MediaType contentType = responseEntity.getHeaders().getContentType();
 //		HttpStatus statusCode = responseEntity.getStatusCode();
 		

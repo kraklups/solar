@@ -1,9 +1,10 @@
 package net.kraklups.solarapp.web.controller;
 
+import javax.validation.Valid;
+
 import net.kraklups.modelutil.exceptions.AlarmNotFoundException;
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
-import net.kraklups.solarapp.model.alarm.Alarm;
 import net.kraklups.solarapp.model.alarm.AlarmDTO;
 import net.kraklups.solarapp.model.taskprkservice.TaskPrkService;
 import net.kraklups.solarapp.web.datavalue.CreateDataValue;
@@ -35,8 +36,9 @@ final class AlarmController {
 		this.taskPrkService = taskPrkService;
 	}	
 	
-	@RequestMapping(value = "/notifyalarm", method = RequestMethod.POST, headers="Accept=application/json")
-	public @ResponseBody Alarm create(@RequestBody AlarmDTO alarmDTO) throws DuplicateInstanceException, InstanceNotFoundException {
+	@RequestMapping(value = "/notifyalarm", method = RequestMethod.POST, headers="Accept=application/json", consumes = "application/json", produces = "application/json")
+	public @ResponseBody AlarmDTO create(@RequestBody @Valid AlarmDTO alarmDTO) 
+			throws DuplicateInstanceException, InstanceNotFoundException {
 		
 		LOGGER.warn("Handling EventTsk & NotifyAlarm: {}", alarmDTO.getEventTskId());
 		
