@@ -34,7 +34,7 @@ public class UpdateRole {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/role/updateRole/{roleId}", method = RequestMethod.GET)
-	public String createRoleGet(@PathVariable String roleId, Model model) 
+	public String updateRoleGet(@PathVariable String roleId, Model model) 
 			throws InstanceNotFoundException {
 		
 		logger.info("Create Role page GET!");
@@ -70,7 +70,4 @@ public class UpdateRole {
 			return "redirect:/role/showRoles";
 		}
 	}
-
-
-
 }

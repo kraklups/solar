@@ -111,5 +111,8 @@ public interface ParkService {
 	
 	public StateType findStateType(Long stateTypeId)
             throws InstanceNotFoundException;		
+
+    public Timetable saveTimetable(Timetable timetable)
+    		throws DuplicateInstanceException;	
 	
 }

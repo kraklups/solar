@@ -350,6 +350,15 @@ public class ParkServiceImpl implements ParkService {
 		boolean existMoreStates = states.size() == (count +1);
 		
 		return new StateBlock(states, existMoreStates);
+	}
+
+	@Override
+	public Timetable saveTimetable(Timetable timetable)
+			throws DuplicateInstanceException {
+
+		timetableDao.save(timetable);
+		
+		return timetable;
 	}    
     
 }
