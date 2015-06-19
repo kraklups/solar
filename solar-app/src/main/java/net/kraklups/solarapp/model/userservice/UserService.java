@@ -131,6 +131,9 @@ public interface UserService extends UserDetailsService {
     		throws DuplicateInstanceException;	
     
 	public RoleBlock getRoles(int startIndex, int count) 
-			throws InstanceNotFoundException;    
+			throws InstanceNotFoundException;
+	
+	public ModuleBlock getModules(int startIndex, int count) 
+			throws InstanceNotFoundException;    	
 	
 }

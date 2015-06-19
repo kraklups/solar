@@ -141,6 +141,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/role/RoleDao.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/userservice/IncorrectPasswordException.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/role/RoleDaoHibernate.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/userservice/ModuleBlock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/taskprk/TaskPrk.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementprk/ElementPrkDaoHibernate.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/elementprk/Counter.java

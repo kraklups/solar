@@ -497,4 +497,15 @@ public class UserServiceImpl implements UserService {
 		return new RoleBlock(roles, existMoreRoles);
 	}
 
+	@Override
+	public ModuleBlock getModules(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Module> modules = moduleDao.getModules(startIndex, count + 1);
+		
+		boolean existMoreModules = modules.size() == (count +1);
+		
+		return new ModuleBlock(modules, existMoreModules);
+	}
+
 }
