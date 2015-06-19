@@ -24,7 +24,7 @@ public class UpdateAlarm {
 
 	private final static int EVENTTSK_PER_PAGE = 50;
 	
-	private static final Logger logger = LoggerFactory.getLogger(CreateAlarm.class);
+	private static final Logger logger = LoggerFactory.getLogger(UpdateAlarm.class);
 	
 	private int startIndex = 0;
 

@@ -5,7 +5,6 @@ import java.util.List;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.userservice.UserService;
-import net.kraklups.solarapp.web.park.CreatePark;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +22,7 @@ public class ShowCompanies {
 
 	private final static int COMPANIES_PER_PAGE = 50;
 	
-	private static final Logger logger = LoggerFactory.getLogger(CreatePark.class);
+	private static final Logger logger = LoggerFactory.getLogger(ShowCompanies.class);
 	
 	private int startIndex = 0;
 	

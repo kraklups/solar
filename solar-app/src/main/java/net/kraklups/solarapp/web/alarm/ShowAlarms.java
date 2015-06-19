@@ -6,7 +6,6 @@ import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 import net.kraklups.solarapp.model.alarm.Alarm;
 import net.kraklups.solarapp.model.taskprkservice.TaskPrkService;
-import net.kraklups.solarapp.web.datavalue.CreateDataValue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +23,7 @@ public class ShowAlarms {
 
 	private final static int ALARM_PER_PAGE = 50;
 	
-	private static final Logger logger = LoggerFactory.getLogger(CreateDataValue.class);
+	private static final Logger logger = LoggerFactory.getLogger(ShowAlarms.class);
 	
 	private int startIndex = 0;
 	
