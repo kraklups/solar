@@ -55,7 +55,7 @@ public class CreateCompany {
 			
 			logger.info("Create Company page POST!" + merda);
 			
-			return "Done";
+			return "redirect:/company/showCompanies";
 		}	
 				
 	}	

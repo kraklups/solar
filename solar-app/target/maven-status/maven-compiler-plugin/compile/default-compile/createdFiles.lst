@@ -167,6 +167,7 @@ net/kraklups/solarapp/web/element/CreateElement.class
 net/kraklups/solarapp/web/module/ShowModules.class
 net/kraklups/solarapp/model/role/RoleDao.class
 net/kraklups/solarapp/model/rolemoduleaccess/RoleModuleAccess.class
+net/kraklups/solarapp/model/util/RestServiceURL.class
 net/kraklups/solarapp/web/park/UpdatePark.class
 net/kraklups/solarapp/model/rolemoduleaccess/RoleModuleAccessDao.class
 net/kraklups/solarapp/web/user/Register.class

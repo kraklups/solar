@@ -2,6 +2,7 @@
 	xmlns:jsp="http://java.sun.com/JSP/Page" 
 	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
 	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:form="http://www.springframework.org/tags/form"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"	
 	xmlns="http://www.w3.org/1999/xhtml"
 	version="2.0" >
@@ -28,28 +29,35 @@
             	<div class="col-lg-12">
                 	<div class="panel panel-default">
                     	<div class="panel-heading">
-                        	<h3 class="panel-title"><spring:message code="updateCompany.menuExplanation" /></h3>
+                        	<h3 class="panel-title"><spring:message code="createCompany.menuExplanation" /></h3>
                     	</div>
                     	<div class="panel-body">
                     	
-							<form role="Form" name="updateCompanyForm">
+							<form:form modelAttribute="company" method="POST">
     	                        <fieldset>	   						
-		   							<div class="form-group">        
-	    	    						<spring:message code="createCompany.companyName" />   
-		        	    				<input class="form-control" placeholder="Company Name" name="companyName" type="text" autofocus="autofocus" />
-	   								</div>
+									<spring:bind path="companyName">           	
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createCompany.companyName" /></label>   
+		        	    					<form:input path="companyName" class="form-control" placeholder="Company Name" autofocus="autofocus" />
+		        	    					<form:errors path="companyName" cssClass="control-label" for="inputError" element="label" />
+	   									</div>
+	   								</spring:bind>
 	    
-	   								<div class="form-group">        
-	        							<spring:message code="createCompany.date" />
-		            					<input path="date" class="form-control" placeholder="MM/DD/YYYY" />
-		   							</div>	    
+									<spring:bind path="date">    
+										<spring:message code="createCompany.date" var="stdout" />       	
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>        	        							
+		            						<form:input path="date" class="form-control" placeholder="${stdout} MM/DD/YYYY" />
+											<form:errors path="date" cssClass="control-label" for="inputError" element="label" />		            						
+		   								</div>	 
+		   							</spring:bind>
 	   							   								    
 		    						<div class="button">
-		    							<spring:message code="updateCompany.submit" var="updateSubmit" />
-		        						<input type="submit" value="${updateSubmit}" />        
+		    							<spring:message code="createCompany.submit" var="companySubmit" />
+		        						<input type="submit" value="${companySubmit}" />        
 	    							</div>
 	    						</fieldset>		
-							</form>
+							</form:form>
 							
                     	</div>
                 	</div>
