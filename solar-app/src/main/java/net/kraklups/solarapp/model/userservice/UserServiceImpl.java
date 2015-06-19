@@ -265,24 +265,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Company saveCompany(Company company)
 			throws DuplicateInstanceException {
-
-		try {
-			companyDao.findByName(company.getCompanyName());
-			throw new DuplicateInstanceException(company.getCompanyName(), Company.class.getName());
-		} catch (InstanceNotFoundException e) { 						
-			companyDao.save(company);
+						
+		companyDao.save(company);
 			
-			return company;
-		}
-	}
-		
-	@Override
-	public void updateCompany(Long companyId, String companyName, Date date) 
-			throws InstanceNotFoundException {
-		
-		Company company = companyDao.find(companyId);
-		company.setCompanyName(companyName);
-		company.setDate(date);
+		return company;
+	
 	}
 	
 	@Override
@@ -506,6 +493,25 @@ public class UserServiceImpl implements UserService {
 		boolean existMoreModules = modules.size() == (count +1);
 		
 		return new ModuleBlock(modules, existMoreModules);
+	}
+
+	@Override
+	public UserProfile saveUserProfile(UserProfile userProfile)
+			throws DuplicateInstanceException {
+
+		userProfileDao.save(userProfile);
+		
+		return userProfile;
+	}
+
+	@Override
+	public UserProfile assignDateUserProfile(UserProfile userProfile, Date date)
+			throws InstanceNotFoundException {
+		
+		userProfile.setDate(date);
+		
+		return userProfile;
+		
 	}
 
 }

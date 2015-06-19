@@ -70,6 +70,24 @@ public class StateDaoHibernate extends
 		}				
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<State> getStates(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<State> states = (List<State>)  getSession().createQuery(
+	        	"SELECT a FROM State a " +
+	        	"ORDER BY a.stateId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (states == null) {
+			throw new InstanceNotFoundException(null, State.class.getName());
+		} else {
+			return states;
+		}
+	}
+
 	
 	
 }

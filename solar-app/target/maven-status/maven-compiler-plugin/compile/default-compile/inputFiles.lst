@@ -57,8 +57,8 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/rolemoduleaccess/RoleModuleAccess.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/park/ShowParks.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/modelutil/exceptions/AlarmNotFoundException.java
-/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/rolemoduleaccess/RoleModuleAccessDao.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/timetable/ShowTimetables.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/rolemoduleaccess/RoleModuleAccessDao.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/park/ParkDao.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/user/UpdateProfile.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/eventtsk/EventTsk.java
@@ -129,6 +129,7 @@
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/role/UpdateRole.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/formatters/ExtractionPointFormatter.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/timetable/Timetable.java
+/home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/parkservice/StateBlock.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/model/report/Report.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/report/ShowReport.java
 /home/nexus7/Project/solar/solar-app/src/main/java/net/kraklups/solarapp/web/element/CreateElement.java

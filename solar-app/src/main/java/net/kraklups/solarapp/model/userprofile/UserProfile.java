@@ -16,10 +16,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.role.Role;
@@ -56,7 +58,10 @@ public class UserProfile implements java.io.Serializable {
 	@NotEmpty
 	@Email	
 	private String email;
-	
+
+	//2014-07-04T12:08:56.235
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull
 	private Date date;
 	
 	private Boolean enabled;

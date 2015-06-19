@@ -339,6 +339,17 @@ public class ParkServiceImpl implements ParkService {
             throws InstanceNotFoundException {
 
         return stateTypeDao.find(stateTypeId);
-    }    
+    }
+
+	@Override
+	public StateBlock getStates(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<State> states = stateDao.getStates(startIndex, count + 1);
+		
+		boolean existMoreStates = states.size() == (count +1);
+		
+		return new StateBlock(states, existMoreStates);
+	}    
     
 }

@@ -18,7 +18,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -36,7 +35,7 @@ public class Company implements java.io.Serializable {
 	private String companyName;
 	
 	@DateTimeFormat(pattern="MM/dd/yyyy")
-	@NotNull @Past	
+	@NotNull
 	private Date date;
 	
 	public Company() {

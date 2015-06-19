@@ -88,7 +88,7 @@
 	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.company" /></label>
 											<form:select path="company" class="form-control">
     											<form:option value="" label="${chooseOne}" />
-    											<form:options items="${companyList}" itemValue="companyId" itemLabel="name" />
+    											<form:options items="${companyList}" itemValue="companyId" itemLabel="companyName" />
 											</form:select>	   							   								    
 	   									</div>
                                 		                              
@@ -97,17 +97,41 @@
 	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="register.role" /></label>
 											<form:select path="role" class="form-control">
     											<form:option value="" label="${chooseOne}" />
-    											<form:options items="${roleList}" itemValue="roleId" itemLabel="name" />
+    											<form:options items="${roleList}" itemValue="roleId" itemLabel="roleName" />
 											</form:select>	   							   								    
 	   									</div>
 
 										<div class="form-group">
                          		    		<div class="checkbox">                         		    	
                                 				<label class="checkbox-inline">                                        		
-                                        			<form:checkbox path="blocked" /><spring:message code="register.blocked" />
+                                        			<form:checkbox path="enabled" /><spring:message code="register.enabled" />
                                     			</label>
                                 			</div>
                                 		</div>
+                                		
+										<div class="form-group">
+                         		    		<div class="checkbox">                         		    	
+                                				<label class="checkbox-inline">                                        		
+                                        			<form:checkbox path="accountNonExpired" /><spring:message code="register.accountNonExpired" />
+                                    			</label>
+                                			</div>
+                                		</div>
+                                		                                		
+										<div class="form-group">
+                         		    		<div class="checkbox">                         		    	
+                                				<label class="checkbox-inline">                                        		
+                                        			<form:checkbox path="credentialsNonExpired" /><spring:message code="register.credentialsNonExpired" />
+                                    			</label>
+                                			</div>
+                                		</div>
+                                		
+										<div class="form-group">
+                         		    		<div class="checkbox">                         		    	
+                                				<label class="checkbox-inline">                                        		
+                                        			<form:checkbox path="accountNonLocked" /><spring:message code="register.accountNonLocked" />
+                                    			</label>
+                                			</div>
+                                		</div> 
                                                                 
                                 		<div class="button">
                                 			<spring:message code="register.submit" var="registerSubmit" />

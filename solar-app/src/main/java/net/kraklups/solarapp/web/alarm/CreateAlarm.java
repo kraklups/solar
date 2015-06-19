@@ -59,6 +59,8 @@ public class CreateAlarm {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createAlarm.jspx page");
 			
+			initModelEventTskList(model);
+			
 			return "alarm/createAlarm";
 		} else {
 			
@@ -70,7 +72,7 @@ public class CreateAlarm {
 			
 			logger.info("Create Alarm page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/alarm/showAlarms";
 		}
 	}
 

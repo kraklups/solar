@@ -33,7 +33,7 @@ public class UpdateCompany {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/company/updateCompany/{companyId}", method = RequestMethod.GET)
-	public String createCompanyGet(@PathVariable String companyId, Model model) 
+	public String updateCompanyGet(@PathVariable String companyId, Model model) 
 			throws InstanceNotFoundException {
 		
 		logger.info("Create Company page GET!");
@@ -47,7 +47,7 @@ public class UpdateCompany {
 	
 	@RequestMapping(value = "/company/updateCompany/{companyId}", method = RequestMethod.POST)
 	public String updateCompanyPost(@Valid @ModelAttribute("company") Company company, BindingResult result, Model model) 
-			throws DuplicateInstanceException {
+			throws DuplicateInstanceException, InstanceNotFoundException {
 				
 		if(result.hasErrors()) {
 			logger.info("Returning updateCompany.jspx page");
@@ -55,7 +55,9 @@ public class UpdateCompany {
 			return "company/updateCompany";
 		} else {
 			logger.info("UpdateCompany done");
+			
 			model.addAttribute("company", company);
+			
 			Company merda = userService.saveCompany(company);
 			
 			logger.info("Update Company page POST!" + merda);

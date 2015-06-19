@@ -95,7 +95,10 @@ public interface ParkService {
 			throws InstanceNotFoundException;    
     
 	public ParkBlock getParks(int startIndex, int count) 
-			throws InstanceNotFoundException;    	
+			throws InstanceNotFoundException;
+	
+	public StateBlock getStates(int startIndex, int count) 
+			throws InstanceNotFoundException;  	
 	
 	public Park findPark(Long parkId)
             throws InstanceNotFoundException;
