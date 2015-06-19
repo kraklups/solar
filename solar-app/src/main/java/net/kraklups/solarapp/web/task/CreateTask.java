@@ -96,7 +96,7 @@ public class CreateTask {
 			
 			logger.info("Create TaskPrk page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/task/showTasks";
 		}	
 	}
 	

@@ -72,7 +72,7 @@ public class CreateRole {
 			
 			logger.info("Create Role page POST! " + merda);			
 			
-			return "Done";
+			return "redirect:/role/showRoles";
 		}
 	}
 

@@ -89,7 +89,7 @@ public class CreateState {
 			
 			logger.info("Create State page POST! " + merda);
 						
-			return "Done";
+			return "redirect:/state/showStates";
 		}
 	}	
 	

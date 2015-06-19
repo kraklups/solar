@@ -91,7 +91,7 @@ public class CreateDataValue {
 			
 			logger.info("Create DataValue page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/dataValue/showDataValues";
 
 		}				
 	}	

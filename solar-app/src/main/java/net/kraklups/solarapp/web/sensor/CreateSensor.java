@@ -68,7 +68,7 @@ public class CreateSensor {
 			
 			logger.info("Create Sensor page POST! " + merda);			
 			
-			return "Done";
+			return "redirect:/sensor/showSensors";
 		}
 	}	
 	

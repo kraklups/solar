@@ -69,7 +69,7 @@ public class CreateMessage {
 			
 			logger.info("Create MessageEvent page POST! " + merda);			
 			
-			return "Done";
+			return "redirect:/message/showMessages";
 		}
 	}	
 

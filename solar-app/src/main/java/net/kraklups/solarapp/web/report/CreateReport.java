@@ -76,7 +76,7 @@ public class CreateReport {
 			
 			logger.info("Create Report page POST! " + merda);			
 			
-			return "Done";
+			return "redirect:/report/showReports";
 		}
 	}	
 	

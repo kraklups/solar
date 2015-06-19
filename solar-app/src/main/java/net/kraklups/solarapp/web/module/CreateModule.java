@@ -58,7 +58,7 @@ public class CreateModule {
 			
 			logger.info("Create Module page POST! " + merda);			
 						
-			return "Done";
+			return "redirect:/module/showModules";
 		}
 
 	}

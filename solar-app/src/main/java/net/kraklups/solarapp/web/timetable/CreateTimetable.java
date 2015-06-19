@@ -42,7 +42,7 @@ public class CreateTimetable {
 		if(result.hasErrors()) {
 			return "timetable/createTimetable";
 		} else {
-			return "Done";
+			return "redirect:/timetable/showTimetables";
 		}
 		
 	}		

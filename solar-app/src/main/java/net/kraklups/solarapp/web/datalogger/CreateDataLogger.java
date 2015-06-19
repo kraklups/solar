@@ -68,7 +68,7 @@ public class CreateDataLogger {
 			
 			logger.info("Create DataLogger page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/dataLogger/showDataLoggers";
 		}
 		
 	}	
