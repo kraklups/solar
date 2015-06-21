@@ -54,7 +54,12 @@
                                         			<span class="text-muted small">${reportValues.reportId}</span>
  												</a>
  											</td>
-                                        	<td><span class="text-muted small">${reportValues.reportTitle}</span></td>
+                                        	<td>
+                                        		<spring:url value="/report/updateReport/${reportValues.reportId}" var="updateReportUrl" htmlEscape="true"/>
+                                        		<a class="text-center" href="${updateReportUrl}">
+                                        			<span class="text-muted small">${reportValues.reportTitle}</span>
+                                        		</a>
+                                        	</td>
                                         	<td><span class="text-muted small">${reportValues.dateRequest}</span></td>
 											<td><span class="text-muted small">${reportValues.dateServed}</span></td>
                                         	<td><span class="text-muted small">${reportValues.userProfile.userProfileId}</span></td>
