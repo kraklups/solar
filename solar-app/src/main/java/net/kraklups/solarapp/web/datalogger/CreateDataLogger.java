@@ -32,7 +32,7 @@ public class CreateDataLogger {
 	private int startIndex = 0;
 
 	@Autowired
-	private DataService dataService;	
+	private DataService dataService;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -46,7 +46,7 @@ public class CreateDataLogger {
 		
 		model.addAttribute("dataLogger", dataLogger);
 		
-		initModelList(model);
+		initModelListDataLogger(model);
 				
 		return "dataLogger/createDataLogger";
 	}
@@ -73,9 +73,9 @@ public class CreateDataLogger {
 		
 	}	
 
-	private void initModelList(Model model) throws InstanceNotFoundException {
+	private void initModelListDataLogger(Model model) throws InstanceNotFoundException {
 		List <DataLogger> dataLoggerList = dataService.getDataLoggers(startIndex, DATALOGGER_PER_PAGE).getDataLoggers();
-		model.addAttribute(dataLoggerList);
+		model.addAttribute("dataLoggerList", dataLoggerList);
 	}	
 	
 }

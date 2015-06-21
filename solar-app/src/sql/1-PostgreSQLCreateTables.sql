@@ -491,10 +491,10 @@ CREATE SEQUENCE DataValueSeq;
 
 DROP TABLE IF EXISTS DataValue CASCADE;
 CREATE TABLE DataValue (dataValueId BIGINT NOT NULL,
-    taskPrkId BIGINT NOT NULL, elementPrkId BIGINT NOT NULL, 
+    synchronizeId BIGINT NOT NULL, elementPrkId BIGINT NOT NULL, 
     dataLoggerId BIGINT NOT NULL, sensorId BIGINT NOT NULL,
-    CONSTRAINT TaskPrkIdFK FOREIGN KEY(taskPrkId)
-        REFERENCES TaskPrk (taskPrkId) ON DELETE CASCADE,    
+    CONSTRAINT SynchronizeIdFK FOREIGN KEY(synchronizeId)
+        REFERENCES Synchronize (synchronizeId) ON DELETE CASCADE,    
     CONSTRAINT ElementIdFK FOREIGN KEY(elementPrkId)
         REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,    
     CONSTRAINT DataLoggerIdFK FOREIGN KEY(dataLoggerId)
