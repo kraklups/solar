@@ -121,7 +121,7 @@ public class CreateTask {
 			
 			logger.info("Create Monitor page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/task/showTasks";
 		}	
 	}	
 	
@@ -150,7 +150,7 @@ public class CreateTask {
 			
 			logger.info("Create Upkeep page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/task/showTasks";
 		}	
 	}	
 	
@@ -175,7 +175,7 @@ public class CreateTask {
 			
 			logger.info("Create Synchronize page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/task/showTasks";
 		}	
 	}	
 
@@ -202,7 +202,7 @@ public class CreateTask {
 			
 			logger.info("Create Track page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/task/showTasks";
 		}	
 	}	
 	

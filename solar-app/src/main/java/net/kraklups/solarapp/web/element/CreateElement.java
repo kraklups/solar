@@ -146,7 +146,7 @@ public class CreateElement {
 			
 			logger.info("Create ElementPrk page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/element/showElements";
 		}	
 	}
 	
@@ -171,7 +171,7 @@ public class CreateElement {
 			
 			logger.info("Create ElementPrk page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/element/showElements";
 		}	
 	}		
 	
@@ -196,7 +196,7 @@ public class CreateElement {
 			
 			logger.info("Create ElementPrk page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/element/showElements";
 		}	
 	}	
 	
@@ -221,7 +221,7 @@ public class CreateElement {
 			
 			logger.info("Create ElementPrk page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/element/showElements";
 		}	
 	}	
 	
@@ -246,7 +246,7 @@ public class CreateElement {
 			
 			logger.info("Create ElementPrk page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/element/showElements";
 		}	
 	}	
 	
@@ -271,7 +271,7 @@ public class CreateElement {
 			
 			logger.info("Create ElementPrk page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/element/showElements";
 		}	
 	}	
 	
@@ -296,7 +296,7 @@ public class CreateElement {
 			
 			logger.info("Create ElementPrk page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/element/showElements";
 		}	
 	}	
 	
@@ -321,7 +321,7 @@ public class CreateElement {
 			
 			logger.info("Create ElementPrk page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/element/showElements";
 		}	
 	}	
 	
@@ -346,7 +346,7 @@ public class CreateElement {
 			
 			logger.info("Create ElementPrk page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/element/showElements";
 		}	
 	}	
 
@@ -371,7 +371,7 @@ public class CreateElement {
 			
 			logger.info("Create ElementPrk page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/element/showElements";
 		}	
 	}	
 
@@ -396,7 +396,7 @@ public class CreateElement {
 			
 			logger.info("Create ElementPrk page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/element/showElements";
 		}	
 	}	
 	
@@ -421,7 +421,7 @@ public class CreateElement {
 			
 			logger.info("Create ElementPrk page POST! " + merda);
 			
-			return "Done";
+			return "redirect:/element/showElements";
 		}	
 	}	
 	

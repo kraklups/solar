@@ -370,4 +370,40 @@ public class TaskPrkDaoHibernate extends
 		}
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<Track> getTracks(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Track> tracks = (List<Track>)  getSession().createQuery(
+	        	"SELECT a FROM Track a " +
+	        	"ORDER BY a.trackId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (tracks == null) {
+			throw new InstanceNotFoundException(null, Track.class.getName());
+		} else {
+			return tracks;
+		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Monitor> getMonitors(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Monitor> monitors = (List<Monitor>)  getSession().createQuery(
+	        	"SELECT a FROM Monitor a " +
+	        	"ORDER BY a.monitorId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (monitors == null) {
+			throw new InstanceNotFoundException(null, Monitor.class.getName());
+		} else {
+			return monitors;
+		}
+	}
+
 }
