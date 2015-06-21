@@ -17,4 +17,7 @@ public interface MessageEventDao extends GenericDao<MessageEvent, Long> {
      public List<MessageEvent> getMessageEventsByEventTskId(Long eventTskId, int startIndex, int count) 
             throws InstanceNotFoundException; 	
 
+ 	public List<MessageEvent> getMessageEvents(int startIndex, int count)
+			throws InstanceNotFoundException;     
+     
 }

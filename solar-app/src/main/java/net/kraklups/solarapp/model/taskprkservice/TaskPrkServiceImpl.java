@@ -1045,6 +1045,17 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		boolean existMoreAlarms = Alarms.size() == (count +1);
 		
 		return new AlarmBlock(Alarms, existMoreAlarms);
+	}
+
+	@Override
+	public MessageEventBlock getMessageEvents(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<MessageEvent> MessageEvents = messageEventDao.getMessageEvents(startIndex, count + 1);
+		
+		boolean existMoreMessageEvents = MessageEvents.size() == (count +1);
+		
+		return new MessageEventBlock(MessageEvents, existMoreMessageEvents);
 	}    
     
 }

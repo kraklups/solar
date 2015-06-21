@@ -21,7 +21,7 @@
 
     		<div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header"><spring:message code="showRoles.title" /></h2>
+                    <h2 class="page-header"><spring:message code="showEvents.title" /></h2>
                 </div>
             </div>
             
@@ -29,7 +29,7 @@
             	<div class="col-lg-12">
                 	<div class="panel panel-default">
                     	<div class="panel-heading">
-                        	<h3 class="panel-title"><spring:message code="showRoles.menuExplanation" /></h3>
+                        	<h3 class="panel-title"><spring:message code="showEvents.menuExplanation" /></h3>
                     	</div>
                     	<div class="panel-body">
                     		  

@@ -44,8 +44,8 @@ public class ShowEvents {
 	}
 	
 	private void initModelListEventTsks(Model model) throws InstanceNotFoundException {
-		List <EventTsk> EventTskList = taskPrkService.getEventTsks(startIndex, EVENTS_PER_PAGE).getEventTsks();
-		model.addAttribute("eventTskList",EventTskList);
+		List <EventTsk> eventTskList = taskPrkService.getEventTsks(startIndex, EVENTS_PER_PAGE).getEventTsks();
+		model.addAttribute("eventTskList",eventTskList);
 	}	
 
 }

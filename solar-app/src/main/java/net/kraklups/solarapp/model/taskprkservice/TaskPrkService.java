@@ -318,5 +318,8 @@ public interface TaskPrkService {
 			throws InstanceNotFoundException;
 	
 	public AlarmBlock getAlarmsTriggered(int startIndex, int count) 
-			throws InstanceNotFoundException;			
+			throws InstanceNotFoundException;	
+	
+	public MessageEventBlock getMessageEvents(int startIndex, int count) 
+			throws InstanceNotFoundException;		
 }
