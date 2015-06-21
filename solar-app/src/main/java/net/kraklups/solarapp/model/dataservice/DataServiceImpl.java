@@ -202,6 +202,17 @@ public class DataServiceImpl implements DataService {
             throws InstanceNotFoundException {
 
         return dataValueDao.find(dataValueId);
-    }    
+    }
+
+	@Override
+	public DataValueBlock getDataValues(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<DataValue> dataValues = dataValueDao.getDataValues(startIndex, count + 1);
+		
+		boolean existMoreDataValues = dataValues.size() == (count +1);
+		
+		return new DataValueBlock(dataValues, existMoreDataValues);
+	}    
 
 }

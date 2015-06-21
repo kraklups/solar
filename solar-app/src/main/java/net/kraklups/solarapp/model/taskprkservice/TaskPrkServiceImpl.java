@@ -1056,6 +1056,17 @@ public class TaskPrkServiceImpl implements TaskPrkService {
 		boolean existMoreMessageEvents = MessageEvents.size() == (count +1);
 		
 		return new MessageEventBlock(MessageEvents, existMoreMessageEvents);
+	}
+
+	@Override
+	public SynchronizeBlock getSynchronizes(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Synchronize> synchronizes = taskPrkDao.getSynchronizes(startIndex, count + 1);
+		
+		boolean existMoreSynchronizes = synchronizes.size() == (count +1);
+		
+		return new SynchronizeBlock(synchronizes, existMoreSynchronizes);
 	}    
     
 }

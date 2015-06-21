@@ -352,4 +352,22 @@ public class TaskPrkDaoHibernate extends
 
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Synchronize> getSynchronizes(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Synchronize> synchronizes = (List<Synchronize>)  getSession().createQuery(
+	        	"SELECT a FROM Synchronize a " +
+	        	"ORDER BY a.synchronizeId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (synchronizes == null) {
+			throw new InstanceNotFoundException(null, Synchronize.class.getName());
+		} else {
+			return synchronizes;
+		}
+	}
+
 }

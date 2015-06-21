@@ -150,6 +150,9 @@ public interface TaskPrkDao extends GenericDao<TaskPrk, Long> {
 			throws InstanceNotFoundException;    
     
     public List<Report> getReports(int startIndex, int count)
-			throws InstanceNotFoundException;    
+			throws InstanceNotFoundException;   
+    
+    public List<Synchronize> getSynchronizes(int startIndex, int count)
+			throws InstanceNotFoundException;        
     
 }

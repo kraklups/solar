@@ -87,5 +87,23 @@ public class DataValueDaoHibernate extends
 		}
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<DataValue> getDataValues(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<DataValue> dataValues = (List<DataValue>)  getSession().createQuery(
+	        	"SELECT a FROM DataValue a " +
+	        	"ORDER BY a.dataValueId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (dataValues == null) {
+			throw new InstanceNotFoundException(null, DataValue.class.getName());
+		} else {
+			return dataValues;
+		}
+	}
+
 
 }

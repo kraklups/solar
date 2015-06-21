@@ -63,4 +63,8 @@ public interface DataService {
     
 	public DataValue findDataValue(Long dataValueId)
             throws InstanceNotFoundException;
+	
+	public DataValueBlock getDataValues(int startIndex, int count) 
+			throws InstanceNotFoundException;
+	
 }

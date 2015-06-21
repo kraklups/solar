@@ -12,7 +12,7 @@ import net.kraklups.solarapp.model.datavalue.DataValue;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.elementservice.ElementService;
 import net.kraklups.solarapp.model.sensor.Sensor;
-import net.kraklups.solarapp.model.taskprk.TaskPrk;
+import net.kraklups.solarapp.model.taskprk.Synchronize;
 import net.kraklups.solarapp.model.taskprkservice.TaskPrkService;
 
 import org.slf4j.Logger;
@@ -67,7 +67,7 @@ public class CreateDataValue {
 		
 		initModelListSensor(model);
 		
-		initModelListTaskPrk(model);
+		initModelListSynchronize(model);
 		
 		initModelListElementPrk(model);
 		
@@ -101,10 +101,10 @@ public class CreateDataValue {
 		model.addAttribute("sensorList",sensorList);
 	}
 	
-	private void initModelListTaskPrk(Model model) throws InstanceNotFoundException {
-		List <TaskPrk> taskPrkList = taskPrkService.getTaskPrks(startIndex, TASKPRK_PER_PAGE).getTaskPrks();
-		model.addAttribute("taskPrkList",taskPrkList);
-	}	
+	private void initModelListSynchronize(Model model) throws InstanceNotFoundException {
+		List <Synchronize> synchronizeList = taskPrkService.getSynchronizes(startIndex, TASKPRK_PER_PAGE).getSynchronizes();
+		model.addAttribute("synchronizeList",synchronizeList);
+	}
 
 	private void initModelListDataLogger(Model model) throws InstanceNotFoundException {
 		List <DataLogger> dataLoggerList = dataService.getDataLoggers(startIndex, DATALOGGER_PER_PAGE).getDataLoggers();

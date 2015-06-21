@@ -237,7 +237,7 @@ public interface TaskPrkService {
     		throws DuplicateInstanceException;
     
 	public TaskPrkBlock getTaskPrks(int startIndex, int count) 
-			throws InstanceNotFoundException;   
+			throws InstanceNotFoundException;
 	
 	public UpkeepBlock getUpkeeps(int startIndex, int count) 
 			throws InstanceNotFoundException;	
@@ -321,5 +321,9 @@ public interface TaskPrkService {
 			throws InstanceNotFoundException;	
 	
 	public MessageEventBlock getMessageEvents(int startIndex, int count) 
-			throws InstanceNotFoundException;		
+			throws InstanceNotFoundException;	
+	
+	public SynchronizeBlock getSynchronizes(int startIndex, int count) 
+			throws InstanceNotFoundException;	
+	
 }

@@ -43,4 +43,7 @@ public interface DataValueDao extends GenericDao<DataValue, Long>  {
 	public List<DataValue> getDataValuesBySensorId(Long sensorId, int startIndex, int count) 
             throws InstanceNotFoundException; 		
 
+    public List<DataValue> getDataValues(int startIndex, int count)
+			throws InstanceNotFoundException;	
+	
 }
