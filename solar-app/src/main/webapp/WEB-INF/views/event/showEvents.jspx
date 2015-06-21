@@ -2,8 +2,8 @@
 	xmlns:jsp="http://java.sun.com/JSP/Page" 
 	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
 	xmlns:spring="http://www.springframework.org/tags"
-	xmlns:form="http://www.springframework.org/tags/form"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"	
+	xmlns:form="http://www.springframework.org/tags/form"	
 	xmlns="http://www.w3.org/1999/xhtml"
 	version="2.0" >
 	
@@ -21,7 +21,7 @@
 
     		<div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header"><spring:message code="createEventTsk.title" /></h2>
+                    <h2 class="page-header"><spring:message code="showRoles.title" /></h2>
                 </div>
             </div>
             
@@ -29,73 +29,48 @@
             	<div class="col-lg-12">
                 	<div class="panel panel-default">
                     	<div class="panel-heading">
-                        	<h3 class="panel-title"><spring:message code="createEventTsk.menuExplanation" /></h3>
+                        	<h3 class="panel-title"><spring:message code="showRoles.menuExplanation" /></h3>
                     	</div>
                     	<div class="panel-body">
-                    	
-							<form:form modelAttribute="eventTsk" method="POST">
-    	                        <fieldset>	   							    
-	   								<div class="form-group">        
-		        						<spring:message code="createEventTsk.tagET" />
-       	        						<form:input path="tagET" class="form-control" placeholder="TagET" autofocus="autofocus" />
-		   							</div>
-
-	   								<div class="form-group">        
-		        						<spring:message code="createEventTsk.definitionET" />
-       	        						<form:input path="definitionET" class="form-control" placeholder="DefinitionET" autofocus="autofocus" />
-		   							</div>
-	   							   		
-	   								<div class="form-group">        
-	        							<spring:message code="createEventTsk.dateTvi" />
-		            					<form:input path="tvi" class="form-control" placeholder="Date tvi" />
-		   							</div>	   							   		
-
-	   								<div class="form-group">        
-	        							<spring:message code="createEventTsk.dateTvf" />
-		            					<form:input path="tvf" class="form-control" placeholder="Date tvf" />
-		   							</div>	   							   		
-	   							   			   							   								    	   							   			   							   								   
-	   								<div class="form-group">
-	   									<spring:message code="select.chooseOne" var="chooseOne" />
-	   									<spring:message code="createEventTsk.taskPrk" />
-										<form:select path="taskPrk" class="form-control">
-    										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${taskPrkList}" itemValue="taskPrkId" itemLabel="name" />
-										</form:select>	   							   								    
-	   								</div>
-
-	   								<div class="form-group">
-	   									<spring:message code="select.chooseOne" var="chooseOne" />
-	   									<spring:message code="createEventTsk.timetable" />
-										<form:select path="timetable" class="form-control">
-    										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${timetableList}" itemValue="timetableId" itemLabel="name" />
-										</form:select>	   							   								    
-	   								</div>
-	   							   	
-                            		<div class="form-group">
-                         		    	<div class="checkbox">                         		    	
-                                			<label class="checkbox-inline">                                        		
-                                        		<form:checkbox path="triggerAlarm" /><spring:message code="createEventTsk.triggerAlarm" />
-                                    		</label>
-                                		</div>
-                                	</div>	
-                                	
-                                	<div class="form-group">
-                                		<div class="checkbox">                                		    
-                                    		<label class="checkbox-inline">
-                                        		<form:checkbox path="triggerMessage" /><spring:message code="createEventTsk.triggerMessage" />                                        	
-                                    		</label>
-                                		</div>
-   							   		</div>	
-	   							   								    	   							   								    
-		    						<div class="button">
-		    							<spring:message code="createEventTsk.submit" var="eventTskSubmit" />
-		        						<input type="submit" value="${eventTskSubmit}" />        
-	    							</div>
-	    						</fieldset>		
-							</form:form>
-							
+                    		  
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>EventTskId</th>
+                                        <th>TagET</th>
+                                        <th>DefinitionET</th>
+                                        <th>tvi</th>
+                                        <th>tvf</th>
+                                        <th>TaskPrk</th>
+                                        <th>Timetable</th>
+                                        <th>TriggerAlarm</th>
+                                        <th>TriggerMessage</th>                                  
+                                    </tr>
+                                </thead>                                
+                                <tbody>
+									<c:forEach var="eventTskValues" items="${eventTskList}">
+                                    	<tr class="active">
+                                    		<td>
+												<spring:url value="/event/updateEvent/${eventTskValues.eventTskId}" var="updateEventUrl" htmlEscape="true"/>
+ 												<a class="text-center" href="${updateEventUrl}">
+                                        			<span class="text-muted small">${eventTskValues.eventTskId}</span> 											
+ 												</a>
+ 											</td>
+                                        	<td><span class="text-muted small">${eventTskValues.tagET}</span></td>
+                                        	<td><span class="text-muted small">${eventTskValues.definitionET}</span></td>
+                                        	<td><span class="text-muted small">${eventTskValues.tvi}</span></td>
+                                        	<td><span class="text-muted small">${eventTskValues.tvf}</span></td>
+                                        	<td><span class="text-muted small">${eventTskValues.taskPrk.taskPrkId}</span></td>
+                                        	<td><span class="text-muted small">${eventTskValues.timetable.timetableId}</span></td>
+                                        	<td><span class="text-muted small">${eventTskValues.triggerAlarm}</span></td>
+                                        	<td><span class="text-muted small">${eventTskValues.triggerMessage}</span></td>
+                                    	</tr>				
+									</c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    		                      		   				   			   	
                     	</div>
                 	</div>
             	</div>

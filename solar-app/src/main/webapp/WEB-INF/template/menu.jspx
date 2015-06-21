@@ -166,7 +166,7 @@
                         	<li>
                         		<spring:url value="/event/showEvents" var="showEventsUrl" htmlEscape="true"/>
 								<a class="text-center" href="${showEventsUrl}">
-                        			<strong><span class="text-muted small"><spring:message code="menu-showMessages" /></span></strong>
+                        			<strong><span class="text-muted small"><spring:message code="menu-showEvents" /></span></strong>
                         			<i class="fa fa-angle-right" ><jsp:text /></i>
                         		</a>
                         	</li>  

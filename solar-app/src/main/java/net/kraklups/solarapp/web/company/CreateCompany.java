@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class CreateCompany {
 
+	private static final Logger logger = LoggerFactory.getLogger(CreateCompany.class);
+
 	@Autowired
 	private UserService userService;
-	
-	private static final Logger logger = LoggerFactory.getLogger(CreateCompany.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.

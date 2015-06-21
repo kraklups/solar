@@ -62,8 +62,7 @@ public class UpdateCompany {
 			
 			logger.info("Update Company page POST!" + merda);
 			
-			return "redirect:/company/showCompanies";
+			return "redirect:/company/showCompanys";
 		}
-	}	
-
+	}
 }
