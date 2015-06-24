@@ -33,7 +33,7 @@
                     	</div>
                     	<div class="panel-body">
 
-							<form:form action="" modelAttribute="elementPrkMock" method="POST" id="elementprkform" >
+							<form:form action="" modelAttribute="elementPrk" method="POST" id="elementprkform" >
     	                        <fieldset>
     	                            <spring:bind path="elementPrkName">           	
 	   									<div class="form-group ${status.error ? 'has-error' : '' }">        
