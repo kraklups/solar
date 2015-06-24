@@ -38,8 +38,8 @@ public class Park implements java.io.Serializable {
 
 	private Long parkId;
 	
-	@NotEmpty
 	@Size(min=6, max=30)
+	@NotEmpty
 	private String parkName;
 	
 	//2014-07-04T12:08:56.235

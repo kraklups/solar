@@ -80,19 +80,10 @@ public class ParkServiceImpl implements ParkService {
 	}	
 	
 	@Override
-	public Park updatePark(Long parkId, String parkName, Date startupDate,
-			Date productionDate, UserProfile userProfile, Company company,
-			MultiPolygon mapPark) throws InstanceNotFoundException {
+	public Park updatePark(Park park) throws InstanceNotFoundException {
 		
-		Park park = parkDao.find(parkId);
-		
-		park.setParkName(parkName);
-		park.setStartupDate(startupDate);
-		park.setProductionDate(productionDate);
-		park.setUserProfile(userProfile);
-		park.setCompany(company);
-		park.setMapPark(mapPark);
-		
+		parkDao.save(park);
+				
 		return park;
 	}
 

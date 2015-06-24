@@ -75,7 +75,7 @@ public class UpdatePark {
 			
 			park.setUserProfile(userService.findUserProfileByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));			
 			
-			Park merda = parkService.savePark(park);
+			Park merda = parkService.updatePark(park);
 			
 			logger.info("Update Park page POST!" + merda);
 			

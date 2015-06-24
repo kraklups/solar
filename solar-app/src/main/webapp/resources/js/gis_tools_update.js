@@ -65,8 +65,6 @@
   SG.serialize = function() {
 	  
     arrayTemp = [];
- 
-    wkt = new OpenLayers.Format.WKT();
             
     xXx = vlayer.features;
 
@@ -91,7 +89,6 @@
     SG.deserialize();
     $('#gisOpenLayers').click(function() {
     	  SG.serialize();
-    	//  alert("click-inside");
     }); 
     
   });

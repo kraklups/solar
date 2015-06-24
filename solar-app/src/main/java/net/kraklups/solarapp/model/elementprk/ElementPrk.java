@@ -44,8 +44,8 @@ public class ElementPrk implements java.io.Serializable {
 	
 	private Long elementPrkId;
 	
-	@NotEmpty
 	@Size(min=6, max=30)
+	@NotEmpty
 	private String elementPrkName;
 	
 	@Size(min=6, max=30)
