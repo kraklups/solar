@@ -77,7 +77,7 @@ public class CreateEvent {
 			
 			logger.info("Create TimetableBlock page POST! " + merda);			
 			
-			return "redirect:/event/ShowEvents";
+			return "redirect:/event/showEvents";
 		}
 			
 	}	

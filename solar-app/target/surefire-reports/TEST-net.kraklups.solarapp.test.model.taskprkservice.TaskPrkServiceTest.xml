@@ -59,9 +59,9 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.011" classname="net.kraklups.solarapp.test.model.taskprkservice.TaskPrkServiceTest" name="testCreateAlarmAndFindAlarm"/>
-  <testcase time="0.01" classname="net.kraklups.solarapp.test.model.taskprkservice.TaskPrkServiceTest" name="testCreateMessageAndFindMessage"/>
+  <testcase time="0.01" classname="net.kraklups.solarapp.test.model.taskprkservice.TaskPrkServiceTest" name="testCreateAlarmAndFindAlarm"/>
+  <testcase time="0.009" classname="net.kraklups.solarapp.test.model.taskprkservice.TaskPrkServiceTest" name="testCreateMessageAndFindMessage"/>
   <testcase time="0.012" classname="net.kraklups.solarapp.test.model.taskprkservice.TaskPrkServiceTest" name="testCreateReportAndFindReport"/>
-  <testcase time="0.013" classname="net.kraklups.solarapp.test.model.taskprkservice.TaskPrkServiceTest" name="testCreateEventTskAndFindEventTsk"/>
-  <testcase time="0.016" classname="net.kraklups.solarapp.test.model.taskprkservice.TaskPrkServiceTest" name="testCreateTaskPrkAndFindElementPrk"/>
+  <testcase time="0.014" classname="net.kraklups.solarapp.test.model.taskprkservice.TaskPrkServiceTest" name="testCreateEventTskAndFindEventTsk"/>
+  <testcase time="0.015" classname="net.kraklups.solarapp.test.model.taskprkservice.TaskPrkServiceTest" name="testCreateTaskPrkAndFindElementPrk"/>
 </testsuite>

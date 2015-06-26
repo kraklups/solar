@@ -1,6 +1,9 @@
 <jsp:root 
 	xmlns:jsp="http://java.sun.com/JSP/Page" 
 	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"	
 	xmlns="http://www.w3.org/1999/xhtml"
 	version="2.0" >
 	
@@ -16,58 +19,106 @@
     
     	<div class="container-fluid">
 
-	    	<div class="row">
-    	    	<div class="col-lg-12">
-        	    	<h2 class="page-header">Parks</h2>
-            	</div>
-        	</div>
+    		<div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header"><spring:message code="createEventTsk.title" /></h2>
+                </div>
+            </div>
             
         	<div class="row">
-                <!-- /.col-lg-12 -->
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Pill Tabs
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-pills">
-                                <li class="active"><a href="#home-pills" data-toggle="tab">Home</a>
-                                </li>
-                                <li><a href="#profile-pills" data-toggle="tab">Profile</a>
-                                </li>
-                                <li><a href="#messages-pills" data-toggle="tab">Messages</a>
-                                </li>
-                                <li><a href="#settings-pills" data-toggle="tab">Settings</a>
-                                </li>
-                            </ul>
+            	<div class="col-lg-12">
+                	<div class="panel panel-default">
+                    	<div class="panel-heading">
+                        	<h3 class="panel-title"><spring:message code="createEventTsk.menuExplanation" /></h3>
+                    	</div>
+                    	<div class="panel-body">
+                    	
+							<form:form modelAttribute="eventTsk" method="POST">
+    	                        <fieldset>	   							    
+									<spring:bind path="tagET">           	
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createEventTsk.tagET" /></label>
+       	        							<form:input path="tagET" class="form-control" placeholder="TagET" autofocus="autofocus" />
+       	        							<form:errors path="tagET" cssClass="control-label" for="inputError" element="label" />
+		   								</div>
+		   							</spring:bind>
 
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div class="tab-pane fade in active" id="home-pills">
-                                    <h4>Home Tab</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                                <div class="tab-pane fade" id="profile-pills">
-                                    <h4>Profile Tab</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                                <div class="tab-pane fade" id="messages-pills">
-                                    <h4>Messages Tab</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                                <div class="tab-pane fade" id="settings-pills">
-                                    <h4>Settings Tab</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-12 -->
+									<spring:bind path="definitionET">           	
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createEventTsk.definitionET" /></label>
+       	        							<form:input path="definitionET" class="form-control" placeholder="DefinitionET" />
+       	        							<form:errors path="definitionET" cssClass="control-label" for="inputError" element="label" />
+		   								</div>
+		   							</spring:bind>
+	   							   		
+									<spring:bind path="tvi">           	
+										<spring:message code="createEventTsk.tvi" var="stdout" />
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>
+		            						<form:input path="tvi" class="form-control" placeholder="${stdout} yyyy-MM-dd'T'HH:mm:ss.SSS" />
+											<form:errors path="tvi" cssClass="control-label" for="inputError" element="label" />		            						
+		   								</div>
+		   							</spring:bind>	   							   		
+
+									<spring:bind path="tvf">        
+	        							<spring:message code="createEventTsk.tvf" var="stdout" />
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>	        							
+		            						<form:input path="tvf" class="form-control" placeholder="Date tvf" />
+											<form:errors path="tvf" cssClass="control-label" for="inputError" element="label" />
+		   								</div>
+		   							</spring:bind>   							   		
+
+									<spring:bind path="taskPrk">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createEventTsk.taskPrk" /></label>
+											<form:select path="taskPrk" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${taskPrkList}" itemValue="taskPrkId" itemLabel="taskName" />
+											</form:select>
+											<form:errors path="taskPrk" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
+
+									<spring:bind path="timetable">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createEventTsk.timetable" /></label>
+											<form:select path="timetable" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${timetableList}" itemValue="timetableId" itemLabel="timetableTag" />
+											</form:select>
+											<form:errors path="timetable" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
+	   							   	
+                            		<div class="form-group">
+                         		    	<div class="checkbox">                         		    	
+                                			<label class="checkbox-inline">                                        		
+                                        		<form:checkbox path="triggerAlarm" /><spring:message code="createEventTsk.triggerAlarm" />
+                                    		</label>
+                                		</div>
+                                	</div>	
+                                	
+                                	<div class="form-group">
+                                		<div class="checkbox">                                		    
+                                    		<label class="checkbox-inline">
+                                        		<form:checkbox path="triggerMessage" /><spring:message code="createEventTsk.triggerMessage" />                                        	
+                                    		</label>
+                                		</div>
+   							   		</div>	
+	   							   								    	   							   								    
+		    						<div class="button">
+		    							<spring:message code="createEventTsk.submit" var="eventTskSubmit" />
+		        						<input type="submit" value="${eventTskSubmit}" />        
+	    							</div>
+	    						</fieldset>		
+							</form:form>
+							
+                    	</div>
+                	</div>
+            	</div>
         	</div>
         
 		</div>
@@ -76,8 +127,8 @@
 	</div>
     <!-- /#page-wrapper -->  
   
-	</div>
-    <!-- /#wrapper -->  
+</div>
+<!-- /#wrapper -->  
     
 	</tiles:putAttribute>
 </tiles:insertDefinition>

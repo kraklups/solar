@@ -49,7 +49,7 @@
 									<c:forEach var="parkValues" items="${ParkList}">
                                     	<tr class="active">
                                     		<td>
-												<spring:url value="/park/updateAlarm/${parkValues.parkId}" var="updateParkUrl" htmlEscape="true"/>
+												<spring:url value="/park/updatePark/${parkValues.parkId}" var="updateParkUrl" htmlEscape="true"/>
  												<a class="text-center" href="${updateParkUrl}">
                                         			<span class="text-muted small">${parkValues.parkId}</span> 											
  												</a>

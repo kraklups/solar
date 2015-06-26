@@ -34,22 +34,31 @@
                     	<div class="panel-body">
                     	
 							<form:form modelAttribute="role" method="POST">
-    	                        <fieldset>	   					
-    	                        
-	   								<div class="form-group">        
-		        						<spring:message code="createRole.roleName" />
-       	        						<form:input path="roleName" class="form-control" placeholder="Role Name" autofocus="autofocus" />
-		   							</div>
+    	                        <fieldset>	   					    	                        
+									<spring:bind path="roleName">           	
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createRole.roleName" /></label>
+       	        							<form:input path="roleName" class="form-control" placeholder="Role Name" autofocus="autofocus" />
+											<form:errors path="roleName" cssClass="control-label" for="inputError" element="label" />
+										</div> 
+									</spring:bind>
     	                            	                        		 
-	   								<div class="form-group">        
-	        							<spring:message code="createRole.date" />
-		            					<form:input path="date" class="form-control" placeholder="MM/DD/YYYY" />
-		   							</div>	    
+									<spring:bind path="date">
+										<spring:message code="createRole.date" var="stdout" />           	
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>	        							
+		            						<form:input path="date" class="form-control" placeholder="${stdout} MM/DD/YYYY" />
+											<form:errors path="date" cssClass="control-label" for="inputError" element="label" />
+										</div> 
+									</spring:bind>
 		   							
-	   								<div class="form-group">        
-	        							<spring:message code="createRole.weight" />
-		            					<form:input path="weight" class="form-control" placeholder="Weight" />
-		   							</div>	    
+									<spring:bind path="weight">           	
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createRole.weight" /></label>
+		            						<form:input path="weight" class="form-control" placeholder="Weight" />
+											<form:errors path="weight" cssClass="control-label" for="inputError" element="label" />
+										</div> 
+									</spring:bind>
 
 		    						<div class="button">
 		    							<spring:message code="createState.submit" var="stateSubmit" />

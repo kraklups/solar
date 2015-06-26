@@ -65,6 +65,7 @@ net/kraklups/solarapp/web/task/UpdateTask.class
 net/kraklups/solarapp/model/elementprk/ElementPrkMock.class
 net/kraklups/solarapp/web/park/ShowParks.class
 net/kraklups/solarapp/model/statetype/StateType.class
+net/kraklups/solarapp/model/taskprkservice/SynchronizeBlock.class
 net/kraklups/solarapp/web/formatters/MediumVoltageFormatter.class
 net/kraklups/solarapp/web/formatters/CounterFormatter.class
 net/kraklups/solarapp/model/elementservice/SensorBlock.class
@@ -115,6 +116,7 @@ net/kraklups/solarapp/web/formatters/RoleFormatter.class
 net/kraklups/solarapp/web/LayoutController.class
 net/kraklups/solarapp/model/alarm/AlarmDTO.class
 net/kraklups/solarapp/web/state/ShowStates.class
+net/kraklups/solarapp/model/userservice/ModuleBlock.class
 net/kraklups/solarapp/web/user/Denied.class
 net/kraklups/solarapp/model/datalogger/DataLoggerDaoHibernate.class
 net/kraklups/solarapp/model/report/ReportDaoHibernate.class
@@ -146,6 +148,7 @@ net/kraklups/solarapp/model/userservice/RoleBlock.class
 net/kraklups/solarapp/model/eventtsk/EventTskDTO.class
 net/kraklups/solarapp/web/report/CreateReport.class
 net/kraklups/solarapp/web/formatters/ElementPrkFormatter.class
+net/kraklups/solarapp/web/formatters/SynchronizeFormatter.class
 net/kraklups/solarapp/model/elementprk/ElementPrkDaoHibernate.class
 net/kraklups/solarapp/web/element/ShowElements.class
 net/kraklups/solarapp/model/elementservice/ElementService.class
@@ -178,6 +181,7 @@ net/kraklups/solarapp/web/module/UpdateModule.class
 net/kraklups/solarapp/model/sensor/SensorDaoHibernate.class
 net/kraklups/solarapp/model/report/Report.class
 net/kraklups/solarapp/model/module/ModuleDao.class
+net/kraklups/solarapp/model/parkservice/StateBlock.class
 net/kraklups/solarapp/model/company/CompanyDaoHibernate.class
 net/kraklups/solarapp/model/alarm/Alarm.class
 net/kraklups/solarapp/model/messageevent/MessageEvent.class

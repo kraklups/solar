@@ -54,7 +54,7 @@
 									<spring:bind path="elementPrk">    	                        	
 	   									<div class="form-group ${status.error ? 'has-error' : '' }">
 	   										<spring:message code="select.chooseOne" var="chooseOne" />
-	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createDataValue.elementPrk" /></label>
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createSensor.elementPrk" /></label>
 											<form:select path="elementPrk" class="form-control">
     											<form:option value="" label="${chooseOne}" />
     											<form:options items="${elementPrkList}" itemValue="elementPrkId" itemLabel="elementPrkName" />

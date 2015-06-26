@@ -52,6 +52,8 @@
         <spring-security.version>3.2.7.RELEASE</spring-security.version>
         <jackson.databind-version>2.5.3</jackson.databind-version>
         <jackson.datatype-version>2.5.3</jackson.datatype-version>
+        <postgis.version>1.5.2</postgis.version>
+        <jts.version>1.13</jts.version>        
 
         <!-- Plugin versions -->
         <mavenCompilerPlugin.version>3.3</mavenCompilerPlugin.version>
@@ -83,6 +85,10 @@
         </repository>
       </repositories>
       <pluginRepositories>
+		<pluginRepository>
+			<id>Hibernate Spatial repo</id>
+			<url>http://www.hibernatespatial.org/repository</url>
+		</pluginRepository>      
       </pluginRepositories>
 
     <!-- ========================================================== -->
@@ -161,12 +167,6 @@
 	</dependencyManagement>    
     <!-- ========================================================== -->	       
     <dependencies>
-        <!-- JDBC driver -->
-        <dependency>
-            <groupId>${jdbcDriver.groupId}</groupId>
-            <artifactId>${jdbcDriver.artifactId}</artifactId>
-            <version>${jdbcDriver.version}</version>
-        </dependency>
         
 		<!-- SLF4J (required by Hibernate) -->
 		<dependency>
@@ -290,13 +290,61 @@
             <artifactId>hibernate-spatial</artifactId>
             <version>${hibernate-spatial.version}</version>
 			<!-- Prevent double inclusion of Hibernate -->
-			<exclusions>
+			<exclusions>			 
         		<exclusion>
             		<groupId>org.hibernate</groupId>
             		<artifactId>hibernate-core</artifactId>
-        		</exclusion>
+        		</exclusion>        	
+				<exclusion>
+					<groupId>postgresql</groupId>
+					<artifactId>postgresql</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.vividsolutions</groupId>
+					<artifactId>jts</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.postgis</groupId>
+					<artifactId>postgis-jdbc</artifactId>
+				</exclusion>
+                <exclusion>
+					<groupId>org.postgresql</groupId>
+					<artifactId>postgresql</artifactId>
+				</exclusion>
     		</exclusions>                        
         </dependency>
+ 
+         <!-- JDBC driver -->
+        <dependency>
+            <groupId>${jdbcDriver.groupId}</groupId>
+            <artifactId>${jdbcDriver.artifactId}</artifactId>
+            <version>${jdbcDriver.version}</version>
+            <scope>provided</scope>
+        </dependency>
+ 
+        <dependency>
+			<groupId>org.postgis</groupId>
+			<artifactId>postgis-jdbc</artifactId>
+			<version>${postgis.version}</version>
+		 	<scope>provided</scope>
+		 	          <exclusions>
+                    <exclusion>
+                        <groupId>postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                    </exclusion>
+                </exclusions>
+		</dependency>        
+     		 
+		<dependency>
+			<groupId>com.vividsolutions</groupId>
+			<artifactId>jts</artifactId>
+			<version>${jts.version}</version>
+		 	<scope>provided</scope>           
+		</dependency>        
         
         <!-- Tiles 3 -->
 		<dependency>
@@ -610,6 +658,16 @@
                         <version>${spring.version}</version>
                         <scope>runtime</scope>
                     </dependency>
+					<dependency>
+						<groupId>org.postgis</groupId>
+						<artifactId>postgis-jdbc</artifactId>
+						<version>${postgis.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>com.vividsolutions</groupId>
+						<artifactId>jts</artifactId>
+						<version>${jts.version}</version>
+					</dependency>                    
                 </dependencies>
             </plugin>
 
