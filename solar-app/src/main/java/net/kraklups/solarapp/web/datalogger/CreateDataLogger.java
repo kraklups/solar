@@ -58,6 +58,8 @@ public class CreateDataLogger {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createDataLogger.jspx page");
 			
+			initModelListDataLogger(model);
+			
 			return "dataLogger/createDataLogger";
 		} else {
 			logger.info("Create DataLogger page! " + "datalogger: " + dataLogger);

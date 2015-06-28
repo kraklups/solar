@@ -76,7 +76,7 @@ public class UpdateMessage {
 	
 	private void initModelListEventTsk(Model model) throws InstanceNotFoundException {
 		List <EventTsk> eventTskList = taskPrkService.getEventTsks(startIndex, EVENTTSK_PER_PAGE).getEventTsks();
-		model.addAttribute(eventTskList);
+		model.addAttribute("eventTskList", eventTskList);
 	}	
 
 }

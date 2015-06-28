@@ -70,6 +70,8 @@ public class CreatePark {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createPark.jspx page");
 			
+			initModelListCompany(model);
+			
 			return "park/createPark";
 		} else {
 			

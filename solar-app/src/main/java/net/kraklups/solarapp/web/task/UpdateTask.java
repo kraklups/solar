@@ -8,6 +8,7 @@ import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.parkservice.ParkService;
+import net.kraklups.solarapp.model.report.Report;
 import net.kraklups.solarapp.model.role.Role;
 import net.kraklups.solarapp.model.taskprk.TaskPrk;
 import net.kraklups.solarapp.model.taskprkservice.TaskPrkService;
@@ -92,6 +93,7 @@ public class UpdateTask {
 			return "redirect:/task/showTasks";
 		}
 	}	
+
 	private void initModelListPark(Model model) throws InstanceNotFoundException {
 		List <Park> parkList = parkService.getParks(startIndex, PARK_PER_PAGE).getParks();
 		model.addAttribute("parkList",parkList);
@@ -100,6 +102,12 @@ public class UpdateTask {
 	private void initModelListRole(Model model) throws InstanceNotFoundException {
 		List <Role> roleList = userService.getRoles(startIndex, ROLE_PER_PAGE).getRoles();
 		model.addAttribute("roleList",roleList);
+	}	
+	
+	@SuppressWarnings("unused")
+	private void initModelListReport(Model model) throws InstanceNotFoundException {
+		List <Report> reportList = taskPrkService.getReports(startIndex, ROLE_PER_PAGE).getReports();
+		model.addAttribute("reportList",reportList);
 	}			
 	
 }

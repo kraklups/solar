@@ -65,6 +65,10 @@ public class Register {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createUserProfile.jspx page");
 			
+			initModelListCompany(model);
+			
+			initModelListRole(model);			
+			
 			return "user/register";
 		} else {
 			

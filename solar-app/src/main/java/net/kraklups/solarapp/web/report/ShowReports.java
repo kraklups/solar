@@ -46,7 +46,7 @@ public class ShowReports {
 
 	private void initModelListReport(Model model) throws InstanceNotFoundException {
 		List <Report> ReportList = taskPrkService.getReports(startIndex, REPORT_PER_PAGE).getReports();
-		model.addAttribute("ReportList",ReportList);
+		model.addAttribute("reportList",ReportList);
 	}	
 	
 }

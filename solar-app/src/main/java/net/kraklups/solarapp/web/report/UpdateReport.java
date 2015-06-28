@@ -1,14 +1,11 @@
 package net.kraklups.solarapp.web.report;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.report.Report;
 import net.kraklups.solarapp.model.taskprkservice.TaskPrkService;
-import net.kraklups.solarapp.model.userprofile.UserProfile;
 import net.kraklups.solarapp.model.userservice.UserService;
 
 import org.slf4j.Logger;
@@ -29,11 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UpdateReport {
 
-	private final static int USERPROFILE_PER_PAGE = 50;
-
 	private static final Logger logger = LoggerFactory.getLogger(CreateReport.class);
-	
-	private int startIndex = 0;
 	
 	@Autowired
 	private UserService userService;	
@@ -54,7 +47,6 @@ public class UpdateReport {
 		Report report = taskPrkService.findReport(Long.valueOf(reportId));
 		
 		model.addAttribute("report", report);
-		initModelListUserProfile(model);
 				
 		return "report/updateReport";
 	}
@@ -83,11 +75,5 @@ public class UpdateReport {
 			return "redirect:/report/showReports";
 		}
 	}
-	
-	private void initModelListUserProfile(Model model) throws InstanceNotFoundException {
-		List <UserProfile> userProfileList = userService.getUserProfiles(startIndex, USERPROFILE_PER_PAGE).getUserProfiles();
-		model.addAttribute(userProfileList);
-	}		
-
 	
 }

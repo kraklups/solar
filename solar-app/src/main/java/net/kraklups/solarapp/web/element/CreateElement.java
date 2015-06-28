@@ -107,6 +107,24 @@ public class CreateElement {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
+			initModelListPark(model);
+			
+			initModelListDataLogger(model);
+			
+			initModelListStringLine(model);
+			
+			initModelListArrayBox(model);
+			
+			initModelListArrayPanel(model);
+			
+			initModelListCounter(model);
+			
+			initModelListElectricalSubstation(model);
+			
+			initModelListExtractionPoint(model);
+			
+			initModelListMediumVoltage(model);
+			
 			return "element/createElement";
 		} else {
 			logger.info("Create ElementPrk page! " + "elementPrk: " + elementPrk.getElementPrkId());
@@ -432,43 +450,42 @@ public class CreateElement {
 	
 	private void initModelListDataLogger(Model model) throws InstanceNotFoundException {
 		List <DataLogger> dataLoggerList = dataService.getDataLoggers(startIndex, DATALOGGER_PER_PAGE).getDataLoggers();
-		model.addAttribute(dataLoggerList);
+		model.addAttribute("dataLoggerList", dataLoggerList);
 	}	
 	
 	private void initModelListStringLine(Model model) throws InstanceNotFoundException {
 		List <StringLine> stringLineList = elementService.getStringLines(startIndex, STRINGLINE_PER_PAGE).getStringLines();
-		model.addAttribute(stringLineList);
+		model.addAttribute("stringLineList", stringLineList);
 	}
 	
 	private void initModelListArrayPanel(Model model) throws InstanceNotFoundException {
 		List <ArrayPanel> arrayPanelList = elementService.getArrayPanels(startIndex, STRINGLINE_PER_PAGE).getArrayPanels();
-		model.addAttribute(arrayPanelList);
+		model.addAttribute("arrayPanelList", arrayPanelList);
 	}
 	
 	private void initModelListMediumVoltage(Model model) throws InstanceNotFoundException {
 		List <MediumVoltage> mediumVoltageList = elementService.getMediumVoltages(startIndex, STRINGLINE_PER_PAGE).getMediumVoltages();
-		model.addAttribute(mediumVoltageList);
+		model.addAttribute("mediumVoltageList", mediumVoltageList);
 	}	
 	
 	private void initModelListCounter(Model model) throws InstanceNotFoundException {
 		List <Counter> counterList = elementService.getCounters(startIndex, STRINGLINE_PER_PAGE).getCounters();
-		model.addAttribute(counterList);
+		model.addAttribute("counterList", counterList);
 	}	
 	
 	private void initModelListArrayBox(Model model) throws InstanceNotFoundException {
 		List <ArrayBox> arrayBoxList = elementService.getArrayBoxs(startIndex, STRINGLINE_PER_PAGE).getArrayBoxs();
-		model.addAttribute(arrayBoxList);
+		model.addAttribute("arrayBoxList", arrayBoxList);
 	}
 	
 	private void initModelListElectricalSubstation(Model model) throws InstanceNotFoundException {
 		List <ElectricalSubstation> electricalSubstationList = elementService.getElectricalSubstations(startIndex, STRINGLINE_PER_PAGE).getElectricalSubstations();
-		model.addAttribute(electricalSubstationList);
+		model.addAttribute("electricalSubstationList", electricalSubstationList);
 	}	
 	
 	private void initModelListExtractionPoint(Model model) throws InstanceNotFoundException {
 		List <ExtractionPoint> extractionPointList = elementService.getExtractionPoints(startIndex, STRINGLINE_PER_PAGE).getExtractionPoints();
-		model.addAttribute(extractionPointList);
+		model.addAttribute("extractionPointList", extractionPointList);
 	}	
-	
-	
+		
 }

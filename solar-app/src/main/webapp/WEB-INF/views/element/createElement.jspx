@@ -34,7 +34,7 @@
                     	<div class="panel-body">
 
 							<select id="ElementPrkJS" >
-    							<option name="ElementPrk">TaskPrk</option>
+    							<option name="ElementPrk">ElementPrk</option>
     							<option name="ArrayBox">ArrayBox</option>
     							<option name="ArrayPanel">ArrayPanel</option>
     							<option name="Cell">Cell</option>

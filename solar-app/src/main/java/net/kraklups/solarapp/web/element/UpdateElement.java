@@ -8,7 +8,14 @@ import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.dataservice.DataService;
+import net.kraklups.solarapp.model.elementprk.ArrayBox;
+import net.kraklups.solarapp.model.elementprk.ArrayPanel;
+import net.kraklups.solarapp.model.elementprk.Counter;
+import net.kraklups.solarapp.model.elementprk.ElectricalSubstation;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
+import net.kraklups.solarapp.model.elementprk.ExtractionPoint;
+import net.kraklups.solarapp.model.elementprk.MediumVoltage;
+import net.kraklups.solarapp.model.elementprk.StringLine;
 import net.kraklups.solarapp.model.elementservice.ElementService;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.parkservice.ParkService;
@@ -35,6 +42,8 @@ public class UpdateElement {
 	private final static int PARK_PER_PAGE = 50;
 		
 	private final static int DATALOGGER_PER_PAGE = 50;	
+	
+	private final static int STRINGLINE_PER_PAGE = 50;
 
 	private static final Logger logger = LoggerFactory.getLogger(UpdateElement.class);
 	
@@ -104,7 +113,49 @@ public class UpdateElement {
 	
 	private void initModelListDataLogger(Model model) throws InstanceNotFoundException {
 		List <DataLogger> dataLoggerList = dataService.getDataLoggers(startIndex, DATALOGGER_PER_PAGE).getDataLoggers();
-		model.addAttribute(dataLoggerList);
+		model.addAttribute("dataLoggerList", dataLoggerList);
+	}	
+	
+	@SuppressWarnings("unused")
+	private void initModelListStringLine(Model model) throws InstanceNotFoundException {
+		List <StringLine> stringLineList = elementService.getStringLines(startIndex, STRINGLINE_PER_PAGE).getStringLines();
+		model.addAttribute("stringLineList", stringLineList);
+	}
+	
+	@SuppressWarnings("unused")
+	private void initModelListArrayPanel(Model model) throws InstanceNotFoundException {
+		List <ArrayPanel> arrayPanelList = elementService.getArrayPanels(startIndex, STRINGLINE_PER_PAGE).getArrayPanels();
+		model.addAttribute("arrayPanelList", arrayPanelList);
+	}
+	
+	@SuppressWarnings("unused")
+	private void initModelListMediumVoltage(Model model) throws InstanceNotFoundException {
+		List <MediumVoltage> mediumVoltageList = elementService.getMediumVoltages(startIndex, STRINGLINE_PER_PAGE).getMediumVoltages();
+		model.addAttribute("mediumVoltageList", mediumVoltageList);
+	}	
+	
+	@SuppressWarnings("unused")
+	private void initModelListCounter(Model model) throws InstanceNotFoundException {
+		List <Counter> counterList = elementService.getCounters(startIndex, STRINGLINE_PER_PAGE).getCounters();
+		model.addAttribute("counterList", counterList);
+	}	
+	
+	@SuppressWarnings("unused")
+	private void initModelListArrayBox(Model model) throws InstanceNotFoundException {
+		List <ArrayBox> arrayBoxList = elementService.getArrayBoxs(startIndex, STRINGLINE_PER_PAGE).getArrayBoxs();
+		model.addAttribute("arrayBoxList", arrayBoxList);
+	}
+	
+	@SuppressWarnings("unused")
+	private void initModelListElectricalSubstation(Model model) throws InstanceNotFoundException {
+		List <ElectricalSubstation> electricalSubstationList = elementService.getElectricalSubstations(startIndex, STRINGLINE_PER_PAGE).getElectricalSubstations();
+		model.addAttribute("electricalSubstationList", electricalSubstationList);
+	}	
+	
+	@SuppressWarnings("unused")
+	private void initModelListExtractionPoint(Model model) throws InstanceNotFoundException {
+		List <ExtractionPoint> extractionPointList = elementService.getExtractionPoints(startIndex, STRINGLINE_PER_PAGE).getExtractionPoints();
+		model.addAttribute("extractionPointList", extractionPointList);
 	}	
 	
 }

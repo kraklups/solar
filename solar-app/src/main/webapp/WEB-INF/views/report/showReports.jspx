@@ -46,7 +46,7 @@
                                     </tr>
                                 </thead>                                
                                 <tbody>
-									<c:forEach var="reportValues" items="${ReportList}">
+									<c:forEach var="reportValues" items="${reportList}">
                                     	<tr class="active">
                                     		<td>
 												<spring:url value="/report/showReport/${reportValues.reportId}" var="showReportUrl" htmlEscape="true"/>

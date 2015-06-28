@@ -57,6 +57,8 @@ public class CreateSensor {
 		
 		if(result.hasErrors()) {
 			logger.info("Returning after error createSensor.jspx page");
+			
+			initModelListElementPrk(model);
 
 			return "sensor/createSensor";
 		} else {

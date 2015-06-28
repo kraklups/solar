@@ -82,6 +82,12 @@ public class CreateTask {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createTask.jspx merde page");
 			
+			initModelListPark(model);
+			
+			initModelListRole(model);		
+			
+			initModelListReport(model);			
+			
 			return "task/createTask";
 		} else {
 			logger.info("Create TaskPrk page! " + "taskPrk: " + taskPrk.getTaskPrkId());

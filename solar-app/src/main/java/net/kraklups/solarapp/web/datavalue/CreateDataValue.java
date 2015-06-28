@@ -81,6 +81,14 @@ public class CreateDataValue {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createDataValue.jspx page");
 			
+			initModelListDataLogger(model);
+			
+			initModelListSensor(model);
+			
+			initModelListSynchronize(model);
+			
+			initModelListElementPrk(model);			
+			
 			return "dataValue/createDataValue";
 		} else {
 			logger.info("Create DataValue page! " + "dataValue: " + dataValue);

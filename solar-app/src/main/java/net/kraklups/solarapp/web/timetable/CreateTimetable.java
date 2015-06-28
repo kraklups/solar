@@ -65,6 +65,9 @@ public class CreateTimetable {
 		logger.info("Create TimetableBlock page POST!" + "timetableTag: " + timetable.getTimetableTag());
 					
 		if(result.hasErrors()) {
+			
+			initModelListPark(model);
+			
 			return "timetable/createTimetable";
 		} else {
 			logger.info("Create Timetable page POST!");

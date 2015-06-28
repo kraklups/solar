@@ -59,6 +59,8 @@ public class CreateMessage {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createMessage.jspx page");
 			
+			initModelListEventTsk(model);
+			
 			return "message/createMessage";
 		} else {
 			logger.info("Create MessageEvent page !" + "messageEvent: " + messageEvent);
@@ -75,7 +77,7 @@ public class CreateMessage {
 
 	private void initModelListEventTsk(Model model) throws InstanceNotFoundException {
 		List <EventTsk> eventTskList = taskPrkService.getEventTsks(startIndex, EVENTTSK_PER_PAGE).getEventTsks();
-		model.addAttribute(eventTskList);
+		model.addAttribute("eventTskList", eventTskList);
 	}	
 	
 }
