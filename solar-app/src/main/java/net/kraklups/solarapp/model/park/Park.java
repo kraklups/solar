@@ -31,15 +31,15 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 
 @Entity
 @Table(name="Park", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "parkName") })
+	@UniqueConstraint(columnNames = "parkName") })
 public class Park implements java.io.Serializable {
 	
 	private static final long serialVersionUID = 2984860031831160751L;
 
 	private Long parkId;
 	
-	@Size(min=6, max=30)
 	@NotEmpty
+	@Size(min=6, max=30)
 	private String parkName;
 	
 	//2014-07-04T12:08:56.235
@@ -133,6 +133,7 @@ public class Park implements java.io.Serializable {
 		this.mapPark = mapPark;
 	}
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="companyId")	
 	public Company getCompany(){
@@ -146,9 +147,8 @@ public class Park implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "Park [parkId=" + parkId + ", nombre=" + parkName + ", startupDate=" + startupDate +
-                       ", productionDate=" + productionDate + ", company=" + company.getCompanyName() + 
-                       ", user_author=" + userProfile.getLoginName() + 
-                       "mapPark=" + mapPark.toText() + "]";
+                       ", productionDate=" + productionDate + "]";
+                       
 	}	
 	
 }

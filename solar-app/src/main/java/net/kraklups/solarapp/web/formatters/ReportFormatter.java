@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class ReportFormatter implements Formatter<Report> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ReportFormatter.class);
 	
 	@Override
 	public String print(Report report, Locale locale) {
 		
-		logger.info("merde print: " + report);
+//		logger.info("merde print: " + report);
 		
 		return report.getReportId().toString();
 	}
@@ -26,7 +27,7 @@ public class ReportFormatter implements Formatter<Report> {
 	@Override
 	public Report parse(String reportId, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + reportId);
+//		logger.info("merde parse: " + reportId);
 		
 		Report report = new Report();
 		report.setReportId(Long.parseLong(reportId));

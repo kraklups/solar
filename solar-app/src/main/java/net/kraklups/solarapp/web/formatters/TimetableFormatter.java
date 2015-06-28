@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class TimetableFormatter implements Formatter<Timetable> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(TimetableFormatter.class);
 	
 	@Override
 	public String print(Timetable timetable, Locale locale) {
 		
-		logger.info("merde print: " + timetable);
+//		logger.info("merde print: " + timetable);
 		
 		return timetable.getTimetableId().toString();
 	}
@@ -26,7 +27,7 @@ public class TimetableFormatter implements Formatter<Timetable> {
 	@Override
 	public Timetable parse(String timetableId, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + timetableId);
+//		logger.info("merde parse: " + timetableId);
 		
 		Timetable timetable = new Timetable();
 		timetable.setTimetableId(Long.parseLong(timetableId));

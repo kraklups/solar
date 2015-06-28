@@ -13,20 +13,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class ArrayBoxFormatter implements Formatter<ArrayBox> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ArrayBoxFormatter.class);
 	
 	@Override
 	public String print(ArrayBox arrayBox, Locale locale) {
-		
-		logger.info("merde print: " + arrayBox);
-		
+	
 		return arrayBox.getArrayBoxId().toString();
 	}
 
 	@Override
 	public ArrayBox parse(String arrayBoxId, Locale locale) throws ParseException {
-		
-		logger.info("merde parse: " + arrayBoxId);
 		
 		ArrayBox arrayBox = new ArrayBox();
 		arrayBox.setArrayBoxId(Long.parseLong(arrayBoxId));

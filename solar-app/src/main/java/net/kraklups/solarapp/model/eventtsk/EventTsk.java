@@ -29,12 +29,12 @@ public class EventTsk {
 	
 	private Long eventTskId;
 	
-	@NotEmpty
-	@Size(min=8, max=30)	
+	@Size(min=8, max=30)
+	@NotEmpty	
 	private String tagET;
 	
+	@Size(min=8, max=30)
 	@NotEmpty
-	@Size(min=8, max=30)	
 	private String definitionET;
 	
 	//2014-07-04T12:08:56.235
@@ -49,6 +49,7 @@ public class EventTsk {
 	
 	private TaskPrk taskPrk;
 	private Timetable timetable;
+	
 	private Boolean triggerAlarm;
 	private Boolean triggerMessage;
 
@@ -116,7 +117,7 @@ public class EventTsk {
 		this.definitionET = definitionET;
 	}
 	
-	
+	@NotNull	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="taskPrkId")	
 	public TaskPrk getTaskPrk(){
@@ -127,6 +128,7 @@ public class EventTsk {
 		this.taskPrk = taskPrk;
 	}
 	
+	@NotNull	
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="timetableId")	
 	public Timetable getTimetable(){
@@ -157,7 +159,7 @@ public class EventTsk {
 	public String toString() {
 		return "EventTsk [eventTskId=" + eventTskId + ", tag=" + tagET +
 			", definition=" + definitionET + ", tvi=" + tvi + ", tvf=" + tvf + ", triggerAlarm=" + triggerAlarm + 
-			", triggerMessage=" + triggerMessage + ", timetableId=" + timetable.getTimetableId() + ", taskPrkId=" + taskPrk.getTaskPrkId() + "]";
+			", triggerMessage=" + triggerMessage + "]";
 	}
 	
 }

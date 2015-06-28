@@ -16,6 +16,7 @@ import com.vividsolutions.jts.io.WKTWriter;
 @Component
 public class MapElementFormatter implements Formatter<Point>{
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MapElementFormatter.class);
 	
 	private static final int SRID = 4326;
@@ -26,7 +27,7 @@ public class MapElementFormatter implements Formatter<Point>{
 		WKTWriter toText = new WKTWriter();
 		String wkt = toText.write(mapElement);
 		
-		logger.info("merde print: " + SRID + "|" + wkt);
+//		logger.info("merde print: " + SRID + "|" + wkt);
 		
 		return wkt;
 	}
@@ -34,7 +35,7 @@ public class MapElementFormatter implements Formatter<Point>{
 	@Override
 	public Point parse(String mapElement, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + mapElement);
+//		logger.info("merde parse: " + mapElement);
 		
 		WKTReader fromText = new WKTReader();
         Geometry geom = null;

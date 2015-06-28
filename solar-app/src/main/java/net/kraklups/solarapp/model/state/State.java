@@ -89,6 +89,7 @@ public class State {
 		this.tvf = tvf;
 	}
 	
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="parkId")	
 	public Park getPark(){
@@ -99,6 +100,7 @@ public class State {
 		this.park = park;
 	}
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="eventTskId")	
 	public EventTsk getEventTsk(){
@@ -109,6 +111,7 @@ public class State {
 		this.eventTsk = eventTsk;
 	}	
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="upkeepId")	
 	public Upkeep getUpkeep(){
@@ -119,6 +122,7 @@ public class State {
 		this.upkeep = upkeep;
 	}
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="stateTypeId")	
 	public StateType getStateType(){
@@ -131,8 +135,6 @@ public class State {
 	
 	@Override
 	public String toString() {
-		return "State [stateId=" + stateId + ", tvi=" + tvi + ", tvf=" + tvf + ", Park=" + park.getParkName() +
-				", EventTsk=" + eventTsk.getEventTskId() + ", TaskPrk=" + upkeep.getUpkeepId() + 
-				", StateType=" + stateType.getStateTypeId() +  "]";
+		return "State [stateId=" + stateId + ", tvi=" + tvi + ", tvf=" + tvf +  "]";
 	}
 }

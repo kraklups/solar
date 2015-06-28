@@ -45,7 +45,7 @@ public class ShowParks {
 
 	private void initModelListPark(Model model) throws InstanceNotFoundException {
 		List <Park> parkList = parkService.getParks(startIndex, PARK_PER_PAGE).getParks();
-		model.addAttribute("ParkList",parkList);
+		model.addAttribute("parkList",parkList);
 	}		
 	
 }

@@ -84,7 +84,7 @@
 	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createState.upkeep" /></label>
 											<form:select path="upkeep" class="form-control">
     											<form:option value="" label="${chooseOne}" />
-    											<form:options items="${upkeepList}" itemValue="upkeepId" itemLabel="upkeepId" />
+    											<form:options items="${upkeepList}" itemValue="upkeepId" itemLabel="taskName" />
 											</form:select>
 											<form:errors path="upkeep" cssClass="control-label" for="inputError" element="label" />	   							   								    
 	   									</div>

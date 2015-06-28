@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -79,6 +80,7 @@ public class DataLogger {
 		this.dataLoggerType = dataLoggerType;
 	}	
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="dataLoggerFK")
 	public DataLogger getDataLoggerManager(){
@@ -101,7 +103,7 @@ public class DataLogger {
 	@Override
 	public String toString() {
 		return "Park [dataLoggerId=" + dataLoggerId + ", dataLoggerTag=" + dataLoggerTag + ", dataLoggerType=" + dataLoggerType +  
-                       ", DataLoggerSupervise=" + dataLoggerManager.getDataLoggerId() + "]";
+                       ", DataLoggerSupervise=" + "]";
 	}		
 	
 }

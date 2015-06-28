@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class ExtractionPointFormatter implements Formatter<ExtractionPoint> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ExtractionPointFormatter.class);
 	
 	@Override
 	public String print(ExtractionPoint extractionPoint, Locale locale) {
 		
-		logger.info("merde print: " + extractionPoint);
+//		logger.info("merde print: " + extractionPoint);
 		
 		return extractionPoint.getExtractionPointId().toString();
 	}
@@ -26,7 +27,7 @@ public class ExtractionPointFormatter implements Formatter<ExtractionPoint> {
 	@Override
 	public ExtractionPoint parse(String extractionPointId, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + extractionPointId);
+//		logger.info("merde parse: " + extractionPointId);
 		
 		ExtractionPoint extractionPoint = new ExtractionPoint();
 		extractionPoint.setExtractionPointId(Long.parseLong(extractionPointId));

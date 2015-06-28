@@ -161,6 +161,7 @@ public class ElementPrk implements java.io.Serializable {
 		this.userProfile = userProfile;
 	}
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="dataLoggerId")	
 	public DataLogger getDataLogger(){
@@ -171,6 +172,7 @@ public class ElementPrk implements java.io.Serializable {
 		this.dataLogger = dataLogger;
 	}
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="parkId")	
 	public Park getPark(){
@@ -206,11 +208,7 @@ public class ElementPrk implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "ElementPrk [elementPrkId=" + elementPrkId + ", nombre=" + elementPrkName + ", tag=" + elementPrkTag +
-                       ", tvi=" + tvi + ", lastAccess=" + lastAccess + 
-                       ", user_author =" + userProfile.getLoginName() + 
-                       ", dataLoggerTag =" + dataLogger.getDataLoggerTag() +
-                       ", parkName =" + park.getParkName() +
-                       ", mapElement =" + mapElement.toText() + "]";
+                       ", tvi=" + tvi + ", lastAccess=" + lastAccess + "]";
 	}
 	
 }

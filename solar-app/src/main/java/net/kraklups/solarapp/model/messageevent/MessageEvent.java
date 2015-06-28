@@ -80,6 +80,7 @@ public class MessageEvent {
 		this.messageEventText = messageEventText;
 	}
 	
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="eventTskId")	
 	public EventTsk getEventTsk(){

@@ -21,11 +21,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
  * Handles requests for the application about page.
  */
 @Controller
+@SessionAttributes("eventTsk")
 public class CreateEvent {
 
 	private final static int TASKPRK_PER_PAGE = 50;
@@ -60,12 +62,21 @@ public class CreateEvent {
 		return "event/createEvent";
 	}
 	
+	@RequestMapping(value = "/event/createEvent", method = RequestMethod.PUT)
+	public String createEventPut() {
+		return null;
+	}	
+	
 	@RequestMapping(value = "/event/createEvent", method = RequestMethod.POST)
 	public String createEventPost(@Valid @ModelAttribute("eventTsk") EventTsk eventTsk, BindingResult result, Model model) 
 			throws DuplicateInstanceException, InstanceNotFoundException {
 				
 		if(result.hasErrors()) {
-			logger.info("Returning after error createEvent.jspx page");
+			logger.info("Returning after error createEvent.jspx page");		
+			
+			initModelListTaskPrk(model);
+			
+			initModelListTimetable(model);			
 			
 			return "event/createEvent";
 		} else {

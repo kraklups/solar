@@ -16,6 +16,7 @@ import com.vividsolutions.jts.io.WKTWriter;
 @Component
 public class MapParkFormatter implements Formatter<MultiPolygon> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MapParkFormatter.class);
 	
 	private static final int SRID = 4326;
@@ -26,7 +27,7 @@ public class MapParkFormatter implements Formatter<MultiPolygon> {
 		WKTWriter toText = new WKTWriter();
 		String wkt = toText.write(mapPark);
 		
-		logger.info("merde print: " + SRID + "|" + wkt);
+//		logger.info("merde print: " + SRID + "|" + wkt);
 		
 		return wkt;
 	}
@@ -34,7 +35,7 @@ public class MapParkFormatter implements Formatter<MultiPolygon> {
 	@Override
 	public MultiPolygon parse(String mapPark, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + mapPark);
+//		logger.info("merde parse: " + mapPark);
 		
 		WKTReader fromText = new WKTReader();
         Geometry geom = null;

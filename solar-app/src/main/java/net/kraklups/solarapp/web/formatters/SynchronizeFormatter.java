@@ -8,15 +8,18 @@ import net.kraklups.solarapp.model.taskprk.Synchronize;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.format.Formatter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SynchronizeFormatter implements Formatter<Synchronize> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(SynchronizeFormatter.class);
 	
 	@Override
 	public String print(Synchronize synchronize, Locale locale) {
 		
-		logger.info("merde print: " + synchronize);
+//		logger.info("merde print: " + synchronize);
 		
 		return synchronize.getSynchronizeId().toString();
 	}
@@ -24,7 +27,7 @@ public class SynchronizeFormatter implements Formatter<Synchronize> {
 	@Override
 	public Synchronize parse(String synchronizeId, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + synchronizeId);
+//		logger.info("merde parse: " + synchronizeId);
 		
 		Synchronize synchronize = new Synchronize();
 		synchronize.setSynchronizeId(Long.parseLong(synchronizeId));

@@ -86,6 +86,7 @@ public class Alarm implements java.io.Serializable {
 		this.alarmTag = alarmTag;
 	}
 	
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="eventTskId")	
 	public EventTsk getEventTsk(){

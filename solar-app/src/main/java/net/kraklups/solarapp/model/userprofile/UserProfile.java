@@ -200,6 +200,7 @@ public class UserProfile implements java.io.Serializable {
 		this.accountNonLocked = accountNonLocked;
 	}
 	
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="companyId")
 	public Company getCompany() {
@@ -210,6 +211,7 @@ public class UserProfile implements java.io.Serializable {
 		this.company = company;
 	}
 	
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="roleId")
 	public Role getRole() {

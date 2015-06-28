@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class UpkeepFormatter implements Formatter<Upkeep> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(UpkeepFormatter.class);
 	
 	@Override
 	public String print(Upkeep upkeep, Locale locale) {
 		
-		logger.info("merde print: " + upkeep);
+//		logger.info("merde print: " + upkeep);
 		
 		return upkeep.getUpkeepId().toString();
 	}
@@ -26,7 +27,7 @@ public class UpkeepFormatter implements Formatter<Upkeep> {
 	@Override
 	public Upkeep parse(String upkeepId, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + upkeepId);
+//		logger.info("merde parse: " + upkeepId);
 		
 		Upkeep upkeep = new Upkeep();
 		upkeep.setUpkeepId(Long.parseLong(upkeepId));

@@ -10,24 +10,20 @@ import org.slf4j.LoggerFactory;
 import org.springframework.format.Formatter;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class CounterFormatter implements Formatter<Counter> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(CounterFormatter.class);
 	
 	@Override
 	public String print(Counter counter, Locale locale) {
-		
-		logger.info("merde print: " + counter);
-		
+
 		return counter.getCounterId().toString();
 	}
 
 	@Override
 	public Counter parse(String counterId, Locale locale) throws ParseException {
-		
-		logger.info("merde parse: " + counterId);
 		
 		Counter counter = new Counter();
 		counter.setCounterId(Long.parseLong(counterId));

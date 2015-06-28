@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataLoggerFormatter implements Formatter<DataLogger> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(DataLoggerFormatter.class);
 	
 	@Override
 	public String print(DataLogger dataLogger, Locale locale) {
 		
-		logger.info("merde print: " + dataLogger);
+//		logger.info("merde print: " + dataLogger);
 		
 		return dataLogger.getDataLoggerId().toString();
 	}
@@ -26,7 +27,7 @@ public class DataLoggerFormatter implements Formatter<DataLogger> {
 	@Override
 	public DataLogger parse(String dataLoggerId, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + dataLoggerId);
+//		logger.info("merde parse: " + dataLoggerId);
 		
 		DataLogger dataLogger = new DataLogger();
 		dataLogger.setDataLoggerId(Long.parseLong(dataLoggerId));

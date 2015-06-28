@@ -125,7 +125,7 @@ public class Report {
 	@Override
 	public String toString() {
 		return "Report [reportId=" + reportId + ", reportTitle=" + reportTitle +
-			", dateRequest=" + dateRequest + ", dateServed=" + dateServed + ", loginRequest=" + userProfile.getLoginName() +
+			", dateRequest=" + dateRequest + ", dateServed=" + dateServed + 
 			", urlReport=" + urlReport + "]";
 	}		
 	

@@ -13,20 +13,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class ArrayPanelFormatter implements Formatter<ArrayPanel>{
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ArrayPanelFormatter.class);
 	
 	@Override
 	public String print(ArrayPanel arrayPanel, Locale locale) {
-		
-		logger.info("merde print: " + arrayPanel);
 		
 		return arrayPanel.getArrayPanelId().toString();
 	}
 
 	@Override
 	public ArrayPanel parse(String arrayPanelId, Locale locale) throws ParseException {
-		
-		logger.info("merde parse: " + arrayPanelId);
 		
 		ArrayPanel arrayPanel = new ArrayPanel();
 		arrayPanel.setArrayPanelId(Long.parseLong(arrayPanelId));

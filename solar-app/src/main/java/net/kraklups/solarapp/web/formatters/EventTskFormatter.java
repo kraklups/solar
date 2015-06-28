@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class EventTskFormatter implements Formatter<EventTsk> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(EventTskFormatter.class);
 	
 	@Override
 	public String print(EventTsk eventTsk, Locale locale) {
 		
-		logger.info("merde print: " + eventTsk);
+//		logger.info("merde print: " + eventTsk);
 		
 		return eventTsk.getEventTskId().toString();
 	}
@@ -26,7 +27,7 @@ public class EventTskFormatter implements Formatter<EventTsk> {
 	@Override
 	public EventTsk parse(String eventTskId, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + eventTskId);
+//		logger.info("merde parse: " + eventTskId);
 		
 		EventTsk eventTsk = new EventTsk();
 		eventTsk.setEventTskId(Long.parseLong(eventTskId));

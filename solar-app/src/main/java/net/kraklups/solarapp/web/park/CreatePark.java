@@ -44,13 +44,15 @@ public class CreatePark {
 	private UserService userService;			
 		
 	@RequestMapping(value = "/park/createPark", method = RequestMethod.GET)
-	public String createParkGet(Model model) throws InstanceNotFoundException {
+	public String createParkGet(Model model) 
+			throws InstanceNotFoundException {
 		
 		logger.info("Create Park page GET!");
 				
 		Park park = new Park();
 		
-		model.addAttribute("park", park);		
+		model.addAttribute("park", park);	
+		
 		initModelListCompany(model);
 		
 		return "park/createPark";
@@ -67,8 +69,6 @@ public class CreatePark {
 								
 		if(result.hasErrors()) {
 			logger.info("Returning after error createPark.jspx page");
-			
-			initModelListCompany(model);
 			
 			return "park/createPark";
 		} else {

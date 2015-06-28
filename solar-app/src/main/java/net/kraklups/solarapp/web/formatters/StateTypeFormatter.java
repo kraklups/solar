@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class StateTypeFormatter implements Formatter<StateType> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(StateTypeFormatter.class);
 	
 	@Override
 	public String print(StateType stateType, Locale locale) {
 		
-		logger.info("merde print: " + stateType);
+//		logger.info("merde print: " + stateType);
 		
 		return stateType.getStateTypeId().toString();
 	}
@@ -26,7 +27,7 @@ public class StateTypeFormatter implements Formatter<StateType> {
 	@Override
 	public StateType parse(String stateTypeId, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + stateTypeId);
+//		logger.info("merde parse: " + stateTypeId);
 		
 		StateType stateType = new StateType();
 		stateType.setStateTypeId(Long.parseLong(stateTypeId));

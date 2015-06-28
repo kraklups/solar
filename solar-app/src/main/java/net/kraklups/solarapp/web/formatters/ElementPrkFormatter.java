@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class ElementPrkFormatter implements Formatter<ElementPrk> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(ElementPrkFormatter.class);
 	
 	@Override
 	public String print(ElementPrk elementPrk, Locale locale) {
 		
-		logger.info("merde print: " + elementPrk);
+//		logger.info("merde print: " + elementPrk);
 		
 		return elementPrk.getElementPrkId().toString();
 	}
@@ -26,7 +27,7 @@ public class ElementPrkFormatter implements Formatter<ElementPrk> {
 	@Override
 	public ElementPrk parse(String elementPrkId, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + elementPrkId);
+//		logger.info("merde parse: " + elementPrkId);
 		
 		ElementPrk elementPrk = new ElementPrk();
 		elementPrk.setElementPrkId(Long.parseLong(elementPrkId));

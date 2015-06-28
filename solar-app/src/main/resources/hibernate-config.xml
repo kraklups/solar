@@ -6,11 +6,6 @@
 <hibernate-configuration>
     <session-factory>
 
-<!--  		<property name="hibernate.connection.url">${dataSource.url}</property>
-		<property name="hibernate.connection.driver_class">${jdbcDriver.className}</property>
-		<property name="hibernate.connection.username">${dataSource.user}</property>
-		<property name="hibernate.connection.password">${solarpasswd}</property>		
--->
         <!-- SQL dialect -->
         <property name="hibernate.dialect">org.hibernate.spatial.dialect.postgis.PostgisDialect</property>        
         

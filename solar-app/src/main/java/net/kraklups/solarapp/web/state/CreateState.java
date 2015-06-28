@@ -23,11 +23,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
  * Handles requests for the application State page.
  */
 @Controller
+@SessionAttributes("state")
 public class CreateState {
 	
 	private final static int EVENTTSK_PER_PAGE = 50;
@@ -79,6 +81,16 @@ public class CreateState {
 		if(result.hasErrors()) {
 			logger.info("Returning after error createState.jspx page");
 			
+			initModelListPark(model);		
+			
+			initModelListEventTsk(model);
+				
+			initModelListUpkeep(model);
+			
+			initModelListStateType(model);			
+			
+			model.addAttribute("state", state);			
+			
 			return "state/createState";
 		} else {
 			logger.info("Create State page! " + "state: " + state);
@@ -95,23 +107,23 @@ public class CreateState {
 	
 	private void initModelListEventTsk(Model model) throws InstanceNotFoundException {
 		List <EventTsk> eventTskList = taskPrkService.getEventTsks(startIndex, EVENTTSK_PER_PAGE).getEventTsks();
-		model.addAttribute(eventTskList);
+		model.addAttribute("eventTskList", eventTskList);
 	}
 	
 	private void initModelListPark(Model model) throws InstanceNotFoundException {
 		List <Park> parkList = parkService.getParks(startIndex, PARK_PER_PAGE).getParks();
-		model.addAttribute(parkList);
+		model.addAttribute("parkList", parkList);
 	}
 	
 	private void initModelListUpkeep(Model model) throws InstanceNotFoundException {
 		
 		List <Upkeep> upkeepList = taskPrkService.getUpkeeps(startIndex, UPKEEP_PER_PAGE).getUpkeeps();
-		model.addAttribute(upkeepList);
+		model.addAttribute("upkeepList",upkeepList);
 	}
 	
 	private void initModelListStateType(Model model) throws InstanceNotFoundException {
 		List <StateType> stateTypeList = parkService.getStateTypes(startIndex, STATETYPE_PER_PAGE).getStateTypes();
-		model.addAttribute(stateTypeList);
+		model.addAttribute("stateTypeList", stateTypeList);
 	}	
 
 }

@@ -35,6 +35,8 @@
             	<bean class="net.kraklups.solarapp.web.formatters.TimetableFormatter" />
             	<bean class="net.kraklups.solarapp.web.formatters.StateTypeFormatter" />
             	<bean class="net.kraklups.solarapp.web.formatters.UpkeepFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.MonitorFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.TrackFormatter" />
             	<bean class="net.kraklups.solarapp.web.formatters.SynchronizeFormatter" />
             	<bean class="net.kraklups.solarapp.web.formatters.ParkFormatter" />
             	<bean class="net.kraklups.solarapp.web.formatters.RoleFormatter" />

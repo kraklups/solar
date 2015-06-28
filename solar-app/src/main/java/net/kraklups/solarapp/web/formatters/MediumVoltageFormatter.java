@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class MediumVoltageFormatter implements Formatter<MediumVoltage> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MediumVoltageFormatter.class);
 	
 	@Override
 	public String print(MediumVoltage mediumVoltage, Locale locale) {
 		
-		logger.info("merde print: " + mediumVoltage);
+		//logger.info("merde print: " + mediumVoltage);
 		
 		return mediumVoltage.getMediumVoltageId().toString();
 	}
@@ -26,7 +27,7 @@ public class MediumVoltageFormatter implements Formatter<MediumVoltage> {
 	@Override
 	public MediumVoltage parse(String mediumVoltageId, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + mediumVoltageId);
+//		logger.info("merde parse: " + mediumVoltageId);
 		
 		MediumVoltage mediumVoltage = new MediumVoltage();
 		mediumVoltage.setMediumVoltageId(Long.parseLong(mediumVoltageId));

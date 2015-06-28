@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class RoleFormatter implements Formatter<Role> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(RoleFormatter.class);
 	
 	@Override
 	public String print(Role role, Locale locale) {
 		
-		logger.info("merde print: " + role);
+//		logger.info("merde print: " + role);
 		
 		return role.getRoleId().toString();
 	}
@@ -26,7 +27,7 @@ public class RoleFormatter implements Formatter<Role> {
 	@Override
 	public Role parse(String roleId, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + roleId);
+//		logger.info("merde parse: " + roleId);
 		
 		Role role = new Role();
 		role.setRoleId(Long.parseLong(roleId));

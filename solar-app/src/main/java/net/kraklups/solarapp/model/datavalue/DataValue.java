@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
@@ -55,6 +56,7 @@ public class DataValue {
 		this.dataValueId = dataValueId;
 	}
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="synchronizeId")	
 	public Synchronize getSynchronize(){
@@ -64,7 +66,8 @@ public class DataValue {
 	public void setSynchronize(Synchronize synchronize){
 		this.synchronize = synchronize;
 	}	
-
+	
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="elementPrkId")	
 	public ElementPrk getElementPrk(){
@@ -75,6 +78,7 @@ public class DataValue {
 		this.elementPrk = elementPrk;
 	}		
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="dataLoggerId")	
 	public DataLogger getDataLogger(){
@@ -85,6 +89,7 @@ public class DataValue {
 		this.dataLogger = dataLogger;
 	}		
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="sensorId")	
 	public Sensor getSensor(){
@@ -97,9 +102,7 @@ public class DataValue {
 	
 	@Override
     public String toString() {
-        return "DataValueMngDb [dataValueId=" + dataValueId + ", Synchronize=" + synchronize.getSynchronizeId() + 
-        		", ElementPrk=" + elementPrk.getElementPrkId() + ", DataLogger=" + dataLogger.getDataLoggerId() + 
-        		", Sensor=" + sensor.getSensorId() + "]";
+        return "DataValueMngDb [dataValueId=" + dataValueId + "]";
     }	
 
 }

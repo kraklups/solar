@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class SensorFormatter implements Formatter<Sensor> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(SensorFormatter.class);
 	
 	@Override
 	public String print(Sensor sensor, Locale locale) {
 		
-		logger.info("merde print: " + sensor);
+//		logger.info("merde print: " + sensor);
 		
 		return sensor.getSensorId().toString();
 	}
@@ -26,7 +27,7 @@ public class SensorFormatter implements Formatter<Sensor> {
 	@Override
 	public Sensor parse(String sensorId, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + sensorId);
+		//logger.info("merde parse: " + sensorId);
 		
 		Sensor sensor = new Sensor();
 		sensor.setSensorId(Long.parseLong(sensorId));

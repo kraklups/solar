@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class TaskPrkFormatter implements Formatter<TaskPrk> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(TaskPrkFormatter.class);
 	
 	@Override
 	public String print(TaskPrk taskPrk, Locale locale) {
 		
-		logger.info("merde print: " + taskPrk);
+		//logger.info("merde print: " + taskPrk);
 		
 		return taskPrk.getTaskPrkId().toString();
 	}
@@ -26,7 +27,7 @@ public class TaskPrkFormatter implements Formatter<TaskPrk> {
 	@Override
 	public TaskPrk parse(String taskPrkId, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + taskPrkId);
+//		logger.info("merde parse: " + taskPrkId);
 		
 		TaskPrk taskPrk = new TaskPrk();
 		taskPrk.setTaskPrkId(Long.parseLong(taskPrkId));

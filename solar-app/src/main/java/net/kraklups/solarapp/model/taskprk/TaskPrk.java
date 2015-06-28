@@ -41,7 +41,7 @@ public class TaskPrk implements java.io.Serializable {
 	
 	//2014-07-04T12:08:56.235
 	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
-	@NotNull	
+	@NotNull
 	private Date creationDate;
 	
 	private Park park;
@@ -91,6 +91,7 @@ public class TaskPrk implements java.io.Serializable {
 		this.creationDate = creationDate;
 	}
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="parkId")	
 	public Park getPark() {
@@ -101,6 +102,7 @@ public class TaskPrk implements java.io.Serializable {
 		this.park = park;
 	}
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="roleId")	
 	public Role getRole() {
@@ -123,8 +125,7 @@ public class TaskPrk implements java.io.Serializable {
 	
 	@Override
 	public String toString() {
-		return "TaskPrk [taskPrkId=" + taskPrkId + ", taskName=" + taskName +
-			", parkId=" + park.getParkId() + ", roleId=" + role.getRoleId() + ", userProfile=" + userProfile.getLoginName() + "]";
+		return "TaskPrk [taskPrkId=" + taskPrkId + ", taskName=" + taskName + "]";
 	}	
 	
 }

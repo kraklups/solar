@@ -13,12 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class StringLineFormatter implements Formatter<StringLine> {
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(StringLineFormatter.class);
 	
 	@Override
 	public String print(StringLine stringLine, Locale locale) {
 		
-		logger.info("merde print: " + stringLine);
+//		logger.info("merde print: " + stringLine);
 		
 		return stringLine.getStringLineId().toString();
 	}
@@ -26,7 +27,7 @@ public class StringLineFormatter implements Formatter<StringLine> {
 	@Override
 	public StringLine parse(String stringLineId, Locale locale) throws ParseException {
 		
-		logger.info("merde parse: " + stringLineId);
+//		logger.info("merde parse: " + stringLineId);
 		
 		StringLine stringLine = new StringLine();
 		stringLine.setStringLineId(Long.parseLong(stringLineId));
