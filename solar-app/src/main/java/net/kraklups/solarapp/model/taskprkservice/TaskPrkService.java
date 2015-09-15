@@ -1,11 +1,14 @@
 package net.kraklups.solarapp.model.taskprkservice;
 
 import java.util.Date;
+import java.util.List;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 import net.kraklups.solarapp.model.alarm.Alarm;
+import net.kraklups.solarapp.model.alarm.AlarmDTO;
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
+import net.kraklups.solarapp.model.eventtsk.EventTskDTO;
 import net.kraklups.solarapp.model.messageevent.MessageEvent;
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.report.Report;
@@ -17,8 +20,13 @@ import net.kraklups.solarapp.model.taskprk.Track;
 import net.kraklups.solarapp.model.taskprk.Upkeep;
 import net.kraklups.solarapp.model.timetable.Timetable;
 import net.kraklups.solarapp.model.userprofile.UserProfile;
+import net.kraklups.solarapp.model.util.ValueObject;
 
 public interface TaskPrkService {
+
+	public TaskPrk createTaskPrk(String taskName, Date creationDate,
+			Park park, Role role, UserProfile userProfile) 
+			throws DuplicateInstanceException;
 	
 	public Upkeep createUpkeep(String taskName, Date creationDate,
 			Park park, Role role, UserProfile userProfile) 
@@ -52,7 +60,10 @@ public interface TaskPrkService {
 			Park park, Role role, UserProfile userProfile) 
 			throws InstanceNotFoundException;	
 	
-	public Alarm createAlarm(String alarmTag, Date triggerDate, EventTsk eventTsk) 
+	public AlarmDTO alarmTriggered(AlarmDTO alarmDTO) 
+			throws DuplicateInstanceException, InstanceNotFoundException;
+	
+	public Alarm createAlarm(String alarmTag, Date triggerDate, EventTsk eventTsk, Boolean checked) 
 			throws DuplicateInstanceException;
 	
 	public Alarm updateAlarm(Long alarmId, String alarmTag, Date triggerDate, EventTsk eventTsk) 
@@ -177,6 +188,15 @@ public interface TaskPrkService {
             TaskPrk taskPrk, Timetable timetable, Boolean triggerAlarm, Boolean triggerMessage) 
             throws InstanceNotFoundException; 
     
+	public EventTskBlock getEventTskByTaskPrkId(Long parkId, int startIndex, int count)
+			throws InstanceNotFoundException;    
+    
+	public EventTskBlock getEventTskByTimetableId(Long parkId, int startIndex, int count)
+			throws InstanceNotFoundException;	
+	
+	public EventTskBlock getEventTsks(int startIndex, int count)
+			throws InstanceNotFoundException;	
+	
     public void assignTviEventTsk(EventTsk eventTsk, Date tvi)
     		throws InstanceNotFoundException;
 
@@ -195,7 +215,7 @@ public interface TaskPrkService {
     public MessageEventBlock getMessageEventByEventTskId(Long eventTskId, int startIndex, int count)
 			throws InstanceNotFoundException;  
        
-    public MessageEvent createMessageEvent(String messageTxt, Date tvi, EventTsk eventTsk)
+    public MessageEvent createMessageEvent(Date tvi, String messageTxt, EventTsk eventTsk)
     		throws DuplicateInstanceException;
     
     public MessageEvent updateMessageEvent(Long messageId, String messageTxt, Date tvi, EventTsk eventTsk)
@@ -211,5 +231,99 @@ public interface TaskPrkService {
     		throws InstanceNotFoundException;    
     
     public void assignTimetableEventTsk(EventTsk eventTsk, Timetable timetable)
-    		throws InstanceNotFoundException;    
+    		throws InstanceNotFoundException;
+    
+    public Alarm saveAlarm(Alarm alarm)
+    		throws DuplicateInstanceException;
+    
+	public TaskPrkBlock getTaskPrks(int startIndex, int count) 
+			throws InstanceNotFoundException;
+	
+	public UpkeepBlock getUpkeeps(int startIndex, int count) 
+			throws InstanceNotFoundException;	
+	
+    public EventTsk saveEventTsk(EventTsk eventTsk)
+    		throws DuplicateInstanceException;
+    
+    public MessageEvent saveMessageEvent(MessageEvent messageEvent)
+    		throws DuplicateInstanceException;	    
+    
+    public Report saveReport(Report report)
+    		throws DuplicateInstanceException;    
+    
+    public TaskPrk saveTaskPrk(TaskPrk taskPrk)
+    		throws DuplicateInstanceException;
+    
+    public Monitor saveTaskPrk(Monitor monitor)
+    		throws DuplicateInstanceException;
+
+    public Upkeep saveTaskPrk(Upkeep upkeep)
+    		throws DuplicateInstanceException;
+
+    public Synchronize saveTaskPrk(Synchronize synchronize)
+    		throws DuplicateInstanceException;
+
+    public Track saveTaskPrk(Track track)
+    		throws DuplicateInstanceException;
+    
+	public ReportBlock getReports(int startIndex, int count) 
+			throws InstanceNotFoundException;
+	
+	public void RegisterEventTsk(EventTskDTO evetntTskDTO)
+			throws Exception;
+    
+	public AlarmBlock getAlarms(int startIndex, int count) 
+			throws InstanceNotFoundException;	
+	
+	public Alarm getAlarmById(Long alarmId) 
+			throws InstanceNotFoundException;
+	
+	public Report getReportById(Long reportId) 
+			throws InstanceNotFoundException;
+	
+	public List<ValueObject> mapReduceRest(Long dataValueId)
+			throws InstanceNotFoundException;
+	
+	public TaskPrk findTaskPrk(Long taskPrkId)
+            throws InstanceNotFoundException;
+	
+	public Upkeep findUpkeep(Long upkeepId)
+            throws InstanceNotFoundException;
+	
+	public Synchronize findSynchronize(Long synchronizeId)
+            throws InstanceNotFoundException;
+
+	public Track findTrack(Long trackId)
+            throws InstanceNotFoundException;
+	
+	public Monitor findMonitor(Long monitorId)
+            throws InstanceNotFoundException;	
+	
+	public EventTsk findEventTsk(Long eventTskId)
+            throws InstanceNotFoundException;
+	
+	public Alarm findAlarm(Long alarmId)
+            throws InstanceNotFoundException;	
+	
+	public MessageEvent findMessageEvent(Long messageEventId)
+            throws InstanceNotFoundException;
+	
+	public Report findReport(Long reportId)
+            throws InstanceNotFoundException;
+
+	public int countAlarmsTriggered() 
+			throws InstanceNotFoundException;		
+	
+	public void getAlarmChecked(Long alarmId)
+			throws InstanceNotFoundException;
+	
+	public AlarmBlock getAlarmsTriggered(int startIndex, int count) 
+			throws InstanceNotFoundException;	
+	
+	public MessageEventBlock getMessageEvents(int startIndex, int count) 
+			throws InstanceNotFoundException;	
+	
+	public SynchronizeBlock getSynchronizes(int startIndex, int count) 
+			throws InstanceNotFoundException;	
+	
 }

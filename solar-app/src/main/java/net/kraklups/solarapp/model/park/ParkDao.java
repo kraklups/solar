@@ -33,4 +33,8 @@ public interface ParkDao extends GenericDao<Park, Long> {
 	public List<Park> getParksByCompanyId(Long companyId, int startIndex, int count) 
 			throws InstanceNotFoundException;
 	
+	
+	public List<Park> getParks(int startIndex, int count)
+			throws InstanceNotFoundException;	
+	
 }

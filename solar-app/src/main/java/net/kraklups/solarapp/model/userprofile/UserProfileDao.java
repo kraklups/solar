@@ -63,6 +63,7 @@ public interface UserProfileDao extends GenericDao<UserProfile, Long>{
      */   
     public List<UserProfile> findByCompany(Long companyId, int startIndex, int count) throws InstanceNotFoundException;
 
-    
+	public List<UserProfile> getUserProfiles(int startIndex, int count)
+			throws InstanceNotFoundException;    
     
 }

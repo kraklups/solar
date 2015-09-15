@@ -20,7 +20,7 @@ public class TimetableDaoHibernate extends
 			int startIndex, int count) throws InstanceNotFoundException {
 
 		List<Timetable> timetables = (List<Timetable>)  getSession().createQuery(
-	        	"SELECT a FROM Timetable a WHERE a.userProfileId = :userProfileId " +
+	        	"SELECT a FROM TimetableBlock a WHERE a.userProfileId = :userProfileId " +
 	        	"ORDER BY a.timetableId").
 	         	setParameter("userProfileId", userProfileId).
 	           	setFirstResult(startIndex).
@@ -39,7 +39,7 @@ public class TimetableDaoHibernate extends
 			int count) throws InstanceNotFoundException {
 		
 		List<Timetable> timetables = (List<Timetable>)  getSession().createQuery(
-	        	"SELECT a FROM Timetable a WHERE a.parkId = :parkId " +
+	        	"SELECT a FROM TimetableBlock a WHERE a.parkId = :parkId " +
 	        	"ORDER BY a.timetableId").
 	         	setParameter("parkId", parkId).
 	           	setFirstResult(startIndex).
@@ -50,6 +50,24 @@ public class TimetableDaoHibernate extends
 		} else {
 			return timetables;
 		}		
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Timetable> getTimetables(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Timetable> timetables = (List<Timetable>)  getSession().createQuery(
+	        	"SELECT a FROM Timetable a " +
+	        	"ORDER BY a.timetableId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (timetables == null) {
+			throw new InstanceNotFoundException(null, Timetable.class.getName());
+		} else {
+			return timetables;
+		}	
 	}
 
 }

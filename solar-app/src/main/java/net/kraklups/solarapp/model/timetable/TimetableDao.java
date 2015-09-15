@@ -11,6 +11,9 @@ public interface TimetableDao extends GenericDao<Timetable, Long> {
 			throws InstanceNotFoundException;	
 	
 	public List<Timetable> getTimetablesByParkId(Long parkId, int startIndex, int count)
-			throws InstanceNotFoundException;		
+			throws InstanceNotFoundException;	
+	
+    public List<Timetable> getTimetables(int startIndex, int count)
+			throws InstanceNotFoundException;	
 	
 }

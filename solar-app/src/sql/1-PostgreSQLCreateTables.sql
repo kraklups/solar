@@ -98,7 +98,8 @@ CREATE TABLE Park (parkId BIGINT NOT NULL, parkName VARCHAR(30),
     startupDate TIMESTAMP NOT NULL, productionDate TIMESTAMP NOT NULL, userProfileId BIGINT NOT NULL,
     companyId BIGINT NOT NULL, mapPark geometry, 
     CONSTRAINT enforce_geotype_mapPark CHECK (geometrytype(mapPark) = 'MULTIPOLYGON'::text OR mapPark IS NULL),
-  	CONSTRAINT enforce_srid_mapPark CHECK (st_srid(mapPark) = 4326),     
+  	CONSTRAINT enforce_srid_mapPark CHECK (st_srid(mapPark) = 4326),
+  	CONSTRAINT ParkNameU UNIQUE(parkName),     
     CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
         REFERENCES UserProfile (userProfileId) ON DELETE CASCADE,
     CONSTRAINT CompanyIdFK FOREIGN KEY(companyId)
@@ -134,8 +135,9 @@ CREATE TABLE EventTsk (eventTskId BIGINT NOT NULL, tagET VARCHAR(30),
     triggerAlarm BOOLEAN NOT NULL DEFAULT FALSE, triggerMessage BOOLEAN NOT NULL DEFAULT FALSE,
     CONSTRAINT TimetableIdFK FOREIGN KEY(timetableId)
         REFERENCES Timetable (timetableId) ON DELETE CASCADE,
-    CONSTRAINT EventTskIdPK PRIMARY KEY (eventTskId));    
-    
+    CONSTRAINT TaskPrkIdFK FOREIGN KEY(TaskPrkId)
+        REFERENCES TaskPrk (taskPrkId) ON DELETE CASCADE,
+    CONSTRAINT EventTskIdPK PRIMARY KEY (eventTskId));        
 -- ------------------------------ Alarm -----------------------------
 -- table Alarm
 
@@ -145,6 +147,7 @@ CREATE SEQUENCE AlarmSeq;
 DROP TABLE IF EXISTS Alarm CASCADE;
 CREATE TABLE Alarm (alarmId BIGINT NOT NULL, alarmTag VARCHAR(30),
     triggerDate TIMESTAMP NOT NULL, eventTskId BIGINT NOT NULL,
+    checked BOOLEAN NOT NULL DEFAULT FALSE,
     CONSTRAINT EventTskIdFK FOREIGN KEY(eventTskId)
         REFERENCES EventTsk (eventTskId) ON DELETE CASCADE,
     CONSTRAINT AlarmIdPK PRIMARY KEY (alarmId));        
@@ -157,7 +160,7 @@ CREATE SEQUENCE MessageEventSeq;
 
 DROP TABLE IF EXISTS MessageEvent CASCADE;
 CREATE TABLE MessageEvent (messageEventId BIGINT NOT NULL,
-    tvi TIMESTAMP NOT NULL, messageEventText VARCHAR(30), 
+    tvi TIMESTAMP NOT NULL, messageEventText VARCHAR(50), 
     eventTskId BIGINT NOT NULL,
     CONSTRAINT EventTskIdFK FOREIGN KEY(eventTskId)
         REFERENCES EventTsk (eventTskId) ON DELETE CASCADE,
@@ -243,6 +246,8 @@ ALTER TABLE ONLY EventTsk
 
 DROP TABLE IF EXISTS Upkeep CASCADE;
 CREATE TABLE Upkeep(upkeepId BIGINT NOT NULL,
+    CONSTRAINT UpkeepIdFK FOREIGN KEY(upkeepId)
+        REFERENCES TaskPrk (taskPrkId) ON DELETE CASCADE,
     CONSTRAINT UpkeepIdPK PRIMARY KEY (upkeepId));
 
 -- Added for cyclic dependency loop with both FK
@@ -258,11 +263,11 @@ ALTER TABLE ONLY State
 DROP TABLE IF EXISTS Track CASCADE;
 CREATE TABLE Track (trackId BIGINT NOT NULL,
     tvf TIMESTAMP NOT NULL,
-    userProfileId BIGINT NOT NULL, reportId BIGINT NOT NULL,
+    reportId BIGINT NOT NULL,
     CONSTRAINT ReportIdFK FOREIGN KEY(reportId)
         REFERENCES Report (reportId) ON DELETE CASCADE,
-    CONSTRAINT UserProfileIdFK FOREIGN KEY(userProfileId)
-        REFERENCES UserProfile (userProfileId) ON DELETE CASCADE,
+    CONSTRAINT TrackIdFK FOREIGN KEY(trackId)
+        REFERENCES TaskPrk (taskPrkId) ON DELETE CASCADE,
     CONSTRAINT TrackIdPK PRIMARY KEY (trackId));
 
 -- ------------------------------ Monitor -----------------------------
@@ -270,6 +275,8 @@ CREATE TABLE Track (trackId BIGINT NOT NULL,
 
 DROP TABLE IF EXISTS Monitor CASCADE;
 CREATE TABLE Monitor(monitorId BIGINT NOT NULL,
+    CONSTRAINT MonitorIdFK FOREIGN KEY(monitorId)
+        REFERENCES TaskPrk (taskPrkId) ON DELETE CASCADE,
     CONSTRAINT MonitorIdPK PRIMARY KEY (monitorId));
 
 -- ------------------------------ Synchronize -----------------------------
@@ -278,6 +285,8 @@ CREATE TABLE Monitor(monitorId BIGINT NOT NULL,
 DROP TABLE IF EXISTS Synchronize CASCADE;
 
 CREATE TABLE Synchronize(synchronizeId BIGINT NOT NULL,
+    CONSTRAINT SynchronizeIdFK FOREIGN KEY(synchronizeId)
+        REFERENCES TaskPrk (taskPrkId) ON DELETE CASCADE,
     CONSTRAINT SynchronizeIdPK PRIMARY KEY (synchronizeId));
 
 -- ------------------------------ DataLogger -----------------------------
@@ -289,9 +298,9 @@ CREATE SEQUENCE DataLoggerSeq;
 DROP TABLE IF EXISTS DataLogger CASCADE;
 CREATE TABLE DataLogger (dataLoggerId BIGINT NOT NULL,
     dataLoggerTag VARCHAR(30), dataLoggerType VARCHAR(30),
-    dataLoggerFK BIGINT NOT NULL, 
+    dataLoggerFK BIGINT DEFAULT 0, 
     CONSTRAINT DataLoggerIdFK FOREIGN KEY(dataLoggerFK)
-        REFERENCES DataLogger (dataLoggerId) ON DELETE CASCADE,    
+        REFERENCES DataLogger(dataLoggerId) ON DELETE CASCADE,    
     CONSTRAINT dataLoggerIdPK PRIMARY KEY (dataLoggerId));
 
 -- ------------------------------ ElementPrk -----------------------------
@@ -337,6 +346,8 @@ CREATE TABLE Sensor (sensorId BIGINT NOT NULL,
 
 DROP TABLE IF EXISTS ArrayBox CASCADE;
 CREATE TABLE ArrayBox(arrayBoxId BIGINT NOT NULL,
+    CONSTRAINT ArrayBoxIdFK FOREIGN KEY(arrayBoxId)
+        REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,
     CONSTRAINT ArrayBoxIdPK PRIMARY KEY (arrayBoxId));
     
     
@@ -344,7 +355,11 @@ CREATE TABLE ArrayBox(arrayBoxId BIGINT NOT NULL,
 -- table ArrayPanel
 
 DROP TABLE IF EXISTS ArrayPanel CASCADE;
-CREATE TABLE ArrayPanel(arrayPanelId BIGINT NOT NULL,
+CREATE TABLE ArrayPanel(arrayPanelId BIGINT NOT NULL, stringLineId BIGINT NOT NULL,
+    CONSTRAINT ArrayPanelIdFK FOREIGN KEY(arrayPanelId)
+        REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,
+    CONSTRAINT StringLineIdFK FOREIGN KEY(stringLineId)
+        REFERENCES StringLine (stringLineId) ON DELETE CASCADE,        
     CONSTRAINT ArrayPanelIdPK PRIMARY KEY (arrayPanelId));
 
 
@@ -354,6 +369,8 @@ CREATE TABLE ArrayPanel(arrayPanelId BIGINT NOT NULL,
 DROP TABLE IF EXISTS StringLine CASCADE;
 CREATE TABLE StringLine(stringLineId BIGINT NOT NULL,
     arrayBoxId BIGINT NOT NULL, 
+    CONSTRAINT StringLineIdFK FOREIGN KEY(stringLineId)
+        REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,    
     CONSTRAINT ArrayBoxIdFK FOREIGN KEY(arrayBoxId)
         REFERENCES ArrayBox (arrayBoxId) ON DELETE CASCADE,
     CONSTRAINT StringLineIdPK PRIMARY KEY (stringLineId));
@@ -365,6 +382,8 @@ CREATE TABLE StringLine(stringLineId BIGINT NOT NULL,
 DROP TABLE IF EXISTS Cell CASCADE;
 CREATE TABLE Cell(cellId BIGINT NOT NULL,
     arrayPanelId BIGINT NOT NULL, stringLineId BIGINT NOT NULL,
+    CONSTRAINT CellIdFK FOREIGN KEY(cellId)
+        REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,    
     CONSTRAINT ArrayPanelIdFK FOREIGN KEY(arrayPanelId)
         REFERENCES ArrayPanel (arrayPanelId) ON DELETE CASCADE,
     CONSTRAINT StringLineIdFK FOREIGN KEY(stringLineId)
@@ -377,6 +396,8 @@ CREATE TABLE Cell(cellId BIGINT NOT NULL,
 
 DROP TABLE IF EXISTS Counter CASCADE;
 CREATE TABLE Counter(counterId BIGINT NOT NULL,
+    CONSTRAINT CounterIdFK FOREIGN KEY(counterId)
+        REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,
     CONSTRAINT CounterIdPK PRIMARY KEY (counterId));
     
 
@@ -385,6 +406,8 @@ CREATE TABLE Counter(counterId BIGINT NOT NULL,
 
 DROP TABLE IF EXISTS ExtractionPoint CASCADE;
 CREATE TABLE ExtractionPoint(extractionPointId BIGINT NOT NULL,
+    CONSTRAINT ExtractionPointIdFK FOREIGN KEY(extractionPointId)
+        REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,
     CONSTRAINT ExtractionPointIdPK PRIMARY KEY (extractionPointId));
 
 
@@ -394,6 +417,8 @@ CREATE TABLE ExtractionPoint(extractionPointId BIGINT NOT NULL,
 DROP TABLE IF EXISTS MediumVoltage CASCADE;
 CREATE TABLE MediumVoltage(mediumVoltageId BIGINT NOT NULL,
     extractionPointId BIGINT NOT NULL, 
+    CONSTRAINT MediumVoltageIdFK FOREIGN KEY(mediumVoltageId)
+        REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,    
     CONSTRAINT ExtractionPointIdFK FOREIGN KEY(extractionPointId)
         REFERENCES ExtractionPoint (extractionPointId) ON DELETE CASCADE,
     CONSTRAINT MediumVoltageIdPK PRIMARY KEY (mediumVoltageId));
@@ -405,6 +430,8 @@ CREATE TABLE MediumVoltage(mediumVoltageId BIGINT NOT NULL,
 DROP TABLE IF EXISTS ElectricalSubstation CASCADE;
 CREATE TABLE ElectricalSubstation(electricalSubstationId BIGINT NOT NULL,
     mediumVoltageId BIGINT NOT NULL, 
+    CONSTRAINT ElectricalSubstationIdFK FOREIGN KEY(electricalSubstationId)
+        REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,    
     CONSTRAINT MediumVoltageIdFK FOREIGN KEY(mediumVoltageId)
         REFERENCES MediumVoltage (mediumVoltageId) ON DELETE CASCADE,
     CONSTRAINT ElectricalSubstationIdPK PRIMARY KEY (electricalSubstationId));
@@ -415,6 +442,8 @@ CREATE TABLE ElectricalSubstation(electricalSubstationId BIGINT NOT NULL,
 
 DROP TABLE IF EXISTS Gps CASCADE;
 CREATE TABLE Gps(gpsId BIGINT NOT NULL,
+    CONSTRAINT GpsIdFK FOREIGN KEY(gpsId)
+        REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,
     CONSTRAINT GpsIdPK PRIMARY KEY (gpsId));
     
 
@@ -425,6 +454,8 @@ DROP TABLE IF EXISTS Inverter CASCADE;
 CREATE TABLE Inverter(inverterId BIGINT NOT NULL,
     counterId BIGINT NOT NULL, arrayBoxId BIGINT NOT NULL,
     electricalSubstationId BIGINT NOT NULL,
+    CONSTRAINT InverterIdFK FOREIGN KEY(inverterId)
+        REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,    
     CONSTRAINT CounterIdFK FOREIGN KEY(counterId)
         REFERENCES Counter (counterId) ON DELETE CASCADE,
     CONSTRAINT ArrayBoxIdFK FOREIGN KEY(arrayBoxId)
@@ -439,6 +470,8 @@ CREATE TABLE Inverter(inverterId BIGINT NOT NULL,
 
 DROP TABLE IF EXISTS WeatherStation CASCADE;
 CREATE TABLE WeatherStation(weatherStationId BIGINT NOT NULL,
+    CONSTRAINT WeatherStationIdFK FOREIGN KEY(weatherStationId)
+        REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,
     CONSTRAINT weatherStationIdPK PRIMARY KEY (weatherStationId));
     
     
@@ -447,6 +480,8 @@ CREATE TABLE WeatherStation(weatherStationId BIGINT NOT NULL,
 
 DROP TABLE IF EXISTS SolarTracker CASCADE;
 CREATE TABLE SolarTracker(solarTrackerId BIGINT NOT NULL,
+    CONSTRAINT SolarTrackerIdFK FOREIGN KEY(solarTrackerId)
+        REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,
     CONSTRAINT solarTrackerIdPK PRIMARY KEY (solarTrackerId));
     
 -- ------------------------------ DataValue -----------------------------
@@ -457,10 +492,10 @@ CREATE SEQUENCE DataValueSeq;
 
 DROP TABLE IF EXISTS DataValue CASCADE;
 CREATE TABLE DataValue (dataValueId BIGINT NOT NULL,
-    taskPrkId BIGINT NOT NULL, elementPrkId BIGINT NOT NULL, 
+    synchronizeId BIGINT NOT NULL, elementPrkId BIGINT NOT NULL, 
     dataLoggerId BIGINT NOT NULL, sensorId BIGINT NOT NULL,
-    CONSTRAINT TaskPrkIdFK FOREIGN KEY(taskPrkId)
-        REFERENCES TaskPrk (taskPrkId) ON DELETE CASCADE,    
+    CONSTRAINT SynchronizeIdFK FOREIGN KEY(synchronizeId)
+        REFERENCES Synchronize (synchronizeId) ON DELETE CASCADE,    
     CONSTRAINT ElementIdFK FOREIGN KEY(elementPrkId)
         REFERENCES ElementPrk (elementPrkId) ON DELETE CASCADE,    
     CONSTRAINT DataLoggerIdFK FOREIGN KEY(dataLoggerId)
@@ -469,6 +504,3 @@ CREATE TABLE DataValue (dataValueId BIGINT NOT NULL,
         REFERENCES Sensor (sensorId) ON DELETE CASCADE,    
     CONSTRAINT dataValueIdPK PRIMARY KEY (dataValueId));
 
-    
-    
-    

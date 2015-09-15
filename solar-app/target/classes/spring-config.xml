@@ -41,7 +41,16 @@
     <bean id="transactionManager"
         class="org.springframework.orm.hibernate4.HibernateTransactionManager"
         p:sessionFactory-ref="sessionFactory" />
-
-
+        
+	<!-- URLs for REST services  -->              
+	<bean id="urlEventTskREST" class="net.kraklups.solarapp.model.util.RestServiceURL">
+      	<property name="urlREST" value="http://localhost:9090/photonwell-app/rest/registereventtsk"/>
+    <!--  	<property name="urlREST" value="http://localhost:8080/rest/registereventtsk"/>    -->
+  	</bean>        
+  	             
+	<bean id="urlMapReduceREST" class="net.kraklups.solarapp.model.util.RestServiceURL">
+      	<property name="urlREST" value="http://localhost:9090/photonwell-app/rest/mrdatavalue/1"/>               
+    <!--  	<property name="urlREST" value="http://localhost:8080/rest/mrdatavalue/1"/>               -->
+  	</bean>  	
         
 </beans>

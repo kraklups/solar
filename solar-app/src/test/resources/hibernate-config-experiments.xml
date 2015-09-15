@@ -47,6 +47,7 @@
         <mapping class="net.kraklups.solarapp.model.taskprk.Upkeep" />
         <mapping class="net.kraklups.solarapp.model.taskprk.Monitor" />
         <mapping class="net.kraklups.solarapp.model.taskprk.Track" />       
+        <mapping class="net.kraklups.solarapp.model.taskprk.Synchronize" />
 
 		<mapping class="net.kraklups.solarapp.model.datalogger.DataLogger" />
 

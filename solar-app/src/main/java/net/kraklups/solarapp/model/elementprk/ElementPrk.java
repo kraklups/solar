@@ -21,8 +21,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.vividsolutions.jts.geom.Point;
 
@@ -34,30 +38,45 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="ElementPrk")
 @Inheritance(strategy=InheritanceType.JOINED)
-public abstract class ElementPrk implements java.io.Serializable {
+public class ElementPrk implements java.io.Serializable {
 	
 	private static final long serialVersionUID = -8979274625904669832L;
 	
 	private Long elementPrkId;
+	
+	@Size(min=6, max=30)
+	@NotEmpty
 	private String elementPrkName;
+	
+	@Size(min=6, max=30)
+	@NotEmpty
 	private String elementPrkTag;
+	
+	//2014-07-04T12:08:56.235
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull		
 	private Date tvi;
+	
+	//2014-07-04T12:08:56.235
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull		
 	private Date lastAccess;
+	
 	private UserProfile userProfile;
 	private DataLogger dataLogger;
 	private Park park;
 	
-	private Set<Monitor> monitors = new HashSet<Monitor>(0);
+	//POINT (-71.060316 48.432044)
+	private Point mapElement;
 	
-	@Type(type="org.hibernate.spatial.GeometryType")	
-	private Point mapElement;	
-
+	private Set<Monitor> monitors = new HashSet<Monitor>(0);	
+		
 	public ElementPrk() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	public ElementPrk(String elementPrkName, String elementPrkTag, Date tvi, Date lastAccess, 
-			UserProfile userProfile, DataLogger dataLogger, Park park) {
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement) {
 		
 		this.elementPrkName = elementPrkName;
 		this.elementPrkTag = elementPrkTag;
@@ -66,10 +85,11 @@ public abstract class ElementPrk implements java.io.Serializable {
 		this.userProfile = userProfile;
 		this.dataLogger = dataLogger;
 		this.park = park;
+		this.mapElement = mapElement;
 	}
 	
 	public ElementPrk(String elementPrkName, String elementPrkTag, Date tvi, Date lastAccess, 
-			UserProfile userProfile, DataLogger dataLogger, Park park, Set<Monitor> monitors) {
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement, Set<Monitor> monitors) {
 		
 		this.elementPrkName = elementPrkName;
 		this.elementPrkTag = elementPrkTag;
@@ -78,6 +98,7 @@ public abstract class ElementPrk implements java.io.Serializable {
 		this.userProfile = userProfile;
 		this.dataLogger = dataLogger;
 		this.park = park;
+		this.mapElement = mapElement;		
 		this.monitors = monitors;
 	}
 	
@@ -140,6 +161,7 @@ public abstract class ElementPrk implements java.io.Serializable {
 		this.userProfile = userProfile;
 	}
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="dataLoggerId")	
 	public DataLogger getDataLogger(){
@@ -150,6 +172,7 @@ public abstract class ElementPrk implements java.io.Serializable {
 		this.dataLogger = dataLogger;
 	}
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="parkId")	
 	public Park getPark(){
@@ -159,7 +182,8 @@ public abstract class ElementPrk implements java.io.Serializable {
 	public void setPark(Park park){
 		this.park = park;
 	}
-	
+
+	@Type(type="org.hibernate.spatial.GeometryType")	
 	public Point getMapElement() {
 		return mapElement;
 	}
@@ -184,11 +208,7 @@ public abstract class ElementPrk implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "ElementPrk [elementPrkId=" + elementPrkId + ", nombre=" + elementPrkName + ", tag=" + elementPrkTag +
-                       ", tvi=" + tvi + ", lastAccess=" + lastAccess + 
-                       ", user_author =" + userProfile.getLoginName() + 
-                       ", dataLoggerTag =" + dataLogger.getDataLoggerTag() +
-                       ", parkName =" + park.getParkName() +
-                       ", mapElement =" + mapElement.toText() + "]";
+                       ", tvi=" + tvi + ", lastAccess=" + lastAccess + "]";
 	}
 	
 }

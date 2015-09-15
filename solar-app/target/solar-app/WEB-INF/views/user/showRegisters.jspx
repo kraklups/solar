@@ -1,6 +1,9 @@
 <jsp:root 
 	xmlns:jsp="http://java.sun.com/JSP/Page" 
 	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"	
+	xmlns:form="http://www.springframework.org/tags/form"	
 	xmlns="http://www.w3.org/1999/xhtml"
 	version="2.0" >
 	
@@ -16,58 +19,67 @@
     
     	<div class="container-fluid">
 
-	    	<div class="row">
-    	    	<div class="col-lg-12">
-        	    	<h2 class="page-header">Parks</h2>
-            	</div>
-        	</div>
+    		<div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header"><spring:message code="showRegisters.title" /></h2>
+                </div>
+            </div>
             
         	<div class="row">
-                <!-- /.col-lg-12 -->
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Pill Tabs
+            	<div class="col-lg-12">
+                	<div class="panel panel-default">
+                    	<div class="panel-heading">
+                        	<h3 class="panel-title"><spring:message code="showRegisters.menuExplanation" /></h3>
+                    	</div>
+                    	<div class="panel-body">
+                    		  
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>UserProfileId</th>
+                                        <th>LoginName</th>
+                                        <th>FirstName</th>
+                                        <th>Surname</th>
+                                        <th>Email</th>
+                                        <th>Date</th>
+                                        <th>Enabled</th>
+                                        <th>AccountNonExpired</th>
+                                        <th>credentialsNonExpired</th>
+                                        <th>accountNonLocked</th>   
+										<th>Company</th>
+                                        <th>Role</th>                                           
+                                    </tr>
+                                </thead>                                
+                                <tbody>
+									<c:forEach var="userProfileValues" items="${userProfileList}">
+                                    	<tr class="active">
+                                    		<td>
+												<spring:url value="/user/updateRegister/${userProfileValues.userProfileId}" var="updateRegisterUrl" htmlEscape="true"/>
+ 												<a class="text-center" href="${updateRegisterUrl}">
+                                        			<span class="text-muted small">${userProfileValues.userProfileId}</span> 											
+ 												</a>
+ 											</td>
+                                        	<td><span class="text-muted small">${userProfileValues.loginName}</span></td>
+                                        	<td><span class="text-muted small">${userProfileValues.firstName}</span></td>
+                                        	<td><span class="text-muted small">${userProfileValues.surname1}</span></td>
+                                        	<td><span class="text-muted small">${userProfileValues.email}</span></td>
+                                        	<td><span class="text-muted small">${userProfileValues.date}</span></td>
+                                        	<td><span class="text-muted small">${userProfileValues.enabled}</span></td>
+                                        	<td><span class="text-muted small">${userProfileValues.accountNonExpired}</span></td>
+                                        	<td><span class="text-muted small">${userProfileValues.credentialsNonExpired}</span></td>
+                                        	<td><span class="text-muted small">${userProfileValues.accountNonLocked}</span></td>
+                                        	<td><span class="text-muted small">${userProfileValues.company.companyId}</span></td>
+                                        	<td><span class="text-muted small">${userProfileValues.role.roleId}</span></td>                                        	
+                                    	</tr>				
+									</c:forEach>
+                                </tbody>
+                            </table>
                         </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-pills">
-                                <li class="active"><a href="#home-pills" data-toggle="tab">Home</a>
-                                </li>
-                                <li><a href="#profile-pills" data-toggle="tab">Profile</a>
-                                </li>
-                                <li><a href="#messages-pills" data-toggle="tab">Messages</a>
-                                </li>
-                                <li><a href="#settings-pills" data-toggle="tab">Settings</a>
-                                </li>
-                            </ul>
-
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div class="tab-pane fade in active" id="home-pills">
-                                    <h4>Home Tab</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                                <div class="tab-pane fade" id="profile-pills">
-                                    <h4>Profile Tab</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                                <div class="tab-pane fade" id="messages-pills">
-                                    <h4>Messages Tab</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                                <div class="tab-pane fade" id="settings-pills">
-                                    <h4>Settings Tab</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-12 -->
+                    		                      		   				   			   	
+                    	</div>
+                	</div>
+            	</div>
         	</div>
         
 		</div>
@@ -76,8 +88,8 @@
 	</div>
     <!-- /#page-wrapper -->  
   
-	</div>
-    <!-- /#wrapper -->  
+</div>
+<!-- /#wrapper -->  
     
 	</tiles:putAttribute>
 </tiles:insertDefinition>

@@ -1,11 +1,6 @@
 package net.kraklups.solarapp.web.user;
 
-import java.util.Calendar;
-
 import net.kraklups.solarapp.model.userprofile.UserProfile;
-import net.kraklups.solarapp.model.userservice.UserProfileDetails;
-import net.kraklups.solarapp.model.userservice.UserService;
-import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

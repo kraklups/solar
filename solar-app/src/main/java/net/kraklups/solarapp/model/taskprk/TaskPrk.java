@@ -16,6 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.park.Park;
 import net.kraklups.solarapp.model.role.Role;
@@ -24,11 +29,21 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 @Entity
 @Table(name="TaskPrk")
 @Inheritance(strategy=InheritanceType.JOINED)
-public abstract class TaskPrk {
+public class TaskPrk implements java.io.Serializable {
+	
+	private static final long serialVersionUID = 6497472672620027142L;
 	
 	private Long taskPrkId;
+	
+	@NotEmpty
+	@Size(min=6, max=30)		
 	private String taskName;
+	
+	//2014-07-04T12:08:56.235
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull
 	private Date creationDate;
+	
 	private Park park;
 	private Role role;
 	private UserProfile userProfile;
@@ -50,7 +65,7 @@ public abstract class TaskPrk {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO,
 		generator="TaskPrkIdGenerator")
-	@Column(name="TaskPrkId", unique= true, nullable = false)
+	@Column(name="taskPrkId", unique= true, nullable = false)
 	public Long getTaskPrkId() {
 		return taskPrkId;
 	}
@@ -76,6 +91,7 @@ public abstract class TaskPrk {
 		this.creationDate = creationDate;
 	}
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="parkId")	
 	public Park getPark() {
@@ -86,6 +102,7 @@ public abstract class TaskPrk {
 		this.park = park;
 	}
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="roleId")	
 	public Role getRole() {
@@ -108,8 +125,7 @@ public abstract class TaskPrk {
 	
 	@Override
 	public String toString() {
-		return "TaskPrk [taskPrkId=" + taskPrkId + ", taskName=" + taskName +
-			", parkId=" + park.getParkId() + ", roleId=" + role.getRoleId() + ", userProfile=" + userProfile.getLoginName() + "]";
+		return "TaskPrk [taskPrkId=" + taskPrkId + ", taskName=" + taskName + "]";
 	}	
 	
 }

@@ -12,20 +12,19 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.Immutable;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 @Entity
-@Immutable
 @Table(name="Company", uniqueConstraints = {
 	@UniqueConstraint(columnNames = "companyName") })
-public class Company {
+public class Company implements java.io.Serializable {
+
+	private static final long serialVersionUID = 1236220179752539048L;
 
 	private Long companyId;
 	
@@ -34,7 +33,7 @@ public class Company {
 	private String companyName;
 	
 	@DateTimeFormat(pattern="MM/dd/yyyy")
-	@NotNull @Past	
+	@NotNull
 	private Date date;
 	
 	public Company() {
@@ -83,6 +82,10 @@ public class Company {
 		this.date = date;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Company [companyId=" + companyId + ", companyName=" + companyName +
+			", date=" + date + "]";
+	}		
 	
 }

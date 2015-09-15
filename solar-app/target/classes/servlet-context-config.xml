@@ -8,7 +8,16 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 	<!-- Enable the configuration of mvc behavior based on annotations. --> 
-    <mvc:annotation-driven conversion-service="conversionService" />
+    <mvc:annotation-driven conversion-service="conversionService">
+		<mvc:message-converters>
+		<!-- Use the HibernateAware mapper instead of the default -->
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">
+					<bean class="net.kraklups.solarapp.web.controller.HibernateAwareObjectMapper" />
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 
     <context:component-scan base-package="net.kraklups.solarapp.web"/>
      	 	
@@ -17,10 +26,32 @@
     	<property name="formatters">
         	<set>
             	<bean class="net.kraklups.solarapp.web.formatters.CompanyFormatter" />
-            	<bean class="net.kraklups.solarapp.web.formatters.MapParkFormatter" />            	
+            	<bean class="net.kraklups.solarapp.web.formatters.MapParkFormatter" /> 
+            	<bean class="net.kraklups.solarapp.web.formatters.EventTskFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.DataLoggerFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.TaskPrkFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.ElementPrkFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.SensorFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.TimetableFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.StateTypeFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.UpkeepFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.MonitorFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.TrackFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.SynchronizeFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.ParkFormatter" />
+            	<bean class="net.kraklups.solarapp.web.formatters.RoleFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.ReportFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.MapElementFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.StringLineFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.ArrayPanelFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.ArrayBoxFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.CounterFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.MediumVoltageFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.ExtractionPointFormatter" />
+				<bean class="net.kraklups.solarapp.web.formatters.ElectricalSubstationFormatter" />
         	</set>
     	</property>
-	</bean> 	
+	</bean> 		
 	
     <!-- Used to serve static resources like css, images and javascript files-->
     <mvc:resources mapping="/resources/**" location="/resources/" />
@@ -50,7 +81,6 @@
     </bean>
  
     <!-- Tiles configuration -->
- 
     <bean id="tilesConfigurer"
         class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <property name="definitions">

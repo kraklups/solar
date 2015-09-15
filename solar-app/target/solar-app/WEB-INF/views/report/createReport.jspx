@@ -68,7 +68,6 @@
 											<form:errors path="urlReport" cssClass="control-label" for="inputError" element="label" />
 										</div> 
 									</spring:bind> 
-
 	   							   								    	   							   								    
 		    						<div class="button">
 		    							<spring:message code="createReport.submit" var="reportSubmit" />

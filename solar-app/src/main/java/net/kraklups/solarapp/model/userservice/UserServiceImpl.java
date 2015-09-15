@@ -65,8 +65,10 @@ public class UserServiceImpl implements UserService {
             UserProfile userProfile = new UserProfile(loginName,
                     encryptedPassword, userProfileDetails.getFirstName(),
                     userProfileDetails.getSurname1(), userProfileDetails.getSurname2(), userProfileDetails
-                        .getEmail(), userProfileDetails.getDate(), userProfileDetails.getBlocked(), 
-                        userProfileDetails.getErased(), userProfileDetails.getCompany(), userProfileDetails.getRole());
+                        .getEmail(), userProfileDetails.getDate(), 
+                        userProfileDetails.getEnabled(), userProfileDetails.getAccountNonExpired(), 
+                        userProfileDetails.getCredentialsNonExpired(), userProfileDetails.getAccountNonLocked(),
+                        userProfileDetails.getCompany(), userProfileDetails.getRole());
 
             userProfileDao.save(userProfile);
             return userProfile;
@@ -263,24 +265,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Company saveCompany(Company company)
 			throws DuplicateInstanceException {
-
-		try {
-			companyDao.findByName(company.getCompanyName());
-			throw new DuplicateInstanceException(company.getCompanyName(), Company.class.getName());
-		} catch (InstanceNotFoundException e) { 						
-			companyDao.save(company);
+						
+		companyDao.save(company);
 			
-			return company;
-		}
-	}
-		
-	@Override
-	public void updateCompany(Long companyId, String companyName, Date date) 
-			throws InstanceNotFoundException {
-		
-		Company company = companyDao.find(companyId);
-		company.setCompanyName(companyName);
-		company.setDate(date);
+		return company;
+	
 	}
 	
 	@Override
@@ -455,6 +444,74 @@ public class UserServiceImpl implements UserService {
 	public Module findModuleByName(String moduleName) throws InstanceNotFoundException {
 
 		return moduleDao.findByName(moduleName);	
+	}
+
+	@Override
+	public Module saveModule(Module module) throws DuplicateInstanceException {
+
+		moduleDao.save(module);
+        
+		return module;
+	}
+
+	@Override
+	public UserProfileBlock getUserProfiles(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<UserProfile> userProfiles = userProfileDao.getUserProfiles(startIndex, count + 1);
+		
+		boolean existMoreUserProfiles = userProfiles.size() == (count +1);
+		
+		return new UserProfileBlock(userProfiles, existMoreUserProfiles);
+	}
+
+	@Override
+	public Role saveRole(Role role) throws DuplicateInstanceException {
+		
+		roleDao.save(role);
+		
+		return role;
+	}
+
+	@Override
+	public RoleBlock getRoles(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Role> roles = roleDao.getRoles(startIndex, count + 1);
+		
+		boolean existMoreRoles = roles.size() == (count +1);
+		
+		return new RoleBlock(roles, existMoreRoles);
+	}
+
+	@Override
+	public ModuleBlock getModules(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Module> modules = moduleDao.getModules(startIndex, count + 1);
+		
+		boolean existMoreModules = modules.size() == (count +1);
+		
+		return new ModuleBlock(modules, existMoreModules);
+	}
+
+	@Override
+	public UserProfile saveUserProfile(UserProfile userProfile)
+			throws DuplicateInstanceException {
+
+		userProfileDao.save(userProfile);
+		
+		return userProfile;
+	}
+
+	@Override
+	public UserProfile assignDateUserProfile(UserProfile userProfile, Date date)
+			throws InstanceNotFoundException {
+		
+		userProfile.setDate(date);
+		
+		return userProfile;
+		
 	}
 
 }

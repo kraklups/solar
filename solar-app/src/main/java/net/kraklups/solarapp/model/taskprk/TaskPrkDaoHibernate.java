@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.kraklups.modelutil.dao.GenericDaoHibernate;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.solarapp.model.report.Report;
 
 import org.springframework.stereotype.Repository;
 
@@ -293,6 +294,115 @@ public class TaskPrkDaoHibernate extends
 			throw new InstanceNotFoundException(roleId, TaskPrk.class.getName());
 		} else {
 			return taskPrks;
+		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<TaskPrk> getTaskPrks(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<TaskPrk> taskPrks = (List<TaskPrk>)  getSession().createQuery(
+	        	"SELECT a FROM TaskPrk a " +
+	        	"ORDER BY a.taskPrkId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (taskPrks == null) {
+			throw new InstanceNotFoundException(null, TaskPrk.class.getName());
+		} else {
+			return taskPrks;
+		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<Upkeep> getUpkeeps(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Upkeep> upkeeps = (List<Upkeep>)  getSession().createQuery(
+	        	"SELECT a FROM Upkeep a " +
+	        	"ORDER BY a.upkeepId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (upkeeps == null) {
+			throw new InstanceNotFoundException(null, Upkeep.class.getName());
+		} else {
+			return upkeeps;
+		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Report> getReports(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Report> reports = (List<Report>)  getSession().createQuery(
+	        	"SELECT a FROM Report a " +
+	        	"ORDER BY a.reportId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (reports == null) {
+			throw new InstanceNotFoundException(null, Report.class.getName());
+		} else {
+			return reports;
+		}
+
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Synchronize> getSynchronizes(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Synchronize> synchronizes = (List<Synchronize>)  getSession().createQuery(
+	        	"SELECT a FROM Synchronize a " +
+	        	"ORDER BY a.synchronizeId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (synchronizes == null) {
+			throw new InstanceNotFoundException(null, Synchronize.class.getName());
+		} else {
+			return synchronizes;
+		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<Track> getTracks(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Track> tracks = (List<Track>)  getSession().createQuery(
+	        	"SELECT a FROM Track a " +
+	        	"ORDER BY a.trackId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (tracks == null) {
+			throw new InstanceNotFoundException(null, Track.class.getName());
+		} else {
+			return tracks;
+		}
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Monitor> getMonitors(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Monitor> monitors = (List<Monitor>)  getSession().createQuery(
+	        	"SELECT a FROM Monitor a " +
+	        	"ORDER BY a.monitorId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (monitors == null) {
+			throw new InstanceNotFoundException(null, Monitor.class.getName());
+		} else {
+			return monitors;
 		}
 	}
 

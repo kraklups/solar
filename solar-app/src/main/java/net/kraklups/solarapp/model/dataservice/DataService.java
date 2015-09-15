@@ -6,20 +6,20 @@ import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.datavalue.DataValue;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.sensor.Sensor;
-import net.kraklups.solarapp.model.taskprk.TaskPrk;
+import net.kraklups.solarapp.model.taskprk.Synchronize;
 
 public interface DataService {
 	
-	public DataValue createDataValue(TaskPrk taskPrk, ElementPrk elementPrk, DataLogger dataLogger, Sensor sensor) 
+	public DataValue createDataValue(Synchronize syncronize, ElementPrk elementPrk, DataLogger dataLogger, Sensor sensor) 
 			throws DuplicateInstanceException;
 
-	public DataValue updateDataValue(Long dataValueId, TaskPrk taskPrk, ElementPrk elementPrk, DataLogger dataLogger, Sensor sensor) 
+	public DataValue updateDataValue(Long dataValueId, Synchronize syncronize, ElementPrk elementPrk, DataLogger dataLogger, Sensor sensor) 
 			throws InstanceNotFoundException;
 
-	public void assignTaskPrkDataValue(DataValue dataValue, TaskPrk taskPrk) 
+	public void assignTaskPrkDataValue(DataValue dataValue, Synchronize syncronize) 
 			throws InstanceNotFoundException;
 
-	public DataValueBlock getDataValueByTaskPrkId(Long taskPrkId, int startIndex, int count) 
+	public DataValueBlock getDataValueBySynchronizeId(Long synchronizeId, int startIndex, int count) 
 			throws InstanceNotFoundException;
 
 	public void assignElementPrkDataValue(DataValue dataValue, ElementPrk elementPrk) 
@@ -39,5 +39,32 @@ public interface DataService {
 
 	public DataValueBlock getDataValueBySensorId(Long sensorId, int startIndex, int count) 
 			throws InstanceNotFoundException;	
+	
+	public DataLogger createDataLogger(String dataLoggerTag, String dataLoggerType, DataLogger dataLogger) 
+			throws DuplicateInstanceException;
+
+	public DataLogger updateDataLogger(Long dataLoggerId, String dataLoggerTag, String dataLoggerType, DataLogger dataLogger) 
+			throws InstanceNotFoundException;	
+	
+	public DataLoggerBlock getDataLoggerByDataLoggerId(Long dataLoggerId, int startIndex, int count) 
+			throws InstanceNotFoundException;
+		
+	public DataLoggerBlock getDataLoggers(int startIndex, int count) 
+			throws InstanceNotFoundException;
+	
+    public DataLogger saveDataLogger(DataLogger dataLogger)
+    		throws DuplicateInstanceException;	
+
+    public DataValue saveDataValue(DataValue dataValue)
+    		throws DuplicateInstanceException;	  
+    
+	public DataLogger findDataLogger(Long dataLoggerId)
+            throws InstanceNotFoundException;
+    
+	public DataValue findDataValue(Long dataValueId)
+            throws InstanceNotFoundException;
+	
+	public DataValueBlock getDataValues(int startIndex, int count) 
+			throws InstanceNotFoundException;
 	
 }

@@ -66,7 +66,7 @@
     SG.init();
     $('#gisOpenLayers').click(function() {
     	  SG.serialize();
-    	  alert("click-inside");
+    	//  alert("click-inside");
     }); 
     
   });

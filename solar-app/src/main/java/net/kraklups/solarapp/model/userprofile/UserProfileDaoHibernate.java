@@ -134,6 +134,24 @@ public class UserProfileDaoHibernate extends
 		} else {
 			return userProfiles;
 		}			
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<UserProfile> getUserProfiles(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<UserProfile> userProfiles = (List<UserProfile>)  getSession().createQuery(
+	        	"SELECT a FROM UserProfile a  " +
+	        	"ORDER BY a.userProfileId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (userProfiles == null) {
+			throw new InstanceNotFoundException(null, UserProfile.class.getName());
+		} else {
+			return userProfiles;
+		}
 	}		
 	
 }

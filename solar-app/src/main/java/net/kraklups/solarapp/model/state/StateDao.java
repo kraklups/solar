@@ -16,4 +16,7 @@ public interface StateDao extends GenericDao<State, Long> {
 	public List<State> getStatesByStateTypeId(Long stateTypeId, int startIndex, int count)
 			throws InstanceNotFoundException;
 	
+    public List<State> getStates(int startIndex, int count)
+			throws InstanceNotFoundException;	
+	
 }

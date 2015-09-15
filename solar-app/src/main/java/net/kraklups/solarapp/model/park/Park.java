@@ -31,15 +31,18 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 
 @Entity
 @Table(name="Park", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "parkName") })
-public class Park {
+	@UniqueConstraint(columnNames = "parkName") })
+public class Park implements java.io.Serializable {
 	
+	private static final long serialVersionUID = 2984860031831160751L;
+
 	private Long parkId;
 	
 	@NotEmpty
 	@Size(min=6, max=30)
 	private String parkName;
 	
+	//2014-07-04T12:08:56.235
 	@DateTimeFormat(pattern="MM/dd/yyyy")
 	@NotNull @Past
 	private Date startupDate;
@@ -52,13 +55,14 @@ public class Park {
 	
 	private Company company;	
 	
-//	@MapPark
+	@NotNull
 	private MultiPolygon mapPark;
 	
 	public Park() {		
 	}
 	
-	public Park(String parkName, Date startupDate, Date productionDate, UserProfile userProfile, Company company, MultiPolygon mapPark) {
+	public Park(String parkName, Date startupDate, Date productionDate, UserProfile userProfile, 
+			Company company, MultiPolygon mapPark) {
 	
 		this.parkName = parkName;
 		this.startupDate = startupDate;
@@ -129,6 +133,7 @@ public class Park {
 		this.mapPark = mapPark;
 	}
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="companyId")	
 	public Company getCompany(){
@@ -142,9 +147,8 @@ public class Park {
 	@Override
 	public String toString() {
 		return "Park [parkId=" + parkId + ", nombre=" + parkName + ", startupDate=" + startupDate +
-                       ", productionDate=" + productionDate + ", company=" + company.getCompanyName() + 
-                       ", user_author=" + userProfile.getLoginName() + 
-                       "mapPark=" + mapPark.toText() + "]";
+                       ", productionDate=" + productionDate + "]";
+                       
 	}	
 	
 }

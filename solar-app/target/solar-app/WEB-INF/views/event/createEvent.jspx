@@ -52,7 +52,7 @@
 		   							</spring:bind>
 	   							   		
 									<spring:bind path="tvi">           	
-										<spring:message code="createEventTsk.dateTvi" var="stdout" />
+										<spring:message code="createEventTsk.tvi" var="stdout" />
 										<div class="form-group ${status.error ? 'has-error' : '' }">        
 											<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>
 		            						<form:input path="tvi" class="form-control" placeholder="${stdout} yyyy-MM-dd'T'HH:mm:ss.SSS" />
@@ -61,30 +61,37 @@
 		   							</spring:bind>	   							   		
 
 									<spring:bind path="tvf">        
-	        							<spring:message code="createEventTsk.dateTvf" var="stdout" />
+	        							<spring:message code="createEventTsk.tvf" var="stdout" />
 										<div class="form-group ${status.error ? 'has-error' : '' }">        
 											<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>	        							
-		            						<form:input path="tvf" class="form-control" placeholder="Date tvf" />
-											<form:errors path="tvf" cssClass="control-label" for="inputError" element="label" />		            						
+		            						<form:input path="tvf" class="form-control" placeholder="${stdout} yyyy-MM-dd'T'HH:mm:ss.SSS" />
+											<form:errors path="tvf" cssClass="control-label" for="inputError" element="label" />
 		   								</div>
 		   							</spring:bind>   							   		
-	   							   			   							   								    	   							   			   							   								   
-	   								<div class="form-group">
-	   									<spring:message code="select.chooseOne" var="chooseOne" />
-	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createEventTsk.taskPrk" /></label>
-										<form:select path="taskPrk" class="form-control">
-    										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${taskPrkList}" itemValue="taskPrkId" itemLabel="name" />
-										</form:select>	   							   								    
-	   								</div>
 
-	   								<div class="form-group">
-	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createEventTsk.timetable" /></label>
-										<form:select path="timetable" class="form-control">
-    										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${timetableList}" itemValue="timetableId" itemLabel="name" />
-										</form:select>	   							   								    
-	   								</div>
+									<spring:bind path="taskPrk">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createEventTsk.taskPrk" /></label>
+											<form:select path="taskPrk" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${taskPrkList}" itemValue="taskPrkId" itemLabel="taskName" />
+											</form:select>
+											<form:errors path="taskPrk" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
+
+									<spring:bind path="timetable">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createEventTsk.timetable" /></label>
+											<form:select path="timetable" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${timetableList}" itemValue="timetableId" itemLabel="timetableTag" />
+											</form:select>
+											<form:errors path="timetable" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
 	   							   	
                             		<div class="form-group">
                          		    	<div class="checkbox">                         		    	

@@ -50,6 +50,9 @@ public interface UserService extends UserDetailsService {
     public void assignCompanyUserProfile(UserProfile userProfile, Company company)
     		throws InstanceNotFoundException;
     
+    public UserProfile assignDateUserProfile(UserProfile userProfile, Date date)
+    		throws InstanceNotFoundException;
+    
     public void assignRoleUserProfile(UserProfile userProfile, Role role)
     		throws InstanceNotFoundException;
     
@@ -67,9 +70,6 @@ public interface UserService extends UserDetailsService {
 	
 	public Company saveCompany(Company company) 
 			throws DuplicateInstanceException;	
-	
-	public void updateCompany(Long companyId, String companyName, Date date) 
-			throws InstanceNotFoundException;
 	
 	public void removeCompany(Long companyId) 
 			throws InstanceNotFoundException;
@@ -120,5 +120,23 @@ public interface UserService extends UserDetailsService {
 	public RoleModuleAccess removeRoleModuleAccess() throws InstanceNotFoundException;
 	
 	public RoleModuleAccess checkRoleModuleAccess() throws InstanceNotFoundException;	
+	
+    public Module saveModule(Module module)
+    		throws DuplicateInstanceException;	
+    
+	public UserProfileBlock getUserProfiles(int startIndex, int count) 
+			throws InstanceNotFoundException;    
+	
+    public Role saveRole(Role role)
+    		throws DuplicateInstanceException;	
+    
+	public RoleBlock getRoles(int startIndex, int count) 
+			throws InstanceNotFoundException;
+	
+	public ModuleBlock getModules(int startIndex, int count) 
+			throws InstanceNotFoundException;    	
+	
+    public UserProfile saveUserProfile(UserProfile userProfile)
+    		throws DuplicateInstanceException;		
 	
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
@@ -25,20 +26,22 @@ public class Monitor extends TaskPrk implements java.io.Serializable {
 	private Set<ElementPrk> elementPrks = new HashSet<ElementPrk>(0);
 
 	public Monitor() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Monitor(String taskName, Date creationDate,
 			Park park, Role role, UserProfile userProfile) {
+		
 		super(taskName, creationDate, park, role, userProfile);
-		// TODO Auto-generated constructor stub
 	}
 	
-	public Monitor(String taskName, Date creationDate,
-			Park park, Role role, UserProfile userProfile, Set<ElementPrk> elementPrks) {
-		super(taskName, creationDate, park, role, userProfile);
-		this.elementPrks = elementPrks; 
+	@Column(name = "monitorId", nullable = false, insertable = false, updatable = false)	
+	public Long getMonitorId() {
+		return super.getTaskPrkId();
 	}
+		
+	public void setMonitorId(Long monitorId){
+		super.setTaskPrkId(monitorId);
+	}	
 	
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "monitors")
 	public Set<ElementPrk> getElementPrks() {

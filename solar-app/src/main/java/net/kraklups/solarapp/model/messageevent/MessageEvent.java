@@ -15,9 +15,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.eventtsk.EventTsk;
@@ -27,14 +27,15 @@ import net.kraklups.solarapp.model.eventtsk.EventTsk;
 public class MessageEvent {
 	
 	private Long messageEventId;
+
+	@NotEmpty
+	@Size(min=1, max=50)
+	private String messageEventText;	
 	
+	//2014-07-04T12:08:56.235	
 	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
 	@NotNull	
 	private Date tvi;
-	
-	@NotEmpty
-	@Range(min = 1, max = 500)
-	private String messageEventText;
 	
 	private EventTsk eventTsk;
 	
@@ -79,6 +80,7 @@ public class MessageEvent {
 		this.messageEventText = messageEventText;
 	}
 	
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="eventTskId")	
 	public EventTsk getEventTsk(){

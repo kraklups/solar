@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import net.kraklups.solarapp.model.userprofile.UserProfile;
-import net.kraklups.solarapp.model.userservice.util.PasswordEncrypter;
 
 public class SessionExperiments {
 

@@ -1,5 +1,7 @@
 package net.kraklups.solarapp.model.module;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import net.kraklups.modelutil.dao.GenericDaoHibernate;
@@ -23,6 +25,24 @@ public class ModuleDaoHibernate extends
 		} else {
 			return module;
 		}	
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")	
+	public List<Module> getModules(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Module> modules = (List<Module>)  getSession().createQuery(
+	        	"SELECT a FROM Module a " +
+	        	"ORDER BY a.moduleId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (modules == null) {
+			throw new InstanceNotFoundException(null, Module.class.getName());
+		} else {
+			return modules;
+		}
 	}
 
 }

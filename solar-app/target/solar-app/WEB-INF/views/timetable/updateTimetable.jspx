@@ -35,22 +35,28 @@
                     	
 							<form:form modelAttribute="timetable" method="POST">
     	                        <fieldset>	   							    
-	   								<div class="form-group">        
-		        						<spring:message code="createTimetable.timetableTag" />
-       	        						<form:input path="timetableTag" class="form-control" placeholder="Timetable Tag" autofocus="autofocus" />
-		   							</div>
+									<spring:bind path="timetableTag">           	
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createTimetable.timetableTag" /></label>
+       	        							<form:input path="timetableTag" class="form-control" placeholder="Timetable Tag" autofocus="autofocus" />
+											<form:errors path="timetableTag" cssClass="control-label" for="inputError" element="label" />       	              	        							
+		   								</div>
+									</spring:bind>		   								
 	   							   		
-	   								<div class="form-group">        
-	        							<spring:message code="createTimetable.date" />
-		            					<form:input path="tvi" class="form-control" placeholder="Timetable Date" />
-		   							</div>	   							   		
+									<spring:bind path="tvi">           	
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createTimetable.date" /></label>
+		            						<form:input path="tvi" class="form-control" placeholder="Timetable Date" />
+											<form:errors path="tvi" cssClass="control-label" for="inputError" element="label" />		            						
+		   								</div>	
+		   							</spring:bind>
 	   							   			   							   								    	   							   			   							   								   
 	   								<div class="form-group">
 	   									<spring:message code="select.chooseOne" var="chooseOne" />
-	   									<spring:message code="createTimetable.park" />
+	   									<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createTimetable.park" /></label>
 										<form:select path="park" class="form-control">
     										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${parkList}" itemValue="parkId" itemLabel="name" />
+    										<form:options items="${parkList}" itemValue="parkId" itemLabel="parkName" />
 										</form:select>	   							   								    
 	   								</div>
 	   							   								    	   							   								    

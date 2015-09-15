@@ -2,8 +2,8 @@
 	xmlns:jsp="http://java.sun.com/JSP/Page" 
 	xmlns:tiles="http://tiles.apache.org/tags-tiles" 
 	xmlns:spring="http://www.springframework.org/tags"
-	xmlns:form="http://www.springframework.org/tags/form"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"	
+	xmlns:form="http://www.springframework.org/tags/form"	
 	xmlns="http://www.w3.org/1999/xhtml"
 	version="2.0" >
 	
@@ -34,51 +34,74 @@
                     	<div class="panel-body">
                     	
 							<form:form modelAttribute="state" method="POST">
-    	                        <fieldset>	   							    
-	   								<div class="form-group">        
-	        							<spring:message code="createState.dateTvi" />
-		            					<form:input path="tvi" class="form-control" placeholder="MM/DD/YYYY" />
-		   							</div>	    
-		   							
-		   							<div class="form-group">
-	        							<spring:message code="createState.dateTvf" />
-		            					<form:input path="tvf" class="form-control" placeholder="MM/DD/YYYY" />
-		   							</div>	    		   							
-	   							   		
-	   							   	<spring:message code="select.chooseOne" var="chooseOne" />	
-	   							   		
-	   								<div class="form-group">
-	   									<spring:message code="createState.eventTsk" />
-										<form:select path="eventTsk" class="form-control">
-    										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${eventTskList}" itemValue="eventTskId" itemLabel="name" />
-										</form:select>	   							   								    
-	   								</div>
-	   							   								    
-	   								<div class="form-group">
-	   									<spring:message code="createState.park" />
-										<form:select path="park" class="form-control">
-    										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${parkList}" itemValue="parkId" itemLabel="name" />
-										</form:select>	   							   								    
-	   								</div>
+    	                        <fieldset>
+    	                        
+									<spring:bind path="tvi">
+										<spring:message code="createState.tvi" var="stdout" />
+  										<div class="form-group ${status.error ? 'has-error' : '' }">        
+    										<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>    
+											<form:input path="tvi" class="form-control" placeholder="${stdout} yyyy-MM-dd'T'HH:mm:ss.SSS" />
+											<form:errors path="tvi" cssClass="control-label" for="inputError" element="label" />
+		   								</div>	 
+		   							</spring:bind>
 
-	   								<div class="form-group">
-	   									<spring:message code="createState.upkeep" />
-										<form:select path="upkeep" class="form-control">
-    										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${upkeepList}" itemValue="upkeepId" itemLabel="name" />
-										</form:select>	   							   								    
-	   								</div>
-	   							   								    
-	   								<div class="form-group">
-	   									<spring:message code="createState.stateType" />
-										<form:select path="stateType" class="form-control">
-    										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${stateTypeList}" itemValue="stateTypeId" itemLabel="name" />
-										</form:select>	   							   								    
-	   								</div>
-	   							   								    	   							   								    
+									<spring:bind path="tvf">
+										<spring:message code="createState.tvf" var="stdout" />
+  										<div class="form-group ${status.error ? 'has-error' : '' }">        
+    										<label class="control-label" for="${status.error ? 'inputError' : '' }">${stdout}</label>    
+											<form:input path="tvf" class="form-control" placeholder="${stdout} yyyy-MM-dd'T'HH:mm:ss.SSS" />
+											<form:errors path="tvf" cssClass="control-label" for="inputError" element="label" />
+		   								</div>	 
+		   							</spring:bind>
+		   								   							   			   							   		
+									<spring:bind path="park">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createState.park" /></label>
+											<form:select path="park" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${parkList}" itemValue="parkId" itemLabel="parkName" />
+											</form:select>
+											<form:errors path="park" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>	   							   		
+
+									<spring:bind path="eventTsk">
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createState.eventTsk" /></label>
+											<form:select path="eventTsk" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${eventTskList}" itemValue="eventTskId" itemLabel="tagET" />
+											</form:select>
+											<form:errors path="eventTsk" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+	   								</spring:bind>
+
+									<spring:bind path="upkeep">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createState.upkeep" /></label>
+											<form:select path="upkeep" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${upkeepList}" itemValue="upkeepId" itemLabel="taskName" />
+											</form:select>
+											<form:errors path="upkeep" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>	   							   		
+
+									<spring:bind path="stateType">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createState.stateType" /></label>
+											<form:select path="stateType" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${stateTypeList}" itemValue="stateTypeId" itemLabel="nameST" />
+											</form:select>
+											<form:errors path="stateType" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>	   							   		
+	   							   								    	   							   								    	   							   								    
 		    						<div class="button">
 		    							<spring:message code="createState.submit" var="stateSubmit" />
 		        						<input type="submit" value="${stateSubmit}" />        

@@ -8,7 +8,8 @@
 	<sec:global-method-security secured-annotations="enabled" />
 
 	<sec:http pattern="/resources/**" security="none"/>            
-	<sec:http pattern="/user/login" security="none"/>            
+	<sec:http pattern="/user/login" security="none"/>  
+	<sec:http pattern="/rest/**" security="none"/>
        
     <sec:http create-session="ifRequired" auto-config="true" disable-url-rewriting="true"
     		authentication-manager-ref="dao-auth" access-decision-manager-ref="accessDecisionManager">

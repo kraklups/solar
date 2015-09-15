@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -74,6 +75,7 @@ public class Sensor {
 		this.sensorType = sensorType;
 	}	
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="elementPrkId")	
 	public ElementPrk getElementPrk(){
@@ -87,7 +89,7 @@ public class Sensor {
 	@Override
 	public String toString() {
 		return "Park [sensorId=" + sensorId + ", sensorTag=" + sensorTag + ", sensorType=" + sensorType +  
-                       ", DataLoggerSupervise=" + elementPrk.getElementPrkId() + "]";
+                       ", DataLoggerSupervise=" + "]";
 	}			
 	
 }

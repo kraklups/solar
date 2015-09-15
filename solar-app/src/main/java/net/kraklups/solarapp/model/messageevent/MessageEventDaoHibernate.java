@@ -33,4 +33,22 @@ public class MessageEventDaoHibernate extends
 		}		
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<MessageEvent> getMessageEvents(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<MessageEvent> messageEvents = (List<MessageEvent>)  getSession().createQuery(
+	        	"SELECT a FROM MessageEvent a  " +
+	        	"ORDER BY a.messageEventId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (messageEvents == null) {
+			throw new InstanceNotFoundException(null, MessageEvent.class.getName());
+		} else {
+			return messageEvents;
+		}	
+	}
+
 }

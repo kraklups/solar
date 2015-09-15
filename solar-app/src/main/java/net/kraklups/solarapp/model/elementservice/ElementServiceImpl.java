@@ -1,11 +1,13 @@
 package net.kraklups.solarapp.model.elementservice;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.vividsolutions.jts.geom.Point;
 
 import net.kraklups.modelutil.exceptions.DuplicateInstanceException;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
@@ -41,12 +43,13 @@ public class ElementServiceImpl implements ElementService {
 	
 	@Override
 	public ArrayBox createArrayBox(String elementPrkName, String elementPrkTag,
-			Timestamp tvi, Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, StringLine stringLine)
+			Date tvi, Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement)
 			throws DuplicateInstanceException {
 
 			ArrayBox arrayBox = new ArrayBox(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile, 
-				dataLogger, park, stringLine);
+				dataLogger, park, mapElement);
+			
 			elementPrkDao.save(arrayBox); 
 			
 		return arrayBox;
@@ -54,9 +57,8 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public ArrayBox updateArrayBox(Long arrayBoxId, String elementPrkName,
-			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park,
-			StringLine stringLine) throws InstanceNotFoundException {
+			String elementPrkTag, Date tvi, Date lastAccess,
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement) throws InstanceNotFoundException {
 
 		ArrayBox arrayBox = (ArrayBox) elementPrkDao.find(arrayBoxId);
 		
@@ -67,19 +69,18 @@ public class ElementServiceImpl implements ElementService {
 		arrayBox.setUserProfile(userProfile);
 		arrayBox.setDataLogger(dataLogger);
 		arrayBox.setPark(park);
-		arrayBox.setStringLine(stringLine);
 		
 		return arrayBox;
 	}
 
 	@Override
 	public ArrayPanel createArrayPanel(String elementPrkName,
-			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park)
+			String elementPrkTag, Date tvi, Date lastAccess,
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement, StringLine stringLine)
 			throws DuplicateInstanceException {
 
 		ArrayPanel arrayPanel = new ArrayPanel(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile, 
-			dataLogger, park);
+			dataLogger, park, mapElement, stringLine);
 		elementPrkDao.save(arrayPanel); 
 		
 		return arrayPanel;	
@@ -87,8 +88,8 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public ArrayPanel updateArrayPanel(Long arrayBoxId, String elementPrkName,
-			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park)
+			String elementPrkTag, Date tvi, Date lastAccess,
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement, StringLine stringLine)
 			throws InstanceNotFoundException {
 
 		ArrayPanel arrayPanel = (ArrayPanel) elementPrkDao.find(arrayBoxId);
@@ -100,18 +101,20 @@ public class ElementServiceImpl implements ElementService {
 		arrayPanel.setUserProfile(userProfile);
 		arrayPanel.setDataLogger(dataLogger);
 		arrayPanel.setPark(park);
+		arrayPanel.setStringLine(stringLine);
 		
 		return arrayPanel;
 	}
 
 	@Override
 	public Cell createCell(String elementPrkName, String elementPrkTag,
-			Timestamp tvi, Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, ArrayPanel arrayPanel,
-			StringLine stringLine) throws DuplicateInstanceException {
+			Date tvi, Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, ArrayPanel arrayPanel,
+			StringLine stringLine) 
+					throws DuplicateInstanceException {
 
 		Cell cell = new Cell(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile, 
-				dataLogger, park, arrayPanel, stringLine);
+				dataLogger, park, mapElement, arrayPanel, stringLine);
 		elementPrkDao.save(cell); 
 			
 		return cell;			
@@ -119,10 +122,10 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public Cell updateCell(Long arrayBoxId, String elementPrkName,
-			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park,
+			String elementPrkTag, Date tvi, Date lastAccess,
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement,
 			ArrayPanel arrayPanel, StringLine stringLine)
-			throws InstanceNotFoundException {
+					throws InstanceNotFoundException {
 
 		Cell cell = (Cell) elementPrkDao.find(arrayBoxId);
 		
@@ -141,11 +144,12 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public Counter createCounter(String elementPrkName, String elementPrkTag,
-			Timestamp tvi, Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park) throws DuplicateInstanceException {
+			Date tvi, Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement) 
+					throws DuplicateInstanceException {
 
 		Counter counter = new Counter(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile, 
-				dataLogger, park);
+				dataLogger, park, mapElement);
 		elementPrkDao.save(counter); 
 			
 		return counter;		
@@ -153,9 +157,9 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public Counter updateCounter(Long arrayBoxId, String elementPrkName,
-			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park)
-			throws InstanceNotFoundException {
+			String elementPrkTag, Date tvi, Date lastAccess,
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement)
+					throws InstanceNotFoundException {
 
 		Counter counter = (Counter) elementPrkDao.find(arrayBoxId);
 		
@@ -172,13 +176,13 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public ElectricalSubstation createElectricalSubstation(
-			String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, MediumVoltage mediumVoltage)
-			throws DuplicateInstanceException {
+			String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, MediumVoltage mediumVoltage)
+					throws DuplicateInstanceException {
 		
 		ElectricalSubstation electricalSubstation = new ElectricalSubstation(elementPrkName, elementPrkTag, tvi, 
-				lastAccess, userProfile, dataLogger, park, mediumVoltage);
+				lastAccess, userProfile, dataLogger, park, mapElement, mediumVoltage);
 		elementPrkDao.save(electricalSubstation); 
 			
 		return electricalSubstation;	
@@ -186,10 +190,10 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public ElectricalSubstation updateElectricalSubstation(Long arrayBoxId,
-			String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, MediumVoltage mediumVoltage)
-			throws InstanceNotFoundException {
+			String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, MediumVoltage mediumVoltage)
+					throws InstanceNotFoundException {
 
 		ElectricalSubstation electricalSubstation = (ElectricalSubstation) elementPrkDao.find(arrayBoxId);
 		
@@ -207,12 +211,12 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public ExtractionPoint createExtractionPoint(String elementPrkName,
-			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park)
+			String elementPrkTag, Date tvi, Date lastAccess,
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement)
 			throws DuplicateInstanceException {
 		
 		ExtractionPoint extractionPoint = new ExtractionPoint(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile, 
-				dataLogger, park);
+				dataLogger, park, mapElement);
 		elementPrkDao.save(extractionPoint); 
 		
 		return extractionPoint;	
@@ -220,9 +224,10 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public ExtractionPoint updateExtractionPoint(Long arrayBoxId,
-			String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park) throws InstanceNotFoundException {
+			String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement) 
+					throws InstanceNotFoundException {
 		
 		ExtractionPoint extractionPoint = (ExtractionPoint) elementPrkDao.find(arrayBoxId);
 		
@@ -239,11 +244,12 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public Gps createGps(String elementPrkName, String elementPrkTag,
-			Timestamp tvi, Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park) throws DuplicateInstanceException {
+			Date tvi, Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement) 
+					throws DuplicateInstanceException {
 		
 		Gps gps = new Gps(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile, 
-				dataLogger, park);
+				dataLogger, park, mapElement);
 		elementPrkDao.save(gps); 
 			
 		return gps;	
@@ -251,9 +257,9 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public Gps updateGps(Long arrayBoxId, String elementPrkName,
-			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park)
-			throws InstanceNotFoundException {
+			String elementPrkTag, Date tvi, Date lastAccess,
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement)
+					throws InstanceNotFoundException {
 		
 		Gps gps = (Gps) elementPrkDao.find(arrayBoxId);
 		
@@ -270,13 +276,13 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public Inverter createInverter(String elementPrkName, String elementPrkTag,
-			Timestamp tvi, Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, Counter counter,
+			Date tvi, Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, Counter counter,
 			ArrayBox arrayBox, ElectricalSubstation electricalSubstation)
-			throws DuplicateInstanceException {
+					throws DuplicateInstanceException {
 
 		Inverter inverter = new Inverter(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile, 
-				dataLogger, park, counter, arrayBox, electricalSubstation);
+				dataLogger, park, mapElement, counter, arrayBox, electricalSubstation);
 		elementPrkDao.save(inverter); 
 			
 		return inverter;
@@ -284,11 +290,11 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public Inverter updateInverter(Long arrayBoxId, String elementPrkName,
-			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park,
+			String elementPrkTag, Date tvi, Date lastAccess,
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement,
 			Counter counter, ArrayBox arrayBox,
 			ElectricalSubstation electricalSubstation)
-			throws InstanceNotFoundException {
+					throws InstanceNotFoundException {
 		
 		Inverter inverter = (Inverter) elementPrkDao.find(arrayBoxId);
 		
@@ -308,12 +314,13 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public MediumVoltage createMediumVoltage(String elementPrkName,
-			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park,
-			ExtractionPoint extractionPoint) throws DuplicateInstanceException {
+			String elementPrkTag, Date tvi, Date lastAccess,
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement,
+			ExtractionPoint extractionPoint) 
+					throws DuplicateInstanceException {
 		
 		MediumVoltage mediumVoltage = new MediumVoltage(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile, 
-				dataLogger, park, extractionPoint);
+				dataLogger, park, mapElement, extractionPoint);
 		elementPrkDao.save(mediumVoltage); 
 			
 		return mediumVoltage;	
@@ -321,10 +328,10 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public MediumVoltage updateMediumVoltage(Long arrayBoxId,
-			String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park, ExtractionPoint extractionPoint)
-			throws InstanceNotFoundException {
+			String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement, ExtractionPoint extractionPoint)
+					throws InstanceNotFoundException {
 		
 		MediumVoltage mediumVoltage = (MediumVoltage) elementPrkDao.find(arrayBoxId);
 		
@@ -342,12 +349,12 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public SolarTracker createSolarTracker(String elementPrkName,
-			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park)
-			throws DuplicateInstanceException {
+			String elementPrkTag, Date tvi, Date lastAccess,
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement)
+					throws DuplicateInstanceException {
 	 
 		SolarTracker solarTracker = new SolarTracker(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile, 
-				dataLogger, park);
+				dataLogger, park, mapElement);
 		elementPrkDao.save(solarTracker); 
 			
 		return solarTracker;
@@ -355,9 +362,11 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public SolarTracker updateSolarTracker(Long arrayBoxId,
-			String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park) throws InstanceNotFoundException {
+			String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement) 
+					throws InstanceNotFoundException {
+		
 		SolarTracker solarTracker = (SolarTracker) elementPrkDao.find(arrayBoxId);
 		
 		solarTracker.setElementPrkName(elementPrkName);
@@ -372,12 +381,13 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public StringLine createStringLine(String elementPrkName,
-			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park,
-			ArrayBox arrayBox) throws DuplicateInstanceException {
+			String elementPrkTag, Date tvi, Date lastAccess,
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement,
+			ArrayBox arrayBox) 
+					throws DuplicateInstanceException {
 		
 		StringLine stringLine = new StringLine(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile, 
-				dataLogger, park, arrayBox);
+				dataLogger, park, mapElement, arrayBox);
 		elementPrkDao.save(stringLine); 
 			
 		return stringLine;
@@ -385,9 +395,10 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public StringLine updateStringLine(Long arrayBoxId, String elementPrkName,
-			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park,
-			ArrayBox arrayBox) throws InstanceNotFoundException {
+			String elementPrkTag, Date tvi, Date lastAccess,
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement,
+			ArrayBox arrayBox) 
+					throws InstanceNotFoundException {
 		
 		StringLine stringLine = (StringLine) elementPrkDao.find(arrayBoxId);
 		
@@ -405,12 +416,12 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public WeatherStation createWeatherStation(String elementPrkName,
-			String elementPrkTag, Timestamp tvi, Timestamp lastAccess,
-			UserProfile userProfile, DataLogger dataLogger, Park park)
-			throws DuplicateInstanceException {
+			String elementPrkTag, Date tvi, Date lastAccess,
+			UserProfile userProfile, DataLogger dataLogger, Park park, Point mapElement)
+					throws DuplicateInstanceException {
 		
 		WeatherStation weatherStation = new WeatherStation(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile, 
-				dataLogger, park);
+				dataLogger, park, mapElement);
 		elementPrkDao.save(weatherStation); 
 			
 		return weatherStation;	
@@ -418,9 +429,10 @@ public class ElementServiceImpl implements ElementService {
 
 	@Override
 	public WeatherStation updateWeatherStation(Long arrayBoxId,
-			String elementPrkName, String elementPrkTag, Timestamp tvi,
-			Timestamp lastAccess, UserProfile userProfile,
-			DataLogger dataLogger, Park park) throws InstanceNotFoundException {
+			String elementPrkName, String elementPrkTag, Date tvi,
+			Date lastAccess, UserProfile userProfile,
+			DataLogger dataLogger, Park park, Point mapElement) 
+					throws InstanceNotFoundException {
 		
 		WeatherStation weatherStation = (WeatherStation) elementPrkDao.find(arrayBoxId);
 		
@@ -457,14 +469,14 @@ public class ElementServiceImpl implements ElementService {
 	}
 
 	@Override
-	public void assignTviElementPrk(ElementPrk elementPrk, Timestamp tvi)
+	public void assignTviElementPrk(ElementPrk elementPrk, Date tvi)
 			throws InstanceNotFoundException {
 		
 		elementPrk.setTvi(tvi);
 	}
 
 	@Override
-	public void assignLastAccessElementPrk(ElementPrk elementPrk, Timestamp lastAccess)
+	public void assignLastAccessElementPrk(ElementPrk elementPrk, Date lastAccess)
 			throws InstanceNotFoundException {
 		
 		elementPrk.setLastAccess(lastAccess);
@@ -485,10 +497,10 @@ public class ElementServiceImpl implements ElementService {
 	}
 
 	@Override
-	public void assignStringLineArrayBox(ArrayBox arrayBox,
+	public void assignStringLineArrayPanel(ArrayPanel arrayPanel,
 			StringLine stringLine) throws InstanceNotFoundException {
 		
-		arrayBox.setStringLine(stringLine);
+		arrayPanel.setStringLine(stringLine);
 	}
 
 	@Override
@@ -705,4 +717,257 @@ public class ElementServiceImpl implements ElementService {
 		return new ElementPrkBlock(elements, existMoreElements);
 	}
 
+	@Override
+	public SensorBlock getSensors(int startIndex, int count)
+			throws InstanceNotFoundException {
+		
+		List<Sensor> sensors = sensorDao.getSensors(startIndex, count + 1);
+		
+		boolean existMoreSensors = sensors.size() == (count +1);
+		
+		return new SensorBlock(sensors, existMoreSensors);
+
+	}
+
+	@Override
+	public ElementPrkBlock getElementPrks(int startIndex, int count)
+			throws InstanceNotFoundException {
+		
+		List<ElementPrk> elementPrks = elementPrkDao.getElementPrks(startIndex, count + 1);
+		
+		boolean existMoreElementPrks = elementPrks.size() == (count +1);
+		
+		return new ElementPrkBlock(elementPrks, existMoreElementPrks);
+	}
+
+	@Override
+	public Sensor saveSensor(Sensor sensor) throws DuplicateInstanceException {
+		
+		sensorDao.save(sensor);
+		
+		return sensor;
+	}
+
+	@Override
+	public ElementPrk saveElementPrk(ElementPrk elementPrk)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(elementPrk);
+		
+		return elementPrk;
+	}
+
+	@Override
+	public StringLineBlock getStringLines(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<StringLine> stringLines = elementPrkDao.getStringLines(startIndex, count + 1);
+		
+		boolean existMoreStringLines = stringLines.size() == (count +1);
+		
+		return new StringLineBlock(stringLines, existMoreStringLines);
+	}
+
+	@Override
+	public ArrayPanel saveElementPrk(ArrayPanel arrayPanel)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(arrayPanel);
+		
+		return arrayPanel;
+	}
+
+	@Override
+	public ArrayBox saveElementPrk(ArrayBox arrayBox)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(arrayBox);
+		
+		return arrayBox;
+	}
+
+	@Override
+	public Cell saveElementPrk(Cell cell) throws DuplicateInstanceException {
+
+		elementPrkDao.save(cell);
+		
+		return cell;
+	}
+
+	@Override
+	public Counter saveElementPrk(Counter counter)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(counter);
+		
+		return counter;
+	}
+
+	@Override
+	public ElectricalSubstation saveElementPrk(
+			ElectricalSubstation electricalSubstation)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(electricalSubstation);
+		
+		return electricalSubstation;
+	}
+
+	@Override
+	public ExtractionPoint saveElementPrk(ExtractionPoint extractionPoint)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(extractionPoint);
+		
+		return extractionPoint;
+	}
+
+	@Override
+	public Gps saveElementPrk(Gps gps) throws DuplicateInstanceException {
+
+		elementPrkDao.save(gps);
+		
+		return gps;
+	}
+
+	@Override
+	public Inverter saveElementPrk(Inverter inverter)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(inverter);
+		
+		return inverter;
+	}
+
+	@Override
+	public MediumVoltage saveElementPrk(MediumVoltage mediumVoltage)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(mediumVoltage);
+		
+		return mediumVoltage;
+	}
+
+	@Override
+	public SolarTracker saveElementPrk(SolarTracker solarTracker)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(solarTracker);
+		
+		return solarTracker;
+	}
+
+	@Override
+	public WeatherStation saveElementPrk(WeatherStation weatherStation)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(weatherStation);
+		
+		return weatherStation;
+	}
+
+	@Override
+	public StringLine saveElementPrk(StringLine stringLine)
+			throws DuplicateInstanceException {
+
+		elementPrkDao.save(stringLine);
+		
+		return stringLine;
+	}
+
+	@Override
+	public ArrayPanelBlock getArrayPanels(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<ArrayPanel> arrayPanels = elementPrkDao.getArrayPanels(startIndex, count + 1);
+		
+		boolean existMoreArrayPanels = arrayPanels.size() == (count +1);
+		
+		return new ArrayPanelBlock(arrayPanels, existMoreArrayPanels);
+	}
+
+	@Override
+	public MediumVoltageBlock getMediumVoltages(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<MediumVoltage> mediumVoltages = elementPrkDao.getMediumVoltages(startIndex, count + 1);
+		
+		boolean existMoreMediumVoltages = mediumVoltages.size() == (count +1);
+		
+		return new MediumVoltageBlock(mediumVoltages, existMoreMediumVoltages);
+	}
+
+	@Override
+	public CounterBlock getCounters(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<Counter> counters = elementPrkDao.getCounters(startIndex, count + 1);
+		
+		boolean existMoreCounters = counters.size() == (count +1);
+		
+		return new CounterBlock(counters, existMoreCounters);
+	}
+
+	@Override
+	public ArrayBoxBlock getArrayBoxs(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<ArrayBox> arrayBoxs = elementPrkDao.getArrayBoxs(startIndex, count + 1);
+		
+		boolean existMoreArrayBoxs = arrayBoxs.size() == (count +1);
+		
+		return new ArrayBoxBlock(arrayBoxs, existMoreArrayBoxs);
+	}
+
+	@Override
+	public ElectricalSubstationBlock getElectricalSubstations(int startIndex,
+			int count) throws InstanceNotFoundException {
+
+		List<ElectricalSubstation> electricalSubstations = elementPrkDao.getElectricalSubstations(startIndex, count + 1);
+		
+		boolean existMoreElectricalSubstations = electricalSubstations.size() == (count +1);
+		
+		return new ElectricalSubstationBlock(electricalSubstations, existMoreElectricalSubstations);
+	}
+
+	@Override
+	public ExtractionPointBlock getExtractionPoints(int startIndex, int count)
+			throws InstanceNotFoundException {
+
+		List<ExtractionPoint> extractionPoints = elementPrkDao.getExtractionPoints(startIndex, count + 1);
+		
+		boolean existMoreExtractionPoints = extractionPoints.size() == (count +1);
+		
+		return new ExtractionPointBlock(extractionPoints, existMoreExtractionPoints);
+	}
+
+	@Override
+	public ElementPrk createElementPrk(String elementPrkName,
+			String elementPrkTag, Date tvi, Date lastAccess,
+			UserProfile userProfile, DataLogger dataLogger, Park park,
+			Point mapElement) 
+					throws DuplicateInstanceException {
+	
+		ElementPrk elementPrk = new ElementPrk(elementPrkName, elementPrkTag, tvi, lastAccess, userProfile, 
+				dataLogger, park, mapElement);
+		
+		elementPrkDao.save(elementPrk);
+		
+		return elementPrk;
+	}
+	
+    @Transactional(readOnly = true)
+    public ElementPrk findElementPrk(Long elementPrkId)
+            throws InstanceNotFoundException {
+
+        return elementPrkDao.find(elementPrkId);
+    }
+
+    @Transactional(readOnly = true)
+    public Sensor findSensor(Long sensorId)
+            throws InstanceNotFoundException {
+
+        return sensorDao.find(sensorId);
+    }    
+    
 }

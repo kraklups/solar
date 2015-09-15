@@ -6,7 +6,6 @@ import static net.kraklups.solarapp.test.util.GlobalNames.SPRING_CONFIG_TEST_FIL
 import java.util.Date;
 import java.util.Calendar;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -23,18 +22,17 @@ public class UserServiceExperiments {
 	public static void main(String[] args) {
 		
 		/* Get service object. */
-		ApplicationContext ctx = new ClassPathXmlApplicationContext(
-				new String[] { SPRING_CONFIG_FILE, SPRING_CONFIG_TEST_FILE });
+		@SuppressWarnings("resource")
+		ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { SPRING_CONFIG_FILE, SPRING_CONFIG_TEST_FILE });
 		UserService userService = ctx.getBean(UserService.class);
 
 		try {
 			// Register user.
 			Calendar calendar = Calendar.getInstance();
-			Date timestamp = new Date(calendar.getTime().getTime());
-	    	Long value = new Long("1");	    		
+			Date timestamp = new Date(calendar.getTime().getTime());   		
 			UserProfile userProfile = userService.registerUser("serviceUser",
 					"userPassword", new UserProfileDetails("adminName","adminSurname1",
-			    			"adminSurname2","admin@kraklups.net",timestamp,false,false,null,null)); 
+			    			"adminSurname2","admin@kraklups.net",timestamp,false,false,false,false,null,null)); 
 			System.out.println("User with userId '"
 					+ userProfile.getUserProfileId() + "' has been created");
 			System.out.println(userProfile);

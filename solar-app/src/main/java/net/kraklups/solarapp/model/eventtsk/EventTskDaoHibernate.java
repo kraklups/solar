@@ -53,4 +53,22 @@ public class EventTskDaoHibernate extends
 
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<EventTsk> getEventTsks(int startIndex, int count)
+			throws InstanceNotFoundException {
+		
+		List<EventTsk> eventTsks = (List<EventTsk>)  getSession().createQuery(
+	        	"SELECT a FROM EventTsk a  " +
+	        	"ORDER BY a.eventTskId").
+	           	setFirstResult(startIndex).
+	           	setMaxResults(count).list();
+		
+		if (eventTsks == null) {
+			throw new InstanceNotFoundException(null, EventTsk.class.getName());
+		} else {
+			return eventTsks;
+		}		
+	}
+
 }

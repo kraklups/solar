@@ -7,25 +7,23 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import net.kraklups.solarapp.model.datalogger.DataLogger;
 import net.kraklups.solarapp.model.elementprk.ElementPrk;
 import net.kraklups.solarapp.model.sensor.Sensor;
-import net.kraklups.solarapp.model.taskprk.TaskPrk;
+import net.kraklups.solarapp.model.taskprk.Synchronize;
 
 @Entity
 @Table(name="DataValue")
-@Inheritance(strategy=InheritanceType.JOINED)
 public class DataValue {
 	
-	private String dataValueId;
-	private TaskPrk taskPrk;
+	private Long dataValueId;
+	private Synchronize synchronize;
 	private ElementPrk elementPrk;
 	private DataLogger dataLogger;	
 	private Sensor sensor; 
@@ -34,10 +32,10 @@ public class DataValue {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public DataValue(TaskPrk taskPrk, ElementPrk elementPrk, 
+	public DataValue(Synchronize synchronize, ElementPrk elementPrk, 
 			DataLogger dataLogger, Sensor sensor) {
 		
-		this.taskPrk = taskPrk;
+		this.synchronize = synchronize;
 		this.elementPrk = elementPrk;
 		this.dataLogger = dataLogger;
 		this.sensor = sensor;		
@@ -50,24 +48,26 @@ public class DataValue {
 	@GeneratedValue(strategy=GenerationType.AUTO,
 		generator="DataValueIdGenerator")
 	@Column(name="DataValueId", unique= true, nullable = false)
-	public String getDataValueId() {
+	public Long getDataValueId() {
 		return dataValueId;
 	}
 	
-	public void setDataValueId(String dataValueId) {
+	public void setDataValueId(Long dataValueId) {
 		this.dataValueId = dataValueId;
 	}
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
-	@JoinColumn(name="taskPrkId")	
-	public TaskPrk getTaskPrk(){
-		return taskPrk;
+	@JoinColumn(name="synchronizeId")	
+	public Synchronize getSynchronize(){
+		return synchronize;
 	}
 	
-	public void setTaskPrk(TaskPrk taskPrk){
-		this.taskPrk = taskPrk;
+	public void setSynchronize(Synchronize synchronize){
+		this.synchronize = synchronize;
 	}	
-
+	
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="elementPrkId")	
 	public ElementPrk getElementPrk(){
@@ -78,6 +78,7 @@ public class DataValue {
 		this.elementPrk = elementPrk;
 	}		
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="dataLoggerId")	
 	public DataLogger getDataLogger(){
@@ -88,6 +89,7 @@ public class DataValue {
 		this.dataLogger = dataLogger;
 	}		
 
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="sensorId")	
 	public Sensor getSensor(){
@@ -100,9 +102,7 @@ public class DataValue {
 	
 	@Override
     public String toString() {
-        return "DataValueMngDb [dataValueId=" + dataValueId + ", TaskPrk=" + taskPrk.getTaskPrkId() + 
-        		", ElementPrk=" + elementPrk.getElementPrkId() + ", DataLogger=" + dataLogger.getDataLoggerId() + 
-        		", Sensor=" + sensor.getSensorId() + "]";
+        return "DataValueMngDb [dataValueId=" + dataValueId + "]";
     }	
 
 }

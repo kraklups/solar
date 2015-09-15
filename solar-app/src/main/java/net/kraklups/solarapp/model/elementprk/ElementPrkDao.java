@@ -106,4 +106,28 @@ public interface ElementPrkDao extends GenericDao<ElementPrk, Long> {
      public List<ElementPrk> getElementPrksByDataLogger(Long dataLoggerId, int startIndex, int count) 
              throws InstanceNotFoundException;
      
+     public List<ElementPrk> getElementPrks(int startIndex, int count)
+ 			throws InstanceNotFoundException;
+     
+     public List<StringLine> getStringLines(int startIndex, int count)
+ 			throws InstanceNotFoundException;     
+     
+     public List<ArrayPanel> getArrayPanels(int startIndex, int count)
+ 			throws InstanceNotFoundException; 
+     
+     public List<ArrayBox> getArrayBoxs(int startIndex, int count)
+ 			throws InstanceNotFoundException;          
+     
+     public List<Counter> getCounters(int startIndex, int count)
+ 			throws InstanceNotFoundException; 
+     
+     public List<MediumVoltage> getMediumVoltages(int startIndex, int count)
+ 			throws InstanceNotFoundException;  
+     
+     public List<ExtractionPoint> getExtractionPoints(int startIndex, int count)
+ 			throws InstanceNotFoundException;     
+     
+     public List<ElectricalSubstation> getElectricalSubstations(int startIndex, int count)
+ 			throws InstanceNotFoundException;       
+     
 }

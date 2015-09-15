@@ -35,24 +35,33 @@
                     	
 							<form:form modelAttribute="sensor" method="POST">
     	                        <fieldset>	   							    
-	   								<div class="form-group">        
-		        						<spring:message code="createSensor.sensorTag" />
-       	        						<form:input path="sensorTag" class="form-control" placeholder="Sensor Tag" autofocus="autofocus" />
-		   							</div>
+									<spring:bind path="sensorTag">           	
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createSensor.sensorTag" /></label>
+       	        							<form:input path="sensorTag" class="form-control" placeholder="Sensor Tag" autofocus="autofocus" />
+											<form:errors path="sensorTag" cssClass="control-label" for="inputError" element="label" />
+										</div> 
+									</spring:bind> 
 	   							   			   							   								    
-	   							   	<div class="form-group">        
-		        						<spring:message code="createSensor.sensorType" />
-       	        						<form:input path="sensorType" class="form-control" placeholder="Sensor Type" />
-		   							</div>
+									<spring:bind path="sensorType">           	
+										<div class="form-group ${status.error ? 'has-error' : '' }">        
+											<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createSensor.sensorType" /></label>
+       	        							<form:input path="sensorType" class="form-control" placeholder="Sensor Type" />
+											<form:errors path="sensorType" cssClass="control-label" for="inputError" element="label" />
+										</div> 
+									</spring:bind>
 	   							   			   							   								   
-	   								<div class="form-group">
-	   									<spring:message code="select.chooseOne" var="chooseOne" />
-	   									<spring:message code="createSensor.elementPrk" />
-										<form:select path="elementPrk" class="form-control">
-    										<form:option value="" label="${chooseOne}" />
-    										<form:options items="${elementPrkList}" itemValue="elementPrkId" itemLabel="name" />
-										</form:select>	   							   								    
-	   								</div>
+									<spring:bind path="elementPrk">    	                        	
+	   									<div class="form-group ${status.error ? 'has-error' : '' }">
+	   										<spring:message code="select.chooseOne" var="chooseOne" />
+	   										<label class="control-label" for="${status.error ? 'inputError' : '' }"><spring:message code="createSensor.elementPrk" /></label>
+											<form:select path="elementPrk" class="form-control">
+    											<form:option value="" label="${chooseOne}" />
+    											<form:options items="${elementPrkList}" itemValue="elementPrkId" itemLabel="elementPrkName" />
+											</form:select>
+											<form:errors path="elementPrk" cssClass="control-label" for="inputError" element="label" />	   							   								    
+	   									</div>
+									</spring:bind>
 	   							   								    	   							   								    
 		    						<div class="button">
 		    							<spring:message code="createSensor.submit" var="sensorSubmit" />

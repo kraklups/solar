@@ -16,10 +16,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import net.kraklups.solarapp.model.company.Company;
 import net.kraklups.solarapp.model.role.Role;
@@ -27,7 +29,9 @@ import net.kraklups.solarapp.model.role.Role;
 @Entity
 @Table(name="UserProfile", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "loginName") })
-public class UserProfile {
+public class UserProfile implements java.io.Serializable {
+
+	private static final long serialVersionUID = -13777050080219053L;
 
 	private Long userProfileId;
 	
@@ -54,7 +58,10 @@ public class UserProfile {
 	@NotEmpty
 	@Email	
 	private String email;
-	
+
+	//2014-07-04T12:08:56.235
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS")
+	@NotNull
 	private Date date;
 	
 	private Boolean enabled;
@@ -71,7 +78,8 @@ public class UserProfile {
 	
 	public UserProfile(String loginName, String encryptedPassword,
 			String firstName, String surname1, String surname2, String email, 
-			Date date, Boolean enabled, Boolean accountNonExpired, Company company, Role role) {
+			Date date, Boolean enabled, Boolean accountNonExpired, 
+			Boolean credentialsNonExpired, Boolean accountNonLocked, Company company, Role role) {
 
 		this.loginName = loginName;
 		this.encryptedPassword = encryptedPassword;
@@ -82,6 +90,8 @@ public class UserProfile {
 		this.date = date;
 		this.enabled = enabled;
 		this.accountNonExpired = accountNonExpired;
+		this.credentialsNonExpired = credentialsNonExpired;
+		this.accountNonLocked = accountNonLocked;
 		this.company = company;
 		this.role = role;
 	}
@@ -190,6 +200,7 @@ public class UserProfile {
 		this.accountNonLocked = accountNonLocked;
 	}
 	
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="companyId")
 	public Company getCompany() {
@@ -200,6 +211,7 @@ public class UserProfile {
 		this.company = company;
 	}
 	
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="roleId")
 	public Role getRole() {

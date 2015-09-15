@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.kraklups.modelutil.dao.GenericDao;
 import net.kraklups.modelutil.exceptions.InstanceNotFoundException;
+import net.kraklups.solarapp.model.report.Report;
 
 public interface TaskPrkDao extends GenericDao<TaskPrk, Long> {
 
@@ -142,5 +143,22 @@ public interface TaskPrkDao extends GenericDao<TaskPrk, Long> {
 	public List<TaskPrk> getSynchronizesByRoleId(Long roleId, int startIndex, int count) 
 			throws InstanceNotFoundException; 	
 
-	
+    public List<TaskPrk> getTaskPrks(int startIndex, int count)
+			throws InstanceNotFoundException;
+    
+    public List<Upkeep> getUpkeeps(int startIndex, int count)
+			throws InstanceNotFoundException;
+    
+    public List<Track> getTracks(int startIndex, int count)
+			throws InstanceNotFoundException;        
+    
+    public List<Report> getReports(int startIndex, int count)
+			throws InstanceNotFoundException;   
+    
+    public List<Synchronize> getSynchronizes(int startIndex, int count)
+			throws InstanceNotFoundException;
+    
+    public List<Monitor> getMonitors(int startIndex, int count)
+			throws InstanceNotFoundException;    
+    
 }

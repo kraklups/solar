@@ -38,6 +38,7 @@ public class Role {
 	@Size(min=6, max=30)
 	private String roleName;
 	
+	//2014-07-04T12:08:56.235	
 	@DateTimeFormat(pattern="MM/dd/yyyy")
 	@NotNull	
 	private Date date;
@@ -127,5 +128,11 @@ public class Role {
 	public void setRoleModuleAccess(Set<RoleModuleAccess> roleModuleAccess) {
 		this.roleModuleAccess = roleModuleAccess;
 	}
+	
+	@Override
+	public String toString() {
+		return "Role [roleId=" + roleId + ", roleName=" + roleName +
+			", date=" + date + ", weight=" + weight + "]";
+	}	
 	
 }

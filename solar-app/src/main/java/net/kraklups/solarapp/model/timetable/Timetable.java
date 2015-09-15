@@ -25,8 +25,10 @@ import net.kraklups.solarapp.model.userprofile.UserProfile;
 
 @Entity
 @Table(name="Timetable")
-public class Timetable {
+public class Timetable implements java.io.Serializable {
 	
+	private static final long serialVersionUID = 8260755741372524227L;
+
 	private Long timetableId;
 	
 	@NotEmpty
@@ -93,6 +95,7 @@ public class Timetable {
 		this.tvi = tvi;
 	}
 	
+	@NotNull
 	@ManyToOne(optional=false, fetch=FetchType.LAZY)
 	@JoinColumn(name="parkId")	
 	public Park getPark(){
@@ -105,7 +108,7 @@ public class Timetable {
 
 	@Override
 	public String toString() {
-		return "Timetable [timetableId=" + timetableId + ", etiqueta=" + timetableTag + ", loginName="
-				+ userProfile.getLoginName() + ", tiempo validez inicial=" + tvi + ", Park=" + park.getParkName() + "]";
+		return "TimetableBlock [timetableId=" + timetableId + ", etiqueta=" + timetableTag + ", loginName="
+				+ ", tvi=" + tvi + "]";
 	}
 }
