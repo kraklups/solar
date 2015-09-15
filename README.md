@@ -1,29 +1,21 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Análisis, diseño e implementación de una solución para sistemas productores de energías renovables.
+
+Web Application with GIS, PostgreSQL, MongoDB, NoSQL, JavaEE, REST, Hibernate, Spring, JDBC, OpenLayers, JUnit, Bootstrap, Tiles, JSTL, XML, JSON, JQuery
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* http://www.slideshare.net/RicardoFraga4/pfcbeamer
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* https://xestor.fic.udc.es/docproyectos/ricardo.fraga/2425_MemoriaPFC.pdf
 
 ### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
+* ...
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+* kraklups
